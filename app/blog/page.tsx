@@ -69,7 +69,7 @@ export default function Blog() {
   const regularPosts = blogPosts.filter((post) => !post.featured)
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-gradient-to-br from-white via-gray-100 to-black">
       <Header />
 
       {/* Hero Section */}
@@ -86,7 +86,7 @@ export default function Blog() {
 
       {/* Featured Post */}
       {featuredPost && (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-300/50">
           <div className="container mx-auto">
             <div className="text-center mb-12">
               <Badge className="bg-accent text-accent-foreground mb-4">Featured Post</Badge>
@@ -171,9 +171,9 @@ export default function Blog() {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-300/50">
         <div className="container mx-auto">
-          <div className="bg-gradient-to-r from-accent/10 via-accent/5 to-accent/10 rounded-2xl p-12 text-center">
+          <div className="bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 rounded-2xl p-12 text-center">
             <h2 className="text-3xl font-bold text-foreground mb-4">Stay Updated</h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Subscribe to our newsletter for the latest insights on AI chatbots and conversational AI.

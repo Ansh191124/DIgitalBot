@@ -44,14 +44,14 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-black text-white">
+    <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-gray-100 to-black dark:from-black dark:via-gray-900 dark:to-gray-800 text-black dark:text-white">
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-black tracking-tight">
             Powerful AI Chatbot Features
           </h2>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-black-300 max-w-2xl mx-auto">
             Discover how our advanced conversational AI can transform your customer service and drive business growth.
           </p>
         </div>

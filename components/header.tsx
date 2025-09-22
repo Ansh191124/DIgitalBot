@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { motion, AnimatePresence } from "framer-motion"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -14,9 +15,7 @@ export function Header() {
   const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -32,47 +31,59 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300",
+        "fixed top-0 w-full z-50 transition-all duration-300 bg-gradient-to-br from-white via-gray-100 to-gray-300 text-black",
         isScrolled
-          ? "bg-black/90 backdrop-blur-md border-b border-gray-800 shadow-lg"
-          : "bg-transparent",
+          ? "backdrop-blur-md border-b border-gray-300 shadow-md"
+          : ""
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* LOGO */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="https://digitalbot.ai/wp-content/uploads/2024/03/digital-bot-full-logo.svg"
-              alt="DigitalBot Logo"
-              width={160}
-              height={40}
-              priority
-              className="h-8 w-auto object-contain"
-            />
-          </Link>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link href="/" className="flex items-center">
+              <Image
+                src="https://digitalbot.ai/wp-content/uploads/2024/03/digital-bot-full-logo.svg"
+                alt="DigitalBot Logo"
+                width={160}
+                height={40}
+                priority
+                className="h-8 w-auto object-contain"
+              />
+            </Link>
+          </motion.div>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
+            {navItems.map((item, index) => (
+              <motion.div
                 key={item.href}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium transition-colors relative group",
-                  pathname === item.href
-                    ? "text-white"
-                    : "text-gray-300 hover:text-white",
-                )}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.4 }}
               >
-                {item.label}
-                <span
+                <Link
+                  href={item.href}
                   className={cn(
-                    "absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full",
-                    pathname === item.href && "w-full",
+                    "text-sm font-medium transition-colors relative group",
+                    pathname === item.href
+                      ? "text-black"
+                      : "text-gray-600 hover:text-gray-900"
                   )}
-                />
-              </Link>
+                >
+                  {item.label}
+                  <span
+                    className={cn(
+                      "absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full",
+                      pathname === item.href && "w-full"
+                    )}
+                  />
+                </Link>
+              </motion.div>
             ))}
           </nav>
 
@@ -81,23 +92,23 @@ export function Header() {
             <Button
               variant="outline"
               size="sm"
-              className="border-gray-500 text-gray-300 hover:text-white hover:border-white"
+              className="border-gray-400 text-gray-700 hover:text-black hover:border-gray-600"
               asChild
             >
-              <Link href="/contact">Get Started</Link>
+              <Link href="/signup">Get Started</Link>
             </Button>
             <Button
               size="sm"
-              className="bg-white text-black font-semibold hover:bg-gray-200 animate-pulse"
+              className="bg-gradient-to-r from-black via-gray-700 to-gray-500 hover:from-gray-900 hover:via-gray-600 hover:to-gray-400 text-white font-semibold shadow-md"
               asChild
             >
-              <Link href="/pricing">Try Free</Link>
+              <Link href="/login">Try Free</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-md hover:bg-gray-800 transition-colors text-gray-300 hover:text-white"
+            className="md:hidden p-2 rounded-md hover:bg-gray-200 transition-colors text-gray-700 hover:text-black"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -105,60 +116,64 @@ export function Header() {
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-black/95 border-b border-gray-800 animate-fade-in-up">
-            <nav className="flex flex-col space-y-1 p-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "px-3 py-2 text-base font-medium rounded-md transition-colors",
-                    pathname === item.href
-                      ? "text-white bg-gray-800"
-                      : "text-gray-300 hover:text-white hover:bg-gray-800/50",
-                  )}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <div className="flex flex-col space-y-2 pt-4 border-t border-gray-700">
-                <Button
-                  variant="outline"
-                  className="justify-start bg-transparent border-gray-500 text-gray-300 hover:text-white hover:border-white"
-                  asChild
-                >
-                  <Link href="/contact">Get Started</Link>
-                </Button>
-                <Button
-                  className="bg-white text-black hover:bg-gray-200 justify-start font-semibold"
-                  asChild
-                >
-                  <Link href="/pricing">Try Free</Link>
-                </Button>
-              </div>
-            </nav>
-          </div>
-        )}
-      </div>
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden absolute top-16 left-0 right-0 bg-gradient-to-b from-white/95 via-gray-100/95 to-gray-300/95 border-b border-gray-300"
+            >
+              <nav className="flex flex-col space-y-1 p-4">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        "px-3 py-2 text-base font-medium rounded-md transition-colors",
+                        pathname === item.href
+                          ? "text-black bg-gray-200"
+                          : "text-gray-600 hover:text-black hover:bg-gray-200"
+                      )}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
 
-      {/* Animations */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in-up {
-          animation: fadeInUp 0.4s ease-out;
-        }
-      `}</style>
+                {/* Mobile Buttons */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex flex-col space-y-2 pt-4 border-t border-gray-300"
+                >
+                  <Button
+                    variant="outline"
+                    className="justify-start border-gray-400 text-gray-700 hover:text-black hover:border-gray-600"
+                    asChild
+                  >
+                    <Link href="/signup">Get Started</Link>
+                  </Button>
+                  <Button
+                    className="bg-gradient-to-r from-white via-gray-700 to-gray-500 hover:from-gray-900 hover:via-gray-600 hover:to-gray-400 text-white font-semibold justify-start shadow-md"
+                    asChild
+                  >
+                    <Link href="/login">Try Free</Link>
+                  </Button>
+                </motion.div>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </header>
   )
 }

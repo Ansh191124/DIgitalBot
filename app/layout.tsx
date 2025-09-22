@@ -6,6 +6,8 @@ import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
 
+
+
 export const metadata: Metadata = {
   title: "DigitalBot.ai - Advanced AI Chatbot Solutions",
   description:
