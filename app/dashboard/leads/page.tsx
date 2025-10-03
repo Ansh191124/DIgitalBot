@@ -528,7 +528,7 @@ export default function LeadsPage() {
 
   // AI processing function
   const processTranscriptionWithAI = useCallback(async (callId: string, transcription: string) => {
-    const apiUrl = `http://localhost:4000/api/analyze-lead`;
+    const apiUrl = `https://digital-api-tef8.onrender.com/api/analyze-lead`;
     
     try {
       console.log(`Processing call ${callId} with AI...`);
@@ -704,7 +704,7 @@ export default function LeadsPage() {
       console.log("Fetching ALL calls from MongoDB...");
       
       // Remove any limit parameters to get all calls
-      const response = await fetch("http://localhost:4000/api/calls?limit=0");
+      const response = await fetch("https://digital-api-tef8.onrender.com/api/calls?limit=0");
 
       if (!response.ok) {
         throw new Error(`Failed to fetch calls: ${response.status} ${response.statusText}`);
@@ -735,7 +735,7 @@ export default function LeadsPage() {
     
     const connectWebSocket = () => {
       try {
-        ws = new WebSocket("ws://localhost:4000");
+        ws = new WebSocket("ws://digital-api-tef8.onrender.com");
         
         ws.onopen = () => {
           console.log("WebSocket connected");

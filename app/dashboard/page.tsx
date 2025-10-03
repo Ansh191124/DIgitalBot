@@ -60,7 +60,7 @@ export default function AnalyticsOverview() {
       const params = new URLSearchParams();
       params.append("limit", "1000"); // Get more data for analytics
       
-      const res = await fetch(`http://localhost:4000/api/calls?${params.toString()}`);
+      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls?${params.toString()}`);
       const data = await res.json();
       const calls = data.calls || [];
       
@@ -223,7 +223,7 @@ export default function AnalyticsOverview() {
     if (!toNumber) return alert("Please enter a number to call.");
     setCallStatus("Calling...");
     try {
-      const res = await fetch("http://localhost:4000/api/outbound-call", {
+      const res = await fetch("https://digital-api-tef8.onrender.com/api/outbound-call", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ toNumber }),

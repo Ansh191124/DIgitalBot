@@ -45,7 +45,7 @@ export default function CallAnalytics() {
       params.append("page", page.toString());
       params.append("limit", limit.toString());
       
-      const res = await fetch(`http://localhost:4000/api/calls?${params.toString()}`);
+      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls?${params.toString()}`);
       const data = await res.json();
       setCalls(data.calls || []);
       setTotal(data.total || 0);
@@ -61,7 +61,7 @@ export default function CallAnalytics() {
   const fetchAllCalls = async () => {
     setAnalyticsLoading(true);
     try {
-      const res = await fetch(`http://localhost:4000/api/calls`); // Get all calls
+      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls`); // Get all calls
       const data = await res.json();
       setAllCalls(data.calls || []);
     } catch (err) {
@@ -95,7 +95,7 @@ export default function CallAnalytics() {
     }
     setProcessing(prev => ({ ...prev, [call.Sid]: 'transcribing' }));
     try {
-      const res = await fetch(`http://localhost:4000/api/transcribe/${call.Sid}`, {
+      const res = await fetch(`https://digital-api-tef8.onrender.com/api/transcribe/${call.Sid}`, {
         method: "POST",
       });
       const data = await res.json();
@@ -133,7 +133,7 @@ export default function CallAnalytics() {
     }
     setProcessing(prev => ({ ...prev, [call.Sid]: 'summarizing' }));
     try {
-      const res = await fetch("http://localhost:4000/api/summarize", {
+      const res = await fetch("https://digital-api-tef8.onrender.com/api/summarize", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: call.transcription }),
@@ -943,7 +943,7 @@ export default function CallAnalytics() {
                             {call.recordings.map((rec) => (
                               <a
                                 key={rec.Sid}
-                                href={`http://localhost:4000/api/recording/${rec.Sid}`}
+                                href={`https://digital-api-tef8.onrender.com/api/recording/${rec.Sid}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-1 px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-700 hover:text-slate-900 transition-all duration-200 group/link"
