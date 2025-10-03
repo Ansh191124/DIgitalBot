@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -40,6 +43,59 @@ const contactInfo = [
 ]
 
 export default function Contact() {
+  // Form state
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    inquiry: "",
+    message: ""
+  })
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState("")
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { id, value } = e.target
+    setForm({ ...form, [id]: value })
+  }
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    setSuccess("")
+
+    try {
+      const res = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+      })
+      const data = await res.json()
+
+      if (res.ok) {
+        setSuccess(data.message || "We'll Contact You Asap!")
+        setForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          company: "",
+          inquiry: "",
+          message: ""
+        })
+      } else {
+        alert(data.error || "Failed to submit form")
+      }
+    } catch (err) {
+      console.error(err)
+      alert("Failed to submit form. Please try again.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-white via-gray-100 to-black text-foreground">
       <Header />
@@ -69,52 +125,64 @@ export default function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="John" />
+                {/* Success message */}
+                {success && (
+                  <div className="bg-green-100 text-green-800 p-3 rounded-md">
+                    {success}
+                  </div>
+                )}
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName">First Name</Label>
+                      <Input id="firstName" placeholder="John" value={form.firstName} onChange={handleChange} required />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName">Last Name</Label>
+                      <Input id="lastName" placeholder="Doe" value={form.lastName} onChange={handleChange} />
+                    </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Doe" />
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" placeholder="john@company.com" value={form.email} onChange={handleChange} required />
                   </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="john@company.com" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="company">Company</Label>
-                  <Input id="company" placeholder="Your Company" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="inquiry">Inquiry Type</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select inquiry type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="sales">Sales Inquiry</SelectItem>
-                      <SelectItem value="support">Technical Support</SelectItem>
-                      <SelectItem value="partnership">Partnership</SelectItem>
-                      <SelectItem value="demo">Request Demo</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us about your project and how we can help..."
-                    className="min-h-[120px]"
-                  />
-                </div>
-                <Button className="w-full bg-black text-white hover:bg-gray-800">
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Send Message
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                  <div className="space-y-2">
+                    <Label htmlFor="company">Company</Label>
+                    <Input id="company" placeholder="Your Company" value={form.company} onChange={handleChange} />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="inquiry">Inquiry Type</Label>
+                    <Select value={form.inquiry} onValueChange={(value) => setForm({ ...form, inquiry: value })}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select inquiry type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="sales">Sales Inquiry</SelectItem>
+                        <SelectItem value="support">Technical Support</SelectItem>
+                        <SelectItem value="partnership">Partnership</SelectItem>
+                        <SelectItem value="demo">Request Demo</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea
+                      id="message"
+                      placeholder="Tell us about your project and how we can help..."
+                      className="min-h-[120px]"
+                      value={form.message}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800" disabled={loading}>
+                    <MessageCircle className="mr-2 h-4 w-4" />
+                    {loading ? "Sending..." : "Send Message"}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </form>
               </CardContent>
             </Card>
 

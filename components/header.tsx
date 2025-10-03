@@ -102,7 +102,7 @@ export function Header() {
               className="bg-gradient-to-r from-black via-gray-700 to-gray-500 hover:from-gray-900 hover:via-gray-600 hover:to-gray-400 text-white font-semibold shadow-md"
               asChild
             >
-              <Link href="/login">Try Free</Link>
+             <Link href="/login">Login</Link>
             </Button>
           </div>
 
@@ -163,7 +163,7 @@ export function Header() {
                     <Link href="/signup">Get Started</Link>
                   </Button>
                   <Button
-                    className="bg-gradient-to-r from-white via-gray-700 to-gray-500 hover:from-gray-900 hover:via-gray-600 hover:to-gray-400 text-white font-semibold justify-start shadow-md"
+                    className="bg-gradient-to-r from-black via-gray-700 to-gray-500 hover:from-gray-900 hover:via-gray-600 hover:to-gray-400 text-white font-semibold justify-start shadow-md"
                     asChild
                   >
                     <Link href="/login">Try Free</Link>
