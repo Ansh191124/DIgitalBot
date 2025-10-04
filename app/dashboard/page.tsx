@@ -60,7 +60,7 @@ export default function AnalyticsOverview() {
       const params = new URLSearchParams();
       params.append("limit", "1000"); // Get more data for analytics
       
-      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls?${params.toString()}`);
+      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls`);
       const data = await res.json();
       const calls = data.calls || [];
       

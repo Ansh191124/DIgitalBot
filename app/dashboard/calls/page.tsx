@@ -45,7 +45,7 @@ export default function CallAnalytics() {
       params.append("page", page.toString());
       params.append("limit", limit.toString());
       
-      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls?${params.toString()}`);
+      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls`);
       const data = await res.json();
       setCalls(data.calls || []);
       setTotal(data.total || 0);
