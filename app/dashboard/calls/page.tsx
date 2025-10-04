@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Phone, Search, Filter, Play, FileText, Brain, ChevronLeft, ChevronRight, Calendar, Clock, User, Users, PhoneCall, PhoneIncoming, PhoneOutgoing, CheckCircle, XCircle, AlertCircle, Loader2, BarChart3, PieChart as PieChartIcon, TrendingUp, TrendingDown, Activity, Zap, LineChart as LineChartIcon } from "lucide-react";
-import Sidebar from "@/components/Sidebar";
 
 interface Call {
   Sid: string;
@@ -16,10 +15,12 @@ interface Call {
   transcription?: string;
   summary?: string;
 }
+import Sidebar from "@/components/Sidebar";
+
 
 export default function CallAnalytics() {
   const [calls, setCalls] = useState<Call[]>([]);
-  const [allCalls, setAllCalls] = useState<Call[]>([]); // For analytics - all calls data
+  const [allCalls, setAllCalls] = useState<Call[]>([]);
   const [loading, setLoading] = useState(false);
   const [analyticsLoading, setAnalyticsLoading] = useState(false);
   const [searchId, setSearchId] = useState("");
@@ -45,27 +46,51 @@ export default function CallAnalytics() {
       params.append("page", page.toString());
       params.append("limit", limit.toString());
       
-      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls`);
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+      
+      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls?${params.toString()}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (!res.ok) {
+        throw new Error(`Failed to fetch calls: ${res.status}`);
+      }
+      
       const data = await res.json();
       setCalls(data.calls || []);
       setTotal(data.total || 0);
       
     } catch (err) {
-      console.error(err);
+      console.error("Error in fetchCalls:", err);
     } finally {
       setLoading(false);
     }
   };
 
-  // Fetch ALL calls for analytics (no pagination, no filters)
   const fetchAllCalls = async () => {
+    console.log("Fetching ALL calls from MongoDB...");
     setAnalyticsLoading(true);
     try {
-      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls`); // Get all calls
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+      
+      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls?limit=0`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (!res.ok) {
+        throw new Error(`Failed to fetch calls: ${res.status}`);
+      }
+      
       const data = await res.json();
       setAllCalls(data.calls || []);
     } catch (err) {
-      console.error(err);
+      console.error("Error in fetchCalls:", err);
     } finally {
       setAnalyticsLoading(false);
     }
@@ -73,9 +98,8 @@ export default function CallAnalytics() {
 
   useEffect(() => {
     fetchCalls();
-    fetchAllCalls(); // Fetch all calls for analytics
+    fetchAllCalls();
     
-    // Real-time updates every 30 seconds
     const interval = setInterval(() => {
       fetchCalls();
       fetchAllCalls();
@@ -95,8 +119,14 @@ export default function CallAnalytics() {
     }
     setProcessing(prev => ({ ...prev, [call.Sid]: 'transcribing' }));
     try {
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+      
       const res = await fetch(`https://digital-api-tef8.onrender.com/api/transcribe/${call.Sid}`, {
         method: "POST",
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
       });
       const data = await res.json();
       if (res.ok) {
@@ -133,9 +163,14 @@ export default function CallAnalytics() {
     }
     setProcessing(prev => ({ ...prev, [call.Sid]: 'summarizing' }));
     try {
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+      
       const res = await fetch("https://digital-api-tef8.onrender.com/api/summarize", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({ text: call.transcription }),
       });
       const data = await res.json();
@@ -170,7 +205,6 @@ export default function CallAnalytics() {
     return direction === 'inbound' ? <PhoneIncoming className="w-3 h-3" /> : <PhoneOutgoing className="w-3 h-3" />;
   };
 
-  // Analytics data calculations - using ALL CALLS data
   const getStatusData = () => {
     const completed = allCalls.filter(c => c.Status === 'completed').length;
     const failed = allCalls.filter(c => c.Status === 'failed').length;
@@ -178,20 +212,9 @@ export default function CallAnalytics() {
     const total = allCalls.length;
     
     return [
-      { name: 'Completed', value: completed, percentage: total ? (completed/total*100).toFixed(1) : 0, color: '#10b981', darkColor: '#059669' },
-      { name: 'Failed', value: failed, percentage: total ? (failed/total*100).toFixed(1) : 0, color: '#ef4444', darkColor: '#dc2626' },
-      { name: 'Busy', value: busy, percentage: total ? (busy/total*100).toFixed(1) : 0, color: '#f59e0b', darkColor: '#d97706' },
-    ];
-  };
-
-  const getDirectionData = () => {
-    const inbound = allCalls.filter(c => c.Direction === 'inbound').length;
-    const outbound = allCalls.filter(c => c.Direction === 'outbound').length;
-    const total = allCalls.length;
-    
-    return [
-      { name: 'Inbound', value: inbound, percentage: total ? (inbound/total*100).toFixed(1) : 0, color: '#3b82f6' },
-      { name: 'Outbound', value: outbound, percentage: total ? (outbound/total*100).toFixed(1) : 0, color: '#8b5cf6' },
+      { name: 'Completed', value: completed, percentage: total ? (completed/total*100).toFixed(1) : '0', color: '#10b981', darkColor: '#059669' },
+      { name: 'Failed', value: failed, percentage: total ? (failed/total*100).toFixed(1) : '0', color: '#ef4444', darkColor: '#dc2626' },
+      { name: 'Busy', value: busy, percentage: total ? (busy/total*100).toFixed(1) : '0', color: '#f59e0b', darkColor: '#d97706' },
     ];
   };
 
@@ -226,7 +249,6 @@ export default function CallAnalytics() {
     return last7Days;
   };
 
-  // Enhanced Donut Chart Component with Total in Center
   const EnhancedDonutChart = ({ data, title }: { data: any[], title: string }) => {
     const total = data.reduce((sum, item) => sum + item.value, 0);
     let currentAngle = 0;
@@ -244,12 +266,11 @@ export default function CallAnalytics() {
       return slice;
     });
 
-    const createPath = (centerX: number, centerY: number, radius: number, startAngle: number, endAngle: number, isHovered = false) => {
-      const adjustedRadius = isHovered ? radius + 8 : radius;
-      const start = polarToCartesian(centerX, centerY, adjustedRadius, endAngle);
-      const end = polarToCartesian(centerX, centerY, adjustedRadius, startAngle);
+    const createPath = (centerX: number, centerY: number, radius: number, startAngle: number, endAngle: number) => {
+      const start = polarToCartesian(centerX, centerY, radius, endAngle);
+      const end = polarToCartesian(centerX, centerY, radius, startAngle);
       const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
-      return `M ${centerX} ${centerY} L ${start.x} ${start.y} A ${adjustedRadius} ${adjustedRadius} 0 ${largeArcFlag} 0 ${end.x} ${end.y} Z`;
+      return `M ${centerX} ${centerY} L ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArcFlag} 0 ${end.x} ${end.y} Z`;
     };
 
     const polarToCartesian = (centerX: number, centerY: number, radius: number, angleInDegrees: number) => {
@@ -262,13 +283,6 @@ export default function CallAnalytics() {
 
     return (
       <div className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 backdrop-blur-xl rounded-3xl p-8 border border-white/60 shadow-2xl">
-        {/* Animated background particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-4 left-4 w-2 h-2 bg-blue-400/30 rounded-full animate-pulse"></div>
-          <div className="absolute top-12 right-8 w-1 h-1 bg-purple-400/40 rounded-full animate-ping"></div>
-          <div className="absolute bottom-8 left-12 w-3 h-3 bg-indigo-300/20 rounded-full animate-bounce"></div>
-        </div>
-        
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-8">
             <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl shadow-lg">
@@ -282,21 +296,6 @@ export default function CallAnalytics() {
           
           <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
             <div className="relative group">
-              {/* 3D Shadow effect */}
-              <div className="absolute inset-0 translate-x-2 translate-y-2">
-                <svg width="240" height="240" viewBox="0 0 240 240" className="opacity-20">
-                  {slices.map((slice, index) => (
-                    <path
-                      key={`shadow-${index}`}
-                      d={createPath(120, 120, 90, slice.startAngle, slice.endAngle)}
-                      fill="#000"
-                      className="blur-sm"
-                    />
-                  ))}
-                </svg>
-              </div>
-              
-              {/* Main donut chart */}
               <svg width="240" height="240" viewBox="0 0 240 240" className="transform -rotate-90 drop-shadow-xl">
                 <defs>
                   {slices.map((slice, index) => (
@@ -307,47 +306,31 @@ export default function CallAnalytics() {
                   ))}
                 </defs>
                 
-                {/* Donut segments (outer ring) */}
                 {slices.map((slice, index) => (
-                  <g key={index}>
-                    <path
-                      d={createPath(120, 120, 90, slice.startAngle, slice.endAngle)}
-                      fill={`url(#grad-${index})`}
-                      className="hover:scale-105 transition-all duration-300 cursor-pointer filter hover:brightness-110"
-                      style={{
-                        transformOrigin: '120px 120px',
-                        animation: `slideIn 0.8s ease-out ${index * 0.1}s both`
-                      }}
-                    />
-                  </g>
+                  <path
+                    key={index}
+                    d={createPath(120, 120, 90, slice.startAngle, slice.endAngle)}
+                    fill={`url(#grad-${index})`}
+                    className="hover:scale-105 transition-all duration-300 cursor-pointer filter hover:brightness-110"
+                  />
                 ))}
                 
-                {/* Inner circle cutout for donut effect */}
                 <circle cx="120" cy="120" r="50" fill="white" className="drop-shadow-lg" />
-                
-                <defs>
-                  <radialGradient id="innerGlow">
-                    <stop offset="0%" style={{ stopColor: 'white', stopOpacity: 0.8 }} />
-                    <stop offset="100%" style={{ stopColor: 'white', stopOpacity: 0 }} />
-                  </radialGradient>
-                </defs>
               </svg>
 
-              {/* Center statistics */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-slate-800">{total}</div>
                   <div className="text-sm text-slate-500 font-medium">Total Calls</div>
-                  <div className="text-xs text-slate-400 mt-1">All {allCalls.length} records</div>
                 </div>
               </div>
             </div>
             
             <div className="space-y-4">
               {data.map((item, index) => (
-                <div key={index} className="flex items-center gap-4 p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-white/40 hover:bg-white/80 transition-all duration-300 group">
+                <div key={index} className="flex items-center gap-4 p-3 bg-white/60 backdrop-blur-sm rounded-xl border border-white/40 hover:bg-white/80 transition-all duration-300">
                   <div 
-                    className="w-6 h-6 rounded-lg shadow-md group-hover:scale-110 transition-transform duration-300" 
+                    className="w-6 h-6 rounded-lg shadow-md" 
                     style={{ 
                       background: `linear-gradient(135deg, ${item.color}, ${item.darkColor || item.color})` 
                     }}
@@ -365,36 +348,15 @@ export default function CallAnalytics() {
             </div>
           </div>
         </div>
-
-        <style jsx>{`
-          @keyframes slideIn {
-            0% { 
-              opacity: 0; 
-              transform: scale(0.5) rotate(-180deg); 
-            }
-            100% { 
-              opacity: 1; 
-              transform: scale(1) rotate(0deg); 
-            }
-          }
-        `}</style>
       </div>
     );
   };
 
-  // Enhanced Horizontal Bar Chart Component  
   const EnhancedHorizontalBarChart = ({ data, title }: { data: any[], title: string }) => {
-    const maxValue = Math.max(...data.map(d => d.calls || 0));
-    const peakHours = data.filter(d => d.calls === maxValue);
+    const maxValue = Math.max(...data.map(d => d.calls || 0), 1);
     
     return (
       <div className="relative overflow-hidden bg-gradient-to-br from-white via-amber-50/30 to-orange-50/30 backdrop-blur-xl rounded-3xl p-8 border border-white/60 shadow-2xl">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-6 right-6 w-20 h-20 bg-gradient-to-br from-amber-200/20 to-orange-200/20 rounded-full blur-xl"></div>
-          <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-br from-yellow-200/20 to-amber-200/20 rounded-full blur-lg"></div>
-        </div>
-
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-8">
             <div className="p-2 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl shadow-lg">
@@ -415,59 +377,38 @@ export default function CallAnalytics() {
                 return (
                   <div key={index} className="group">
                     <div className="flex items-center gap-4">
-                      {/* Hour label */}
                       <div className="w-16 text-sm font-medium text-slate-700 flex-shrink-0">
                         {item.hour}
                       </div>
                       
-                      {/* Bar container */}
                       <div className="flex-1 relative">
                         <div className="bg-slate-200 rounded-full h-6 overflow-hidden relative">
-                          {/* Main bar */}
                           <div 
                             className={`h-full rounded-full transition-all duration-1000 ease-out relative ${
-                              isPeak ? 'bg-gradient-to-r from-red-500 via-orange-500 to-yellow-400 shadow-lg' :
+                              isPeak ? 'bg-gradient-to-r from-red-500 via-orange-500 to-yellow-400' :
                               item.calls > maxValue * 0.7 ? 'bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-400' :
                               item.calls > maxValue * 0.4 ? 'bg-gradient-to-r from-amber-500 via-yellow-500 to-lime-400' :
                               'bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400'
                             }`}
-                            style={{ 
-                              width: `${width}%`,
-                              animation: `slideRight 1.2s ease-out ${index * 0.05}s both`
-                            }}
+                            style={{ width: `${width}%` }}
                           >
-                            {/* Shine effect */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            {width > 15 && (
+                              <div className="absolute inset-0 flex items-center px-3">
+                                <span className="text-white text-sm font-semibold">
+                                  {item.calls}
+                                </span>
+                              </div>
+                            )}
                           </div>
-                          
-                          {/* Value label inside bar */}
-                          {width > 15 && (
-                            <div className="absolute inset-0 flex items-center px-3">
-                              <span className="text-white text-sm font-semibold drop-shadow-sm">
-                                {item.calls}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                        
-                        {/* Hover tooltip */}
-                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
-                          <div className="bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap">
-                            <div className="font-semibold">{item.hour}</div>
-                            <div>{item.calls} calls ({((item.calls / allCalls.length) * 100).toFixed(1)}%)</div>
-                          </div>
-                          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full w-0 h-0 border-l-2 border-r-2 border-b-4 border-transparent border-b-gray-900"></div>
                         </div>
                       </div>
                       
-                      {/* Value label */}
                       {width <= 15 && (
                         <div className="w-8 text-sm font-semibold text-slate-800 text-right flex-shrink-0">
                           {item.calls}
                         </div>
                       )}
                       
-                      {/* Peak indicator */}
                       {isPeak && (
                         <div className="flex-shrink-0">
                           <TrendingUp className="w-4 h-4 text-red-500" />
@@ -478,46 +419,20 @@ export default function CallAnalytics() {
                 );
               })}
             </div>
-
-            {/* Summary */}
-            <div className="mt-6 p-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-amber-200">
-              <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-amber-600" />
-                  <span className="font-medium text-amber-800">Peak Hours: {peakHours.map(h => h.hour).join(', ')}</span>
-                </div>
-                <div className="text-amber-700">
-                  Max: {maxValue} calls | Total: {data.reduce((sum, item) => sum + item.calls, 0)} calls
-                </div>
-              </div>
-            </div>
           </div>
         </div>
-
-        <style jsx>{`
-          @keyframes slideRight {
-            0% { 
-              width: 0;
-              opacity: 0.7;
-            }
-            100% { 
-              opacity: 1;
-            }
-          }
-        `}</style>
       </div>
     );
   };
 
-  // Enhanced Line Chart with Area Fill and Animations
   const EnhancedTrendChart = ({ data, title }: { data: any[], title: string }) => {
-    const maxValue = Math.max(...data.map(d => d.calls || 0));
+    const maxValue = Math.max(...data.map(d => d.calls || 0), 1);
     const chartHeight = 250;
     const chartWidth = 500;
     const padding = 50;
     
     const points = data.map((item, index) => {
-      const x = padding + (index / (data.length - 1)) * (chartWidth - 2 * padding);
+      const x = padding + (index / Math.max(data.length - 1, 1)) * (chartWidth - 2 * padding);
       const y = chartHeight - padding - ((item.calls || 0) / maxValue) * (chartHeight - 2 * padding);
       return { x, y, ...item };
     });
@@ -527,12 +442,6 @@ export default function CallAnalytics() {
 
     return (
       <div className="relative overflow-hidden bg-gradient-to-br from-white via-purple-50/30 to-indigo-50/30 backdrop-blur-xl rounded-3xl p-8 border border-white/60 shadow-2xl">
-        {/* Animated background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-8 left-8 w-24 h-24 bg-gradient-to-br from-purple-200/20 to-indigo-200/20 rounded-full blur-2xl animate-pulse"></div>
-          <div className="absolute bottom-8 right-8 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
-        </div>
-
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-8">
             <div className="p-2 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl shadow-lg">
@@ -552,66 +461,6 @@ export default function CallAnalytics() {
                   <stop offset="100%" style={{ stopColor: '#8b5cf6', stopOpacity: 0.05 }} />
                 </linearGradient>
                 
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                  <feMerge> 
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-              
-              {/* Grid lines with gradient */}
-              {[0, 25, 50, 75, 100].map(percent => {
-                const y = chartHeight - padding - (percent / 100) * (chartHeight - 2 * padding);
-                return (
-                  <line
-                    key={percent}
-                    x1={padding}
-                    y1={y}
-                    x2={chartWidth - padding}
-                    y2={y}
-                    stroke="url(#gridGradient)"
-                    strokeWidth="1"
-                    opacity="0.3"
-                  />
-                );
-              })}
-              
-              <defs>
-                <linearGradient id="gridGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style={{ stopColor: '#e2e8f0', stopOpacity: 0 }} />
-                  <stop offset="50%" style={{ stopColor: '#e2e8f0', stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: '#e2e8f0', stopOpacity: 0 }} />
-                </linearGradient>
-              </defs>
-              
-              {/* Area fill with animation */}
-              <polygon
-                points={areaPoints}
-                fill="url(#areaGradient)"
-                className="opacity-0 animate-fadeIn"
-                style={{ animationDelay: '0.5s', animationFillMode: 'both' }}
-              />
-              
-              {/* Main trend line */}
-              <polyline
-                points={pathPoints}
-                fill="none"
-                stroke="url(#lineGradient)"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="filter drop-shadow-lg"
-                style={{
-                  strokeDasharray: '1000',
-                  strokeDashoffset: '1000',
-                  animation: 'drawLine 2s ease-out forwards'
-                }}
-                filter="url(#glow)"
-              />
-              
-              <defs>
                 <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" style={{ stopColor: '#3b82f6' }} />
                   <stop offset="50%" style={{ stopColor: '#8b5cf6' }} />
@@ -619,7 +468,20 @@ export default function CallAnalytics() {
                 </linearGradient>
               </defs>
               
-              {/* Data points with hover effects */}
+              <polygon
+                points={areaPoints}
+                fill="url(#areaGradient)"
+              />
+              
+              <polyline
+                points={pathPoints}
+                fill="none"
+                stroke="url(#lineGradient)"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              
               {points.map((point, index) => (
                 <g key={index}>
                   <circle
@@ -629,23 +491,18 @@ export default function CallAnalytics() {
                     fill="white"
                     stroke="#8b5cf6"
                     strokeWidth="3"
-                    className="hover:r-8 transition-all duration-300 cursor-pointer drop-shadow-lg"
-                    style={{
-                      animation: `popIn 0.5s ease-out ${0.2 + index * 0.1}s both`
-                    }}
+                    className="hover:r-8 transition-all duration-300 cursor-pointer"
                   />
                   <circle
                     cx={point.x}
                     cy={point.y}
                     r="3"
                     fill="#8b5cf6"
-                    className="pointer-events-none"
                   />
                 </g>
               ))}
             </svg>
             
-            {/* X-axis labels */}
             <div className="flex justify-between mt-4 px-12">
               {data.map((item, index) => (
                 <div key={index} className="text-center">
@@ -656,37 +513,6 @@ export default function CallAnalytics() {
             </div>
           </div>
         </div>
-
-        <style jsx>{`
-          @keyframes drawLine {
-            to {
-              stroke-dashoffset: 0;
-            }
-          }
-          
-          @keyframes popIn {
-            0% {
-              opacity: 0;
-              transform: scale(0);
-            }
-            80% {
-              transform: scale(1.2);
-            }
-            100% {
-              opacity: 1;
-              transform: scale(1);
-            }
-          }
-          
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-        `}</style>
       </div>
     );
   };
@@ -697,7 +523,6 @@ export default function CallAnalytics() {
 
       <main className="flex-1 pl-64 pr-8 py-4">
         <div className="container mx-auto max-w-7xl">
-          {/* Header */}
           <header className="mb-6">
             <div className="flex items-center justify-between">
               <div>
@@ -723,7 +548,6 @@ export default function CallAnalytics() {
             </div>
           </header>
 
-          {/* Filters Section - TOP POSITION */}
           <section className="mb-6">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg">
               <div className="flex items-center gap-2 mb-4">
@@ -807,7 +631,7 @@ export default function CallAnalytics() {
                   onClick={() => {
                     setPage(1);
                     fetchCalls();
-                    fetchAllCalls(); // Also refresh analytics
+                    fetchAllCalls();
                   }}
                   className="px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 flex items-center gap-2"
                 >
@@ -836,7 +660,6 @@ export default function CallAnalytics() {
             </div>
           </section>
 
-          {/* Call Logs Section */}
           <section className="mb-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-bold text-slate-800">Call Records & AI Analysis</h2>
@@ -863,7 +686,6 @@ export default function CallAnalytics() {
                 {calls.map((call) => (
                   <div key={call.Sid} className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 group">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
-                      {/* Left Column */}
                       <div className="space-y-2">
                         <div className="flex items-center gap-2">
                           <div className={`w-2 h-2 rounded-full ${
@@ -903,7 +725,6 @@ export default function CallAnalytics() {
                         </div>
                       </div>
                       
-                      {/* Right Column */}
                       <div className="space-y-2">
                         <div className="flex items-center gap-1">
                           {getStatusIcon(call.Status)}
@@ -930,7 +751,6 @@ export default function CallAnalytics() {
                       </div>
                     </div>
                     
-                    {/* Recordings Section */}
                     {call.recordings && call.recordings.length > 0 ? (
                       <div className="border-t border-slate-200 pt-3">
                         <div className="flex items-center gap-2 mb-3">
@@ -1010,7 +830,6 @@ export default function CallAnalytics() {
                       </div>
                     )}
 
-                    {/* Content Display */}
                     {visibleContent[call.Sid] === 'transcription' && call.transcription && (
                       <div className="mt-3 p-3 bg-gradient-to-r from-violet-50 to-purple-50 rounded-lg border border-violet-200">
                         <div className="flex items-center gap-1 mb-2">
@@ -1040,7 +859,6 @@ export default function CallAnalytics() {
             )}
           </section>
 
-          {/* Pagination */}
           <div className="flex justify-between items-center mt-6 p-4 bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 shadow-lg">
             <button
               disabled={page === 1}
@@ -1070,7 +888,6 @@ export default function CallAnalytics() {
             </button>
           </div>
 
-          {/* Enhanced Analytics Dashboard - MOVED TO BOTTOM */}
           <section className="mt-8 mb-6">
             <div className="flex items-center gap-3 mb-8">
               <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-lg">
@@ -1094,12 +911,10 @@ export default function CallAnalytics() {
               </div>
             ) : (
               <>
-                {/* Donut Chart for proportions */}
                 <div className="grid grid-cols-1 gap-8 mb-8">
                   <EnhancedDonutChart data={getStatusData()} title="Call Status Distribution (All Calls)" />
                 </div>
                 
-                {/* Horizontal Bar Chart and Line Chart */}
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                   <EnhancedHorizontalBarChart data={getHourlyData()} title="Hourly Call Distribution (24H Pattern)" />
                   <EnhancedTrendChart data={getDailyData()} title="7-Day Call Trends" />

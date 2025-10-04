@@ -704,7 +704,7 @@ export default function LeadsPage() {
       console.log("Fetching ALL calls from MongoDB...");
       
       // Remove any limit parameters to get all calls
-      const response = await fetch("https://digital-api-tef8.onrender.com/api/calls?limit=0");
+      const response = await fetch("https://digital-api-tef8.onrender.com/api/calls");
 
       if (!response.ok) {
         throw new Error(`Failed to fetch calls: ${response.status} ${response.statusText}`);
@@ -735,7 +735,7 @@ export default function LeadsPage() {
     
     const connectWebSocket = () => {
       try {
-        ws = new WebSocket("ws://digital-api-tef8.onrender.com");
+        ws = new WebSocket("ws:https//digital-api-tef8.onrender.com");
         
         ws.onopen = () => {
           console.log("WebSocket connected");
