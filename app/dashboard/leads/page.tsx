@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
-import Sidebar from "@/components/Sidebar";
+import {Sidebar} from "@/components/Sidebar";
 
 // MongoDB-compatible Call type
 type Call = {
@@ -292,9 +292,7 @@ function CallCard({
       <div className="p-6">
         <div className="flex items-center justify-between">
           
-          {/* Left: Call Information */}
           <div className="flex-1">
-            {/* Basic Call Details */}
             <div className="space-y-3">
               <div className="flex items-center gap-4">
                 <span className="text-sm font-mono text-gray-500 bg-gray-100 px-3 py-1 rounded-lg">
@@ -309,7 +307,6 @@ function CallCard({
                 </span>
               </div>
               
-              {/* Analysis Status Indicator */}
               <div className="flex items-center gap-3">
                 {isAnalyzed ? (
                   <div className="flex items-center gap-2 text-sm">
@@ -340,7 +337,6 @@ function CallCard({
                 )}
               </div>
 
-              {/* Lead Information Display - Only show if analyzed and is a lead */}
               {isAnalyzed && call.isLead === true && (
                 <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-xl p-4 border border-green-200 mt-4">
                   <div className="flex items-center justify-between">
@@ -385,7 +381,6 @@ function CallCard({
                       </div>
                     </div>
                     
-                    {/* Confidence Score */}
                     {call.confidence && (
                       <div className="ml-4 text-center bg-white rounded-lg p-3 shadow-sm">
                         <div className="text-2xl font-bold text-green-800">
@@ -398,7 +393,6 @@ function CallCard({
                 </div>
               )}
 
-              {/* Show if analyzed but not a lead */}
               {isAnalyzed && call.isLead === false && (
                 <div className="bg-gray-50 rounded-lg p-3 mt-2">
                   <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -412,11 +406,9 @@ function CallCard({
             </div>
           </div>
 
-          {/* Right: Action Buttons */}
           <div className="flex-shrink-0 ml-6">
             <div className="flex items-center gap-3">
               
-              {/* View Details Button */}
               <button
                 onClick={onViewDetails}
                 className="px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 flex items-center gap-2 border border-gray-200 hover:border-blue-300"
@@ -428,7 +420,6 @@ function CallCard({
                 Details
               </button>
 
-              {/* Analysis Button - Only show if not analyzed and has transcription */}
               {!isAnalyzed && hasTranscription && (
                 <button
                   onClick={onAnalyze}
@@ -451,7 +442,6 @@ function CallCard({
                 </button>
               )}
 
-              {/* Re-analyze Button - Only show if already analyzed */}
               {isAnalyzed && hasTranscription && (
                 <button
                   onClick={onAnalyze}
@@ -515,18 +505,15 @@ export default function LeadsPage() {
   const [processingQueue, setProcessingQueue] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  // Filter and Sort states
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('all');
   const [sortField, setSortField] = useState<SortField>('startTime');
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc');
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Prompt management states
   const [showPromptEditor, setShowPromptEditor] = useState(false);
   const [currentPrompt, setCurrentPrompt] = useState(DEFAULT_PROMPT);
   const [editingPrompt, setEditingPrompt] = useState(DEFAULT_PROMPT);
 
-  // AI processing function
   const processTranscriptionWithAI = useCallback(async (callId: string, transcription: string) => {
     const apiUrl = `https://digital-api-tef8.onrender.com/api/analyze-lead`;
     
@@ -535,9 +522,12 @@ export default function LeadsPage() {
       
       const processedPrompt = currentPrompt.replace('{TRANSCRIPTION_PLACEHOLDER}', transcription);
       
+      const token = localStorage.getItem('token');
+      
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -569,7 +559,6 @@ export default function LeadsPage() {
     }
   }, [currentPrompt]);
 
-  // Updated processIndividualCall function with better persistence logic
   const processIndividualCall = useCallback(async (callId: string, forceReanalyze = false) => {
     const call = calls.find(c => c._id === callId);
     if (!call || (!call.transcription && !call.transcript)) {
@@ -577,7 +566,6 @@ export default function LeadsPage() {
       return;
     }
 
-    // Skip if already analyzed and not forcing re-analysis
     if (!forceReanalyze && call.isLead !== undefined && call.isLead !== null && call.leadAnalysisAt) {
       console.log(`Call ${callId} already analyzed on ${call.leadAnalysisAt}, skipping`);
       return;
@@ -596,7 +584,6 @@ export default function LeadsPage() {
       const aiResult = await processTranscriptionWithAI(call._id, transcriptionText);
       
       if (aiResult && aiResult.extraction_method !== "failed") {
-        // Update local state with analysis results
         setCalls(prevCalls => 
           prevCalls.map(c => 
             c._id === callId 
@@ -609,7 +596,7 @@ export default function LeadsPage() {
                   customerNeed: aiResult.customer_need || "",
                   confidence: aiResult.confidence_score,
                   isAppointment: aiResult.is_appointment || false,
-                  leadAnalysisAt: new Date().toISOString() // Mark as analyzed with timestamp
+                  leadAnalysisAt: new Date().toISOString()
                 }
               : c
           )
@@ -622,7 +609,6 @@ export default function LeadsPage() {
         });
       } else {
         console.error(`AI analysis failed for call ${callId}`);
-        // Optionally mark as failed analysis
         setCalls(prevCalls => 
           prevCalls.map(c => 
             c._id === callId 
@@ -638,7 +624,6 @@ export default function LeadsPage() {
       }
     } catch (error) {
       console.error(`Failed to process call ${callId}:`, error);
-      // Mark as failed with timestamp so we don't keep retrying
       setCalls(prevCalls => 
         prevCalls.map(c => 
           c._id === callId 
@@ -656,7 +641,6 @@ export default function LeadsPage() {
     }
   }, [calls, processTranscriptionWithAI]);
 
-  // Bulk analysis function - only analyze unanalyzed calls
   const analyzeAllPendingCalls = useCallback(async () => {
     const pendingCalls = calls.filter(call => 
       (call.transcription || call.transcript) && 
@@ -676,7 +660,6 @@ export default function LeadsPage() {
 
     console.log(`Starting bulk analysis of ${pendingCalls.length} calls...`);
     
-    // Process calls in batches to avoid overwhelming the API
     const batchSize = 3;
     for (let i = 0; i < pendingCalls.length; i += batchSize) {
       const batch = pendingCalls.slice(i, i + batchSize);
@@ -686,7 +669,6 @@ export default function LeadsPage() {
         batch.map(call => processIndividualCall(call._id, false))
       );
       
-      // Add a small delay between batches to be nice to the API
       if (i + batchSize < pendingCalls.length) {
         await new Promise(resolve => setTimeout(resolve, 1000));
       }
@@ -695,7 +677,6 @@ export default function LeadsPage() {
     console.log('Bulk analysis completed!');
   }, [calls, processIndividualCall]);
 
-  // Fetch ALL calls from MongoDB
   const fetchCalls = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -703,8 +684,14 @@ export default function LeadsPage() {
     try {
       console.log("Fetching ALL calls from MongoDB...");
       
-      // Remove any limit parameters to get all calls
-      const response = await fetch("https://digital-api-tef8.onrender.com/api/calls");
+      const token = localStorage.getItem('token');
+      
+      const response = await fetch("https://digital-api-tef8.onrender.com/api/calls?limit=0", {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
 
       if (!response.ok) {
         throw new Error(`Failed to fetch calls: ${response.status} ${response.statusText}`);
@@ -724,18 +711,16 @@ export default function LeadsPage() {
     }
   }, []);
 
-  // Initial load
   useEffect(() => {
     fetchCalls();
   }, [fetchCalls]);
 
-  // WebSocket handling for real-time updates
   useEffect(() => {
     let ws: WebSocket;
     
     const connectWebSocket = () => {
       try {
-        ws = new WebSocket("ws:https//digital-api-tef8.onrender.com");
+        ws = new WebSocket("ws://digital-api-tef8.onrender.com");
         
         ws.onopen = () => {
           console.log("WebSocket connected");
@@ -783,11 +768,9 @@ export default function LeadsPage() {
     };
   }, []);
 
-  // Filter and sort calls
   useEffect(() => {
     let filtered = calls;
 
-    // Apply status filter
     if (filterStatus === 'leads') {
       filtered = filtered.filter(call => call.isLead === true);
     } else if (filterStatus === 'no-leads') {
@@ -796,7 +779,6 @@ export default function LeadsPage() {
       filtered = filtered.filter(call => call.isLead === undefined || call.isLead === null);
     }
 
-    // Apply search filter
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(call => 
@@ -808,7 +790,6 @@ export default function LeadsPage() {
       );
     }
 
-    // Apply sorting
     filtered = filtered.sort((a, b) => {
       let aValue: any, bValue: any;
       
@@ -835,7 +816,6 @@ export default function LeadsPage() {
     setFilteredCalls(filtered);
   }, [calls, filterStatus, sortField, sortOrder, searchTerm]);
 
-  // Updated statistics with better counting
   const totalCalls = calls.length;
   const leadsCount = calls.filter(call => call.isLead === true).length;
   const analyzedCount = calls.filter(call => call.leadAnalysisAt).length;
@@ -848,7 +828,6 @@ export default function LeadsPage() {
   ).length;
   const conversionRate = analyzedCount > 0 ? ((leadsCount / analyzedCount) * 100).toFixed(1) : "0";
 
-  // Bulk Analysis Button Component
   const BulkAnalysisButton = () => (
     <button
       onClick={analyzeAllPendingCalls}
@@ -883,7 +862,6 @@ export default function LeadsPage() {
       <main className="flex-1 ml-60 p-8">
         <div className="max-w-8xl mx-auto space-y-8">
           
-          {/* Modern Header */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8">
             <div className="flex items-center justify-between">
               <div>
@@ -924,7 +902,6 @@ export default function LeadsPage() {
             )}
           </div>
 
-          {/* Enhanced Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <StatsCard 
               title="Total Calls" 
@@ -956,11 +933,9 @@ export default function LeadsPage() {
             />
           </div>
 
-          {/* Modern Filters */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
             <div className="flex flex-wrap gap-6 items-center">
               
-              {/* Enhanced Search */}
               <div className="flex-1 min-w-80">
                 <div className="relative">
                   <input
@@ -976,7 +951,6 @@ export default function LeadsPage() {
                 </div>
               </div>
 
-              {/* Filter Pills */}
               <div className="flex gap-3">
                 {[
                   { value: 'all', label: 'All Calls', color: 'bg-gray-100 text-gray-700' },
@@ -1011,7 +985,6 @@ export default function LeadsPage() {
             </div>
           </div>
 
-          {/* Processing Queue Status */}
           {processingQueue.length > 0 && (
             <div className="bg-blue-50 border-l-4 border-blue-400 rounded-lg p-4">
               <div className="flex items-center">
@@ -1026,7 +999,6 @@ export default function LeadsPage() {
             </div>
           )}
 
-          {/* Modern Call Cards */}
           <div className="grid gap-4">
             {filteredCalls.length === 0 ? (
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-16 text-center">
@@ -1051,14 +1023,12 @@ export default function LeadsPage() {
             )}
           </div>
 
-          {/* Results Footer */}
           <div className="text-center py-6">
             <p className="text-gray-600 text-lg">
               Showing <span className="font-bold text-gray-800">{filteredCalls.length.toLocaleString()}</span> of <span className="font-bold text-gray-800">{totalCalls.toLocaleString()}</span> total calls
             </p>
           </div>
 
-          {/* Modals */}
           {selectedCall && (
             <LeadDetailsModal
               call={selectedCall}
