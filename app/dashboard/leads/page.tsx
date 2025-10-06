@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
-import {Sidebar} from "@/components/Sidebar";
+import Sidebar from "@/components/Sidebar";
+
 
 // MongoDB-compatible Call type
 type Call = {

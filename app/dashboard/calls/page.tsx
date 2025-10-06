@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import { Phone, Search, Filter, Play, FileText, Brain, ChevronLeft, ChevronRight, Calendar, Clock, User, Users, PhoneCall, PhoneIncoming, PhoneOutgoing, CheckCircle, XCircle, AlertCircle, Loader2, BarChart3, PieChart as PieChartIcon, TrendingUp, TrendingDown, Activity, Zap, LineChart as LineChartIcon, Target, Award, Sparkles } from "lucide-react";
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart as RechartsPieChart, Pie, Cell, ComposedChart, Scatter, ScatterChart, ZAxis, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
-import {Sidebar} from "@/components/Sidebar";
+import Sidebar from "@/components/Sidebar";
+
 
 interface Call {
   Sid: string;
