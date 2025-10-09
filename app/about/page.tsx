@@ -4,28 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, Target, Award, Lightbulb, ArrowRight } from "lucide-react"
 
-const team = [
-  {
-    name: "Sarah Chen",
-    role: "CEO & Co-Founder",
-    description: "Former AI researcher at Google with 10+ years in conversational AI development.",
-  },
-  {
-    name: "Marcus Rodriguez",
-    role: "CTO & Co-Founder",
-    description: "Ex-Microsoft engineer specializing in natural language processing and machine learning.",
-  },
-  {
-    name: "Emily Watson",
-    role: "Head of Product",
-    description: "Product strategist with expertise in user experience and chatbot interface design.",
-  },
-  {
-    name: "David Kim",
-    role: "Lead AI Engineer",
-    description: "PhD in Computer Science, focused on advancing conversational AI capabilities.",
-  },
-]
+
 
 const values = [
   {
@@ -153,38 +132,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-sky-50 via-white to-sky-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-        <div className="container mx-auto text-center">
-          <div className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">
-              Meet Our Team
-            </h2>
-            <p className="text-xl text-sky-700 dark:text-gray-300 max-w-2xl mx-auto">
-              The brilliant minds behind DigitalBot.ai's innovative AI technology
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <Card
-                key={index}
-                className="text-center border border-sky-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/70 rounded-2xl shadow-xl hover:shadow-sky-300/40 transition-all backdrop-blur-md"
-              >
-                <CardHeader>
-                  <div className="w-20 h-20 bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <Users className="h-10 w-10 text-white" />
-                  </div>
-                  <CardTitle className="text-sky-700 dark:text-sky-400">{member.name}</CardTitle>
-                  <CardDescription className="text-sky-600 dark:text-gray-400 font-medium">{member.role}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sky-800 dark:text-gray-400 text-sm">{member.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       <Footer />
     </main>

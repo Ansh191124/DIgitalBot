@@ -54,12 +54,12 @@ export default function Contact() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState("")
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { id: any; value: any } }) => {
     const { id, value } = e.target
     setForm({ ...form, [id]: value })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     setLoading(true)
     setSuccess("")
