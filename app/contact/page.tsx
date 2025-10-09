@@ -33,13 +33,7 @@ const contactInfo = [
     contact: "300 Quail Ridge Dr NEADA, MI 49301 USA",
     action: "#",
   },
-  {
-    icon: Clock,
-    title: "Business Hours",
-    description: "We're here to help",
-    contact: "Mon-Fri: 9AM-6PM PST",
-    action: "#",
-  },
+
 ]
 
 export default function Contact() {
