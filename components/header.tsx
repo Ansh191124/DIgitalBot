@@ -50,7 +50,7 @@ export function Header() {
               {/* Floating Neon Orb */}
               <span className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-r from-sky-400 via-sky-500 to-sky-600 opacity-30 blur-3xl animate-pulse-slow"></span>
               <Image
-                src="https://digitalbot.ai/wp-content/uploads/2024/03/digital-bot-full-logo.svg"
+                src="file:///C:/Users/acer/Downloads/Gemini_Generated_Image_tgypq9tgypq9tgyp.svg"
                 alt="DigitalBot Logo"
                 width={160}
                 height={40}

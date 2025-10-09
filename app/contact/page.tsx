@@ -30,10 +30,9 @@ const contactInfo = [
     icon: MapPin,
     title: "Visit Us",
     description: "Our headquarters",
-    contact: "300 Quail Ridge Dr NEADA, MI 49301 USA",
+    contact: "",
     action: "#",
   },
-
 ]
 
 export default function Contact() {
@@ -47,6 +46,7 @@ export default function Contact() {
   })
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState("")
+  const [error, setError] = useState("")
 
   const handleChange = (e: { target: { id: any; value: any } }) => {
     const { id, value } = e.target
@@ -57,15 +57,20 @@ export default function Contact() {
     e.preventDefault()
     setLoading(true)
     setSuccess("")
+    setError("") // Clear previous error
     try {
-      const res = await fetch("http://localhost:4000/api/contact", {
+      // *** MODIFIED: Target a local API route for serverless/backend mail handling ***
+      const res = await fetch("/api/contact", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
       })
+      
       const data = await res.json()
+
       if (res.ok) {
-        setSuccess(data.message || "We'll Contact You Asap!")
+        setSuccess(data.message || "Message sent successfully! We'll contact you ASAP.")
+        // Clear the form
         setForm({
           firstName: "",
           lastName: "",
@@ -75,11 +80,11 @@ export default function Contact() {
           message: ""
         })
       } else {
-        alert(data.error || "Failed to submit form")
+        setError(data.error || "Failed to submit form.")
       }
     } catch (err) {
       console.error(err)
-      alert("Failed to submit form. Please try again.")
+      setError("Network error: Could not connect to the server.")
     } finally {
       setLoading(false)
     }
@@ -116,6 +121,7 @@ export default function Contact() {
             </CardHeader>
             <CardContent className="space-y-6">
               {success && <div className="bg-green-100 text-green-800 p-3 rounded-md">{success}</div>}
+              {error && <div className="bg-red-100 text-red-800 p-3 rounded-md">{error}</div>}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">

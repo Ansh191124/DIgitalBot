@@ -1,9 +1,10 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles, Play, X } from "lucide-react"
-import { useEffect, useState } from "react"
+import { ArrowRight, Sparkles, Play, X, Mic, Square } from "lucide-react" // Import Mic and Square
+import { useEffect, useState, useRef } from 'react'
 import { useRouter } from "next/navigation";
+import Vapi from '@vapi-ai/web' // Import Vapi Web SDK
 
 export function Hero() {
   const stats = [
@@ -13,12 +14,119 @@ export function Hero() {
   ]
 
   const [counts, setCounts] = useState([0, 0, 0])
-  const [showVideo, setShowVideo] = useState(false) // Video toggle
-  const [vapiReady, setVapiReady] = useState(false) // VAPI loaded
+  const [showVideo, setShowVideo] = useState(false)
   const router = useRouter();
 
-  // Animate stats
+  // VAPI State and Ref
+  const vapiRef = useRef<Vapi | null>(null)
+  const [isCallActive, setIsCallActive] = useState(false)
+  const [isSpeaking, setIsSpeaking] = useState(false)
+  const [transcript, setTranscript] = useState("Hello! I'm your AI assistant. How can I help you today?")
+  const [callStatus, setCallStatus] = useState("")
+
+  // VAPI Initialization and Event Listeners
   useEffect(() => {
+    // Initialize VAPI with your actual public key
+    const vapiInstance = new Vapi('b8dd64f9-40ef-4be0-9683-4766906634d8')
+    vapiRef.current = vapiInstance
+
+    // Event listeners
+    vapiInstance.on('call-start', () => {
+      console.log('Call started')
+      setIsCallActive(true)
+      setTranscript("Listening for your request...")
+      setCallStatus('Call active - Listening')
+    })
+
+    vapiInstance.on('call-end', () => {
+      console.log('Call ended')
+      setIsCallActive(false)
+      setIsSpeaking(false)
+      setTranscript("Hello! I'm your AI assistant. Click the microphone to start a conversation.")
+      setCallStatus('Call ended')
+    })
+
+    vapiInstance.on('speech-start', () => {
+      console.log('Speech started')
+      setIsSpeaking(true)
+      setCallStatus('Assistant speaking...')
+    })
+
+    vapiInstance.on('speech-end', () => {
+      console.log('Speech ended')
+      setIsSpeaking(false)
+      if (isCallActive) {
+        setCallStatus('Call active - Listening')
+      }
+    })
+
+    vapiInstance.on('message', (message) => {
+      if (message.type === 'transcript' && message.transcriptType === 'final') {
+        setTranscript(message.transcript)
+      } else if (message.type === 'end-of-speech') {
+        setCallStatus('Assistant is processing...')
+      }
+    })
+
+    vapiInstance.on('error', (error) => {
+      console.error('VAPI Error:', error)
+      setCallStatus(`Error: ${error.message || 'Unknown error'}`)
+      setIsCallActive(false) // Ensure button state resets on error
+    })
+
+    return () => {
+      if (vapiRef.current) {
+        vapiRef.current.stop()
+      }
+    }
+  }, [])
+
+
+  // Call Toggle Function
+  const toggleCall = async () => {
+    if (!vapiRef.current) {
+      console.error('VAPI not initialized')
+      setCallStatus('Initialization failed.')
+      return
+    }
+
+    if (isCallActive) {
+      try {
+        vapiRef.current.stop()
+        setCallStatus('Stopping call...')
+      } catch (error) {
+        console.error('Error stopping call:', error)
+      }
+    } else {
+      try {
+        setCallStatus('Requesting microphone...')
+        
+        // Request microphone permission first
+        try {
+          await navigator.mediaDevices.getUserMedia({ audio: true })
+        } catch (err) {
+          console.error('Microphone permission denied:', err)
+          setCallStatus('Microphone permission denied')
+          alert('Please allow microphone access to use the voice assistant')
+          return
+        }
+
+        setCallStatus('Starting call...')
+        
+        // Replace with your actual assistant ID
+        await vapiRef.current.start('c6f95947-e630-41e0-895b-56edc3c395b3')
+        
+      } catch (error) {
+        console.error('Error starting call:', error)
+        setCallStatus(`Failed: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      }
+    }
+  }
+
+
+  // Animate stats (Keep your existing logic)
+  useEffect(() => {
+    // ... existing stat animation logic ...
     stats.forEach((stat, index) => {
       let start = 0
       const end = stat.value
@@ -38,44 +146,8 @@ export function Hero() {
         })
       }, stepTime)
     })
+    // ... end of existing stat animation logic ...
   }, [])
-
-  // Load VAPI script
-  // useEffect(() => {
-  //   const script = document.createElement("script")
-  //   script.src = "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
-  //   script.async = true
-  //   document.body.appendChild(script)
-
-  //   script.onload = () => {
-  //     if (window.VAPIWidget) {
-  //       window.VAPIWidget.init({
-  //         publicKey: "b8dd64f9-40ef-4be0-9683-4766906634d8",
-  //         assistantId: "c6f95947-e630-41e0-895b-56edc3c395b3",
-  //         mode: "voice",
-  //         theme: "dark",
-  //         size: "full",
-  //         position: "bottom-right",
-  //         voiceShowTranscript: true,
-  //         consentRequired: true,
-  //       });
-  //       setVapiReady(true)
-  //     }
-  //   }
-
-  //   return () => {
-  //     document.body.removeChild(script)
-  //   }
-  // }, [])
-
-  // // Handle Mic Click
-  // const handleMicClick = () => {
-  //   if (vapiReady && window.VAPIWidget) {
-  //     window.VAPIWidget.open({ autoStart: true }) // Open VAPI with mic
-  //   } else {
-  //     alert("AI Assistant is still loading. Please wait a few seconds.")
-  //   }
-  // }
 
   return (
    <>
@@ -94,10 +166,6 @@ export function Hero() {
               50% { transform: scale(1.05); opacity: 0.1; }
               100% { transform: scale(0.7); opacity: 0.25; }
             }
-            .animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
-            .animate-ping-slow { animation: ping-slow 2s ease-in-out infinite; }
-            .animate-ping-slower { animation: ping-slower 3s ease-in-out infinite; }
-
             /* Robot Animation Styles */
             .robot-animation-container {
               width: 100%;
@@ -385,13 +453,21 @@ export function Hero() {
               height: 15px;
               animation-delay: 0.4s;
             }
-
+            
             @keyframes sound-wave {
               0%, 100% { transform: scaleY(1); }
               50% { transform: scaleY(2); }
             }
+
+            .animate-vapi-wave {
+              animation: vapi-wave 0.8s ease-in-out infinite;
+            }
+            @keyframes vapi-wave {
+              0%, 100% { transform: scaleY(0.5); }
+              50% { transform: scaleY(1.5); }
+            }
           `}} />
-   <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
+    <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
   {/* Subtle soft background glow */}
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-sky-100 rounded-full opacity-20 blur-3xl"></div>
@@ -421,18 +497,27 @@ export function Hero() {
               DigitalBot.ai empowers your business with intelligent conversational AI — automating support, improving engagement, and delivering 24/7 futuristic customer experiences.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
+              {/* MODIFIED BUTTON: Changed to the Voice Assistant CTA */}
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 text-white font-semibold rounded-full shadow-lg shadow-sky-300/50 transition-all duration-300 group"
-                onClick={() => router.push("/contact")}
+                onClick={toggleCall}
+                className={`text-white font-semibold rounded-full shadow-lg transition-all duration-300 group 
+                  ${isCallActive
+                    ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-300/50'
+                    : 'bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-300/50'
+                  }`}
               >
-                Start Free Trial
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                {isCallActive ? 'Stop AI Conversation' : 'Talk to AI Assistant'}
+                {isCallActive ? (
+                  <Square className="ml-2 h-4 w-4" /> // Stop Icon
+                ) : (
+                  <Mic className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" /> // Mic Icon
+                )}
               </Button>
             </div>
           </div>
 
-          {/* Right - Robot Animation */}
+          {/* Right - Robot Animation (Remains untouched) */}
           <div className="lg:w-1/2 relative animate-fade-in-up">
             <div className="relative w-full h-64 sm:h-80 lg:h-96 flex items-center justify-center">
               {!showVideo ? (
@@ -449,7 +534,12 @@ export function Hero() {
                             <div className="robot-pupil"></div>
                           </div>
                         </div>
-                        <div className="robot-mouth"></div>
+                        {/* Conditional mouth/waves based on speaking state */}
+                        <div className="robot-mouth">
+                          {isSpeaking && (
+                            <style dangerouslySetInnerHTML={{__html: `.robot-mouth::after { animation: mouth-talk 0.2s ease-in-out infinite alternate; }`}} />
+                          )}
+                        </div>
                       </div>
                       <div className="robot-body">
                         <div className="robot-arm left">
@@ -466,13 +556,16 @@ export function Hero() {
                       </div>
                       <div className="robot-base"></div>
                     </div>
-                    <div className="sound-waves">
-                      <div className="sound-bar"></div>
-                      <div className="sound-bar"></div>
-                      <div className="sound-bar"></div>
-                      <div className="sound-bar"></div>
-                      <div className="sound-bar"></div>
-                    </div>
+                    {/* Conditional sound waves */}
+                    {isSpeaking && (
+                      <div className="sound-waves">
+                        <div className="sound-bar"></div>
+                        <div className="sound-bar"></div>
+                        <div className="sound-bar"></div>
+                        <div className="sound-bar"></div>
+                        <div className="sound-bar"></div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ) : (
@@ -509,7 +602,7 @@ export function Hero() {
                 <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-20 filter blur-3xl animate-pulse-slow"></div>
 
                 <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient">
-                  {counts[i]}
+                  {i === 0 ? counts[i].toFixed(1) : counts[i]}
                   {stat.suffix}
                 </div>
                 <div className="mt-2 text-gray-700 font-medium text-lg">{stat.label}</div>
@@ -518,7 +611,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* AI Demo Section */}
+        {/* AI Demo Section (Updated with VAPI state) */}
         <div
           className="mt-20 animate-fade-in-up flex flex-col items-center justify-center"
           style={{ animationDelay: "0.8s" }}
@@ -529,31 +622,67 @@ export function Hero() {
             <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-sky-400 rounded-full opacity-15 filter blur-3xl animate-pulse-slow"></div>
 
             <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 border border-sky-200 text-center relative z-10 shadow-lg">
-              <h3 className="text-2xl font-semibold text-sky-600 mb-4">
+              <h3 className="text-2xl font-semibold text-sky-600 mb-2">
                 AI Voice Assistant
               </h3>
-              <p className="text-gray-700 italic mb-6">
-               "Hello! I'm your AI assistant. How can I help you today?"
+
+              {/* Call Status Indicator */}
+              {isCallActive && (
+                <div className="mb-4 flex items-center justify-center space-x-2">
+                  <span className={`relative flex h-3 w-3`}>
+                    <span className={`absolute inline-flex h-full w-full rounded-full ${isSpeaking ? 'bg-green-400' : 'bg-sky-400'} opacity-75 ${isSpeaking ? 'animate-ping' : 'animate-ping-slow'}`}></span>
+                    <span className={`relative inline-flex rounded-full h-3 w-3 ${isSpeaking ? 'bg-green-500' : 'bg-sky-500'}`}></span>
+                  </span>
+                  <span className={`text-sm font-medium ${isSpeaking ? 'text-green-600' : 'text-sky-600'}`}>
+                    {isSpeaking ? 'Assistant Speaking' : 'Listening...'}
+                  </span>
+                </div>
+              )}
+              <div className="mb-4 px-3 py-1.5 bg-gray-100 rounded-full text-xs text-gray-600 inline-block min-h-[30px]">
+                {callStatus || (isCallActive ? (isSpeaking ? 'Assistant Speaking' : 'Listening...') : 'Click to start conversation')}
+              </div>
+
+
+              {/* Transcribed Voice Text */}
+              <p className="text-gray-700 italic mb-6 min-h-[60px] flex items-center justify-center">
+                "{transcript}"
               </p>
 
               {/* Mic Button with Animated Waveform */}
               <div className="relative inline-flex items-center justify-center">
                 {/* Wave animation rings */}
-                <span className="absolute w-40 h-40 bg-gradient-to-r from-sky-400 via-sky-300 to-sky-500 rounded-full opacity-20 animate-ping-slow"></span>
-                <span className="absolute w-28 h-28 bg-gradient-to-r from-sky-400 via-sky-300 to-sky-500 rounded-full opacity-25 animate-ping-slower"></span>
+                {isCallActive && (
+                  <>
+                    <span className={`absolute w-40 h-40 rounded-full opacity-20 ${isSpeaking ? 'bg-green-400 animate-ping' : 'bg-sky-400 animate-ping-slow'}`}></span>
+                    <span className={`absolute w-28 h-28 rounded-full opacity-25 ${isSpeaking ? 'bg-green-300 animate-ping-slower' : 'bg-sky-300 animate-ping-slower'}`}></span>
+                  </>
+                )}
 
                 <button
-                  
-                  className="relative z-10 p-6 bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 text-white rounded-full shadow-xl hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+                  onClick={toggleCall}
+                  className={`relative z-10 p-6 text-white rounded-full shadow-xl transition-transform duration-300 flex items-center justify-center
+                    ${isCallActive 
+                      ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 ring-4 ring-red-300' 
+                      : 'bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 hover:scale-110'
+                    }`}
+                  aria-label={isCallActive ? 'End voice conversation' : 'Start voice conversation'}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-10 w-10"
+                    className="h-6 w-6"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 14 0h-2z" />
-                    <path d="M19 11h-2a7 7 0 0 1-14 0H3a9 9 0 0 0 18 0z" />
+                    {isCallActive ? (
+                      // Stop icon (Square)
+                      <rect x="6" y="6" width="12" height="12" rx="1"/>
+                    ) : (
+                      // Microphone icon
+                      <>
+                        <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/>
+                        <path d="M19 11h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 14 0z"/>
+                      </>
+                    )}
                   </svg>
                 </button>
               </div>
