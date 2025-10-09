@@ -31,57 +31,63 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 bg-gradient-to-br from-white via-gray-100 to-gray-300 text-black",
+        "fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent",
         isScrolled
-          ? "backdrop-blur-md border-b border-gray-300 shadow-md"
-          : ""
+          ? "backdrop-blur-xl bg-white/90 border-sky-200/50 shadow-lg shadow-sky-100/50"
+          : "bg-gradient-to-br from-white/80 via-sky-50/60 to-white/80 backdrop-blur-md"
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* LOGO */}
+          {/* Logo with neon-glow and floating orb */}
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="relative"
           >
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center gap-2 relative group">
+              {/* Floating Neon Orb */}
+              <span className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-r from-sky-400 via-sky-500 to-sky-600 opacity-30 blur-3xl animate-pulse-slow"></span>
               <Image
                 src="https://digitalbot.ai/wp-content/uploads/2024/03/digital-bot-full-logo.svg"
                 alt="DigitalBot Logo"
                 width={160}
                 height={40}
                 priority
-                className="h-8 w-auto object-contain"
+                className="h-8 w-auto object-contain drop-shadow-[0_0_25px_rgba(14,165,233,0.9)] relative z-10 hover:scale-110 transition-transform duration-500"
               />
             </Link>
           </motion.div>
 
-          {/* Desktop Nav */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
               <motion.div
                 key={item.href}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.4 }}
+                transition={{ delay: index * 0.08, duration: 0.4 }}
               >
                 <Link
                   href={item.href}
                   className={cn(
-                    "text-sm font-medium transition-colors relative group",
+                    "text-sm font-semibold tracking-wide relative group transition-all duration-300",
                     pathname === item.href
-                      ? "text-black"
-                      : "text-gray-600 hover:text-gray-900"
+                      ? "text-sky-600"
+                      : "text-gray-700 hover:text-sky-500"
                   )}
                 >
                   {item.label}
+                  {/* Animated gradient underline */}
                   <span
                     className={cn(
-                      "absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full",
+                      "absolute left-0 -bottom-1 h-[2px] w-0 bg-gradient-to-r from-sky-400 via-sky-500 to-sky-600 rounded-full transition-all duration-500 group-hover:w-full",
                       pathname === item.href && "w-full"
                     )}
                   />
+                  {/* Floating Glow */}
+                  <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-sky-300/20 via-sky-400/20 to-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></span>
                 </Link>
               </motion.div>
             ))}
@@ -92,23 +98,30 @@ export function Header() {
             <Button
               variant="outline"
               size="sm"
-              className="border-gray-400 text-gray-700 hover:text-black hover:border-gray-600"
+              className="relative overflow-hidden border-sky-400/70 text-sky-700 bg-white/60 hover:bg-sky-50 hover:border-sky-500 hover:text-sky-800 transition-all duration-300 rounded-full shadow-sm hover:shadow-sky-300"
               asChild
             >
-              <Link href="/signup">Get Started</Link>
+              <Link href="/contact">
+                <span className="relative z-10">Get Started</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-sky-400/20 via-sky-500/20 to-sky-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></span>
+              </Link>
             </Button>
+
             <Button
               size="sm"
-              className="bg-gradient-to-r from-black via-gray-700 to-gray-500 hover:from-gray-900 hover:via-gray-600 hover:to-gray-400 text-white font-semibold shadow-md"
+              className="relative bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-white font-semibold rounded-full shadow-lg shadow-sky-300/40 hover:shadow-sky-400/60 transition-all duration-500 overflow-hidden group"
               asChild
             >
-             <Link href="/login">Login</Link>
+              <Link href="/login">
+                <span className="relative z-10">Login</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-sky-400/30 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
+              </Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-md hover:bg-gray-200 transition-colors text-gray-700 hover:text-black"
+            className="md:hidden p-2 rounded-full bg-white/70 backdrop-blur-md hover:bg-sky-100 text-sky-700 hover:text-sky-800 transition-all duration-300 shadow-sm"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -123,7 +136,7 @@ export function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden absolute top-16 left-0 right-0 bg-gradient-to-b from-white/95 via-gray-100/95 to-gray-300/95 border-b border-gray-300"
+              className="md:hidden absolute top-16 left-0 right-0 bg-gradient-to-b from-white/95 via-sky-50/90 to-white/95 border-b border-sky-100 shadow-xl backdrop-blur-lg overflow-hidden rounded-b-2xl"
             >
               <nav className="flex flex-col space-y-1 p-4">
                 {navItems.map((item, index) => (
@@ -131,19 +144,20 @@ export function Header() {
                     key={item.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: index * 0.08 }}
                   >
                     <Link
                       href={item.href}
                       className={cn(
-                        "px-3 py-2 text-base font-medium rounded-md transition-colors",
+                        "px-3 py-2 text-base font-medium rounded-md transition-all duration-300 relative group overflow-hidden",
                         pathname === item.href
-                          ? "text-black bg-gray-200"
-                          : "text-gray-600 hover:text-black hover:bg-gray-200"
+                          ? "text-sky-700 bg-sky-100 shadow-inner"
+                          : "text-gray-700 hover:text-sky-700 hover:bg-sky-50"
                       )}
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}
+                      <span className="absolute -inset-1 bg-gradient-to-r from-sky-300/20 via-sky-400/20 to-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl rounded-md"></span>
                     </Link>
                   </motion.div>
                 ))}
@@ -153,20 +167,26 @@ export function Header() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="flex flex-col space-y-2 pt-4 border-t border-gray-300"
+                  className="flex flex-col space-y-2 pt-4 border-t border-sky-100/60"
                 >
                   <Button
                     variant="outline"
-                    className="justify-start border-gray-400 text-gray-700 hover:text-black hover:border-gray-600"
+                    className="justify-start border-sky-400 text-sky-700 hover:bg-sky-500 hover:text-white transition-all duration-300 rounded-full relative overflow-hidden"
                     asChild
                   >
-                    <Link href="/signup">Get Started</Link>
+                    <Link href="/contact">
+                      <span className="relative z-10">Get Started</span>
+                      <span className="absolute inset-0 bg-gradient-to-r from-sky-400/20 to-sky-600/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
+                    </Link>
                   </Button>
                   <Button
-                    className="bg-gradient-to-r from-black via-gray-700 to-gray-500 hover:from-gray-900 hover:via-gray-600 hover:to-gray-400 text-white font-semibold justify-start shadow-md"
+                    className="bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 hover:from-sky-600 hover:to-sky-800 text-white font-semibold justify-start rounded-full shadow-lg shadow-sky-300/40 hover:shadow-sky-400/60 transition-all duration-500 relative overflow-hidden"
                     asChild
                   >
-                    <Link href="/login">Try Free</Link>
+                    <Link href="/login">
+                      <span className="relative z-10">Try Free</span>
+                      <span className="absolute inset-0 bg-gradient-to-r from-sky-400/30 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
+                    </Link>
                   </Button>
                 </motion.div>
               </nav>
@@ -174,6 +194,17 @@ export function Header() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Extra Neon Pulse Animation */}
+      <style jsx>{`
+        @keyframes pulse-slow {
+          0%, 100% { transform: scale(1); opacity: 0.25; }
+          50% { transform: scale(1.05); opacity: 0.35; }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 4s ease-in-out infinite;
+        }
+      `}</style>
     </header>
   )
 }

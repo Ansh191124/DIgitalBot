@@ -1,9 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
-import { Phone, TrendingUp, Activity, Clock, PhoneCall, PhoneIncoming, PhoneOutgoing, CheckCircle, XCircle, AlertCircle, BarChart3, PieChart, ArrowUp, ArrowDown, Minus, Brain, FileText, Loader2, Award, Headphones, Zap, MessageSquare } from "lucide-react";
-import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart as RechartsPieChart, Pie, Cell } from 'recharts';
 import Sidebar from "@/components/Sidebar";
-
+import { Activity, AlertCircle, ArrowDown, ArrowUp, BarChart3, Brain, CheckCircle, Clock, FileText, Loader2, Menu, MessageSquare, Minus, PhoneCall, PhoneIncoming, PhoneOutgoing, PieChart, TrendingUp, X, XCircle, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart as RechartsPieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 interface Call {
   Sid: string;
@@ -47,6 +46,7 @@ export default function AnalyticsOverview() {
   const [recentCalls, setRecentCalls] = useState<Call[]>([]);
   const [toNumber, setToNumber] = useState("");
   const [callStatus, setCallStatus] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const chartColors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'];
 
@@ -162,24 +162,24 @@ export default function AnalyticsOverview() {
   };
 
   const MetricCard = ({ title, value, icon: Icon, trend, trendValue, color = "blue", subtitle }: any) => (
-    <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 group">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-slate-600 text-sm font-medium mb-1">{title}</p>
-          <p className="text-3xl font-bold text-slate-800 mb-1">{value}</p>
-          {subtitle && <p className="text-slate-500 text-xs">{subtitle}</p>}
+    <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 group">
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex-1 min-w-0">
+          <p className="text-slate-600 text-xs sm:text-sm font-medium mb-1 truncate">{title}</p>
+          <p className="text-2xl sm:text-3xl font-bold text-slate-800 mb-1">{value}</p>
+          {subtitle && <p className="text-slate-500 text-xs truncate">{subtitle}</p>}
         </div>
-        <div className={`w-14 h-14 bg-gradient-to-br from-${color}-400 to-${color}-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-lg`}>
-          <Icon className="w-7 h-7 text-white" />
+        <div className={`w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-${color}-400 to-${color}-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-lg flex-shrink-0`}>
+          <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
         </div>
       </div>
       {trend && trendValue && (
         <div className="flex items-center gap-1 mt-3 pt-3 border-t border-slate-200">
-          {trend === "up" && <ArrowUp className="w-4 h-4 text-green-500" />}
-          {trend === "down" && <ArrowDown className="w-4 h-4 text-red-500" />}
-          {trend === "neutral" && <Minus className="w-4 h-4 text-slate-500" />}
-          <span className={`text-sm font-semibold ${trend === "up" ? "text-green-600" : trend === "down" ? "text-red-600" : "text-slate-600"}`}>{trendValue}</span>
-          <span className="text-slate-500 text-xs ml-1">vs last period</span>
+          {trend === "up" && <ArrowUp className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />}
+          {trend === "down" && <ArrowDown className="w-3 h-3 sm:w-4 sm:h-4 text-red-500" />}
+          {trend === "neutral" && <Minus className="w-3 h-3 sm:w-4 sm:h-4 text-slate-500" />}
+          <span className={`text-xs sm:text-sm font-semibold ${trend === "up" ? "text-green-600" : trend === "down" ? "text-red-600" : "text-slate-600"}`}>{trendValue}</span>
+          <span className="text-slate-500 text-xs ml-1 hidden sm:inline">vs last period</span>
         </div>
       )}
     </div>
@@ -188,12 +188,14 @@ export default function AnalyticsOverview() {
   if (loading) {
     return (
       <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-        <Sidebar />
-        <main className="flex-1 ml-60 p-8">
+        <div className="hidden lg:block">
+          <Sidebar />
+        </div>
+        <main className="flex-1 lg:ml-60 p-4 sm:p-8">
           <div className="flex justify-center items-center h-96">
             <div className="text-center">
               <Loader2 className="w-12 h-12 text-blue-500 animate-spin mx-auto mb-4" />
-              <p className="text-lg text-slate-600 font-medium">Loading analytics...</p>
+              <p className="text-base sm:text-lg text-slate-600 font-medium">Loading analytics...</p>
             </div>
           </div>
         </main>
@@ -203,24 +205,48 @@ export default function AnalyticsOverview() {
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <Sidebar />
-      <main className="flex-1 ml-60 p-8">
+      {/* Mobile Menu Button - Fixed */}
+      <button
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className="lg:hidden fixed top-4 left-4 z-50 p-3 bg-white rounded-xl shadow-lg border border-slate-200"
+      >
+        {sidebarOpen ? <X className="w-6 h-6 text-slate-700" /> : <Menu className="w-6 h-6 text-slate-700" />}
+      </button>
+
+      {/* Mobile Sidebar Overlay */}
+      {sidebarOpen && (
+        <div 
+          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setSidebarOpen(false)}
+        >
+          <div className="w-64 h-full" onClick={(e) => e.stopPropagation()}>
+            <Sidebar />
+          </div>
+        </div>
+      )}
+
+      {/* Desktop Sidebar */}
+      <div className="hidden lg:block">
+        <Sidebar />
+      </div>
+
+      <main className="flex-1 lg:ml-60 p-4 sm:p-6 md:p-8 pt-20 lg:pt-8">
         <div className="container mx-auto max-w-7xl">
           
           {/* Header */}
-          <header className="mb-8">
-            <div className="flex items-center justify-between">
+          <header className="mb-6 sm:mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-800 via-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-800 via-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   Analytics Dashboard
                 </h1>
-                <p className="text-slate-600 text-lg">Real-time insights into your AI call center performance</p>
+                <p className="text-slate-600 text-sm sm:text-base md:text-lg">Real-time insights into your AI call center performance</p>
               </div>
               <div className="flex items-center gap-3">
                 <select 
                   value={dateFilter} 
                   onChange={(e) => setDateFilter(e.target.value)} 
-                  className="px-5 py-3 bg-white rounded-xl border border-slate-300 shadow-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-slate-700 font-medium"
+                  className="w-full sm:w-auto px-4 sm:px-5 py-2 sm:py-3 bg-white rounded-xl border border-slate-300 shadow-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-slate-700 font-medium text-sm sm:text-base"
                 >
                   <option value="1">Last 24 hours</option>
                   <option value="7">Last 7 days</option>
@@ -232,41 +258,41 @@ export default function AnalyticsOverview() {
           </header>
 
           {/* Quick Call Section */}
-          <section className="mb-8">
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg">
+          <section className="mb-6 sm:mb-8">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center shadow-md">
-                  <PhoneCall className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
+                  <PhoneCall className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <div>
-                  <h2 className="text-xl font-bold text-slate-800">Quick Call</h2>
-                  <p className="text-slate-600 text-sm">Start a new AI conversation instantly</p>
+                <div className="min-w-0">
+                  <h2 className="text-lg sm:text-xl font-bold text-slate-800">Quick Call</h2>
+                  <p className="text-slate-600 text-xs sm:text-sm truncate">Start a new AI conversation instantly</p>
                 </div>
               </div>
-              <div className="flex flex-col md:flex-row gap-4 items-end">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-end">
                 <div className="flex-1">
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
+                  <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
                   <input 
-                    type="text" 
-                    placeholder="Enter number (e.g., +91XXXXXXXXXX)" 
+                    type="tel" 
+                    placeholder="+91XXXXXXXXXX" 
                     value={toNumber} 
                     onChange={(e) => setToNumber(e.target.value)} 
-                    className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                    className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-base"
                   />
                 </div>
                 <button 
                   onClick={handleOutboundCall} 
-                  className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 flex items-center gap-2"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 min-h-[48px]"
                 >
                   <PhoneCall className="w-5 h-5" />
-                  Call Now
+                  <span>Call Now</span>
                 </button>
               </div>
               {callStatus && (
-                <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-xl">
-                  <p className="text-blue-800 font-medium text-sm flex items-center gap-2">
-                    <Clock className="w-4 h-4" />
-                    {callStatus}
+                <div className="mt-4 p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-xl">
+                  <p className="text-blue-800 font-medium text-xs sm:text-sm flex items-center gap-2">
+                    <Clock className="w-4 h-4 flex-shrink-0" />
+                    <span className="truncate">{callStatus}</span>
                   </p>
                 </div>
               )}
@@ -276,12 +302,12 @@ export default function AnalyticsOverview() {
           {analytics && (
             <>
               {/* Key Metrics */}
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-slate-800 mb-5 flex items-center gap-2">
-                  <TrendingUp className="w-6 h-6 text-blue-500" />
-                  Key Performance Metrics
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-5 flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
+                  <span>Key Performance Metrics</span>
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                   <MetricCard 
                     title="Total Calls" 
                     value={analytics.totalCalls} 
@@ -316,12 +342,12 @@ export default function AnalyticsOverview() {
               </section>
 
               {/* Call Direction & Status */}
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-slate-800 mb-5 flex items-center gap-2">
-                  <BarChart3 className="w-6 h-6 text-purple-500" />
-                  Call Analytics
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-5 flex items-center gap-2">
+                  <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500" />
+                  <span>Call Analytics</span>
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   <MetricCard 
                     title="Inbound Calls" 
                     value={analytics.inboundCalls} 
@@ -346,29 +372,28 @@ export default function AnalyticsOverview() {
                 </div>
               </section>
 
-              {/* Charts Grid 1 - Area & Bar Charts */}
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-slate-800 mb-5 flex items-center gap-2">
-                  <Activity className="w-6 h-6 text-green-500" />
-                  Trend Analysis
+              {/* Charts Grid 1 */}
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-5 flex items-center gap-2">
+                  <Activity className="w-5 h-5 sm:w-6 sm:h-6 text-green-500" />
+                  <span>Trend Analysis</span>
                 </h2>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                   
-                  {/* Area Chart - Call Volume */}
-                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg">
-                    <div className="flex items-center justify-between mb-6">
+                  {/* Area Chart */}
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
                       <div className="flex items-center gap-2">
-                        <TrendingUp className="w-6 h-6 text-blue-500" />
-                        <h3 className="text-xl font-bold text-slate-800">Call Volume Trend</h3>
+                        <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500 flex-shrink-0" />
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-800">Call Volume Trend</h3>
                       </div>
-                      <span className="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold">Area Chart</span>
+                      <span className="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold self-start sm:self-auto">Area Chart</span>
                     </div>
-                    <ResponsiveContainer width="100%" height={320}>
+                    <ResponsiveContainer width="100%" height={280}>
                       <AreaChart data={analytics.dailyStats}>
                         <defs>
                           <linearGradient id="callsGradient" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.4} />
-                            <stop offset="50%" stopColor="#3b82f6" stopOpacity={0.2} />
                             <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
                           </linearGradient>
                           <linearGradient id="completedGradient" x1="0" y1="0" x2="0" y2="1">
@@ -377,115 +402,69 @@ export default function AnalyticsOverview() {
                           </linearGradient>
                         </defs>
                         <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                        <XAxis dataKey="date" stroke="#64748b" fontSize={12} />
-                        <YAxis stroke="#64748b" fontSize={12} />
-                        <Tooltip 
-                          contentStyle={{ 
-                            backgroundColor: 'rgba(255,255,255,0.95)', 
-                            border: '1px solid #e2e8f0', 
-                            borderRadius: '12px', 
-                            boxShadow: '0 4px 6px rgba(0,0,0,0.1)' 
-                          }} 
-                        />
-                        <Legend wrapperStyle={{ paddingTop: '20px' }} />
-                        <Area 
-                          type="monotone" 
-                          dataKey="calls" 
-                          stroke="#3b82f6" 
-                          fillOpacity={1} 
-                          fill="url(#callsGradient)" 
-                          strokeWidth={3} 
-                          name="Total Calls" 
-                        />
-                        <Area 
-                          type="monotone" 
-                          dataKey="completed" 
-                          stroke="#10b981" 
-                          fillOpacity={1} 
-                          fill="url(#completedGradient)" 
-                          strokeWidth={2} 
-                          name="Completed" 
-                        />
+                        <XAxis dataKey="date" stroke="#64748b" fontSize={10} angle={-45} textAnchor="end" height={60} />
+                        <YAxis stroke="#64748b" fontSize={10} />
+                        <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                        <Legend wrapperStyle={{ paddingTop: '10px', fontSize: '12px' }} />
+                        <Area type="monotone" dataKey="calls" stroke="#3b82f6" fillOpacity={1} fill="url(#callsGradient)" strokeWidth={2} name="Total Calls" />
+                        <Area type="monotone" dataKey="completed" stroke="#10b981" fillOpacity={1} fill="url(#completedGradient)" strokeWidth={2} name="Completed" />
                       </AreaChart>
                     </ResponsiveContainer>
                   </div>
 
-                  {/* Column Chart - Hourly Distribution */}
-                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg">
-                    <div className="flex items-center justify-between mb-6">
+                  {/* Bar Chart */}
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg overflow-hidden">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
                       <div className="flex items-center gap-2">
-                        <Clock className="w-6 h-6 text-purple-500" />
-                        <h3 className="text-xl font-bold text-slate-800">Hourly Distribution</h3>
+                        <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500 flex-shrink-0" />
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-800">Hourly Distribution</h3>
                       </div>
-                      <span className="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full font-semibold">Column Chart</span>
+                      <span className="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full font-semibold self-start sm:self-auto">Column Chart</span>
                     </div>
-                    <ResponsiveContainer width="100%" height={320}>
-                      <BarChart data={analytics.hourlyDistribution}>
-                        <defs>
-                          <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor="#8b5cf6" stopOpacity={1} />
-                            <stop offset="100%" stopColor="#3b82f6" stopOpacity={0.8} />
-                          </linearGradient>
-                        </defs>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                        <XAxis 
-                          dataKey="hour" 
-                          stroke="#64748b" 
-                          fontSize={11} 
-                          angle={-45} 
-                          textAnchor="end" 
-                          height={80} 
-                        />
-                        <YAxis stroke="#64748b" fontSize={12} />
-                        <Tooltip 
-                          contentStyle={{ 
-                            backgroundColor: 'rgba(255,255,255,0.95)', 
-                            border: '1px solid #e2e8f0', 
-                            borderRadius: '12px', 
-                            boxShadow: '0 4px 6px rgba(0,0,0,0.1)' 
-                          }} 
-                        />
-                        <Bar dataKey="calls" fill="url(#barGradient)" radius={[8, 8, 0, 0]} />
-                      </BarChart>
-                    </ResponsiveContainer>
+                    <div className="overflow-x-auto -mx-4 sm:mx-0">
+                      <div className="min-w-[500px] px-4 sm:px-0">
+                        <ResponsiveContainer width="100%" height={280}>
+                          <BarChart data={analytics.hourlyDistribution}>
+                            <defs>
+                              <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stopColor="#8b5cf6" stopOpacity={1} />
+                                <stop offset="100%" stopColor="#3b82f6" stopOpacity={0.8} />
+                              </linearGradient>
+                            </defs>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                            <XAxis dataKey="hour" stroke="#64748b" fontSize={9} angle={-45} textAnchor="end" height={60} />
+                            <YAxis stroke="#64748b" fontSize={10} />
+                            <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                            <Bar dataKey="calls" fill="url(#barGradient)" radius={[6, 6, 0, 0]} />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </div>
                   </div>
 
                 </div>
               </section>
 
-              {/* Charts Grid 2 - Horizontal Bar & Line Charts */}
-              <section className="mb-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Charts Grid 2 */}
+              <section className="mb-6 sm:mb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                   
-                  {/* Horizontal Bar Chart - Duration Analysis */}
-                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg">
-                    <div className="flex items-center justify-between mb-6">
+                  {/* Duration Analysis */}
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
                       <div className="flex items-center gap-2">
-                        <BarChart3 className="w-6 h-6 text-indigo-500" />
-                        <h3 className="text-xl font-bold text-slate-800">Duration Analysis</h3>
+                        <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-500 flex-shrink-0" />
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-800">Duration Analysis</h3>
                       </div>
-                      <span className="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full font-semibold">Bar Chart</span>
+                      <span className="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full font-semibold self-start sm:self-auto">Bar Chart</span>
                     </div>
-                    <ResponsiveContainer width="100%" height={320}>
+                    <ResponsiveContainer width="100%" height={280}>
                       <BarChart data={analytics.durationAnalysis} layout="vertical">
                         <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                        <XAxis type="number" stroke="#64748b" fontSize={12} />
-                        <YAxis 
-                          type="category" 
-                          dataKey="range" 
-                          stroke="#64748b" 
-                          fontSize={12} 
-                          width={80} 
-                        />
-                        <Tooltip 
-                          contentStyle={{ 
-                            backgroundColor: 'rgba(255,255,255,0.95)', 
-                            border: '1px solid #e2e8f0', 
-                            borderRadius: '12px', 
-                            boxShadow: '0 4px 6px rgba(0,0,0,0.1)' 
-                          }} 
-                        />
-                        <Bar dataKey="count" fill="#6366f1" radius={[0, 8, 8, 0]}>
+                        <XAxis type="number" stroke="#64748b" fontSize={10} />
+                        <YAxis type="category" dataKey="range" stroke="#64748b" fontSize={10} width={60} />
+                        <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                        <Bar dataKey="count" fill="#6366f1" radius={[0, 6, 6, 0]}>
                           {analytics.durationAnalysis.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]} />
                           ))}
@@ -494,48 +473,24 @@ export default function AnalyticsOverview() {
                     </ResponsiveContainer>
                   </div>
 
-                  {/* Line Chart - Weekly Performance */}
-                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg">
-                    <div className="flex items-center justify-between mb-6">
+                  {/* Weekly Performance */}
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
                       <div className="flex items-center gap-2">
-                        <TrendingUp className="w-6 h-6 text-green-500" />
-                        <h3 className="text-xl font-bold text-slate-800">Weekly Performance</h3>
+                        <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-800">Weekly Performance</h3>
                       </div>
-                      <span className="text-xs px-3 py-1 bg-green-100 text-green-700 rounded-full font-semibold">Line Chart</span>
+                      <span className="text-xs px-3 py-1 bg-green-100 text-green-700 rounded-full font-semibold self-start sm:self-auto">Line Chart</span>
                     </div>
-                    <ResponsiveContainer width="100%" height={320}>
+                    <ResponsiveContainer width="100%" height={280}>
                       <LineChart data={analytics.weeklyComparison}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                        <XAxis dataKey="week" stroke="#64748b" fontSize={12} />
-                        <YAxis stroke="#64748b" fontSize={12} />
-                        <Tooltip 
-                          contentStyle={{ 
-                            backgroundColor: 'rgba(255,255,255,0.95)', 
-                            border: '1px solid #e2e8f0', 
-                            borderRadius: '12px', 
-                            boxShadow: '0 4px 6px rgba(0,0,0,0.1)' 
-                          }} 
-                        />
-                        <Legend wrapperStyle={{ paddingTop: '10px' }} />
-                        <Line 
-                          type="monotone" 
-                          dataKey="calls" 
-                          stroke="#3b82f6" 
-                          strokeWidth={3} 
-                          dot={{ fill: '#3b82f6', r: 5 }} 
-                          activeDot={{ r: 7 }} 
-                          name="Total Calls" 
-                        />
-                        <Line 
-                          type="monotone" 
-                          dataKey="successRate" 
-                          stroke="#10b981" 
-                          strokeWidth={3} 
-                          dot={{ fill: '#10b981', r: 5 }} 
-                          activeDot={{ r: 7 }} 
-                          name="Success Rate %" 
-                          strokeDasharray="5 5" 
-                        />
+                        <XAxis dataKey="week" stroke="#64748b" fontSize={10} />
+                        <YAxis stroke="#64748b" fontSize={10} />
+                        <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                        <Legend wrapperStyle={{ paddingTop: '10px', fontSize: '12px' }} />
+                        <Line type="monotone" dataKey="calls" stroke="#3b82f6" strokeWidth={2} dot={{ fill: '#3b82f6', r: 4 }} activeDot={{ r: 6 }} name="Total Calls" />
+                        <Line type="monotone" dataKey="successRate" stroke="#10b981" strokeWidth={2} dot={{ fill: '#10b981', r: 4 }} activeDot={{ r: 6 }} name="Success Rate %" strokeDasharray="5 5" />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
@@ -544,85 +499,78 @@ export default function AnalyticsOverview() {
               </section>
 
               {/* Donut Chart & Call Direction */}
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-slate-800 mb-5 flex items-center gap-2">
-                  <PieChart className="w-6 h-6 text-pink-500" />
-                  Distribution & Breakdown
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-5 flex items-center gap-2">
+                  <PieChart className="w-5 h-5 sm:w-6 sm:h-6 text-pink-500" />
+                  <span>Distribution & Breakdown</span>
                 </h2>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                   
-                  {/* Donut Chart - Status Distribution */}
-                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg">
-                    <div className="flex items-center justify-between mb-6">
+                  {/* Donut Chart */}
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
                       <div className="flex items-center gap-2">
-                        <PieChart className="w-6 h-6 text-blue-500" />
-                        <h3 className="text-xl font-bold text-slate-800">Call Status Distribution</h3>
+                        <PieChart className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500 flex-shrink-0" />
+                        <h3 className="text-base sm:text-xl font-bold text-slate-800">Call Status Distribution</h3>
                       </div>
-                      <span className="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold">Donut Chart</span>
+                      <span className="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold self-start sm:self-auto">Donut Chart</span>
                     </div>
-                    <ResponsiveContainer width="100%" height={320}>
+                    <ResponsiveContainer width="100%" height={280}>
                       <RechartsPieChart>
                         <Pie 
                           dataKey="count" 
                           data={analytics.statusDistribution} 
                           cx="50%" 
                           cy="50%" 
-                          innerRadius={70} 
-                          outerRadius={110} 
+                          innerRadius={50} 
+                          outerRadius={90} 
                           paddingAngle={5} 
-                          label={(entry: any) => `${entry.payload.status}: ${entry.value}`} 
+                          label={(entry: any) => `${entry.payload.status}: ${entry.value}`}
                           labelLine={{ stroke: '#64748b', strokeWidth: 1 }}
                         >
                           {analytics.statusDistribution.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]} />
                           ))}
                         </Pie>
-                        <Tooltip 
-                          contentStyle={{ 
-                            backgroundColor: 'rgba(255,255,255,0.95)', 
-                            border: '1px solid #e2e8f0', 
-                            borderRadius: '12px', 
-                            boxShadow: '0 4px 6px rgba(0,0,0,0.1)' 
-                          }} 
-                        />
+                        <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
                       </RechartsPieChart>
                     </ResponsiveContainer>
                     <div className="text-center mt-4">
-                      <div className="text-3xl font-black text-slate-800">{analytics.totalCalls}</div>
-                      <div className="text-sm text-slate-500 font-medium">Total Calls</div>
+                      <div className="text-2xl sm:text-3xl font-black text-slate-800">{analytics.totalCalls}</div>
+                      <div className="text-xs sm:text-sm text-slate-500 font-medium">Total Calls</div>
                     </div>
                   </div>
 
                   {/* Call Direction Breakdown */}
-                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg">
-                    <div className="flex items-center justify-between mb-6">
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
                       <div className="flex items-center gap-2">
-                        <BarChart3 className="w-6 h-6 text-green-500" />
-                        <h3 className="text-xl font-bold text-slate-800">Call Direction Breakdown</h3>
+                        <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
+                        <h3 className="text-base sm:text-xl font-bold text-slate-800">Call Direction Breakdown</h3>
                       </div>
-                      <span className="text-xs px-3 py-1 bg-green-100 text-green-700 rounded-full font-semibold">Progress Bars</span>
+                      <span className="text-xs px-3 py-1 bg-green-100 text-green-700 rounded-full font-semibold self-start sm:self-auto">Progress Bars</span>
                     </div>
-                    <div className="space-y-6 mb-6">
-                      <div className="flex items-center justify-between p-5 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm">
+                    <div className="space-y-4 sm:space-y-6 mb-4 sm:mb-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 sm:p-5 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm">
                         <div className="flex items-center gap-3">
-                          <PhoneIncoming className="w-7 h-7 text-blue-600" />
-                          <span className="font-bold text-slate-800 text-lg">Inbound</span>
+                          <PhoneIncoming className="w-6 h-6 sm:w-7 sm:h-7 text-blue-600 flex-shrink-0" />
+                          <span className="font-bold text-slate-800 text-base sm:text-lg">Inbound</span>
                         </div>
-                        <div className="text-right">
-                          <div className="text-3xl font-black text-blue-600">{analytics.inboundCalls}</div>
-                          <div className="text-sm font-semibold text-slate-600">
+                        <div className="text-left sm:text-right">
+                          <div className="text-2xl sm:text-3xl font-black text-blue-600">{analytics.inboundCalls}</div>
+                          <div className="text-xs sm:text-sm font-semibold text-slate-600">
                             {analytics.totalCalls > 0 ? ((analytics.inboundCalls / analytics.totalCalls) * 100).toFixed(1) : 0}% of total
                           </div>
                         </div>
                       </div>
-                      <div className="flex items-center justify-between p-5 bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl border border-purple-200 shadow-sm">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 sm:p-5 bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl border border-purple-200 shadow-sm">
                         <div className="flex items-center gap-3">
-                          <PhoneOutgoing className="w-7 h-7 text-purple-600" />
-                          <span className="font-bold text-slate-800 text-lg">Outbound</span>
+                          <PhoneOutgoing className="w-6 h-6 sm:w-7 sm:h-7 text-purple-600 flex-shrink-0" />
+                          <span className="font-bold text-slate-800 text-base sm:text-lg">Outbound</span>
                         </div>
-                        <div className="text-right">
-                          <div className="text-3xl font-black text-purple-600">{analytics.outboundCalls}</div>
-                          <div className="text-sm font-semibold text-slate-600">
+                        <div className="text-left sm:text-right">
+                          <div className="text-2xl sm:text-3xl font-black text-purple-600">{analytics.outboundCalls}</div>
+                          <div className="text-xs sm:text-sm font-semibold text-slate-600">
                             {analytics.totalCalls > 0 ? ((analytics.outboundCalls / analytics.totalCalls) * 100).toFixed(1) : 0}% of total
                           </div>
                         </div>
@@ -636,7 +584,7 @@ export default function AnalyticsOverview() {
                             {analytics.totalCalls > 0 ? ((analytics.inboundCalls / analytics.totalCalls) * 100).toFixed(1) : 0}%
                           </div>
                         </div>
-                        <div className="overflow-hidden h-3 text-xs flex rounded-full bg-blue-100">
+                        <div className="overflow-hidden h-2 sm:h-3 text-xs flex rounded-full bg-blue-100">
                           <div 
                             style={{ width: `${analytics.totalCalls > 0 ? (analytics.inboundCalls / analytics.totalCalls) * 100 : 0}%` }} 
                             className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-blue-400 to-blue-600 rounded-full transition-all duration-500"
@@ -650,7 +598,7 @@ export default function AnalyticsOverview() {
                             {analytics.totalCalls > 0 ? ((analytics.outboundCalls / analytics.totalCalls) * 100).toFixed(1) : 0}%
                           </div>
                         </div>
-                        <div className="overflow-hidden h-3 text-xs flex rounded-full bg-purple-100">
+                        <div className="overflow-hidden h-2 sm:h-3 text-xs flex rounded-full bg-purple-100">
                           <div 
                             style={{ width: `${analytics.totalCalls > 0 ? (analytics.outboundCalls / analytics.totalCalls) * 100 : 0}%` }} 
                             className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-purple-400 to-purple-600 rounded-full transition-all duration-500"
@@ -664,26 +612,26 @@ export default function AnalyticsOverview() {
               </section>
 
               {/* AI Analysis Performance */}
-              <section className="mb-8">
-                <h2 className="text-2xl font-bold text-slate-800 mb-5 flex items-center gap-2">
-                  <Brain className="w-6 h-6 text-violet-500" />
-                  AI Analysis Performance
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-5 flex items-center gap-2">
+                  <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-violet-500" />
+                  <span>AI Analysis Performance</span>
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   
                   {/* Transcribed Calls */}
-                  <div className="bg-gradient-to-br from-violet-50 to-violet-100 rounded-2xl p-6 border border-violet-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="bg-gradient-to-br from-violet-50 to-violet-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-violet-200 shadow-lg hover:shadow-xl transition-all duration-300">
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl flex items-center justify-center shadow-md">
-                        <FileText className="w-7 h-7 text-white" />
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
+                        <FileText className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                       </div>
                       <div className="text-right">
-                        <div className="text-4xl font-black text-violet-600">{analytics.transcribedCalls}</div>
+                        <div className="text-3xl sm:text-4xl font-black text-violet-600">{analytics.transcribedCalls}</div>
                       </div>
                     </div>
                     <div>
-                      <p className="text-slate-700 font-bold text-lg mb-1">Transcribed Calls</p>
-                      <p className="text-slate-600 text-sm font-semibold">
+                      <p className="text-slate-700 font-bold text-base sm:text-lg mb-1">Transcribed Calls</p>
+                      <p className="text-slate-600 text-xs sm:text-sm font-semibold">
                         {analytics.totalCalls > 0 ? ((analytics.transcribedCalls / analytics.totalCalls) * 100).toFixed(1) : 0}% of total calls processed
                       </p>
                     </div>
@@ -700,18 +648,18 @@ export default function AnalyticsOverview() {
                   </div>
 
                   {/* Summarized Calls */}
-                  <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-6 border border-amber-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-amber-200 shadow-lg hover:shadow-xl transition-all duration-300">
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-md">
-                        <Brain className="w-7 h-7 text-white" />
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
+                        <Brain className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                       </div>
                       <div className="text-right">
-                        <div className="text-4xl font-black text-amber-600">{analytics.summarizedCalls}</div>
+                        <div className="text-3xl sm:text-4xl font-black text-amber-600">{analytics.summarizedCalls}</div>
                       </div>
                     </div>
                     <div>
-                      <p className="text-slate-700 font-bold text-lg mb-1">Summarized Calls</p>
-                      <p className="text-slate-600 text-sm font-semibold">
+                      <p className="text-slate-700 font-bold text-base sm:text-lg mb-1">Summarized Calls</p>
+                      <p className="text-slate-600 text-xs sm:text-sm font-semibold">
                         {analytics.transcribedCalls > 0 ? ((analytics.summarizedCalls / analytics.transcribedCalls) * 100).toFixed(1) : 0}% of transcribed calls
                       </p>
                     </div>
@@ -728,20 +676,20 @@ export default function AnalyticsOverview() {
                   </div>
 
                   {/* Processing Rate */}
-                  <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl p-6 border border-emerald-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-emerald-200 shadow-lg hover:shadow-xl transition-all duration-300 sm:col-span-2 lg:col-span-1">
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center shadow-md">
-                        <Zap className="w-7 h-7 text-white" />
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
+                        <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                       </div>
                       <div className="text-right">
-                        <div className="text-4xl font-black text-emerald-600">
+                        <div className="text-3xl sm:text-4xl font-black text-emerald-600">
                           {analytics.transcribedCalls > 0 ? ((analytics.summarizedCalls / analytics.transcribedCalls) * 100).toFixed(1) : 0}%
                         </div>
                       </div>
                     </div>
                     <div>
-                      <p className="text-slate-700 font-bold text-lg mb-1">Processing Rate</p>
-                      <p className="text-slate-600 text-sm font-semibold">AI summary completion rate</p>
+                      <p className="text-slate-700 font-bold text-base sm:text-lg mb-1">Processing Rate</p>
+                      <p className="text-slate-600 text-xs sm:text-sm font-semibold">AI summary completion rate</p>
                     </div>
                     <div className="mt-4 pt-4 border-t border-emerald-200">
                       <div className="relative pt-1">
@@ -760,20 +708,20 @@ export default function AnalyticsOverview() {
 
               {/* Peak Hours */}
               {analytics.peakHours.length > 0 && (
-                <section className="mb-8">
-                  <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg">
-                    <div className="flex items-center gap-2 mb-6">
-                      <Clock className="w-6 h-6 text-indigo-500" />
-                      <h3 className="text-2xl font-bold text-slate-800">Peak Call Hours</h3>
+                <section className="mb-6 sm:mb-8">
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex items-center gap-2 mb-4 sm:mb-6">
+                      <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-500 flex-shrink-0" />
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-800">Peak Call Hours</h3>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
                       {analytics.peakHours.map((peak, index) => (
                         <div 
                           key={peak.hour} 
-                          className="text-center p-5 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-200 shadow-sm hover:shadow-md transition-all duration-300"
+                          className="text-center p-4 sm:p-5 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-200 shadow-sm hover:shadow-md transition-all duration-300"
                         >
-                          <div className="text-3xl font-black text-indigo-600 mb-2">{peak.hour}:00</div>
-                          <div className="text-slate-700 text-lg font-bold">{peak.count} calls</div>
+                          <div className="text-2xl sm:text-3xl font-black text-indigo-600 mb-2">{peak.hour}:00</div>
+                          <div className="text-slate-700 text-base sm:text-lg font-bold">{peak.count} calls</div>
                           <div className="text-xs text-slate-500 mt-2 font-semibold">Rank #{index + 1}</div>
                         </div>
                       ))}
@@ -783,16 +731,16 @@ export default function AnalyticsOverview() {
               )}
 
               {/* Recent Calls */}
-              <section className="mb-8">
-                <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg">
-                  <div className="flex items-center justify-between mb-6">
+              <section className="mb-6 sm:mb-8">
+                <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
                     <div className="flex items-center gap-2">
-                      <MessageSquare className="w-6 h-6 text-green-500" />
-                      <h3 className="text-2xl font-bold text-slate-800">Recent Calls</h3>
+                      <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-800">Recent Calls</h3>
                     </div>
                     <a 
                       href="/calls" 
-                      className="text-blue-600 hover:text-blue-800 font-semibold text-sm transition-colors flex items-center gap-1"
+                      className="text-blue-600 hover:text-blue-800 font-semibold text-sm transition-colors flex items-center gap-1 self-start sm:self-auto"
                     >
                       View All 
                       <ArrowUp className="w-4 h-4 rotate-45" />
@@ -803,23 +751,23 @@ export default function AnalyticsOverview() {
                       {recentCalls.map((call) => (
                         <div 
                           key={call.Sid} 
-                          className="flex items-center justify-between p-5 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors border border-slate-200"
+                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 sm:p-5 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors border border-slate-200"
                         >
-                          <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-2">
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 min-w-0">
+                            <div className="flex items-center gap-2 min-w-0">
                               {call.Direction === 'inbound' ? (
-                                <PhoneIncoming className="w-5 h-5 text-blue-500" />
+                                <PhoneIncoming className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
                               ) : (
-                                <PhoneOutgoing className="w-5 h-5 text-purple-500" />
+                                <PhoneOutgoing className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500 flex-shrink-0" />
                               )}
-                              <span className="font-semibold text-slate-800">{call.From} → {call.To}</span>
+                              <span className="font-semibold text-slate-800 text-sm sm:text-base truncate">{call.From} → {call.To}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              {call.Status === 'completed' && <CheckCircle className="w-4 h-4 text-green-500" />}
-                              {call.Status === 'failed' && <XCircle className="w-4 h-4 text-red-500" />}
-                              {call.Status === 'busy' && <AlertCircle className="w-4 h-4 text-yellow-500" />}
+                              {call.Status === 'completed' && <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />}
+                              {call.Status === 'failed' && <XCircle className="w-4 h-4 text-red-500 flex-shrink-0" />}
+                              {call.Status === 'busy' && <AlertCircle className="w-4 h-4 text-yellow-500 flex-shrink-0" />}
                               <span 
-                                className={`px-3 py-1 rounded-full text-xs font-bold ${
+                                className={`px-2 sm:px-3 py-1 rounded-full text-xs font-bold ${
                                   call.Status === 'completed' 
                                     ? 'bg-green-100 text-green-700' 
                                     : call.Status === 'failed' 
@@ -831,7 +779,7 @@ export default function AnalyticsOverview() {
                               </span>
                             </div>
                           </div>
-                          <div className="text-right">
+                          <div className="text-left sm:text-right flex-shrink-0">
                             <div className="text-sm font-bold text-slate-800">{call.Duration}s</div>
                             <div className="text-xs text-slate-500">{new Date(call.StartTime).toLocaleTimeString()}</div>
                           </div>
@@ -840,8 +788,8 @@ export default function AnalyticsOverview() {
                     </div>
                   ) : (
                     <div className="text-center py-12">
-                      <PhoneCall className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-                      <p className="text-slate-500 text-lg font-medium">No recent calls found</p>
+                      <PhoneCall className="w-12 h-12 sm:w-16 sm:h-16 text-slate-300 mx-auto mb-4" />
+                      <p className="text-slate-500 text-base sm:text-lg font-medium">No recent calls found</p>
                     </div>
                   )}
                 </div>
