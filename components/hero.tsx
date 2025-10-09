@@ -41,41 +41,41 @@ export function Hero() {
   }, [])
 
   // Load VAPI script
-  useEffect(() => {
-    const script = document.createElement("script")
-    script.src = "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
-    script.async = true
-    document.body.appendChild(script)
+  // useEffect(() => {
+  //   const script = document.createElement("script")
+  //   script.src = "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
+  //   script.async = true
+  //   document.body.appendChild(script)
 
-    script.onload = () => {
-      if (window.VAPIWidget) {
-        window.VAPIWidget.init({
-          publicKey: "b8dd64f9-40ef-4be0-9683-4766906634d8",
-          assistantId: "c6f95947-e630-41e0-895b-56edc3c395b3",
-          mode: "voice",
-          theme: "dark",
-          size: "full",
-          position: "bottom-right",
-          voiceShowTranscript: true,
-          consentRequired: true,
-        });
-        setVapiReady(true)
-      }
-    }
+  //   script.onload = () => {
+  //     if (window.VAPIWidget) {
+  //       window.VAPIWidget.init({
+  //         publicKey: "b8dd64f9-40ef-4be0-9683-4766906634d8",
+  //         assistantId: "c6f95947-e630-41e0-895b-56edc3c395b3",
+  //         mode: "voice",
+  //         theme: "dark",
+  //         size: "full",
+  //         position: "bottom-right",
+  //         voiceShowTranscript: true,
+  //         consentRequired: true,
+  //       });
+  //       setVapiReady(true)
+  //     }
+  //   }
 
-    return () => {
-      document.body.removeChild(script)
-    }
-  }, [])
+  //   return () => {
+  //     document.body.removeChild(script)
+  //   }
+  // }, [])
 
-  // Handle Mic Click
-  const handleMicClick = () => {
-    if (vapiReady && window.VAPIWidget) {
-      window.VAPIWidget.open({ autoStart: true }) // Open VAPI with mic
-    } else {
-      alert("AI Assistant is still loading. Please wait a few seconds.")
-    }
-  }
+  // // Handle Mic Click
+  // const handleMicClick = () => {
+  //   if (vapiReady && window.VAPIWidget) {
+  //     window.VAPIWidget.open({ autoStart: true }) // Open VAPI with mic
+  //   } else {
+  //     alert("AI Assistant is still loading. Please wait a few seconds.")
+  //   }
+  // }
 
   return (
    <>
@@ -543,7 +543,7 @@ export function Hero() {
                 <span className="absolute w-28 h-28 bg-gradient-to-r from-sky-400 via-sky-300 to-sky-500 rounded-full opacity-25 animate-ping-slower"></span>
 
                 <button
-                  onClick={handleMicClick}
+                  
                   className="relative z-10 p-6 bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 text-white rounded-full shadow-xl hover:scale-110 transition-transform duration-300 flex items-center justify-center"
                 >
                   <svg
