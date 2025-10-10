@@ -11,7 +11,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <Image
-                src="https://res.cloudinary.com/doytvgisa/image/upload/v1760073529/Digitalbotai_u9bc6d.svg"
+                src="https://res.cloudinary.com/dew9qfpbl/image/upload/v1760082124/Gemini_Generated_Image_tgypq9tgypq9tgyp_-_Edited_1_m1xhrt.svg"
                 alt="DigitalBot Logo"
                 width={160}
                 height={40}

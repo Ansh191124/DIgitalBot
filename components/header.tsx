@@ -39,27 +39,23 @@ export function Header() {
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
-                    {/* Logo (FIXED: Removed conflicting neon glow and drop-shadow for a clean match) */}
+                    {/* Logo with neon-glow and floating orb */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9, y: -10 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                         className="relative"
                     >
-                        <Link 
-                            href="/" 
-                            className="flex items-center gap-2 relative group" 
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            {/* The Floating Neon Orb span was removed here */}
+                        <Link href="/" className="flex items-center gap-2 relative group" onClick={() => setIsMenuOpen(false)}>
+                            {/* Floating Neon Orb */}
+                            <span className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-r from-sky-400 via-sky-500 to-sky-600 opacity-30 blur-3xl animate-pulse-slow"></span>
                             <Image
-                                src="https://res.cloudinary.com/doytvgisa/image/upload/v1760073529/Digitalbotai_u9bc6d.svg"
+                                src="https://res.cloudinary.com/dew9qfpbl/image/upload/v1760082124/Gemini_Generated_Image_tgypq9tgypq9tgyp_-_Edited_1_m1xhrt.svg"
                                 alt="DigitalBot Logo"
                                 width={160}
                                 height={40}
                                 priority
-                                // Adjusted height (h-8) and removed the drop-shadow for a clean integration
-                                className="h-14 w-auto object-contain relative z-12 hover:scale-110 transition-transform duration-500 right-20" 
+                                className="h-14 w-auto relative z-10 hover:scale-110 transition-transform duration-500 right-15"
                             />
                         </Link>
                     </motion.div>
@@ -199,7 +195,7 @@ export function Header() {
                 </AnimatePresence>
             </div>
 
-            {/* Extra Neon Pulse Animation (Not used in logo section anymore) */}
+            {/* Extra Neon Pulse Animation */}
             <style jsx>{`
                 @keyframes pulse-slow {
                     0%, 100% { transform: scale(1); opacity: 0.25; }
