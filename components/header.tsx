@@ -55,7 +55,7 @@ export function Header() {
                                 width={160}
                                 height={40}
                                 priority
-                                className="h-14 w-auto relative z-10 hover:scale-110 transition-transform duration-500 right-12"
+                                className="h-14 w-auto relative z-10 hover:scale-110 transition-transform duration-500 right-8"
                             />
                         </Link>
                     </motion.div>
