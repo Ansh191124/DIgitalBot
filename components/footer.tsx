@@ -4,19 +4,20 @@ import { Twitter, Linkedin, Mail, Instagram, Facebook } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-tl from-sky-100 via-white to-sky-50 text-gray-800 dark:text-white border-t border-sky-200 py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-gradient-to- via-white to-sky-50 text-gray-800 dark:text-white border-t border-sky-200 py-12 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo & Description */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <Image
-                src="https://digitalbot.ai/wp-content/uploads/2024/03/digital-bot-full-logo.svg"
+                src="https://res.cloudinary.com/doytvgisa/image/upload/v1760073529/Digitalbotai_u9bc6d.svg"
                 alt="DigitalBot Logo"
                 width={160}
                 height={40}
                 priority
-                className="h-10 w-auto max-w-[160px] sm:max-w-[180px] md:max-w-[200px] object-contain drop-shadow-lg"
+                // REMOVED: drop-shadow-lg class
+                className="h-14 w-auto max-w-[160px] sm:max-w-[180px] md:max-w-[200px] object-contain"
               />
             </div>
 
