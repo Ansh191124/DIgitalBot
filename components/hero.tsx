@@ -1,10 +1,35 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles, Play, X, Mic, Square } from "lucide-react" // Import Mic and Square
+import { ArrowRight, Sparkles, Play, X, Mic, Square } from "lucide-react"
 import { useEffect, useState, useRef } from 'react'
-import { useRouter } from "next/navigation";
-import Vapi from '@vapi-ai/web' // Import Vapi Web SDK
+import { useRouter } from "next/navigation"
+import Vapi from '@vapi-ai/web'
+
+// Lottie type declarations
+interface LottieAnimation {
+  destroy: () => void;
+  setSpeed: (speed: number) => void;
+  play: () => void;
+  pause: () => void;
+  stop: () => void;
+}
+
+interface LottiePlayer {
+  loadAnimation: (params: {
+    container: HTMLElement | null;
+    renderer: 'svg' | 'canvas' | 'html';
+    loop: boolean;
+    autoplay: boolean;
+    path: string;
+  }) => LottieAnimation;
+}
+
+declare global {
+  interface Window {
+    lottie?: LottiePlayer;
+  }
+}
 
 export function Hero() {
   const stats = [
@@ -15,7 +40,7 @@ export function Hero() {
 
   const [counts, setCounts] = useState([0, 0, 0])
   const [showVideo, setShowVideo] = useState(false)
-  const router = useRouter();
+  const router = useRouter()
 
   // VAPI State and Ref
   const vapiRef = useRef<Vapi | null>(null)
@@ -23,14 +48,13 @@ export function Hero() {
   const [isSpeaking, setIsSpeaking] = useState(false)
   const [transcript, setTranscript] = useState("Hello! I'm your AI assistant. How can I help you today?")
   const [callStatus, setCallStatus] = useState("")
+  const lottieAnimationRef = useRef<LottieAnimation | null>(null)
 
   // VAPI Initialization and Event Listeners
   useEffect(() => {
-    // Initialize VAPI with your actual public key
     const vapiInstance = new Vapi('b8dd64f9-40ef-4be0-9683-4766906634d8')
     vapiRef.current = vapiInstance
 
-    // Event listeners
     vapiInstance.on('call-start', () => {
       console.log('Call started')
       setIsCallActive(true)
@@ -71,7 +95,7 @@ export function Hero() {
     vapiInstance.on('error', (error) => {
       console.error('VAPI Error:', error)
       setCallStatus(`Error: ${error.message || 'Unknown error'}`)
-      setIsCallActive(false) // Ensure button state resets on error
+      setIsCallActive(false)
     })
 
     return () => {
@@ -81,8 +105,6 @@ export function Hero() {
     }
   }, [])
 
-
-  // Call Toggle Function
   const toggleCall = async () => {
     if (!vapiRef.current) {
       console.error('VAPI not initialized')
@@ -101,7 +123,6 @@ export function Hero() {
       try {
         setCallStatus('Requesting microphone...')
         
-        // Request microphone permission first
         try {
           await navigator.mediaDevices.getUserMedia({ audio: true })
         } catch (err) {
@@ -112,8 +133,6 @@ export function Hero() {
         }
 
         setCallStatus('Starting call...')
-        
-        // Replace with your actual assistant ID
         await vapiRef.current.start('c6f95947-e630-41e0-895b-56edc3c395b3')
         
       } catch (error) {
@@ -123,10 +142,49 @@ export function Hero() {
     }
   }
 
-
-  // Animate stats (Keep your existing logic)
+  // Lottie Animation Initialization
   useEffect(() => {
-    // ... existing stat animation logic ...
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js';
+    script.async = true;
+    
+    const handleLoad = () => {
+      if (window.lottie && document.getElementById('lottie-animation')) {
+        lottieAnimationRef.current = window.lottie.loadAnimation({
+          container: document.getElementById('lottie-animation'),
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: 'https://lottie.host/4d6e4a3e-7f1f-4b0e-9b3e-8c8e3f3e3e3e/K21LOlLjRk.json'
+        });
+      }
+    };
+
+    script.onload = handleLoad;
+    document.body.appendChild(script);
+
+    return () => {
+      if (lottieAnimationRef.current) {
+        lottieAnimationRef.current.destroy();
+      }
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
+  // Update animation speed based on speaking state
+  useEffect(() => {
+    if (lottieAnimationRef.current) {
+      if (isSpeaking) {
+        lottieAnimationRef.current.setSpeed(1.5);
+      } else {
+        lottieAnimationRef.current.setSpeed(1.0);
+      }
+    }
+  }, [isSpeaking]);
+
+  useEffect(() => {
     stats.forEach((stat, index) => {
       let start = 0
       const end = stat.value
@@ -146,7 +204,6 @@ export function Hero() {
         })
       }, stepTime)
     })
-    // ... end of existing stat animation logic ...
   }, [])
 
   return (
@@ -166,314 +223,93 @@ export function Hero() {
               50% { transform: scale(1.05); opacity: 0.1; }
               100% { transform: scale(0.7); opacity: 0.25; }
             }
-            /* Robot Animation Styles */
-            .robot-animation-container {
+
+            /* Wave Animation Styles */
+            .wavy-background {
+              position: absolute;
               width: 100%;
               height: 100%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
+              top: 0;
+              left: 0;
+              overflow: hidden;
+              pointer-events: none;
             }
 
-            .robot-animation {
-              width: 300px;
-              height: 300px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              position: relative;
-            }
-
-            .robot {
-              width: 150px;
-              height: 180px;
-              position: relative;
-              animation: robot-bounce 2s ease-in-out infinite;
-            }
-
-            @keyframes robot-bounce {
-              0%, 100% { transform: translateY(0); }
-              50% { transform: translateY(-10px); }
-            }
-
-            .robot-head {
-              width: 100px;
-              height: 80px;
-              background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
-              border-radius: 20px;
-              margin: 0 auto;
-              position: relative;
-              box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
-              border: 3px solid rgba(255, 255, 255, 0.3);
-            }
-
-            .robot-antenna {
-              width: 5px;
-              height: 25px;
-              background: linear-gradient(180deg, #60A5FA 0%, #3B82F6 100%);
+            .wave-layer {
               position: absolute;
-              top: -25px;
-              left: 50%;
-              transform: translateX(-50%);
-              border-radius: 3px;
+              width: 200%;
+              height: 100%;
+              top: 0;
+              left: 0;
             }
 
-            .robot-antenna::after {
-              content: '';
-              width: 14px;
-              height: 14px;
-              background: radial-gradient(circle, #00E5FF 0%, #00B8D4 100%);
-              border-radius: 50%;
-              position: absolute;
-              top: -10px;
-              left: 50%;
-              transform: translateX(-50%);
-              animation: antenna-blink 1s ease-in-out infinite;
-              box-shadow: 0 0 20px #00E5FF, 0 0 40px rgba(0, 229, 255, 0.5);
+            .wave-layer-1 {
+              animation: wave-move 15s linear infinite;
+              opacity: 0.4;
             }
 
-            @keyframes antenna-blink {
-              0%, 100% {
+            .wave-layer-2 {
+              animation: wave-move 20s linear infinite;
+              animation-delay: -5s;
+              opacity: 0.3;
+            }
+
+            .wave-layer-3 {
+              animation: wave-move 25s linear infinite;
+              animation-delay: -10s;
+              opacity: 0.2;
+            }
+
+            @keyframes wave-move {
+              0% {
+                transform: translateX(0) translateZ(0);
+              }
+              100% {
+                transform: translateX(-50%) translateZ(0);
+              }
+            }
+
+            .animate-spin-slow {
+              animation: spin 20s linear infinite;
+            }
+
+            @keyframes spin {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+
+            @keyframes sound-bar-pulse {
+              0%, 100% { 
+                transform: scaleY(0.7);
+                opacity: 0.9;
+              }
+              50% { 
+                transform: scaleY(1.3);
                 opacity: 1;
-                box-shadow: 0 0 20px #00E5FF, 0 0 40px rgba(0, 229, 255, 0.5);
               }
-              50% {
-                opacity: 0.4;
-                box-shadow: 0 0 10px #00E5FF, 0 0 20px rgba(0, 229, 255, 0.3);
-              }
-            }
-
-            .robot-eyes {
-              display: flex;
-              justify-content: space-around;
-              padding: 20px 15px 0;
-            }
-
-            .robot-eye {
-              width: 20px;
-              height: 20px;
-              background: white;
-              border-radius: 50%;
-              position: relative;
-              overflow: hidden;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            }
-
-            .robot-pupil {
-              width: 10px;
-              height: 10px;
-              background: radial-gradient(circle, #1E40AF 0%, #3B82F6 100%);
-              border-radius: 50%;
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              animation: eye-move 4s ease-in-out infinite;
-            }
-
-            @keyframes eye-move {
-              0%, 100% { transform: translate(-50%, -50%); }
-              25% { transform: translate(-70%, -50%); }
-              75% { transform: translate(-30%, -50%); }
-            }
-
-            .robot-mouth {
-              width: 50px;
-              height: 8px;
-              background: white;
-              margin: 15px auto 0;
-              border-radius: 4px;
-              position: relative;
-              overflow: hidden;
-            }
-
-            .robot-mouth::after {
-              content: '';
-              width: 100%;
-              height: 100%;
-              background: linear-gradient(90deg, #00E5FF 0%, #00B8D4 100%);
-              position: absolute;
-              left: -100%;
-              animation: mouth-talk 2s ease-in-out infinite;
-              box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
-            }
-
-            @keyframes mouth-talk {
-              0%, 100% { left: -100%; }
-              50% { left: 0; }
-            }
-
-            .robot-body {
-              width: 120px;
-              height: 70px;
-              background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
-              border-radius: 15px;
-              margin: 10px auto 0;
-              position: relative;
-              box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
-              border: 3px solid rgba(255, 255, 255, 0.3);
-            }
-
-            .robot-panel {
-              width: 60px;
-              height: 40px;
-              background: rgba(255, 255, 255, 0.2);
-              border-radius: 8px;
-              margin: 15px auto;
-              display: flex;
-              flex-direction: column;
-              gap: 5px;
-              padding: 8px;
-              border: 2px solid rgba(255, 255, 255, 0.3);
-              box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .panel-line {
-              height: 3px;
-              background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%);
-              border-radius: 2px;
-              animation: panel-loading 1.5s ease-in-out infinite;
-              box-shadow: 0 1px 3px rgba(0, 229, 255, 0.3);
-            }
-
-            .panel-line:nth-child(1) {
-              width: 80%;
-              animation-delay: 0s;
-            }
-
-            .panel-line:nth-child(2) {
-              width: 100%;
-              animation-delay: 0.3s;
-            }
-
-            .panel-line:nth-child(3) {
-              width: 60%;
-              animation-delay: 0.6s;
-            }
-
-            @keyframes panel-loading {
-              0%, 100% { opacity: 0.4; }
-              50% { opacity: 1; }
-            }
-
-            .robot-arm {
-              width: 15px;
-              height: 60px;
-              background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
-              border-radius: 8px;
-              position: absolute;
-              top: 10px;
-              box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
-              border: 2px solid rgba(255, 255, 255, 0.3);
-            }
-
-            .robot-arm.left {
-              left: -20px;
-              transform-origin: top center;
-              animation: arm-wave-left 2s ease-in-out infinite;
-            }
-
-            .robot-arm.right {
-              right: -20px;
-              transform-origin: top center;
-              animation: arm-wave-right 2s ease-in-out infinite;
-            }
-
-            @keyframes arm-wave-left {
-              0%, 100% { transform: rotate(-10deg); }
-              50% { transform: rotate(-30deg); }
-            }
-
-            @keyframes arm-wave-right {
-              0%, 100% { transform: rotate(10deg); }
-              50% { transform: rotate(30deg); }
-            }
-
-            .robot-hand {
-              width: 18px;
-              height: 12px;
-              background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
-              border-radius: 50%;
-              position: absolute;
-              bottom: -8px;
-              left: 50%;
-              transform: translateX(-50%);
-              box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4);
-            }
-
-            .robot-base {
-              width: 80px;
-              height: 15px;
-              background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
-              border-radius: 8px;
-              margin: 5px auto 0;
-              box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-              border: 2px solid rgba(255, 255, 255, 0.3);
-            }
-
-            .sound-waves {
-              position: absolute;
-              bottom: 20px;
-              left: 50%;
-              transform: translateX(-50%);
-              display: flex;
-              gap: 4px;
-              align-items: flex-end;
-            }
-
-            .sound-bar {
-              width: 5px;
-              background: linear-gradient(180deg, #00E5FF 0%, #00B8D4 100%);
-              border-radius: 3px;
-              animation: sound-wave 0.8s ease-in-out infinite;
-              box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
-            }
-
-            .sound-bar:nth-child(1) {
-              height: 10px;
-              animation-delay: 0s;
-            }
-
-            .sound-bar:nth-child(2) {
-              height: 20px;
-              animation-delay: 0.1s;
-            }
-
-            .sound-bar:nth-child(3) {
-              height: 15px;
-              animation-delay: 0.2s;
-            }
-
-            .sound-bar:nth-child(4) {
-              height: 25px;
-              animation-delay: 0.3s;
-            }
-
-            .sound-bar:nth-child(5) {
-              height: 15px;
-              animation-delay: 0.4s;
-            }
-            
-            @keyframes sound-wave {
-              0%, 100% { transform: scaleY(1); }
-              50% { transform: scaleY(2); }
-            }
-
-            .animate-vapi-wave {
-              animation: vapi-wave 0.8s ease-in-out infinite;
-            }
-            @keyframes vapi-wave {
-              0%, 100% { transform: scaleY(0.5); }
-              50% { transform: scaleY(1.5); }
             }
           `}} />
-    <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
-  {/* Subtle soft background glow */}
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-sky-100 rounded-full opacity-20 blur-3xl"></div>
-    <div className="absolute bottom-[-15%] right-[-10%] w-[600px] h-[600px] bg-sky-200 rounded-full opacity-10 blur-3xl"></div>
-    <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-sky-50 rounded-full opacity-20 blur-2xl"></div>
-  </div>
+    <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100">
+      {/* Wavy Blue Background Animation */}
+      <div className="wavy-background">
+        <svg className="wave-layer wave-layer-1" viewBox="0 0 1200 600" preserveAspectRatio="none">
+          <path d="M0,300 Q150,200 300,300 T600,300 T900,300 T1200,300 T1500,300 T1800,300 T2100,300 T2400,300 V600 H0 Z" fill="rgba(56, 189, 248, 0.3)"/>
+        </svg>
+        <svg className="wave-layer wave-layer-2" viewBox="0 0 1200 600" preserveAspectRatio="none">
+          <path d="M0,350 Q200,250 400,350 T800,350 T1200,350 T1600,350 T2000,350 T2400,350 V600 H0 Z" fill="rgba(96, 165, 250, 0.25)"/>
+        </svg>
+        <svg className="wave-layer wave-layer-3" viewBox="0 0 1200 600" preserveAspectRatio="none">
+          <path d="M0,400 Q250,300 500,400 T1000,400 T1500,400 T2000,400 T2400,400 V600 H0 Z" fill="rgba(147, 197, 253, 0.2)"/>
+        </svg>
+      </div>
+
+      {/* Subtle soft background glow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-sky-200 rounded-full opacity-15 blur-3xl"></div>
+        <div className="absolute bottom-[-15%] right-[-10%] w-[600px] h-[600px] bg-blue-200 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-sky-100 rounded-full opacity-20 blur-2xl"></div>
+      </div>
+
       <div className="container mx-auto relative z-10">
         {/* Top Badge */}
         <div className="flex justify-center mb-8 animate-fade-in-up">
@@ -496,75 +332,139 @@ export function Hero() {
             <p className="text-base sm:text-lg text-gray-700 mb-6 max-w-lg">
               DigitalBot.ai empowers your business with intelligent conversational AI — automating support, improving engagement, and delivering 24/7 futuristic customer experiences.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
-              {/* MODIFIED BUTTON: Changed to the Voice Assistant CTA */}
-              <Button
-                size="lg"
-                onClick={toggleCall}
-                className={`text-white font-semibold rounded-full shadow-lg transition-all duration-300 group 
-                  ${isCallActive
-                    ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-300/50'
-                    : 'bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-300/50'
-                  }`}
-              >
-                {isCallActive ? 'Stop AI Conversation' : 'Talk to AI Assistant'}
-                {isCallActive ? (
-                  <Square className="ml-2 h-4 w-4" /> // Stop Icon
-                ) : (
-                  <Mic className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" /> // Mic Icon
-                )}
-              </Button>
-            </div>
           </div>
 
-          {/* Right - Robot Animation (Remains untouched) */}
+          {/* Right - Lottie Animation Visual */}
           <div className="lg:w-1/2 relative animate-fade-in-up">
             <div className="relative w-full h-64 sm:h-80 lg:h-96 flex items-center justify-center">
               {!showVideo ? (
-                <div className="robot-animation-container">
-                  <div className="robot-animation">
-                    <div className="robot">
-                      <div className="robot-head">
-                        <div className="robot-antenna"></div>
-                        <div className="robot-eyes">
-                          <div className="robot-eye">
-                            <div className="robot-pupil"></div>
-                          </div>
-                          <div className="robot-eye">
-                            <div className="robot-pupil"></div>
-                          </div>
-                        </div>
-                        {/* Conditional mouth/waves based on speaking state */}
-                        <div className="robot-mouth">
-                          {isSpeaking && (
-                            <style dangerouslySetInnerHTML={{__html: `.robot-mouth::after { animation: mouth-talk 0.2s ease-in-out infinite alternate; }`}} />
-                          )}
-                        </div>
-                      </div>
-                      <div className="robot-body">
-                        <div className="robot-arm left">
-                          <div className="robot-hand"></div>
-                        </div>
-                        <div className="robot-arm right">
-                          <div className="robot-hand"></div>
-                        </div>
-                        <div className="robot-panel">
-                          <div className="panel-line"></div>
-                          <div className="panel-line"></div>
-                          <div className="panel-line"></div>
-                        </div>
-                      </div>
-                      <div className="robot-base"></div>
+                <div className="relative w-full h-full flex items-center justify-center">
+                  {/* Lottie AI Voice Assistant Animation */}
+                  <div className="relative w-full max-w-2xl h-full flex items-center justify-center">
+                    {/* Backdrop glow effects */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className={`w-96 h-96 rounded-full transition-all duration-500 ${
+                        isSpeaking 
+                          ? 'bg-gradient-to-r from-sky-500/30 via-blue-500/30 to-sky-500/30 blur-3xl' 
+                          : 'bg-gradient-to-r from-sky-400/20 via-blue-400/20 to-sky-400/20 blur-3xl'
+                      }`}></div>
                     </div>
-                    {/* Conditional sound waves */}
-                    {isSpeaking && (
-                      <div className="sound-waves">
-                        <div className="sound-bar"></div>
-                        <div className="sound-bar"></div>
-                        <div className="sound-bar"></div>
-                        <div className="sound-bar"></div>
-                        <div className="sound-bar"></div>
+
+                    {/* Lottie Animation Container */}
+                    <div className={`relative transition-all duration-500 ${
+                      isSpeaking ? 'scale-110' : 'scale-105'
+                    }`}>
+                      <div 
+                        id="lottie-animation" 
+                        className="w-96 h-96"
+                        style={{
+                          filter: isSpeaking 
+                            ? 'hue-rotate(0deg) saturate(1.3) brightness(1.1)' 
+                            : 'hue-rotate(0deg) saturate(1.1) brightness(1.0)'
+                        }}
+                      ></div>
+                      
+                      {/* Sound Bar Visualizer in the center */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="flex items-center justify-center gap-1 h-20">
+                          {[...Array(12)].map((_, i) => {
+                            const centerIndex = 5.5;
+                            const distanceFromCenter = Math.abs(i - centerIndex);
+                            const maxHeight = 60 - (distanceFromCenter * 5);
+                            const minHeight = 8;
+                            
+                            return (
+                              <div
+                                key={i}
+                                className={`w-1.5 relative transition-all duration-300 rounded-full ${
+                                  isSpeaking 
+                                    ? 'bg-gradient-to-t from-sky-700 via-sky-400 to-cyan-300 shadow-lg shadow-sky-400/50' 
+                                    : isCallActive
+                                    ? 'bg-gradient-to-t from-sky-600/50 via-sky-400/50 to-sky-300/50 shadow-md shadow-sky-300/30'
+                                    : 'bg-gradient-to-t from-sky-500/30 via-sky-400/30 to-sky-300/30 shadow-sm'
+                                }`}
+                                style={{
+                                  height: isSpeaking 
+                                    ? `${maxHeight}px` 
+                                    : isCallActive
+                                    ? `${minHeight + (maxHeight - minHeight) * 0.4}px`
+                                    : `${minHeight + (maxHeight - minHeight) * 0.2}px`,
+                                  animation: isSpeaking 
+                                    ? `sound-bar-pulse 0.${4 + (i % 4)}s ease-in-out infinite` 
+                                    : isCallActive
+                                    ? `sound-bar-pulse 0.${6 + (i % 3)}s ease-in-out infinite`
+                                    : 'none',
+                                  animationDelay: `${i * 0.05}s`
+                                }}
+                              >
+                                {/* Inner glow */}
+                                <div className={`absolute inset-0 rounded-full ${
+                                  isSpeaking 
+                                    ? 'bg-gradient-to-t from-white/40 via-white/20 to-transparent blur-[2px]' 
+                                    : 'bg-white/10 blur-[1px]'
+                                }`}></div>
+                                
+                                {/* Top highlight */}
+                                {isSpeaking && (
+                                  <div className="absolute top-0 left-0 right-0 h-1 bg-white/70 rounded-t-full blur-[1px]"></div>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
                       </div>
+                    </div>
+
+                    {/* Default Circle Animation - Always visible */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      {/* Outer rotating circles */}
+                      <div className={`absolute w-72 h-72 rounded-full border-2 transition-all duration-500 ${
+                        isSpeaking 
+                          ? 'border-sky-400/60 border-dashed animate-spin-slow' 
+                          : 'border-sky-400/30 border-dashed animate-spin-slow'
+                      }`}></div>
+                      <div className={`absolute w-80 h-80 rounded-full border transition-all duration-500 ${
+                        isSpeaking 
+                          ? 'border-blue-300/50 border-dotted' 
+                          : 'border-blue-300/25 border-dotted'
+                      }`} style={{animation: 'spin 25s linear infinite reverse'}}></div>
+                      
+                      {/* Pulsing circles */}
+                      <div className={`w-64 h-64 rounded-full transition-all duration-300 ${
+                        isSpeaking 
+                          ? 'bg-sky-400/20 animate-ping' 
+                          : 'bg-sky-400/10 animate-ping-slow'
+                      }`} style={{animationDuration: '2s'}}></div>
+                      <div className={`absolute w-56 h-56 rounded-full transition-all duration-300 ${
+                        isSpeaking 
+                          ? 'bg-blue-400/15 animate-ping' 
+                          : 'bg-blue-400/8 animate-ping-slower'
+                      }`} style={{animationDuration: '3s', animationDelay: '0.5s'}}></div>
+                    </div>
+                    
+                    {/* Additional Ripple Effect when call is active */}
+                    {isCallActive && (
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className={`w-96 h-96 rounded-full border-2 transition-all duration-300 ${
+                          isSpeaking 
+                            ? 'border-sky-500/70 animate-ping' 
+                            : 'border-sky-500/30 animate-ping'
+                        }`} style={{animationDuration: '1.5s'}}></div>
+                        <div className={`absolute w-[500px] h-[500px] rounded-full border transition-all duration-300 ${
+                          isSpeaking 
+                            ? 'border-blue-500/60 animate-ping' 
+                            : 'border-blue-500/20 animate-ping'
+                        }`} style={{animationDuration: '2.5s', animationDelay: '0.3s'}}></div>
+                      </div>
+                    )}
+
+                    {/* Particle effects when speaking */}
+                    {isSpeaking && (
+                      <>
+                        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-sky-300 rounded-full animate-ping" style={{animationDuration: '1.5s'}}></div>
+                        <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-cyan-300 rounded-full animate-ping" style={{animationDuration: '2s', animationDelay: '0.3s'}}></div>
+                        <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-300 rounded-full animate-ping" style={{animationDuration: '1.8s', animationDelay: '0.6s'}}></div>
+                      </>
                     )}
                   </div>
                 </div>
@@ -586,6 +486,26 @@ export function Hero() {
                   </button>
                 </div>
               )}
+            </div>
+
+            {/* Talk to AI Button - Below Circle Animation */}
+            <div className="flex justify-center mt-8">
+              <Button
+                size="lg"
+                onClick={toggleCall}
+                className={`text-white font-semibold rounded-full shadow-lg transition-all duration-300 group 
+                  ${isCallActive
+                    ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-300/50'
+                    : 'bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-300/50'
+                  }`}
+              >
+                {isCallActive ? 'Stop AI Conversation' : 'Talk to AI Assistant'}
+                {isCallActive ? (
+                  <Square className="ml-2 h-4 w-4" />
+                ) : (
+                  <Mic className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                )}
+              </Button>
             </div>
           </div>
         </div>
@@ -611,84 +531,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* AI Demo Section (Updated with VAPI state) */}
-        <div
-          className="mt-20 animate-fade-in-up flex flex-col items-center justify-center"
-          style={{ animationDelay: "0.8s" }}
-        >
-          <div className="relative bg-gradient-to-r from-sky-100 via-sky-200 to-sky-300 rounded-3xl p-1 shadow-2xl overflow-hidden w-full max-w-md">
-            {/* Glowing background blobs */}
-            <div className="absolute -top-10 -left-10 w-36 h-36 bg-sky-300 rounded-full opacity-20 filter blur-3xl animate-pulse-slow"></div>
-            <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-sky-400 rounded-full opacity-15 filter blur-3xl animate-pulse-slow"></div>
-
-            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 border border-sky-200 text-center relative z-10 shadow-lg">
-              <h3 className="text-2xl font-semibold text-sky-600 mb-2">
-                AI Voice Assistant
-              </h3>
-
-              {/* Call Status Indicator */}
-              {isCallActive && (
-                <div className="mb-4 flex items-center justify-center space-x-2">
-                  <span className={`relative flex h-3 w-3`}>
-                    <span className={`absolute inline-flex h-full w-full rounded-full ${isSpeaking ? 'bg-green-400' : 'bg-sky-400'} opacity-75 ${isSpeaking ? 'animate-ping' : 'animate-ping-slow'}`}></span>
-                    <span className={`relative inline-flex rounded-full h-3 w-3 ${isSpeaking ? 'bg-green-500' : 'bg-sky-500'}`}></span>
-                  </span>
-                  <span className={`text-sm font-medium ${isSpeaking ? 'text-green-600' : 'text-sky-600'}`}>
-                    {isSpeaking ? 'Assistant Speaking' : 'Listening...'}
-                  </span>
-                </div>
-              )}
-              <div className="mb-4 px-3 py-1.5 bg-gray-100 rounded-full text-xs text-gray-600 inline-block min-h-[30px]">
-                {callStatus || (isCallActive ? (isSpeaking ? 'Assistant Speaking' : 'Listening...') : 'Click to start conversation')}
-              </div>
-
-
-              {/* Transcribed Voice Text */}
-              <p className="text-gray-700 italic mb-6 min-h-[60px] flex items-center justify-center">
-                "{transcript}"
-              </p>
-
-              {/* Mic Button with Animated Waveform */}
-              <div className="relative inline-flex items-center justify-center">
-                {/* Wave animation rings */}
-                {isCallActive && (
-                  <>
-                    <span className={`absolute w-40 h-40 rounded-full opacity-20 ${isSpeaking ? 'bg-green-400 animate-ping' : 'bg-sky-400 animate-ping-slow'}`}></span>
-                    <span className={`absolute w-28 h-28 rounded-full opacity-25 ${isSpeaking ? 'bg-green-300 animate-ping-slower' : 'bg-sky-300 animate-ping-slower'}`}></span>
-                  </>
-                )}
-
-                <button
-                  onClick={toggleCall}
-                  className={`relative z-10 p-6 text-white rounded-full shadow-xl transition-transform duration-300 flex items-center justify-center
-                    ${isCallActive 
-                      ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 ring-4 ring-red-300' 
-                      : 'bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 hover:scale-110'
-                    }`}
-                  aria-label={isCallActive ? 'End voice conversation' : 'Start voice conversation'}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    {isCallActive ? (
-                      // Stop icon (Square)
-                      <rect x="6" y="6" width="12" height="12" rx="1"/>
-                    ) : (
-                      // Microphone icon
-                      <>
-                        <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/>
-                        <path d="M19 11h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 14 0z"/>
-                      </>
-                    )}
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </section>
     </>

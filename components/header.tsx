@@ -31,13 +31,28 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent",
+        "fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent relative overflow-hidden",
         isScrolled
           ? "backdrop-blur-xl bg-white/90 border-sky-200/50 shadow-lg shadow-sky-100/50"
           : "bg-gradient-to-br from-white/80 via-sky-50/60 to-white/80 backdrop-blur-md"
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Animated Wave Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="wave-container">
+          <svg className="wave wave-1" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,60 Q150,40 300,60 T600,60 T900,60 T1200,60 T1500,60 T1800,60 T2100,60 T2400,60 V120 H0 Z" fill="rgba(56, 189, 248, 0.08)"/>
+          </svg>
+          <svg className="wave wave-2" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,70 Q200,50 400,70 T800,70 T1200,70 T1600,70 T2000,70 T2400,70 V120 H0 Z" fill="rgba(14, 165, 233, 0.06)"/>
+          </svg>
+          <svg className="wave wave-3" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,80 Q250,60 500,80 T1000,80 T1500,80 T2000,80 T2400,80 V120 H0 Z" fill="rgba(125, 211, 252, 0.05)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16">
           {/* Logo with neon-glow and floating orb */}
           <motion.div
@@ -195,7 +210,7 @@ export function Header() {
         </AnimatePresence>
       </div>
 
-      {/* Extra Neon Pulse Animation */}
+      {/* Styles for waves and animations */}
       <style jsx>{`
         @keyframes pulse-slow {
           0%, 100% { transform: scale(1); opacity: 0.25; }
@@ -203,6 +218,52 @@ export function Header() {
         }
         .animate-pulse-slow {
           animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        .wave-container {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          overflow: hidden;
+        }
+
+        .wave {
+          position: absolute;
+          width: 200%;
+          height: 100%;
+          bottom: 0;
+          left: 0;
+        }
+
+        .wave-1 {
+          animation: wave-animation 15s linear infinite;
+          opacity: 1;
+        }
+
+        .wave-2 {
+          animation: wave-animation 20s linear infinite;
+          animation-delay: -5s;
+          opacity: 0.8;
+        }
+
+        .wave-3 {
+          animation: wave-animation 25s linear infinite;
+          animation-delay: -10s;
+          opacity: 0.6;
+        }
+
+        @keyframes wave-animation {
+          0% {
+            transform: translateX(0) translateZ(0) scaleY(1);
+          }
+          50% {
+            transform: translateX(-25%) translateZ(0) scaleY(1.1);
+          }
+          100% {
+            transform: translateX(-50%) translateZ(0) scaleY(1);
+          }
         }
       `}</style>
     </header>
