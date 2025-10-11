@@ -228,7 +228,7 @@ export function Hero() {
     ]
 
     const deploymentFeatures = [
-        { icon: Zap, title: "Instant Setup", description: "Deploy your AI chatbot in minutes with our simple integration process" },
+        { icon: Zap, title: "Instant Setup", description: "Deploy your AI Voice Asisstant in minutes with our simple integration process" },
         { icon: Shield, title: "Enterprise Security", description: "Bank-level encryption and compliance with global security standards" },
         { icon: Clock, title: "24/7 Availability", description: "Your AI assistant never sleeps, providing round-the-clock customer support" },
         { icon: TrendingUp, title: "Scalable Solution", description: "Grow effortlessly from 10 to 10,000 conversations without any performance issues" },
@@ -555,7 +555,7 @@ export function Hero() {
                 </div>
             </section>
 
-            {/* Ready to Deploy Chatbot Section */}
+            {/* Ready to Deploy Voice Asisstant Section */}
             <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-sky-50 to-blue-50 relative overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-20 left-10 w-72 h-72 bg-sky-200/30 rounded-full blur-3xl"></div>
@@ -571,7 +571,7 @@ export function Hero() {
                         <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
                             Ready to Deploy{" "}
                             <span className="bg-gradient-to-r from-sky-600 via-sky-500 to-blue-500 bg-clip-text text-transparent">
-                                AI Chatbot
+                                AI Voice Asisstant
                             </span>
                         </h2>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
