@@ -170,7 +170,7 @@ export default function Contact() {
                   </div>
                   {/* Phone Input Field */}
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number <span className="text-red-500">*</span></Label>
+                    <Label htmlFor="phone">Phone Number </Label>
                     <Input 
                       id="phone" 
                       type="tel" 
