@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Sparkles, X, Mic, Square, Phone, MessageSquare, Zap, Shield, Clock, TrendingUp, Users, Award, ChevronDown } from "lucide-react"
+import { Sparkles, X, Mic, Square, Phone, MessageSquare, Zap, Shield, Clock, TrendingUp, Users, Award, ChevronDown, CheckCircle, ArrowRight } from "lucide-react"
 import { useEffect, useState, useRef } from 'react'
 import Vapi from '@vapi-ai/web'
 
@@ -227,6 +227,15 @@ export function Hero() {
         }
     ]
 
+    const deploymentFeatures = [
+        { icon: Zap, title: "Instant Setup", description: "Deploy your AI chatbot in minutes with our simple integration process" },
+        { icon: Shield, title: "Enterprise Security", description: "Bank-level encryption and compliance with global security standards" },
+        { icon: Clock, title: "24/7 Availability", description: "Your AI assistant never sleeps, providing round-the-clock customer support" },
+        { icon: TrendingUp, title: "Scalable Solution", description: "Grow effortlessly from 10 to 10,000 conversations without any performance issues" },
+        { icon: Users, title: "Multi-Channel Support", description: "Deploy across web, mobile, WhatsApp, SMS, and voice channels" },
+        { icon: Award, title: "Proven Results", description: "Join 5,000+ businesses achieving 85% automation rate" }
+    ]
+
     return (
         <>
             <style dangerouslySetInnerHTML={{
@@ -267,6 +276,10 @@ export function Hero() {
                 50% { background-position: 100% 50%; }
                 100% { background-position: 0% 50%; }
             }
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
 
             .wavy-background {
               position: absolute;
@@ -297,6 +310,9 @@ export function Hero() {
             .animate-gradient {
                 background-size: 400% 400%;
                 animation: gradient 10s ease infinite;
+            }
+            .animate-float {
+                animation: float 3s ease-in-out infinite;
             }
             `}} />
             
@@ -534,6 +550,92 @@ export function Hero() {
                                     <div className="mt-2 text-gray-700 font-medium text-lg relative z-10">{stat.label}</div>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Ready to Deploy Chatbot Section */}
+            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-sky-50 to-blue-50 relative overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-20 left-10 w-72 h-72 bg-sky-200/30 rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl"></div>
+                </div>
+
+                <div className="container mx-auto max-w-7xl relative z-10">
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center space-x-2 bg-sky-100 px-4 py-2 rounded-full text-sm text-sky-700 font-semibold mb-6">
+                            <MessageSquare className="h-4 w-4" />
+                            <span>Enterprise-Ready Solution</span>
+                        </div>
+                        <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
+                            Ready to Deploy{" "}
+                            <span className="bg-gradient-to-r from-sky-600 via-sky-500 to-blue-500 bg-clip-text text-transparent">
+                                AI Chatbot
+                            </span>
+                        </h2>
+                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                            Launch your intelligent AI assistant in minutes. No coding required. Full customization available.
+                        </p>
+                    </div>
+
+                    {/* Features Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                        {deploymentFeatures.map((feature, index) => (
+                            <div
+                                key={index}
+                                className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-sky-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group"
+                                style={{ animationDelay: `${index * 0.1}s` }}
+                            >
+                                <div className="w-14 h-14 bg-gradient-to-br from-sky-400 to-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform animate-float">
+                                    <feature.icon className="h-7 w-7 text-white" />
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* CTA Section */}
+                    <div className="bg-gradient-to-r from-sky-600 via-sky-500 to-blue-500 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-sky-400/20 to-blue-400/20 backdrop-blur-sm"></div>
+                        <div className="relative z-10">
+                            <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+                                Start Your Free Trial Today
+                            </h3>
+                            <p className="text-xl text-sky-50 mb-8 max-w-2xl mx-auto">
+                                Join thousands of businesses automating customer service with AI. No credit card required.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                <Button
+                                    size="lg"
+                                    className="bg-white text-sky-600 hover:bg-gray-50 rounded-full shadow-xl font-bold px-8 py-6 text-lg transition-all hover:scale-105"
+                                >
+                                    Get Started Free
+                                    <ArrowRight className="ml-2 h-5 w-5" />
+                                </Button>
+                                <Button
+                                    size="lg"
+                                    variant="outline"
+                                    className="bg-transparent text-white border-2 border-white hover:bg-white/10 rounded-full font-semibold px-8 py-6 text-lg transition-all"
+                                >
+                                    Schedule Demo
+                                </Button>
+                            </div>
+                            <div className="mt-8 flex items-center justify-center gap-8 text-sky-50">
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle className="h-5 w-5" />
+                                    <span className="text-sm font-medium">Free 14-day trial</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle className="h-5 w-5" />
+                                    <span className="text-sm font-medium">No credit card</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle className="h-5 w-5" />
+                                    <span className="text-sm font-medium">Cancel anytime</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
