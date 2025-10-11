@@ -189,7 +189,7 @@ export default function Contact() {
                 
                 <div className="space-y-2">
                   <Label htmlFor="inquiry">Inquiry Type <span className="text-red-500">*</span></Label>
-                  <Select value={form.inquiry} onValueChange={handleSelectChange} > 
+                  <Select value={form.inquiry} onValueChange={handleSelectChange} required > 
                     <SelectTrigger>
                       <SelectValue placeholder="Select inquiry type" />
                     </SelectTrigger>
