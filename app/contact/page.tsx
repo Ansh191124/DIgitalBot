@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState, ChangeEvent } from "react"
+// Assuming these components are available in your project structure
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -9,7 +10,18 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Mail, Phone, MapPin, Clock, MessageCircle, ArrowRight } from "lucide-react"
+import { Mail, Phone, MapPin, MessageCircle, ArrowRight } from "lucide-react"
+
+// Define the shape of the form state for clarity and type safety
+interface ContactFormState {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string; 
+  company: string;
+  inquiry: string;
+  message: string;
+}
 
 const contactInfo = [
   {
@@ -27,19 +39,20 @@ const contactInfo = [
     action: "tel:+91-78925-18414",
   },
   {
-    icon: MapPin,
+   icon: MapPin,
     title: "Visit Us",
-    // The description field now correctly uses a string, with newlines and extra spaces removed or consolidated.
-    description: "Our headquarters: Behind Manyata Tech Park, Hebbal, Bengaluru – 560077, Karnataka, India",
+    // ALTERNATIVE FIX: Using <br /> to force a line break in HTML rendering
+    description: "USA: 300 Quail Ridge Dr NE, ADA, MI 49301<br />India: Behind Manyata Tech Park, Hebbal, Bangalore 560077",
     action: "#",
   },
 ];
 
 export default function Contact() {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<ContactFormState>({
     firstName: "",
     lastName: "",
     email: "",
+    phone: "", // Initialize phone field
     company: "",
     inquiry: "",
     message: ""
@@ -48,18 +61,33 @@ export default function Contact() {
   const [success, setSuccess] = useState("")
   const [error, setError] = useState("")
 
-  const handleChange = (e: { target: { id: any; value: any } }) => {
+  // **FIXED: Correctly typed handleChange using React.ChangeEvent**
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target
-    setForm({ ...form, [id]: value })
+    // Use type assertion here to tell TypeScript the string 'id' is a key in ContactFormState
+    setForm({ ...form, [id as keyof ContactFormState]: value })
+  }
+  
+  // Custom handler for Select component (Inquiry Type)
+  const handleSelectChange = (value: string) => {
+    setForm({ ...form, inquiry: value });
   }
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setSuccess("")
-    setError("") // Clear previous error
+    setError("")
+
+    // Client-side validation for mandatory fields: Phone, Email, and Inquiry Type
+    if (!form.phone || !form.email || !form.inquiry) {
+      setError("Please fill in all mandatory fields: Phone, Email, and Inquiry Type.")
+      setLoading(false)
+      return;
+    }
+
     try {
-      // *** MODIFIED: Target a local API route for serverless/backend mail handling ***
+      // Target a local API route for serverless/backend mail handling
       const res = await fetch("/api/contact", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -75,6 +103,7 @@ export default function Contact() {
           firstName: "",
           lastName: "",
           email: "",
+          phone: "",
           company: "",
           inquiry: "",
           message: ""
@@ -116,7 +145,7 @@ export default function Contact() {
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-sky-800">Send us a message</CardTitle>
               <CardDescription className="text-sky-700/80">
-                Fill out the form below and we’ll get back to you soon.
+                Fill out the form below and we’ll get back to you soon. (<span className="text-red-500">*</span> indicates required fields)
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -126,24 +155,41 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="John" value={form.firstName} onChange={handleChange} required />
+                    <Input id="firstName" placeholder="" value={form.firstName} onChange={handleChange} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Doe" value={form.lastName} onChange={handleChange} />
+                    <Input id="lastName" placeholder="" value={form.lastName} onChange={handleChange} />
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="john@company.com" value={form.email} onChange={handleChange} required />
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email <span className="text-red-500">*</span></Label>
+                    <Input id="email" type="email" placeholder="" value={form.email} onChange={handleChange} required />
+                  </div>
+                  {/* Phone Input Field */}
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone Number <span className="text-red-500">*</span></Label>
+                    <Input 
+                      id="phone" 
+                      type="tel" 
+                      placeholder="" 
+                      value={form.phone} 
+                      onChange={handleChange} 
+                      required 
+                    />
+                  </div>
                 </div>
+
                 <div className="space-y-2">
                   <Label htmlFor="company">Company</Label>
-                  <Input id="company" placeholder="Your Company" value={form.company} onChange={handleChange} />
+                  <Input id="company" placeholder="" value={form.company} onChange={handleChange} />
                 </div>
+                
                 <div className="space-y-2">
-                  <Label htmlFor="inquiry">Inquiry Type</Label>
-                  <Select value={form.inquiry} onValueChange={(value) => setForm({ ...form, inquiry: value })}>
+                  <Label htmlFor="inquiry">Inquiry Type <span className="text-red-500">*</span></Label>
+                  <Select value={form.inquiry} onValueChange={handleSelectChange} required> 
                     <SelectTrigger>
                       <SelectValue placeholder="Select inquiry type" />
                     </SelectTrigger>
@@ -156,6 +202,7 @@ export default function Contact() {
                     </SelectContent>
                   </Select>
                 </div>
+
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
                   <Textarea
@@ -164,7 +211,6 @@ export default function Contact() {
                     className="min-h-[120px]"
                     value={form.message}
                     onChange={handleChange}
-                    required
                   />
                 </div>
                 <Button
@@ -199,7 +245,10 @@ export default function Contact() {
                       </div>
                       <div>
                         <h3 className="font-semibold text-sky-800 mb-1">{info.title}</h3>
-                        <p className="text-sm text-gray-600 mb-2">{info.description}</p>
+                        <p 
+  className="text-sm text-gray-600 mb-2" 
+  dangerouslySetInnerHTML={{ __html: info.description }} 
+/>
                         <a href={info.action} className="text-sm text-blue-700 hover:text-indigo-700 transition-colors">
                           {info.contact}
                         </a>
