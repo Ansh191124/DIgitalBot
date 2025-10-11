@@ -177,7 +177,7 @@ export default function Contact() {
                       placeholder="" 
                       value={form.phone} 
                       onChange={handleChange} 
-                      required 
+                    
                     />
                   </div>
                 </div>
@@ -189,7 +189,7 @@ export default function Contact() {
                 
                 <div className="space-y-2">
                   <Label htmlFor="inquiry">Inquiry Type <span className="text-red-500">*</span></Label>
-                  <Select value={form.inquiry} onValueChange={handleSelectChange} required> 
+                  <Select value={form.inquiry} onValueChange={handleSelectChange} > 
                     <SelectTrigger>
                       <SelectValue placeholder="Select inquiry type" />
                     </SelectTrigger>
