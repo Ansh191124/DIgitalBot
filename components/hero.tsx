@@ -1,9 +1,8 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Sparkles, X, Mic, Square } from "lucide-react"
+import { Sparkles, X, Mic, Square, Phone, MessageSquare, Zap, Shield, Clock, TrendingUp, Users, Award, ChevronDown } from "lucide-react"
 import { useEffect, useState, useRef } from 'react'
-import { useRouter } from "next/navigation"
 import Vapi from '@vapi-ai/web'
 
 // Lottie type declarations
@@ -33,37 +32,38 @@ declare global {
 
 export function Hero() {
     const stats = [
-        { label: "Uptime Guarantee", value: 99.9, suffix: "%" },
-        { label: "Messages Processed", value: 50, suffix: "M+" },
-        { label: "AI Support", value: 24, suffix: "/7" },
+        { label: "Uptime Guarantee", value: 99.9, suffix: "%", formatter: (val: number) => val.toFixed(1) },
+        { label: "Messages Processed", value: 50, suffix: "M+", formatter: (val: number) => val.toLocaleString() },
+        { label: "AI Support", value: 24, suffix: "/7", formatter: (val: number) => val.toString() },
     ]
 
     const [counts, setCounts] = useState([0, 0, 0])
     const [showVideo, setShowVideo] = useState(false)
-    const router = useRouter()
-
-    // VAPI State and Ref
     const vapiRef = useRef<Vapi | null>(null)
     const [isCallActive, setIsCallActive] = useState(false)
     const [isSpeaking, setIsSpeaking] = useState(false)
-    const [transcript, setTranscript] = useState("Hello! I'm your AI assistant. How can I help you today?")
+    const [transcript, setTranscript] = useState("Hello! I'm your AI assistant. Click the microphone to start a conversation.")
     const [callStatus, setCallStatus] = useState("")
     const lottieAnimationRef = useRef<LottieAnimation | null>(null)
+    const [isContentVisible, setIsContentVisible] = useState(false)
+    const [showFAQ, setShowFAQ] = useState<number | null>(null)
 
-    // VAPI Initialization and Event Listeners
     useEffect(() => {
-        const vapiInstance = new Vapi('b8dd64f9-40ef-4be0-9683-4766906634d8')
+        setIsContentVisible(true)
+    }, [])
+
+    // VAPI Initialization
+    useEffect(() => {
+        const vapiInstance = new Vapi('00119fad-8530-413f-9699-e47cada57939')
         vapiRef.current = vapiInstance
 
         vapiInstance.on('call-start', () => {
-            console.log('Call started')
             setIsCallActive(true)
             setTranscript("Listening for your request...")
             setCallStatus('Call active - Listening')
         })
 
         vapiInstance.on('call-end', () => {
-            console.log('Call ended')
             setIsCallActive(false)
             setIsSpeaking(false)
             setTranscript("Hello! I'm your AI assistant. Click the microphone to start a conversation.")
@@ -71,13 +71,11 @@ export function Hero() {
         })
 
         vapiInstance.on('speech-start', () => {
-            console.log('Speech started')
             setIsSpeaking(true)
             setCallStatus('Assistant speaking...')
         })
 
         vapiInstance.on('speech-end', () => {
-            console.log('Speech ended')
             setIsSpeaking(false)
             if (isCallActive) {
                 setCallStatus('Call active - Listening')
@@ -107,7 +105,6 @@ export function Hero() {
 
     const toggleCall = async () => {
         if (!vapiRef.current) {
-            console.error('VAPI not initialized')
             setCallStatus('Initialization failed.')
             return
         }
@@ -122,7 +119,6 @@ export function Hero() {
         } else {
             try {
                 setCallStatus('Requesting microphone...')
-
                 try {
                     await navigator.mediaDevices.getUserMedia({ audio: true })
                 } catch (err) {
@@ -131,10 +127,8 @@ export function Hero() {
                     alert('Please allow microphone access to use the voice assistant')
                     return
                 }
-
                 setCallStatus('Starting call...')
-                await vapiRef.current.start('c6f95947-e630-41e0-895b-56edc3c395b3')
-
+                await vapiRef.current.start('9ca19724-1f6c-48d1-8c62-a6107d585592')
             } catch (error) {
                 console.error('Error starting call:', error)
                 setCallStatus(`Failed: ${error instanceof Error ? error.message : 'Unknown error'}`)
@@ -142,7 +136,7 @@ export function Hero() {
         }
     }
 
-    // Lottie Animation Initialization
+    // Lottie Animation
     useEffect(() => {
         const script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js';
@@ -173,7 +167,6 @@ export function Hero() {
         };
     }, []);
 
-    // Update animation speed based on speaking state
     useEffect(() => {
         if (lottieAnimationRef.current) {
             if (isSpeaking) {
@@ -184,15 +177,17 @@ export function Hero() {
         }
     }, [isSpeaking]);
 
+    // Animated Counter
     useEffect(() => {
+        const intervals: number[] = []
         stats.forEach((stat, index) => {
             let start = 0
             const end = stat.value
             const duration = 2000
-            const stepTime = Math.floor(duration / end)
+            const stepTime = Math.floor(duration / (end / (index === 0 ? 0.1 : 1))) || 50
 
             const timer = setInterval(() => {
-                start += 1
+                start += (index === 0 ? 0.1 : 1)
                 if (start >= end) {
                     start = end
                     clearInterval(timer)
@@ -203,8 +198,34 @@ export function Hero() {
                     return newCounts
                 })
             }, stepTime)
+            intervals.push(timer as unknown as number)
         })
+
+        return () => intervals.forEach(clearInterval)
     }, [])
+
+    const faqs = [
+        {
+            q: "What is an AI voice assistant and how does it work?",
+            a: "An AI voice assistant is an intelligent conversational system that uses natural language processing and machine learning to understand and respond to customer queries in real-time. It works by analyzing speech patterns, context, and intent to provide accurate, human-like responses 24/7."
+        },
+        {
+            q: "How can AI voice assistants improve customer service?",
+            a: "AI voice assistants enhance customer service by providing instant responses, handling multiple conversations simultaneously, reducing wait times, and offering consistent support around the clock. They can resolve common queries, schedule appointments, and seamlessly escalate complex issues to human agents when needed."
+        },
+        {
+            q: "Is the AI voice assistant secure for handling customer data?",
+            a: "Yes, our AI voice assistant employs enterprise-grade security measures including end-to-end encryption, compliance with GDPR and industry standards, regular security audits, and secure data storage protocols to protect all customer interactions and sensitive information."
+        },
+        {
+            q: "Can the AI voice assistant integrate with existing business systems?",
+            a: "Absolutely. Our AI voice assistant offers seamless integration with popular CRM systems, help desk software, e-commerce platforms, and custom APIs. This ensures smooth data flow and enables the assistant to access relevant customer information for personalized interactions."
+        },
+        {
+            q: "What industries benefit most from AI voice assistants?",
+            a: "AI voice assistants benefit various industries including healthcare, e-commerce, banking, hospitality, real estate, education, and telecommunications. Any business that values customer engagement, wants to reduce operational costs, and aims to provide superior customer experiences can benefit significantly."
+        }
+    ]
 
     return (
         <>
@@ -224,8 +245,29 @@ export function Hero() {
               50% { transform: scale(1.05); opacity: 0.1; }
               100% { transform: scale(0.7); opacity: 0.25; }
             }
+            @keyframes wave-move {
+              0% { transform: translateX(0) translateZ(0); }
+              100% { transform: translateX(-50%) translateZ(0); }
+            }
+            @keyframes spin {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+            @keyframes sound-bar-pulse {
+              0% { transform: scaleY(0.6); }
+              50% { transform: scaleY(1.0); }
+              100% { transform: scaleY(0.6); }
+            }
+            @keyframes fade-in-up {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes gradient {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
 
-            /* Wave Animation Styles */
             .wavy-background {
               position: absolute;
               width: 100%;
@@ -235,7 +277,6 @@ export function Hero() {
               overflow: hidden;
               pointer-events: none;
             }
-
             .wave-layer {
               position: absolute;
               width: 200%;
@@ -243,55 +284,45 @@ export function Hero() {
               top: 0;
               left: 0;
             }
-
-            .wave-layer-1 {
-              animation: wave-move 15s linear infinite;
-              opacity: 0.4;
+            .wave-layer-1 { animation: wave-move 15s linear infinite; opacity: 0.4; }
+            .wave-layer-2 { animation: wave-move 20s linear infinite; animation-delay: -5s; opacity: 0.3; }
+            .wave-layer-3 { animation: wave-move 25s linear infinite; animation-delay: -10s; opacity: 0.2; }
+            .animate-spin-slow { animation: spin 20s linear infinite; }
+            .animate-pulse-slow { animation: pulse-slow 5s infinite ease-in-out; }
+            .animate-ping-slow { animation: ping-slow 3s infinite ease-in-out; }
+            .animate-ping-slower { animation: ping-slower 4s infinite ease-in-out; }
+            .animate-fade-in-up-1 { animation: fade-in-up 1s ease-out forwards; }
+            .animate-fade-in-up-2 { animation: fade-in-up 1s ease-out 0.2s forwards; }
+            .animate-fade-in-up-3 { animation: fade-in-up 1s ease-out 0.4s forwards; }
+            .animate-gradient {
+                background-size: 400% 400%;
+                animation: gradient 10s ease infinite;
             }
+            `}} />
+            
+            {/* SEO Schema Markup */}
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "SoftwareApplication",
+                    "name": "DigitalBot.ai - AI Voice Assistant",
+                    "applicationCategory": "BusinessApplication",
+                    "description": "Transform customer service with intelligent AI voice assistants. 24/7 automated support, natural conversations, and seamless integration.",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    },
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": "4.9",
+                        "ratingCount": "2847"
+                    }
+                })
+            }} />
 
-            .wave-layer-2 {
-              animation: wave-move 20s linear infinite;
-              animation-delay: -5s;
-              opacity: 0.3;
-            }
-
-            .wave-layer-3 {
-              animation: wave-move 25s linear infinite;
-              animation-delay: -10s;
-              opacity: 0.2;
-            }
-
-            @keyframes wave-move {
-              0% {
-                transform: translateX(0) translateZ(0);
-              }
-              100% {
-                transform: translateX(-50%) translateZ(0);
-              }
-            }
-
-            .animate-spin-slow {
-              animation: spin 20s linear infinite;
-            }
-
-            @keyframes spin {
-              from { transform: rotate(0deg); }
-              to { transform: rotate(360deg); }
-            }
-
-            @keyframes sound-bar-pulse {
-              0%, 100% { 
-                transform: scaleY(0.7);
-                opacity: 0.9;
-              }
-              50% { 
-                transform: scaleY(1.3);
-                opacity: 1;
-              }
-            }
-          `}} />
-            <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100">
-                {/* Wavy Blue Background Animation */}
+            <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100 min-h-screen" itemScope itemType="https://schema.org/WebPage">
+                {/* Wavy Background */}
                 <div className="wavy-background">
                     <svg className="wave-layer wave-layer-1" viewBox="0 0 1200 600" preserveAspectRatio="none">
                         <path d="M0,300 Q150,200 300,300 T600,300 T900,300 T1200,300 T1500,300 T1800,300 T2100,300 T2400,300 V600 H0 Z" fill="rgba(56, 189, 248, 0.3)" />
@@ -304,60 +335,44 @@ export function Hero() {
                     </svg>
                 </div>
 
-                {/* Subtle soft background glow */}
+                {/* Background glows */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-sky-200 rounded-full opacity-15 blur-3xl"></div>
                     <div className="absolute bottom-[-15%] right-[-10%] w-[600px] h-[600px] bg-blue-200 rounded-full opacity-10 blur-3xl"></div>
                     <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-sky-100 rounded-full opacity-20 blur-2xl"></div>
                 </div>
 
-                <div className="container mx-auto relative z-10">
+                <div className={`container mx-auto relative z-10 transition-opacity duration-1000 ${isContentVisible ? 'opacity-100' : 'opacity-0'}`}>
                     {/* Top Badge */}
-                    <div className="flex justify-center mb-8 animate-fade-in-up">
+                    <div className="flex justify-center mb-8 animate-fade-in-up-1">
                         <div className="inline-flex items-center space-x-2 bg-white/70 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-md border border-sky-200 shadow-sm">
                             <Sparkles className="h-4 w-4 text-sky-500 animate-pulse" />
-                            <span className="font-medium">Introducing the Future of AI Assistants</span>
+                            <span className="font-medium">AI-Powered Customer Engagement Platform</span>
                         </div>
                     </div>
 
-                    {/* Hero Split: Changed flex-col-reverse to flex-col */}
-                    <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-8">
-                        {/* Left - Text/Title (First child on mobile, left on desktop) */}
-                        <div className="lg:w-1/2 text-center lg:text-left animate-fade-in-up">
-                            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">
-                                Transform Customer Service with{" "}
-                                <span className="bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent animate-gradient">
-                                    AI Voice Assistant
-                                </span>
-                            </h1>
-                            <p className="text-base sm:text-lg text-gray-700 mb-6 max-w-lg">
-                                DigitalBot.ai empowers your business with intelligent conversational AI — automating support, improving engagement, and delivering 24/7 futuristic customer experiences.
-                            </p>
-                        </div>
-
-                        {/* Right - Lottie Animation Visual (Second child on mobile, right on desktop) */}
-                        <div className="lg:w-1/2 relative animate-fade-in-up">
-                            <div className="relative w-full h-64 sm:h-80 lg:h-96 flex items-center justify-center">
+                    {/* Centered Voice Assistant */}
+                    <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto animate-fade-in-up-2">
+                        {/* Lottie Animation Visual - Centered */}
+                        <div className="relative flex items-center justify-center mb-8">
+                            <div className="relative w-full h-80 sm:h-96 lg:h-[400px] flex items-center justify-center">
                                 {!showVideo ? (
                                     <div className="relative w-full h-full flex items-center justify-center">
-                                        {/* Lottie AI Voice Assistant Animation */}
-                                        <div className="relative w-full max-w-2xl h-full flex items-center justify-center">
-                                            {/* Backdrop glow effects */}
+                                        <div className="relative w-full max-w-xl h-full flex items-center justify-center">
+                                            {/* Backdrop glow */}
                                             <div className="absolute inset-0 flex items-center justify-center">
-                                                <div className={`w-96 h-96 rounded-full transition-all duration-500 ${
+                                                <div className={`w-80 h-80 rounded-full transition-all duration-500 ${
                                                     isSpeaking
                                                         ? 'bg-gradient-to-r from-sky-500/30 via-blue-500/30 to-sky-500/30 blur-3xl'
                                                         : 'bg-gradient-to-r from-sky-400/20 via-blue-400/20 to-sky-400/20 blur-3xl'
                                                     }`}></div>
                                             </div>
 
-                                            {/* Lottie Animation Container */}
-                                            <div className={`relative transition-all duration-500 ${
-                                                isSpeaking ? 'scale-110' : 'scale-105'
-                                                }`}>
+                                            {/* Lottie Container */}
+                                            <div className={`relative transition-all duration-500 ${isSpeaking ? 'scale-110' : 'scale-105'}`}>
                                                 <div
                                                     id="lottie-animation"
-                                                    className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96"
+                                                    className="w-64 h-64 sm:w-80 sm:h-80"
                                                     style={{
                                                         filter: isSpeaking
                                                             ? 'hue-rotate(0deg) saturate(1.3) brightness(1.1)'
@@ -365,9 +380,9 @@ export function Hero() {
                                                     }}
                                                 ></div>
 
-                                                {/* Sound Bar Visualizer in the center */}
+                                                {/* Sound Bar Visualizer */}
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <div className="flex items-center justify-center gap-1 h-16 sm:h-20">
+                                                    <div className="flex items-end justify-center gap-1 h-16 sm:h-20">
                                                         {[...Array(12)].map((_, i) => {
                                                             const centerIndex = 5.5;
                                                             const distanceFromCenter = Math.abs(i - centerIndex);
@@ -386,7 +401,7 @@ export function Hero() {
                                                                         }`}
                                                                     style={{
                                                                         height: isSpeaking
-                                                                            ? `${maxHeight}px`
+                                                                            ? `${Math.random() * (maxHeight - 20) + 20}px`
                                                                             : isCallActive
                                                                                 ? `${minHeight + (maxHeight - minHeight) * 0.4}px`
                                                                                 : `${minHeight + (maxHeight - minHeight) * 0.2}px`,
@@ -397,69 +412,43 @@ export function Hero() {
                                                                                 : 'none',
                                                                         animationDelay: `${i * 0.05}s`
                                                                     }}
-                                                                >
-                                                                    {/* Inner glow */}
-                                                                    <div className={`absolute inset-0 rounded-full ${
-                                                                        isSpeaking
-                                                                            ? 'bg-gradient-to-t from-white/40 via-white/20 to-transparent blur-[2px]'
-                                                                            : 'bg-white/10 blur-[1px]'
-                                                                        }`}></div>
-
-                                                                    {/* Top highlight */}
-                                                                    {isSpeaking && (
-                                                                        <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1 bg-white/70 rounded-t-full blur-[1px]"></div>
-                                                                    )}
-                                                                </div>
+                                                                ></div>
                                                             );
                                                         })}
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            {/* Default Circle Animation - Always visible */}
+                                            {/* Circle animations */}
                                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                                {/* Outer rotating circles */}
-                                                <div className={`absolute w-56 sm:w-72 h-56 sm:h-72 rounded-full border-2 transition-all duration-500 ${
-                                                    isSpeaking
-                                                        ? 'border-sky-400/60 border-dashed animate-spin-slow'
-                                                        : 'border-sky-400/30 border-dashed animate-spin-slow'
+                                                <div className={`absolute w-56 sm:w-64 h-56 sm:h-64 rounded-full border-2 transition-all duration-500 ${
+                                                    isSpeaking ? 'border-sky-400/60 border-dashed animate-spin-slow' : 'border-sky-400/30 border-dashed animate-spin-slow'
                                                     }`}></div>
-                                                <div className={`absolute w-64 sm:w-80 h-64 sm:h-80 rounded-full border transition-all duration-500 ${
-                                                    isSpeaking
-                                                        ? 'border-blue-300/50 border-dotted'
-                                                        : 'border-blue-300/25 border-dotted'
+                                                <div className={`absolute w-64 sm:w-72 h-64 sm:h-72 rounded-full border transition-all duration-500 ${
+                                                    isSpeaking ? 'border-blue-300/50 border-dotted' : 'border-blue-300/25 border-dotted'
                                                     }`} style={{ animation: 'spin 25s linear infinite reverse' }}></div>
 
-                                                {/* Pulsing circles */}
-                                                <div className={`w-48 sm:w-64 h-48 sm:h-64 rounded-full transition-all duration-300 ${
-                                                    isSpeaking
-                                                        ? 'bg-sky-400/20 animate-ping'
-                                                        : 'bg-sky-400/10 animate-ping-slow'
+                                                <div className={`w-48 sm:w-56 h-48 sm:h-56 rounded-full transition-all duration-300 ${
+                                                    isSpeaking ? 'bg-sky-400/20 animate-ping' : 'bg-sky-400/10 animate-ping-slow'
                                                     }`} style={{ animationDuration: '2s' }}></div>
-                                                <div className={`absolute w-40 sm:w-56 h-40 sm:h-56 rounded-full transition-all duration-300 ${
-                                                    isSpeaking
-                                                        ? 'bg-blue-400/15 animate-ping'
-                                                        : 'bg-blue-400/8 animate-ping-slower'
+                                                <div className={`absolute w-40 sm:w-48 h-40 sm:h-48 rounded-full transition-all duration-300 ${
+                                                    isSpeaking ? 'bg-blue-400/15 animate-ping' : 'bg-blue-400/8 animate-ping-slower'
                                                     }`} style={{ animationDuration: '3s', animationDelay: '0.5s' }}></div>
                                             </div>
 
-                                            {/* Additional Ripple Effect when call is active */}
+                                            {/* Active call ripples */}
                                             {isCallActive && (
                                                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                                    <div className={`w-72 sm:w-96 h-72 sm:h-96 rounded-full border-2 transition-all duration-300 ${
-                                                        isSpeaking
-                                                            ? 'border-sky-500/70 animate-ping'
-                                                            : 'border-sky-500/30 animate-ping'
+                                                    <div className={`absolute w-72 sm:w-80 h-72 sm:h-80 rounded-full border-2 transition-all duration-300 ${
+                                                        isSpeaking ? 'border-sky-500/70 animate-ping' : 'border-sky-500/30 animate-ping'
                                                         }`} style={{ animationDuration: '1.5s' }}></div>
-                                                    <div className={`absolute w-80 sm:w-[500px] h-80 sm:h-[500px] rounded-full border transition-all duration-300 ${
-                                                        isSpeaking
-                                                            ? 'border-blue-500/60 animate-ping'
-                                                            : 'border-blue-500/20 animate-ping'
+                                                    <div className={`absolute w-80 sm:w-96 h-80 sm:h-96 rounded-full border transition-all duration-300 ${
+                                                        isSpeaking ? 'border-blue-500/60 animate-ping' : 'border-blue-500/20 animate-ping'
                                                         }`} style={{ animationDuration: '2.5s', animationDelay: '0.3s' }}></div>
                                                 </div>
                                             )}
 
-                                            {/* Particle effects when speaking */}
+                                            {/* Particles when speaking */}
                                             {isSpeaking && (
                                                 <>
                                                     <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-sky-300 rounded-full animate-ping" style={{ animationDuration: '1.5s' }}></div>
@@ -470,69 +459,210 @@ export function Hero() {
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className="relative w-full h-full">
+                                    <div className="relative w-full h-full rounded-3xl shadow-2xl">
                                         <iframe
                                             className="w-full h-full rounded-3xl"
                                             src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-                                            title="AI Demo Video"
+                                            title="AI Voice Assistant Demo"
                                             frameBorder="0"
                                             allow="autoplay; encrypted-media"
                                             allowFullScreen
                                         ></iframe>
                                         <button
                                             onClick={() => setShowVideo(false)}
-                                            className="absolute top-3 right-3 bg-white/80 text-sky-700 hover:bg-white rounded-full p-2 shadow-lg transition-all"
+                                            className="absolute top-3 right-3 bg-white/80 text-sky-700 hover:bg-white rounded-full p-2 shadow-xl transition-all z-20"
+                                            aria-label="Close video"
                                         >
                                             <X className="h-5 w-5" />
                                         </button>
                                     </div>
                                 )}
                             </div>
+                        </div>
 
-                            {/* Talk to AI Button - Below Circle Animation */}
-                            <div className="flex justify-center mt-8">
-                                <Button
-                                    size="lg"
-                                    onClick={toggleCall}
-                                    className={`text-white font-semibold rounded-full shadow-lg transition-all duration-300 group 
-                  ${isCallActive
-                                            ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-300/50'
-                                            : 'bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-300/50'
-                                        }`}
-                                >
-                                    {isCallActive ? 'Stop AI Conversation' : 'Talk to AI Assistant'}
-                                    {isCallActive ? (
-                                        <Square className="ml-2 h-4 w-4" />
-                                    ) : (
-                                        <Mic className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-                                    )}
-                                </Button>
-                            </div>
+                        {/* Transcript Display - Below Animation */}
+                        <div className={`w-full max-w-2xl p-4 rounded-2xl border transition-all duration-300 mb-6 ${isCallActive ? 'bg-white/80 border-sky-300 shadow-lg' : 'bg-white/60 border-gray-200'}`}>
+                            <div className="text-xs font-semibold uppercase text-sky-600 mb-2">{callStatus || "Ready to assist"}</div>
+                            <p className="text-sm sm:text-base text-gray-800 font-medium transition-colors duration-500">{transcript}</p>
+                        </div>
+
+                        {/* Action Buttons - Below Transcript */}
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <Button
+                                size="lg"
+                                onClick={toggleCall}
+                                className={`text-white font-semibold rounded-full shadow-xl transition-all duration-300 group ${isCallActive
+                                        ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-400/50 transform hover:scale-105'
+                                        : 'bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-400/50 transform hover:scale-105'
+                                    } flex items-center`}
+                                aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant"}
+                            >
+                                {isCallActive ? 'Stop Conversation' : 'Start Conversation'}
+                                {isCallActive ? (
+                                    <Square className="ml-2 h-4 w-4" />
+                                ) : (
+                                    <Mic className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                                )}
+                            </Button>
+                            <Button
+                                size="lg"
+                                variant="outline"
+                                onClick={() => setShowVideo(true)}
+                                className="text-sky-600 bg-white/70 border-sky-300 hover:bg-sky-50 rounded-full shadow-lg transition-transform hover:scale-105"
+                                aria-label="Watch demo video"
+                            >
+                                Watch Demo
+                            </Button>
                         </div>
                     </div>
 
                     {/* Stats Section */}
-                    <div className="mt-20 relative z-10 animate-fade-in-up">
+                    <div className="mt-20 relative z-10">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                             {stats.map((stat, i) => (
                                 <div
                                     key={i}
-                                    className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-sky-200 hover:scale-105 transition-transform duration-500 relative overflow-hidden"
+                                    className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-sky-200 transition-transform duration-500 hover:scale-[1.02] relative overflow-hidden"
                                 >
                                     <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-30 filter blur-3xl animate-pulse-slow"></div>
-                                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-20 filter blur-3xl animate-pulse-slow"></div>
+                                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-20 filter blur-3xl animate-pulse-slow" style={{ animationDelay: '-1s' }}></div>
 
-                                    <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient">
-                                        {i === 0 ? counts[i].toFixed(1) : counts[i]}
+                                    <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient relative z-10">
+                                        {stats[i].formatter(counts[i])}
                                         {stat.suffix}
                                     </div>
-                                    <div className="mt-2 text-gray-700 font-medium text-lg">{stat.label}</div>
+                                    <div className="mt-2 text-gray-700 font-medium text-lg relative z-10">{stat.label}</div>
                                 </div>
                             ))}
                         </div>
                     </div>
+                </div>
+            </section>
 
+            {/* FAQ Section with Schema */}
+            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white" itemScope itemType="https://schema.org/FAQPage">
+                <div className="container mx-auto max-w-4xl">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                        <p className="text-lg text-gray-600">Everything you need to know about AI voice assistants</p>
+                    </div>
 
+                    <div className="space-y-4">
+                        {faqs.map((faq, index) => (
+                            <div key={index} className="border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                                <button
+                                    onClick={() => setShowFAQ(showFAQ === index ? null : index)}
+                                    className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition-colors"
+                                    aria-expanded={showFAQ === index}
+                                >
+                                    <h3 className="text-lg font-semibold text-gray-900 pr-4" itemProp="name">{faq.q}</h3>
+                                    <ChevronDown className={`h-5 w-5 text-sky-600 flex-shrink-0 transition-transform duration-300 ${showFAQ === index ? 'rotate-180' : ''}`} />
+                                </button>
+                                {showFAQ === index && (
+                                    <div className="px-6 pb-6 bg-gray-50" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                                        <p className="text-gray-700 leading-relaxed" itemProp="text">{faq.a}</p>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* SEO Content Section */}
+            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50">
+                <div className="container mx-auto max-w-5xl">
+                    <article className="prose prose-lg max-w-none">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Revolutionizing Business Communication with AI Voice Assistants</h2>
+                        
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            In today's fast-paced digital landscape, businesses are constantly seeking innovative solutions to enhance customer engagement and streamline operations. AI voice assistants have emerged as a transformative technology that bridges the gap between traditional customer service and modern expectations. These intelligent systems leverage advanced natural language processing, machine learning algorithms, and conversational AI to deliver exceptional customer experiences while significantly reducing operational costs.
+                        </p>
+
+                        <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Understanding AI Voice Technology</h3>
+                        
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            AI voice assistants represent a quantum leap in customer interaction technology. Unlike traditional automated phone systems with rigid menus and limited options, modern AI voice assistants understand context, emotion, and intent. They can engage in natural, fluid conversations that feel remarkably human. These systems continuously learn from every interaction, becoming more accurate and efficient over time. The technology combines speech recognition, natural language understanding, dialogue management, and text-to-speech synthesis to create seamless conversational experiences.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            The sophistication of contemporary AI voice assistants allows them to handle complex multi-turn conversations, remember context from previous interactions, and even detect emotional cues in customer voices. This level of intelligence enables businesses to provide personalized support at scale, something that was previously impossible without massive human resources. Whether answering product inquiries, troubleshooting technical issues, scheduling appointments, or processing transactions, AI voice assistants deliver consistent, accurate responses every time.
+                        </p>
+
+                        <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Key Benefits for Modern Businesses</h3>
+                        
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Implementing AI voice assistants delivers transformative benefits across multiple business dimensions. First and foremost is cost efficiency. Traditional call centers require significant infrastructure, staffing, and training investments. AI voice assistants dramatically reduce these costs while handling unlimited simultaneous conversations. A single AI assistant can manage thousands of customer interactions concurrently, eliminating wait times and ensuring instant response regardless of call volume.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Customer satisfaction sees remarkable improvement with AI voice assistants. Modern consumers expect instant gratification and 24/7 availability. AI assistants meet these expectations flawlessly, providing immediate responses at any time of day or night, including weekends and holidays. This round-the-clock availability significantly enhances customer loyalty and satisfaction scores. Moreover, AI assistants maintain consistent quality across all interactions, eliminating the variability inherent in human performance due to factors like fatigue, mood, or experience level.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Scalability represents another crucial advantage. As businesses grow, traditional customer service models require proportional increases in staff and infrastructure. AI voice assistants scale effortlessly, handling exponential growth in customer interactions without additional costs or performance degradation. Whether serving ten customers or ten thousand simultaneously, the service quality remains consistently high. This scalability is particularly valuable during peak periods, product launches, or marketing campaigns when interaction volumes surge unpredictably.
+                        </p>
+
+                        <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Industry Applications and Use Cases</h3>
+                        
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Healthcare organizations leverage AI voice assistants to schedule appointments, answer common medical questions, provide medication reminders, and triage patient concerns. This reduces administrative burden on medical staff while improving patient engagement and adherence to treatment plans. Patients appreciate the convenience of booking appointments or getting prescription refills without navigating complex phone menus or waiting on hold.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            E-commerce businesses deploy AI voice assistants to handle product inquiries, process orders, track shipments, and manage returns. The technology enables personalized shopping experiences by remembering customer preferences and making intelligent product recommendations. Voice-activated shopping is particularly popular among younger demographics and busy professionals who value the convenience of hands-free transactions.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Financial institutions use AI voice assistants for account inquiries, transaction history, fraud alerts, and basic banking operations. The technology enhances security through voice biometrics while providing convenient access to banking services. Customers can check balances, transfer funds, or report lost cards through natural voice commands, reducing the need for branch visits or lengthy phone calls with human representatives.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Hospitality and travel industries benefit enormously from AI voice assistants that handle reservations, provide destination information, manage booking modifications, and offer concierge services. Hotels use voice assistants to enhance guest experiences, allowing room service orders, housekeeping requests, and local recommendations through simple voice interactions. Airlines deploy them for flight status updates, booking changes, and customer service inquiries.
+                        </p>
+
+                        <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Implementation Best Practices</h3>
+                        
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Successful AI voice assistant implementation requires careful planning and strategic execution. Begin by identifying specific use cases where automation delivers maximum value. Focus on repetitive, high-volume interactions that consume significant human resources but don't require complex decision-making or emotional intelligence. Common starting points include appointment scheduling, basic product information, account inquiries, and order status updates.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Training and customization are critical for success. Generic AI assistants rarely meet specific business needs effectively. Invest time in training the system on your industry terminology, product catalog, common customer questions, and preferred communication style. The more customized the AI assistant, the better it performs and the more natural interactions feel to customers. Continuously refine the system based on real conversation data and customer feedback.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Integration with existing systems is essential for delivering seamless experiences. AI voice assistants should connect with CRM platforms, order management systems, appointment schedulers, knowledge bases, and other critical business applications. This integration enables the assistant to access customer history, retrieve real-time information, and execute transactions without human intervention. Proper integration transforms the AI assistant from a simple information provider into a powerful transaction processor.
+                        </p>
+
+                        <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Future Trends and Innovation</h3>
+                        
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            The future of AI voice assistants promises even more impressive capabilities. Emerging technologies like emotion AI enable systems to detect and respond to customer emotional states, adjusting tone and approach accordingly. Multilingual capabilities are becoming increasingly sophisticated, allowing single assistants to seamlessly switch between languages mid-conversation. This is particularly valuable for businesses serving diverse, global customer bases.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Predictive analytics integration will enable AI voice assistants to anticipate customer needs before they're explicitly stated. By analyzing historical data, purchase patterns, and contextual information, assistants will proactively offer relevant solutions and recommendations. For example, recognizing that a customer typically reorders supplies monthly, the assistant might initiate contact to facilitate reordering before inventory runs low.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Voice biometrics and advanced security measures are evolving rapidly, making voice-based authentication both more secure and more convenient than traditional methods. Customers will be able to access sensitive information and complete high-value transactions through voice commands alone, with confidence that their identity is verified accurately and securely.
+                        </p>
+
+                        <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Making the Strategic Decision</h3>
+                        
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Adopting AI voice assistant technology represents a strategic investment in customer experience and operational efficiency. The technology has matured significantly, moving from experimental innovation to mission-critical business infrastructure. Organizations that implement AI voice assistants gain competitive advantages through superior customer service, reduced costs, and enhanced scalability. The question is no longer whether to adopt this technology, but how quickly to implement it and how strategically to leverage its capabilities.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Success requires commitment to ongoing optimization and evolution. AI voice assistants improve continuously through machine learning, but this improvement depends on regular monitoring, analysis, and refinement. Establish clear metrics for success, track performance rigorously, and be prepared to adjust strategies based on data and customer feedback. The most successful implementations treat AI voice assistants as dynamic systems requiring active management rather than set-it-and-forget-it solutions.
+                        </p>
+
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            The transformation that AI voice assistants bring to customer engagement is profound and far-reaching. They represent not just a technological upgrade but a fundamental reimagining of how businesses interact with customers. Organizations that embrace this technology thoughtfully and strategically position themselves at the forefront of customer experience innovation, ready to meet evolving consumer expectations while building more efficient, scalable, and resilient operations. The future of customer engagement is conversational, intelligent, and available 24/7—powered by AI voice assistants that deliver exceptional experiences at unprecedented scale.
+                        </p>
+                    </article>
                 </div>
             </section>
         </>

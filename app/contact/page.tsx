@@ -29,11 +29,11 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    description: "Our headquarters",
-    contact: "",
+    // The description field now correctly uses a string, with newlines and extra spaces removed or consolidated.
+    description: "Our headquarters: Behind Manyata Tech Park, Hebbal, Bengaluru – 560077, Karnataka, India",
     action: "#",
   },
-]
+];
 
 export default function Contact() {
   const [form, setForm] = useState({
