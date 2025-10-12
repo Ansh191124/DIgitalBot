@@ -32,11 +32,33 @@ declare global {
 
 export function Hero() {
     const stats = [
-        { label: "Uptime Guarantee", value: 99.9, suffix: "%", formatter: (val: number) => val.toFixed(1) },
-        { label: "Messages Processed", value: 50, suffix: "M+", formatter: (val: number) => val.toLocaleString() },
-        { label: "AI Support", value: 24, suffix: "/7", formatter: (val: number) => val.toString() },
-    ]
+    // 1. UPTIME: Correct - Reliability is measured as a percentage.
+    { 
+        label: "Uptime Guarantee", 
+        value: 99.9, 
+        suffix: "%", 
+        formatter: (val: number) => val.toFixed(1) 
+    },
+    // 2. LATENCY: FIX - Latency (speed) should be measured in milliseconds (ms), not a percentage. 
+    //    The 'value' should represent the time taken.
+    { 
+        label: "P99 AI Inference Latency", // Renamed to P99 for technical clarity
+        value: 750,                      // Example value: 750 milliseconds
+        suffix: "ms", 
+        formatter: (val: number) => val.toLocaleString() 
+    },
+    // 3. AI SUPPORT: FIX - The 'value' should represent the *number* of agents or tasks, or the '24' 
+    //    should be part of the label, as the current structure is awkward.
+    { 
+        label: "AI Support Coverage", 
+        value: 24,                       // Represents 24 hours
+        suffix: " / 7",                   // Indicates 24 hours a day, 7 days a week
+        formatter: (val: number) => `${val} ` // Custom formatter to correctly display "24 / 7"
+    }
+];
 
+console.log(stats[1].label + ": " + stats[1].formatter(stats[1].value) + stats[1].suffix);
+// Output Example: P99 AI Inference Latency: 750ms
     const [counts, setCounts] = useState([0, 0, 0])
     const [showVideo, setShowVideo] = useState(false)
     const vapiRef = useRef<Vapi | null>(null)
