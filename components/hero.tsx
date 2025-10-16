@@ -31,41 +31,40 @@ declare global {
 }
 
 export function Hero() {
- const stats = [
-    // 1. UPTIME: Correct - Reliability is measured as a percentage.
-    { 
-        label: "Uptime Guarantee", 
-        value: 99.9, 
-        suffix: "%", 
-        formatter: (val: number) => val.toFixed(1) 
-    },
-    // 2. LATENCY: FIX - Latency (speed) should be measured in milliseconds (ms), not a percentage. 
-    //    The 'value' should represent the time taken.
-    { 
-        label: "P99 AI Inference Latency", // Renamed to P99 for technical clarity
-        value: 750,                      // Example value: 750 milliseconds
-        suffix: "ms", 
-        formatter: (val: number) => val.toLocaleString() 
-    },
-    // 3. AI SUPPORT: FIX - The 'value' should represent the *number* of agents or tasks, or the '24' 
-    //    should be part of the label, as the current structure is awkward.
-    { 
-        label: "AI Support Coverage", 
-        value: 24,                       // Represents 24 hours
-        suffix: "/7", 
-        formatter: (val: number) => `${val} ` // Custom formatter to correctly display "24 / 7"
-    }
-];
-
-console.log(stats[1].label + ": " + stats[1].formatter(stats[1].value) + stats[1].suffix);
-// Output Example: P99 AI Inference Latency: 750ms
+    const stats = [
+        // 1. UPTIME: Correct - Reliability is measured as a percentage.
+        { 
+            label: "Uptime Guarantee", 
+            value: 99.9, 
+            suffix: "%", 
+            formatter: (val: number) => val.toFixed(1) 
+        },
+        // 2. LATENCY: FIX - Latency (speed) should be measured in milliseconds (ms), not a percentage. 
+        //    The 'value' should represent the time taken.
+        { 
+            label: "P99 AI Inference Latency", // Renamed to P99 for technical clarity
+            value: 750,                      // Example value: 750 milliseconds
+            suffix: "ms", 
+            formatter: (val: number) => val.toLocaleString() 
+        },
+        // 3. AI SUPPORT: FIX - The 'value' should represent the *number* of agents or tasks, or the '24' 
+        //    should be part of the label, as the current structure is awkward.
+        { 
+            label: "AI Support Coverage", 
+            value: 24,                       // Represents 24 hours
+            suffix: "/7", 
+            formatter: (val: number) => `${val} ` // Custom formatter to correctly display "24 / 7"
+        }
+    ];
+    
+    // console.log(stats[1].label + ": " + stats[1].formatter(stats[1].value) + stats[1].suffix);
 
     const [counts, setCounts] = useState([0, 0, 0])
     const [showVideo, setShowVideo] = useState(false)
     const vapiRef = useRef<Vapi | null>(null)
     const [isCallActive, setIsCallActive] = useState(false)
     const [isSpeaking, setIsSpeaking] = useState(false)
-    const [transcript, setTranscript] = useState("Hello! I'm your AI assistant. Click the microphone to start a conversation.")
+    const [transcript, setTranscript] = useState("Hello! I'm your AI assistant. Click the microphone to start a conversation in any Language.")
     const [callStatus, setCallStatus] = useState("")
     const lottieAnimationRef = useRef<LottieAnimation | null>(null)
     const [isContentVisible, setIsContentVisible] = useState(false)
@@ -303,6 +302,19 @@ console.log(stats[1].label + ": " + stats[1].formatter(stats[1].value) + stats[1
                 0%, 100% { transform: translateY(0px); }
                 50% { transform: translateY(-10px); }
             }
+            /* NEW WAVE ANIMATIONS FOR BUTTON */
+            @keyframes wave-pulse-1 {
+              0% { transform: scale(0.8); opacity: 0.7; }
+              100% { transform: scale(1.5); opacity: 0; }
+            }
+            @keyframes wave-pulse-2 {
+              0% { transform: scale(0.8); opacity: 0.7; }
+              100% { transform: scale(1.7); opacity: 0; }
+            }
+            @keyframes wave-pulse-3 {
+              0% { transform: scale(0.8); opacity: 0.7; }
+              100% { transform: scale(1.9); opacity: 0; }
+            }
 
             .wavy-background {
               position: absolute;
@@ -337,6 +349,10 @@ console.log(stats[1].label + ": " + stats[1].formatter(stats[1].value) + stats[1
             .animate-float {
                 animation: float 3s ease-in-out infinite;
             }
+            /* NEW WAVE CLASSES */
+            .animate-wave-1 { animation: wave-pulse-1 2s ease-out infinite; }
+            .animate-wave-2 { animation: wave-pulse-2 2s ease-out infinite; animation-delay: 0.3s; }
+            .animate-wave-3 { animation: wave-pulse-3 2s ease-out infinite; animation-delay: 0.6s; }
             `}} />
             
             {/* SEO Schema Markup */}
@@ -407,8 +423,10 @@ console.log(stats[1].label + ": " + stats[1].formatter(stats[1].value) + stats[1
                                                     }`}></div>
                                             </div>
 
-                                            {/* Lottie Container */}
+                                            {/* Lottie Container & Button/Waves Wrapper */}
                                             <div className={`relative transition-all duration-500 ${isSpeaking ? 'scale-110' : 'scale-105'}`}>
+                                                
+                                                {/* Lottie Animation */}
                                                 <div
                                                     id="lottie-animation"
                                                     className="w-64 h-64 sm:w-80 sm:h-80"
@@ -417,48 +435,79 @@ console.log(stats[1].label + ": " + stats[1].formatter(stats[1].value) + stats[1
                                                             ? 'hue-rotate(0deg) saturate(1.3) brightness(1.1)'
                                                             : 'hue-rotate(0deg) saturate(1.1) brightness(1.0)'
                                                     }}
-                                                ></div>
-
-                                                {/* Sound Bar Visualizer */}
+                                                ></div> 
+                                                
+                                                {/* NEW WRAPPER FOR BUTTON AND WAVES (made relative) */}
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <div className="flex items-end justify-center gap-1 h-16 sm:h-20">
-                                                        {[...Array(12)].map((_, i) => {
-                                                            const centerIndex = 5.5;
-                                                            const distanceFromCenter = Math.abs(i - centerIndex);
-                                                            const maxHeight = 50 - (distanceFromCenter * 4);
-                                                            const minHeight = 6;
 
-                                                            return (
-                                                                <div
-                                                                    key={i}
-                                                                    className={`w-1 sm:w-1.5 relative transition-all duration-300 rounded-full ${
-                                                                        isSpeaking
-                                                                            ? 'bg-gradient-to-t from-sky-700 via-sky-400 to-cyan-300 shadow-lg shadow-sky-400/50'
-                                                                            : isCallActive
-                                                                                ? 'bg-gradient-to-t from-sky-600/50 via-sky-400/50 to-sky-300/50 shadow-md shadow-sky-300/30'
-                                                                                : 'bg-gradient-to-t from-sky-500/30 via-sky-400/30 to-sky-300/30 shadow-sm'
+                                                    {/* Circle Waves - ALWAYS VISIBLE (NEW IMPLEMENTATION) */}
+                                                    <>
+                                                        <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/10 animate-wave-1"></div>
+                                                        <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/5 animate-wave-2" style={{ animationDelay: '0.3s' }}></div>
+                                                        <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/0 animate-wave-3" style={{ animationDelay: '0.6s' }}></div>
+                                                    </>
+                                               
+                                                    {/* Microphone Button - NOW RELATIVE to its new wrapper */}
+                                                    <button
+                                                        onClick={toggleCall}
+                                                        disabled={callStatus.startsWith('Requesting') || callStatus.startsWith('Starting') || callStatus.startsWith('Stopping')}
+                                                        className={`relative z-30 flex flex-col items-center justify-center
+                                                            w-20 h-10 sm:w-24 sm:h-24 rounded-full transition-all duration-300 shadow-2xl
+                                                            backdrop-blur-sm
+                                                            ${isCallActive 
+                                                                ? 'bg-red-500/60 hover:bg-red-600/70 text-white animate-pulse-slow' 
+                                                                : 'bg-sky-500/60 hover:bg-sky-600/70 text-white hover:scale-105'
+                                                            }`}
+                                                        aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
+                                                    >
+                                                        {/* Icon */}
+                                                        <div className="mb-1">
+                                                            {isCallActive ? (
+                                                                <Square className="h-4 w-5 sm:h-4 sm:w-6" />
+                                                            ) : (
+                                                                <Mic className="h-8 w-8 sm:h- 8 sm:w-8" />
+                                                            )}
+                                                        </div>
+
+                                                        {/* Sound Bar Visualizer - Positioned below icon */}
+                                                        <div className="flex items-end justify-center gap-0.5 h-4 sm:h-5"> 
+                                                            {[...Array(12)].map((_, i) => {
+                                                                const centerIndex = 5.5;
+                                                                const maxHeight = 12 - (Math.abs(i - centerIndex) * 0.8); 
+                                                                const minHeight = 2;
+                                                                
+                                                                return (
+                                                                    <div
+                                                                        key={i}
+                                                                        className={`w-0.5 sm:w-1 transition-all duration-300 rounded-full ${
+                                                                            isSpeaking
+                                                                                ? 'bg-gradient-to-t from-white via-sky-100 to-cyan-200 shadow-sm'
+                                                                                : isCallActive
+                                                                                    ? 'bg-gradient-to-t from-white/60 via-sky-100/60 to-sky-200/60'
+                                                                                    : 'bg-gradient-to-t from-white/30 via-sky-100/30 to-sky-200/30'
                                                                         }`}
-                                                                    style={{
-                                                                        height: isSpeaking
-                                                                            ? `${Math.random() * (maxHeight - 20) + 20}px`
-                                                                            : isCallActive
-                                                                                ? `${minHeight + (maxHeight - minHeight) * 0.4}px`
-                                                                                : `${minHeight + (maxHeight - minHeight) * 0.2}px`,
-                                                                        animation: isSpeaking
-                                                                            ? `sound-bar-pulse 0.${4 + (i % 4)}s ease-in-out infinite`
-                                                                            : isCallActive
-                                                                                ? `sound-bar-pulse 0.${6 + (i % 3)}s ease-in-out infinite`
-                                                                                : 'none',
-                                                                        animationDelay: `${i * 0.05}s`
-                                                                    }}
-                                                                ></div>
-                                                            );
-                                                        })}
-                                                    </div>
+                                                                        style={{
+                                                                            height: isSpeaking
+                                                                                ? `${Math.random() * (maxHeight - 4) + 4}px`
+                                                                                : isCallActive
+                                                                                    ? `${minHeight + (maxHeight - minHeight) * 0.3}px`
+                                                                                    : `${minHeight}px`,
+                                                                            animation: isSpeaking
+                                                                                ? `sound-bar-pulse 0.${4 + (i % 4)}s ease-in-out infinite`
+                                                                                : isCallActive
+                                                                                    ? `sound-bar-pulse 0.${6 + (i % 3)}s ease-in-out infinite`
+                                                                                    : 'none',
+                                                                            animationDelay: `${i * 0.05}s`
+                                                                        }}
+                                                                    ></div>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    </button>
                                                 </div>
                                             </div>
 
-                                            {/* Circle animations */}
+                                            {/* Circle animations (The larger spinning rings) */}
                                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                                 <div className={`absolute w-56 sm:w-64 h-56 sm:h-64 rounded-full border-2 transition-all duration-500 ${
                                                     isSpeaking ? 'border-sky-400/60 border-dashed animate-spin-slow' : 'border-sky-400/30 border-dashed animate-spin-slow'
@@ -475,7 +524,7 @@ console.log(stats[1].label + ": " + stats[1].formatter(stats[1].value) + stats[1
                                                     }`} style={{ animationDuration: '3s', animationDelay: '0.5s' }}></div>
                                             </div>
 
-                                            {/* Active call ripples */}
+                                            {/* Active call ripples (The larger, faster ripples) */}
                                             {isCallActive && (
                                                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                                     <div className={`absolute w-72 sm:w-80 h-72 sm:h-80 rounded-full border-2 transition-all duration-300 ${
@@ -524,17 +573,18 @@ console.log(stats[1].label + ": " + stats[1].formatter(stats[1].value) + stats[1
                             <div className="text-xs font-semibold uppercase text-sky-600 mb-2">{callStatus || "Ready to assist"}</div>
                             <p className="text-sm sm:text-base text-gray-800 font-medium transition-colors duration-500">{transcript}</p>
                         </div>
+                        
 
-                        {/* Action Buttons - Below Transcript */}
+                        {/* Action Buttons - BELOW THE VISUAL (now optional/secondary) */}
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button
                                 size="lg"
-                                onClick={toggleCall}
+                                onClick={toggleCall} // This button is now redundant but kept for accessibility/UI redundancy
                                 className={`text-white font-semibold rounded-full shadow-xl transition-all duration-300 group ${isCallActive
-                                        ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-400/50 transform hover:scale-105'
-                                        : 'bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-400/50 transform hover:scale-105'
-                                    } flex items-center`}
-                                aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant"}
+                                    ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-400/50 transform hover:scale-105'
+                                    : 'bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-400/50 transform hover:scale-105'
+                                } flex items-center`}
+                                aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
                             >
                                 {isCallActive ? 'Stop Conversation' : 'Start Conversation'}
                                 {isCallActive ? (
