@@ -376,7 +376,7 @@ export function Hero() {
                 })
             }} />
 
-            <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100 min-h-screen" itemScope itemType="https://schema.org/WebPage">
+            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100 min-h-screen" itemScope itemType="https://schema.org/WebPage">
                 {/* Wavy Background */}
                 <div className="wavy-background">
                     <svg className="wave-layer wave-layer-1" viewBox="0 0 1200 600" preserveAspectRatio="none">
