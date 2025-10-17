@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     images: ["/twitter-ai-voice-agent.jpg"],
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "f2bf8afb699100cd",
   },
   category: "Technology",
   classification: "AI Voice Agent Platform",
