@@ -7,69 +7,66 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
-import { Check, X, ArrowRight, Zap, Crown, Building } from "lucide-react"
+import { Check, ArrowRight, Rocket, TrendingUp, Sparkles } from "lucide-react"
 import { useRouter } from "next/navigation";
 
 const plans = [
   {
-    name: "Starter",
-    icon: Zap,
-    description: "Perfect for small businesses getting started with AI chatbots",
-    monthlyPrice: 29,
-    yearlyPrice: 290,
+    name: "Launch",
+    icon: Rocket,
+    description: "Ideal for startups, freelancers, and early adopters",
+    usdPrice: 55,
+    inrPrice: 4500,
+    minutes: 300,
     features: [
-      { name: "1 Chatbot", included: true },
-      { name: "1,000 conversations/month", included: true },
-      { name: "Basic analytics", included: true },
-      { name: "Email support", included: true },
-      { name: "Website integration", included: true },
-      { name: "Custom branding", included: false },
-      { name: "API access", included: false },
-      { name: "Priority support", included: false },
-      { name: "Advanced analytics", included: false },
-      { name: "Multi-language support", included: false },
+      { name: "300 AI voice minutes", included: true },
+      { name: "2 voice agents, simultaneous channels (Any Language)", included: true },
+      { name: "Call summary", included: true },
+      { name: "AI analytics dashboard and leads", included: true },
+      { name: "Incoming/Outgoing telephone calls", included: true },
+      { name: "Website voice bot integration", included: true },
+      { name: "Dedicated support", included: true },
+      { name: "Valid for two months", included: true },
     ],
     popular: false,
-    cta: "Start Free Trial",
+    cta: "Get Started",
   },
   {
-    name: "Professional",
-    icon: Crown,
-    description: "Ideal for growing businesses with higher conversation volumes",
-    monthlyPrice: 99,
-    yearlyPrice: 990,
+    name: "Scale",
+    icon: TrendingUp,
+    description: "Perfect for growing businesses with higher conversation volumes",
+    usdPrice: 145,
+    inrPrice: 12000,
+    minutes: 1000,
     features: [
-      { name: "5 Chatbots", included: true },
-      { name: "10,000 conversations/month", included: true },
-      { name: "Advanced analytics", included: true },
-      { name: "Priority support", included: true },
-      { name: "Website integration", included: true },
-      { name: "Custom branding", included: true },
-      { name: "API access", included: true },
-      { name: "Multi-channel support", included: true },
-      { name: "A/B testing", included: true },
-      { name: "Multi-language support", included: false },
+      { name: "1000 AI voice minutes", included: true },
+      { name: "5 voice agents, simultaneous channels (Any Language)", included: true },
+      { name: "Call summary", included: true },
+      { name: "AI based analytics dashboard and leads", included: true },
+      { name: "Incoming/Outgoing telephone calls", included: true },
+      { name: "Website voice bot integration", included: true },
+      { name: "Dedicated support", included: true },
+      { name: "Valid for three months", included: true },
     ],
     popular: true,
-    cta: "Start Free Trial",
+    cta: "Get Started",
   },
   {
-    name: "Enterprise",
-    icon: Building,
-    description: "For large organizations with complex requirements",
-    monthlyPrice: 299,
-    yearlyPrice: 2990,
+    name: "Custom",
+    icon: Sparkles,
+    description: "Tailored solutions based on your specific requirements",
+    usdPrice: null,
+    inrPrice: null,
+    minutes: null,
     features: [
-      { name: "Unlimited chatbots", included: true },
-      { name: "Unlimited conversations", included: true },
-      { name: "Advanced analytics", included: true },
-      { name: "24/7 phone support", included: true },
-      { name: "All integrations", included: true },
-      { name: "Custom branding", included: true },
-      { name: "API access", included: true },
-      { name: "Multi-channel support", included: true },
-      { name: "A/B testing", included: true },
-      { name: "Multi-language support", included: true },
+      { name: "Custom AI voice minutes", included: true },
+      { name: "Unlimited voice agents", included: true },
+      { name: "Advanced call analytics", included: true },
+      { name: "Custom integrations", included: true },
+      { name: "Priority support", included: true },
+      { name: "Flexible validity period", included: true },
+      { name: "White-label options", included: true },
+      { name: "Dedicated account manager", included: true },
     ],
     popular: false,
     cta: "Contact Sales",
@@ -83,23 +80,23 @@ const faqs = [
       "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately and we'll prorate any billing differences.",
   },
   {
-    question: "What happens if I exceed my conversation limit?",
+    question: "What happens if I exceed my voice minute limit?",
     answer:
-      "We'll notify you when you're approaching your limit. You can either upgrade your plan or purchase additional conversation credits.",
+      "We'll notify you when you're approaching your limit. You can either upgrade your plan or purchase additional voice minutes as add-ons.",
   },
   {
     question: "Do you offer custom enterprise solutions?",
     answer:
-      "Our Enterprise plan includes custom solutions, dedicated support, and can be tailored to your specific requirements.",
+      "Our Custom plan includes tailored solutions, dedicated support, and can be configured to your specific requirements. Contact our sales team for more details.",
   },
   {
-    question: "Is there a free trial available?",
-    answer: "Yes, we offer a 14-day free trial for all plans. No credit card required to get started.",
+    question: "What languages are supported?",
+    answer: "Our AI voice agents support any language, allowing you to serve customers globally without language barriers.",
   },
 ]
 
 export default function Pricing() {
-  const [isYearly, setIsYearly] = useState(false)
+  const [isINR, setIsINR] = useState(false)
   const router = useRouter();
 
   return (
@@ -120,25 +117,22 @@ export default function Pricing() {
             Simple & <span className="bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">Transparent Pricing</span>
           </h1>
           <p className="text-xl mb-12 max-w-3xl mx-auto text-gray-700">
-            Pick the perfect plan for your business. Start with our free trial and scale as you grow.
+            Choose the perfect plan for your business. Start with Launch and scale as you grow.
           </p>
 
-          {/* Billing Toggle */}
+          {/* Currency Toggle */}
           <div className="flex items-center justify-center space-x-4 mb-12">
-            <span className={`text-sm ${!isYearly ? "text-gray-900 font-medium" : "text-gray-500"}`}>
-              Monthly
+            <span className={`text-sm ${!isINR ? "text-gray-900 font-medium" : "text-gray-500"}`}>
+              USD
             </span>
             <Switch
-              checked={isYearly}
-              onCheckedChange={setIsYearly}
+              checked={isINR}
+              onCheckedChange={setIsINR}
               className="bg-sky-300 data-[state=checked]:bg-sky-600"
             />
-            <span className={`text-sm ${isYearly ? "text-gray-900 font-medium" : "text-gray-500"}`}>
-              Yearly
+            <span className={`text-sm ${isINR ? "text-gray-900 font-medium" : "text-gray-500"}`}>
+              INR
             </span>
-            <Badge variant="secondary" className="bg-gradient-to-r from-sky-500 to-sky-400 text-white border-0">
-              Save 20%
-            </Badge>
           </div>
         </div>
       </section>
@@ -174,26 +168,30 @@ export default function Pricing() {
                 <CardTitle className="text-2xl text-gray-900 font-bold">{plan.name}</CardTitle>
                 <CardDescription className="text-gray-700 mt-2">{plan.description}</CardDescription>
                 <div className="mt-6">
-                  <span className="text-5xl font-extrabold bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">
-                    ${isYearly ? plan.yearlyPrice : plan.monthlyPrice}
-                  </span>
-                  <span className="text-gray-600 text-lg">/{isYearly ? "year" : "month"}</span>
+                  {plan.usdPrice ? (
+                    <>
+                      <span className="text-5xl font-extrabold bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">
+                        {isINR ? `₹${plan.inrPrice.toLocaleString()}` : `$${plan.usdPrice}`}
+                      </span>
+                      <div className="text-gray-600 text-sm mt-2">
+                        {plan.minutes} AI voice minutes
+                      </div>
+                    </>
+                  ) : (
+                    <span className="text-4xl font-extrabold bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">
+                      Let's Talk
+                    </span>
+                  )}
                 </div>
               </CardHeader>
               <CardContent className="pt-0">
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm">
-                      {feature.included ? (
-                        <div className="h-5 w-5 rounded-full bg-gradient-to-r from-sky-500 to-sky-400 flex items-center justify-center mr-3 flex-shrink-0">
-                          <Check className="h-3 w-3 text-white" />
-                        </div>
-                      ) : (
-                        <div className="h-5 w-5 rounded-full bg-gray-200 flex items-center justify-center mr-3 flex-shrink-0">
-                          <X className="h-3 w-3 text-gray-400" />
-                        </div>
-                      )}
-                      <span className={feature.included ? "text-gray-900 font-medium" : "text-gray-500"}>
+                    <li key={featureIndex} className="flex items-start text-sm">
+                      <div className="h-5 w-5 rounded-full bg-gradient-to-r from-sky-500 to-sky-400 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">
+                        <Check className="h-3 w-3 text-white" />
+                      </div>
+                      <span className="text-gray-900 font-medium">
                         {feature.name}
                       </span>
                     </li>
@@ -205,7 +203,7 @@ export default function Pricing() {
                       ? "bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 text-white shadow-lg shadow-sky-300/50"
                       : "bg-white hover:bg-sky-50 text-sky-700 border-2 border-sky-300 hover:border-sky-400"
                   }`}
-                  onClick={() => router.push("/contact")}
+                  onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
                 >
                   {plan.cta}
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -273,29 +271,26 @@ export default function Pricing() {
                 </span>
               </h2>
               <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-700">
-                Join thousands of businesses using DigitalBot.ai to transform their customer experience.
+                Join businesses using DigitalBot.ai to transform their customer experience with AI voice agents.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button 
                   size="lg" 
                   className="bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 text-white rounded-full shadow-lg shadow-sky-300/50 font-semibold transition-all duration-300"
-                  onClick={() => router.push("/signup")}
+                  onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
                 >
-                  Start Free Trial
+                  Get Started Today
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button 
                   size="lg" 
                   variant="outline" 
                   className="border-2 border-sky-400 text-sky-700 hover:bg-sky-50 hover:border-sky-500 rounded-full font-semibold transition-all duration-300"
-                  onClick={() => router.push("/contact")}
+                  onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
                 >
                   Contact Sales
                 </Button>
               </div>
-              <p className="text-sm text-gray-600 mt-6">
-                No credit card required • 14-day free trial • Cancel anytime
-              </p>
             </div>
           </div>
         </div>
