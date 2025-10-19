@@ -846,22 +846,22 @@ export function Hero() {
                         </div>
 
                         {/* Sample Conversations */}
-                        <div className="w-full flex flex-col items-center justify-center">
-                            <h3 className="mb-12 text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-sky-500 to-blue-600 font-bold text-3xl text-center tracking-tight">
+                        <div className="w-full flex flex-col items-center justify-center px-4">
+                            <h3 className="mb-8 sm:mb-12 text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-sky-500 to-blue-600 font-bold text-2xl sm:text-3xl text-center tracking-tight">
                                 Sample Conversations
                             </h3>
 
-                            <div className="relative w-full max-w-md h-[550px] flex items-center justify-center mx-auto">
+                            <div className="relative w-full max-w-md h-[450px] sm:h-[550px] flex items-center justify-center mx-auto">
                                 <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
 
                                 {/* Center AI Agent Circle */}
-                                <div className="absolute w-36 h-36 rounded-full bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 shadow-2xl flex items-center justify-center z-20 border-4 border-white/20 backdrop-blur-sm">
+                                <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 shadow-2xl flex items-center justify-center z-20 border-4 border-white/20 backdrop-blur-sm">
                                     <div className="absolute inset-0 rounded-full bg-sky-400/30 animate-ping"></div>
                                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400/40 to-blue-500/40 animate-pulse"></div>
                                     
                                     <div className="text-center relative z-10">
-                                        <div className="text-white text-sm font-bold tracking-wide">AI Agent</div>
-                                        <div className="text-sky-100 text-xs">Always Listening</div>
+                                        <div className="text-white text-xs sm:text-sm font-bold tracking-wide">AI Agent</div>
+                                        
                                     </div>
                                 </div>
 
@@ -873,7 +873,7 @@ export function Hero() {
                                     { label: "Game Character", angle: 126, icon: "🎮" },
                                     { label: "Trainer", angle: 198, icon: "💪" }
                                 ].map((item, index) => {
-                                    const radius = 170;
+                                    const radius = window.innerWidth < 640 ? 130 : 170;
                                     const angleRad = (item.angle * Math.PI) / 180;
                                     const x = Math.cos(angleRad) * radius;
                                     const y = Math.sin(angleRad) * radius;
@@ -894,7 +894,7 @@ export function Hero() {
                                                     x2={`calc(50% + ${x}px)`}
                                                     y2={`calc(50% + ${y}px)`}
                                                     stroke={`url(#gradient-${index})`}
-                                                    strokeWidth={isPlaying ? "4" : "2"}
+                                                    strokeWidth={isPlaying ? "3" : "1.5"}
                                                     className="transition-all duration-300"
                                                     style={{
                                                         filter: isPlaying ? 'drop-shadow(0 0 8px rgba(56, 189, 248, 0.6))' : 'none'
@@ -904,7 +904,7 @@ export function Hero() {
 
                                             <button
                                                 onClick={() => setPlayingCircle(isPlaying ? null : index)}
-                                                className={`absolute w-32 h-32 rounded-full shadow-2xl flex flex-col items-center justify-center border-4 transition-all duration-300 transform hover:scale-110 cursor-pointer ${
+                                                className={`absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full shadow-2xl flex flex-col items-center justify-center border-2 sm:border-4 transition-all duration-300 transform hover:scale-110 active:scale-95 cursor-pointer ${
                                                     isPlaying
                                                         ? 'bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 border-white/40 shadow-sky-400/80 scale-105'
                                                         : 'bg-gradient-to-br from-sky-700 via-sky-800 to-sky-900 border-white/20 hover:border-sky-300/60 hover:shadow-sky-300/30'
@@ -924,37 +924,37 @@ export function Hero() {
                                                 
                                                 {!isPlaying ? (
                                                     <>
-                                                        <div className="text-3xl mb-1 filter drop-shadow-lg">
+                                                        <div className="text-2xl sm:text-3xl mb-1 filter drop-shadow-lg">
                                                             {item.icon}
                                                         </div>
-                                                        <p className="text-xs font-bold text-center px-2 text-gray-300 leading-tight mb-1">
+                                                        <p className="text-[10px] sm:text-xs font-bold text-center px-1 sm:px-2 text-gray-300 leading-tight mb-1">
                                                             {item.label}
                                                         </p>
-                                                        <div className="w-10 h-10 rounded-full bg-sky-500/30 flex items-center justify-center hover:bg-sky-500/50 transition-colors">
-                                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-sky-500/30 flex items-center justify-center hover:bg-sky-500/50 transition-colors">
+                                                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-4 sm:h-4">
                                                                 <path d="M3 2L13 8L3 14V2Z" fill="#38bdf8" />
                                                             </svg>
                                                         </div>
                                                     </>
                                                 ) : (
                                                     <>
-                                                        <div className="text-3xl mb-1 filter drop-shadow-lg animate-bounce">
+                                                        <div className="text-2xl sm:text-3xl mb-1 filter drop-shadow-lg animate-bounce">
                                                             {item.icon}
                                                         </div>
-                                                        <div className="flex items-end justify-center gap-1 h-7 mb-1">
+                                                        <div className="flex items-end justify-center gap-0.5 sm:gap-1 h-5 sm:h-7 mb-1">
                                                             {[...Array(5)].map((_, i) => (
                                                                 <div
                                                                     key={i}
-                                                                    className="w-1.5 bg-white rounded-full shadow-lg shadow-white/50"
+                                                                    className="w-1 sm:w-1.5 bg-white rounded-full shadow-lg shadow-white/50"
                                                                     style={{
-                                                                        height: `${Math.random() * 20 + 8}px`,
+                                                                        height: `${Math.random() * (window.innerWidth < 640 ? 15 : 20) + 8}px`,
                                                                         animation: `sound-bar-pulse 0.${4 + (i % 4)}s ease-in-out infinite`,
                                                                         animationDelay: `${i * 0.06}s`
                                                                     }}
                                                                 ></div>
                                                             ))}
                                                         </div>
-                                                        <p className="text-xs font-bold text-center px-2 text-white leading-tight drop-shadow-md">
+                                                        <p className="text-[10px] sm:text-xs font-bold text-center px-1 sm:px-2 text-white leading-tight drop-shadow-md">
                                                             {item.label}
                                                         </p>
                                                     </>
