@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button"
 import { Sparkles, Mic, Square, MessageSquare, Zap, Shield, Clock, TrendingUp, Users, Award, ChevronDown, CheckCircle, ArrowRight } from "lucide-react"
 import { useEffect, useState, useRef } from 'react'
-import Vapi from '@vapi-ai/web'
 
 interface LottieAnimation {
     destroy: () => void;
@@ -37,73 +36,98 @@ export function Hero() {
 
     const [counts, setCounts] = useState([0, 0, 0])
     const [showVideo, setShowVideo] = useState(false)
-    const vapiRef = useRef<Vapi | null>(null)
+    const [isMounted, setIsMounted] = useState(false)
+    const vapiRef = useRef<any>(null)
     const [isCallActive, setIsCallActive] = useState(false)
     const [isSpeaking, setIsSpeaking] = useState(false)
     const [transcript, setTranscript] = useState("Hello! I'm your AI assistant. Click the microphone to start a conversation in any Language.")
     const [callStatus, setCallStatus] = useState("")
     const lottieAnimationRef = useRef<LottieAnimation | null>(null)
-    const [isContentVisible, setIsContentVisible] = useState(false)
     const [showFAQ, setShowFAQ] = useState<number | null>(null)
     const [playingCircle, setPlayingCircle] = useState<number | null>(null)
+    const [screenSize, setScreenSize] = useState<number>(768)
+    const [vapiLoaded, setVapiLoaded] = useState(false)
 
+    // Mount effect - only run on client
     useEffect(() => {
-        setIsContentVisible(true)
-    }, [])
-
-    useEffect(() => {
-        const vapiInstance = new Vapi('00119fad-8530-413f-9699-e47cada57939')
-        vapiRef.current = vapiInstance
-
-        vapiInstance.on('call-start', () => {
-            setIsCallActive(true)
-            setTranscript("Listening for your request...")
-            setCallStatus('Call active - Listening')
-        })
-
-        vapiInstance.on('call-end', () => {
-            setIsCallActive(false)
-            setIsSpeaking(false)
-            setTranscript("Hello! I'm your AI assistant. Click the microphone to start a conversation.")
-            setCallStatus('Call ended')
-        })
-
-        vapiInstance.on('speech-start', () => {
-            setIsSpeaking(true)
-            setCallStatus('Assistant speaking...')
-        })
-
-        vapiInstance.on('speech-end', () => {
-            setIsSpeaking(false)
-            if (isCallActive) {
-                setCallStatus('Call active - Listening')
-            }
-        })
-
-        vapiInstance.on('message', (message) => {
-            if (message.type === 'transcript' && message.transcriptType === 'final') {
-                setTranscript(message.transcript)
-            } else if (message.type === 'end-of-speech') {
-                setCallStatus('Assistant is processing...')
-            }
-        })
-
-        vapiInstance.on('error', (error) => {
-            console.error('VAPI Error:', error)
-            setCallStatus(`Error: ${error.message || 'Unknown error'}`)
-            setIsCallActive(false)
-        })
-
-        return () => {
-            if (vapiRef.current) {
-                vapiRef.current.stop()
-            }
+        setIsMounted(true)
+        if (typeof window !== 'undefined') {
+            setScreenSize(window.innerWidth)
         }
     }, [])
 
+    // Initialize Vapi only on client side
+    useEffect(() => {
+        if (!isMounted || typeof window === 'undefined') return
+
+        let vapiInstance: any = null
+
+        const initVapi = async () => {
+            try {
+                const VapiModule = await import('@vapi-ai/web')
+                vapiInstance = new VapiModule.default('00119fad-8530-413f-9699-e47cada57939')
+                vapiRef.current = vapiInstance
+                setVapiLoaded(true)
+
+                vapiInstance.on('call-start', () => {
+                    setIsCallActive(true)
+                    setTranscript("Listening for your request...")
+                    setCallStatus('Call active - Listening')
+                })
+
+                vapiInstance.on('call-end', () => {
+                    setIsCallActive(false)
+                    setIsSpeaking(false)
+                    setTranscript("Hello! I'm your AI assistant. Click the microphone to start a conversation.")
+                    setCallStatus('Call ended')
+                })
+
+                vapiInstance.on('speech-start', () => {
+                    setIsSpeaking(true)
+                    setCallStatus('Assistant speaking...')
+                })
+
+                vapiInstance.on('speech-end', () => {
+                    setIsSpeaking(false)
+                    if (isCallActive) {
+                        setCallStatus('Call active - Listening')
+                    }
+                })
+
+                vapiInstance.on('message', (message: any) => {
+                    if (message.type === 'transcript' && message.transcriptType === 'final') {
+                        setTranscript(message.transcript)
+                    } else if (message.type === 'end-of-speech') {
+                        setCallStatus('Assistant is processing...')
+                    }
+                })
+
+                vapiInstance.on('error', (error: any) => {
+                    console.error('VAPI Error:', error)
+                    setCallStatus(`Error: ${error.message || 'Unknown error'}`)
+                    setIsCallActive(false)
+                })
+            } catch (error) {
+                console.error('Failed to initialize Vapi:', error)
+            }
+        }
+
+        initVapi()
+
+        return () => {
+            if (vapiInstance) {
+                try {
+                    vapiInstance.stop()
+                } catch (e) {
+                    console.error('Error stopping Vapi:', e)
+                }
+            }
+        }
+    }, [isMounted])
+
     const toggleCall = async () => {
-        if (!vapiRef.current) {
-            setCallStatus('Initialization failed.')
+        if (!vapiRef.current || !vapiLoaded) {
+            setCallStatus('Initialization in progress...')
             return
         }
 
@@ -135,6 +159,8 @@ export function Hero() {
     }
 
     useEffect(() => {
+        if (!isMounted || typeof window === 'undefined') return
+
         const script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js';
         script.async = true;
@@ -162,7 +188,7 @@ export function Hero() {
                 document.body.removeChild(script);
             }
         };
-    }, []);
+    }, [isMounted]);
 
     useEffect(() => {
         if (lottieAnimationRef.current) {
@@ -175,6 +201,8 @@ export function Hero() {
     }, [isSpeaking]);
 
     useEffect(() => {
+        if (!isMounted) return
+
         const intervals: number[] = []
         stats.forEach((stat, index) => {
             let start = 0
@@ -198,7 +226,7 @@ export function Hero() {
         })
 
         return () => intervals.forEach(clearInterval)
-    }, [])
+    }, [isMounted])
 
     const faqs = [
         {
@@ -231,6 +259,27 @@ export function Hero() {
         { icon: Users, title: "Multi-Channel Support", description: "Deploy across web, mobile, WhatsApp, SMS, and voice channels" },
         { icon: Award, title: "Proven Results", description: "Join 5,000+ businesses achieving 85% automation rate" }
     ]
+
+    const radius = isMounted ? (screenSize < 640 ? 130 : 170) : 170;
+
+    // Don't render complex interactive elements until mounted
+    if (!isMounted) {
+        return (
+            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-sky-50/30 to-white min-h-screen">
+                <div className="container mx-auto relative z-10 max-w-6xl">
+                    <div className="flex justify-center mb-12">
+                        <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-sm border border-sky-200/60 shadow-lg">
+                            <Sparkles className="h-4 w-4 text-sky-500" />
+                            <span className="font-medium">AI-Powered Customer Engagement Platform</span>
+                        </div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-4xl font-bold text-gray-900">Loading...</div>
+                    </div>
+                </div>
+            </section>
+        )
+    }
 
     return (
         <>
@@ -663,7 +712,7 @@ export function Hero() {
                     <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-blue-300/30 to-transparent animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
                 </div>
 
-                <div className={`container mx-auto relative z-10 transition-opacity duration-1000 ${isContentVisible ? 'opacity-100' : 'opacity-0'} max-w-6xl`}>
+                <div className="container mx-auto relative z-10 max-w-6xl opacity-100">
                     <div className="flex justify-center mb-12 animate-fade-in-up-1">
                         <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-sm border border-sky-200/60 shadow-lg">
                             <Sparkles className="h-4 w-4 text-sky-500 animate-pulse" />
@@ -873,7 +922,6 @@ export function Hero() {
                                     { label: "Game Character", angle: 126, icon: "🎮" },
                                     { label: "Trainer", angle: 198, icon: "💪" }
                                 ].map((item, index) => {
-                                    const radius = window.innerWidth < 640 ? 130 : 170;
                                     const angleRad = (item.angle * Math.PI) / 180;
                                     const x = Math.cos(angleRad) * radius;
                                     const y = Math.sin(angleRad) * radius;
@@ -947,7 +995,7 @@ export function Hero() {
                                                                     key={i}
                                                                     className="w-1 sm:w-1.5 bg-white rounded-full shadow-lg shadow-white/50"
                                                                     style={{
-                                                                        height: `${Math.random() * (window.innerWidth < 640 ? 15 : 20) + 8}px`,
+                                                                        height: `${Math.random() * (screenSize < 640 ? 15 : 20) + 8}px`,
                                                                         animation: `sound-bar-pulse 0.${4 + (i % 4)}s ease-in-out infinite`,
                                                                         animationDelay: `${i * 0.06}s`
                                                                     }}
