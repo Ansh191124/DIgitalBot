@@ -101,8 +101,8 @@ export function Header() {
                             className="relative overflow-hidden border-sky-400/70 text-sky-700 bg-white/60 hover:bg-sky-50 hover:border-sky-500 hover:text-sky-800 transition-all duration-300 rounded-full shadow-sm hover:shadow-sky-300"
                             asChild
                         >
-                            <Link href="/contact">
-                                <span className="relative z-10"></span>
+                            <Link href="/Register">
+                                <span className="relative z-10">SignUp</span>
                                 <span className="absolute inset-0 bg-gradient-to-r from-sky-400/20 via-sky-500/20 to-sky-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></span>
                             </Link>
                         </Button>
