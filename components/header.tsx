@@ -102,7 +102,7 @@ export function Header() {
                             asChild
                         >
                             <Link href="/contact">
-                                <span className="relative z-10">Get Started</span>
+                                <span className="relative z-10"></span>
                                 <span className="absolute inset-0 bg-gradient-to-r from-sky-400/20 via-sky-500/20 to-sky-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></span>
                             </Link>
                         </Button>
@@ -174,8 +174,8 @@ export function Header() {
                                         className="justify-start border-sky-400 text-sky-700 hover:bg-sky-500 hover:text-white transition-all duration-300 rounded-full relative overflow-hidden group"
                                         asChild
                                     >
-                                        <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
-                                            <span className="relative z-10">Get Started</span>
+                                        <Link href="/Register" onClick={() => setIsMenuOpen(false)}>
+                                            <span className="relative z-10">SignUp</span>
                                             <span className="absolute inset-0 bg-gradient-to-r from-sky-400/20 to-sky-600/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
                                         </Link>
                                     </Button>

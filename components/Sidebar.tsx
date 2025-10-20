@@ -1,15 +1,15 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
+import { CalendarCheck, LayoutDashboard, LogOut, PhoneCall, Users } from "lucide-react";
 import Link from 'next/link';
-import { LayoutDashboard, PhoneCall, Users, LogOut } from "lucide-react";
-import { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const items = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/dashboard/calls", label: "Call Logs", icon: PhoneCall },
   { href: "/dashboard/leads", label: "Leads", icon: Users },
-  { href: "/dashboard/Bulk Campaign", label: "Bulk Campaign", icon: Users },
+  { href: "/dashboard/appointments", label: "Appointments", icon: CalendarCheck }
 ];
 
 interface User {
@@ -25,17 +25,14 @@ export default function Sidebar() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Set client flag
     setIsClient(true);
 
-    // Only access localStorage in the browser
     if (typeof window !== 'undefined') {
       const userStr = localStorage.getItem('user');
       if (userStr) {
         try {
           const user: User = JSON.parse(userStr);
           setUserEmail(user.email);
-          // Extract username from email (part before @)
           const username = user.email.split('@')[0];
           setUserName(username);
         } catch (error) {
@@ -46,20 +43,15 @@ export default function Sidebar() {
   }, []);
 
   const handleSignOut = () => {
-    // Only access localStorage in the browser
     if (typeof window !== 'undefined') {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
     }
-    
-    // Redirect to login page
     router.push('/');
   };
 
-  // Get first letter of username for avatar
   const avatarLetter = userName ? userName.charAt(0).toUpperCase() : 'U';
 
-  // Prevent hydration mismatch by showing consistent initial state
   if (!isClient) {
     return (
       <aside className="h-screen w-60 bg-slate-50 border-r border-gray-200 flex flex-col fixed top-0 left-0 z-10 shadow-sm font-sans">
@@ -118,7 +110,6 @@ export default function Sidebar() {
   return (
     <aside className="h-screen w-60 bg-slate-50 border-r border-gray-200 flex flex-col fixed top-0 left-0 z-10 shadow-sm font-sans">
       
-      {/* Dashboard Title Section */}
       <div className="px-4 py-5 border-b border-gray-200">
         <div className="flex items-center gap-2.5">
           <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center">
@@ -131,7 +122,6 @@ export default function Sidebar() {
         </div>
       </div>
       
-      {/* Navigation Links */}
       <nav className="px-4 mt-4 space-y-1 flex-1">
         {items.map(({ href, label, icon: Icon }) => {
           const active = pathname === href;
@@ -155,7 +145,6 @@ export default function Sidebar() {
         })}
       </nav>
       
-      {/* User Section */}
       <div className="px-4 py-4 border-t border-gray-200">
         <div className="flex items-center gap-3">
           <div className="relative flex-shrink-0">
