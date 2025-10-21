@@ -29,7 +29,7 @@ export default function Signup(): JSX.Element {
     const fetchNumbers = async () => {
       try {
   const base = (typeof window !== 'undefined') ? window.location.origin : (process.env.NEXT_PUBLIC_API_URL || 'https://digital-api-tef8.onrender.com');
-  const res = await axios.get(`${base}/api/auth/available-numbers`);
+  const res = await axios.get(`https://digital-api-tef8.onrender.com`);
         setNumbers(res.data);
       } catch (err: any) {
         console.error("Error fetching numbers:", err.response?.data || err.message);
