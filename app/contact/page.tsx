@@ -136,7 +136,7 @@ export default function Contact() {
             <CardHeader className="p-4 sm:p-6">
               <CardTitle className="text-xl sm:text-2xl font-bold text-sky-800">Send us a message</CardTitle>
               <CardDescription className="text-sm sm:text-base text-sky-700/80">
-                Fill out the form below and we'll get back to you soon. (<span className="text-red-500">*</span> indicates required fields)
+                Fill out the form below and we'll get back to you soon. (<span className="text-red-500">*</span> indicate required fields)
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6">
