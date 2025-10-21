@@ -51,7 +51,7 @@ interface PaginationInfo {
   per_page: number;
 }
 
-const API_BASE_URL = "http://localhost:4000";
+const API_BASE_URL = "https://digital-api-tef8.onrender.com";
 
 // Token management - align with backend and other frontend code (use localStorage key "token")
 function setAuthToken(token: string) {
