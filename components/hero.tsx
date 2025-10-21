@@ -172,7 +172,8 @@ export function Hero() {
                     renderer: 'svg',
                     loop: true,
                     autoplay: true,
-                    path: 'https://lottie.host/4d6e4a3e-7f1f-4b0e-9b3e-8c8e3f3e3e3e/K21LOlLjRk.json'
+                    // Fixed: Using a working Lottie animation URL for voice/sound visualization
+                    path: 'https://lottie.host/embed/f0d23f97-9c2f-4e65-b3d3-b89e4e7b3b3e/YqZQRlNrOk.json'
                 });
             }
         };
@@ -333,70 +334,6 @@ export function Hero() {
               0% { transform: scale(0.8); opacity: 0.7; }
               100% { transform: scale(1.9); opacity: 0; }
             }
-            @keyframes airflow-1 {
-              0% { 
-                transform: translateX(-100vw) translateY(0); 
-                opacity: 0; 
-              }
-              5% { 
-                opacity: 1; 
-              }
-              95% { 
-                opacity: 1; 
-              }
-              100% { 
-                transform: translateX(100vw) translateY(-15px); 
-                opacity: 0; 
-              }
-            }
-            @keyframes airflow-2 {
-              0% { 
-                transform: translateX(-100vw) translateY(0); 
-                opacity: 0; 
-              }
-              5% { 
-                opacity: 1; 
-              }
-              95% { 
-                opacity: 1; 
-              }
-              100% { 
-                transform: translateX(100vw) translateY(20px); 
-                opacity: 0; 
-              }
-            }
-            @keyframes airflow-3 {
-              0% { 
-                transform: translateX(-100vw) translateY(0); 
-                opacity: 0; 
-              }
-              5% { 
-                opacity: 1; 
-              }
-              95% { 
-                opacity: 1; 
-              }
-              100% { 
-                transform: translateX(100vw) translateY(-8px); 
-                opacity: 0; 
-              }
-            }
-            @keyframes airflow-4 {
-              0% { 
-                transform: translateX(-100vw) translateY(0); 
-                opacity: 0; 
-              }
-              5% { 
-                opacity: 1; 
-              }
-              95% { 
-                opacity: 1; 
-              }
-              100% { 
-                transform: translateX(100vw) translateY(12px); 
-                opacity: 0; 
-              }
-            }
             .animate-spin-slow { animation: spin 20s linear infinite; }
             .animate-pulse-slow { animation: pulse-slow 5s infinite ease-in-out; }
             .animate-ping-slow { animation: ping-slow 3s infinite ease-in-out; }
@@ -417,8 +354,31 @@ export function Hero() {
             `}} />
             
             <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-sky-50/30 to-white min-h-screen">
+                {/* Video Background */}
+                <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="auto"
+                        className="absolute top-0 left-0 w-full h-full object-cover"
+                        style={{ 
+                            opacity: 0.25,
+                            mixBlendMode: 'soft-light',
+                            filter: 'blur(2px)'
+                        }}
+                        onError={(e) => console.error('Video failed to load:', e)}
+                    >
+                        <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/v1761045748/BACK_1_iecrwt.mov" type="mov" />
+                        <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/v1761045748/BACK_1_iecrwt.mp4" type="video/mp4" />
+                        
+                    </video>
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-sky-50/40 to-white/60 pointer-events-none"></div>
+                </div>
+
                 {/* Futuristic Grid Pattern */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 z-1">
                     <div className="absolute inset-0" style={{
                         backgroundImage: `linear-gradient(to right, rgba(56, 189, 248, 0.1) 1px, transparent 1px),
                                          linear-gradient(to bottom, rgba(56, 189, 248, 0.1) 1px, transparent 1px)`,
@@ -426,288 +386,15 @@ export function Hero() {
                     }}></div>
                 </div>
 
-                {/* Moving Sky Blue Airflow - Behind all content */}
-                <div className="absolute inset-0 overflow-visible pointer-events-none z-0">
-                    {/* Row 1 - Top area */}
-                    <div 
-                        className="absolute w-[600px] h-[3px]"
-                        style={{ 
-                            top: '8%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.4) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-1 18s linear infinite',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-                    
-                    <div 
-                        className="absolute w-[500px] h-[2px]"
-                        style={{ 
-                            top: '12%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.35) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-2 20s linear infinite',
-                            animationDelay: '2s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-                    
-                    <div 
-                        className="absolute w-[550px] h-[3px]"
-                        style={{ 
-                            top: '16%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(125, 211, 252, 0.4) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-3 16s linear infinite',
-                            animationDelay: '4s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    <div 
-                        className="absolute w-[480px] h-[2px]"
-                        style={{ 
-                            top: '20%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(14, 165, 233, 0.3) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-4 22s linear infinite',
-                            animationDelay: '6s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    {/* Row 2 - Upper middle area */}
-                    <div 
-                        className="absolute w-[520px] h-[3px]"
-                        style={{ 
-                            top: '28%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.35) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-1 19s linear infinite',
-                            animationDelay: '8s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-                    
-                    <div 
-                        className="absolute w-[450px] h-[2px]"
-                        style={{ 
-                            top: '32%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.3) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-2 21s linear infinite',
-                            animationDelay: '10s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    <div 
-                        className="absolute w-[580px] h-[3px]"
-                        style={{ 
-                            top: '36%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(125, 211, 252, 0.38) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-3 17s linear infinite',
-                            animationDelay: '12s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    <div 
-                        className="absolute w-[420px] h-[2px]"
-                        style={{ 
-                            top: '40%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(14, 165, 233, 0.32) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-4 23s linear infinite',
-                            animationDelay: '14s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    {/* Row 3 - Middle area */}
-                    <div 
-                        className="absolute w-[510px] h-[3px]"
-                        style={{ 
-                            top: '48%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.36) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-1 20s linear infinite',
-                            animationDelay: '16s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    <div 
-                        className="absolute w-[470px] h-[2px]"
-                        style={{ 
-                            top: '52%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.33) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-2 18s linear infinite',
-                            animationDelay: '18s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    <div 
-                        className="absolute w-[560px] h-[3px]"
-                        style={{ 
-                            top: '56%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(125, 211, 252, 0.37) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-3 22s linear infinite',
-                            animationDelay: '20s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    <div 
-                        className="absolute w-[440px] h-[2px]"
-                        style={{ 
-                            top: '60%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(14, 165, 233, 0.31) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-4 19s linear infinite',
-                            animationDelay: '22s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    {/* Row 4 - Lower middle area */}
-                    <div 
-                        className="absolute w-[530px] h-[3px]"
-                        style={{ 
-                            top: '68%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.34) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-1 21s linear infinite',
-                            animationDelay: '24s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    <div 
-                        className="absolute w-[490px] h-[2px]"
-                        style={{ 
-                            top: '72%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.32) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-2 19s linear infinite',
-                            animationDelay: '26s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    <div 
-                        className="absolute w-[540px] h-[3px]"
-                        style={{ 
-                            top: '76%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(125, 211, 252, 0.36) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-3 20s linear infinite',
-                            animationDelay: '28s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    <div 
-                        className="absolute w-[460px] h-[2px]"
-                        style={{ 
-                            top: '80%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(14, 165, 233, 0.3) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-4 18s linear infinite',
-                            animationDelay: '30s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    {/* Row 5 - Bottom area */}
-                    <div 
-                        className="absolute w-[500px] h-[2px]"
-                        style={{ 
-                            top: '88%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.33) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-1 22s linear infinite',
-                            animationDelay: '32s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    <div 
-                        className="absolute w-[520px] h-[2px]"
-                        style={{ 
-                            top: '92%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.31) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-2 20s linear infinite',
-                            animationDelay: '34s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-
-                    <div 
-                        className="absolute w-[550px] h-[3px]"
-                        style={{ 
-                            top: '96%',
-                            left: '0',
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(125, 211, 252, 0.35) 50%, transparent 100%)',
-                            borderRadius: '999px',
-                            filter: 'blur(2px)',
-                            animation: 'airflow-3 18s linear infinite',
-                            animationDelay: '36s',
-                            willChange: 'transform'
-                        }}
-                    ></div>
-                </div>
-
                 {/* Subtle Gradient Orbs */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none z-1">
                     <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-sky-200/20 to-transparent rounded-full blur-3xl"></div>
                     <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-blue-100/15 to-transparent rounded-full blur-3xl"></div>
                     <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-sky-100/10 to-transparent rounded-full blur-3xl"></div>
                 </div>
 
                 {/* Animated Light Beams */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30 z-1">
                     <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-sky-400/40 to-transparent animate-pulse-slow"></div>
                     <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-blue-300/30 to-transparent animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
                 </div>
