@@ -172,8 +172,7 @@ export function Hero() {
                     renderer: 'svg',
                     loop: true,
                     autoplay: true,
-                    // Fixed: Using a working Lottie animation URL for voice/sound visualization
-                    path: 'https://lottie.host/embed/f0d23f97-9c2f-4e65-b3d3-b89e4e7b3b3e/YqZQRlNrOk.json'
+                    path: 'https://lottie.host/4d6e4a3e-7f1f-4b0e-9b3e-8c8e3f3e3e3e/K21LOlLjRk.json'
                 });
             }
         };
@@ -334,6 +333,70 @@ export function Hero() {
               0% { transform: scale(0.8); opacity: 0.7; }
               100% { transform: scale(1.9); opacity: 0; }
             }
+            @keyframes airflow-1 {
+              0% { 
+                transform: translateX(-100vw) translateY(0); 
+                opacity: 0; 
+              }
+              5% { 
+                opacity: 1; 
+              }
+              95% { 
+                opacity: 1; 
+              }
+              100% { 
+                transform: translateX(100vw) translateY(-15px); 
+                opacity: 0; 
+              }
+            }
+            @keyframes airflow-2 {
+              0% { 
+                transform: translateX(-100vw) translateY(0); 
+                opacity: 0; 
+              }
+              5% { 
+                opacity: 1; 
+              }
+              95% { 
+                opacity: 1; 
+              }
+              100% { 
+                transform: translateX(100vw) translateY(20px); 
+                opacity: 0; 
+              }
+            }
+            @keyframes airflow-3 {
+              0% { 
+                transform: translateX(-100vw) translateY(0); 
+                opacity: 0; 
+              }
+              5% { 
+                opacity: 1; 
+              }
+              95% { 
+                opacity: 1; 
+              }
+              100% { 
+                transform: translateX(100vw) translateY(-8px); 
+                opacity: 0; 
+              }
+            }
+            @keyframes airflow-4 {
+              0% { 
+                transform: translateX(-100vw) translateY(0); 
+                opacity: 0; 
+              }
+              5% { 
+                opacity: 1; 
+              }
+              95% { 
+                opacity: 1; 
+              }
+              100% { 
+                transform: translateX(100vw) translateY(12px); 
+                opacity: 0; 
+              }
+            }
             .animate-spin-slow { animation: spin 20s linear infinite; }
             .animate-pulse-slow { animation: pulse-slow 5s infinite ease-in-out; }
             .animate-ping-slow { animation: ping-slow 3s infinite ease-in-out; }
@@ -354,47 +417,43 @@ export function Hero() {
             `}} />
             
             <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-sky-50/30 to-white min-h-screen">
-                {/* Video Background */}
-                <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+                {/* Background Video */}
+                <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-10">
                     <video
                         autoPlay
-                        loop
                         muted
+                        loop
                         playsInline
-                        preload="auto"
-                        className="absolute top-0 left-0 w-full h-full object-cover"
-                        style={{ 
-                            opacity: 0.25,
-                            mixBlendMode: 'soft-light',
-                            filter: 'blur(2px)'
-                        }}
-                        onError={(e) => console.error('Video failed to load:', e)}
+                        className="absolute inset-0 z-[-1]"
+                        style={{ filter: 'blur(1px)' }}
                     >
-                        <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/v1761045748/BACK_1_iecrwt.mov" type="mov" />
-                        <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/v1761045748/BACK_1_iecrwt.mp4" type="video/mp4" />
-                        
+                        <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/v1761044195/BACK_kazdn7.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+
                     </video>
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-sky-50/40 to-white/60 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-sky-50/40 to-white/60"></div>
                 </div>
 
                 {/* Futuristic Grid Pattern */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 z-1">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 z-0">
                     <div className="absolute inset-0" style={{
                         backgroundImage: `linear-gradient(to right, rgba(56, 189, 248, 0.1) 1px, transparent 1px),
                                          linear-gradient(to bottom, rgba(56, 189, 248, 0.1) 1px, transparent 1px)`,
                         backgroundSize: '60px 60px'
                     }}></div>
                 </div>
+   
+               
 
                 {/* Subtle Gradient Orbs */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none z-1">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-sky-200/20 to-transparent rounded-full blur-3xl"></div>
                     <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-blue-100/15 to-transparent rounded-full blur-3xl"></div>
                     <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-sky-100/10 to-transparent rounded-full blur-3xl"></div>
                 </div>
 
                 {/* Animated Light Beams */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30 z-1">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
                     <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-sky-400/40 to-transparent animate-pulse-slow"></div>
                     <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-blue-300/30 to-transparent animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
                 </div>
@@ -763,7 +822,7 @@ export function Hero() {
                                 key={index}
                                 className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-sky-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group"
                             >
-                                <div className="w-14 h-14 bg-gradient-to-br from-sky-400 to-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform animate-float">
+                                <div className="w-14 h-14 bg-gradient-to-br from-sky-400 to-blue-500 rounded-2xl flex items--center justify-center mb-6 group-hover:scale-110 transition-transform animate-float">
                                     <feature.icon className="h-7 w-7 text-white" />
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
