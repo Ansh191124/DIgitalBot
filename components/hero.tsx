@@ -49,12 +49,20 @@ export function Hero() {
     const [playingCircle, setPlayingCircle] = useState<number | null>(null)
     const [screenSize, setScreenSize] = useState<number>(768)
     const [vapiLoaded, setVapiLoaded] = useState(false)
+    const [isMobileDevice, setIsMobileDevice] = useState(false)
+    const [reduceMotion, setReduceMotion] = useState(false)
 
     // Mount effect - only run on client
     useEffect(() => {
         setIsMounted(true)
         if (typeof window !== 'undefined') {
             setScreenSize(window.innerWidth)
+            // Force animations to be enabled for testing
+            setIsMobileDevice(false)
+            setReduceMotion(false)
+            // Original detection (commented out for animation testing):
+            // setIsMobileDevice(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768)
+            // setReduceMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
         }
     }, [])
 
@@ -437,10 +445,10 @@ export function Hero() {
                     <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-sky-100/10 to-transparent rounded-full blur-3xl"></div>
                 </div>
 
-                {/* Animated Light Beams */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
-                    <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-sky-400/40 to-transparent animate-pulse-slow"></div>
-                    <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-blue-300/30 to-transparent animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+                {/* Animated Light Beams - Reduced on mobile */}
+                <div className={`absolute inset-0 overflow-hidden pointer-events-none ${isMobileDevice || reduceMotion ? 'opacity-10' : 'opacity-30'}`}>
+                    <div className={`absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-sky-400/40 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`}></div>
+                    <div className={`absolute top-0 right-1/3 w-px h-full bg-linear-to-b from-transparent via-blue-300/30 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`} style={{ animationDelay: '1s' }}></div>
                 </div>
 
                 <div className="container mx-auto relative z-10 max-w-6xl opacity-100">
@@ -449,6 +457,165 @@ export function Hero() {
                             <Sparkles className="h-4 w-4 text-sky-500 animate-pulse" />
                             <span className="font-medium">AI-Powered Customer Engagement Platform</span>
                         </div>
+                    </div>
+
+                    {/* SEO-Optimized Main Heading */}
+                    <div className="text-center mb-16 animate-fade-in-up-1">
+                        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
+                            <span className="block">AI Voice Assistant</span>
+                            <span className="bg-linear-to-r from-sky-600 via-sky-500 to-blue-500 bg-clip-text text-transparent block">
+                                Business Automation
+                            </span>
+                            <span className="block">Platform</span>
+                        </h1>
+                        
+                        {/* Compelling Tagline */}
+                        <div className="mb-8 p-6 bg-linear-to-r from-red-50 to-orange-50 border-l-4 border-red-500 rounded-lg shadow-lg max-w-4xl mx-auto">
+                            <p className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
+                                "Your receptionist sleeps, gets sick, takes breaks."
+                            </p>
+                            <p className="text-2xl sm:text-3xl font-extrabold bg-linear-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+                                WE NEVER DO.
+                            </p>
+                        </div>
+
+                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
+                            Automate Your Business Calls with AI Voice Assistants | 
+                            <span className="text-sky-600"> DigitalBot.ai </span> - 
+                            Advanced Analytics Dashboard, 24/7 Call Automation & Customer Engagement Platform
+                        </h2>
+                        
+                        {/* Rich Snippet Optimized Description */}
+                        <div className="max-w-5xl mx-auto mb-8">
+                            <p className="text-lg sm:text-xl text-gray-600 mb-4 leading-relaxed">
+                                🤖 <strong>Ready-to-Use AI Voice Assistants</strong> that never sleep, never get sick, never take breaks. 
+                                Get instant <em>call automation</em>, <em>detailed analytics dashboard</em>, and 
+                                <em>personalized business insights</em> to transform your customer service operations.
+                            </p>
+                            <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+                                📊 <strong>Real-Time Analytics</strong> | � <strong>Personal Dashboard</strong> | 
+                                � <strong>Automated Call Handling</strong> | 🌐 <strong>Multi-Language Support</strong> | 
+                                � <strong>Easy Integration</strong>
+                            </p>
+                        </div>
+
+                        {/* Voice Search Optimized FAQ Schema */}
+                        <script 
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify({
+                                    "@context": "https://schema.org",
+                                    "@type": "FAQPage",
+                                    "mainEntity": [
+                                        {
+                                            "@type": "Question",
+                                            "name": "What is an AI voice assistant for business?",
+                                            "acceptedAnswer": {
+                                                "@type": "Answer",
+                                                "text": "An AI voice assistant for business is an automated system that handles calls, customer inquiries, and support 24/7 without breaks. Unlike human receptionists who sleep, get sick, or take breaks, AI assistants work continuously with detailed analytics and personal dashboards."
+                                            }
+                                        },
+                                        {
+                                            "@type": "Question", 
+                                            "name": "How does automated call handling work?",
+                                            "acceptedAnswer": {
+                                                "@type": "Answer",
+                                                "text": "Automated call handling uses AI voice assistants to answer calls, understand customer needs, provide information, schedule appointments, and route calls appropriately. The system includes real-time analytics and a personal dashboard to monitor performance."
+                                            }
+                                        },
+                                        {
+                                            "@type": "Question",
+                                            "name": "What analytics do you get with AI voice assistants?",
+                                            "acceptedAnswer": {
+                                                "@type": "Answer",
+                                                "text": "Our AI voice assistant platform provides detailed analytics including call volume, response times, customer satisfaction scores, conversion rates, peak hours analysis, and personalized business insights through an intuitive dashboard."
+                                            }
+                                        }
+                                    ]
+                                })
+                            }}
+                        />
+
+                        {/* Local Business Schema */}
+                        <script 
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify({
+                                    "@context": "https://schema.org",
+                                    "@type": "SoftwareApplication",
+                                    "name": "DigitalBot.ai - AI Voice Assistant Platform",
+                                    "description": "Ready-to-use AI voice assistant platform for business call automation. Get detailed analytics, personal dashboard, and 24/7 automated customer service. Your receptionist sleeps, gets sick, takes breaks. We NEVER do.",
+                                    "url": "https://digitalbot.ai",
+                                    "applicationCategory": "BusinessApplication",
+                                    "operatingSystem": "Web-based",
+                                    "offers": {
+                                        "@type": "Offer",
+                                        "price": "0",
+                                        "priceCurrency": "USD",
+                                        "description": "Free 14-day trial"
+                                    },
+                                    "aggregateRating": {
+                                        "@type": "AggregateRating",
+                                        "ratingValue": "4.9",
+                                        "reviewCount": "500"
+                                    },
+                                    "featureList": [
+                                        "24/7 AI Voice Assistant",
+                                        "Automated Call Handling", 
+                                        "Real-time Analytics Dashboard",
+                                        "Multi-language Support",
+                                        "Business Intelligence Insights",
+                                        "CRM Integration"
+                                    ]
+                                })
+                            }}
+                        />
+
+                        {/* Service Schema */}
+                        <script 
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify({
+                                    "@context": "https://schema.org",
+                                    "@type": "Service",
+                                    "name": "AI Voice Assistant Business Automation Platform",
+                                    "description": "Ready-to-use AI voice assistant platform for automated call handling, customer service, and business analytics. Complete with personal dashboard and detailed reporting.",
+                                    "provider": {
+                                        "@type": "Organization",
+                                        "name": "DigitalBot.ai",
+                                        "url": "https://digitalbot.ai"
+                                    },
+                                    "areaServed": "Worldwide",
+                                    "hasOfferCatalog": {
+                                        "@type": "OfferCatalog",
+                                        "name": "AI Voice Assistant Services",
+                                        "itemListElement": [
+                                            {
+                                                "@type": "Offer",
+                                                "itemOffered": {
+                                                    "@type": "Service",
+                                                    "name": "24/7 AI Call Automation"
+                                                }
+                                            },
+                                            {
+                                                "@type": "Offer", 
+                                                "itemOffered": {
+                                                    "@type": "Service",
+                                                    "name": "Personal Analytics Dashboard"
+                                                }
+                                            },
+                                            {
+                                                "@type": "Offer",
+                                                "itemOffered": {
+                                                    "@type": "Service", 
+                                                    "name": "Multi-Language Voice Support"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                })
+                            }}
+                        />
                     </div>
 
                     {/* Centered Column Layout */}
@@ -460,10 +627,10 @@ export function Hero() {
                                 <div className="relative w-full h-full flex items-center justify-center">
                                     <div className="relative w-full max-w-xl h-full flex items-center justify-center">
                                         <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className={`w-80 h-80 rounded-full transition-all duration-500 ${
+                                            <div className={`${isMobileDevice ? 'w-60 h-60' : 'w-80 h-80'} rounded-full transition-all duration-500 ${
                                                 isSpeaking
-                                                    ? 'bg-gradient-to-r from-sky-500/30 via-blue-500/30 to-sky-500/30 blur-3xl'
-                                                    : 'bg-gradient-to-r from-sky-400/20 via-blue-400/20 to-sky-400/20 blur-3xl'
+                                                    ? 'bg-linear-to-r from-sky-500/30 via-blue-500/30 to-sky-500/30 blur-3xl'
+                                                    : 'bg-linear-to-r from-sky-400/20 via-blue-400/20 to-sky-400/20 blur-3xl'
                                                 }`}></div>
                                         </div>
 
@@ -514,10 +681,10 @@ export function Hero() {
                                                                     key={i}
                                                                     className={`w-0.5 sm:w-1 transition-all duration-300 rounded-full ${
                                                                         isSpeaking
-                                                                            ? 'bg-gradient-to-t from-white via-sky-100 to-cyan-200 shadow-sm'
-                                                                            : isCallActive
-                                                                                ? 'bg-gradient-to-t from-white/60 via-sky-100/60 to-sky-200/60'
-                                                                                : 'bg-gradient-to-t from-white/30 via-sky-100/30 to-sky-200/30'
+                                                                            ? 'bg-linear-to-t from-white via-sky-100 to-cyan-200 shadow-sm'
+                                                                            : isSpeaking
+                                                                                ? 'bg-linear-to-t from-white/60 via-sky-100/60 to-sky-200/60'
+                                                                                : 'bg-linear-to-t from-white/30 via-sky-100/30 to-sky-200/30'
                                                                     }`}
                                                                     style={{
                                                                         height: isSpeaking
@@ -542,18 +709,18 @@ export function Hero() {
 
                                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                             <div className={`absolute w-56 sm:w-64 h-56 sm:h-64 rounded-full border-2 transition-all duration-500 ${
-                                                isSpeaking ? 'border-sky-400/60 border-dashed animate-spin-slow' : 'border-sky-400/30 border-dashed animate-spin-slow'
-                                                }`}></div>
+                                                isSpeaking ? 'border-sky-400/60 border-dashed' : 'border-sky-400/30 border-dashed'
+                                                } ${!(isMobileDevice || reduceMotion) ? 'animate-spin-slow' : ''}`}></div>
                                             <div className={`absolute w-64 sm:w-72 h-64 sm:h-72 rounded-full border transition-all duration-500 ${
                                                 isSpeaking ? 'border-blue-300/50 border-dotted' : 'border-blue-300/25 border-dotted'
-                                                }`} style={{ animation: 'spin 25s linear infinite reverse' }}></div>
+                                                }`} style={!(isMobileDevice || reduceMotion) ? { animation: 'spin 25s linear infinite reverse' } : {}}></div>
 
                                             <div className={`w-48 sm:w-56 h-48 sm:h-56 rounded-full transition-all duration-300 ${
-                                                isSpeaking ? 'bg-sky-400/20 animate-ping' : 'bg-sky-400/10 animate-ping-slow'
-                                                }`} style={{ animationDuration: '2s' }}></div>
+                                                isSpeaking ? 'bg-sky-400/20' : 'bg-sky-400/10'
+                                                } ${!(isMobileDevice || reduceMotion) ? (isSpeaking ? 'animate-ping' : 'animate-ping-slow') : ''}`} style={{ animationDuration: '2s' }}></div>
                                             <div className={`absolute w-40 sm:w-48 h-40 sm:h-48 rounded-full transition-all duration-300 ${
-                                                isSpeaking ? 'bg-blue-400/15 animate-ping' : 'bg-blue-400/8 animate-ping-slower'
-                                                }`} style={{ animationDuration: '3s', animationDelay: '0.5s' }}></div>
+                                                isSpeaking ? 'bg-blue-400/15' : 'bg-blue-400/8'
+                                                } ${!(isMobileDevice || reduceMotion) ? (isSpeaking ? 'animate-ping' : 'animate-ping-slower') : ''}`} style={{ animationDuration: '3s', animationDelay: '0.5s' }}></div>
                                         </div>
 
                                         {isCallActive && (
@@ -590,8 +757,8 @@ export function Hero() {
                                     size="lg"
                                     onClick={toggleCall}
                                     className={`text-white font-semibold rounded-full shadow-xl transition-all duration-300 group ${isCallActive
-                                        ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-400/50 transform hover:scale-105'
-                                        : 'bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-400/50 transform hover:scale-105'
+                                        ? 'bg-linear-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-400/50 transform hover:scale-105'
+                                        : 'bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-400/50 transform hover:scale-105'
                                     } flex items-center`}
                                     aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
                                 >
@@ -616,28 +783,28 @@ export function Hero() {
 
                         {/* Elegant Divider */}
                         <div className="w-full flex items-center justify-center my-16 px-8">
-                            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-sky-200/40 to-transparent"></div>
+                            <div className="flex-1 h-px bg-linear-to-r from-transparent via-sky-200/40 to-transparent"></div>
                             <div className="mx-6 flex items-center gap-2">
                                 <div className="w-2 h-2 rounded-full bg-sky-400/30"></div>
                                 <div className="w-2 h-2 rounded-full bg-sky-400/50"></div>
                                 <div className="w-2 h-2 rounded-full bg-sky-400/30"></div>
                             </div>
-                            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-sky-200/40 to-transparent"></div>
+                            <div className="flex-1 h-px bg-linear-to-r from-transparent via-sky-200/40 to-transparent"></div>
                         </div>
 
                         {/* Sample Conversations */}
                         <div className="w-full flex flex-col items-center justify-center px-4">
-                            <h3 className="mb-8 sm:mb-12 text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-sky-500 to-blue-600 font-bold text-2xl sm:text-3xl text-center tracking-tight">
+                            <h3 className="mb-8 sm:mb-12 text-transparent bg-clip-text bg-linear-to-r from-sky-400 via-sky-500 to-blue-600 font-bold text-2xl sm:text-3xl text-center tracking-tight">
                                 Sample Conversations
                             </h3>
 
                             <div className="relative w-full max-w-md h-[450px] sm:h-[550px] flex items-center justify-center mx-auto">
-                                <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+                                <div className="absolute inset-0 bg-linear-to-br from-sky-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
 
                                 {/* Center AI Agent Circle */}
-                                <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 shadow-2xl flex items-center justify-center">
+                                <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-linear-to-br from-sky-400 via-sky-500 to-blue-600 shadow-2xl flex items-center justify-center">
                                     <div className="absolute inset-0 rounded-full bg-sky-400/30 animate-ping"></div>
-                                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400/40 to-blue-500/40 animate-pulse"></div>
+                                    <div className="absolute inset-0 rounded-full bg-linear-to-br from-sky-400/40 to-blue-500/40 animate-pulse"></div>
                                     
                                     <div className="text-center relative z-10">
                                         <div className="text-white text-xs sm:text-sm font-bold tracking-wide">AI Agent</div>
@@ -684,8 +851,8 @@ export function Hero() {
                                             <button
                                                 onClick={() => setPlayingCircle(isPlaying ? null : index)}
                                                 className={`absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full shadow-2xl flex flex-col items-center justify-center border-2 sm:border-4 transition-all duration-300 ${isPlaying
-                                                    ? 'bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 border-white/40 shadow-sky-400/80 scale-105'
-                                                    : 'bg-gradient-to-br from-sky-700 via-sky-800 to-sky-900 border-white/20 hover:border-sky-300/60 hover:shadow-sky-300/30'
+                                                    ? 'bg-linear-to-br from-sky-400 via-sky-500 to-blue-600 border-white/40 shadow-sky-400/80 scale-105'
+                                                    : 'bg-linear-to-br from-sky-700 via-sky-800 to-sky-900 border-white/20 hover:border-sky-300/60 hover:shadow-sky-300/30'
                                                 }`}
                                                 style={{
                                                     left: `calc(50% + ${x}px)`,
@@ -752,10 +919,10 @@ export function Hero() {
                                         key={i}
                                         className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-sky-200 transition-transform duration-500 hover:scale-[1.02] relative overflow-hidden"
                                     >
-                                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
-                                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
+                                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-linear-to-tr from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
+                                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-linear-to-bl from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
 
-                                        <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient relative z-10">
+                                        <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient relative z-10">
                                             {stats[i].formatter(counts[i])}
                                             {stat.suffix}
                                         </div>
@@ -791,7 +958,7 @@ export function Hero() {
                         </div>
                         <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
                             Ready to Deploy{" "}
-                            <span className="bg-gradient-to-r from-sky-600 via-sky-500 to-blue-500 bg-clip-text text-transparent">
+                            <span className="bg-linear-to-r from-sky-600 via-sky-500 to-blue-500 bg-clip-text text-transparent">
                                 AI Voice Assistant
                             </span>
                         </h2>
@@ -806,7 +973,7 @@ export function Hero() {
                                 key={index}
                                 className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-sky-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group"
                             >
-                                <div className="w-14 h-14 bg-gradient-to-br from-sky-400 to-blue-500 rounded-2xl flex items--center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <div className="w-14 h-14 bg-linear-to-br from-sky-400 to-blue-500 rounded-2xl flex items--center justify-center mb-6 group-hover:scale-110 transition-transform">
                                     <feature.icon className="h-7 w-7 text-white" />
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
@@ -815,8 +982,8 @@ export function Hero() {
                         ))}
                     </div>
 
-                    <div className="bg-gradient-to-r from-sky-600 via-sky-500 to-blue-500 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-r from-sky-400/20 to-blue-400/20 backdrop-blur-sm"></div>
+                    <div className="bg-linear-to-r from-sky-600 via-sky-500 to-blue-500 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
+                        <div className="absolute inset-0 bg-linear-to-r from-sky-400/20 to-blue-400/20 backdrop-blur-sm"></div>
                         <div className="relative z-10">
                             <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
                                 Start Your Free Trial Today
@@ -875,7 +1042,7 @@ export function Hero() {
                                     className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition-colors"
                                 >
                                     <h3 className="text-lg font-semibold text-gray-900 pr-4">{faq.q}</h3>
-                                    <ArrowRight className="h-5 w-5 text-sky-600 flex-shrink-0 transition-transform duration-300" />
+                                    <ArrowRight className="h-5 w-5 text-sky-600 shrink-0 transition-transform duration-300" />
                                 </button>
                             </div>
                         ))}

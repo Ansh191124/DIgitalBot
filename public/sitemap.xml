@@ -6,25 +6,54 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   
-  <!-- Homepage - Highest Priority -->
+  <!-- Homepage - Website Developer in India - Highest Priority -->
   <url>
     <loc>https://digitalbot.ai/</loc>
-    <lastmod>2025-10-17T07:00:00+05:30</lastmod>
+    <lastmod>2025-10-24T07:00:00+05:30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+  
+  <!-- SEO Landing Pages for Website Developer India -->
+  <url>
+    <loc>https://digitalbot.ai/website-developer-india</loc>
+    <lastmod>2025-10-24T07:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
+  <url>
+    <loc>https://digitalbot.ai/website-development-mumbai</loc>
+    <lastmod>2025-10-24T07:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://digitalbot.ai/website-development-delhi</loc>
+    <lastmod>2025-10-24T07:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://digitalbot.ai/website-development-bangalore</loc>
+    <lastmod>2025-10-24T07:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   
   <!-- Main Service Pages -->
   <url>
     <loc>https://digitalbot.ai/services</loc>
-    <lastmod>2025-10-17T07:00:00+05:30</lastmod>
+    <lastmod>2025-10-24T07:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://digitalbot.ai/pricing</loc>
-    <lastmod>2025-10-17T07:00:00+05:30</lastmod>
+    <lastmod>2025-10-24T07:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
