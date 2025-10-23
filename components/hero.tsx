@@ -1,7 +1,8 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { Sparkles, Mic, Square, MessageSquare, Zap, Shield, Clock, TrendingUp, Users, Award, ChevronDown, CheckCircle, ArrowRight } from "lucide-react"
+import { Sparkles, Mic, Square, MessageSquare, Zap, Shield, Clock, TrendingUp, Users, Award, CheckCircle, ArrowRight } from "lucide-react"
 import { useEffect, useState, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface LottieAnimation {
     destroy: () => void;
@@ -28,6 +29,8 @@ declare global {
 }
 
 export function Hero() {
+    const router = useRouter()
+
     const stats = [
         { label: "Uptime Guarantee", value: 99.9, suffix: "%", formatter: (val: number) => val.toFixed(1) },
         { label: "P99 AI Inference Latency", value: 750, suffix: "ms", formatter: (val: number) => val.toLocaleString() },
@@ -43,7 +46,6 @@ export function Hero() {
     const [transcript, setTranscript] = useState("Hello! I'm your AI assistant. Click the microphone to start a conversation in any Language.")
     const [callStatus, setCallStatus] = useState("")
     const lottieAnimationRef = useRef<LottieAnimation | null>(null)
-    const [showFAQ, setShowFAQ] = useState<number | null>(null)
     const [playingCircle, setPlayingCircle] = useState<number | null>(null)
     const [screenSize, setScreenSize] = useState<number>(768)
     const [vapiLoaded, setVapiLoaded] = useState(false)
@@ -231,23 +233,23 @@ export function Hero() {
     const faqs = [
         {
             q: "What is an AI voice assistant and how does it work?",
-            a: "An AI voice assistant is an intelligent conversational system that uses natural language processing and machine learning to understand and respond to customer queries in real-time. It works by analyzing speech patterns, context, and intent to provide accurate, human-like responses 24/7."
+            a: "An AI voice assistant is an intelligent conversational system that uses natural language processing and machine learning to understand and respond to customer queries in real-time[...]"
         },
         {
             q: "How can AI voice assistants improve customer service?",
-            a: "AI voice assistants enhance customer service by providing instant responses, handling multiple conversations simultaneously, reducing wait times, and offering consistent support around the clock. They can resolve common queries, schedule appointments, and seamlessly escalate complex issues to human agents when needed."
+            a: "AI voice assistants enhance customer service by providing instant responses, handling multiple conversations simultaneously, reducing wait times, and offering consistent support a[...]"
         },
         {
             q: "Is the AI voice assistant secure for handling customer data?",
-            a: "Yes, our AI voice assistant employs enterprise-grade security measures including end-to-end encryption, compliance with GDPR and industry standards, regular security audits, and secure data storage protocols to protect all customer interactions and sensitive information."
+            a: "Yes, our AI voice assistant employs enterprise-grade security measures including end-to-end encryption, compliance with GDPR and industry standards, regular security audits, and s[...]"
         },
         {
             q: "Can the AI voice assistant integrate with existing business systems?",
-            a: "Absolutely. Our AI voice assistant offers seamless integration with popular CRM systems, help desk software, e-commerce platforms, and custom APIs. This ensures smooth data flow and enables the assistant to access relevant customer information for personalized interactions."
+            a: "Absolutely. Our AI voice assistant offers seamless integration with popular CRM systems, help desk software, e-commerce platforms, and custom APIs. This ensures smooth data flow a[...]"
         },
         {
             q: "What industries benefit most from AI voice assistants?",
-            a: "AI voice assistants benefit various industries including healthcare, e-commerce, banking, hospitality, real estate, education, and telecommunications. Any business that values customer engagement, wants to reduce operational costs, and aims to provide superior customer experiences can benefit significantly."
+            a: "AI voice assistants benefit various industries including healthcare, e-commerce, banking, hospitality, real estate, education, and telecommunications. Any business that values cus[...]"
         }
     ]
 
@@ -265,7 +267,7 @@ export function Hero() {
     // Don't render complex interactive elements until mounted
     if (!isMounted) {
         return (
-            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-sky-50/30 to-white min-h-screen">
+            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen">
                 <div className="container mx-auto relative z-10 max-w-6xl">
                     <div className="flex justify-center mb-12">
                         <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-sm border border-sky-200/60 shadow-lg">
@@ -416,23 +418,7 @@ export function Hero() {
             .animate-wave-3 { animation: wave-pulse-3 2s ease-out infinite; }
             `}} />
             
-            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-sky-50/30 to-white min-h-screen">
-                {/* Background Video */}
-                <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-10">
-                    <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="absolute inset-0 z-[-1]"
-                        style={{ filter: 'blur(1px)' }}
-                    >
-                        <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/v1761044195/BACK_kazdn7.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
-
-                    </video>
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-sky-50/40 to-white/60"></div>
-                </div>
+            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen">
 
                 {/* Futuristic Grid Pattern */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 z-0">
@@ -444,7 +430,6 @@ export function Hero() {
                 </div>
    
                
-
                 {/* Subtle Gradient Orbs */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-sky-200/20 to-transparent rounded-full blur-3xl"></div>
@@ -585,8 +570,8 @@ export function Hero() {
                                         {isSpeaking && (
                                             <>
                                                 <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-sky-300 rounded-full animate-ping" style={{ animationDuration: '1.5s' }}></div>
-                                                <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-cyan-300 rounded-full animate-ping" style={{ animationDuration: '2s', animationDelay: '0.3s' }}></div>
-                                                <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-300 rounded-full animate-ping" style={{ animationDuration: '1.8s', animationDelay: '0.6s' }}></div>
+                                                <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-cyan-300 rounded-full animate-ping" style={{ animationDuration: '2s' }}></div>
+                                                <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-300 rounded-full animate-ping" style={{ animationDuration: '1.8s' }}></div>
                                             </>
                                         )}
                                     </div>
@@ -650,7 +635,7 @@ export function Hero() {
                                 <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
 
                                 {/* Center AI Agent Circle */}
-                                <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 shadow-2xl flex items-center justify-center z-20 border-4 border-white/20 backdrop-blur-sm">
+                                <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 shadow-2xl flex items-center justify-center">
                                     <div className="absolute inset-0 rounded-full bg-sky-400/30 animate-ping"></div>
                                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400/40 to-blue-500/40 animate-pulse"></div>
                                     
@@ -698,10 +683,9 @@ export function Hero() {
 
                                             <button
                                                 onClick={() => setPlayingCircle(isPlaying ? null : index)}
-                                                className={`absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full shadow-2xl flex flex-col items-center justify-center border-2 sm:border-4 transition-all duration-300 transform hover:scale-110 active:scale-95 cursor-pointer ${
-                                                    isPlaying
-                                                        ? 'bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 border-white/40 shadow-sky-400/80 scale-105'
-                                                        : 'bg-gradient-to-br from-sky-700 via-sky-800 to-sky-900 border-white/20 hover:border-sky-300/60 hover:shadow-sky-300/30'
+                                                className={`absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full shadow-2xl flex flex-col items-center justify-center border-2 sm:border-4 transition-all duration-300 ${isPlaying
+                                                    ? 'bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 border-white/40 shadow-sky-400/80 scale-105'
+                                                    : 'bg-gradient-to-br from-sky-700 via-sky-800 to-sky-900 border-white/20 hover:border-sky-300/60 hover:shadow-sky-300/30'
                                                 }`}
                                                 style={{
                                                     left: `calc(50% + ${x}px)`,
@@ -768,8 +752,8 @@ export function Hero() {
                                         key={i}
                                         className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-sky-200 transition-transform duration-500 hover:scale-[1.02] relative overflow-hidden"
                                     >
-                                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-30 filter blur-3xl animate-pulse-slow"></div>
-                                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-20 filter blur-3xl animate-pulse-slow" style={{ animationDelay: '-1s' }}></div>
+                                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
+                                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
 
                                         <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient relative z-10">
                                             {stats[i].formatter(counts[i])}
@@ -785,7 +769,7 @@ export function Hero() {
             </section>
 
             {/* Ready to Deploy Section */}
-            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-sky-50/20 to-white relative overflow-hidden">
+            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-sm relative overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
                     <div className="absolute inset-0" style={{
                         backgroundImage: `linear-gradient(to right, rgba(56, 189, 248, 0.15) 1px, transparent 1px),
@@ -822,7 +806,7 @@ export function Hero() {
                                 key={index}
                                 className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-sky-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group"
                             >
-                                <div className="w-14 h-14 bg-gradient-to-br from-sky-400 to-blue-500 rounded-2xl flex items--center justify-center mb-6 group-hover:scale-110 transition-transform animate-float">
+                                <div className="w-14 h-14 bg-gradient-to-br from-sky-400 to-blue-500 rounded-2xl flex items--center justify-center mb-6 group-hover:scale-110 transition-transform">
                                     <feature.icon className="h-7 w-7 text-white" />
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
@@ -875,8 +859,8 @@ export function Hero() {
                 </div>
             </section>
 
-            {/* FAQ Section */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+            {/* FAQ Section (navigates to separate pages) */}
+            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-sm">
                 <div className="container mx-auto max-w-4xl">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
@@ -887,35 +871,26 @@ export function Hero() {
                         {faqs.map((faq, index) => (
                             <div key={index} className="border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                                 <button
-                                    onClick={() => setShowFAQ(showFAQ === index ? null : index)}
+                                    onClick={() => router.push(`/faq/${index}`)}
                                     className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition-colors"
                                 >
                                     <h3 className="text-lg font-semibold text-gray-900 pr-4">{faq.q}</h3>
-                                    <ChevronDown className={`h-5 w-5 text-sky-600 flex-shrink-0 transition-transform duration-300 ${showFAQ === index ? 'rotate-180' : ''}`} />
+                                    <ArrowRight className="h-5 w-5 text-sky-600 flex-shrink-0 transition-transform duration-300" />
                                 </button>
-                                {showFAQ === index && (
-                                    <div className="px-6 pb-6 bg-gray-50">
-                                        <p className="text-gray-700 leading-relaxed">{faq.a}</p>
-                                    </div>
-                                )}
                             </div>
                         ))}
+                    </div>
+
+                    <div className="mt-6 text-center">
+                        <button onClick={() => router.push('/faq')} className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-sky-600 text-white font-semibold hover:bg-sky-700 transition">
+                            View all FAQs
+                            <ArrowRight className="h-4 w-4" />
+                        </button>
                     </div>
                 </div>
             </section>
 
-            {/* SEO Content Section */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-sky-50/30">
-                <div className="container mx-auto max-w-5xl">
-                    <article className="prose prose-lg max-w-none">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Revolutionizing Business Communication with AI Voice Assistants</h2>
-                        
-                        <p className="text-gray-700 leading-relaxed mb-6">
-                            In today's fast-paced digital landscape, businesses are constantly seeking innovative solutions to enhance customer engagement and streamline operations. AI voice assistants have emerged as a transformative technology that bridges the gap between traditional customer service and modern expectations.
-                        </p>
-                    </article>
-                </div>
-            </section>
+       
         </>
     )
 }

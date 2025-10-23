@@ -15,11 +15,11 @@ export default function Home() {
       
       <Header />
       
-      <main id="main-content" className="min-h-screen bg-background" role="main">
+      <main id="main-content" className="min-h-screen" role="main">
         <Hero />
         
         {/* AI Voice Agent Features Section - ASO Optimized */}
-        <section className="py-20 bg-white" role="region" aria-labelledby="features-heading">
+        <section className="py-20 bg-white/70 backdrop-blur-sm" role="region" aria-labelledby="features-heading">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <header className="text-center mb-16">
               <h2 id="features-heading" className="text-4xl font-bold text-gray-900 mb-4">
@@ -32,7 +32,7 @@ export default function Home() {
             </header>
             
             <div className="grid md:grid-cols-3 gap-8">
-              <article className="text-center p-6 bg-gray-50 rounded-lg">
+              <article className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-white/20">
                 <h3 className="text-2xl font-semibold mb-4 text-gray-900">Natural Language Processing</h3>
                 <p className="text-gray-600">
                   Our AI Voice Agents understand context, sentiment, and intent with industry-leading 
@@ -40,7 +40,7 @@ export default function Home() {
                 </p>
               </article>
               
-              <article className="text-center p-6 bg-gray-50 rounded-lg">
+              <article className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-white/20">
                 <h3 className="text-2xl font-semibold mb-4 text-gray-900">24/7 Availability</h3>
                 <p className="text-gray-600">
                   AI Voice Agents never sleep. Provide round-the-clock customer support, 
@@ -48,7 +48,7 @@ export default function Home() {
                 </p>
               </article>
               
-              <article className="text-center p-6 bg-gray-50 rounded-lg">
+              <article className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-white/20">
                 <h3 className="text-2xl font-semibold mb-4 text-gray-900">Scalable Integration</h3>
                 <p className="text-gray-600">
                   Seamlessly integrate AI Voice Agents with your existing CRM, helpdesk, 
@@ -60,7 +60,7 @@ export default function Home() {
         </section>
 
         {/* Voice Search Optimized Content - VSO */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white" role="region" aria-labelledby="voice-search-heading">
+        <section className="py-20 bg-gradient-to-b from-gray-50/50 to-white/70 backdrop-blur-sm" role="region" aria-labelledby="voice-search-heading">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 id="voice-search-heading" className="text-3xl font-bold text-center mb-12 text-gray-900">
@@ -80,7 +80,7 @@ export default function Home() {
                       that feel authentically human and build stronger connections with your customers.
                     </p>
                   </div>
-                  <div className="md:w-1/2 bg-blue-50 p-8 rounded-xl shadow-sm">
+                  <div className="md:w-1/2 bg-blue-50/70 backdrop-blur-sm p-8 rounded-xl shadow-sm border border-blue-100/50">
                     <p className="text-blue-900 font-medium text-lg mb-3">
                       "Our AI Voice Agent increased customer satisfaction by 40% and reduced 
                       support costs by 60% within the first quarter."
@@ -100,7 +100,7 @@ export default function Home() {
                       accelerate time-to-market while maintaining enterprise-grade security, reliability, and compliance standards.
                     </p>
                   </div>
-                  <div className="md:w-1/2 bg-green-50 p-8 rounded-xl shadow-sm">
+                  <div className="md:w-1/2 bg-green-50/70 backdrop-blur-sm p-8 rounded-xl shadow-sm border border-green-100/50">
                     <p className="text-green-900 font-medium text-lg">
                       Deploy production-ready AI Voice Agents in as little as 3 days with 
                       our enterprise onboarding program and dedicated technical support.
@@ -112,55 +112,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FAQ Section for Featured Snippets - ASO */}
-        <section className="py-20 bg-slate-50" role="region" aria-labelledby="faq-heading">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="faq-heading" className="text-3xl font-bold text-center mb-12 text-gray-900">
-              Frequently Asked Questions About AI Voice Agents
-            </h2>
-            <div className="max-w-4xl mx-auto space-y-6">
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">What is an AI Voice Agent?</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  An AI Voice Agent is an intelligent conversational assistant that uses advanced natural language processing, 
-                  speech recognition, and machine learning to communicate with customers through voice interactions. 
-                  Our AI Voice Agents can handle customer service inquiries, process orders, schedule appointments, 
-                  answer questions, and provide personalized support 24 hours a day, 7 days a week.
-                </p>
-              </div>
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">How does AI Voice Agent technology work?</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  AI Voice Agents combine multiple cutting-edge technologies: speech-to-text conversion for understanding spoken input, 
-                  natural language understanding for interpreting context and intent, machine learning for continuous improvement,
-                  contextual processing for maintaining conversation coherence, intelligent response generation, 
-                  and text-to-speech synthesis for natural voice output. This creates seamless, human-like conversations 
-                  that understand customer needs and provide relevant, helpful responses in real-time.
-                </p>
-              </div>
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">What are the benefits of using AI Voice Agents for business?</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  AI Voice Agents reduce operational costs by up to 80%, provide 24/7 customer support without breaks, 
-                  handle unlimited simultaneous conversations, dramatically improve response times from minutes to seconds, 
-                  increase customer satisfaction scores, and free up human agents to focus on complex, high-value tasks. 
-                  They also provide consistent service quality, can be integrated with existing business systems, 
-                  and offer valuable conversation analytics for business intelligence.
-                </p>
-              </div>
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">Can AI Voice Agents replace human customer service representatives?</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  AI Voice Agents excel at handling routine inquiries, frequently asked questions, order processing, 
-                  appointment scheduling, and basic troubleshooting with speed and accuracy. They work best alongside human agents 
-                  in a hybrid model, handling high-volume repetitive tasks while intelligently escalating complex issues, 
-                  sensitive matters, or emotionally charged situations to human representatives. 
-                  This collaborative approach maximizes efficiency, reduces wait times, and ensures optimal customer satisfaction.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        
       </main>
       
       <Footer />

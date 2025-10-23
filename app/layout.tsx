@@ -157,7 +157,25 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased relative`}>
+        {/* Full Page Background Video */}
+        <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none -z-10" aria-hidden>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ filter: 'blur(1px)' }}
+            aria-hidden
+          >
+            <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/v1761044195/BACK_kazdn7.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          {/* very subtle overlay so video remains clearly visible */}
+          <div className="absolute inset-0 bg-linear-to-b from-white/5 via-transparent to-white/5 pointer-events-none" />
+        </div>
+        
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>
