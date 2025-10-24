@@ -51,6 +51,7 @@ export function Hero() {
     const [vapiLoaded, setVapiLoaded] = useState(false)
     const [isMobileDevice, setIsMobileDevice] = useState(false)
     const [reduceMotion, setReduceMotion] = useState(false)
+    const [typewriterComplete, setTypewriterComplete] = useState(false)
 
     // Mount effect - only run on client
     useEffect(() => {
@@ -238,6 +239,57 @@ export function Hero() {
         return () => intervals.forEach(clearInterval)
     }, [isMounted])
 
+    // Typewriter effect for description
+    useEffect(() => {
+        if (!isMounted) return
+
+        const typewriterElement = document.getElementById('typewriter-text')
+        if (!typewriterElement) return
+
+        const fullText = `<span class="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">Ready-to-Use AI Voice Assistants</span> that never sleep, never get sick, never take breaks. Get instant <span class="font-semibold text-sky-600">call automation</span>, <span class="font-semibold text-sky-600">detailed analytics dashboard</span>, and <span class="font-semibold text-sky-600">personalized business insights</span> to transform your customer service operations.`
+        
+        let currentIndex = 0
+        let isInsideTag = false
+        let currentHTML = ''
+
+        const typeNextCharacter = () => {
+            if (currentIndex < fullText.length) {
+                const char = fullText[currentIndex]
+                
+                if (char === '<') {
+                    isInsideTag = true
+                } else if (char === '>') {
+                    isInsideTag = false
+                    currentHTML += char
+                    typewriterElement.innerHTML = currentHTML
+                    currentIndex++
+                    setTimeout(typeNextCharacter, 0)
+                    return
+                }
+
+                if (isInsideTag) {
+                    currentHTML += char
+                    currentIndex++
+                    setTimeout(typeNextCharacter, 0)
+                } else {
+                    currentHTML += char
+                    typewriterElement.innerHTML = currentHTML + '<span class="animate-pulse text-sky-600">|</span>'
+                    currentIndex++
+                    setTimeout(typeNextCharacter, 5) // Typing speed - super fast
+                }
+            } else {
+                typewriterElement.innerHTML = currentHTML
+                setTypewriterComplete(true)
+            }
+        }
+
+        const timer = setTimeout(() => {
+            typeNextCharacter()
+        }, 100)
+
+        return () => clearTimeout(timer)
+    }, [isMounted])
+
     const faqs = [
         {
             q: "What is an AI voice assistant and how does it work?",
@@ -321,6 +373,18 @@ export function Hero() {
             @keyframes fade-in-up {
                 from { opacity: 0; transform: translateY(20px); }
                 to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes fade-in-right {
+                from { opacity: 0; transform: translateX(-30px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+            @keyframes typing {
+                from { width: 0; }
+                to { width: 100%; }
+            }
+            @keyframes blink-caret {
+                from, to { border-color: transparent; }
+                50% { border-color: rgb(14, 165, 233); }
             }
             @keyframes gradient {
                 0% { background-position: 0% 50%; }
@@ -411,9 +475,73 @@ export function Hero() {
             .animate-pulse-slow { animation: pulse-slow 5s infinite ease-in-out; }
             .animate-ping-slow { animation: ping-slow 3s infinite ease-in-out; }
             .animate-ping-slower { animation: ping-slower 4s infinite ease-in-out; }
-            .animate-fade-in-up-1 { animation: fade-in-up 1s ease-out forwards; }
-            .animate-fade-in-up-2 { animation: fade-in-up 1s ease-out 0.2s forwards; }
-            .animate-fade-in-up-3 { animation: fade-in-up 1s ease-out 0.4s forwards; }
+            .animate-fade-in-up-1 { 
+                animation: fade-in-up 1s ease-out forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-up-2 { 
+                animation: fade-in-up 1s ease-out 0.2s forwards;
+                opacity: 0;
+            }
+            .animate-typing {
+                position: relative;
+                display: inline-block;
+            }
+            .animate-typing-text {
+                opacity: 0;
+                animation: typing-fade-in 3.5s steps(150, end) 0.5s forwards;
+            }
+            @keyframes typing-fade-in {
+                0% { 
+                    opacity: 0;
+                    max-width: 0;
+                }
+                1% {
+                    opacity: 1;
+                }
+                100% { 
+                    opacity: 1;
+                    max-width: 100%;
+                }
+            }
+            .animate-typing::after {
+                content: '';
+                position: absolute;
+                right: -2px;
+                top: 0;
+                width: 2px;
+                height: 100%;
+                background-color: rgb(14, 165, 233);
+                animation: blink-caret 0.75s step-end infinite 0.5s;
+            }
+            .animate-fade-in-up-3 { 
+                animation: fade-in-up 1s ease-out 0.4s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right { 
+                animation: fade-in-right 1s ease-out 0.4s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right > span:nth-child(1) { 
+                animation: fade-in-right 0.6s ease-out 0.5s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right > span:nth-child(3) { 
+                animation: fade-in-right 0.6s ease-out 0.7s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right > span:nth-child(5) { 
+                animation: fade-in-right 0.6s ease-out 0.9s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right > span:nth-child(7) { 
+                animation: fade-in-right 0.6s ease-out 1.1s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right > span:nth-child(9) { 
+                animation: fade-in-right 0.6s ease-out 1.3s forwards;
+                opacity: 0;
+            }
             .animate-gradient {
                 background-size: 400% 400%;
                 animation: gradient 10s ease infinite;
@@ -461,41 +589,62 @@ export function Hero() {
 
                     {/* SEO-Optimized Main Heading */}
                     <div className="text-center mb-16 animate-fade-in-up-1">
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 mb-6 leading-tight">
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
                             <span className="block">AI Voice Assistant</span>
-                            <span className="bg-linear-to-r from-sky-600 via-sky-500 to-blue-500 bg-clip-text text-transparent block">
-                                Business Automation
+                            <span className="inline-block mt-1 px-3 py-1 rounded-lg text-white bg-linear-to-br from-sky-500 via-sky-600 to-blue-600 shadow-lg text-xl sm:text-2xl lg:text-3xl relative overflow-hidden border border-white/20">
+                                <span className="absolute inset-0 bg-linear-to-tr from-white/20 via-transparent to-transparent"></span>
+                                <span className="absolute inset-0 bg-linear-to-bl from-transparent via-transparent to-black/10"></span>
+                                <span className="relative z-10">Business Automation</span>
                             </span>
-                            <span className="block">Platform</span>
+                            <span className="block mt-1 text-3xl sm:text-4xl lg:text-5xl">Platform</span>
                         </h1>
-                        
-                        {/* Compelling Tagline */}
-                        <div className="mb-8 p-6 bg-linear-to-r from-red-50 to-orange-50 border-l-4 border-red-500 rounded-lg shadow-lg max-w-4xl mx-auto">
-                            <p className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
-                                "Your receptionist sleeps, gets sick, takes breaks."
-                            </p>
-                            <p className="text-2xl sm:text-3xl font-extrabold bg-linear-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
-                                WE NEVER DO.
-                            </p>
+
+                        <div className="mb-6 p-4 bg-white/30 border border-sky-200/30 rounded-xl shadow-xl max-w-3xl mx-auto relative overflow-hidden backdrop-blur-md">
+                            <div className="absolute inset-0 bg-linear-to-tr from-white/30 via-transparent to-transparent pointer-events-none"></div>
+                            <div className="absolute inset-0 border-l-4 border-sky-500/60 rounded-xl"></div>
+                            <div className="relative z-10">
+                                <p className="text-base sm:text-lg font-semibold text-gray-800 mb-1">
+                                    "Your receptionist sleeps, gets sick, takes breaks."
+                                </p>
+                                <p className="text-lg sm:text-xl font-bold text-white inline-block bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 px-3 py-1 rounded-lg shadow-lg relative overflow-hidden border border-white/20">
+                                    <span className="absolute inset-0 bg-linear-to-tr from-white/25 via-transparent to-transparent"></span>
+                                    <span className="relative z-10">WE NEVER DO.</span>
+                                </p>
+                            </div>
                         </div>
 
-                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
-                            Automate Your Business Calls with AI Voice Assistants | 
-                            <span className="text-sky-600"> DigitalBot.ai </span> - 
-                            Advanced Analytics Dashboard, 24/7 Call Automation & Customer Engagement Platform
-                        </h2>
+                        
                         
                         {/* Rich Snippet Optimized Description */}
                         <div className="max-w-5xl mx-auto mb-8">
-                            <p className="text-lg sm:text-xl text-gray-600 mb-4 leading-relaxed">
-                                🤖 <strong>Ready-to-Use AI Voice Assistants</strong> that never sleep, never get sick, never take breaks. 
-                                Get instant <em>call automation</em>, <em>detailed analytics dashboard</em>, and 
-                                <em>personalized business insights</em> to transform your customer service operations.
+                            <p className="text-lg sm:text-xl text-gray-700 mb-4 leading-relaxed min-h-16" id="typewriter-text">
+                                
                             </p>
-                            <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-                                📊 <strong>Real-Time Analytics</strong> | � <strong>Personal Dashboard</strong> | 
-                                � <strong>Automated Call Handling</strong> | 🌐 <strong>Multi-Language Support</strong> | 
-                                � <strong>Easy Integration</strong>
+                            <p className="text-base sm:text-lg text-gray-600 leading-relaxed flex flex-wrap items-center justify-center gap-3 sm:gap-4 animate-fade-in-right">
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                    Real-Time Analytics
+                                </span>
+                                <span className="text-gray-400">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                    Personal Dashboard
+                                </span>
+                                <span className="text-gray-400">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                    Automated Call Handling
+                                </span>
+                                <span className="text-gray-400">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                    Multi-Language Support
+                                </span>
+                                <span className="text-gray-400">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                    Easy Integration
+                                </span>
                             </p>
                         </div>
 
