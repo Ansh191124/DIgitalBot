@@ -38,15 +38,11 @@ export default function About() {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-sky-200/50 to-transparent dark:from-sky-900/30 blur-3xl"></div>
         <div className="relative z-10">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            About{" "}
-            <span className="bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent drop-shadow-md">
-              DigitalBot.ai
-            </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
+            About DigitalBot.ai
           </h1>
-          <p className="text-xl text-sky-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-            We're on a mission to democratize AI-powered customer service, making intelligent chatbots accessible to
-            businesses of all sizes.
+          <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 dark:text-sky-600 mb-8 max-w-3xl mx-auto">
+            We're on a mission to democratize <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">AI-powered customer service</span>, making intelligent voice assistants accessible to businesses of all sizes.
           </p>
         </div>
       </section>
@@ -56,7 +52,7 @@ export default function About() {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
                 Our Story
               </h2>
               <p className="text-sky-800 dark:text-gray-300 mb-6">
@@ -104,7 +100,7 @@ export default function About() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-sky-50 to-sky-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
         <div className="container mx-auto text-center">
           <div className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
               Our Values
             </h2>
             <p className="text-xl text-sky-700 dark:text-gray-300 max-w-2xl mx-auto">

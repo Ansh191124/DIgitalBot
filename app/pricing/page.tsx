@@ -113,11 +113,9 @@ export default function Pricing() {
         </div>
 
         <div className="container mx-auto relative z-10">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-            Simple & <span className="bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">Transparent Pricing</span>
-          </h1>
-          <p className="text-xl mb-12 max-w-3xl mx-auto text-gray-700">
-            Choose the perfect plan for your business. Start with Launch and scale as you grow.
+          <h1 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-6">Pricing</h1>
+          <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 mb-12 max-w-4xl mx-auto">
+            Choose a plan that fits your business needs. Transparent pricing, no hidden fees, and a free trial to get started with AI voice automation.
           </p>
 
           {/* Currency Toggle */}

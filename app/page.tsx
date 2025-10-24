@@ -18,52 +18,13 @@ export default function Home() {
       <main id="main-content" className="min-h-screen" role="main">
         <Hero />
         
-        {/* AI Voice Agent Features Section - ASO Optimized */}
-        <section className="py-20 bg-white/70 backdrop-blur-sm" role="region" aria-labelledby="features-heading">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <header className="text-center mb-16">
-              <h2 id="features-heading" className="text-4xl font-bold text-gray-900 mb-4">
-                Why Choose Our AI Voice Agent Platform?
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Experience the future of conversational AI with our advanced AI Voice Agent technology. 
-                Built for businesses that demand intelligent, scalable customer engagement solutions.
-              </p>
-            </header>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              <article className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-white/20">
-                <h3 className="text-2xl font-semibold mb-4 text-gray-900">Natural Language Processing</h3>
-                <p className="text-gray-600">
-                  Our AI Voice Agents understand context, sentiment, and intent with industry-leading 
-                  natural language processing capabilities for human-like conversations that feel authentic and engaging.
-                </p>
-              </article>
-              
-              <article className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-white/20">
-                <h3 className="text-2xl font-semibold mb-4 text-gray-900">24/7 Availability</h3>
-                <p className="text-gray-600">
-                  AI Voice Agents never sleep. Provide round-the-clock customer support, 
-                  handle inquiries instantly, and ensure no customer is left waiting, day or night.
-                </p>
-              </article>
-              
-              <article className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-white/20">
-                <h3 className="text-2xl font-semibold mb-4 text-gray-900">Scalable Integration</h3>
-                <p className="text-gray-600">
-                  Seamlessly integrate AI Voice Agents with your existing CRM, helpdesk, 
-                  and business systems for unified customer data and intelligent workflow automation.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
+       
 
         {/* Voice Search Optimized Content - VSO */}
         <section className="py-20 bg-linear-to-b from-gray-50/50 to-white/70 backdrop-blur-sm" role="region" aria-labelledby="voice-search-heading">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <h2 id="voice-search-heading" className="text-3xl font-bold text-center mb-12 text-gray-900">
+              <h2 id="voice-search-heading" className="text-3xl sm:text-4xl font-bold text-center mb-12 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
                 How AI Voice Agents Transform Customer Experience
               </h2>
               
@@ -117,19 +78,19 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <header className="text-center mb-16">
-                <h2 id="ai-voice-assistant-platform" className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                  Why Choose Our <span className="text-sky-600">AI Voice Assistant</span> Platform?
+                <h2 id="ai-voice-assistant-platform" className="text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
+                  Why Choose Our <span className="bg-white/30 backdrop-blur-md rounded-lg px-2 py-1 text-sky-700 font-bold shadow-lg border border-sky-200/40">AI Voice Assistant</span> Platform?
                 </h2>
-                <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                  Unlike human receptionists who sleep, get sick, and take breaks, our <strong>AI voice assistants never stop working</strong>. 
-                  Get complete business call automation with detailed analytics and personal dashboard insights.
+                <p className="text-xl max-w-4xl mx-auto leading-relaxed bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 font-semibold">
+                  Unlike human receptionists who sleep, get sick, and take breaks, our <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">AI voice assistants never stop working</span>. 
+                  Get complete business call automation with <span className="font-semibold text-sky-600">detailed analytics</span> and <span className="font-semibold text-sky-600">personal dashboard insights</span>.
                 </p>
               </header>
 
               {/* Platform Features */}
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900">🤖 24/7 AI Availability</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 border-l-4 border-sky-500 pl-3">24/7 AI Availability</h3>
                   <ul className="space-y-2 text-gray-700">
                     <li>✓ <strong>Never Sleeps</strong> - 24/7/365 availability</li>
                     <li>✓ <strong>Never Gets Sick</strong> - 99.9% uptime guarantee</li>
@@ -141,7 +102,7 @@ export default function Home() {
                 </div>
 
                 <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900">� Analytics Dashboard</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 border-l-4 border-blue-500 pl-3">Analytics Dashboard</h3>
                   <ul className="space-y-2 text-gray-700">
                     <li>✓ Real-Time Call Analytics</li>
                     <li>✓ Customer Satisfaction Metrics</li>
@@ -153,7 +114,7 @@ export default function Home() {
                 </div>
 
                 <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900">🎯 Business Automation</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 border-l-4 border-indigo-500 pl-3">Business Automation</h3>
                   <ul className="space-y-2 text-gray-700">
                     <li>✓ Automated Appointment Booking</li>
                     <li>✓ Lead Qualification & Routing</li>
@@ -167,7 +128,7 @@ export default function Home() {
 
               {/* Voice Search FAQ for Website Developer India */}
               <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/40">
-                <h3 className="text-3xl font-bold text-center mb-12 text-gray-900">
+                <h3 className="text-3xl font-bold text-center mb-12 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
                   Frequently Asked Questions - AI Voice Assistant Platform
                 </h3>
                 
@@ -246,25 +207,28 @@ export default function Home() {
 
               {/* Call to Action for AI Voice Assistant Platform */}
               <div className="text-center mt-16">
-                <div className="bg-linear-to-r from-sky-600 via-blue-600 to-indigo-600 rounded-2xl p-8 text-white shadow-2xl">
-                  <h3 className="text-3xl font-bold mb-4">
-                    Ready for an AI Assistant That Never Sleeps? 🤖
+                <div className="bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-sky-200/40">
+                  <h3 className="text-3xl font-bold mb-4 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
+                    Ready for an AI Assistant That Never Sleeps?
                   </h3>
-                  <p className="text-xl mb-6 text-sky-100">
-                    Get your AI voice assistant up and running in minutes. 
-                    Personal analytics dashboard included. 14-day free trial. No setup fees.
+                  <p className="text-xl mb-6 text-sky-700 font-semibold">
+                    Get your AI voice assistant up and running in minutes.<br />
+                    <span className="bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent font-bold">Personal analytics dashboard included.</span> <span className="text-sky-600 font-bold">14-day free trial.</span> No setup fees.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <button className="bg-white text-sky-600 hover:bg-gray-50 font-bold px-8 py-4 rounded-full shadow-xl transition-all hover:scale-105">
-                      � Start Free Trial
+                    <button className="bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 text-white font-bold px-8 py-4 rounded-full shadow-xl transition-all hover:scale-105 border border-white/30">
+                      Start Free Trial
                     </button>
-                    <button className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-semibold px-8 py-4 rounded-full transition-all">
-                      � View Demo Dashboard
+                    <button className="bg-white/70 border-2 border-sky-300 text-sky-700 hover:bg-sky-50 font-semibold px-8 py-4 rounded-full shadow-lg transition-transform hover:scale-105">
+                      View Demo Dashboard
                     </button>
                   </div>
-                  <p className="text-sm text-sky-200 mt-4">
-                    🤖 Never sleeps, never gets sick, never takes breaks | 📊 Personal analytics | 🚀 Free 14-day trial | 🎯 99.9% uptime
-                  </p>
+                  <ul className="text-sm text-sky-600 mt-4 font-semibold flex flex-wrap gap-4 justify-center list-disc list-inside">
+                    <li>Never sleeps, never gets sick, never takes breaks</li>
+                    <li>Personal analytics dashboard</li>
+                    <li>Free 14-day trial</li>
+                    <li>99.9% uptime</li>
+                  </ul>
                 </div>
               </div>
             </div>

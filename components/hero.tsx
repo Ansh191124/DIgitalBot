@@ -314,12 +314,36 @@ export function Hero() {
     ]
 
     const deploymentFeatures = [
-        { icon: Zap, title: "Instant Setup", description: "Deploy your AI Voice Assistant in minutes with our simple integration process" },
-        { icon: Shield, title: "Enterprise Security", description: "Bank-level encryption and compliance with global security standards" },
-        { icon: Clock, title: "24/7 Availability", description: "Your AI assistant never sleeps, providing round-the-clock customer support" },
-        { icon: TrendingUp, title: "Scalable Solution", description: "Grow effortlessly from 10 to 10,000 conversations without any performance issues" },
-        { icon: Users, title: "Multi-Channel Support", description: "Deploy across web, mobile, WhatsApp, SMS, and voice channels" },
-        { icon: Award, title: "Proven Results", description: "Join 5,000+ businesses achieving 85% automation rate" }
+        { 
+            icon: Zap, 
+            title: "Instant Setup", 
+            description: "Deploy in under 5 minutes with zero-code integration. Pre-configured templates ensure immediate productivity." 
+        },
+        { 
+            icon: Shield, 
+            title: "Enterprise Security", 
+            description: "AES-256 encryption, SOC 2 compliance, GDPR ready. Advanced threat detection protects every conversation." 
+        },
+        { 
+            icon: Clock, 
+            title: "24/7 Operations", 
+            description: "99.9% uptime SLA with unlimited concurrent conversations. No breaks, no downtime, just continuous service." 
+        },
+        { 
+            icon: TrendingUp, 
+            title: "Auto-Scaling", 
+            description: "From 10 to 100,000+ conversations instantly. Pay-as-you-grow with zero infrastructure overhead." 
+        },
+        { 
+            icon: Users, 
+            title: "Omnichannel", 
+            description: "Deploy across web, mobile, WhatsApp, SMS, Slack, Teams. One dashboard controls all channels." 
+        },
+        { 
+            icon: Award, 
+            title: "Proven Results", 
+            description: "85% automation rate, 60% cost reduction, 40% better satisfaction. ROI in 90 days." 
+        }
     ]
 
     const radius = isMounted ? (screenSize < 640 ? 130 : 170) : 170;
@@ -347,6 +371,14 @@ export function Hero() {
         <>
             <style dangerouslySetInnerHTML={{
                 __html: `
+            @keyframes fade-in-left {
+                from { opacity: 0; transform: translateX(30px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+            .animate-fade-in-left {
+                animation: fade-in-left 1s ease-out 0.4s forwards;
+                opacity: 0;
+            }
             @keyframes pulse-slow {
               0%, 100% { transform: scale(1); opacity: 0.2; }
               50% { transform: scale(1.05); opacity: 0.3; }
@@ -617,8 +649,10 @@ export function Hero() {
                         
                         {/* Rich Snippet Optimized Description */}
                         <div className="max-w-5xl mx-auto mb-8">
-                            <p className="text-lg sm:text-xl text-gray-700 mb-4 leading-relaxed min-h-16" id="typewriter-text">
-                                
+                            <p className="text-lg sm:text-xl text-gray-700 mb-4 leading-relaxed min-h-16 animate-fade-in-left">
+                                <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">Ready-to-Use AI Voice Assistants</span> that never sleep, never get sick, never take breaks. 
+                                Get instant <span className="font-semibold text-sky-600">call automation</span>, <span className="font-semibold text-sky-600">detailed analytics dashboard</span>, and 
+                                <span className="font-semibold text-sky-600"> personalized business insights</span> to transform your customer service operations.
                             </p>
                             <p className="text-base sm:text-lg text-gray-600 leading-relaxed flex flex-wrap items-center justify-center gap-3 sm:gap-4 animate-fade-in-right">
                                 <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
@@ -685,37 +719,61 @@ export function Hero() {
                             }}
                         />
 
-                        {/* Local Business Schema */}
+                        {/* Professional Business Schema */}
                         <script 
                             type="application/ld+json"
                             dangerouslySetInnerHTML={{
                                 __html: JSON.stringify({
                                     "@context": "https://schema.org",
                                     "@type": "SoftwareApplication",
-                                    "name": "DigitalBot.ai - AI Voice Assistant Platform",
-                                    "description": "Ready-to-use AI voice assistant platform for business call automation. Get detailed analytics, personal dashboard, and 24/7 automated customer service. Your receptionist sleeps, gets sick, takes breaks. We NEVER do.",
+                                    "name": "DigitalBot.ai - Enterprise AI Voice Assistant Platform",
+                                    "description": "Enterprise-grade AI voice assistant platform delivering automated business call handling, real-time analytics dashboards, and comprehensive customer service automation. Achieve 24/7 operational availability with intelligent voice automation technology that never requires breaks, sick leave, or downtime.",
                                     "url": "https://digitalbot.ai",
                                     "applicationCategory": "BusinessApplication",
-                                    "operatingSystem": "Web-based",
+                                    "operatingSystem": "Web-based, Cross-platform",
+                                    "softwareVersion": "2.0",
+                                    "releaseNotes": "Enhanced multi-language support, advanced analytics dashboard, improved CRM integrations",
                                     "offers": {
                                         "@type": "Offer",
                                         "price": "0",
                                         "priceCurrency": "USD",
-                                        "description": "Free 14-day trial"
+                                        "priceValidUntil": "2025-12-31",
+                                        "availability": "https://schema.org/InStock",
+                                        "description": "14-day enterprise trial with full feature access"
                                     },
                                     "aggregateRating": {
                                         "@type": "AggregateRating",
                                         "ratingValue": "4.9",
-                                        "reviewCount": "500"
+                                        "bestRating": "5",
+                                        "worstRating": "1",
+                                        "reviewCount": "500",
+                                        "ratingCount": "500"
                                     },
                                     "featureList": [
-                                        "24/7 AI Voice Assistant",
-                                        "Automated Call Handling", 
-                                        "Real-time Analytics Dashboard",
-                                        "Multi-language Support",
-                                        "Business Intelligence Insights",
-                                        "CRM Integration"
-                                    ]
+                                        "24/7 Automated AI Voice Assistant",
+                                        "Intelligent Call Routing and Handling",
+                                        "Real-time Business Analytics Dashboard",
+                                        "Multi-language Conversational AI Support",
+                                        "Advanced Business Intelligence Insights",
+                                        "Seamless CRM Integration",
+                                        "Enterprise-grade Security and Compliance",
+                                        "Scalable Cloud Infrastructure",
+                                        "Custom Voice Assistant Training",
+                                        "Appointment Scheduling Automation"
+                                    ],
+                                    "applicationSubCategory": "Customer Service Automation, Business Process Automation",
+                                    "installUrl": "https://digitalbot.ai/get-started",
+                                    "screenshot": "https://digitalbot.ai/screenshots/dashboard.png",
+                                    "author": {
+                                        "@type": "Organization",
+                                        "name": "DigitalBot.ai",
+                                        "url": "https://digitalbot.ai"
+                                    },
+                                    "provider": {
+                                        "@type": "Organization",
+                                        "name": "DigitalBot.ai",
+                                        "url": "https://digitalbot.ai"
+                                    }
                                 })
                             }}
                         />
@@ -1105,28 +1163,45 @@ export function Hero() {
                             <MessageSquare className="h-4 w-4" />
                             <span>Enterprise-Ready Solution</span>
                         </div>
-                        <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
-                            Ready to Deploy{" "}
-                            <span className="bg-linear-to-r from-sky-600 via-sky-500 to-blue-500 bg-clip-text text-transparent">
-                                AI Voice Assistant
-                            </span>
+                        <h2 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-6">
+                            Ready to Deploy AI Voice Assistant
                         </h2>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                        <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 max-w-3xl mx-auto">
                             Launch your intelligent AI assistant in minutes. No coding required. Full customization available.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12">
                         {deploymentFeatures.map((feature, index) => (
                             <div
                                 key={index}
-                                className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-sky-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group"
+                                className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-sky-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden"
                             >
-                                <div className="w-14 h-14 bg-linear-to-br from-sky-400 to-blue-500 rounded-2xl flex items--center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                    <feature.icon className="h-7 w-7 text-white" />
+                                {/* Animated background gradient */}
+                                <div className="absolute inset-0 bg-linear-to-br from-sky-50/50 via-transparent to-blue-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                
+                                {/* Icon container - mobile optimized */}
+                                <div className="relative mb-3 sm:mb-4 flex items-center justify-center sm:justify-start">
+                                    <div className="relative">
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-sky-400 via-sky-500 to-blue-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-sky-400/50 group-hover:scale-110 transition-all duration-300 relative overflow-hidden">
+                                            {/* Glossy overlay effect */}
+                                            <div className="absolute inset-0 bg-linear-to-tr from-white/30 via-white/10 to-transparent"></div>
+                                            <div className="absolute inset-0 bg-linear-to-bl from-transparent via-transparent to-black/10"></div>
+                                            
+                                            {/* Icon with responsive sizing */}
+                                            <feature.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white relative z-10 group-hover:scale-110 transition-transform duration-300 drop-shadow-md" />
+                                        </div>
+                                        
+                                        {/* Animated ring on hover */}
+                                        <div className="absolute inset-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl border-2 border-sky-400/0 group-hover:border-sky-400/50 group-hover:scale-125 transition-all duration-500"></div>
+                                    </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                                
+                                {/* Content - mobile optimized */}
+                                <div className="relative z-10 text-center sm:text-left">
+                                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1.5 sm:mb-2 group-hover:text-sky-700 transition-colors duration-300">{feature.title}</h3>
+                                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -1179,8 +1254,8 @@ export function Hero() {
             <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-sm">
                 <div className="container mx-auto max-w-4xl">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-                        <p className="text-lg text-gray-600">Everything you need to know about AI voice assistants</p>
+                        <h2 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-4">Frequently Asked Questions</h2>
+                        <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 max-w-3xl mx-auto">Everything you need to know about <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">AI voice assistants</span></p>
                     </div>
 
                     <div className="space-y-4">

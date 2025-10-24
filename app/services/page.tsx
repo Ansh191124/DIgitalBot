@@ -128,12 +128,11 @@ export default function Services() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative">
         <div className="relative z-10 container mx-auto">
-          <h1 className="text-5xl sm:text-6xl font-extrabold mb-6 text-sky-700 drop-shadow-md">
-            AI-Powered Services for the Future
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
+            AI Voice Assistant Services
           </h1>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">
-            Transform customer engagement with cutting-edge AI chatbot
-            technology — smart, secure, and scalable.
+          <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 max-w-3xl mx-auto mb-8">
+            Transform customer engagement with <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">cutting-edge AI voice technology</span> — smart, secure, and scalable for businesses of all sizes.
           </p>
           <Button className="bg-gradient-to-r from-sky-500 via-blue-400 to-indigo-500 text-white hover:from-indigo-600 hover:to-sky-600 rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-2xl transition-all hover:scale-105">
             Explore Solutions
@@ -146,7 +145,7 @@ export default function Services() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-sky-50 to-white relative">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold text-sky-700 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
               Our Core Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">

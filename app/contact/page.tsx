@@ -117,10 +117,7 @@ export default function Contact() {
       {/* Hero Section - Mobile optimized */}
       <section className="pt-20 sm:pt-32 pb-6 sm:pb-10 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="container mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 animate-fade-in-up leading-tight">
-            <span className="text-sky-600">Let's Connect</span>{" "}
-            <span className="text-black">& Collaborate</span>
-          </h1>
+            <h1 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-6">Contact Us</h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 max-w-3xl mx-auto animate-fade-in-up delay-200 px-2">
             Ready to elevate your customer experience with AI? Our experts are just a message away.
           </p>
@@ -135,9 +132,7 @@ export default function Contact() {
           <Card className="bg-white border border-sky-100 shadow-xl hover:shadow-2xl transition-all duration-500 animate-fade-in-up">
             <CardHeader className="p-4 sm:p-6">
               <CardTitle className="text-xl sm:text-2xl font-bold text-sky-800">Send us a message</CardTitle>
-              <CardDescription className="text-sm sm:text-base text-sky-700/80">
-                Fill out the form below and we'll get back to you soon. (<span className="text-red-500">*</span> indicate required fields)
-              </CardDescription>
+                <CardDescription className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 mb-6">Reach out to our team for support, partnership opportunities, or general inquiries. We're here to help your business grow with AI automation.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6">
               {success && <div className="bg-green-100 text-green-800 p-3 rounded-md text-sm">{success}</div>}

@@ -103,12 +103,11 @@ export default function Careers() {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-sky-100 via-white to-sky-50 opacity-70"></div>
         <div className="relative z-10 container mx-auto">
-          <h1 className="text-5xl sm:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-blue-500 to-indigo-600">
-            Join Our Visionary Team
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
+            Careers at DigitalBot.ai
           </h1>
-          <p className="text-xl text-sky-800/80 mb-8 max-w-3xl mx-auto">
-            Be part of the revolution in AI-driven communication. Build, innovate,
-            and grow with DigitalBot.ai.
+          <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 mb-8 max-w-3xl mx-auto">
+            Join our team and help shape the future of <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">AI-powered business automation</span>. We value innovation, collaboration, and growth.
           </p>
           <Button
             size="lg"
@@ -124,7 +123,7 @@ export default function Careers() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-sky-100 via-white to-sky-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-sky-700 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
               Why Work With Us?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -162,7 +161,7 @@ export default function Careers() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-sky-700 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
               Open Positions
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">

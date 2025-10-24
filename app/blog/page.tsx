@@ -75,12 +75,8 @@ export default function Blog() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
-            DigitalBot.ai <span className="text-accent">Blog</span>
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto text-pretty">
-            Insights, tutorials, and industry trends in AI chatbots and conversational AI technology.
-          </p>
+            <h1 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-6">Blog</h1>
+            <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 mb-6">Explore insights and updates on AI voice assistants, automation, and business transformation. Stay ahead with our latest articles.</p>
         </div>
       </section>
 
