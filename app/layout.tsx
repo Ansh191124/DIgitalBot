@@ -162,14 +162,14 @@ export default function RootLayout({
         />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased relative`}>
-        {/* Mobile-Optimized Full Page Background Video */}
+        {/* Mobile-Optimized Full Page Background Video - Lazy Loaded */}
         <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none -z-10" aria-hidden>
           <video
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="none"
             disablePictureInPicture
             disableRemotePlayback
             webkit-playsinline="true"
@@ -182,9 +182,10 @@ export default function RootLayout({
             }}
             aria-hidden
           >
-            {/* Multiple sources for better mobile compatibility */}
-            <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/q_auto,f_auto,w_1920/v1761044195/BACK_kazdn7.mp4" type="video/mp4" />
-            <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/q_auto,f_webm,w_1920/v1761044195/BACK_kazdn7.webm" type="video/webm" />
+            {/* Optimized video sources with lower quality for mobile */}
+            <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/q_auto:low,f_auto,w_1280/v1761044195/BACK_kazdn7.mp4" type="video/mp4" media="(max-width: 768px)" />
+            <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/q_auto:eco,f_auto,w_1920/v1761044195/BACK_kazdn7.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/q_auto:eco,f_webm,w_1920/v1761044195/BACK_kazdn7.webm" type="video/webm" />
             Your browser does not support the video tag.
           </video>
           {/* Responsive overlay with mobile-friendly opacity */}

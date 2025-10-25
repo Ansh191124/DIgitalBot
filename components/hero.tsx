@@ -183,7 +183,7 @@ export function Hero() {
                     renderer: 'svg',
                     loop: true,
                     autoplay: true,
-                    path: 'https://lottie.host/4d6e4a3e-7f1f-4b0e-9b3e-8c8e3f3e3e3e/K21LOlLjRk.json'
+                    path: 'https://lottie.host/embed/4d6e4a3e-7f1f-4b0e-9b3e-8c8e3f3e3e3e/K21LOlLjRk.json'
                 });
             }
         };
@@ -1263,17 +1263,19 @@ export function Hero() {
                             <div key={index} className="border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                                 <button
                                     onClick={() => router.push(`/faq/${index}`)}
-                                    className="w-full flex items-center gap-3 p-6 text-left bg-white hover:bg-gray-50 transition-colors"
+                                    className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition-colors"
                                 >
-                                    <h3 className="text-lg font-semibold text-gray-900">{faq.q}</h3>
+                                    <h3 className="text-lg font-semibold text-gray-900 pr-4">{faq.q}</h3>
+                                    <ArrowRight className="h-5 w-5 text-sky-600 shrink-0 transition-transform duration-300" />
                                 </button>
                             </div>
                         ))}
                     </div>
 
                     <div className="mt-6 text-center">
-                        <button onClick={() => router.push('/faq')} className="inline-flex items-center px-5 py-3 rounded-full bg-sky-600 text-white font-semibold hover:bg-sky-700 transition">
+                        <button onClick={() => router.push('/faq')} className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-sky-600 text-white font-semibold hover:bg-sky-700 transition">
                             View all FAQs
+                            <ArrowRight className="h-4 w-4" />
                         </button>
                     </div>
                 </div>
