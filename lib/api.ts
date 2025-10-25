@@ -81,4 +81,8 @@ export const callsAPI = {
   },
 };
 
+<<<<<<< HEAD
 export default api;
+=======
+export default api;
+>>>>>>> c97069b614b44371f483762d5e2ca5ee8089ae6c
