@@ -11,12 +11,12 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <Image
-                src="https://res.cloudinary.com/dew9qfpbl/image/upload/v1760082124/Gemini_Generated_Image_tgypq9tgypq9tgyp_-_Edited_1_m1xhrt.svg"
+                src="https://res.cloudinary.com/dew9qfpbl/image/upload/f_webp,q_auto:eco,w_160/v1760082124/Gemini_Generated_Image_tgypq9tgypq9tgyp_-_Edited_1_m1xhrt.svg"
                 alt="DigitalBot Logo"
                 width={160}
                 height={40}
-                priority
-                // REMOVED: drop-shadow-lg class
+                loading="lazy"
+                quality={80}
                 className="h-14 w-auto max-w-[160px] sm:max-w-[180px] md:max-w-[200px] object-contain"
               />
             </div>
@@ -64,14 +64,46 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Resources & External Links for SEO */}
+        <div className="border-t border-sky-200 mt-8 pt-8">
+          <div className="mb-6">
+            <h3 className="font-semibold text-sky-700 mb-3 text-center">Industry Resources & Partners</h3>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <a href="https://openai.com" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700 transition-colors">
+                OpenAI Research
+              </a>
+              <span className="text-gray-300">•</span>
+              <a href="https://cloud.google.com/dialogflow" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700 transition-colors">
+                Google Dialogflow
+              </a>
+              <span className="text-gray-300">•</span>
+              <a href="https://aws.amazon.com/lex/" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700 transition-colors">
+                Amazon Lex
+              </a>
+              <span className="text-gray-300">•</span>
+              <a href="https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700 transition-colors">
+                Azure Speech
+              </a>
+              <span className="text-gray-300">•</span>
+              <a href="https://www.gartner.com/en/information-technology/glossary/conversational-ai" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700 transition-colors">
+                Gartner AI Insights
+              </a>
+              <span className="text-gray-300">•</span>
+              <a href="https://www.forrester.com" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700 transition-colors">
+                Forrester Research
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* Copyright */}
-        <div className="border-t border-sky-200 mt-8 pt-8 text-center text-gray-600 dark:text-gray-400">
+        <div className="border-t border-sky-200 pt-6 text-center text-gray-600 dark:text-gray-400">
           <p>&copy; 2024 DigitalBot.ai. All rights reserved.</p>
         </div>
       </div>
 
       {/* Optional: Animated glowing gradient effect */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-sky-200 via-white to-sky-100 opacity-20 blur-3xl"></div>
+      <div className="absolute inset-0 pointer-events-none bg-linear-to-tr from-sky-200 via-white to-sky-100 opacity-20 blur-3xl"></div>
     </footer>
   )
 }
