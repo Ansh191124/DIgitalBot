@@ -1,7 +1,9 @@
 "use client";
 
-import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,16 +11,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
-  MapPin,
-  Clock,
-  Users,
-  Heart,
-  Zap,
-  Trophy,
   ArrowRight,
+  Clock,
+  Heart,
+  MapPin,
+  Trophy,
+  Users,
+  Zap,
 } from "lucide-react";
 
 const openPositions = [
@@ -111,7 +111,7 @@ export default function Careers() {
           </p>
           <Button
             size="lg"
-            className="bg-gradient-to-r from-sky-500 via-blue-400 to-indigo-500 text-white hover:from-sky-600 hover:to-indigo-600 shadow-lg rounded-full transition-all duration-300"
+            className="bg-linear-to-r from-sky-500 via-blue-400 to-indigo-500 text-white hover:from-sky-600 hover:to-indigo-600 shadow-lg rounded-full transition-all duration-300"
           >
             View Open Positions
             <ArrowRight className="ml-2 h-5 w-5" />
@@ -119,8 +119,8 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* Culture / Benefits Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-sky-100 via-white to-sky-50">
+      {/* Culture  Benefits Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-r from-sky-100 via-white to-sky-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
@@ -139,7 +139,7 @@ export default function Careers() {
                 className="text-center border-0 shadow-lg bg-white/90 backdrop-blur-sm hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 rounded-2xl"
               >
                 <CardHeader>
-                  <div className="w-14 h-14 bg-gradient-to-br from-sky-100 to-sky-200 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <div className="w-14 h-14 bg-linear-to-br from-sky-100 to-sky-200 rounded-xl flex items-center justify-center mx-auto mb-4">
                     <benefit.icon className="h-7 w-7 text-sky-600" />
                   </div>
                   <CardTitle className="text-lg text-sky-700 font-semibold">
@@ -173,7 +173,7 @@ export default function Careers() {
             {openPositions.map((position, index) => (
               <Card
                 key={index}
-                className="border-0 bg-gradient-to-br from-white via-sky-50 to-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-2xl"
+                className="border-0 bg-linear-to-br from-white via-sky-50 to-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-2xl"
               >
                 <CardHeader>
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -195,7 +195,7 @@ export default function Careers() {
                         </div>
                       </div>
                     </div>
-                    <Button className="bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white rounded-full">
+                    <Button className="bg-linear-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white rounded-full">
                       Apply Now
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -210,7 +210,7 @@ export default function Careers() {
                     <ul className="text-sm text-gray-500 space-y-1">
                       {position.requirements.map((req, reqIndex) => (
                         <li key={reqIndex} className="flex items-center">
-                          <ArrowRight className="h-3 w-3 mr-2 text-sky-500 flex-shrink-0" />
+                          <ArrowRight className="h-3 w-3 mr-2 text-sky-500 shrink-0" />
                           {req}
                         </li>
                       ))}
@@ -224,11 +224,11 @@ export default function Careers() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 bg-gradient-to-r from-sky-100 via-white to-sky-200 text-center">
+      <section className="py-24 px-6 bg-linear-to-r from-sky-100 via-white to-sky-200 text-center">
         <div className="container mx-auto">
-          <div className="bg-gradient-to-br from-sky-50 via-white to-sky-100 rounded-3xl p-12 shadow-xl">
+          <div className="bg-linear-to-br from-sky-50 via-white to-sky-100 rounded-3xl p-12 shadow-xl">
             <h2 className="text-3xl font-extrabold text-sky-700 mb-4">
-              Don’t See the Right Role?
+              Don't See the Right Role?
             </h2>
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
               We’re always looking for passionate, curious minds. Share your
@@ -236,7 +236,7 @@ export default function Careers() {
             </p>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-sky-500 via-blue-400 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white font-semibold rounded-full shadow-lg"
+              className="bg-linear-to-r from-sky-500 via-blue-400 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white font-semibold rounded-full shadow-lg"
             >
               Send Resume
               <ArrowRight className="ml-2 h-4 w-4" />

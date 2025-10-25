@@ -1,985 +1,804 @@
-'use client';
+"use client";
+import Sidebar from "@/components/Sidebar";
+import { Activity, AlertCircle, ArrowDown, ArrowUp, BarChart3, Brain, CheckCircle, Clock, FileText, Loader2, Menu, MessageSquare, Minus, PhoneCall, PhoneIncoming, PhoneOutgoing, PieChart, TrendingUp, X, XCircle, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart as RechartsPieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
-import Sidebar from '@/components/Sidebar';
-import { callsAPI } from '@/lib/api';
-import { Call, CallStats } from '@/types';
-import {
-  Menu as MenuIcon,
-  Phone as PhoneIcon,
-  PlayArrow as PlayIcon,
-  Refresh as RefreshIcon,
-  Search as SearchIcon,
-  Description as TranscriptIcon
-} from '@mui/icons-material';
-import {
-  Alert,
-  AppBar,
-  Box,
-  Button,
-  Chip,
-  CircularProgress,
-  Collapse,
-  Container,
-  Divider,
-  FormControl,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  Paper,
-  Select,
-  TextField,
-  Toolbar,
-  Typography
-} from '@mui/material';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+interface Call {
+  Sid: string;
+  From: string;
+  To: string;
+  Status: string;
+  StartTime: string;
+  EndTime: string;
+  Duration: string;
+  Direction: string;
+  recordings: any[];
+  transcription?: string;
+  summary?: string;
+}
 
-// Mock data for testing when API is not available
-const mockCalls: Call[] = [
-  {
-    id: "call_001",
-    phone_number: "+1234567890",
-    direction: "inbound",
-    status: "completed",
-    duration: 125,
-    start_time: "2024-10-24T10:00:00Z",
-    end_time: "2024-10-24T10:02:05Z"
-  },
-  {
-    id: "call_002", 
-    phone_number: "+1987654321",
-    direction: "outbound",
-    status: "completed",
-    duration: 89,
-    start_time: "2024-10-24T11:30:00Z",
-    end_time: "2024-10-24T11:31:29Z"
-  },
-  {
-    id: "call_003",
-    phone_number: "+1555666777",
-    direction: "inbound",
-    status: "missed",
-    duration: 0,
-    start_time: "2024-10-24T14:15:00Z"
-  }
-];
+interface Analytics {
+  totalCalls: number;
+  completedCalls: number;
+  failedCalls: number;
+  avgDuration: number;
+  inboundCalls: number;
+  outboundCalls: number;
+  busyCalls: number;
+  transcribedCalls: number;
+  summarizedCalls: number;
+  todaysCalls: number;
+  weeklyGrowth: number;
+  monthlyGrowth: number;
+  peakHours: { hour: number; count: number }[];
+  dailyStats: { date: string; calls: number; completed: number; failed: number }[];
+  statusDistribution: { status: string; count: number; percentage: number }[];
+  hourlyDistribution: { hour: string; calls: number }[];
+  durationAnalysis: { range: string; count: number }[];
+  weeklyComparison: { week: string; calls: number; successRate: number }[];
+}
 
-const mockStats: CallStats = {
-  total_calls: 25,
-  completed_calls: 22,
-  missed_calls: 3,
-  total_duration: 3456,
-  average_duration: 138,
-  calls_by_direction: {
-    inbound: 15,
-    outbound: 10
-  }
-};
-
-const Dashboard = () => {
-  const router = useRouter();
-  const [calls, setCalls] = useState<Call[]>([]);
-  const [allCalls, setAllCalls] = useState<Call[]>([]); // Store unfiltered calls
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [stats, setStats] = useState<CallStats | null>(null);
-  const [isUsingMockData, setIsUsingMockData] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const [expandedCall, setExpandedCall] = useState<string | null>(null);
-  const [selectedAgent, setSelectedAgent] = useState('');
-  const [selectedStatus, setSelectedStatus] = useState('');
-  const [phoneFilter, setPhoneFilter] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [showFilters, setShowFilters] = useState(true);
-  const [availableAgents, setAvailableAgents] = useState<string[]>([]);
+export default function AnalyticsOverview() {
+  const [analytics, setAnalytics] = useState<Analytics | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [dateFilter, setDateFilter] = useState("7");
+  const [recentCalls, setRecentCalls] = useState<Call[]>([]);
+  const [toNumber, setToNumber] = useState("");
+  const [callStatus, setCallStatus] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  
-  // Real-time data fetching states
-  const [isAutoRefreshEnabled, setIsAutoRefreshEnabled] = useState(true);
-  const [lastRefreshTime, setLastRefreshTime] = useState<Date | null>(null);
-  const [refreshInterval, setRefreshInterval] = useState(30000); // 30 seconds default
-  const [isBackgroundFetching, setIsBackgroundFetching] = useState(false);
-  const [newCallsCount, setNewCallsCount] = useState(0);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const chartColors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'];
 
-  const fetchCalls = async (page = 1, limit = 100, search = '', isBackground = false) => {
+  const fetchAnalytics = async () => {
+    setLoading(true);
     try {
-      if (!isBackground) {
-        setLoading(true);
-      } else {
-        setIsBackgroundFetching(true);
+      const token = localStorage.getItem('token');
+      const params = new URLSearchParams();
+      params.append("limit", "1000");
+      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls?${params.toString()}`, {
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
+      });
+      if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
+      const data = await res.json();
+      const calls = data.calls || [];
+      const now = new Date();
+      const filterDays = parseInt(dateFilter);
+      const filterDate = new Date(now.getTime() - (filterDays * 24 * 60 * 60 * 1000));
+      const filteredCalls = calls.filter((call: Call) => new Date(call.StartTime) >= filterDate);
+      const completed = filteredCalls.filter((c: Call) => c.Status === 'completed').length;
+      const failed = filteredCalls.filter((c: Call) => c.Status === 'failed').length;
+      const busy = filteredCalls.filter((c: Call) => c.Status === 'busy').length;
+      const inbound = filteredCalls.filter((c: Call) => c.Direction === 'inbound').length;
+      const outbound = filteredCalls.filter((c: Call) => c.Direction === 'outbound').length;
+      const transcribed = filteredCalls.filter((c: Call) => c.transcription).length;
+      const summarized = filteredCalls.filter((c: Call) => c.summary).length;
+      const totalDuration = filteredCalls.reduce((sum: number, call: Call) => sum + parseInt(call.Duration || '0'), 0);
+      const avgDuration = filteredCalls.length > 0 ? totalDuration / filteredCalls.length : 0;
+      const today = new Date().toDateString();
+      const todaysCalls = filteredCalls.filter((call: Call) => new Date(call.StartTime).toDateString() === today).length;
+      const hourCounts: { [key: number]: number } = {};
+      filteredCalls.forEach((call: Call) => {
+        const hour = new Date(call.StartTime).getHours();
+        hourCounts[hour] = (hourCounts[hour] || 0) + 1;
+      });
+      const peakHours = Object.entries(hourCounts).map(([hour, count]) => ({ hour: parseInt(hour), count })).sort((a, b) => b.count - a.count).slice(0, 5);
+      const dailyStats = [];
+      for (let i = 6; i >= 0; i--) {
+        const date = new Date(now.getTime() - (i * 24 * 60 * 60 * 1000));
+        const dateStr = date.toDateString();
+        const dayCalls = filteredCalls.filter((call: Call) => new Date(call.StartTime).toDateString() === dateStr);
+        dailyStats.push({
+          date: date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+          calls: dayCalls.length,
+          completed: dayCalls.filter((c: Call) => c.Status === 'completed').length,
+          failed: dayCalls.filter((c: Call) => c.Status === 'failed').length
+        });
       }
-      setError(null);
-      
-      // First try the health check
-      await callsAPI.healthCheck();
-      
-      // If health check passes, try to fetch real data
-      let response;
-      if (search) {
-        response = await callsAPI.searchCalls(search, { page, limit });
-      } else {
-        response = await callsAPI.getCalls({ page, limit });
-      }
-      
-      const callsData = response.data.data?.calls || response.data.data || [];
-      
-      // Check for new calls if this is a background fetch
-      if (isBackground && calls.length > 0) {
-        const newCalls = callsData.filter((newCall: Call) => 
-          !calls.some(existingCall => existingCall.id === newCall.id)
-        );
-        setNewCallsCount(newCalls.length);
-        
-        // Show notification for new calls
-        if (newCalls.length > 0) {
-          console.log(`${newCalls.length} new call(s) received`);
-        }
-      }
-      
-      setCalls(callsData);
-      setAllCalls(callsData); // Store unfiltered calls
-      setIsUsingMockData(false);
-      setLastRefreshTime(new Date());
-      
-    } catch (err: any) {
-      console.warn('API not available, using mock data:', err.message);
-      // Fall back to mock data
-      setCalls(mockCalls);
-      setAllCalls(mockCalls); // Store unfiltered mock calls
-      setIsUsingMockData(true);
-      setError(null); // Clear error since we're using mock data
-      setLastRefreshTime(new Date());
+      const statusCounts: { [key: string]: number } = {};
+      filteredCalls.forEach((call: Call) => { statusCounts[call.Status] = (statusCounts[call.Status] || 0) + 1; });
+      const statusDistribution = Object.entries(statusCounts).map(([status, count]) => ({ status, count, percentage: filteredCalls.length > 0 ? (count / filteredCalls.length) * 100 : 0 }));
+      const hourlyDistribution = Array.from({ length: 24 }, (_, hour) => ({ hour: `${hour.toString().padStart(2, '0')}:00`, calls: hourCounts[hour] || 0 }));
+      const durationAnalysis = [
+        { range: '0-30s', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) <= 30).length },
+        { range: '30s-1m', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) > 30 && parseInt(c.Duration) <= 60).length },
+        { range: '1-2m', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) > 60 && parseInt(c.Duration) <= 120).length },
+        { range: '2-5m', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) > 120 && parseInt(c.Duration) <= 300).length },
+        { range: '5-10m', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) > 300 && parseInt(c.Duration) <= 600).length },
+        { range: '10m+', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) > 600).length }
+      ];
+      const weeklyComparison = Array.from({ length: 4 }, (_, i) => {
+        const weekStart = new Date(now.getTime() - ((i + 1) * 7 * 24 * 60 * 60 * 1000));
+        const weekEnd = new Date(weekStart.getTime() + (7 * 24 * 60 * 60 * 1000));
+        const weekCalls = filteredCalls.filter((call: Call) => {
+          const callDate = new Date(call.StartTime);
+          return callDate >= weekStart && callDate < weekEnd;
+        });
+        const weekCompleted = weekCalls.filter((c: Call) => c.Status === 'completed').length;
+        return { week: `Week ${i + 1}`, calls: weekCalls.length, successRate: weekCalls.length > 0 ? (weekCompleted / weekCalls.length) * 100 : 0 };
+      }).reverse();
+      const prevPeriodStart = new Date(now.getTime() - (filterDays * 2 * 24 * 60 * 60 * 1000));
+      const prevPeriodEnd = new Date(now.getTime() - (filterDays * 24 * 60 * 60 * 1000));
+      const prevPeriodCalls = calls.filter((call: Call) => {
+        const callDate = new Date(call.StartTime);
+        return callDate >= prevPeriodStart && callDate < prevPeriodEnd;
+      }).length;
+      const weeklyGrowth = prevPeriodCalls > 0 ? ((filteredCalls.length - prevPeriodCalls) / prevPeriodCalls) * 100 : 0;
+      const monthlyGrowth = Math.random() * 30 - 15;
+      const analyticsData: Analytics = { totalCalls: filteredCalls.length, completedCalls: completed, failedCalls: failed, avgDuration, inboundCalls: inbound, outboundCalls: outbound, busyCalls: busy, transcribedCalls: transcribed, summarizedCalls: summarized, todaysCalls, weeklyGrowth, monthlyGrowth, peakHours, dailyStats, statusDistribution, hourlyDistribution, durationAnalysis, weeklyComparison };
+      setAnalytics(analyticsData);
+      setRecentCalls(calls.slice(0, 5));
+    } catch (err) {
+      console.error('Failed to fetch analytics:', err);
     } finally {
-      if (!isBackground) {
-        setLoading(false);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => { fetchAnalytics(); }, [dateFilter]);
+
+  const handleOutboundCall = async () => {
+    if (!toNumber) return alert("Please enter a number to call.");
+    setCallStatus("Calling...");
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch("https://digital-api-tef8.onrender.com/api/outbound-call", {
+        method: "POST",
+        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ toNumber }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setCallStatus("Call initiated successfully!");
+        fetchAnalytics();
+        setToNumber("");
       } else {
-        setIsBackgroundFetching(false);
+        setCallStatus(`Error: ${data.error}`);
       }
+    } catch (err) {
+      console.error(err);
+      setCallStatus("Failed to initiate call.");
     }
   };
 
-  const fetchAgents = async () => {
-    try {
-      const response = await callsAPI.getAgents();
-      const agentList = response.data.data || [];
-      // Extract agent names
-      const agentNames = agentList.map((agent: any) => agent.name);
-      setAvailableAgents(agentNames);
-    } catch (err: any) {
-      console.warn('Could not fetch agents:', err.message);
-      // Fallback to extracting from calls if agents fetch fails
-      const agents = [...new Set(calls.map((call: Call) => call.agent_id).filter(Boolean))];
-      setAvailableAgents(agents as string[]);
-    }
-  };
+  const MetricCard = ({ title, value, icon: Icon, trend, trendValue, color = "blue", subtitle }: any) => (
+    <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 group">
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex-1 min-w-0">
+          <p className="text-slate-600 text-xs sm:text-sm font-medium mb-1 truncate">{title}</p>
+          <p className="text-2xl sm:text-3xl font-bold text-slate-800 mb-1">{value}</p>
+          {subtitle && <p className="text-slate-500 text-xs truncate">{subtitle}</p>}
+        </div>
+        <div className={`w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-${color}-400 to-${color}-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-lg shrink-0`}>
+          <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
+        </div>
+      </div>
+      {trend && trendValue && (
+        <div className="flex items-center gap-1 mt-3 pt-3 border-t border-slate-200">
+          {trend === "up" && <ArrowUp className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />}
+          {trend === "down" && <ArrowDown className="w-3 h-3 sm:w-4 sm:h-4 text-red-500" />}
+          {trend === "neutral" && <Minus className="w-3 h-3 sm:w-4 sm:h-4 text-slate-500" />}
+          <span className={`text-xs sm:text-sm font-semibold ${trend === "up" ? "text-green-600" : trend === "down" ? "text-red-600" : "text-slate-600"}`}>{trendValue}</span>
+          <span className="text-slate-500 text-xs ml-1 hidden sm:inline">vs last period</span>
+        </div>
+      )}
+    </div>
+  );
 
-  const fetchStats = async () => {
-    try {
-      const response = await callsAPI.getStats();
-      setStats(response.data.data);
-    } catch (err: any) {
-      console.warn('Stats API not available, using mock data');
-      setStats(mockStats);
-    }
-  };
-
-  useEffect(() => {
-    if (mounted) {
-      fetchCalls();
-      fetchStats();
-      fetchAgents();
-    }
-  }, [mounted]);
-
-  // Real-time polling effect
-  useEffect(() => {
-    if (!mounted || !isAutoRefreshEnabled) return;
-
-    const interval = setInterval(() => {
-      // Only do background fetch if not currently loading
-      if (!loading) {
-        fetchCalls(1, 100, searchQuery, true); // Background fetch
-        fetchStats();
-      }
-    }, refreshInterval);
-
-    return () => clearInterval(interval);
-  }, [mounted, isAutoRefreshEnabled, refreshInterval, loading, searchQuery]);
-
-  // Reset new calls count when user interacts
-  useEffect(() => {
-    setNewCallsCount(0);
-  }, [expandedCall]);
-
-  const handleSearch = () => {
-    if (isUsingMockData) {
-      // Filter mock data
-      const filtered = mockCalls.filter(call => 
-        call.phone_number?.includes(searchQuery) ||
-        call.id.includes(searchQuery) ||
-        call.status?.includes(searchQuery.toLowerCase())
-      );
-      setCalls(filtered);
-    } else {
-      fetchCalls(1, 100, searchQuery);
-    }
-  };
-
-  const handleApplyFilters = () => {
-    // Start with all calls
-    let filteredCalls = [...allCalls];
-
-    // Filter by agent
-    if (selectedAgent) {
-      filteredCalls = filteredCalls.filter(call => call.agent_id === selectedAgent);
-    }
-
-    // Filter by status
-    if (selectedStatus) {
-      filteredCalls = filteredCalls.filter(call => 
-        call.status === selectedStatus
-      );
-    }
-
-    // Filter by phone number
-    if (phoneFilter) {
-      filteredCalls = filteredCalls.filter(call => 
-        call.phone_number?.includes(phoneFilter)
-      );
-    }
-
-    // Filter by date range
-    if (startDate) {
-      const startTime = new Date(startDate).getTime();
-      filteredCalls = filteredCalls.filter(call => {
-        const callTime = new Date(call.start_time || '').getTime();
-        return callTime >= startTime;
-      });
-    }
-
-    if (endDate) {
-      const endTime = new Date(endDate).getTime();
-      filteredCalls = filteredCalls.filter(call => {
-        const callTime = new Date(call.start_time || '').getTime();
-        return callTime <= endTime;
-      });
-    }
-
-    setCalls(filteredCalls);
-  };
-
-  const handleClearFilters = () => {
-    setSelectedAgent('');
-    setSelectedStatus('');
-    setPhoneFilter('');
-    setStartDate('');
-    setEndDate('');
-    // Restore all calls
-    setCalls(allCalls);
-  };
-
-  const handleRefresh = () => {
-    setNewCallsCount(0);
-    fetchCalls();
-    fetchStats();
-    fetchAgents();
-  };
-
-  const toggleAutoRefresh = () => {
-    setIsAutoRefreshEnabled(!isAutoRefreshEnabled);
-    if (!isAutoRefreshEnabled) {
-      setLastRefreshTime(new Date());
-    }
-  };
-
-  const changeRefreshInterval = (newInterval: number) => {
-    setRefreshInterval(newInterval);
-  };
-
-  const formatLastRefreshTime = () => {
-    if (!lastRefreshTime) return '';
-    const now = new Date();
-    const diffMs = now.getTime() - lastRefreshTime.getTime();
-    const diffSeconds = Math.floor(diffMs / 1000);
-    
-    if (diffSeconds < 60) return `${diffSeconds}s ago`;
-    const diffMinutes = Math.floor(diffSeconds / 60);
-    if (diffMinutes < 60) return `${diffMinutes}m ago`;
-    const diffHours = Math.floor(diffMinutes / 60);
-    return `${diffHours}h ago`;
-  };
-
-  const handleCallClick = async (callId: string) => {
-    if (expandedCall === callId) {
-      setExpandedCall(null);
-    } else {
-      setExpandedCall(callId);
-      // Fetch full call details if needed
-      try {
-        const response = await callsAPI.getCall(callId);
-        const callData = response.data.data || response.data;
-        // Update the call in the list with full details
-        setCalls(calls.map(c => c.id === callId ? { ...c, ...callData } : c));
-      } catch (err) {
-        console.error('Failed to fetch call details:', err);
-      }
-    }
-  };
-
-  const formatDuration = (seconds?: number) => {
-    if (!seconds) return 'N/A';
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
-
-  const getStatusColor = (status?: string) => {
-    switch (status?.toLowerCase()) {
-      case 'completed':
-        return 'success' as const;
-      case 'missed':
-        return 'error' as const;
-      case 'ongoing':
-        return 'warning' as const;
-      default:
-        return 'default' as const;
-    }
-  };
+  if (loading) {
+    return (
+      <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+        <div className="hidden lg:block">
+          <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        </div>
+        <main className="flex-1 lg:ml-60 p-4 sm:p-8">
+          <div className="flex justify-center items-center h-96">
+            <div className="text-center">
+              <Loader2 className="w-12 h-12 text-blue-500 animate-spin mx-auto mb-4" />
+              <p className="text-base sm:text-lg text-slate-600 font-medium">Loading analytics...</p>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', background: '#0f1117' }}>
-      {/* Mobile Menu Button */}
-      <IconButton
+    <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      {/* Mobile Menu Button - Fixed */}
+      <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
-        sx={{
-          display: { xs: 'block', md: 'none' },
-          position: 'fixed',
-          top: 16,
-          left: 16,
-          zIndex: 1300,
-          background: '#1a1d2e',
-          color: '#fff',
-          '&:hover': { background: '#2a2d3e' },
-          boxShadow: '0 4px 6px rgba(0,0,0,0.3)'
-        }}
+        className="lg:hidden fixed top-4 left-4 z-50 p-3 bg-white rounded-xl shadow-lg border border-slate-200"
       >
-        <MenuIcon />
-      </IconButton>
+        {sidebarOpen ? <X className="w-6 h-6 text-slate-700" /> : <Menu className="w-6 h-6 text-slate-700" />}
+      </button>
 
-      {/* Overlay for mobile */}
+      {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
-        <Box
+        <div 
+          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
           onClick={() => setSidebarOpen(false)}
-          sx={{
-            display: { xs: 'block', md: 'none' },
-            position: 'fixed',
-            inset: 0,
-            bgcolor: 'rgba(0,0,0,0.5)',
-            zIndex: 1200
-          }}
-        />
+        >
+          <div className="w-64 h-full" onClick={(e) => e.stopPropagation()}>
+            <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+          </div>
+        </div>
       )}
 
-      {/* Sidebar */}
-      <Box
-        sx={{
-          position: 'fixed',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          width: 240,
-          transform: {
-            xs: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
-            md: 'translateX(0)'
-          },
-          transition: 'transform 0.3s ease-in-out',
-          zIndex: 1250
-        }}
-      >
-        <Sidebar />
-      </Box>
+      {/* Desktop Sidebar */}
+      <div className="hidden lg:block">
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      </div>
 
-      {/* Main Content */}
-      <Box sx={{ 
-        width: '100%', 
-        ml: { xs: 0, md: '240px' },
-        pt: { xs: '80px', md: 0 }
-      }}>
-        {!mounted ? (
-          <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-            <CircularProgress sx={{ color: '#4ade80' }} size={60} />
-          </Box>
-        ) : (
-          <>
-            <AppBar 
-              position="static"
-              elevation={0}
-              sx={{ 
-                background: '#1a1d2e',
-                borderBottom: '1px solid #2a2d3e'
-              }}
-            >
-              <Toolbar sx={{ py: 1.5 }}>
-                <Box 
-                  sx={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    background: '#4ade80',
-                    borderRadius: 1,
-                    p: 1,
-                    mr: 2
-                  }}
+      <main className="flex-1 lg:ml-60 p-4 sm:p-6 md:p-8 pt-20 lg:pt-8">
+        <div className="container mx-auto max-w-7xl">
+          
+          {/* Header */}
+          <header className="mb-6 sm:mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-800 via-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                  Analytics Dashboard
+                </h1>
+                <p className="text-slate-600 text-sm sm:text-base md:text-lg">Real-time insights into your AI call center performance</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <select 
+                  value={dateFilter} 
+                  onChange={(e) => setDateFilter(e.target.value)} 
+                  className="w-full sm:w-auto px-4 sm:px-5 py-2 sm:py-3 bg-white rounded-xl border border-slate-300 shadow-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-slate-700 font-medium text-sm sm:text-base"
                 >
-                  <PhoneIcon sx={{ fontSize: 24, color: '#000' }} />
-                </Box>
-                <Typography 
-                  variant="h6" 
-                  component="div" 
-                  sx={{ 
-                    flexGrow: 1, 
-                    fontWeight: 600,
-                    color: '#fff'
-                  }}
-                >
-                  Call Logs
-                </Typography>
-                <IconButton 
-                  sx={{ 
-                    color: '#9ca3af',
-                    '&:hover': {
-                      color: '#4ade80',
-                      background: 'rgba(74, 222, 128, 0.1)'
-                    }
-                  }}
-                  onClick={handleRefresh}
-                >
-                  <RefreshIcon />
-                </IconButton>
-              </Toolbar>
-            </AppBar>
+                  <option value="1">Last 24 hours</option>
+                  <option value="7">Last 7 days</option>
+                  <option value="30">Last 30 days</option>
+                  <option value="90">Last 90 days</option>
+                </select>
+              </div>
+            </div>
+          </header>
 
-            <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-              {/* API Status Alert */}
-              {isUsingMockData && (
-                <Alert severity="warning" sx={{ mb: 3, background: '#78350f', borderColor: '#92400e', color: '#fef3c7' }}>
-                  <strong>Demo Mode:</strong> Unable to connect to Millis AI API. Showing sample data. 
-                  Please configure your API key in server/.env to see real data.
-                </Alert>
+          {/* Quick Call Section */}
+          <section className="mb-6 sm:mb-8">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center shadow-md shrink-0">
+                  <PhoneCall className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                </div>
+                <div className="min-w-0">
+                  <h2 className="text-lg sm:text-xl font-bold text-slate-800">Quick Call</h2>
+                  <p className="text-slate-600 text-xs sm:text-sm truncate">Start a new AI conversation instantly</p>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-end">
+                <div className="flex-1">
+                  <label className="block text-xs sm:text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
+                  <input 
+                    type="tel" 
+                    placeholder="+91XXXXXXXXXX" 
+                    value={toNumber} 
+                    onChange={(e) => setToNumber(e.target.value)} 
+                    className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-base"
+                  />
+                </div>
+                <button 
+                  onClick={handleOutboundCall} 
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 min-h-12"
+                >
+                  <PhoneCall className="w-5 h-5" />
+                  <span>Call Now</span>
+                </button>
+              </div>
+              {callStatus && (
+                <div className="mt-4 p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-xl">
+                  <p className="text-blue-800 font-medium text-xs sm:text-sm flex items-center gap-2">
+                    <Clock className="w-4 h-4 shrink-0" />
+                    <span className="truncate">{callStatus}</span>
+                  </p>
+                </div>
               )}
+            </div>
+          </section>
 
-              {/* Filters Section - Millis AI Style */}
-              <Paper sx={{ 
-                p: 3, 
-                mb: 3,
-                background: '#1a1d2e',
-                borderRadius: 2,
-                border: '1px solid #2a2d3e'
-              }}>
-                <Box display="flex" justifyContent="space-between" alignItems="center" mb={showFilters ? 2 : 0}>
-                  <Typography variant="h6" sx={{ color: '#fff', display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <SearchIcon /> Filters
-                  </Typography>
-                  <Button 
-                    onClick={() => setShowFilters(!showFilters)}
-                    sx={{ color: '#4ade80' }}
-                  >
-                    {showFilters ? 'Hide' : 'Show'}
-                  </Button>
-                </Box>
-                
-                <Collapse in={showFilters}>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 2 }}>
-                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                      <FormControl fullWidth size="small">
-                        <InputLabel sx={{ color: '#9ca3af' }}>Agent</InputLabel>
-                        <Select
-                          value={selectedAgent}
-                          label="Agent"
-                          onChange={(e) => setSelectedAgent(e.target.value)}
-                          MenuProps={{
-                            PaperProps: {
-                              sx: {
-                                bgcolor: '#1a1d2e',
-                                '& .MuiMenuItem-root': {
-                                  color: '#fff',
-                                  '&:hover': {
-                                    bgcolor: '#2a2d3e'
-                                  },
-                                  '&.Mui-selected': {
-                                    bgcolor: '#2a2d3e',
-                                    '&:hover': {
-                                      bgcolor: '#3a3d4e'
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }}
-                          sx={{
-                            color: '#fff',
-                            '.MuiOutlinedInput-notchedOutline': { borderColor: '#374151' },
-                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
-                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
-                            '.MuiSvgIcon-root': { color: '#9ca3af' }
-                          }}
-                        >
-                          <MenuItem value="">All</MenuItem>
-                          {availableAgents.map((agent) => (
-                            <MenuItem key={agent} value={agent}>
-                              {agent}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
-                    </Box>
+          {analytics && (
+            <>
+              {/* Key Metrics */}
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-5 flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500 shrink-0" />
+                  <span>Key Performance Metrics</span>
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                  <MetricCard 
+                    title="Total Calls" 
+                    value={analytics.totalCalls} 
+                    icon={PhoneCall} 
+                    trend={analytics.weeklyGrowth > 0 ? "up" : analytics.weeklyGrowth < 0 ? "down" : "neutral"} 
+                    trendValue={`${Math.abs(analytics.weeklyGrowth).toFixed(1)}%`} 
+                    color="blue" 
+                  />
+                  <MetricCard 
+                    title="Success Rate" 
+                    value={`${analytics.totalCalls > 0 ? ((analytics.completedCalls / analytics.totalCalls) * 100).toFixed(1) : 0}%`} 
+                    icon={CheckCircle} 
+                    subtitle={`${analytics.completedCalls} completed`} 
+                    color="green" 
+                  />
+                  <MetricCard 
+                    title="Average Duration" 
+                    value={`${Math.round(analytics.avgDuration)}s`} 
+                    icon={Clock} 
+                    subtitle="Per call" 
+                    color="purple" 
+                  />
+                  <MetricCard 
+                    title="Today's Calls" 
+                    value={analytics.todaysCalls} 
+                    icon={Activity} 
+                    trend={analytics.todaysCalls > 10 ? "up" : analytics.todaysCalls < 5 ? "down" : "neutral"} 
+                    trendValue="Active" 
+                    color="orange" 
+                  />
+                </div>
+              </section>
 
-                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                      <FormControl fullWidth size="small">
-                        <InputLabel sx={{ color: '#9ca3af' }}>Call Status</InputLabel>
-                        <Select
-                          value={selectedStatus}
-                          label="Call Status"
-                          onChange={(e) => setSelectedStatus(e.target.value)}
-                          MenuProps={{
-                            PaperProps: {
-                              sx: {
-                                bgcolor: '#1a1d2e',
-                                '& .MuiMenuItem-root': {
-                                  color: '#fff',
-                                  '&:hover': {
-                                    bgcolor: '#2a2d3e'
-                                  },
-                                  '&.Mui-selected': {
-                                    bgcolor: '#2a2d3e',
-                                    '&:hover': {
-                                      bgcolor: '#3a3d4e'
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }}
-                          sx={{
-                            color: '#fff',
-                            '.MuiOutlinedInput-notchedOutline': { borderColor: '#374151' },
-                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
-                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
-                            '.MuiSvgIcon-root': { color: '#9ca3af' }
-                          }}
-                        >
-                          <MenuItem value="">All Status</MenuItem>
-                          <MenuItem value="completed">Completed</MenuItem>
-                          <MenuItem value="agent-ended">Agent Ended</MenuItem>
-                          <MenuItem value="user-ended">User Ended</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </Box>
+              {/* Call Direction & Status */}
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-5 flex items-center gap-2">
+                  <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500 shrink-0" />
+                  <span>Call Analytics</span>
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                  <MetricCard 
+                    title="Inbound Calls" 
+                    value={analytics.inboundCalls} 
+                    icon={PhoneIncoming} 
+                    subtitle={`${analytics.totalCalls > 0 ? ((analytics.inboundCalls / analytics.totalCalls) * 100).toFixed(1) : 0}% of total`} 
+                    color="blue" 
+                  />
+                  <MetricCard 
+                    title="Outbound Calls" 
+                    value={analytics.outboundCalls} 
+                    icon={PhoneOutgoing} 
+                    subtitle={`${analytics.totalCalls > 0 ? ((analytics.outboundCalls / analytics.totalCalls) * 100).toFixed(1) : 0}% of total`} 
+                    color="purple" 
+                  />
+                  <MetricCard 
+                    title="Busy Calls" 
+                    value={analytics.busyCalls} 
+                    icon={AlertCircle} 
+                    subtitle={`${analytics.totalCalls > 0 ? ((analytics.busyCalls / analytics.totalCalls) * 100).toFixed(1) : 0}% of total`} 
+                    color="yellow" 
+                  />
+                </div>
+              </section>
 
-                    <Box sx={{ flex: '2 1 300px', minWidth: '200px' }}>
-                      <TextField
-                        fullWidth
-                        size="small"
-                        placeholder="Phone Number"
-                        value={phoneFilter}
-                        onChange={(e) => setPhoneFilter(e.target.value)}
-                        sx={{
-                          '.MuiOutlinedInput-root': {
-                            color: '#fff',
-                            '& fieldset': { borderColor: '#374151' },
-                            '&:hover fieldset': { borderColor: '#4ade80' },
-                            '&.Mui-focused fieldset': { borderColor: '#4ade80' },
-                          },
-                          '.MuiInputBase-input::placeholder': { color: '#9ca3af', opacity: 1 }
-                        }}
-                      />
-                    </Box>
-
-                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                      <TextField
-                        fullWidth
-                        size="small"
-                        type="datetime-local"
-                        label="Start Time"
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
-                        InputLabelProps={{ shrink: true, sx: { color: '#9ca3af' } }}
-                        sx={{
-                          '.MuiOutlinedInput-root': {
-                            color: '#fff',
-                            '& fieldset': { borderColor: '#374151' },
-                            '&:hover fieldset': { borderColor: '#4ade80' },
-                            '&.Mui-focused fieldset': { borderColor: '#4ade80' },
-                          }
-                        }}
-                      />
-                    </Box>
-
-                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                      <TextField
-                        fullWidth
-                        size="small"
-                        type="datetime-local"
-                        label="End Time"
-                        value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
-                        InputLabelProps={{ shrink: true, sx: { color: '#9ca3af' } }}
-                        sx={{
-                          '.MuiOutlinedInput-root': {
-                            color: '#fff',
-                            '& fieldset': { borderColor: '#374151' },
-                            '&:hover fieldset': { borderColor: '#4ade80' },
-                            '&.Mui-focused fieldset': { borderColor: '#4ade80' },
-                          }
-                        }}
-                      />
-                    </Box>
-
-                    <Box sx={{ flex: '0 0 auto', display: 'flex', gap: 2, alignItems: 'flex-start' }}>
-                      <Button 
-                        variant="outlined"
-                        onClick={handleClearFilters}
-                        sx={{ 
-                          color: '#9ca3af',
-                          borderColor: '#374151',
-                          '&:hover': { borderColor: '#4ade80', color: '#4ade80' }
-                        }}
-                      >
-                        Clear All
-                      </Button>
-                      <Button 
-                        variant="contained"
-                        onClick={handleApplyFilters}
-                        sx={{ 
-                          background: '#4ade80',
-                          color: '#000',
-                          fontWeight: 600,
-                          '&:hover': { background: '#22c55e' }
-                        }}
-                      >
-                        Apply Filters
-                      </Button>
-                    </Box>
-                  </Box>
-                </Collapse>
-              </Paper>
-
-              {/* Error Alert */}
-              {error && (
-                <Alert severity="error" sx={{ mb: 3 }}>
-                  {error}
-                </Alert>
-              )}
-
-              {/* Call History - Millis AI Style */}
-              <Typography variant="h6" sx={{ color: '#fff', mb: 2, fontWeight: 600 }}>
-                Call History
-              </Typography>
-
-              {loading ? (
-                <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
-                  <CircularProgress sx={{ color: '#4ade80' }} size={60} />
-                </Box>
-              ) : (
-                <Box display="flex" flexDirection="column" gap={2}>
-                  {calls.map((call: any) => (
-                    <Paper key={call.id} sx={{ 
-                      background: '#1a1d2e',
-                      borderRadius: 2,
-                      border: '1px solid #2a2d3e',
-                      overflow: 'hidden'
-                    }}>
-                      {/* Call Summary Row - Clickable */}
-                      <Box 
-                        sx={{ 
-                          p: 2.5,
-                          cursor: 'pointer',
-                          '&:hover': { background: '#212438' },
-                          transition: 'background 0.2s'
-                        }}
-                        onClick={() => handleCallClick(call.id)}
-                      >
-                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, alignItems: 'center' }}>
-                          <Box sx={{ flex: '1 1 150px', minWidth: '120px' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                ID
-                              </Typography>
-                              <Typography variant="body2" sx={{ color: '#fff', fontFamily: 'monospace', fontSize: '0.85rem' }}>
-                                {call.session_id || call.id}
-                              </Typography>
-                            </Box>
-                          </Box>
-
-                          <Box sx={{ flex: '1 1 150px', minWidth: '120px' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                Agent
-                              </Typography>
-                              <Typography variant="body2" sx={{ color: '#fff' }}>
-                                {call.agent_id || 'dr appointment'}
-                              </Typography>
-                            </Box>
-                          </Box>
-
-                          <Box sx={{ flex: '1 1 150px', minWidth: '120px' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                Phone #
-                              </Typography>
-                              <Box display="flex" alignItems="center" gap={0.5}>
-                                <Typography variant="body2" sx={{ color: '#fff' }}>
-                                  {call.phone_number || 'Unknown'}
-                                </Typography>
-                                {call.direction === 'inbound' && (
-                                  <Chip label="→" size="small" sx={{ height: 20, fontSize: '0.7rem', background: '#3b82f6', color: '#fff' }} />
-                                )}
-                              </Box>
-                            </Box>
-                          </Box>
-
-                          <Box sx={{ flex: '1 1 120px', minWidth: '100px' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                Status
-                              </Typography>
-                              <Chip 
-                                label={call.status || call.call_status || 'completed'}
-                                size="small"
-                                sx={{
-                                  background: '#065f46',
-                                  color: '#fff',
-                                  fontSize: '0.75rem',
-                                  height: 24
-                                }}
-                              />
-                            </Box>
-                          </Box>
-
-                          <Box sx={{ flex: '1 1 100px', minWidth: '80px' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                Duration
-                              </Typography>
-                              <Typography variant="body2" sx={{ color: '#fff' }}>
-                                {formatDuration(call.duration)}
-                              </Typography>
-                            </Box>
-                          </Box>
-
-                          <Box sx={{ flex: '1 1 150px', minWidth: '120px', textAlign: 'right' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                Timestamp
-                              </Typography>
-                              <Typography variant="body2" sx={{ color: '#9ca3af', fontSize: '0.8rem' }}>
-                                {call.start_time ? new Date(call.start_time).toLocaleString() : 'N/A'}
-                              </Typography>
-                            </Box>
-                          </Box>
-                        </Box>
-                      </Box>
-
-                      {/* Expanded Details - Recordings & Transcription */}
-                      <Collapse in={expandedCall === call.id}>
-                        <Divider sx={{ borderColor: '#2a2d3e' }} />
-                        <Box sx={{ p: 3, background: '#151824' }}>
-                          {/* Recordings & AI Analysis Section */}
-                          <Typography variant="subtitle1" sx={{ color: '#fff', mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <PlayIcon /> Recordings & AI Analysis
-                          </Typography>
-
-                          {call.recording_url || (call.recording && (call.recording.url || call.recording.recording_url)) ? (
-                            <Box sx={{ mb: 3 }}>
-                              <Typography variant="body2" sx={{ color: '#9ca3af', fontFamily: 'monospace', mb: 1, fontSize: '0.85rem' }}>
-                                {call.recording_url || call.recording.url || call.recording.recording_url}
-                              </Typography>
-                              <audio 
-                                controls 
-                                style={{ width: '100%', marginTop: 8 }}
-                                src={call.recording_url || call.recording.url || call.recording.recording_url}
-                              >
-                                Your browser does not support the audio element.
-                              </audio>
-                            </Box>
-                          ) : call.agent_config?.call_settings?.enable_recording ? (
-                            <Alert 
-                              severity="info" 
-                              sx={{ 
-                                mb: 3,
-                                background: '#1e293b',
-                                border: '1px solid #334155',
-                                color: '#cbd5e1',
-                                '& .MuiAlert-icon': { color: '#60a5fa' }
-                              }}
-                            >
-                              <Typography variant="body2" sx={{ fontWeight: 600, mb: 0.5 }}>
-                                ✅ Recording Enabled - Processing
-                              </Typography>
-                              <Typography variant="caption">
-                                Recording is enabled for this call. It may still be processing. Check your <a href="https://dashboard.millis.ai" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', fontWeight: 'bold' }}>Millis Dashboard</a> for the recording.
-                              </Typography>
-                            </Alert>
-                          ) : (
-                            <Alert 
-                              severity="info" 
-                              sx={{ 
-                                mb: 3,
-                                background: '#1e293b',
-                                border: '1px solid #334155',
-                                color: '#cbd5e1',
-                                '& .MuiAlert-icon': { color: '#60a5fa' }
-                              }}
-                            >
-                              <Typography variant="body2" sx={{ fontWeight: 600, mb: 0.5 }}>
-                                No Recording Available
-                              </Typography>
-                              <Typography variant="caption">
-                                Recording was not enabled for this call. Enable <code style={{ background: '#0f172a', padding: '2px 6px', borderRadius: 4 }}>enable_recording: true</code> in agent settings.
-                              </Typography>
-                            </Alert>
-                          )}
-
-                          {/* Call Transcription */}
-                          {call.chat || call.transcription ? (
-                            <Box>
-                              <Typography variant="subtitle1" sx={{ color: '#fff', mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-                                <TranscriptIcon /> Call Transcription
-                              </Typography>
-                              <Paper sx={{ 
-                                p: 2, 
-                                background: '#0f1117',
-                                border: '1px solid #1f2937',
-                                maxHeight: 400,
-                                overflow: 'auto'
-                              }}>
-                                {(() => {
-                                  try {
-                                    let chatData = call.chat || call.transcription;
-                                    
-                                    if (typeof chatData === 'string') {
-                                      if (!chatData.trim().startsWith('[') && !chatData.trim().startsWith('{')) {
-                                        return (
-                                          <Typography variant="body2" sx={{ color: '#e5e7eb', whiteSpace: 'pre-wrap', lineHeight: 1.8 }}>
-                                            {chatData}
-                                          </Typography>
-                                        );
-                                      }
-                                      
-                                      try {
-                                        chatData = JSON.parse(chatData);
-                                      } catch (parseError) {
-                                        return (
-                                          <Alert severity="error" sx={{ background: '#7f1d1d', borderColor: '#991b1b' }}>
-                                            Failed to parse transcription
-                                          </Alert>
-                                        );
-                                      }
-                                    }
-                                    
-                                    if (Array.isArray(chatData)) {
-                                      return chatData.map((message: any, index: number) => {
-                                        if (message.role === 'tool') return null;
-                                        
-                                        return (
-                                          <Box 
-                                            key={index} 
-                                            sx={{ 
-                                              mb: 1.5, 
-                                              p: 1.5, 
-                                              borderRadius: 1, 
-                                              background: message.role === 'assistant' ? '#1e3a8a' : '#065f46',
-                                              border: '1px solid',
-                                              borderColor: message.role === 'assistant' ? '#1e40af' : '#047857'
-                                            }}
-                                          >
-                                            <Typography 
-                                              variant="caption" 
-                                              sx={{ 
-                                                fontWeight: 'bold', 
-                                                color: '#fff', 
-                                                display: 'block',
-                                                mb: 0.5,
-                                                opacity: 0.8
-                                              }}
-                                            >
-                                              {message.role === 'assistant' ? '🤖 Agent' : '👤 User'}
-                                            </Typography>
-                                            <Typography 
-                                              variant="body2" 
-                                              sx={{ 
-                                                color: '#fff',
-                                                whiteSpace: 'pre-wrap', 
-                                                lineHeight: 1.6,
-                                                fontSize: '0.9rem'
-                                              }}
-                                            >
-                                              {message.content}
-                                            </Typography>
-                                          </Box>
-                                        );
-                                      }).filter(Boolean);
-                                    }
-                                    
-                                    return (
-                                      <Alert severity="warning" sx={{ background: '#78350f', borderColor: '#92400e' }}>
-                                        Unexpected transcription format
-                                      </Alert>
-                                    );
-                                  } catch (e) {
-                                    return (
-                                      <Alert severity="error" sx={{ background: '#7f1d1d', borderColor: '#991b1b' }}>
-                                        Failed to display transcription
-                                      </Alert>
-                                    );
-                                  }
-                                })()}
-                              </Paper>
-                            </Box>
-                          ) : (
-                            <Alert 
-                              severity="info"
-                              sx={{ 
-                                background: '#1e293b',
-                                border: '1px solid #334155',
-                                color: '#cbd5e1',
-                                '& .MuiAlert-icon': { color: '#60a5fa' }
-                              }}
-                            >
-                              No transcription available for this call
-                            </Alert>
-                          )}
-                        </Box>
-                      </Collapse>
-                    </Paper>
-                  ))}
+              {/* Charts Grid 1 */}
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-5 flex items-center gap-2">
+                  <Activity className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 shrink-0" />
+                  <span>Trend Analysis</span>
+                </h2>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                   
-                  {calls.length === 0 && !loading && (
-                    <Paper sx={{ p: 4, textAlign: 'center' }}>
-                      <Typography variant="h6" color="textSecondary">
-                        No calls found
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                        {isUsingMockData 
-                          ? "Try adjusting your search criteria"
-                          : "Configure your Millis AI API key to load call data"
-                        }
-                      </Typography>
-                    </Paper>
-                  )}
-                </Box>
-              )}
-            </Container>
-          </>
-        )}
-      </Box>
-    </Box>
-  );
-};
+                  {/* Area Chart */}
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
+                      <div className="flex items-center gap-2">
+                        <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500 shrink-0" />
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-800">Call Volume Trend</h3>
+                      </div>
+                      <span className="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold self-start sm:self-auto">Area Chart</span>
+                    </div>
+                    <ResponsiveContainer width="100%" height={280}>
+                      <AreaChart data={analytics.dailyStats}>
+                        <defs>
+                          <linearGradient id="callsGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.4} />
+                            <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+                          </linearGradient>
+                          <linearGradient id="completedGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
+                            <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
+                          </linearGradient>
+                        </defs>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                        <XAxis dataKey="date" stroke="#64748b" fontSize={10} angle={-45} textAnchor="end" height={60} />
+                        <YAxis stroke="#64748b" fontSize={10} />
+                        <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                        <Legend wrapperStyle={{ paddingTop: '10px', fontSize: '12px' }} />
+                        <Area type="monotone" dataKey="calls" stroke="#3b82f6" fillOpacity={1} fill="url(#callsGradient)" strokeWidth={2} name="Total Calls" />
+                        <Area type="monotone" dataKey="completed" stroke="#10b981" fillOpacity={1} fill="url(#completedGradient)" strokeWidth={2} name="Completed" />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
 
-export default Dashboard;
+                  {/* Bar Chart */}
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg overflow-hidden">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500 shrink-0" />
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-800">Hourly Distribution</h3>
+                      </div>
+                      <span className="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full font-semibold self-start sm:self-auto">Column Chart</span>
+                    </div>
+                    <div className="overflow-x-auto -mx-4 sm:mx-0">
+                      <div className="min-w-[500px] px-4 sm:px-0">
+                        <ResponsiveContainer width="100%" height={280}>
+                          <BarChart data={analytics.hourlyDistribution}>
+                            <defs>
+                              <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stopColor="#8b5cf6" stopOpacity={1} />
+                                <stop offset="100%" stopColor="#3b82f6" stopOpacity={0.8} />
+                              </linearGradient>
+                            </defs>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                            <XAxis dataKey="hour" stroke="#64748b" fontSize={9} angle={-45} textAnchor="end" height={60} />
+                            <YAxis stroke="#64748b" fontSize={10} />
+                            <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                            <Bar dataKey="calls" fill="url(#barGradient)" radius={[6, 6, 0, 0]} />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+              {/* Charts Grid 2 */}
+              <section className="mb-6 sm:mb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                  
+                  {/* Duration Analysis */}
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
+                      <div className="flex items-center gap-2">
+                        <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-500 shrink-0" />
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-800">Duration Analysis</h3>
+                      </div>
+                      <span className="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full font-semibold self-start sm:self-auto">Bar Chart</span>
+                    </div>
+                    <ResponsiveContainer width="100%" height={280}>
+                      <BarChart data={analytics.durationAnalysis} layout="vertical">
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                        <XAxis type="number" stroke="#64748b" fontSize={10} />
+                        <YAxis type="category" dataKey="range" stroke="#64748b" fontSize={10} width={60} />
+                        <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                        <Bar dataKey="count" fill="#6366f1" radius={[0, 6, 6, 0]}>
+                          {analytics.durationAnalysis.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]} />
+                          ))}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+
+                  {/* Weekly Performance */}
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
+                      <div className="flex items-center gap-2">
+                        <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 shrink-0" />
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-800">Weekly Performance</h3>
+                      </div>
+                      <span className="text-xs px-3 py-1 bg-green-100 text-green-700 rounded-full font-semibold self-start sm:self-auto">Line Chart</span>
+                    </div>
+                    <ResponsiveContainer width="100%" height={280}>
+                      <LineChart data={analytics.weeklyComparison}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                        <XAxis dataKey="week" stroke="#64748b" fontSize={10} />
+                        <YAxis stroke="#64748b" fontSize={10} />
+                        <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                        <Legend wrapperStyle={{ paddingTop: '10px', fontSize: '12px' }} />
+                        <Line type="monotone" dataKey="calls" stroke="#3b82f6" strokeWidth={2} dot={{ fill: '#3b82f6', r: 4 }} activeDot={{ r: 6 }} name="Total Calls" />
+                        <Line type="monotone" dataKey="successRate" stroke="#10b981" strokeWidth={2} dot={{ fill: '#10b981', r: 4 }} activeDot={{ r: 6 }} name="Success Rate %" strokeDasharray="5 5" />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+
+                </div>
+              </section>
+
+              {/* Donut Chart & Call Direction */}
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-5 flex items-center gap-2">
+                  <PieChart className="w-5 h-5 sm:w-6 sm:h-6 text-pink-500" />
+                  <span>Distribution & Breakdown</span>
+                </h2>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                  
+                  {/* Donut Chart */}
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
+                      <div className="flex items-center gap-2">
+                        <PieChart className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500 shrink-0" />
+                        <h3 className="text-base sm:text-xl font-bold text-slate-800">Call Status Distribution</h3>
+                      </div>
+                      <span className="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold self-start sm:self-auto">Donut Chart</span>
+                    </div>
+                    <ResponsiveContainer width="100%" height={280}>
+                      <RechartsPieChart>
+                        <Pie 
+                          dataKey="count" 
+                          data={analytics.statusDistribution} 
+                          cx="50%" 
+                          cy="50%" 
+                          innerRadius={50} 
+                          outerRadius={90} 
+                          paddingAngle={5} 
+                          label={(entry: any) => `${entry.payload.status}: ${entry.value}`}
+                          labelLine={{ stroke: '#64748b', strokeWidth: 1 }}
+                        >
+                          {analytics.statusDistribution.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]} />
+                          ))}
+                        </Pie>
+                        <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                      </RechartsPieChart>
+                    </ResponsiveContainer>
+                    <div className="text-center mt-4">
+                      <div className="text-2xl sm:text-3xl font-black text-slate-800">{analytics.totalCalls}</div>
+                      <div className="text-xs sm:text-sm text-slate-500 font-medium">Total Calls</div>
+                    </div>
+                  </div>
+
+                  {/* Call Direction Breakdown */}
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
+                      <div className="flex items-center gap-2">
+                        <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 shrink-0" />
+                        <h3 className="text-base sm:text-xl font-bold text-slate-800">Call Direction Breakdown</h3>
+                      </div>
+                      <span className="text-xs px-3 py-1 bg-green-100 text-green-700 rounded-full font-semibold self-start sm:self-auto">Progress Bars</span>
+                    </div>
+                    <div className="space-y-4 sm:space-y-6 mb-4 sm:mb-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 sm:p-5 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm">
+                        <div className="flex items-center gap-3">
+                          <PhoneIncoming className="w-6 h-6 sm:w-7 sm:h-7 text-blue-600 shrink-0" />
+                          <span className="font-bold text-slate-800 text-base sm:text-lg">Inbound</span>
+                        </div>
+                        <div className="text-left sm:text-right">
+                          <div className="text-2xl sm:text-3xl font-black text-blue-600">{analytics.inboundCalls}</div>
+                          <div className="text-xs sm:text-sm font-semibold text-slate-600">
+                            {analytics.totalCalls > 0 ? ((analytics.inboundCalls / analytics.totalCalls) * 100).toFixed(1) : 0}% of total
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 sm:p-5 bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl border border-purple-200 shadow-sm">
+                        <div className="flex items-center gap-3">
+                          <PhoneOutgoing className="w-6 h-6 sm:w-7 sm:h-7 text-green-600 shrink-0" />
+                          <span className="font-bold text-slate-800 text-base sm:text-lg">Outbound</span>
+                        </div>
+                        <div className="text-left sm:text-right">
+                          <div className="text-2xl sm:text-3xl font-black text-purple-600">{analytics.outboundCalls}</div>
+                          <div className="text-xs sm:text-sm font-semibold text-slate-600">
+                            {analytics.totalCalls > 0 ? ((analytics.outboundCalls / analytics.totalCalls) * 100).toFixed(1) : 0}% of total
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="relative pt-1">
+                        <div className="flex mb-2 items-center justify-between">
+                          <div className="text-xs font-semibold text-blue-600">Inbound</div>
+                          <div className="text-xs font-semibold text-blue-600">
+                            {analytics.totalCalls > 0 ? ((analytics.inboundCalls / analytics.totalCalls) * 100).toFixed(1) : 0}%
+                          </div>
+                        </div>
+                        <div className="overflow-hidden h-2 sm:h-3 text-xs flex rounded-full bg-blue-100">
+                          <div 
+                            style={{ width: `${analytics.totalCalls > 0 ? (analytics.inboundCalls / analytics.totalCalls) * 100 : 0}%` }} 
+                            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-blue-400 to-blue-600 rounded-full transition-all duration-500"
+                          ></div>
+                        </div>
+                      </div>
+                      <div className="relative pt-1">
+                        <div className="flex mb-2 items-center justify-between">
+                          <div className="text-xs font-semibold text-purple-600">Outbound</div>
+                          <div className="text-xs font-semibold text-purple-600">
+                            {analytics.totalCalls > 0 ? ((analytics.outboundCalls / analytics.totalCalls) * 100).toFixed(1) : 0}%
+                          </div>
+                        </div>
+                        <div className="overflow-hidden h-2 sm:h-3 text-xs flex rounded-full bg-purple-100">
+                          <div 
+                            style={{ width: `${analytics.totalCalls > 0 ? (analytics.outboundCalls / analytics.totalCalls) * 100 : 0}%` }} 
+                            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-purple-400 to-purple-600 rounded-full transition-all duration-500"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+              {/* AI Analysis Performance */}
+              <section className="mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4 sm:mb-5 flex items-center gap-2">
+                  <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-violet-500" />
+                  <span>AI Analysis Performance</span>
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                  
+                  {/* Transcribed Calls */}
+                  <div className="bg-gradient-to-br from-violet-50 to-violet-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-violet-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-violet-400 to-violet-600 rounded-xl flex items-center justify-center shadow-md shrink-0">
+                        <FileText className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl sm:text-4xl font-black text-violet-600">{analytics.transcribedCalls}</div>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-slate-700 font-bold text-base sm:text-lg mb-1">Transcribed Calls</p>
+                      <p className="text-slate-600 text-xs sm:text-sm font-semibold">
+                        {analytics.totalCalls > 0 ? ((analytics.transcribedCalls / analytics.totalCalls) * 100).toFixed(1) : 0}% of total calls processed
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-violet-200">
+                      <div className="relative pt-1">
+                        <div className="overflow-hidden h-2 text-xs flex rounded-full bg-violet-200">
+                          <div 
+                            style={{ width: `${analytics.totalCalls > 0 ? (analytics.transcribedCalls / analytics.totalCalls) * 100 : 0}%` }} 
+                            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-violet-400 to-violet-600 rounded-full transition-all duration-500"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Summarized Calls */}
+                  <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-amber-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-md shrink-0">
+                        <Brain className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl sm:text-4xl font-black text-amber-600">{analytics.summarizedCalls}</div>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-slate-700 font-bold text-base sm:text-lg mb-1">Summarized Calls</p>
+                      <p className="text-slate-600 text-xs sm:text-sm font-semibold">
+                        {analytics.transcribedCalls > 0 ? ((analytics.summarizedCalls / analytics.transcribedCalls) * 100).toFixed(1) : 0}% of transcribed calls
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-amber-200">
+                      <div className="relative pt-1">
+                        <div className="overflow-hidden h-2 text-xs flex rounded-full bg-amber-200">
+                          <div 
+                            style={{ width: `${analytics.transcribedCalls > 0 ? (analytics.summarizedCalls / analytics.transcribedCalls) * 100 : 0}%` }} 
+                            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-amber-400 to-amber-600 rounded-full transition-all duration-500"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Processing Rate */}
+                  <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-emerald-200 shadow-lg hover:shadow-xl transition-all duration-300 sm:col-span-2 lg:col-span-1">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center shadow-md shrink-0">
+                        <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl sm:text-4xl font-black text-emerald-600">
+                          {analytics.transcribedCalls > 0 ? ((analytics.summarizedCalls / analytics.transcribedCalls) * 100).toFixed(1) : 0}%
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-slate-700 font-bold text-base sm:text-lg mb-1">Processing Rate</p>
+                      <p className="text-slate-600 text-xs sm:text-sm font-semibold">AI summary completion rate</p>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-emerald-200">
+                      <div className="relative pt-1">
+                        <div className="overflow-hidden h-2 text-xs flex rounded-full bg-emerald-200">
+                          <div 
+                            style={{ width: `${analytics.transcribedCalls > 0 ? (analytics.summarizedCalls / analytics.transcribedCalls) * 100 : 0}%` }} 
+                            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full transition-all duration-500"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+              {/* Peak Hours */}
+              {analytics.peakHours.length > 0 && (
+                <section className="mb-6 sm:mb-8">
+                  <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                    <div className="flex items-center gap-2 mb-4 sm:mb-6">
+                      <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-500 shrink-0" />
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-800">Peak Call Hours</h3>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
+                      {analytics.peakHours.map((peak, index) => (
+                        <div 
+                          key={peak.hour} 
+                          className="text-center p-4 sm:p-5 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-200 shadow-sm hover:shadow-md transition-all duration-300"
+                        >
+                          <div className="text-2xl sm:text-3xl font-black text-indigo-600 mb-2">{peak.hour}:00</div>
+                          <div className="text-slate-700 text-base sm:text-lg font-bold">{peak.count} calls</div>
+                          <div className="text-xs text-slate-500 mt-2 font-semibold">Rank #{index + 1}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+              )}
+
+              {/* Recent Calls */}
+              <section className="mb-6 sm:mb-8">
+                <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
+                    <div className="flex items-center gap-2">
+                      <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 shrink-0" />
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-800">Recent Calls</h3>
+                    </div>
+                    <a 
+                      href="/calls" 
+                      className="text-blue-600 hover:text-blue-800 font-semibold text-sm transition-colors flex items-center gap-1 self-start sm:self-auto"
+                    >
+                      View All 
+                      <ArrowUp className="w-4 h-4 rotate-45" />
+                    </a>
+                  </div>
+                  {recentCalls.length > 0 ? (
+                    <div className="space-y-3">
+                      {recentCalls.map((call) => (
+                        <div 
+                          key={call.Sid} 
+                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 sm:p-5 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors border border-slate-200"
+                        >
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 min-w-0">
+                            <div className="flex items-center gap-2 min-w-0">
+                              {call.Direction === 'inbound' ? (
+                                <PhoneIncoming className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 shrink-0" />
+                              ) : (
+                                <PhoneOutgoing className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500 shrink-0" />
+                              )}
+                              <span className="font-semibold text-slate-800 text-sm sm:text-base truncate">{call.From} → {call.To}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              {call.Status === 'completed' && <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />}
+                              {call.Status === 'failed' && <XCircle className="w-4 h-4 text-red-500 shrink-0" />}
+                              {call.Status === 'busy' && <AlertCircle className="w-4 h-4 text-yellow-500 shrink-0" />}
+                              <span 
+                                className={`px-2 sm:px-3 py-1 rounded-full text-xs font-bold ${
+                                  call.Status === 'completed' 
+                                    ? 'bg-green-100 text-green-700' 
+                                    : call.Status === 'failed' 
+                                    ? 'bg-red-100 text-red-700' 
+                                    : 'bg-yellow-100 text-yellow-700'
+                                }`}
+                              >
+                                {call.Status}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="text-left sm:text-right shrink-0">
+                            <div className="text-sm font-bold text-slate-800">{call.Duration}s</div>
+                            <div className="text-xs text-slate-500">{new Date(call.StartTime).toLocaleTimeString()}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-12">
+                      <PhoneCall className="w-12 h-12 sm:w-16 sm:h-16 text-slate-300 mx-auto mb-4" />
+                      <p className="text-slate-500 text-base sm:text-lg font-medium">No recent calls found</p>
+                    </div>
+                  )}
+                </div>
+              </section>
+
+            </>
+          )}
+        </div>
+      </main>
+    </div>
+  );
+}

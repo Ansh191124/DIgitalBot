@@ -1,15 +1,15 @@
 "use client"
 
-import React, { useState, ChangeEvent } from "react"
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { Header } from "@/components/header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Mail, Phone, MapPin, MessageCircle, ArrowRight } from "lucide-react"
+import { Textarea } from "@/components/ui/textarea"
+import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react"
+import React, { ChangeEvent, useState } from "react"
 
 interface ContactFormState {
   firstName: string;
@@ -225,7 +225,7 @@ export default function Contact() {
                 <Card key={index} className="border border-sky-100 bg-white hover:shadow-xl transition-all duration-300">
                   <CardContent className="p-4 sm:p-6">
                     <div className="flex items-start space-x-3 sm:space-x-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-sky-400 to-indigo-400 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-gradient-to-br from-sky-400 to-indigo-400 rounded-lg flex items-center justify-center shrink-0">
                         <info.icon className="h-5 w-5 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">

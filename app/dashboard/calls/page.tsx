@@ -1,115 +1,336 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import Sidebar from '@/components/Sidebar';
+import { callsAPI } from '@/lib/api';
+import { Call, CallStats } from '@/types';
 import {
-  Container,
-  Typography,
+  Menu as MenuIcon,
+  Phone as PhoneIcon,
+  PlayArrow as PlayIcon,
+  Refresh as RefreshIcon,
+  Search as SearchIcon,
+  Description as TranscriptIcon
+} from '@mui/icons-material';
+import {
+  Alert,
+  AppBar,
   Box,
-  Card,
-  CardContent,
   Button,
   Chip,
-  Alert,
   CircularProgress,
-  AppBar,
-  Toolbar,
-  Paper,
-  IconButton,
+  Collapse,
+  Container,
   Divider,
-  Avatar
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Paper,
+  Select,
+  TextField,
+  Toolbar,
+  Typography
 } from '@mui/material';
-import {
-  ArrowBack as BackIcon,
-  Phone as PhoneIcon,
-  AccessTime as TimeIcon,
-  PlayArrow as PlayIcon,
-  Pause as PauseIcon,
-  VolumeUp as VolumeIcon,
-  Description as TranscriptIcon,
-  Analytics as AnalyticsIcon
-} from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
-import { callsAPI } from '@/lib/api';
+import { useEffect, useState } from 'react';
 
-interface CallDetail {
-  id: string;
-  session_id?: string;
-  call_id?: string;
-  phone_number?: string;
-  direction?: string;
-  status?: string;
-  duration?: number;
-  start_time?: string;
-  end_time?: string;
-  agent_id?: string;
-  agent_config?: any;
-  metadata?: any;
-  recording_url?: string;
-  recording?: any;
-  cost_breakdown?: any[];
-  chat?: string | any[];
-  transcription?: string | any[];
-}
+// Mock data for testing when API is not available
+const mockCalls: Call[] = [
+  {
+    id: "call_001",
+    phone_number: "+1234567890",
+    direction: "inbound",
+    status: "completed",
+    duration: 125,
+    start_time: "2024-10-24T10:00:00Z",
+    end_time: "2024-10-24T10:02:05Z"
+  },
+  {
+    id: "call_002", 
+    phone_number: "+1987654321",
+    direction: "outbound",
+    status: "completed",
+    duration: 89,
+    start_time: "2024-10-24T11:30:00Z",
+    end_time: "2024-10-24T11:31:29Z"
+  },
+  {
+    id: "call_003",
+    phone_number: "+1555666777",
+    direction: "inbound",
+    status: "missed",
+    duration: 0,
+    start_time: "2024-10-24T14:15:00Z"
+  }
+];
 
-export default function CallDetailPage({ params }: { params: { id: string } }) {
+const mockStats: CallStats = {
+  total_calls: 25,
+  completed_calls: 22,
+  missed_calls: 3,
+  total_duration: 3456,
+  average_duration: 138,
+  calls_by_direction: {
+    inbound: 15,
+    outbound: 10
+  }
+};
+
+const Dashboard = () => {
   const router = useRouter();
-  const [call, setCall] = useState<CallDetail | null>(null);
+  const [calls, setCalls] = useState<Call[]>([]);
+  const [allCalls, setAllCalls] = useState<Call[]>([]); // Store unfiltered calls
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [transcription, setTranscription] = useState<string>('');
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audioRef, setAudioRef] = useState<HTMLAudioElement | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [stats, setStats] = useState<CallStats | null>(null);
+  const [isUsingMockData, setIsUsingMockData] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [expandedCall, setExpandedCall] = useState<string | null>(null);
+  const [selectedAgent, setSelectedAgent] = useState('');
+  const [selectedStatus, setSelectedStatus] = useState('');
+  const [phoneFilter, setPhoneFilter] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [showFilters, setShowFilters] = useState(true);
+  const [availableAgents, setAvailableAgents] = useState<string[]>([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  
+  // Real-time data fetching states
+  const [isAutoRefreshEnabled, setIsAutoRefreshEnabled] = useState(true);
+  const [lastRefreshTime, setLastRefreshTime] = useState<Date | null>(null);
+  const [refreshInterval, setRefreshInterval] = useState(30000); // 30 seconds default
+  const [isBackgroundFetching, setIsBackgroundFetching] = useState(false);
+  const [newCallsCount, setNewCallsCount] = useState(0);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const fetchCallDetail = async () => {
+  const fetchCalls = async (page = 1, limit = 100, search = '', isBackground = false) => {
     try {
-      setLoading(true);
+      if (!isBackground) {
+        setLoading(true);
+      } else {
+        setIsBackgroundFetching(true);
+      }
       setError(null);
       
-      const response = await callsAPI.getCall(params.id);
-      const callData = response.data.data || response.data;
+      // First try the health check
+      await callsAPI.healthCheck();
       
-      // Log the call data for debugging
-      console.log('Call data received:', callData);
-      console.log('Recording info:', {
-        has_recording: !!callData.recording,
-        has_recording_url: !!callData.recording_url,
-        recording: callData.recording,
-        recording_url: callData.recording_url
-      });
-      console.log('Chat field type:', typeof callData.chat);
-      console.log('Chat field value:', callData.chat);
+      // If health check passes, try to fetch real data
+      let response;
+      if (search) {
+        response = await callsAPI.searchCalls(search, { page, limit });
+      } else {
+        response = await callsAPI.getCalls({ page, limit });
+      }
       
-      setCall(callData);
+      const callsData = response.data.data?.calls || response.data.data || [];
+      
+      // Check for new calls if this is a background fetch
+      if (isBackground && calls.length > 0) {
+        const newCalls = callsData.filter((newCall: Call) => 
+          !calls.some(existingCall => existingCall.id === newCall.id)
+        );
+        setNewCallsCount(newCalls.length);
+        
+        // Show notification for new calls
+        if (newCalls.length > 0) {
+          console.log(`${newCalls.length} new call(s) received`);
+        }
+      }
+      
+      setCalls(callsData);
+      setAllCalls(callsData); // Store unfiltered calls
+      setIsUsingMockData(false);
+      setLastRefreshTime(new Date());
       
     } catch (err: any) {
-      console.error('Failed to fetch call details:', err);
-      setError('Failed to load call details. Please try again.');
+      console.warn('API not available, using mock data:', err.message);
+      // Fall back to mock data
+      setCalls(mockCalls);
+      setAllCalls(mockCalls); // Store unfiltered mock calls
+      setIsUsingMockData(true);
+      setError(null); // Clear error since we're using mock data
+      setLastRefreshTime(new Date());
     } finally {
-      setLoading(false);
+      if (!isBackground) {
+        setLoading(false);
+      } else {
+        setIsBackgroundFetching(false);
+      }
     }
   };
 
-  const fetchTranscription = async () => {
+  const fetchAgents = async () => {
     try {
-      const response = await callsAPI.getCallTranscription(params.id);
-      setTranscription(response.data.transcription || response.data.data?.transcription || '');
+      const response = await callsAPI.getAgents();
+      const agentList = response.data.data || [];
+      // Extract agent names
+      const agentNames = agentList.map((agent: any) => agent.name);
+      setAvailableAgents(agentNames);
     } catch (err: any) {
-      console.warn('Transcription not available:', err.message);
-      setTranscription('Transcription not available for this call.');
+      console.warn('Could not fetch agents:', err.message);
+      // Fallback to extracting from calls if agents fetch fails
+      const agents = [...new Set(calls.map((call: Call) => call.agent_id).filter(Boolean))];
+      setAvailableAgents(agents as string[]);
+    }
+  };
+
+  const fetchStats = async () => {
+    try {
+      const response = await callsAPI.getStats();
+      setStats(response.data.data);
+    } catch (err: any) {
+      console.warn('Stats API not available, using mock data');
+      setStats(mockStats);
     }
   };
 
   useEffect(() => {
     if (mounted) {
-      fetchCallDetail();
-      fetchTranscription();
+      fetchCalls();
+      fetchStats();
+      fetchAgents();
     }
-  }, [mounted, params.id]);
+  }, [mounted]);
+
+  // Real-time polling effect
+  useEffect(() => {
+    if (!mounted || !isAutoRefreshEnabled) return;
+
+    const interval = setInterval(() => {
+      // Only do background fetch if not currently loading
+      if (!loading) {
+        fetchCalls(1, 100, searchQuery, true); // Background fetch
+        fetchStats();
+      }
+    }, refreshInterval);
+
+    return () => clearInterval(interval);
+  }, [mounted, isAutoRefreshEnabled, refreshInterval, loading, searchQuery]);
+
+  // Reset new calls count when user interacts
+  useEffect(() => {
+    setNewCallsCount(0);
+  }, [expandedCall]);
+
+  const handleSearch = () => {
+    if (isUsingMockData) {
+      // Filter mock data
+      const filtered = mockCalls.filter(call => 
+        call.phone_number?.includes(searchQuery) ||
+        call.id.includes(searchQuery) ||
+        call.status?.includes(searchQuery.toLowerCase())
+      );
+      setCalls(filtered);
+    } else {
+      fetchCalls(1, 100, searchQuery);
+    }
+  };
+
+  const handleApplyFilters = () => {
+    // Start with all calls
+    let filteredCalls = [...allCalls];
+
+    // Filter by agent
+    if (selectedAgent) {
+      filteredCalls = filteredCalls.filter(call => call.agent_id === selectedAgent);
+    }
+
+    // Filter by status
+    if (selectedStatus) {
+      filteredCalls = filteredCalls.filter(call => 
+        call.status === selectedStatus
+      );
+    }
+
+    // Filter by phone number
+    if (phoneFilter) {
+      filteredCalls = filteredCalls.filter(call => 
+        call.phone_number?.includes(phoneFilter)
+      );
+    }
+
+    // Filter by date range
+    if (startDate) {
+      const startTime = new Date(startDate).getTime();
+      filteredCalls = filteredCalls.filter(call => {
+        const callTime = new Date(call.start_time || '').getTime();
+        return callTime >= startTime;
+      });
+    }
+
+    if (endDate) {
+      const endTime = new Date(endDate).getTime();
+      filteredCalls = filteredCalls.filter(call => {
+        const callTime = new Date(call.start_time || '').getTime();
+        return callTime <= endTime;
+      });
+    }
+
+    setCalls(filteredCalls);
+  };
+
+  const handleClearFilters = () => {
+    setSelectedAgent('');
+    setSelectedStatus('');
+    setPhoneFilter('');
+    setStartDate('');
+    setEndDate('');
+    // Restore all calls
+    setCalls(allCalls);
+  };
+
+  const handleRefresh = () => {
+    setNewCallsCount(0);
+    fetchCalls();
+    fetchStats();
+    fetchAgents();
+  };
+
+  const toggleAutoRefresh = () => {
+    setIsAutoRefreshEnabled(!isAutoRefreshEnabled);
+    if (!isAutoRefreshEnabled) {
+      setLastRefreshTime(new Date());
+    }
+  };
+
+  const changeRefreshInterval = (newInterval: number) => {
+    setRefreshInterval(newInterval);
+  };
+
+  const formatLastRefreshTime = () => {
+    if (!lastRefreshTime) return '';
+    const now = new Date();
+    const diffMs = now.getTime() - lastRefreshTime.getTime();
+    const diffSeconds = Math.floor(diffMs / 1000);
+    
+    if (diffSeconds < 60) return `${diffSeconds}s ago`;
+    const diffMinutes = Math.floor(diffSeconds / 60);
+    if (diffMinutes < 60) return `${diffMinutes}m ago`;
+    const diffHours = Math.floor(diffMinutes / 60);
+    return `${diffHours}h ago`;
+  };
+
+  const handleCallClick = async (callId: string) => {
+    if (expandedCall === callId) {
+      setExpandedCall(null);
+    } else {
+      setExpandedCall(callId);
+      // Fetch full call details if needed
+      try {
+        const response = await callsAPI.getCall(callId);
+        const callData = response.data.data || response.data;
+        // Update the call in the list with full details
+        setCalls(calls.map(c => c.id === callId ? { ...c, ...callData } : c));
+      } catch (err) {
+        console.error('Failed to fetch call details:', err);
+      }
+    }
+  };
 
   const formatDuration = (seconds?: number) => {
     if (!seconds) return 'N/A';
@@ -131,459 +352,634 @@ export default function CallDetailPage({ params }: { params: { id: string } }) {
     }
   };
 
-  const handlePlayPause = () => {
-    // Try to get recording URL from call data or construct it
-    const recordingUrl = call?.recording_url || 
-                        (call?.recording && typeof call.recording === 'object' && (call.recording as any).url) ||
-                        callsAPI.getCallRecordingUrl(params.id);
-    
-    if (!recordingUrl && !call?.recording_url) {
-      setError('Recording not available for this call.');
-      return;
-    }
-    
-    if (!audioRef) {
-      const audio = new Audio(recordingUrl);
-      setAudioRef(audio);
-      audio.play().catch(err => {
-        console.error('Failed to play audio:', err);
-        setError('Failed to play recording. The audio file may not be available or you may need to download it separately.');
-      });
-      setIsPlaying(true);
-      
-      audio.onended = () => setIsPlaying(false);
-      audio.onerror = () => {
-        setError('Failed to load recording. The audio file may not be available.');
-        setIsPlaying(false);
-      };
-    } else {
-      if (isPlaying) {
-        audioRef.pause();
-        setIsPlaying(false);
-      } else {
-        audioRef.play().catch(err => {
-          console.error('Failed to play audio:', err);
-          setError('Failed to play recording.');
-        });
-        setIsPlaying(true);
-      }
-    }
-  };
-
-  if (!mounted) {
-    return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-        <CircularProgress />
-      </Box>
-    );
-  }
-
-  if (loading) {
-    return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-        <CircularProgress />
-      </Box>
-    );
-  }
-
-  if (error && !call) {
-    return (
-      <Container maxWidth="lg" sx={{ mt: 4 }}>
-        <Alert severity="error" sx={{ mb: 3 }}>
-          {error}
-        </Alert>
-        <Button 
-          variant="contained" 
-          startIcon={<BackIcon />}
-          onClick={() => router.push('/')}
-        >
-          Back to Dashboard
-        </Button>
-      </Container>
-    );
-  }
-
   return (
-    <Box>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            onClick={() => router.push('/')}
-            sx={{ mr: 2 }}
-          >
-            <BackIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Call Details - {call?.id || params.id}
-          </Typography>
-        </Toolbar>
-      </AppBar>
+    <Box sx={{ display: 'flex', minHeight: '100vh', background: '#0f1117' }}>
+      {/* Mobile Menu Button */}
+      <IconButton
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        sx={{
+          display: { xs: 'block', md: 'none' },
+          position: 'fixed',
+          top: 16,
+          left: 16,
+          zIndex: 1300,
+          background: '#1a1d2e',
+          color: '#fff',
+          '&:hover': { background: '#2a2d3e' },
+          boxShadow: '0 4px 6px rgba(0,0,0,0.3)'
+        }}
+      >
+        <MenuIcon />
+      </IconButton>
 
-      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-        {error && (
-          <Alert severity="error" sx={{ mb: 3 }}>
-            {error}
-          </Alert>
-        )}
+      {/* Overlay for mobile */}
+      {sidebarOpen && (
+        <Box
+          onClick={() => setSidebarOpen(false)}
+          sx={{
+            display: { xs: 'block', md: 'none' },
+            position: 'fixed',
+            inset: 0,
+            bgcolor: 'rgba(0,0,0,0.5)',
+            zIndex: 1200
+          }}
+        />
+      )}
 
-        {call && (
+      {/* Sidebar */}
+      <Box
+        sx={{
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: 240,
+          transform: {
+            xs: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
+            md: 'translateX(0)'
+          },
+          transition: 'transform 0.3s ease-in-out',
+          zIndex: 1250
+        }}
+      >
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      </Box>
+
+      {/* Main Content */}
+      <Box sx={{ 
+        width: '100%', 
+        ml: { xs: 0, md: '240px' },
+        pt: { xs: '80px', md: 0 }
+      }}>
+        {!mounted ? (
+          <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+            <CircularProgress sx={{ color: '#4ade80' }} size={60} />
+          </Box>
+        ) : (
           <>
-            {/* Call Overview Card */}
-            <Card sx={{ mb: 3 }}>
-              <CardContent>
-                <Box display="flex" justifyContent="space-between" alignItems="flex-start" flexWrap="wrap" gap={2}>
-                  <Box>
-                    <Typography variant="h5" gutterBottom>
-                      {call.phone_number || 'Unknown Number'}
-                    </Typography>
-                    <Box display="flex" alignItems="center" gap={2} mb={2}>
-                      <Chip
-                        label={call.direction || 'Unknown'}
-                        size="small"
-                        color={call.direction === 'inbound' ? 'primary' : 'secondary'}
-                      />
-                      <Chip
-                        label={call.status || 'Unknown'}
-                        size="small"
-                        color={getStatusColor(call.status)}
-                      />
-                    </Box>
-                  </Box>
-                  
-                  <Box display="flex" flexDirection="column" alignItems="flex-end" gap={1}>
-                    <Typography variant="h4">
-                      {formatDuration(call.duration)}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      Duration
-                    </Typography>
-                  </Box>
+            <AppBar 
+              position="static"
+              elevation={0}
+              sx={{ 
+                background: '#1a1d2e',
+                borderBottom: '1px solid #2a2d3e'
+              }}
+            >
+              <Toolbar sx={{ py: 1.5 }}>
+                <Box 
+                  sx={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    background: '#4ade80',
+                    borderRadius: 1,
+                    p: 1,
+                    mr: 2
+                  }}
+                >
+                  <PhoneIcon sx={{ fontSize: 24, color: '#000' }} />
                 </Box>
-
-                <Divider sx={{ my: 2 }} />
-
-                <Box display="flex" flexWrap="wrap" gap={3}>
-                  <Box display="flex" alignItems="center" gap={1}>
-                    <TimeIcon fontSize="small" />
-                    <Typography variant="body2">
-                      Start: {call.start_time ? new Date(call.start_time).toLocaleString() : 'N/A'}
-                    </Typography>
-                  </Box>
-                  
-                  {call.end_time && (
-                    <Box display="flex" alignItems="center" gap={1}>
-                      <TimeIcon fontSize="small" />
-                      <Typography variant="body2">
-                        End: {new Date(call.end_time).toLocaleString()}
-                      </Typography>
-                    </Box>
-                  )}
-                  
-                  {call.agent_id && (
-                    <Box display="flex" alignItems="center" gap={1}>
-                      <Avatar sx={{ width: 24, height: 24 }}>AI</Avatar>
-                      <Typography variant="body2">
-                        Agent: {call.agent_id}
-                      </Typography>
-                    </Box>
-                  )}
-                </Box>
-              </CardContent>
-            </Card>
-
-            {/* Recording Card */}
-            <Card sx={{ mb: 3, background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-              <CardContent>
-                <Typography variant="h6" display="flex" alignItems="center" gap={1} mb={3} sx={{ color: 'white', fontWeight: 600 }}>
-                  <VolumeIcon sx={{ fontSize: 28 }} />
-                  Call Recording
+                <Typography 
+                  variant="h6" 
+                  component="div" 
+                  sx={{ 
+                    flexGrow: 1, 
+                    fontWeight: 600,
+                    color: '#fff'
+                  }}
+                >
+                  Call Logs
                 </Typography>
+                <IconButton 
+                  sx={{ 
+                    color: '#9ca3af',
+                    '&:hover': {
+                      color: '#4ade80',
+                      background: 'rgba(74, 222, 128, 0.1)'
+                    }
+                  }}
+                  onClick={handleRefresh}
+                >
+                  <RefreshIcon />
+                </IconButton>
+              </Toolbar>
+            </AppBar>
+
+            <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
+              {/* API Status Alert */}
+              {isUsingMockData && (
+                <Alert severity="warning" sx={{ mb: 3, background: '#78350f', borderColor: '#92400e', color: '#fef3c7' }}>
+                  <strong>Demo Mode:</strong> Unable to connect to Millis AI API. Showing sample data. 
+                  Please configure your API key in server/.env to see real data.
+                </Alert>
+              )}
+
+              {/* Filters Section - Millis AI Style */}
+              <Paper sx={{ 
+                p: 3, 
+                mb: 3,
+                background: '#1a1d2e',
+                borderRadius: 2,
+                border: '1px solid #2a2d3e'
+              }}>
+                <Box display="flex" justifyContent="space-between" alignItems="center" mb={showFilters ? 2 : 0}>
+                  <Typography variant="h6" sx={{ color: '#fff', display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <SearchIcon /> Filters
+                  </Typography>
+                  <Button 
+                    onClick={() => setShowFilters(!showFilters)}
+                    sx={{ color: '#4ade80' }}
+                  >
+                    {showFilters ? 'Hide' : 'Show'}
+                  </Button>
+                </Box>
                 
-                <Box>
-                  {(() => {
-                    const recordingUrl = call.recording_url || 
-                                        (call.recording && typeof call.recording === 'object' && 
-                                         ((call.recording as any).url || (call.recording as any).recording_url));
-                    
-                    const hasRecordingInfo = call.recording || recordingUrl;
-                    
-                    // Check if recording is enabled in agent config
-                    const recordingEnabled = call.agent_config?.call_settings?.enable_recording === true;
-                    
-                    if (hasRecordingInfo && recordingUrl) {
-                      return (
-                        <Box sx={{ backgroundColor: 'rgba(255,255,255,0.95)', borderRadius: 2, p: 3 }}>
-                          <Box display="flex" alignItems="center" gap={2} flexWrap="wrap">
-                            <Button
-                              variant="contained"
-                              size="large"
-                              startIcon={isPlaying ? <PauseIcon /> : <PlayIcon />}
-                              onClick={handlePlayPause}
-                              sx={{ 
-                                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                                boxShadow: '0 4px 15px rgba(102, 126, 234, 0.4)',
-                                '&:hover': {
-                                  background: 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)',
-                                  boxShadow: '0 6px 20px rgba(102, 126, 234, 0.6)',
+                <Collapse in={showFilters}>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 2 }}>
+                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
+                      <FormControl fullWidth size="small">
+                        <InputLabel sx={{ color: '#9ca3af' }}>Agent</InputLabel>
+                        <Select
+                          value={selectedAgent}
+                          label="Agent"
+                          onChange={(e) => setSelectedAgent(e.target.value)}
+                          MenuProps={{
+                            PaperProps: {
+                              sx: {
+                                bgcolor: '#1a1d2e',
+                                '& .MuiMenuItem-root': {
+                                  color: '#fff',
+                                  '&:hover': {
+                                    bgcolor: '#2a2d3e'
+                                  },
+                                  '&.Mui-selected': {
+                                    bgcolor: '#2a2d3e',
+                                    '&:hover': {
+                                      bgcolor: '#3a3d4e'
+                                    }
+                                  }
                                 }
-                              }}
-                            >
-                              {isPlaying ? 'Pause' : 'Play'} Recording
-                            </Button>
-                            
-                            <Button
-                              variant="outlined"
-                              size="large"
-                              onClick={() => window.open(recordingUrl, '_blank')}
-                              sx={{
-                                borderColor: '#667eea',
-                                color: '#667eea',
-                                '&:hover': {
-                                  borderColor: '#764ba2',
-                                  backgroundColor: 'rgba(102, 126, 234, 0.05)',
+                              }
+                            }
+                          }}
+                          sx={{
+                            color: '#fff',
+                            '.MuiOutlinedInput-notchedOutline': { borderColor: '#374151' },
+                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
+                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
+                            '.MuiSvgIcon-root': { color: '#9ca3af' }
+                          }}
+                        >
+                          <MenuItem value="">All</MenuItem>
+                          {availableAgents.map((agent) => (
+                            <MenuItem key={agent} value={agent}>
+                              {agent}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Box>
+
+                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
+                      <FormControl fullWidth size="small">
+                        <InputLabel sx={{ color: '#9ca3af' }}>Call Status</InputLabel>
+                        <Select
+                          value={selectedStatus}
+                          label="Call Status"
+                          onChange={(e) => setSelectedStatus(e.target.value)}
+                          MenuProps={{
+                            PaperProps: {
+                              sx: {
+                                bgcolor: '#1a1d2e',
+                                '& .MuiMenuItem-root': {
+                                  color: '#fff',
+                                  '&:hover': {
+                                    bgcolor: '#2a2d3e'
+                                  },
+                                  '&.Mui-selected': {
+                                    bgcolor: '#2a2d3e',
+                                    '&:hover': {
+                                      bgcolor: '#3a3d4e'
+                                    }
+                                  }
                                 }
-                              }}
-                            >
-                              Download Recording
-                            </Button>
+                              }
+                            }
+                          }}
+                          sx={{
+                            color: '#fff',
+                            '.MuiOutlinedInput-notchedOutline': { borderColor: '#374151' },
+                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
+                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
+                            '.MuiSvgIcon-root': { color: '#9ca3af' }
+                          }}
+                        >
+                          <MenuItem value="">All Status</MenuItem>
+                          <MenuItem value="completed">Completed</MenuItem>
+                          <MenuItem value="agent-ended">Agent Ended</MenuItem>
+                          <MenuItem value="user-ended">User Ended</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Box>
+
+                    <Box sx={{ flex: '2 1 300px', minWidth: '200px' }}>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        placeholder="Phone Number"
+                        value={phoneFilter}
+                        onChange={(e) => setPhoneFilter(e.target.value)}
+                        sx={{
+                          '.MuiOutlinedInput-root': {
+                            color: '#fff',
+                            '& fieldset': { borderColor: '#374151' },
+                            '&:hover fieldset': { borderColor: '#4ade80' },
+                            '&.Mui-focused fieldset': { borderColor: '#4ade80' },
+                          },
+                          '.MuiInputBase-input::placeholder': { color: '#9ca3af', opacity: 1 }
+                        }}
+                      />
+                    </Box>
+
+                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        type="datetime-local"
+                        label="Start Time"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        InputLabelProps={{ shrink: true, sx: { color: '#9ca3af' } }}
+                        sx={{
+                          '.MuiOutlinedInput-root': {
+                            color: '#fff',
+                            '& fieldset': { borderColor: '#374151' },
+                            '&:hover fieldset': { borderColor: '#4ade80' },
+                            '&.Mui-focused fieldset': { borderColor: '#4ade80' },
+                          }
+                        }}
+                      />
+                    </Box>
+
+                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        type="datetime-local"
+                        label="End Time"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                        InputLabelProps={{ shrink: true, sx: { color: '#9ca3af' } }}
+                        sx={{
+                          '.MuiOutlinedInput-root': {
+                            color: '#fff',
+                            '& fieldset': { borderColor: '#374151' },
+                            '&:hover fieldset': { borderColor: '#4ade80' },
+                            '&.Mui-focused fieldset': { borderColor: '#4ade80' },
+                          }
+                        }}
+                      />
+                    </Box>
+
+                    <Box sx={{ flex: '0 0 auto', display: 'flex', gap: 2, alignItems: 'flex-start' }}>
+                      <Button 
+                        variant="outlined"
+                        onClick={handleClearFilters}
+                        sx={{ 
+                          color: '#9ca3af',
+                          borderColor: '#374151',
+                          '&:hover': { borderColor: '#4ade80', color: '#4ade80' }
+                        }}
+                      >
+                        Clear All
+                      </Button>
+                      <Button 
+                        variant="contained"
+                        onClick={handleApplyFilters}
+                        sx={{ 
+                          background: '#4ade80',
+                          color: '#000',
+                          fontWeight: 600,
+                          '&:hover': { background: '#22c55e' }
+                        }}
+                      >
+                        Apply Filters
+                      </Button>
+                    </Box>
+                  </Box>
+                </Collapse>
+              </Paper>
+
+              {/* Error Alert */}
+              {error && (
+                <Alert severity="error" sx={{ mb: 3 }}>
+                  {error}
+                </Alert>
+              )}
+
+              {/* Call History - Millis AI Style */}
+              <Typography variant="h6" sx={{ color: '#fff', mb: 2, fontWeight: 600 }}>
+                Call History
+              </Typography>
+
+              {loading ? (
+                <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
+                  <CircularProgress sx={{ color: '#4ade80' }} size={60} />
+                </Box>
+              ) : (
+                <Box display="flex" flexDirection="column" gap={2}>
+                  {calls.map((call: any) => (
+                    <Paper key={call.id} sx={{ 
+                      background: '#1a1d2e',
+                      borderRadius: 2,
+                      border: '1px solid #2a2d3e',
+                      overflow: 'hidden'
+                    }}>
+                      {/* Call Summary Row - Clickable */}
+                      <Box 
+                        sx={{ 
+                          p: 2.5,
+                          cursor: 'pointer',
+                          '&:hover': { background: '#212438' },
+                          transition: 'background 0.2s'
+                        }}
+                        onClick={() => handleCallClick(call.id)}
+                      >
+                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, alignItems: 'center' }}>
+                          <Box sx={{ flex: '1 1 150px', minWidth: '120px' }}>
+                            <Box>
+                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
+                                ID
+                              </Typography>
+                              <Typography variant="body2" sx={{ color: '#fff', fontFamily: 'monospace', fontSize: '0.85rem' }}>
+                                {call.session_id || call.id}
+                              </Typography>
+                            </Box>
+                          </Box>
+
+                          <Box sx={{ flex: '1 1 150px', minWidth: '120px' }}>
+                            <Box>
+                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
+                                Agent
+                              </Typography>
+                              <Typography variant="body2" sx={{ color: '#fff' }}>
+                                {call.agent_id || 'dr appointment'}
+                              </Typography>
+                            </Box>
+                          </Box>
+
+                          <Box sx={{ flex: '1 1 150px', minWidth: '120px' }}>
+                            <Box>
+                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
+                                Phone #
+                              </Typography>
+                              <Box display="flex" alignItems="center" gap={0.5}>
+                                <Typography variant="body2" sx={{ color: '#fff' }}>
+                                  {call.phone_number || 'Unknown'}
+                                </Typography>
+                                {call.direction === 'inbound' && (
+                                  <Chip label="→" size="small" sx={{ height: 20, fontSize: '0.7rem', background: '#3b82f6', color: '#fff' }} />
+                                )}
+                              </Box>
+                            </Box>
+                          </Box>
+
+                          <Box sx={{ flex: '1 1 120px', minWidth: '100px' }}>
+                            <Box>
+                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
+                                Status
+                              </Typography>
+                              <Chip 
+                                label={call.status || call.call_status || 'completed'}
+                                size="small"
+                                sx={{
+                                  background: '#065f46',
+                                  color: '#fff',
+                                  fontSize: '0.75rem',
+                                  height: 24
+                                }}
+                              />
+                            </Box>
+                          </Box>
+
+                          <Box sx={{ flex: '1 1 100px', minWidth: '80px' }}>
+                            <Box>
+                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
+                                Duration
+                              </Typography>
+                              <Typography variant="body2" sx={{ color: '#fff' }}>
+                                {formatDuration(call.duration)}
+                              </Typography>
+                            </Box>
+                          </Box>
+
+                          <Box sx={{ flex: '1 1 150px', minWidth: '120px', textAlign: 'right' }}>
+                            <Box>
+                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
+                                Timestamp
+                              </Typography>
+                              <Typography variant="body2" sx={{ color: '#9ca3af', fontSize: '0.8rem' }}>
+                                {call.start_time ? new Date(call.start_time).toLocaleString() : 'N/A'}
+                              </Typography>
+                            </Box>
                           </Box>
                         </Box>
-                      );
-                    } else if (recordingEnabled) {
-                      return (
-                        <Alert 
-                          severity="info" 
-                          sx={{ 
-                            backgroundColor: 'rgba(255,255,255,0.95)',
-                            '& .MuiAlert-icon': { color: '#2196f3' }
-                          }}
-                        >
-                          <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>
-                            ✅ Recording Enabled - Processing
-                          </Typography>
-                          <Typography variant="body2" sx={{ mb: 1 }}>
-                            Recording is enabled for this agent. The recording may still be processing or will be available soon.
-                          </Typography>
-                          <Typography variant="body2">
-                            Check your <strong>
-                              <a 
-                                href="https://dashboard.millis.ai" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                style={{ color: '#667eea' }}
-                              >
-                                Millis AI Dashboard →
-                              </a>
-                            </strong> for the recording once it's ready.
-                          </Typography>
-                        </Alert>
-                      );
-                    } else if (hasRecordingInfo && !recordingUrl) {
-                      return (
-                        <Alert 
-                          severity="warning" 
-                          sx={{ 
-                            backgroundColor: 'rgba(255,255,255,0.95)',
-                            '& .MuiAlert-icon': { color: '#f57c00' }
-                          }}
-                        >
-                          <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>
-                            Recording Available in Millis AI Dashboard
-                          </Typography>
-                          <Typography variant="body2">
-                            The call was recorded, but the recording URL is not provided through the API. 
-                            Access it directly from your{' '}
-                            <strong>
-                              <a 
-                                href="https://dashboard.millis.ai" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                style={{ color: '#667eea' }}
-                              >
-                                Millis AI Dashboard →
-                              </a>
-                            </strong>
-                          </Typography>
-                        </Alert>
-                      );
-                    } else {
-                      return (
-                        <Alert 
-                          severity="info" 
-                          sx={{ 
-                            backgroundColor: 'rgba(255,255,255,0.95)',
-                            '& .MuiAlert-icon': { color: '#2196f3' }
-                          }}
-                        >
-                          <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>
-                            No Recording Available
-                          </Typography>
-                          <Typography variant="body2" sx={{ mb: 1 }}>
-                            This call was not recorded. To enable recording for future calls:
-                          </Typography>
-                          <Box 
-                            component="ol" 
-                            sx={{ 
-                              margin: 0, 
-                              paddingLeft: 2.5, 
-                              '& li': { marginBottom: 0.5, fontSize: '0.875rem' },
-                              '& a': { color: '#667eea', fontWeight: 600, textDecoration: 'none' },
-                              '& code': { backgroundColor: 'rgba(0,0,0,0.1)', padding: '2px 6px', borderRadius: '4px', fontFamily: 'monospace' }
-                            }}
-                          >
-                            <li>Open your <a href="https://dashboard.millis.ai" target="_blank" rel="noopener noreferrer">Millis AI Dashboard</a></li>
-                            <li>Navigate to your Agent configuration</li>
-                            <li>Enable <code>enable_recording: true</code> in Call Settings</li>
-                          </Box>
-                        </Alert>
-                      );
-                    }
-                  })()}
-                </Box>
-              </CardContent>
-            </Card>
+                      </Box>
 
-            {/* Transcription Card */}
-            <Card sx={{ mb: 3 }}>
-              <CardContent>
-                <Typography variant="h6" display="flex" alignItems="center" gap={1} mb={2}>
-                  <TranscriptIcon />
-                  Call Transcription
-                </Typography>
-                
-                <Paper variant="outlined" sx={{ p: 2, maxHeight: 400, overflow: 'auto' }}>
-                  {call.chat || call.transcription ? (
-                    <Box>
-                      {(() => {
-                        try {
-                          // Parse the chat data - it comes as a JSON string
-                          let chatData = call.chat || call.transcription;
-                          
-                          console.log('Processing chat data, type:', typeof chatData);
-                          console.log('Chat data value:', chatData);
-                          
-                          // First, check if it's a string and try to parse it
-                          if (typeof chatData === 'string') {
-                            // Check if it's already formatted text (not JSON)
-                            if (!chatData.trim().startsWith('[') && !chatData.trim().startsWith('{')) {
-                              // It's plain text transcription
-                              return (
-                                <Typography variant="body1" sx={{ whiteSpace: 'pre-wrap', lineHeight: 1.8 }}>
-                                  {chatData}
-                                </Typography>
-                              );
-                            }
-                            
-                            try {
-                              // Parse the JSON string to get the array
-                              chatData = JSON.parse(chatData);
-                              console.log('Successfully parsed chat data:', chatData);
-                            } catch (parseError) {
-                              console.error('Failed to parse chat JSON:', parseError);
-                              console.error('Chat string:', chatData);
-                              return (
-                                <Alert severity="error">
-                                  Failed to parse transcription data. Raw data: {typeof chatData === 'string' ? chatData.substring(0, 200) : String(chatData)}...
-                                </Alert>
-                              );
-                            }
-                          }
-                          
-                          // Now chatData should be an array
-                          if (Array.isArray(chatData)) {
-                            return chatData.map((message: any, index: number) => {
-                              // Skip tool messages
-                              if (message.role === 'tool') return null;
-                              
-                              return (
-                                <Box 
-                                  key={index} 
-                                  sx={{ 
-                                    mb: 2, 
-                                    p: 2, 
-                                    borderRadius: 2, 
-                                    backgroundColor: message.role === 'assistant' ? '#e3f2fd' : '#f1f8e9',
-                                    border: '1px solid',
-                                    borderColor: message.role === 'assistant' ? '#90caf9' : '#aed581'
-                                  }}
-                                >
-                                  <Typography 
-                                    variant="subtitle2" 
-                                    sx={{ 
-                                      fontWeight: 'bold', 
-                                      color: message.role === 'assistant' ? '#1976d2' : '#558b2f', 
-                                      mb: 1,
-                                      display: 'flex',
-                                      alignItems: 'center',
-                                      gap: 1
-                                    }}
-                                  >
-                                    {message.role === 'assistant' ? '🤖 Agent' : '👤 User'}
-                                  </Typography>
-                                  <Typography 
-                                    variant="body1" 
-                                    sx={{ 
-                                      whiteSpace: 'pre-wrap', 
-                                      lineHeight: 1.8,
-                                      fontSize: '1rem'
-                                    }}
-                                  >
-                                    {message.content}
-                                  </Typography>
-                                </Box>
-                              );
-                            }).filter(Boolean);
-                          } else {
-                            console.error('Chat data is not an array:', chatData);
-                            return (
-                              <Alert severity="warning">
-                                Unexpected transcription format. Data type: {typeof chatData}
-                              </Alert>
-                            );
-                          }
-                        } catch (e) {
-                          console.error('Error rendering chat data:', e);
-                          return (
-                            <Alert severity="error">
-                              Failed to display transcription: {e instanceof Error ? e.message : String(e)}
+                      {/* Expanded Details - Recordings & Transcription */}
+                      <Collapse in={expandedCall === call.id}>
+                        <Divider sx={{ borderColor: '#2a2d3e' }} />
+                        <Box sx={{ p: 3, background: '#151824' }}>
+                          {/* Recordings & AI Analysis Section */}
+                          <Typography variant="subtitle1" sx={{ color: '#fff', mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                            <PlayIcon /> Recordings & AI Analysis
+                          </Typography>
+
+                          {call.recording_url || (call.recording && (call.recording.url || call.recording.recording_url)) ? (
+                            <Box sx={{ mb: 3 }}>
+                              <Typography variant="body2" sx={{ color: '#9ca3af', fontFamily: 'monospace', mb: 1, fontSize: '0.85rem' }}>
+                                {call.recording_url || call.recording.url || call.recording.recording_url}
+                              </Typography>
+                              <audio 
+                                controls 
+                                style={{ width: '100%', marginTop: 8 }}
+                                src={call.recording_url || call.recording.url || call.recording.recording_url}
+                              >
+                                Your browser does not support the audio element.
+                              </audio>
+                            </Box>
+                          ) : call.agent_config?.call_settings?.enable_recording ? (
+                            <Alert 
+                              severity="info" 
+                              sx={{ 
+                                mb: 3,
+                                background: '#1e293b',
+                                border: '1px solid #334155',
+                                color: '#cbd5e1',
+                                '& .MuiAlert-icon': { color: '#60a5fa' }
+                              }}
+                            >
+                              <Typography variant="body2" sx={{ fontWeight: 600, mb: 0.5 }}>
+                                ✅ Recording Enabled - Processing
+                              </Typography>
+                              <Typography variant="caption">
+                                Recording is enabled for this call. It may still be processing. Check your <a href="https://dashboard.millis.ai" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', fontWeight: 'bold' }}>Millis Dashboard</a> for the recording.
+                              </Typography>
                             </Alert>
-                          );
-                        }
-                      })()}
-                    </Box>
-                  ) : (
-                    <Alert severity="info">
-                      <Typography variant="body2">
-                        No transcription available for this call.
-                      </Typography>
-                    </Alert>
-                  )}
-                </Paper>
-              </CardContent>
-            </Card>
+                          ) : (
+                            <Alert 
+                              severity="info" 
+                              sx={{ 
+                                mb: 3,
+                                background: '#1e293b',
+                                border: '1px solid #334155',
+                                color: '#cbd5e1',
+                                '& .MuiAlert-icon': { color: '#60a5fa' }
+                              }}
+                            >
+                              <Typography variant="body2" sx={{ fontWeight: 600, mb: 0.5 }}>
+                                No Recording Available
+                              </Typography>
+                              <Typography variant="caption">
+                                Recording was not enabled for this call. Enable <code style={{ background: '#0f172a', padding: '2px 6px', borderRadius: 4 }}>enable_recording: true</code> in agent settings.
+                              </Typography>
+                            </Alert>
+                          )}
 
-            {/* Metadata Card */}
-            {call.metadata && (
-              <Card sx={{ mb: 3 }}>
-                <CardContent>
-                  <Typography variant="h6" display="flex" alignItems="center" gap={1} mb={2}>
-                    <AnalyticsIcon />
-                    Call Metadata
-                  </Typography>
+                          {/* Call Transcription */}
+                          {call.chat || call.transcription ? (
+                            <Box>
+                              <Typography variant="subtitle1" sx={{ color: '#fff', mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+                                <TranscriptIcon /> Call Transcription
+                              </Typography>
+                              <Paper sx={{ 
+                                p: 2, 
+                                background: '#0f1117',
+                                border: '1px solid #1f2937',
+                                maxHeight: 400,
+                                overflow: 'auto'
+                              }}>
+                                {(() => {
+                                  try {
+                                    let chatData = call.chat || call.transcription;
+                                    
+                                    if (typeof chatData === 'string') {
+                                      if (!chatData.trim().startsWith('[') && !chatData.trim().startsWith('{')) {
+                                        return (
+                                          <Typography variant="body2" sx={{ color: '#e5e7eb', whiteSpace: 'pre-wrap', lineHeight: 1.8 }}>
+                                            {chatData}
+                                          </Typography>
+                                        );
+                                      }
+                                      
+                                      try {
+                                        chatData = JSON.parse(chatData);
+                                      } catch (parseError) {
+                                        return (
+                                          <Alert severity="error" sx={{ background: '#7f1d1d', borderColor: '#991b1b' }}>
+                                            Failed to parse transcription
+                                          </Alert>
+                                        );
+                                      }
+                                    }
+                                    
+                                    if (Array.isArray(chatData)) {
+                                      return chatData.map((message: any, index: number) => {
+                                        if (message.role === 'tool') return null;
+                                        
+                                        return (
+                                          <Box 
+                                            key={index} 
+                                            sx={{ 
+                                              mb: 1.5, 
+                                              p: 1.5, 
+                                              borderRadius: 1, 
+                                              background: message.role === 'assistant' ? '#1e3a8a' : '#065f46',
+                                              border: '1px solid',
+                                              borderColor: message.role === 'assistant' ? '#1e40af' : '#047857'
+                                            }}
+                                          >
+                                            <Typography 
+                                              variant="caption" 
+                                              sx={{ 
+                                                fontWeight: 'bold', 
+                                                color: '#fff', 
+                                                display: 'block',
+                                                mb: 0.5,
+                                                opacity: 0.8
+                                              }}
+                                            >
+                                              {message.role === 'assistant' ? '🤖 Agent' : '👤 User'}
+                                            </Typography>
+                                            <Typography 
+                                              variant="body2" 
+                                              sx={{ 
+                                                color: '#fff',
+                                                whiteSpace: 'pre-wrap', 
+                                                lineHeight: 1.6,
+                                                fontSize: '0.9rem'
+                                              }}
+                                            >
+                                              {message.content}
+                                            </Typography>
+                                          </Box>
+                                        );
+                                      }).filter(Boolean);
+                                    }
+                                    
+                                    return (
+                                      <Alert severity="warning" sx={{ background: '#78350f', borderColor: '#92400e' }}>
+                                        Unexpected transcription format
+                                      </Alert>
+                                    );
+                                  } catch (e) {
+                                    return (
+                                      <Alert severity="error" sx={{ background: '#7f1d1d', borderColor: '#991b1b' }}>
+                                        Failed to display transcription
+                                      </Alert>
+                                    );
+                                  }
+                                })()}
+                              </Paper>
+                            </Box>
+                          ) : (
+                            <Alert 
+                              severity="info"
+                              sx={{ 
+                                background: '#1e293b',
+                                border: '1px solid #334155',
+                                color: '#cbd5e1',
+                                '& .MuiAlert-icon': { color: '#60a5fa' }
+                              }}
+                            >
+                              No transcription available for this call
+                            </Alert>
+                          )}
+                        </Box>
+                      </Collapse>
+                    </Paper>
+                  ))}
                   
-                  <Paper variant="outlined" sx={{ p: 2 }}>
-                    <pre style={{ margin: 0, fontFamily: 'monospace', fontSize: '0.875rem' }}>
-                      {JSON.stringify(call.metadata, null, 2)}
-                    </pre>
-                  </Paper>
-                </CardContent>
-              </Card>
-            )}
+                  {calls.length === 0 && !loading && (
+                    <Paper sx={{ p: 4, textAlign: 'center' }}>
+                      <Typography variant="h6" color="textSecondary">
+                        No calls found
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary">
+                        {isUsingMockData 
+                          ? "Try adjusting your search criteria"
+                          : "Configure your Millis AI API key to load call data"
+                        }
+                      </Typography>
+                    </Paper>
+                  )}
+                </Box>
+              )}
+            </Container>
           </>
         )}
-      </Container>
+      </Box>
     </Box>
   );
-}
+};
+
+export default Dashboard;

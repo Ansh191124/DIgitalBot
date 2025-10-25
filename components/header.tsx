@@ -1,17 +1,18 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
+import { ChevronDown, Menu, X } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
+    const [open, setOpen] = useState(false)
     const pathname = usePathname()
 
     useEffect(() => {
@@ -34,7 +35,7 @@ export function Header() {
                 "fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent",
                 isScrolled
                     ? "backdrop-blur-xl bg-white/90 border-sky-200/50 shadow-lg shadow-sky-100/50"
-                    : "bg-gradient-to-br from-white/80 via-sky-50/60 to-white/80 backdrop-blur-md"
+                    : "z from-white/80 via-sky-50/60 to-white/80 backdrop-blur-md"
             )}
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,7 +49,7 @@ export function Header() {
                     >
                         <Link href="/" className="flex items-center gap-2 relative group" onClick={() => setIsMenuOpen(false)}>
                             {/* Floating Neon Orb */}
-                            <span className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-r from-sky-400 via-sky-500 to-sky-600 opacity-30 blur-3xl animate-pulse-slow"></span>
+                            <span className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-linear-to-r from-sky-400 via-sky-500 to-sky-600 opacity-30 blur-3xl animate-pulse-slow"></span>
                             <Image
                                 src="https://res.cloudinary.com/dew9qfpbl/image/upload/v1760082124/Gemini_Generated_Image_tgypq9tgypq9tgyp_-_Edited_1_m1xhrt.svg"
                                 alt="DigitalBot Logo"
@@ -82,20 +83,75 @@ export function Header() {
                                     {/* Animated gradient underline */}
                                     <span
                                         className={cn(
-                                            "absolute left-0 -bottom-1 h-[2px] w-0 bg-gradient-to-r from-sky-400 via-sky-500 to-sky-600 rounded-full transition-all duration-500 group-hover:w-full",
+                                            "absolute left-0 -bottom-1 h-0.5 w-0 bg-linear-to-r from-sky-400 via-sky-500 to-sky-600 rounded-full transition-all duration-500 group-hover:w-full",
                                             pathname === item.href && "w-full"
                                         )}
                                     />
                                     {/* Floating Glow */}
-                                    <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-sky-300/20 via-sky-400/20 to-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></span>
+                                    <span className="absolute -inset-1 rounded-full bg-linear-to-r from-sky-300/20 via-sky-400/20 to-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></span>
                                 </Link>
                             </motion.div>
                         ))}
+
+                        {/* Our Services Dropdown */}
+                        <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: navItems.length * 0.08, duration: 0.4 }}
+                            className="relative"
+                        >
+                            <button
+                                onClick={() => setOpen(!open)}
+                                className={cn(
+                                    "text-sm font-semibold tracking-wide relative group transition-all duration-300 flex items-center gap-1",
+                                    "text-gray-700 hover:text-sky-500"
+                                )}
+                            >
+                                Our Services
+                                <ChevronDown className={cn(
+                                    "w-4 h-4 transition-transform duration-300",
+                                    open && "rotate-180"
+                                )} />
+                                {/* Animated gradient underline */}
+                                <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-linear-to-r from-sky-400 via-sky-500 to-sky-600 rounded-full transition-all duration-500 group-hover:w-full" />
+                                {/* Floating Glow */}
+                                <span className="absolute -inset-1 rounded-full bg-linear-to-r from-sky-300/20 via-sky-400/20 to-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></span>
+                            </button>
+
+                            {/* Services Dropdown Menu */}
+                            <AnimatePresence>
+                                {open && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="absolute right-0 mt-2 bg-white shadow-lg rounded-md p-2 w-52 border border-sky-100 backdrop-blur-xl"
+                                        onMouseLeave={() => setOpen(false)}
+                                    >
+                                        <Link
+                                            href="/signup?service=lead"
+                                            className="block px-3 py-2 hover:bg-gray-100 rounded transition-colors duration-200"
+                                            onClick={() => setOpen(false)}
+                                        >
+                                            Lead Analysis Service
+                                        </Link>
+                                        <Link
+                                            href="/signup?service=appointment"
+                                            className="block px-3 py-2 hover:bg-gray-100 rounded transition-colors duration-200"
+                                            onClick={() => setOpen(false)}
+                                        >
+                                            Appointment Service
+                                        </Link>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </motion.div>
                     </nav>
 
                     {/* Desktop Buttons */}
                     <div className="hidden md:flex items-center space-x-4">
-                        <Button
+                        {/* <Button
                             variant="outline"
                             size="sm"
                             className="relative overflow-hidden border-sky-400/70 text-sky-700 bg-white/60 hover:bg-sky-50 hover:border-sky-500 hover:text-sky-800 transition-all duration-300 rounded-full shadow-sm hover:shadow-sky-300"
@@ -103,18 +159,18 @@ export function Header() {
                         >
                             <Link href="/Register">
                                 <span className="relative z-10">SignUp</span>
-                                <span className="absolute inset-0 bg-gradient-to-r from-sky-400/20 via-sky-500/20 to-sky-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></span>
+                                <span className="absolute inset-0 bg-linear-to-r from-sky-400/20 via-sky-500/20 to-sky-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></span>
                             </Link>
-                        </Button>
+                        </Button> */}
 
                         <Button
                             size="sm"
-                            className="relative bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-white font-semibold rounded-full shadow-lg shadow-sky-300/40 hover:shadow-sky-400/60 transition-all duration-500 overflow-hidden group"
+                            className="relative bg-linear-to-r from-sky-500 via-sky-600 to-sky-700 text-white font-semibold rounded-full shadow-lg shadow-sky-300/40 hover:shadow-sky-400/60 transition-all duration-500 overflow-hidden group"
                             asChild
                         >
                             <Link href="/login">
                                 <span className="relative z-10">Login</span>
-                                <span className="absolute inset-0 bg-gradient-to-r from-sky-400/30 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
+                                <span className="absolute inset-0 bg-linear-to-r from-sky-400/30 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
                             </Link>
                         </Button>
                     </div>
@@ -136,7 +192,7 @@ export function Header() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.3 }}
-                            className="md:hidden absolute top-16 left-0 right-0 bg-gradient-to-b from-white/95 via-sky-50/90 to-white/95 border-b border-sky-100 shadow-xl backdrop-blur-lg overflow-hidden rounded-b-2xl"
+                            className="md:hidden absolute top-16 left-0 right-0 bg-linear-to-b from-white/95 via-sky-50/90 to-white/95 border-b border-sky-100 shadow-xl backdrop-blur-lg overflow-hidden rounded-b-2xl"
                         >
                             <nav className="flex flex-col space-y-1 p-4">
                                 {navItems.map((item, index) => (
@@ -157,10 +213,34 @@ export function Header() {
                                             onClick={() => setIsMenuOpen(false)}
                                         >
                                             {item.label}
-                                            <span className="absolute -inset-1 bg-gradient-to-r from-sky-300/20 via-sky-400/20 to-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl rounded-md"></span>
+                                            <span className="absolute -inset-1 bg-linear-to-r from-sky-300/20 via-sky-400/20 to-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl rounded-md"></span>
                                         </Link>
                                     </motion.div>
                                 ))}
+
+                                {/* Mobile Services */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: navItems.length * 0.08 }}
+                                    className="px-3 py-2"
+                                >
+                                    <div className="text-base font-medium text-gray-900 mb-2">Our Services</div>
+                                    <Link
+                                        href="/signup?service=lead"
+                                        className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        <div className="font-medium">Lead Analysis Service</div>
+                                    </Link>
+                                    <Link
+                                        href="/signup?service=appointment"
+                                        className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        <div className="font-medium">Appointment Service</div>
+                                    </Link>
+                                </motion.div>
 
                                 {/* Mobile Buttons */}
                                 <motion.div
@@ -176,16 +256,16 @@ export function Header() {
                                     >
                                         <Link href="/Register" onClick={() => setIsMenuOpen(false)}>
                                             <span className="relative z-10">SignUp</span>
-                                            <span className="absolute inset-0 bg-gradient-to-r from-sky-400/20 to-sky-600/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
+                                            <span className="absolute inset-0 bg-linear-to-r from-sky-400/20 to-sky-600/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
                                         </Link>
                                     </Button>
                                     <Button
-                                        className="bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 hover:from-sky-600 hover:to-sky-800 text-white font-semibold justify-start rounded-full shadow-lg shadow-sky-300/40 hover:shadow-sky-400/60 transition-all duration-500 relative overflow-hidden group"
+                                        className="bg-linear-to-r from-sky-500 via-sky-600 to-sky-700 hover:from-sky-600 hover:to-sky-800 text-white font-semibold justify-start rounded-full shadow-lg shadow-sky-300/40 hover:shadow-sky-400/60 transition-all duration-500 relative overflow-hidden group"
                                         asChild
                                     >
                                         <Link href="/login" onClick={() => setIsMenuOpen(false)}>
                                             <span className="relative z-10">Try Free</span>
-                                            <span className="absolute inset-0 bg-gradient-to-r from-sky-400/30 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
+                                            <span className="absolute inset-0 bg-linear-to-r from-sky-400/30 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
                                         </Link>
                                     </Button>
                                 </motion.div>

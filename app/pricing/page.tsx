@@ -1,14 +1,14 @@
 "use client"
 
-import { useState } from "react"
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Header } from "@/components/header"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
-import { Check, ArrowRight, Rocket, TrendingUp, Sparkles } from "lucide-react"
-import { useRouter } from "next/navigation";
+import { ArrowRight, Check, Rocket, Sparkles, TrendingUp } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 
 const plans = [
   {
@@ -186,7 +186,7 @@ export default function Pricing() {
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start text-sm">
-                      <div className="h-5 w-5 rounded-full bg-gradient-to-r from-sky-500 to-sky-400 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">
+                      <div className="h-5 w-5 rounded-full bg-gradient-to-r from-sky-500 to-sky-400 flex items-center justify-center mr-3 shrink-0 mt-0.5">
                         <Check className="h-3 w-3 text-white" />
                       </div>
                       <span className="text-gray-900 font-medium">

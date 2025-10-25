@@ -1,175 +1,214 @@
 'use client';
 
-import { CalendarCheck, LayoutDashboard, LogOut, PhoneCall, Users } from "lucide-react";
+import { cn } from '@/lib/utils';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Calendar, LayoutDashboard, LogOut, PhoneCall, Users, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-const items = [
-  { href: "/dashboard", label: "call logs", icon: LayoutDashboard },
-  // { href: "/dashboard/calls", label: "call logs", icon: PhoneCall },
-  { href: "/dashboard/leads", label: "leads", icon: Users },
-  { href: "/dashboard/appointments", label: "appointments", icon: CalendarCheck }
-];
-
-interface User {
-  id: string;
-  email: string;
+interface SidebarProps {
+  sidebarOpen: boolean;
+  setSidebarOpen: (open: boolean) => void;
 }
 
-export default function Sidebar() {
-  const pathname = usePathname();
+interface User {
+  selectedService?: string;
+  name?: string;
+  email?: string;
+}
+
+export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
   const router = useRouter();
-  const [userEmail, setUserEmail] = useState<string>('');
-  const [userName, setUserName] = useState<string>('');
-  const [isClient, setIsClient] = useState(false);
+  const pathname = usePathname();
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    setIsClient(true);
-
-    if (typeof window !== 'undefined') {
-      const userStr = localStorage.getItem('user');
-      if (userStr) {
-        try {
-          const user: User = JSON.parse(userStr);
-          setUserEmail(user.email);
-          const username = user.email.split('@')[0];
-          setUserName(username);
-        } catch (error) {
-          console.error('Error parsing user data:', error);
-        }
-      }
-    }
+    const userData = localStorage.getItem('user');
+    if (userData) setUser(JSON.parse(userData));
   }, []);
 
-  const handleSignOut = () => {
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+  const baseNavigation = [
+    { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+    { name: 'Calls', href: '/dashboard/calls', icon: PhoneCall },
+  ];
+
+  const getServiceNavigation = () => {
+    const serviceItems = [];
+    if (user?.selectedService === 'lead-analysis' || user?.selectedService === 'lead') {
+      serviceItems.push({ name: 'Leads', href: '/dashboard/leads', icon: Users });
     }
+    if (user?.selectedService === 'appointment') {
+      serviceItems.push({ name: 'Appointments', href: '/dashboard/appointments', icon: Calendar });
+    }
+    return serviceItems;
+  };
+
+  const navigation = [...baseNavigation, ...getServiceNavigation()];
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     router.push('/');
   };
 
-  const avatarLetter = userName ? userName.charAt(0).toUpperCase() : 'U';
-
-  if (!isClient) {
-    return (
-      <aside className="h-screen w-60 bg-slate-50 border-r border-gray-200 flex flex-col fixed top-0 left-0 z-10 shadow-sm font-sans">
-        <div className="px-4 py-5 border-b border-gray-200">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center">
-              <span className="text-white text-base font-bold">DB</span>
-            </div>
-            <div>
-              <div className="text-base font-semibold text-gray-900">DigitalBot</div>
-              <div className="text-xs text-gray-500">Voice Agent Services</div>
-            </div>
-          </div>
-        </div>
-        <nav className="px-4 mt-4 space-y-1 flex-1">
-          {items.map(({ href, label, icon: Icon }) => {
-            const active = pathname === href;
-            return (
-              <Link 
-                key={href}
-                href={href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors
-                  ${active
-                    ? "bg-blue-600 text-white"
-                    : "text-gray-700 hover:bg-gray-100"
-                  }`}
-              >
-                <Icon className="w-5 h-5" />
-                <span>{label}</span>
-                {active && (
-                  <div className="ml-auto w-1.5 h-1.5 rounded-full bg-white"></div>
-                )}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="px-4 py-4 border-t border-gray-200">
-          <div className="flex items-center gap-3">
-            <div className="relative shrink-0">
-              <div className="size-9 rounded-full bg-blue-600 grid place-items-center text-white text-sm font-semibold">
-                U
-              </div>
-              <span className="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-green-500 ring-2 ring-white"></span>
-            </div>
-            <div className="leading-tight flex-1 min-w-0">
-              <div className="text-sm font-semibold text-gray-900 truncate">
-                Loading...
-              </div>
-            </div>
-          </div>
-        </div>
-      </aside>
-    );
-  }
-
   return (
-    <aside className="h-screen w-60 bg-slate-50 border-r border-gray-200 flex flex-col fixed top-0 left-0 z-10 shadow-sm font-sans">
-      
-      <div className="px-4 py-5 border-b border-gray-200">
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center">
-            <span className="text-white text-base font-bold">DB</span>
+    <>
+      {/* Mobile overlay */}
+      <AnimatePresence>
+        {sidebarOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-gray-700 bg-opacity-60 z-40 lg:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Desktop Sidebar */}
+      <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
+        <div className="flex flex-col grow bg-slate-50 border-r border-gray-200 pt-5 pb-4 overflow-y-auto">
+          
+          {/* Logo */}
+          <div className="flex items-center shrink-0 px-4">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              DigitalBot
+            </h1>
           </div>
-          <div>
-            <div className="text-base font-semibold text-gray-900">DigitalBot</div>
-            <div className="text-xs text-gray-500">Voice Agent Services</div>
-          </div>
+
+          {/* User Info */}
+          {user && (
+            <div className="mt-6 px-4">
+              <div className="bg-blue-50 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-300">
+                <p className="text-sm font-semibold text-gray-900">{user.name}</p>
+                <p className="text-xs text-gray-600">{user.email}</p>
+                <p className="text-xs text-blue-600 mt-1 capitalize">
+                  {user.selectedService?.replace('_', ' ')} Service
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Navigation */}
+          <nav className="mt-8 flex-1 px-2 space-y-2">
+            {navigation.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    isActive
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md'
+                      : 'text-gray-700 hover:bg-gray-100',
+                    'group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all'
+                  )}
+                >
+                  <item.icon
+                    className={cn(
+                      isActive ? 'text-white' : 'text-gray-400 group-hover:text-gray-500',
+                      'mr-3 shrink-0 h-5 w-5'
+                    )}
+                  />
+                  {item.name}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Logout */}
+          <div className="shrink-0 flex border-t border-gray-200 p-4 mt-auto">
+  <button
+    onClick={handleLogout}
+    className="flex items-center justify-center w-full gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
+  >
+    <LogOut className="h-5 w-5" />
+    Logout
+  </button>
+</div>
+
         </div>
       </div>
-      
-      <nav className="px-4 mt-4 space-y-1 flex-1">
-        {items.map(({ href, label, icon: Icon }) => {
-          const active = pathname === href;
-          return (
-            <Link 
-              key={href}
-              href={href}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors
-                ${active
-                  ? "bg-blue-600 text-white"
-                  : "text-gray-700 hover:bg-gray-100"
-                }`}
-            >
-              <Icon className="w-5 h-5" />
-              <span>{label}</span>
-              {active && (
-                <div className="ml-auto w-1.5 h-1.5 rounded-full bg-white"></div>
-              )}
-            </Link>
-          );
-        })}
-      </nav>
-      
-      <div className="px-4 py-4 border-t border-gray-200">
-        <div className="flex items-center gap-3">
-          <div className="relative shrink-0">
-            <div className="size-9 rounded-full bg-blue-600 grid place-items-center text-white text-sm font-semibold">
-              {avatarLetter}
-            </div>
-            <span className="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-green-500 ring-2 ring-white"></span>
-          </div>
-          <div className="leading-tight flex-1 min-w-0">
-            <div className="text-sm font-semibold text-gray-900 truncate">
-              {userName || 'User'}
-            </div>
-            <div className="text-xs text-gray-500 truncate">
-              {userEmail || 'user@example.com'}
-            </div>
-          </div>
-          <button 
-            onClick={handleSignOut}
-            className="shrink-0 p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"
-            title="Sign Out"
+
+      {/* Mobile Sidebar */}
+      <AnimatePresence>
+        {sidebarOpen && (
+          <motion.div
+            initial={{ x: -300 }}
+            animate={{ x: 0 }}
+            exit={{ x: -300 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="lg:hidden fixed inset-y-0 left-0 z-50 w-64 bg-slate-50 border-r border-gray-200 shadow-lg"
           >
-            <LogOut className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-    </aside>
+            <div className="flex flex-col h-full">
+              <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200">
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  DigitalBot
+                </h1>
+                <button
+                  onClick={() => setSidebarOpen(false)}
+                  className="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+
+              {user && (
+                <div className="mt-4 px-4">
+                  <div className="bg-blue-50 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <p className="text-sm font-semibold text-gray-900">{user.name}</p>
+                    <p className="text-xs text-gray-600">{user.email}</p>
+                    <p className="text-xs text-blue-600 mt-1 capitalize">
+                      {user.selectedService?.replace('_', ' ')} Service
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              <nav className="mt-8 flex-1 px-2 space-y-2">
+                {navigation.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setSidebarOpen(false)}
+                      className={cn(
+                        isActive
+                          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md'
+                          : 'text-gray-700 hover:bg-gray-100',
+                        'group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all'
+                      )}
+                    >
+                      <item.icon
+                        className={cn(
+                          isActive ? 'text-white' : 'text-gray-400 group-hover:text-gray-500',
+                          'mr-3 shrink-0 h-5 w-5'
+                        )}
+                      />
+                      {item.name}
+                    </Link>
+                  );
+                })}
+              </nav>
+
+              <div className="shrink-0 flex border-t border-gray-200 p-4 mt-auto">
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center w-full rounded-lg p-2 hover:bg-gray-100 transition"
+                >
+                  <LogOut className="h-5 w-5 text-gray-400 mr-3 group-hover:text-gray-500" />
+                  <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                    Logout
+                  </span>
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

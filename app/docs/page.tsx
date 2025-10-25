@@ -1,9 +1,9 @@
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Header } from "@/components/header"
 import { Badge } from "@/components/ui/badge"
-import { Book, Code, Zap, Shield, ArrowRight, ExternalLink } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ArrowRight, Book, Code, ExternalLink, Shield, Zap } from "lucide-react"
 
 const docSections = [
   {
@@ -93,7 +93,7 @@ export default function Docs() {
                         key={itemIndex}
                         className="flex items-center text-sm text-muted-foreground hover:text-accent transition-colors cursor-pointer"
                       >
-                        <ArrowRight className="h-3 w-3 mr-2 flex-shrink-0" />
+                        <ArrowRight className="h-3 w-3 mr-2 shrink-0" />
                         {item}
                       </li>
                     ))}
