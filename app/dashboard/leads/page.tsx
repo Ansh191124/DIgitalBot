@@ -291,7 +291,7 @@ function CallCard({
   
   return (
     <div className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl ${
-      call.isLead === true ? 'border-l-4 border-l-green-400 bg-gradient-to-r from-green-50/50 to-white' :
+      call.isLead === true ? 'border-l-4 border-l-green-400 bg-linear-to-r from-green-50/50 to-white' :
       call.isLead === false ? 'border-l-4 border-l-gray-300' :
       'border-white/20'
     }`}>
@@ -344,11 +344,11 @@ function CallCard({
               </div>
 
               {isAnalyzed && call.isLead === true && (
-                <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-xl p-3 sm:p-4 border border-green-200 mt-4">
+                <div className="bg-linear-to-r from-green-50 to-green-100 rounded-xl p-3 sm:p-4 border border-green-200 mt-4">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <svg className="h-4 w-4 sm:h-5 sm:w-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="h-4 w-4 sm:h-5 sm:w-5 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                         </svg>
                         <h3 className="text-base sm:text-lg font-bold text-green-800">Lead Identified</h3>
@@ -388,7 +388,7 @@ function CallCard({
                     </div>
                     
                     {call.confidence && (
-                      <div className="text-center bg-white rounded-lg p-3 shadow-sm flex-shrink-0">
+                      <div className="text-center bg-white rounded-lg p-3 shadow-sm shrink-0">
                         <div className="text-xl sm:text-2xl font-bold text-green-800">
                           {(call.confidence * 100).toFixed(0)}%
                         </div>
@@ -402,7 +402,7 @@ function CallCard({
               {isAnalyzed && call.isLead === false && (
                 <div className="bg-gray-50 rounded-lg p-3 mt-2">
                   <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
-                    <svg className="h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span>Not identified as a sales lead</span>
@@ -428,7 +428,7 @@ function CallCard({
               <button
                 onClick={onAnalyze}
                 disabled={isProcessing}
-                className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl font-medium text-sm"
+                className="px-4 sm:px-6 py-2 sm:py-3 bg-linear-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl font-medium text-sm"
               >
                 {isProcessing ? (
                   <>
@@ -486,7 +486,7 @@ function StatsCard({ title, value, icon, color, change }: {
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-4 sm:p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
       <div className="flex items-center justify-between mb-3 sm:mb-4">
-        <div className={`p-2 sm:p-3 rounded-xl bg-gradient-to-r ${color} shadow-lg`}>
+        <div className={`p-2 sm:p-3 rounded-xl bg-linear-to-r ${color} shadow-lg`}>
           <div className="text-white">
             {icon}
           </div>
@@ -837,7 +837,7 @@ export default function LeadsPage() {
     <button
       onClick={analyzeAllPendingCalls}
       disabled={pendingAnalysis === 0 || processingQueue.length > 0}
-      className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl hover:from-green-700 hover:to-green-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-medium text-xs sm:text-sm"
+      className="px-4 sm:px-6 py-2 sm:py-3 bg-linear-to-r from-green-600 to-green-700 text-white rounded-xl hover:from-green-700 hover:to-green-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-medium text-xs sm:text-sm"
     >
       <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -849,7 +849,7 @@ export default function LeadsPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="flex min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
         {/* Mobile Menu Button */}
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -883,7 +883,7 @@ export default function LeadsPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="flex min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
       {/* Mobile Menu Button */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -912,7 +912,7 @@ export default function LeadsPage() {
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-4 sm:p-6 lg:p-8">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
               <div>
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-linear-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
                   Call Analytics Dashboard
                 </h1>
                 <p className="text-gray-600 mt-2 sm:mt-3 text-sm sm:text-base lg:text-lg">
@@ -924,7 +924,7 @@ export default function LeadsPage() {
                 <BulkAnalysisButton />
                 <button
                   onClick={() => setShowPromptEditor(true)}
-                  className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-xs sm:text-sm"
+                  className="px-4 sm:px-6 py-2 sm:py-3 bg-linear-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-xs sm:text-sm"
                 >
                   <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -938,7 +938,7 @@ export default function LeadsPage() {
             {error && (
               <div className="mt-4 sm:mt-6 bg-red-50 border-l-4 border-red-400 rounded-lg p-4">
                 <div className="flex items-start">
-                  <svg className="h-5 w-5 sm:h-6 sm:w-6 text-red-400 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-5 w-5 sm:h-6 sm:w-6 text-red-400 mr-3 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <div>
@@ -1024,7 +1024,7 @@ export default function LeadsPage() {
               <button
                 onClick={fetchCalls}
                 disabled={loading}
-                className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 disabled:opacity-50 transition-all duration-200 flex items-center justify-center gap-2 shadow-lg text-sm sm:text-base"
+                className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-linear-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 disabled:opacity-50 transition-all duration-200 flex items-center justify-center gap-2 shadow-lg text-sm sm:text-base"
               >
                 <svg className={`h-4 w-4 sm:h-5 sm:w-5 ${loading ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -1037,7 +1037,7 @@ export default function LeadsPage() {
           {processingQueue.length > 0 && (
             <div className="bg-blue-50 border-l-4 border-blue-400 rounded-lg p-4">
               <div className="flex items-start">
-                <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-blue-600 mr-3 flex-shrink-0 mt-0.5"></div>
+                <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-blue-600 mr-3 shrink-0 mt-0.5"></div>
                 <div>
                   <h3 className="text-blue-800 font-semibold text-sm sm:text-base">Processing Calls</h3>
                   <p className="text-blue-700 text-xs sm:text-sm">
