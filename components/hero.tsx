@@ -183,7 +183,7 @@ export function Hero() {
                     renderer: 'svg',
                     loop: true,
                     autoplay: true,
-                    path: 'https://lottie.host/4d6e4a3e-7f1f-4b0e-9b3e-8c8e3f3e3e3e/K21LOlLjRk.json'
+                    path: 'https://lottie.host/embed/4d6e4a3e-7f1f-4b0e-9b3e-8c8e3f3e3e3e/K21LOlLjRk.json'
                 });
             }
         };
