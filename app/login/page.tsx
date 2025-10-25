@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 // Define the shape of the user data expected from the backend
 interface User {
@@ -35,7 +35,7 @@ export default function LoginPage(): JSX.Element {
     setLoading(true);
 
     try {
-      const response = await fetch('https://digital-api-tef8.onrender.com/api/auth/login', {
+      const response = await fetch('http://localhost:4000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ export default function LoginPage(): JSX.Element {
 
   // 5. Component return type (JSX.Element)
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 p-4">
       <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">

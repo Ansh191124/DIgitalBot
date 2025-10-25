@@ -6,10 +6,10 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const items = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/dashboard/calls", label: "Call Logs", icon: PhoneCall },
-  { href: "/dashboard/leads", label: "Leads", icon: Users },
-  { href: "/dashboard/appointments", label: "Appointments", icon: CalendarCheck }
+  { href: "/dashboard", label: "call logs", icon: LayoutDashboard },
+  // { href: "/dashboard/calls", label: "call logs", icon: PhoneCall },
+  { href: "/dashboard/leads", label: "leads", icon: Users },
+  { href: "/dashboard/appointments", label: "appointments", icon: CalendarCheck }
 ];
 
 interface User {
@@ -90,7 +90,7 @@ export default function Sidebar() {
         </nav>
         <div className="px-4 py-4 border-t border-gray-200">
           <div className="flex items-center gap-3">
-            <div className="relative flex-shrink-0">
+            <div className="relative shrink-0">
               <div className="size-9 rounded-full bg-blue-600 grid place-items-center text-white text-sm font-semibold">
                 U
               </div>
@@ -147,7 +147,7 @@ export default function Sidebar() {
       
       <div className="px-4 py-4 border-t border-gray-200">
         <div className="flex items-center gap-3">
-          <div className="relative flex-shrink-0">
+          <div className="relative shrink-0">
             <div className="size-9 rounded-full bg-blue-600 grid place-items-center text-white text-sm font-semibold">
               {avatarLetter}
             </div>
@@ -163,7 +163,7 @@ export default function Sidebar() {
           </div>
           <button 
             onClick={handleSignOut}
-            className="flex-shrink-0 p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"
+            className="shrink-0 p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"
             title="Sign Out"
           >
             <LogOut className="w-4 h-4" />
