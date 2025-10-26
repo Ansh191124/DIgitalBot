@@ -56,7 +56,7 @@ export default function AnalyticsOverview() {
       const token = localStorage.getItem('token');
       const params = new URLSearchParams();
       params.append("limit", "1000");
-      const res = await fetch(`https://digital-api-tef8.onrender.com/api/calls?${params.toString()}`, {
+      const res = await fetch(`http://localhost:4000/api/calls?${params.toString()}`, {
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
       });
       if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);

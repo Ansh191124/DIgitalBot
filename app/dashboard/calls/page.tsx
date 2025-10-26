@@ -46,7 +46,7 @@ const mockCalls: Call[] = [
     end_time: "2024-10-24T10:02:05Z"
   },
   {
-    id: "call_002", 
+    id: "call_002",
     phone_number: "+1987654321",
     direction: "outbound",
     status: "completed",
@@ -95,7 +95,7 @@ const Dashboard = () => {
   const [showFilters, setShowFilters] = useState(true);
   const [availableAgents, setAvailableAgents] = useState<string[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  
+
   // Real-time data fetching states
   const [isAutoRefreshEnabled, setIsAutoRefreshEnabled] = useState(true);
   const [lastRefreshTime, setLastRefreshTime] = useState<Date | null>(null);
@@ -115,10 +115,10 @@ const Dashboard = () => {
         setIsBackgroundFetching(true);
       }
       setError(null);
-      
+
       // First try the health check
       await callsAPI.healthCheck();
-      
+
       // If health check passes, try to fetch real data
       let response;
       if (search) {
@@ -126,27 +126,27 @@ const Dashboard = () => {
       } else {
         response = await callsAPI.getCalls({ page, limit });
       }
-      
+
       const callsData = response.data.data?.calls || response.data.data || [];
-      
+
       // Check for new calls if this is a background fetch
       if (isBackground && calls.length > 0) {
-        const newCalls = callsData.filter((newCall: Call) => 
+        const newCalls = callsData.filter((newCall: Call) =>
           !calls.some(existingCall => existingCall.id === newCall.id)
         );
         setNewCallsCount(newCalls.length);
-        
+
         // Show notification for new calls
         if (newCalls.length > 0) {
           console.log(`${newCalls.length} new call(s) received`);
         }
       }
-      
+
       setCalls(callsData);
       setAllCalls(callsData); // Store unfiltered calls
       setIsUsingMockData(false);
       setLastRefreshTime(new Date());
-      
+
     } catch (err: any) {
       console.warn('API not available, using mock data:', err.message);
       // Fall back to mock data
@@ -220,7 +220,7 @@ const Dashboard = () => {
   const handleSearch = () => {
     if (isUsingMockData) {
       // Filter mock data
-      const filtered = mockCalls.filter(call => 
+      const filtered = mockCalls.filter(call =>
         call.phone_number?.includes(searchQuery) ||
         call.id.includes(searchQuery) ||
         call.status?.includes(searchQuery.toLowerCase())
@@ -242,14 +242,14 @@ const Dashboard = () => {
 
     // Filter by status
     if (selectedStatus) {
-      filteredCalls = filteredCalls.filter(call => 
+      filteredCalls = filteredCalls.filter(call =>
         call.status === selectedStatus
       );
     }
 
     // Filter by phone number
     if (phoneFilter) {
-      filteredCalls = filteredCalls.filter(call => 
+      filteredCalls = filteredCalls.filter(call =>
         call.phone_number?.includes(phoneFilter)
       );
     }
@@ -307,7 +307,7 @@ const Dashboard = () => {
     const now = new Date();
     const diffMs = now.getTime() - lastRefreshTime.getTime();
     const diffSeconds = Math.floor(diffMs / 1000);
-    
+
     if (diffSeconds < 60) return `${diffSeconds}s ago`;
     const diffMinutes = Math.floor(diffSeconds / 60);
     if (diffMinutes < 60) return `${diffMinutes}m ago`;
@@ -353,7 +353,7 @@ const Dashboard = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', background: '#0f1117' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%)' }}>
       {/* Mobile Menu Button */}
       <IconButton
         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -363,10 +363,11 @@ const Dashboard = () => {
           top: 16,
           left: 16,
           zIndex: 1300,
-          background: '#1a1d2e',
+          background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
           color: '#fff',
-          '&:hover': { background: '#2a2d3e' },
-          boxShadow: '0 4px 6px rgba(0,0,0,0.3)'
+          '&:hover': { background: 'linear-gradient(135deg, #0284c7, #0369a1)' },
+          boxShadow: '0 8px 32px rgba(14, 165, 233, 0.3)',
+          borderRadius: 2
         }}
       >
         <MenuIcon />
@@ -380,8 +381,9 @@ const Dashboard = () => {
             display: { xs: 'block', md: 'none' },
             position: 'fixed',
             inset: 0,
-            bgcolor: 'rgba(0,0,0,0.5)',
-            zIndex: 1200
+            bgcolor: 'rgba(14, 165, 233, 0.3)',
+            zIndex: 1200,
+            backdropFilter: 'blur(4px)'
           }}
         />
       )}
@@ -406,8 +408,8 @@ const Dashboard = () => {
       </Box>
 
       {/* Main Content */}
-      <Box sx={{ 
-        width: '100%', 
+      <Box sx={{
+        width: '100%',
         ml: { xs: 0, md: '240px' },
         pt: { xs: '80px', md: 0 }
       }}>
@@ -417,45 +419,55 @@ const Dashboard = () => {
           </Box>
         ) : (
           <>
-            <AppBar 
+            <AppBar
               position="static"
               elevation={0}
-              sx={{ 
-                background: '#1a1d2e',
-                borderBottom: '1px solid #2a2d3e'
+              sx={{
+                background: 'linear-gradient(135deg, #ffffff, #f8fafc)',
+                borderBottom: '1px solid #e2e8f0',
+                boxShadow: '0 4px 20px rgba(14, 165, 233, 0.1)'
               }}
             >
               <Toolbar sx={{ py: 1.5 }}>
-                <Box 
-                  sx={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    background: '#4ade80',
-                    borderRadius: 1,
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
+                    borderRadius: 2,
                     p: 1,
-                    mr: 2
+                    mr: 2,
+                    boxShadow: '0 4px 12px rgba(14, 165, 233, 0.3)'
                   }}
                 >
-                  <PhoneIcon sx={{ fontSize: 24, color: '#000' }} />
+                  <PhoneIcon sx={{ fontSize: 24, color: '#fff' }} />
                 </Box>
-                <Typography 
-                  variant="h6" 
-                  component="div" 
-                  sx={{ 
-                    flexGrow: 1, 
-                    fontWeight: 600,
-                    color: '#fff'
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{
+                    flexGrow: 1,
+                    fontWeight: 700,
+                    background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    fontSize: '1.5rem'
                   }}
                 >
                   Call Logs
                 </Typography>
-                <IconButton 
-                  sx={{ 
-                    color: '#9ca3af',
+                <IconButton
+                  sx={{
+                    color: '#64748b',
+                    background: 'rgba(14, 165, 233, 0.1)',
                     '&:hover': {
-                      color: '#4ade80',
-                      background: 'rgba(74, 222, 128, 0.1)'
-                    }
+                      color: '#0ea5e9',
+                      background: 'rgba(14, 165, 233, 0.2)',
+                      transform: 'rotate(180deg)'
+                    },
+                    transition: 'all 0.3s ease',
+                    borderRadius: 2
                   }}
                   onClick={handleRefresh}
                 >
@@ -467,37 +479,58 @@ const Dashboard = () => {
             <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
               {/* API Status Alert */}
               {isUsingMockData && (
-                <Alert severity="warning" sx={{ mb: 3, background: '#78350f', borderColor: '#92400e', color: '#fef3c7' }}>
-                  <strong>Demo Mode:</strong> Unable to connect to Millis AI API. Showing sample data. 
+                <Alert severity="warning" sx={{
+                  mb: 3,
+                  background: 'linear-gradient(135deg, #fef3c7, #fde68a)',
+                  borderColor: '#f59e0b',
+                  color: '#92400e',
+                  border: '1px solid #f59e0b',
+                  borderRadius: 2,
+                  boxShadow: '0 4px 12px rgba(245, 158, 11, 0.2)'
+                }}>
+                  <strong>Demo Mode:</strong> Unable to connect to Millis AI API. Showing sample data.
                   Please configure your API key in server/.env to see real data.
                 </Alert>
               )}
 
               {/* Filters Section - Millis AI Style */}
-              <Paper sx={{ 
-                p: 3, 
+              <Paper sx={{
+                p: 3,
                 mb: 3,
-                background: '#1a1d2e',
-                borderRadius: 2,
-                border: '1px solid #2a2d3e'
+                background: 'linear-gradient(135deg, #ffffff, #f8fafc)',
+                borderRadius: 3,
+                border: '1px solid #e2e8f0',
+                boxShadow: '0 8px 32px rgba(14, 165, 233, 0.1)'
               }}>
                 <Box display="flex" justifyContent="space-between" alignItems="center" mb={showFilters ? 2 : 0}>
-                  <Typography variant="h6" sx={{ color: '#fff', display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <SearchIcon /> Filters
+                  <Typography variant="h6" sx={{
+                    color: '#0f172a',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    fontWeight: 700
+                  }}>
+                    <SearchIcon sx={{ color: '#0ea5e9' }} /> Filters
                   </Typography>
-                  <Button 
+                  <Button
                     onClick={() => setShowFilters(!showFilters)}
-                    sx={{ color: '#4ade80' }}
+                    sx={{
+                      color: '#0ea5e9',
+                      fontWeight: 600,
+                      '&:hover': {
+                        background: 'rgba(14, 165, 233, 0.1)'
+                      }
+                    }}
                   >
                     {showFilters ? 'Hide' : 'Show'}
                   </Button>
                 </Box>
-                
+
                 <Collapse in={showFilters}>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 2 }}>
                     <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
                       <FormControl fullWidth size="small">
-                        <InputLabel sx={{ color: '#9ca3af' }}>Agent</InputLabel>
+                        <InputLabel sx={{ color: '#64748b' }}>Agent</InputLabel>
                         <Select
                           value={selectedAgent}
                           label="Agent"
@@ -505,16 +538,18 @@ const Dashboard = () => {
                           MenuProps={{
                             PaperProps: {
                               sx: {
-                                bgcolor: '#1a1d2e',
+                                bgcolor: '#ffffff',
+                                border: '1px solid #e2e8f0',
+                                boxShadow: '0 8px 32px rgba(14, 165, 233, 0.15)',
                                 '& .MuiMenuItem-root': {
-                                  color: '#fff',
+                                  color: '#0f172a',
                                   '&:hover': {
-                                    bgcolor: '#2a2d3e'
+                                    bgcolor: '#f1f5f9'
                                   },
                                   '&.Mui-selected': {
-                                    bgcolor: '#2a2d3e',
+                                    bgcolor: '#e0f2fe',
                                     '&:hover': {
-                                      bgcolor: '#3a3d4e'
+                                      bgcolor: '#bae6fd'
                                     }
                                   }
                                 }
@@ -522,11 +557,12 @@ const Dashboard = () => {
                             }
                           }}
                           sx={{
-                            color: '#fff',
-                            '.MuiOutlinedInput-notchedOutline': { borderColor: '#374151' },
-                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
-                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
-                            '.MuiSvgIcon-root': { color: '#9ca3af' }
+                            color: '#0f172a',
+                            '.MuiOutlinedInput-notchedOutline': { borderColor: '#e2e8f0' },
+                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#0ea5e9' },
+                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#0ea5e9' },
+                            '.MuiSvgIcon-root': { color: '#64748b' },
+                            background: '#ffffff'
                           }}
                         >
                           <MenuItem value="">All</MenuItem>
@@ -541,7 +577,7 @@ const Dashboard = () => {
 
                     <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
                       <FormControl fullWidth size="small">
-                        <InputLabel sx={{ color: '#9ca3af' }}>Call Status</InputLabel>
+                        <InputLabel sx={{ color: '#64748b' }}>Call Status</InputLabel>
                         <Select
                           value={selectedStatus}
                           label="Call Status"
@@ -549,16 +585,18 @@ const Dashboard = () => {
                           MenuProps={{
                             PaperProps: {
                               sx: {
-                                bgcolor: '#1a1d2e',
+                                bgcolor: '#ffffff',
+                                border: '1px solid #e2e8f0',
+                                boxShadow: '0 8px 32px rgba(14, 165, 233, 0.15)',
                                 '& .MuiMenuItem-root': {
-                                  color: '#fff',
+                                  color: '#0f172a',
                                   '&:hover': {
-                                    bgcolor: '#2a2d3e'
+                                    bgcolor: '#f1f5f9'
                                   },
                                   '&.Mui-selected': {
-                                    bgcolor: '#2a2d3e',
+                                    bgcolor: '#e0f2fe',
                                     '&:hover': {
-                                      bgcolor: '#3a3d4e'
+                                      bgcolor: '#bae6fd'
                                     }
                                   }
                                 }
@@ -566,11 +604,12 @@ const Dashboard = () => {
                             }
                           }}
                           sx={{
-                            color: '#fff',
-                            '.MuiOutlinedInput-notchedOutline': { borderColor: '#374151' },
-                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
-                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#4ade80' },
-                            '.MuiSvgIcon-root': { color: '#9ca3af' }
+                            color: '#0f172a',
+                            '.MuiOutlinedInput-notchedOutline': { borderColor: '#e2e8f0' },
+                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#0ea5e9' },
+                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#0ea5e9' },
+                            '.MuiSvgIcon-root': { color: '#64748b' },
+                            background: '#ffffff'
                           }}
                         >
                           <MenuItem value="">All Status</MenuItem>
@@ -590,12 +629,13 @@ const Dashboard = () => {
                         onChange={(e) => setPhoneFilter(e.target.value)}
                         sx={{
                           '.MuiOutlinedInput-root': {
-                            color: '#fff',
-                            '& fieldset': { borderColor: '#374151' },
-                            '&:hover fieldset': { borderColor: '#4ade80' },
-                            '&.Mui-focused fieldset': { borderColor: '#4ade80' },
+                            color: '#0f172a',
+                            background: '#ffffff',
+                            '& fieldset': { borderColor: '#e2e8f0' },
+                            '&:hover fieldset': { borderColor: '#0ea5e9' },
+                            '&.Mui-focused fieldset': { borderColor: '#0ea5e9' },
                           },
-                          '.MuiInputBase-input::placeholder': { color: '#9ca3af', opacity: 1 }
+                          '.MuiInputBase-input::placeholder': { color: '#64748b', opacity: 1 }
                         }}
                       />
                     </Box>
@@ -608,13 +648,14 @@ const Dashboard = () => {
                         label="Start Time"
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
-                        InputLabelProps={{ shrink: true, sx: { color: '#9ca3af' } }}
+                        InputLabelProps={{ shrink: true, sx: { color: '#64748b' } }}
                         sx={{
                           '.MuiOutlinedInput-root': {
-                            color: '#fff',
-                            '& fieldset': { borderColor: '#374151' },
-                            '&:hover fieldset': { borderColor: '#4ade80' },
-                            '&.Mui-focused fieldset': { borderColor: '#4ade80' },
+                            color: '#0f172a',
+                            background: '#ffffff',
+                            '& fieldset': { borderColor: '#e2e8f0' },
+                            '&:hover fieldset': { borderColor: '#0ea5e9' },
+                            '&.Mui-focused fieldset': { borderColor: '#0ea5e9' },
                           }
                         }}
                       />
@@ -628,38 +669,50 @@ const Dashboard = () => {
                         label="End Time"
                         value={endDate}
                         onChange={(e) => setEndDate(e.target.value)}
-                        InputLabelProps={{ shrink: true, sx: { color: '#9ca3af' } }}
+                        InputLabelProps={{ shrink: true, sx: { color: '#64748b' } }}
                         sx={{
                           '.MuiOutlinedInput-root': {
-                            color: '#fff',
-                            '& fieldset': { borderColor: '#374151' },
-                            '&:hover fieldset': { borderColor: '#4ade80' },
-                            '&.Mui-focused fieldset': { borderColor: '#4ade80' },
+                            color: '#0f172a',
+                            background: '#ffffff',
+                            '& fieldset': { borderColor: '#e2e8f0' },
+                            '&:hover fieldset': { borderColor: '#0ea5e9' },
+                            '&.Mui-focused fieldset': { borderColor: '#0ea5e9' },
                           }
                         }}
                       />
                     </Box>
 
                     <Box sx={{ flex: '0 0 auto', display: 'flex', gap: 2, alignItems: 'flex-start' }}>
-                      <Button 
+                      <Button
                         variant="outlined"
                         onClick={handleClearFilters}
-                        sx={{ 
-                          color: '#9ca3af',
-                          borderColor: '#374151',
-                          '&:hover': { borderColor: '#4ade80', color: '#4ade80' }
+                        sx={{
+                          color: '#64748b',
+                          borderColor: '#e2e8f0',
+                          background: '#ffffff',
+                          '&:hover': {
+                            borderColor: '#0ea5e9',
+                            color: '#0ea5e9',
+                            background: 'rgba(14, 165, 233, 0.1)'
+                          }
                         }}
                       >
                         Clear All
                       </Button>
-                      <Button 
+                      <Button
                         variant="contained"
                         onClick={handleApplyFilters}
-                        sx={{ 
-                          background: '#4ade80',
-                          color: '#000',
+                        sx={{
+                          background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
+                          color: '#ffffff',
                           fontWeight: 600,
-                          '&:hover': { background: '#22c55e' }
+                          '&:hover': {
+                            background: 'linear-gradient(135deg, #0284c7, #0369a1)',
+                            transform: 'translateY(-2px)',
+                            boxShadow: '0 8px 24px rgba(14, 165, 233, 0.4)'
+                          },
+                          transition: 'all 0.3s ease',
+                          borderRadius: 2
                         }}
                       >
                         Apply Filters
@@ -688,15 +741,15 @@ const Dashboard = () => {
               ) : (
                 <Box display="flex" flexDirection="column" gap={2}>
                   {calls.map((call: any) => (
-                    <Paper key={call.id} sx={{ 
+                    <Paper key={call.id} sx={{
                       background: '#1a1d2e',
                       borderRadius: 2,
                       border: '1px solid #2a2d3e',
                       overflow: 'hidden'
                     }}>
                       {/* Call Summary Row - Clickable */}
-                      <Box 
-                        sx={{ 
+                      <Box
+                        sx={{
                           p: 2.5,
                           cursor: 'pointer',
                           '&:hover': { background: '#212438' },
@@ -748,7 +801,7 @@ const Dashboard = () => {
                               <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
                                 Status
                               </Typography>
-                              <Chip 
+                              <Chip
                                 label={call.status || call.call_status || 'completed'}
                                 size="small"
                                 sx={{
@@ -799,8 +852,8 @@ const Dashboard = () => {
                               <Typography variant="body2" sx={{ color: '#9ca3af', fontFamily: 'monospace', mb: 1, fontSize: '0.85rem' }}>
                                 {call.recording_url || call.recording.url || call.recording.recording_url}
                               </Typography>
-                              <audio 
-                                controls 
+                              <audio
+                                controls
                                 style={{ width: '100%', marginTop: 8 }}
                                 src={call.recording_url || call.recording.url || call.recording.recording_url}
                               >
@@ -808,9 +861,9 @@ const Dashboard = () => {
                               </audio>
                             </Box>
                           ) : call.agent_config?.call_settings?.enable_recording ? (
-                            <Alert 
-                              severity="info" 
-                              sx={{ 
+                            <Alert
+                              severity="info"
+                              sx={{
                                 mb: 3,
                                 background: '#1e293b',
                                 border: '1px solid #334155',
@@ -826,9 +879,9 @@ const Dashboard = () => {
                               </Typography>
                             </Alert>
                           ) : (
-                            <Alert 
-                              severity="info" 
-                              sx={{ 
+                            <Alert
+                              severity="info"
+                              sx={{
                                 mb: 3,
                                 background: '#1e293b',
                                 border: '1px solid #334155',
@@ -851,8 +904,8 @@ const Dashboard = () => {
                               <Typography variant="subtitle1" sx={{ color: '#fff', mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
                                 <TranscriptIcon /> Call Transcription
                               </Typography>
-                              <Paper sx={{ 
-                                p: 2, 
+                              <Paper sx={{
+                                p: 2,
                                 background: '#0f1117',
                                 border: '1px solid #1f2937',
                                 maxHeight: 400,
@@ -861,7 +914,7 @@ const Dashboard = () => {
                                 {(() => {
                                   try {
                                     let chatData = call.chat || call.transcription;
-                                    
+
                                     if (typeof chatData === 'string') {
                                       if (!chatData.trim().startsWith('[') && !chatData.trim().startsWith('{')) {
                                         return (
@@ -870,7 +923,7 @@ const Dashboard = () => {
                                           </Typography>
                                         );
                                       }
-                                      
+
                                       try {
                                         chatData = JSON.parse(chatData);
                                       } catch (parseError) {
@@ -881,28 +934,28 @@ const Dashboard = () => {
                                         );
                                       }
                                     }
-                                    
+
                                     if (Array.isArray(chatData)) {
                                       return chatData.map((message: any, index: number) => {
                                         if (message.role === 'tool') return null;
-                                        
+
                                         return (
-                                          <Box 
-                                            key={index} 
-                                            sx={{ 
-                                              mb: 1.5, 
-                                              p: 1.5, 
-                                              borderRadius: 1, 
+                                          <Box
+                                            key={index}
+                                            sx={{
+                                              mb: 1.5,
+                                              p: 1.5,
+                                              borderRadius: 1,
                                               background: message.role === 'assistant' ? '#1e3a8a' : '#065f46',
                                               border: '1px solid',
                                               borderColor: message.role === 'assistant' ? '#1e40af' : '#047857'
                                             }}
                                           >
-                                            <Typography 
-                                              variant="caption" 
-                                              sx={{ 
-                                                fontWeight: 'bold', 
-                                                color: '#fff', 
+                                            <Typography
+                                              variant="caption"
+                                              sx={{
+                                                fontWeight: 'bold',
+                                                color: '#fff',
                                                 display: 'block',
                                                 mb: 0.5,
                                                 opacity: 0.8
@@ -910,11 +963,11 @@ const Dashboard = () => {
                                             >
                                               {message.role === 'assistant' ? '🤖 Agent' : '👤 User'}
                                             </Typography>
-                                            <Typography 
-                                              variant="body2" 
-                                              sx={{ 
+                                            <Typography
+                                              variant="body2"
+                                              sx={{
                                                 color: '#fff',
-                                                whiteSpace: 'pre-wrap', 
+                                                whiteSpace: 'pre-wrap',
                                                 lineHeight: 1.6,
                                                 fontSize: '0.9rem'
                                               }}
@@ -925,7 +978,7 @@ const Dashboard = () => {
                                         );
                                       }).filter(Boolean);
                                     }
-                                    
+
                                     return (
                                       <Alert severity="warning" sx={{ background: '#78350f', borderColor: '#92400e' }}>
                                         Unexpected transcription format
@@ -942,9 +995,9 @@ const Dashboard = () => {
                               </Paper>
                             </Box>
                           ) : (
-                            <Alert 
+                            <Alert
                               severity="info"
-                              sx={{ 
+                              sx={{
                                 background: '#1e293b',
                                 border: '1px solid #334155',
                                 color: '#cbd5e1',
@@ -958,14 +1011,14 @@ const Dashboard = () => {
                       </Collapse>
                     </Paper>
                   ))}
-                  
+
                   {calls.length === 0 && !loading && (
                     <Paper sx={{ p: 4, textAlign: 'center' }}>
                       <Typography variant="h6" color="textSecondary">
                         No calls found
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
-                        {isUsingMockData 
+                        {isUsingMockData
                           ? "Try adjusting your search criteria"
                           : "Configure your Millis AI API key to load call data"
                         }
