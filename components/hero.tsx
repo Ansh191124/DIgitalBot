@@ -1,0 +1,1287 @@
+"use client"
+import { Button } from "@/components/ui/button"
+import { Sparkles, Mic, Square, MessageSquare, Zap, Shield, Clock, TrendingUp, Users, Award, CheckCircle, ArrowRight } from "lucide-react"
+import { useEffect, useState, useRef } from 'react'
+import { useRouter } from 'next/navigation'
+
+interface LottieAnimation {
+    destroy: () => void;
+    setSpeed: (speed: number) => void;
+    play: () => void;
+    pause: () => void;
+    stop: () => void;
+}
+
+interface LottiePlayer {
+    loadAnimation: (params: {
+        container: HTMLElement | null;
+        renderer: 'svg' | 'canvas' | 'html';
+        loop: boolean;
+        autoplay: boolean;
+        path: string;
+    }) => LottieAnimation;
+}
+
+declare global {
+    interface Window {
+        lottie?: LottiePlayer;
+    }
+}
+
+export function Hero() {
+    const router = useRouter()
+
+    const stats = [
+        { label: "Uptime Guarantee", value: 99.9, suffix: "%", formatter: (val: number) => val.toFixed(1) },
+        { label: "P99 AI Inference Latency", value: 750, suffix: "ms", formatter: (val: number) => val.toLocaleString() },
+        { label: "AI Support Coverage", value: 24, suffix: "/7", formatter: (val: number) => `${val} ` }
+    ];
+
+    const [counts, setCounts] = useState([0, 0, 0])
+    const [showVideo, setShowVideo] = useState(false)
+    const [isMounted, setIsMounted] = useState(false)
+    const vapiRef = useRef<any>(null)
+    const [isCallActive, setIsCallActive] = useState(false)
+    const [isSpeaking, setIsSpeaking] = useState(false)
+    const [transcript, setTranscript] = useState("Hello! I'm your AI assistant. Click the microphone to start a conversation in any Language.")
+    const [callStatus, setCallStatus] = useState("")
+    const lottieAnimationRef = useRef<LottieAnimation | null>(null)
+    const [playingCircle, setPlayingCircle] = useState<number | null>(null)
+    const [screenSize, setScreenSize] = useState<number>(768)
+    const [vapiLoaded, setVapiLoaded] = useState(false)
+    const [isMobileDevice, setIsMobileDevice] = useState(false)
+    const [reduceMotion, setReduceMotion] = useState(false)
+    const [typewriterComplete, setTypewriterComplete] = useState(false)
+
+    // Mount effect - only run on client
+    useEffect(() => {
+        setIsMounted(true)
+        if (typeof window !== 'undefined') {
+            setScreenSize(window.innerWidth)
+            // Force animations to be enabled for testing
+            setIsMobileDevice(false)
+            setReduceMotion(false)
+            // Original detection (commented out for animation testing):
+            // setIsMobileDevice(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768)
+            // setReduceMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+        }
+    }, [])
+
+    // Initialize Vapi only on client side
+    useEffect(() => {
+        if (!isMounted || typeof window === 'undefined') return
+
+        let vapiInstance: any = null
+
+        const initVapi = async () => {
+            try {
+                const VapiModule = await import('@vapi-ai/web')
+                vapiInstance = new VapiModule.default('00119fad-8530-413f-9699-e47cada57939')
+                vapiRef.current = vapiInstance
+                setVapiLoaded(true)
+
+                vapiInstance.on('call-start', () => {
+                    setIsCallActive(true)
+                    setTranscript("Listening for your request...")
+                    setCallStatus('Call active - Listening')
+                })
+
+                vapiInstance.on('call-end', () => {
+                    setIsCallActive(false)
+                    setIsSpeaking(false)
+                    setTranscript("Hello! I'm your AI assistant. Click the microphone to start a conversation.")
+                    setCallStatus('Call ended')
+                })
+
+                vapiInstance.on('speech-start', () => {
+                    setIsSpeaking(true)
+                    setCallStatus('Assistant speaking...')
+                })
+
+                vapiInstance.on('speech-end', () => {
+                    setIsSpeaking(false)
+                    if (isCallActive) {
+                        setCallStatus('Call active - Listening')
+                    }
+                })
+
+                vapiInstance.on('message', (message: any) => {
+                    if (message.type === 'transcript' && message.transcriptType === 'final') {
+                        setTranscript(message.transcript)
+                    } else if (message.type === 'end-of-speech') {
+                        setCallStatus('Assistant is processing...')
+                    }
+                })
+
+                vapiInstance.on('error', (error: any) => {
+                    console.error('VAPI Error:', error)
+                    setCallStatus(`Error: ${error.message || 'Unknown error'}`)
+                    setIsCallActive(false)
+                })
+            } catch (error) {
+                console.error('Failed to initialize Vapi:', error)
+            }
+        }
+
+        initVapi()
+
+        return () => {
+            if (vapiInstance) {
+                try {
+                    vapiInstance.stop()
+                } catch (e) {
+                    console.error('Error stopping Vapi:', e)
+                }
+            }
+        }
+    }, [isMounted])
+
+    const toggleCall = async () => {
+        if (!vapiRef.current || !vapiLoaded) {
+            setCallStatus('Initialization in progress...')
+            return
+        }
+
+        if (isCallActive) {
+            try {
+                vapiRef.current.stop()
+                setCallStatus('Stopping call...')
+            } catch (error) {
+                console.error('Error stopping call:', error)
+            }
+        } else {
+            try {
+                setCallStatus('Requesting microphone...')
+                try {
+                    await navigator.mediaDevices.getUserMedia({ audio: true })
+                } catch (err) {
+                    console.error('Microphone permission denied:', err)
+                    setCallStatus('Microphone permission denied')
+                    alert('Please allow microphone access to use the voice assistant')
+                    return
+                }
+                setCallStatus('Starting call...')
+                await vapiRef.current.start('9ca19724-1f6c-48d1-8c62-a6107d585592')
+            } catch (error) {
+                console.error('Error starting call:', error)
+                setCallStatus(`Failed: ${error instanceof Error ? error.message : 'Unknown error'}`)
+            }
+        }
+    }
+
+    useEffect(() => {
+        if (!isMounted || typeof window === 'undefined') return
+
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js';
+        script.async = true;
+
+        const handleLoad = () => {
+            if (window.lottie && document.getElementById('lottie-animation')) {
+                lottieAnimationRef.current = window.lottie.loadAnimation({
+                    container: document.getElementById('lottie-animation'),
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: 'https://lottie.host/embed/4d6e4a3e-7f1f-4b0e-9b3e-8c8e3f3e3e3e/K21LOlLjRk.json'
+                });
+            }
+        };
+
+        script.onload = handleLoad;
+        document.body.appendChild(script);
+
+        return () => {
+            if (lottieAnimationRef.current) {
+                lottieAnimationRef.current.destroy();
+            }
+            if (document.body.contains(script)) {
+                document.body.removeChild(script);
+            }
+        };
+    }, [isMounted]);
+
+    useEffect(() => {
+        if (lottieAnimationRef.current) {
+            if (isSpeaking) {
+                lottieAnimationRef.current.setSpeed(1.5);
+            } else {
+                lottieAnimationRef.current.setSpeed(1.0);
+            }
+        }
+    }, [isSpeaking]);
+
+    useEffect(() => {
+        if (!isMounted) return
+
+        const intervals: number[] = []
+        stats.forEach((stat, index) => {
+            let start = 0
+            const end = stat.value
+            const duration = 2000
+            const stepTime = Math.floor(duration / (end / (index === 0 ? 0.1 : 1))) || 50
+
+            const timer = setInterval(() => {
+                start += (index === 0 ? 0.1 : 1)
+                if (start >= end) {
+                    start = end
+                    clearInterval(timer)
+                }
+                setCounts(prev => {
+                    const newCounts = [...prev]
+                    newCounts[index] = start
+                    return newCounts
+                })
+            }, stepTime)
+            intervals.push(timer as unknown as number)
+        })
+
+        return () => intervals.forEach(clearInterval)
+    }, [isMounted])
+
+    // Typewriter effect for description
+    useEffect(() => {
+        if (!isMounted) return
+
+        const typewriterElement = document.getElementById('typewriter-text')
+        if (!typewriterElement) return
+
+        const fullText = `<span class="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">Ready-to-Use AI Voice Assistants</span> that never sleep, never get sick, never take breaks. Get instant <span class="font-semibold text-sky-600">call automation</span>, <span class="font-semibold text-sky-600">detailed analytics dashboard</span>, and <span class="font-semibold text-sky-600">personalized business insights</span> to transform your customer service operations.`
+        
+        let currentIndex = 0
+        let isInsideTag = false
+        let currentHTML = ''
+
+        const typeNextCharacter = () => {
+            if (currentIndex < fullText.length) {
+                const char = fullText[currentIndex]
+                
+                if (char === '<') {
+                    isInsideTag = true
+                } else if (char === '>') {
+                    isInsideTag = false
+                    currentHTML += char
+                    typewriterElement.innerHTML = currentHTML
+                    currentIndex++
+                    setTimeout(typeNextCharacter, 0)
+                    return
+                }
+
+                if (isInsideTag) {
+                    currentHTML += char
+                    currentIndex++
+                    setTimeout(typeNextCharacter, 0)
+                } else {
+                    currentHTML += char
+                    typewriterElement.innerHTML = currentHTML + '<span class="animate-pulse text-sky-600">|</span>'
+                    currentIndex++
+                    setTimeout(typeNextCharacter, 5) // Typing speed - super fast
+                }
+            } else {
+                typewriterElement.innerHTML = currentHTML
+                setTypewriterComplete(true)
+            }
+        }
+
+        const timer = setTimeout(() => {
+            typeNextCharacter()
+        }, 100)
+
+        return () => clearTimeout(timer)
+    }, [isMounted])
+
+    const faqs = [
+        {
+            q: "What is an AI voice assistant and how does it work?",
+            a: "An AI voice assistant is an intelligent conversational system that uses natural language processing and machine learning to understand and respond to customer queries in real-time[...]"
+        },
+        {
+            q: "How can AI voice assistants improve customer service?",
+            a: "AI voice assistants enhance customer service by providing instant responses, handling multiple conversations simultaneously, reducing wait times, and offering consistent support a[...]"
+        },
+        {
+            q: "Is the AI voice assistant secure for handling customer data?",
+            a: "Yes, our AI voice assistant employs enterprise-grade security measures including end-to-end encryption, compliance with GDPR and industry standards, regular security audits, and s[...]"
+        },
+        {
+            q: "Can the AI voice assistant integrate with existing business systems?",
+            a: "Absolutely. Our AI voice assistant offers seamless integration with popular CRM systems, help desk software, e-commerce platforms, and custom APIs. This ensures smooth data flow a[...]"
+        },
+        {
+            q: "What industries benefit most from AI voice assistants?",
+            a: "AI voice assistants benefit various industries including healthcare, e-commerce, banking, hospitality, real estate, education, and telecommunications. Any business that values cus[...]"
+        }
+    ]
+
+    const deploymentFeatures = [
+        { 
+            icon: Zap, 
+            title: "Instant Setup", 
+            description: "Deploy in under 5 minutes with zero-code integration. Pre-configured templates ensure immediate productivity." 
+        },
+        { 
+            icon: Shield, 
+            title: "Enterprise Security", 
+            description: "AES-256 encryption, SOC 2 compliance, GDPR ready. Advanced threat detection protects every conversation." 
+        },
+        { 
+            icon: Clock, 
+            title: "24/7 Operations", 
+            description: "99.9% uptime SLA with unlimited concurrent conversations. No breaks, no downtime, just continuous service." 
+        },
+        { 
+            icon: TrendingUp, 
+            title: "Auto-Scaling", 
+            description: "From 10 to 100,000+ conversations instantly. Pay-as-you-grow with zero infrastructure overhead." 
+        },
+        { 
+            icon: Users, 
+            title: "Omnichannel", 
+            description: "Deploy across web, mobile, WhatsApp, SMS, Slack, Teams. One dashboard controls all channels." 
+        },
+        { 
+            icon: Award, 
+            title: "Proven Results", 
+            description: "85% automation rate, 60% cost reduction, 40% better satisfaction. ROI in 90 days." 
+        }
+    ]
+
+    const radius = isMounted ? (screenSize < 640 ? 130 : 170) : 170;
+
+    // Don't render complex interactive elements until mounted
+    if (!isMounted) {
+        return (
+            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen">
+                <div className="container mx-auto relative z-10 max-w-6xl">
+                    <div className="flex justify-center mb-12">
+                        <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-sm border border-sky-200/60 shadow-lg">
+                            <Sparkles className="h-4 w-4 text-sky-500" />
+                            <span className="font-medium">AI-Powered Customer Engagement Platform</span>
+                        </div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-4xl font-bold text-gray-900">Loading...</div>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+
+    return (
+        <>
+            <style dangerouslySetInnerHTML={{
+                __html: `
+            @keyframes fade-in-left {
+                from { opacity: 0; transform: translateX(30px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+            .animate-fade-in-left {
+                animation: fade-in-left 1s ease-out 0.4s forwards;
+                opacity: 0;
+            }
+            @keyframes pulse-slow {
+              0%, 100% { transform: scale(1); opacity: 0.2; }
+              50% { transform: scale(1.05); opacity: 0.3; }
+            }
+            @keyframes ping-slow {
+              0% { transform: scale(0.8); opacity: 0.3; }
+              50% { transform: scale(1.1); opacity: 0.15; }
+              100% { transform: scale(0.8); opacity: 0.3; }
+            }
+            @keyframes ping-slower {
+              0% { transform: scale(0.7); opacity: 0.25; }
+              50% { transform: scale(1.05); opacity: 0.1; }
+              100% { transform: scale(0.7); opacity: 0.25; }
+            }
+            @keyframes spin {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+            @keyframes sound-bar-pulse {
+              0% { transform: scaleY(0.6); }
+              50% { transform: scaleY(1.0); }
+              100% { transform: scaleY(0.6); }
+            }
+            @keyframes fade-in-up {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes fade-in-right {
+                from { opacity: 0; transform: translateX(-30px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+            @keyframes typing {
+                from { width: 0; }
+                to { width: 100%; }
+            }
+            @keyframes blink-caret {
+                from, to { border-color: transparent; }
+                50% { border-color: rgb(14, 165, 233); }
+            }
+            @keyframes gradient {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+            @keyframes wave-pulse-1 {
+              0% { transform: scale(0.8); opacity: 0.7; }
+              100% { transform: scale(1.5); opacity: 0; }
+            }
+            @keyframes wave-pulse-2 {
+              0% { transform: scale(0.8); opacity: 0.7; }
+              100% { transform: scale(1.7); opacity: 0; }
+            }
+            @keyframes wave-pulse-3 {
+              0% { transform: scale(0.8); opacity: 0.7; }
+              100% { transform: scale(1.9); opacity: 0; }
+            }
+            @keyframes airflow-1 {
+              0% { 
+                transform: translateX(-100vw) translateY(0); 
+                opacity: 0; 
+              }
+              5% { 
+                opacity: 1; 
+              }
+              95% { 
+                opacity: 1; 
+              }
+              100% { 
+                transform: translateX(100vw) translateY(-15px); 
+                opacity: 0; 
+              }
+            }
+            @keyframes airflow-2 {
+              0% { 
+                transform: translateX(-100vw) translateY(0); 
+                opacity: 0; 
+              }
+              5% { 
+                opacity: 1; 
+              }
+              95% { 
+                opacity: 1; 
+              }
+              100% { 
+                transform: translateX(100vw) translateY(20px); 
+                opacity: 0; 
+              }
+            }
+            @keyframes airflow-3 {
+              0% { 
+                transform: translateX(-100vw) translateY(0); 
+                opacity: 0; 
+              }
+              5% { 
+                opacity: 1; 
+              }
+              95% { 
+                opacity: 1; 
+              }
+              100% { 
+                transform: translateX(100vw) translateY(-8px); 
+                opacity: 0; 
+              }
+            }
+            @keyframes airflow-4 {
+              0% { 
+                transform: translateX(-100vw) translateY(0); 
+                opacity: 0; 
+              }
+              5% { 
+                opacity: 1; 
+              }
+              95% { 
+                opacity: 1; 
+              }
+              100% { 
+                transform: translateX(100vw) translateY(12px); 
+                opacity: 0; 
+              }
+            }
+            .animate-spin-slow { animation: spin 20s linear infinite; }
+            .animate-pulse-slow { animation: pulse-slow 5s infinite ease-in-out; }
+            .animate-ping-slow { animation: ping-slow 3s infinite ease-in-out; }
+            .animate-ping-slower { animation: ping-slower 4s infinite ease-in-out; }
+            .animate-fade-in-up-1 { 
+                animation: fade-in-up 1s ease-out forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-up-2 { 
+                animation: fade-in-up 1s ease-out 0.2s forwards;
+                opacity: 0;
+            }
+            .animate-typing {
+                position: relative;
+                display: inline-block;
+            }
+            .animate-typing-text {
+                opacity: 0;
+                animation: typing-fade-in 3.5s steps(150, end) 0.5s forwards;
+            }
+            @keyframes typing-fade-in {
+                0% { 
+                    opacity: 0;
+                    max-width: 0;
+                }
+                1% {
+                    opacity: 1;
+                }
+                100% { 
+                    opacity: 1;
+                    max-width: 100%;
+                }
+            }
+            .animate-typing::after {
+                content: '';
+                position: absolute;
+                right: -2px;
+                top: 0;
+                width: 2px;
+                height: 100%;
+                background-color: rgb(14, 165, 233);
+                animation: blink-caret 0.75s step-end infinite 0.5s;
+            }
+            .animate-fade-in-up-3 { 
+                animation: fade-in-up 1s ease-out 0.4s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right { 
+                animation: fade-in-right 1s ease-out 0.4s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right > span:nth-child(1) { 
+                animation: fade-in-right 0.6s ease-out 0.5s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right > span:nth-child(3) { 
+                animation: fade-in-right 0.6s ease-out 0.7s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right > span:nth-child(5) { 
+                animation: fade-in-right 0.6s ease-out 0.9s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right > span:nth-child(7) { 
+                animation: fade-in-right 0.6s ease-out 1.1s forwards;
+                opacity: 0;
+            }
+            .animate-fade-in-right > span:nth-child(9) { 
+                animation: fade-in-right 0.6s ease-out 1.3s forwards;
+                opacity: 0;
+            }
+            .animate-gradient {
+                background-size: 400% 400%;
+                animation: gradient 10s ease infinite;
+            }
+            .animate-float {
+                animation: float 3s ease-in-out infinite;
+            }
+            .animate-wave-1 { animation: wave-pulse-1 2s ease-out infinite; }
+            .animate-wave-2 { animation: wave-pulse-2 2s ease-out infinite; }
+            .animate-wave-3 { animation: wave-pulse-3 2s ease-out infinite; }
+            `}} />
+            
+            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen">
+
+                {/* Futuristic Grid Pattern */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 z-0">
+                    <div className="absolute inset-0" style={{
+                        backgroundImage: `linear-gradient(to right, rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                                         linear-gradient(to bottom, rgba(56, 189, 248, 0.1) 1px, transparent 1px)`,
+                        backgroundSize: '60px 60px'
+                    }}></div>
+                </div>
+   
+               
+                {/* Subtle Gradient Orbs */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-sky-200/20 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-blue-100/15 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-sky-100/10 to-transparent rounded-full blur-3xl"></div>
+                </div>
+
+                {/* Animated Light Beams - Reduced on mobile */}
+                <div className={`absolute inset-0 overflow-hidden pointer-events-none ${isMobileDevice || reduceMotion ? 'opacity-10' : 'opacity-30'}`}>
+                    <div className={`absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-sky-400/40 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`}></div>
+                    <div className={`absolute top-0 right-1/3 w-px h-full bg-linear-to-b from-transparent via-blue-300/30 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`} style={{ animationDelay: '1s' }}></div>
+                </div>
+
+                <div className="container mx-auto relative z-10 max-w-6xl opacity-100">
+                    <div className="flex justify-center mb-12 animate-fade-in-up-1">
+                        <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-sm border border-sky-200/60 shadow-lg">
+                            <Sparkles className="h-4 w-4 text-sky-500 animate-pulse" />
+                            <span className="font-medium">AI-Powered Customer Engagement Platform</span>
+                        </div>
+                    </div>
+
+                    {/* SEO-Optimized Main Heading */}
+                    <div className="text-center mb-16 animate-fade-in-up-1">
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                            <span className="block">AI Voice Assistant</span>
+                            <span className="inline-block mt-1 px-3 py-1 rounded-lg text-white bg-linear-to-br from-sky-500 via-sky-600 to-blue-600 shadow-lg text-xl sm:text-2xl lg:text-3xl relative overflow-hidden border border-white/20">
+                                <span className="absolute inset-0 bg-linear-to-tr from-white/20 via-transparent to-transparent"></span>
+                                <span className="absolute inset-0 bg-linear-to-bl from-transparent via-transparent to-black/10"></span>
+                                <span className="relative z-10">Business Automation</span>
+                            </span>
+                            <span className="block mt-1 text-3xl sm:text-4xl lg:text-5xl">Platform</span>
+                        </h1>
+
+                        <div className="mb-6 p-4 bg-white/30 border border-sky-200/30 rounded-xl shadow-xl max-w-3xl mx-auto relative overflow-hidden backdrop-blur-md">
+                            <div className="absolute inset-0 bg-linear-to-tr from-white/30 via-transparent to-transparent pointer-events-none"></div>
+                            <div className="absolute inset-0 border-l-4 border-sky-500/60 rounded-xl"></div>
+                            <div className="relative z-10">
+                                <p className="text-base sm:text-lg font-semibold text-gray-800 mb-1">
+                                    "Your receptionist sleeps, gets sick, takes breaks."
+                                </p>
+                                <p className="text-lg sm:text-xl font-bold text-white inline-block bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 px-3 py-1 rounded-lg shadow-lg relative overflow-hidden border border-white/20">
+                                    <span className="absolute inset-0 bg-linear-to-tr from-white/25 via-transparent to-transparent"></span>
+                                    <span className="relative z-10">WE NEVER DO.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        
+                        
+                        {/* Rich Snippet Optimized Description */}
+                        <div className="max-w-5xl mx-auto mb-8">
+                            <p className="text-lg sm:text-xl text-gray-700 mb-4 leading-relaxed min-h-16 animate-fade-in-left">
+                                <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">Ready-to-Use AI Voice Assistants</span> that never sleep, never get sick, never take breaks. 
+                                Get instant <span className="font-semibold text-sky-600">call automation</span>, <span className="font-semibold text-sky-600">detailed analytics dashboard</span>, and 
+                                <span className="font-semibold text-sky-600"> personalized business insights</span> to transform your customer service operations.
+                            </p>
+                            <p className="text-base sm:text-lg text-gray-600 leading-relaxed flex flex-wrap items-center justify-center gap-3 sm:gap-4 animate-fade-in-right">
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                    Real-Time Analytics
+                                </span>
+                                <span className="text-gray-400">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                    Personal Dashboard
+                                </span>
+                                <span className="text-gray-400">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                    Automated Call Handling
+                                </span>
+                                <span className="text-gray-400">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                    Multi-Language Support
+                                </span>
+                                <span className="text-gray-400">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                    Easy Integration
+                                </span>
+                            </p>
+                        </div>
+
+                        {/* Voice Search Optimized FAQ Schema */}
+                        <script 
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify({
+                                    "@context": "https://schema.org",
+                                    "@type": "FAQPage",
+                                    "mainEntity": [
+                                        {
+                                            "@type": "Question",
+                                            "name": "What is an AI voice assistant for business?",
+                                            "acceptedAnswer": {
+                                                "@type": "Answer",
+                                                "text": "An AI voice assistant for business is an automated system that handles calls, customer inquiries, and support 24/7 without breaks. Unlike human receptionists who sleep, get sick, or take breaks, AI assistants work continuously with detailed analytics and personal dashboards."
+                                            }
+                                        },
+                                        {
+                                            "@type": "Question", 
+                                            "name": "How does automated call handling work?",
+                                            "acceptedAnswer": {
+                                                "@type": "Answer",
+                                                "text": "Automated call handling uses AI voice assistants to answer calls, understand customer needs, provide information, schedule appointments, and route calls appropriately. The system includes real-time analytics and a personal dashboard to monitor performance."
+                                            }
+                                        },
+                                        {
+                                            "@type": "Question",
+                                            "name": "What analytics do you get with AI voice assistants?",
+                                            "acceptedAnswer": {
+                                                "@type": "Answer",
+                                                "text": "Our AI voice assistant platform provides detailed analytics including call volume, response times, customer satisfaction scores, conversion rates, peak hours analysis, and personalized business insights through an intuitive dashboard."
+                                            }
+                                        }
+                                    ]
+                                })
+                            }}
+                        />
+
+                        {/* Professional Business Schema */}
+                        <script 
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify({
+                                    "@context": "https://schema.org",
+                                    "@type": "SoftwareApplication",
+                                    "name": "DigitalBot.ai - Enterprise AI Voice Assistant Platform",
+                                    "description": "Enterprise-grade AI voice assistant platform delivering automated business call handling, real-time analytics dashboards, and comprehensive customer service automation. Achieve 24/7 operational availability with intelligent voice automation technology that never requires breaks, sick leave, or downtime.",
+                                    "url": "https://digitalbot.ai",
+                                    "applicationCategory": "BusinessApplication",
+                                    "operatingSystem": "Web-based, Cross-platform",
+                                    "softwareVersion": "2.0",
+                                    "releaseNotes": "Enhanced multi-language support, advanced analytics dashboard, improved CRM integrations",
+                                    "offers": {
+                                        "@type": "Offer",
+                                        "price": "0",
+                                        "priceCurrency": "USD",
+                                        "priceValidUntil": "2025-12-31",
+                                        "availability": "https://schema.org/InStock",
+                                        "description": "14-day enterprise trial with full feature access"
+                                    },
+                                    "aggregateRating": {
+                                        "@type": "AggregateRating",
+                                        "ratingValue": "4.9",
+                                        "bestRating": "5",
+                                        "worstRating": "1",
+                                        "reviewCount": "500",
+                                        "ratingCount": "500"
+                                    },
+                                    "featureList": [
+                                        "24/7 Automated AI Voice Assistant",
+                                        "Intelligent Call Routing and Handling",
+                                        "Real-time Business Analytics Dashboard",
+                                        "Multi-language Conversational AI Support",
+                                        "Advanced Business Intelligence Insights",
+                                        "Seamless CRM Integration",
+                                        "Enterprise-grade Security and Compliance",
+                                        "Scalable Cloud Infrastructure",
+                                        "Custom Voice Assistant Training",
+                                        "Appointment Scheduling Automation"
+                                    ],
+                                    "applicationSubCategory": "Customer Service Automation, Business Process Automation",
+                                    "installUrl": "https://digitalbot.ai/get-started",
+                                    "screenshot": "https://digitalbot.ai/screenshots/dashboard.png",
+                                    "author": {
+                                        "@type": "Organization",
+                                        "name": "DigitalBot.ai",
+                                        "url": "https://digitalbot.ai"
+                                    },
+                                    "provider": {
+                                        "@type": "Organization",
+                                        "name": "DigitalBot.ai",
+                                        "url": "https://digitalbot.ai"
+                                    }
+                                })
+                            }}
+                        />
+
+                        {/* Service Schema */}
+                        <script 
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify({
+                                    "@context": "https://schema.org",
+                                    "@type": "Service",
+                                    "name": "AI Voice Assistant Business Automation Platform",
+                                    "description": "Ready-to-use AI voice assistant platform for automated call handling, customer service, and business analytics. Complete with personal dashboard and detailed reporting.",
+                                    "provider": {
+                                        "@type": "Organization",
+                                        "name": "DigitalBot.ai",
+                                        "url": "https://digitalbot.ai"
+                                    },
+                                    "areaServed": "Worldwide",
+                                    "hasOfferCatalog": {
+                                        "@type": "OfferCatalog",
+                                        "name": "AI Voice Assistant Services",
+                                        "itemListElement": [
+                                            {
+                                                "@type": "Offer",
+                                                "itemOffered": {
+                                                    "@type": "Service",
+                                                    "name": "24/7 AI Call Automation"
+                                                }
+                                            },
+                                            {
+                                                "@type": "Offer", 
+                                                "itemOffered": {
+                                                    "@type": "Service",
+                                                    "name": "Personal Analytics Dashboard"
+                                                }
+                                            },
+                                            {
+                                                "@type": "Offer",
+                                                "itemOffered": {
+                                                    "@type": "Service", 
+                                                    "name": "Multi-Language Voice Support"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                })
+                            }}
+                        />
+                    </div>
+
+                    {/* Centered Column Layout */}
+                    <div className="flex flex-col items-center justify-center gap-16 animate-fade-in-up-2">
+                        
+                        {/* Voice Assistant Section */}
+                        <div className="w-full flex flex-col items-center justify-center">
+                            <div className="relative w-full h-80 sm:h-96 lg:h-[400px] flex items-center justify-center">
+                                <div className="relative w-full h-full flex items-center justify-center">
+                                    <div className="relative w-full max-w-xl h-full flex items-center justify-center">
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <div className={`${isMobileDevice ? 'w-60 h-60' : 'w-80 h-80'} rounded-full transition-all duration-500 ${
+                                                isSpeaking
+                                                    ? 'bg-linear-to-r from-sky-500/30 via-blue-500/30 to-sky-500/30 blur-3xl'
+                                                    : 'bg-linear-to-r from-sky-400/20 via-blue-400/20 to-sky-400/20 blur-3xl'
+                                                }`}></div>
+                                        </div>
+
+                                        <div className={`relative transition-all duration-500 ${isSpeaking ? 'scale-110' : 'scale-105'}`}>
+                                            <div
+                                                id="lottie-animation"
+                                                className="w-64 h-64 sm:w-80 sm:h-80"
+                                                style={{
+                                                    filter: isSpeaking
+                                                        ? 'hue-rotate(0deg) saturate(1.3) brightness(1.1)'
+                                                        : 'hue-rotate(0deg) saturate(1.1) brightness(1.0)'
+                                                }}
+                                            ></div> 
+                                            
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/10 animate-wave-1"></div>
+                                                <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/5 animate-wave-2" style={{ animationDelay: '0.3s' }}></div>
+                                                <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/0 animate-wave-3" style={{ animationDelay: '0.6s' }}></div>
+                                           
+                                                <button
+                                                    onClick={toggleCall}
+                                                    disabled={callStatus.startsWith('Requesting') || callStatus.startsWith('Starting') || callStatus.startsWith('Stopping')}
+                                                    className={`relative z-30 flex flex-col items-center justify-center
+                                                        w-20 h-20 sm:w-24 sm:h-24 rounded-full transition-all duration-300 shadow-2xl
+                                                        backdrop-blur-sm
+                                                        ${isCallActive 
+                                                            ? 'bg-red-500/60 hover:bg-red-600/70 text-white animate-pulse-slow' 
+                                                            : 'bg-sky-500/60 hover:bg-sky-600/70 text-white hover:scale-105'
+                                                        }`}
+                                                    aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
+                                                >
+                                                    <div className="mb-1">
+                                                        {isCallActive ? (
+                                                            <Square className="h-5 w-5 sm:h-6 sm:w-6" />
+                                                        ) : (
+                                                            <Mic className="h-8 w-8 sm:h-8 sm:w-8" />
+                                                        )}
+                                                    </div>
+
+                                                    <div className="flex items-end justify-center gap-0.5 h-4 sm:h-5"> 
+                                                        {[...Array(12)].map((_, i) => {
+                                                            const centerIndex = 5.5;
+                                                            const maxHeight = 12 - (Math.abs(i - centerIndex) * 0.8); 
+                                                            const minHeight = 2;
+                                                            
+                                                            return (
+                                                                <div
+                                                                    key={i}
+                                                                    className={`w-0.5 sm:w-1 transition-all duration-300 rounded-full ${
+                                                                        isSpeaking
+                                                                            ? 'bg-linear-to-t from-white via-sky-100 to-cyan-200 shadow-sm'
+                                                                            : isSpeaking
+                                                                                ? 'bg-linear-to-t from-white/60 via-sky-100/60 to-sky-200/60'
+                                                                                : 'bg-linear-to-t from-white/30 via-sky-100/30 to-sky-200/30'
+                                                                    }`}
+                                                                    style={{
+                                                                        height: isSpeaking
+                                                                            ? `${Math.random() * (maxHeight - 4) + 4}px`
+                                                                            : isCallActive
+                                                                                ? `${minHeight + (maxHeight - minHeight) * 0.3}px`
+                                                                                : `${minHeight}px`,
+                                                                        animation: isSpeaking
+                                                                            ? `sound-bar-pulse 0.${4 + (i % 4)}s ease-in-out infinite`
+                                                                            : isCallActive
+                                                                                ? `sound-bar-pulse 0.${6 + (i % 3)}s ease-in-out infinite`
+                                                                                : 'none',
+                                                                        animationDelay: `${i * 0.05}s`
+                                                                    }}
+                                                                ></div>
+                                                            );
+                                                        })}
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                            <div className={`absolute w-56 sm:w-64 h-56 sm:h-64 rounded-full border-2 transition-all duration-500 ${
+                                                isSpeaking ? 'border-sky-400/60 border-dashed' : 'border-sky-400/30 border-dashed'
+                                                } ${!(isMobileDevice || reduceMotion) ? 'animate-spin-slow' : ''}`}></div>
+                                            <div className={`absolute w-64 sm:w-72 h-64 sm:h-72 rounded-full border transition-all duration-500 ${
+                                                isSpeaking ? 'border-blue-300/50 border-dotted' : 'border-blue-300/25 border-dotted'
+                                                }`} style={!(isMobileDevice || reduceMotion) ? { animation: 'spin 25s linear infinite reverse' } : {}}></div>
+
+                                            <div className={`w-48 sm:w-56 h-48 sm:h-56 rounded-full transition-all duration-300 ${
+                                                isSpeaking ? 'bg-sky-400/20' : 'bg-sky-400/10'
+                                                } ${!(isMobileDevice || reduceMotion) ? (isSpeaking ? 'animate-ping' : 'animate-ping-slow') : ''}`} style={{ animationDuration: '2s' }}></div>
+                                            <div className={`absolute w-40 sm:w-48 h-40 sm:h-48 rounded-full transition-all duration-300 ${
+                                                isSpeaking ? 'bg-blue-400/15' : 'bg-blue-400/8'
+                                                } ${!(isMobileDevice || reduceMotion) ? (isSpeaking ? 'animate-ping' : 'animate-ping-slower') : ''}`} style={{ animationDuration: '3s', animationDelay: '0.5s' }}></div>
+                                        </div>
+
+                                        {isCallActive && (
+                                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                                <div className={`absolute w-72 sm:w-80 h-72 sm:h-80 rounded-full border-2 transition-all duration-300 ${
+                                                    isSpeaking ? 'border-sky-500/70 animate-ping' : 'border-sky-500/30 animate-ping'
+                                                    }`} style={{ animationDuration: '1.5s' }}></div>
+                                                <div className={`absolute w-80 sm:w-96 h-80 sm:h-96 rounded-full border transition-all duration-300 ${
+                                                    isSpeaking ? 'border-blue-500/60 animate-ping' : 'border-blue-500/20 animate-ping'
+                                                    }`} style={{ animationDuration: '2.5s', animationDelay: '0.3s' }}></div>
+                                            </div>
+                                        )}
+
+                                        {isSpeaking && (
+                                            <>
+                                                <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-sky-300 rounded-full animate-ping" style={{ animationDuration: '1.5s' }}></div>
+                                                <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-cyan-300 rounded-full animate-ping" style={{ animationDuration: '2s' }}></div>
+                                                <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-300 rounded-full animate-ping" style={{ animationDuration: '1.8s' }}></div>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Transcript Display */}
+                            <div className={`w-full max-w-2xl p-4 rounded-2xl border transition-all duration-300 mb-6 ${isCallActive ? 'bg-white/80 border-sky-300 shadow-lg' : 'bg-white/60 border-gray-200'}`}>
+                                <div className="text-xs font-semibold uppercase text-sky-600 mb-2">{callStatus || "Ready to assist"}</div>
+                                <p className="text-sm sm:text-base text-gray-800 font-medium transition-colors duration-500">{transcript}</p>
+                            </div>
+
+                            {/* Action Buttons */}
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <Button
+                                    size="lg"
+                                    onClick={toggleCall}
+                                    className={`text-white font-semibold rounded-full shadow-xl transition-all duration-300 group ${isCallActive
+                                        ? 'bg-linear-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-400/50 transform hover:scale-105'
+                                        : 'bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-400/50 transform hover:scale-105'
+                                    } flex items-center`}
+                                    aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
+                                >
+                                    {isCallActive ? 'Stop Conversation' : 'Start Conversation'}
+                                    {isCallActive ? (
+                                        <Square className="ml-2 h-4 w-4" />
+                                    ) : (
+                                        <Mic className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                                    )}
+                                </Button>
+                                <Button
+                                    size="lg"
+                                    variant="outline"
+                                    onClick={() => setShowVideo(true)}
+                                    className="text-sky-600 bg-white/70 border-sky-300 hover:bg-sky-50 rounded-full shadow-lg transition-transform hover:scale-105"
+                                    aria-label="Watch demo video"
+                                >
+                                    Watch Demo
+                                </Button>
+                            </div>
+                        </div>
+
+                        {/* Elegant Divider */}
+                        <div className="w-full flex items-center justify-center my-16 px-8">
+                            <div className="flex-1 h-px bg-linear-to-r from-transparent via-sky-200/40 to-transparent"></div>
+                            <div className="mx-6 flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-sky-400/30"></div>
+                                <div className="w-2 h-2 rounded-full bg-sky-400/50"></div>
+                                <div className="w-2 h-2 rounded-full bg-sky-400/30"></div>
+                            </div>
+                            <div className="flex-1 h-px bg-linear-to-r from-transparent via-sky-200/40 to-transparent"></div>
+                        </div>
+
+                        {/* Sample Conversations */}
+                        <div className="w-full flex flex-col items-center justify-center px-4">
+                            <h3 className="mb-8 sm:mb-12 text-transparent bg-clip-text bg-linear-to-r from-sky-400 via-sky-500 to-blue-600 font-bold text-2xl sm:text-3xl text-center tracking-tight">
+                                Sample Conversations
+                            </h3>
+
+                            <div className="relative w-full max-w-md h-[450px] sm:h-[550px] flex items-center justify-center mx-auto">
+                                <div className="absolute inset-0 bg-linear-to-br from-sky-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+
+                                {/* Center AI Agent Circle */}
+                                <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-linear-to-br from-sky-400 via-sky-500 to-blue-600 shadow-2xl flex items-center justify-center">
+                                    <div className="absolute inset-0 rounded-full bg-sky-400/30 animate-ping"></div>
+                                    <div className="absolute inset-0 rounded-full bg-linear-to-br from-sky-400/40 to-blue-500/40 animate-pulse"></div>
+                                    
+                                    <div className="text-center relative z-10">
+                                        <div className="text-white text-xs sm:text-sm font-bold tracking-wide">AI Agent</div>
+                                        
+                                    </div>
+                                </div>
+
+                                {/* Surrounding Circles */}
+                                {[
+                                    { label: "Support Inquiry", angle: -90, icon: "💬" },
+                                    { label: "Appointment Booking", angle: -18, icon: "📅" },
+                                    { label: "Order Status", angle: 54, icon: "📦" },
+                                    { label: "Game Character", angle: 126, icon: "🎮" },
+                                    { label: "Trainer", angle: 198, icon: "💪" }
+                                ].map((item, index) => {
+                                    const angleRad = (item.angle * Math.PI) / 180;
+                                    const x = Math.cos(angleRad) * radius;
+                                    const y = Math.sin(angleRad) * radius;
+                                    const isPlaying = playingCircle === index;
+
+                                    return (
+                                        <div key={index}>
+                                            <svg className="absolute w-full h-full pointer-events-none" style={{ top: 0, left: 0 }}>
+                                                <defs>
+                                                    <linearGradient id={`gradient-${index}`} x1="50%" y1="50%" x2={`calc(50% + ${x}px)`} y2={`calc(50% + ${y}px)`} gradientUnits="userSpaceOnUse">
+                                                        <stop offset="0%" stopColor={isPlaying ? "#38bdf8" : "#64748b"} stopOpacity={isPlaying ? "0.8" : "0.3"} />
+                                                        <stop offset="100%" stopColor={isPlaying ? "#0ea5e9" : "#475569"} stopOpacity={isPlaying ? "1" : "0.4"} />
+                                                    </linearGradient>
+                                                </defs>
+                                                <line
+                                                    x1="50%"
+                                                    y1="50%"
+                                                    x2={`calc(50% + ${x}px)`}
+                                                    y2={`calc(50% + ${y}px)`}
+                                                    stroke={`url(#gradient-${index})`}
+                                                    strokeWidth={isPlaying ? "3" : "1.5"}
+                                                    className="transition-all duration-300"
+                                                    style={{
+                                                        filter: isPlaying ? 'drop-shadow(0 0 8px rgba(56, 189, 248, 0.6))' : 'none'
+                                                    }}
+                                                />
+                                            </svg>
+
+                                            <button
+                                                onClick={() => setPlayingCircle(isPlaying ? null : index)}
+                                                className={`absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full shadow-2xl flex flex-col items-center justify-center border-2 sm:border-4 transition-all duration-300 ${isPlaying
+                                                    ? 'bg-linear-to-br from-sky-400 via-sky-500 to-blue-600 border-white/40 shadow-sky-400/80 scale-105'
+                                                    : 'bg-linear-to-br from-sky-700 via-sky-800 to-sky-900 border-white/20 hover:border-sky-300/60 hover:shadow-sky-300/30'
+                                                }`}
+                                                style={{
+                                                    left: `calc(50% + ${x}px)`,
+                                                    top: `calc(50% + ${y}px)`,
+                                                    transform: 'translate(-50%, -50%)',
+                                                    boxShadow: isPlaying 
+                                                        ? '0 20px 60px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.4)' 
+                                                        : '0 10px 30px rgba(0, 0, 0, 0.5)'
+                                                }}
+                                            >
+                                                {isPlaying && (
+                                                    <div className="absolute inset-0 rounded-full bg-sky-400/20 animate-ping"></div>
+                                                )}
+                                                
+                                                {!isPlaying ? (
+                                                    <>
+                                                        <div className="text-2xl sm:text-3xl mb-1 filter drop-shadow-lg">
+                                                            {item.icon}
+                                                        </div>
+                                                        <p className="text-[10px] sm:text-xs font-bold text-center px-1 sm:px-2 text-gray-300 leading-tight mb-1">
+                                                            {item.label}
+                                                        </p>
+                                                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-sky-500/30 flex items-center justify-center hover:bg-sky-500/50 transition-colors">
+                                                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-4 sm:h-4">
+                                                                <path d="M3 2L13 8L3 14V2Z" fill="#38bdf8" />
+                                                            </svg>
+                                                        </div>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <div className="text-2xl sm:text-3xl mb-1 filter drop-shadow-lg animate-bounce">
+                                                            {item.icon}
+                                                        </div>
+                                                        <div className="flex items-end justify-center gap-0.5 sm:gap-1 h-5 sm:h-7 mb-1">
+                                                            {[...Array(5)].map((_, i) => (
+                                                                <div
+                                                                    key={i}
+                                                                    className="w-1 sm:w-1.5 bg-white rounded-full shadow-lg shadow-white/50"
+                                                                    style={{
+                                                                        height: `${Math.random() * (screenSize < 640 ? 15 : 20) + 8}px`,
+                                                                        animation: `sound-bar-pulse 0.${4 + (i % 4)}s ease-in-out infinite`,
+                                                                        animationDelay: `${i * 0.06}s`
+                                                                    }}
+                                                                ></div>
+                                                            ))}
+                                                        </div>
+                                                        <p className="text-[10px] sm:text-xs font-bold text-center px-1 sm:px-2 text-white leading-tight drop-shadow-md">
+                                                            {item.label}
+                                                        </p>
+                                                    </>
+                                                )}
+                                            </button>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        {/* Stats Section */}
+                        <div className="mt-20 relative z-10">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                                {stats.map((stat, i) => (
+                                    <div
+                                        key={i}
+                                        className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-sky-200 transition-transform duration-500 hover:scale-[1.02] relative overflow-hidden"
+                                    >
+                                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-linear-to-tr from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
+                                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-linear-to-bl from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
+
+                                        <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient relative z-10">
+                                            {stats[i].formatter(counts[i])}
+                                            {stat.suffix}
+                                        </div>
+                                        <div className="mt-2 text-gray-700 font-medium text-lg relative z-10">{stat.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Ready to Deploy Section */}
+            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+                    <div className="absolute inset-0" style={{
+                        backgroundImage: `linear-gradient(to right, rgba(56, 189, 248, 0.15) 1px, transparent 1px),
+                                         linear-gradient(to bottom, rgba(56, 189, 248, 0.15) 1px, transparent 1px)`,
+                        backgroundSize: '40px 40px'
+                    }}></div>
+                </div>
+
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-radial from-sky-200/20 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-radial from-blue-100/15 to-transparent rounded-full blur-3xl"></div>
+                </div>
+
+                <div className="container mx-auto max-w-7xl relative z-10">
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center space-x-2 bg-sky-100 px-4 py-2 rounded-full text-sm text-sky-700 font-semibold mb-6">
+                            <MessageSquare className="h-4 w-4" />
+                            <span>Enterprise-Ready Solution</span>
+                        </div>
+                        <h2 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-6">
+                            Ready to Deploy AI Voice Assistant
+                        </h2>
+                        <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 max-w-3xl mx-auto">
+                            Launch your intelligent AI assistant in minutes. No coding required. Full customization available.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12">
+                        {deploymentFeatures.map((feature, index) => (
+                            <div
+                                key={index}
+                                className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-sky-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden"
+                            >
+                                {/* Animated background gradient */}
+                                <div className="absolute inset-0 bg-linear-to-br from-sky-50/50 via-transparent to-blue-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                
+                                {/* Icon container - mobile optimized */}
+                                <div className="relative mb-3 sm:mb-4 flex items-center justify-center sm:justify-start">
+                                    <div className="relative">
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-sky-400 via-sky-500 to-blue-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-sky-400/50 group-hover:scale-110 transition-all duration-300 relative overflow-hidden">
+                                            {/* Glossy overlay effect */}
+                                            <div className="absolute inset-0 bg-linear-to-tr from-white/30 via-white/10 to-transparent"></div>
+                                            <div className="absolute inset-0 bg-linear-to-bl from-transparent via-transparent to-black/10"></div>
+                                            
+                                            {/* Icon with responsive sizing */}
+                                            <feature.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white relative z-10 group-hover:scale-110 transition-transform duration-300 drop-shadow-md" />
+                                        </div>
+                                        
+                                        {/* Animated ring on hover */}
+                                        <div className="absolute inset-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl border-2 border-sky-400/0 group-hover:border-sky-400/50 group-hover:scale-125 transition-all duration-500"></div>
+                                    </div>
+                                </div>
+                                
+                                {/* Content - mobile optimized */}
+                                <div className="relative z-10 text-center sm:text-left">
+                                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1.5 sm:mb-2 group-hover:text-sky-700 transition-colors duration-300">{feature.title}</h3>
+                                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="bg-linear-to-r from-sky-600 via-sky-500 to-blue-500 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
+                        <div className="absolute inset-0 bg-linear-to-r from-sky-400/20 to-blue-400/20 backdrop-blur-sm"></div>
+                        <div className="relative z-10">
+                            <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+                                Start Your Free Trial Today
+                            </h3>
+                            <p className="text-xl text-sky-50 mb-8 max-w-2xl mx-auto">
+                                Join thousands of businesses automating customer service with AI. No credit card required.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                <Button
+                                    size="lg"
+                                    className="bg-white text-sky-600 hover:bg-gray-50 rounded-full shadow-xl font-bold px-8 py-6 text-lg transition-all hover:scale-105"
+                                >
+                                    Get Started Free
+                                    <ArrowRight className="ml-2 h-5 w-5" />
+                                </Button>
+                                <Button
+                                    size="lg"
+                                    variant="outline"
+                                    className="bg-transparent text-white border-2 border-white hover:bg-white/10 rounded-full font-semibold px-8 py-6 text-lg transition-all"
+                                >
+                                    Schedule Demo
+                                </Button>
+                            </div>
+                            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-sky-50">
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle className="h-5 w-5" />
+                                    <span className="text-sm font-medium">Free 14-day trial</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle className="h-5 w-5" />
+                                    <span className="text-sm font-medium">No credit card</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle className="h-5 w-5" />
+                                    <span className="text-sm font-medium">Cancel anytime</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Section (navigates to separate pages) */}
+            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-sm">
+                <div className="container mx-auto max-w-4xl">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-4">Frequently Asked Questions</h2>
+                        <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 max-w-3xl mx-auto">Everything you need to know about <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">AI voice assistants</span></p>
+                    </div>
+
+                    <div className="space-y-4">
+                        {faqs.map((faq, index) => (
+                            <div key={index} className="border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                                <button
+                                    onClick={() => router.push(`/faq/${index}`)}
+                                    className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition-colors"
+                                >
+                                    <h3 className="text-lg font-semibold text-gray-900 pr-4">{faq.q}</h3>
+                                    <ArrowRight className="h-5 w-5 text-sky-600 shrink-0 transition-transform duration-300" />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="mt-6 text-center">
+                        <button onClick={() => router.push('/faq')} className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-sky-600 text-white font-semibold hover:bg-sky-700 transition">
+                            View all FAQs
+                            <ArrowRight className="h-4 w-4" />
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+       
+        </>
+    )
+}
