@@ -3,34 +3,6 @@
 import Sidebar from '@/components/Sidebar';
 import { callsAPI } from '@/lib/api';
 import { Call, CallStats } from '@/types';
-import {
-  Menu as MenuIcon,
-  Phone as PhoneIcon,
-  PlayArrow as PlayIcon,
-  Refresh as RefreshIcon,
-  Search as SearchIcon,
-  Description as TranscriptIcon
-} from '@mui/icons-material';
-import {
-  Alert,
-  AppBar,
-  Box,
-  Button,
-  Chip,
-  CircularProgress,
-  Collapse,
-  Container,
-  Divider,
-  FormControl,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  Paper,
-  Select,
-  TextField,
-  Toolbar,
-  Typography
-} from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -43,7 +15,14 @@ const mockCalls: Call[] = [
     status: "completed",
     duration: 125,
     start_time: "2024-10-24T10:00:00Z",
-    end_time: "2024-10-24T10:02:05Z"
+    end_time: "2024-10-24T10:02:05Z",
+    recording_url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    chat: JSON.stringify([
+      { role: "user", content: "Hello, I'd like to schedule an appointment" },
+      { role: "assistant", content: "Of course! I'd be happy to help you schedule an appointment. What type of appointment are you looking for?" },
+      { role: "user", content: "A dental checkup please" },
+      { role: "assistant", content: "Great! Let me check our available slots for a dental checkup. What dates work best for you?" }
+    ])
   },
   {
     id: "call_002",
@@ -52,7 +31,14 @@ const mockCalls: Call[] = [
     status: "completed",
     duration: 89,
     start_time: "2024-10-24T11:30:00Z",
-    end_time: "2024-10-24T11:31:29Z"
+    end_time: "2024-10-24T11:31:29Z",
+    recording_url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    chat: JSON.stringify([
+      { role: "assistant", content: "Hello, this is a reminder call about your upcoming appointment" },
+      { role: "user", content: "Yes, thank you for the reminder" },
+      { role: "assistant", content: "Your appointment is scheduled for tomorrow at 2 PM. Will you be able to make it?" },
+      { role: "user", content: "Yes, I'll be there" }
+    ])
   },
   {
     id: "call_003",
@@ -79,7 +65,7 @@ const mockStats: CallStats = {
 const Dashboard = () => {
   const router = useRouter();
   const [calls, setCalls] = useState<Call[]>([]);
-  const [allCalls, setAllCalls] = useState<Call[]>([]); // Store unfiltered calls
+  const [allCalls, setAllCalls] = useState<Call[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -95,11 +81,9 @@ const Dashboard = () => {
   const [showFilters, setShowFilters] = useState(true);
   const [availableAgents, setAvailableAgents] = useState<string[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  // Real-time data fetching states
   const [isAutoRefreshEnabled, setIsAutoRefreshEnabled] = useState(true);
   const [lastRefreshTime, setLastRefreshTime] = useState<Date | null>(null);
-  const [refreshInterval, setRefreshInterval] = useState(30000); // 30 seconds default
+  const [refreshInterval, setRefreshInterval] = useState(30000);
   const [isBackgroundFetching, setIsBackgroundFetching] = useState(false);
   const [newCallsCount, setNewCallsCount] = useState(0);
 
@@ -116,10 +100,8 @@ const Dashboard = () => {
       }
       setError(null);
 
-      // First try the health check
       await callsAPI.healthCheck();
 
-      // If health check passes, try to fetch real data
       let response;
       if (search) {
         response = await callsAPI.searchCalls(search, { page, limit });
@@ -129,31 +111,28 @@ const Dashboard = () => {
 
       const callsData = response.data.data?.calls || response.data.data || [];
 
-      // Check for new calls if this is a background fetch
       if (isBackground && calls.length > 0) {
         const newCalls = callsData.filter((newCall: Call) =>
           !calls.some(existingCall => existingCall.id === newCall.id)
         );
         setNewCallsCount(newCalls.length);
 
-        // Show notification for new calls
         if (newCalls.length > 0) {
           console.log(`${newCalls.length} new call(s) received`);
         }
       }
 
       setCalls(callsData);
-      setAllCalls(callsData); // Store unfiltered calls
+      setAllCalls(callsData);
       setIsUsingMockData(false);
       setLastRefreshTime(new Date());
 
     } catch (err: any) {
       console.warn('API not available, using mock data:', err.message);
-      // Fall back to mock data
       setCalls(mockCalls);
-      setAllCalls(mockCalls); // Store unfiltered mock calls
+      setAllCalls(mockCalls);
       setIsUsingMockData(true);
-      setError(null); // Clear error since we're using mock data
+      setError(null);
       setLastRefreshTime(new Date());
     } finally {
       if (!isBackground) {
@@ -168,12 +147,10 @@ const Dashboard = () => {
     try {
       const response = await callsAPI.getAgents();
       const agentList = response.data.data || [];
-      // Extract agent names
       const agentNames = agentList.map((agent: any) => agent.name);
       setAvailableAgents(agentNames);
     } catch (err: any) {
       console.warn('Could not fetch agents:', err.message);
-      // Fallback to extracting from calls if agents fetch fails
       const agents = [...new Set(calls.map((call: Call) => call.agent_id).filter(Boolean))];
       setAvailableAgents(agents as string[]);
     }
@@ -197,14 +174,12 @@ const Dashboard = () => {
     }
   }, [mounted]);
 
-  // Real-time polling effect
   useEffect(() => {
     if (!mounted || !isAutoRefreshEnabled) return;
 
     const interval = setInterval(() => {
-      // Only do background fetch if not currently loading
       if (!loading) {
-        fetchCalls(1, 100, searchQuery, true); // Background fetch
+        fetchCalls(1, 100, searchQuery, true);
         fetchStats();
       }
     }, refreshInterval);
@@ -212,14 +187,12 @@ const Dashboard = () => {
     return () => clearInterval(interval);
   }, [mounted, isAutoRefreshEnabled, refreshInterval, loading, searchQuery]);
 
-  // Reset new calls count when user interacts
   useEffect(() => {
     setNewCallsCount(0);
   }, [expandedCall]);
 
   const handleSearch = () => {
     if (isUsingMockData) {
-      // Filter mock data
       const filtered = mockCalls.filter(call =>
         call.phone_number?.includes(searchQuery) ||
         call.id.includes(searchQuery) ||
@@ -232,29 +205,24 @@ const Dashboard = () => {
   };
 
   const handleApplyFilters = () => {
-    // Start with all calls
     let filteredCalls = [...allCalls];
 
-    // Filter by agent
     if (selectedAgent) {
       filteredCalls = filteredCalls.filter(call => call.agent_id === selectedAgent);
     }
 
-    // Filter by status
     if (selectedStatus) {
       filteredCalls = filteredCalls.filter(call =>
         call.status === selectedStatus
       );
     }
 
-    // Filter by phone number
     if (phoneFilter) {
       filteredCalls = filteredCalls.filter(call =>
         call.phone_number?.includes(phoneFilter)
       );
     }
 
-    // Filter by date range
     if (startDate) {
       const startTime = new Date(startDate).getTime();
       filteredCalls = filteredCalls.filter(call => {
@@ -280,7 +248,6 @@ const Dashboard = () => {
     setPhoneFilter('');
     setStartDate('');
     setEndDate('');
-    // Restore all calls
     setCalls(allCalls);
   };
 
@@ -320,11 +287,9 @@ const Dashboard = () => {
       setExpandedCall(null);
     } else {
       setExpandedCall(callId);
-      // Fetch full call details if needed
       try {
         const response = await callsAPI.getCall(callId);
         const callData = response.data.data || response.data;
-        // Update the call in the list with full details
         setCalls(calls.map(c => c.id === callId ? { ...c, ...callData } : c));
       } catch (err) {
         console.error('Failed to fetch call details:', err);
@@ -342,575 +307,401 @@ const Dashboard = () => {
   const getStatusColor = (status?: string) => {
     switch (status?.toLowerCase()) {
       case 'completed':
-        return 'success' as const;
+        return 'bg-emerald-100 text-emerald-800 border-emerald-200';
       case 'missed':
-        return 'error' as const;
+        return 'bg-red-100 text-red-800 border-red-200';
       case 'ongoing':
-        return 'warning' as const;
+        return 'bg-amber-100 text-amber-800 border-amber-200';
       default:
-        return 'default' as const;
+        return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
 
-  return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%)' }}>
-      {/* Mobile Menu Button */}
-      <IconButton
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        sx={{
-          display: { xs: 'block', md: 'none' },
-          position: 'fixed',
-          top: 16,
-          left: 16,
-          zIndex: 1300,
-          background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
-          color: '#fff',
-          '&:hover': { background: 'linear-gradient(135deg, #0284c7, #0369a1)' },
-          boxShadow: '0 8px 32px rgba(14, 165, 233, 0.3)',
-          borderRadius: 2
-        }}
-      >
-        <MenuIcon />
-      </IconButton>
+  if (!mounted) {
+    return null;
+  }
 
-      {/* Overlay for mobile */}
+  return (
+    <div className="flex min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
+      <button
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className="md:hidden fixed top-4 left-4 z-[1300] bg-gradient-to-r from-purple-600 to-blue-600 text-white p-3 rounded-xl shadow-lg hover:from-purple-700 hover:to-blue-700 transition-all"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
       {sidebarOpen && (
-        <Box
+        <div
           onClick={() => setSidebarOpen(false)}
-          sx={{
-            display: { xs: 'block', md: 'none' },
-            position: 'fixed',
-            inset: 0,
-            bgcolor: 'rgba(14, 165, 233, 0.3)',
-            zIndex: 1200,
-            backdropFilter: 'blur(4px)'
-          }}
+          className="md:hidden fixed inset-0 bg-purple-900/20 backdrop-blur-sm z-[1200]"
         />
       )}
 
-      {/* Sidebar */}
-      <Box
-        sx={{
-          position: 'fixed',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          width: 240,
-          transform: {
-            xs: sidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
-            md: 'translateX(0)'
-          },
-          transition: 'transform 0.3s ease-in-out',
-          zIndex: 1250
-        }}
+      <div
+        className={`fixed left-0 top-0 bottom-0 w-60 transform transition-transform duration-300 ease-in-out z-[1250] ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } md:translate-x-0`}
       >
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      </Box>
+      </div>
 
-      {/* Main Content */}
-      <Box sx={{
-        width: '100%',
-        ml: { xs: 0, md: '240px' },
-        pt: { xs: '80px', md: 0 }
-      }}>
-        {!mounted ? (
-          <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-            <CircularProgress sx={{ color: '#4ade80' }} size={60} />
-          </Box>
+      <div className="w-full md:ml-60 pt-20 md:pt-0">
+        {loading && !isUsingMockData ? (
+          <div className="flex justify-center items-center min-h-screen">
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-purple-600"></div>
+          </div>
         ) : (
           <>
-            <AppBar
-              position="static"
-              elevation={0}
-              sx={{
-                background: 'linear-gradient(135deg, #ffffff, #f8fafc)',
-                borderBottom: '1px solid #e2e8f0',
-                boxShadow: '0 4px 20px rgba(14, 165, 233, 0.1)'
-              }}
-            >
-              <Toolbar sx={{ py: 1.5 }}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
-                    borderRadius: 2,
-                    p: 1,
-                    mr: 2,
-                    boxShadow: '0 4px 12px rgba(14, 165, 233, 0.3)'
-                  }}
-                >
-                  <PhoneIcon sx={{ fontSize: 24, color: '#fff' }} />
-                </Box>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{
-                    flexGrow: 1,
-                    fontWeight: 700,
-                    background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    fontSize: '1.5rem'
-                  }}
-                >
-                  Call Logs
-                </Typography>
-                <IconButton
-                  sx={{
-                    color: '#64748b',
-                    background: 'rgba(14, 165, 233, 0.1)',
-                    '&:hover': {
-                      color: '#0ea5e9',
-                      background: 'rgba(14, 165, 233, 0.2)',
-                      transform: 'rotate(180deg)'
-                    },
-                    transition: 'all 0.3s ease',
-                    borderRadius: 2
-                  }}
-                  onClick={handleRefresh}
-                >
-                  <RefreshIcon />
-                </IconButton>
-              </Toolbar>
-            </AppBar>
+            {/* Hero Header with Gradient */}
+            <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 text-white">
+              <div className="max-w-7xl mx-auto px-6 py-8">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h1 className="text-3xl md:text-4xl font-bold mb-2">Call Management</h1>
+                    <p className="text-purple-100 text-sm md:text-base">Track and analyze your AI-powered conversations</p>
+                    <div className="flex items-center gap-2 mt-3 text-sm">
+                      <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                        <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        <span>Connecting...</span>
+                      </div>
+                      <div className="text-purple-100">Last updated: {formatLastRefreshTime() || 'Just now'}</div>
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleRefresh}
+                    className="bg-white/20 backdrop-blur-sm hover:bg-white/30 p-3 rounded-xl transition-all hover:rotate-180 duration-500"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
 
-            <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-              {/* API Status Alert */}
+            <div className="max-w-7xl mx-auto px-6 -mt-6 mb-8">
+              {/* Stats Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div className="bg-white rounded-2xl p-5 shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-500 text-sm font-medium mb-1">Total Calls</p>
+                      <p className="text-3xl font-bold text-gray-900">{stats?.total_calls || calls.length}</p>
+                    </div>
+                    <div className="bg-blue-100 p-3 rounded-xl">
+                      <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-5 shadow-lg border-l-4 border-green-500 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-500 text-sm font-medium mb-1">Completed</p>
+                      <p className="text-3xl font-bold text-gray-900">{stats?.completed_calls || calls.filter(c => c.status === 'completed').length}</p>
+                    </div>
+                    <div className="bg-green-100 p-3 rounded-xl">
+                      <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-5 shadow-lg border-l-4 border-amber-500 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-500 text-sm font-medium mb-1">Avg Duration</p>
+                      <p className="text-3xl font-bold text-gray-900">{formatDuration(stats?.average_duration)}</p>
+                    </div>
+                    <div className="bg-amber-100 p-3 rounded-xl">
+                      <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-5 shadow-lg border-l-4 border-purple-500 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-500 text-sm font-medium mb-1">Inbound</p>
+                      <p className="text-3xl font-bold text-gray-900">{stats?.calls_by_direction?.inbound || calls.filter(c => c.direction === 'inbound').length}</p>
+                    </div>
+                    <div className="bg-purple-100 p-3 rounded-xl">
+                      <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Alert */}
               {isUsingMockData && (
-                <Alert severity="warning" sx={{
-                  mb: 3,
-                  background: 'linear-gradient(135deg, #fef3c7, #fde68a)',
-                  borderColor: '#f59e0b',
-                  color: '#92400e',
-                  border: '1px solid #f59e0b',
-                  borderRadius: 2,
-                  boxShadow: '0 4px 12px rgba(245, 158, 11, 0.2)'
-                }}>
-                  <strong>Demo Mode:</strong> Unable to connect to Millis AI API. Showing sample data.
-                  Please configure your API key in server/.env to see real data.
-                </Alert>
+                <div className="mb-6 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-4 shadow-sm">
+                  <div className="flex items-start gap-3">
+                    <svg className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-amber-900">Demo Mode Active</p>
+                      <p className="text-sm text-amber-800 mt-1">Unable to connect to Millis AI API. Showing sample data with recordings. Configure your API key in server/.env to see real data.</p>
+                    </div>
+                  </div>
+                </div>
               )}
 
-              {/* Filters Section - Millis AI Style */}
-              <Paper sx={{
-                p: 3,
-                mb: 3,
-                background: 'linear-gradient(135deg, #ffffff, #f8fafc)',
-                borderRadius: 3,
-                border: '1px solid #e2e8f0',
-                boxShadow: '0 8px 32px rgba(14, 165, 233, 0.1)'
-              }}>
-                <Box display="flex" justifyContent="space-between" alignItems="center" mb={showFilters ? 2 : 0}>
-                  <Typography variant="h6" sx={{
-                    color: '#0f172a',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 1,
-                    fontWeight: 700
-                  }}>
-                    <SearchIcon sx={{ color: '#0ea5e9' }} /> Filters
-                  </Typography>
-                  <Button
+              {/* Filters */}
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-6 mb-6">
+                <div className="flex justify-between items-center mb-4">
+                  <div className="flex items-center gap-2">
+                    <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-2 rounded-lg">
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                      </svg>
+                    </div>
+                    <h2 className="text-xl font-bold text-gray-900">Advanced Filters</h2>
+                  </div>
+                  <button
                     onClick={() => setShowFilters(!showFilters)}
-                    sx={{
-                      color: '#0ea5e9',
-                      fontWeight: 600,
-                      '&:hover': {
-                        background: 'rgba(14, 165, 233, 0.1)'
-                      }
-                    }}
+                    className="text-purple-600 hover:text-purple-700 font-semibold px-4 py-2 rounded-lg hover:bg-purple-50 transition-colors"
                   >
-                    {showFilters ? 'Hide' : 'Show'}
-                  </Button>
-                </Box>
+                    {showFilters ? 'Hide Filters' : 'Show Filters'}
+                  </button>
+                </div>
 
-                <Collapse in={showFilters}>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 2 }}>
-                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                      <FormControl fullWidth size="small">
-                        <InputLabel sx={{ color: '#64748b' }}>Agent</InputLabel>
-                        <Select
+                {showFilters && (
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Agent</label>
+                        <select
                           value={selectedAgent}
-                          label="Agent"
                           onChange={(e) => setSelectedAgent(e.target.value)}
-                          MenuProps={{
-                            PaperProps: {
-                              sx: {
-                                bgcolor: '#ffffff',
-                                border: '1px solid #e2e8f0',
-                                boxShadow: '0 8px 32px rgba(14, 165, 233, 0.15)',
-                                '& .MuiMenuItem-root': {
-                                  color: '#0f172a',
-                                  '&:hover': {
-                                    bgcolor: '#f1f5f9'
-                                  },
-                                  '&.Mui-selected': {
-                                    bgcolor: '#e0f2fe',
-                                    '&:hover': {
-                                      bgcolor: '#bae6fd'
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }}
-                          sx={{
-                            color: '#0f172a',
-                            '.MuiOutlinedInput-notchedOutline': { borderColor: '#e2e8f0' },
-                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#0ea5e9' },
-                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#0ea5e9' },
-                            '.MuiSvgIcon-root': { color: '#64748b' },
-                            background: '#ffffff'
-                          }}
+                          className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white shadow-sm"
                         >
-                          <MenuItem value="">All</MenuItem>
+                          <option value="">All Agents</option>
                           {availableAgents.map((agent) => (
-                            <MenuItem key={agent} value={agent}>
+                            <option key={agent} value={agent}>
                               {agent}
-                            </MenuItem>
+                            </option>
                           ))}
-                        </Select>
-                      </FormControl>
-                    </Box>
+                        </select>
+                      </div>
 
-                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                      <FormControl fullWidth size="small">
-                        <InputLabel sx={{ color: '#64748b' }}>Call Status</InputLabel>
-                        <Select
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Status</label>
+                        <select
                           value={selectedStatus}
-                          label="Call Status"
                           onChange={(e) => setSelectedStatus(e.target.value)}
-                          MenuProps={{
-                            PaperProps: {
-                              sx: {
-                                bgcolor: '#ffffff',
-                                border: '1px solid #e2e8f0',
-                                boxShadow: '0 8px 32px rgba(14, 165, 233, 0.15)',
-                                '& .MuiMenuItem-root': {
-                                  color: '#0f172a',
-                                  '&:hover': {
-                                    bgcolor: '#f1f5f9'
-                                  },
-                                  '&.Mui-selected': {
-                                    bgcolor: '#e0f2fe',
-                                    '&:hover': {
-                                      bgcolor: '#bae6fd'
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }}
-                          sx={{
-                            color: '#0f172a',
-                            '.MuiOutlinedInput-notchedOutline': { borderColor: '#e2e8f0' },
-                            '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#0ea5e9' },
-                            '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#0ea5e9' },
-                            '.MuiSvgIcon-root': { color: '#64748b' },
-                            background: '#ffffff'
-                          }}
+                          className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white shadow-sm"
                         >
-                          <MenuItem value="">All Status</MenuItem>
-                          <MenuItem value="completed">Completed</MenuItem>
-                          <MenuItem value="agent-ended">Agent Ended</MenuItem>
-                          <MenuItem value="user-ended">User Ended</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </Box>
+                          <option value="">All Status</option>
+                          <option value="completed">Completed</option>
+                          <option value="agent-ended">Agent Ended</option>
+                          <option value="user-ended">User Ended</option>
+                        </select>
+                      </div>
 
-                    <Box sx={{ flex: '2 1 300px', minWidth: '200px' }}>
-                      <TextField
-                        fullWidth
-                        size="small"
-                        placeholder="Phone Number"
-                        value={phoneFilter}
-                        onChange={(e) => setPhoneFilter(e.target.value)}
-                        sx={{
-                          '.MuiOutlinedInput-root': {
-                            color: '#0f172a',
-                            background: '#ffffff',
-                            '& fieldset': { borderColor: '#e2e8f0' },
-                            '&:hover fieldset': { borderColor: '#0ea5e9' },
-                            '&.Mui-focused fieldset': { borderColor: '#0ea5e9' },
-                          },
-                          '.MuiInputBase-input::placeholder': { color: '#64748b', opacity: 1 }
-                        }}
-                      />
-                    </Box>
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                        <input
+                          type="text"
+                          value={phoneFilter}
+                          onChange={(e) => setPhoneFilter(e.target.value)}
+                          placeholder="Enter phone number"
+                          className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all shadow-sm"
+                        />
+                      </div>
 
-                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                      <TextField
-                        fullWidth
-                        size="small"
-                        type="datetime-local"
-                        label="Start Time"
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
-                        InputLabelProps={{ shrink: true, sx: { color: '#64748b' } }}
-                        sx={{
-                          '.MuiOutlinedInput-root': {
-                            color: '#0f172a',
-                            background: '#ffffff',
-                            '& fieldset': { borderColor: '#e2e8f0' },
-                            '&:hover fieldset': { borderColor: '#0ea5e9' },
-                            '&.Mui-focused fieldset': { borderColor: '#0ea5e9' },
-                          }
-                        }}
-                      />
-                    </Box>
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Start Time</label>
+                        <input
+                          type="datetime-local"
+                          value={startDate}
+                          onChange={(e) => setStartDate(e.target.value)}
+                          className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all shadow-sm"
+                        />
+                      </div>
 
-                    <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                      <TextField
-                        fullWidth
-                        size="small"
-                        type="datetime-local"
-                        label="End Time"
-                        value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
-                        InputLabelProps={{ shrink: true, sx: { color: '#64748b' } }}
-                        sx={{
-                          '.MuiOutlinedInput-root': {
-                            color: '#0f172a',
-                            background: '#ffffff',
-                            '& fieldset': { borderColor: '#e2e8f0' },
-                            '&:hover fieldset': { borderColor: '#0ea5e9' },
-                            '&.Mui-focused fieldset': { borderColor: '#0ea5e9' },
-                          }
-                        }}
-                      />
-                    </Box>
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">End Time</label>
+                        <input
+                          type="datetime-local"
+                          value={endDate}
+                          onChange={(e) => setEndDate(e.target.value)}
+                          className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all shadow-sm"
+                        />
+                      </div>
+                    </div>
 
-                    <Box sx={{ flex: '0 0 auto', display: 'flex', gap: 2, alignItems: 'flex-start' }}>
-                      <Button
-                        variant="outlined"
+                    <div className="flex gap-3 justify-end pt-2">
+                      <button
                         onClick={handleClearFilters}
-                        sx={{
-                          color: '#64748b',
-                          borderColor: '#e2e8f0',
-                          background: '#ffffff',
-                          '&:hover': {
-                            borderColor: '#0ea5e9',
-                            color: '#0ea5e9',
-                            background: 'rgba(14, 165, 233, 0.1)'
-                          }
-                        }}
+                        className="px-6 py-2.5 border-2 border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-all font-semibold shadow-sm"
                       >
                         Clear All
-                      </Button>
-                      <Button
-                        variant="contained"
+                      </button>
+                      <button
                         onClick={handleApplyFilters}
-                        sx={{
-                          background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
-                          color: '#ffffff',
-                          fontWeight: 600,
-                          '&:hover': {
-                            background: 'linear-gradient(135deg, #0284c7, #0369a1)',
-                            transform: 'translateY(-2px)',
-                            boxShadow: '0 8px 24px rgba(14, 165, 233, 0.4)'
-                          },
-                          transition: 'all 0.3s ease',
-                          borderRadius: 2
-                        }}
+                        className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all shadow-lg hover:shadow-xl font-semibold"
                       >
                         Apply Filters
-                      </Button>
-                    </Box>
-                  </Box>
-                </Collapse>
-              </Paper>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
 
-              {/* Error Alert */}
               {error && (
-                <Alert severity="error" sx={{ mb: 3 }}>
-                  {error}
-                </Alert>
+                <div className="mb-6 bg-red-50 border border-red-200 rounded-2xl p-4 shadow-sm">
+                  <p className="text-red-800 font-medium">{error}</p>
+                </div>
               )}
 
-              {/* Call History - Millis AI Style */}
-              <Typography variant="h6" sx={{ color: '#fff', mb: 2, fontWeight: 600 }}>
-                Call History
-              </Typography>
+              {/* Call History Header */}
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-bold text-gray-900">All Calls</h2>
+                <p className="text-gray-500">Showing {calls.length} call(s)</p>
+              </div>
 
-              {loading ? (
-                <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
-                  <CircularProgress sx={{ color: '#4ade80' }} size={60} />
-                </Box>
-              ) : (
-                <Box display="flex" flexDirection="column" gap={2}>
-                  {calls.map((call: any) => (
-                    <Paper key={call.id} sx={{
-                      background: '#1a1d2e',
-                      borderRadius: 2,
-                      border: '1px solid #2a2d3e',
-                      overflow: 'hidden'
-                    }}>
-                      {/* Call Summary Row - Clickable */}
-                      <Box
-                        sx={{
-                          p: 2.5,
-                          cursor: 'pointer',
-                          '&:hover': { background: '#212438' },
-                          transition: 'background 0.2s'
-                        }}
-                        onClick={() => handleCallClick(call.id)}
-                      >
-                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, alignItems: 'center' }}>
-                          <Box sx={{ flex: '1 1 150px', minWidth: '120px' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                ID
-                              </Typography>
-                              <Typography variant="body2" sx={{ color: '#fff', fontFamily: 'monospace', fontSize: '0.85rem' }}>
-                                {call.session_id || call.id}
-                              </Typography>
-                            </Box>
-                          </Box>
+              {/* Calls List */}
+              <div className="space-y-4">
+                {calls.map((call: any) => (
+                  <div key={call.id} className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div
+                      onClick={() => handleCallClick(call.id)}
+                      className="p-6 cursor-pointer hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+                        <div>
+                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">ID</p>
+                          <p className="text-sm text-gray-900 font-mono font-medium">{call.session_id || call.id}</p>
+                        </div>
 
-                          <Box sx={{ flex: '1 1 150px', minWidth: '120px' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                Agent
-                              </Typography>
-                              <Typography variant="body2" sx={{ color: '#fff' }}>
-                                {call.agent_id || 'dr appointment'}
-                              </Typography>
-                            </Box>
-                          </Box>
+                        <div>
+                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Agent</p>
+                          <p className="text-sm text-gray-900 font-medium">{call.agent_id || 'dr appointment'}</p>
+                        </div>
 
-                          <Box sx={{ flex: '1 1 150px', minWidth: '120px' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                Phone #
-                              </Typography>
-                              <Box display="flex" alignItems="center" gap={0.5}>
-                                <Typography variant="body2" sx={{ color: '#fff' }}>
-                                  {call.phone_number || 'Unknown'}
-                                </Typography>
-                                {call.direction === 'inbound' && (
-                                  <Chip label="→" size="small" sx={{ height: 20, fontSize: '0.7rem', background: '#3b82f6', color: '#fff' }} />
-                                )}
-                              </Box>
-                            </Box>
-                          </Box>
+                        <div>
+                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Phone</p>
+                          <div className="flex items-center gap-2">
+                            <p className="text-sm text-gray-900 font-medium">{call.phone_number || 'Unknown'}</p>
+                            {call.direction === 'inbound' && (
+                              <span className="px-2 py-0.5 text-xs bg-blue-100 text-blue-700 rounded-full font-semibold">→</span>
+                            )}
+                          </div>
+                        </div>
 
-                          <Box sx={{ flex: '1 1 120px', minWidth: '100px' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                Status
-                              </Typography>
-                              <Chip
-                                label={call.status || call.call_status || 'completed'}
-                                size="small"
-                                sx={{
-                                  background: '#065f46',
-                                  color: '#fff',
-                                  fontSize: '0.75rem',
-                                  height: 24
-                                }}
-                              />
-                            </Box>
-                          </Box>
+                        <div>
+                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Status</p>
+                          <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full border ${getStatusColor(call.status || call.call_status || 'completed')}`}>
+                            {call.status || call.call_status || 'completed'}
+                          </span>
+                        </div>
 
-                          <Box sx={{ flex: '1 1 100px', minWidth: '80px' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                Duration
-                              </Typography>
-                              <Typography variant="body2" sx={{ color: '#fff' }}>
-                                {formatDuration(call.duration)}
-                              </Typography>
-                            </Box>
-                          </Box>
+                        <div>
+                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Duration</p>
+                          <p className="text-sm text-gray-900 font-medium">{formatDuration(call.duration)}</p>
+                        </div>
 
-                          <Box sx={{ flex: '1 1 150px', minWidth: '120px', textAlign: 'right' }}>
-                            <Box>
-                              <Typography variant="caption" sx={{ color: '#6b7280', display: 'block', mb: 0.5 }}>
-                                Timestamp
-                              </Typography>
-                              <Typography variant="body2" sx={{ color: '#9ca3af', fontSize: '0.8rem' }}>
-                                {call.start_time ? new Date(call.start_time).toLocaleString() : 'N/A'}
-                              </Typography>
-                            </Box>
-                          </Box>
-                        </Box>
-                      </Box>
+                        <div className="text-right">
+                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Timestamp</p>
+                          <p className="text-xs text-gray-600 font-medium">
+                            {call.start_time ? new Date(call.start_time).toLocaleString() : 'N/A'}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
 
-                      {/* Expanded Details - Recordings & Transcription */}
-                      <Collapse in={expandedCall === call.id}>
-                        <Divider sx={{ borderColor: '#2a2d3e' }} />
-                        <Box sx={{ p: 3, background: '#151824' }}>
-                          {/* Recordings & AI Analysis Section */}
-                          <Typography variant="subtitle1" sx={{ color: '#fff', mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <PlayIcon /> Recordings & AI Analysis
-                          </Typography>
+                    {expandedCall === call.id && (
+                      <>
+                        <div className="border-t border-gray-200"></div>
+                        <div className="p-6 bg-gradient-to-br from-gray-50 to-gray-100">
+                          {/* Recordings Section */}
+                          <div className="mb-6">
+                            <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                              <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-2 rounded-lg">
+                                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                              </div>
+                              Recordings & AI Analysis
+                            </h3>
 
-                          {call.recording_url || (call.recording && (call.recording.url || call.recording.recording_url)) ? (
-                            <Box sx={{ mb: 3 }}>
-                              <Typography variant="body2" sx={{ color: '#9ca3af', fontFamily: 'monospace', mb: 1, fontSize: '0.85rem' }}>
-                                {call.recording_url || call.recording.url || call.recording.recording_url}
-                              </Typography>
-                              <audio
-                                controls
-                                style={{ width: '100%', marginTop: 8 }}
-                                src={call.recording_url || call.recording.url || call.recording.recording_url}
-                              >
-                                Your browser does not support the audio element.
-                              </audio>
-                            </Box>
-                          ) : call.agent_config?.call_settings?.enable_recording ? (
-                            <Alert
-                              severity="info"
-                              sx={{
-                                mb: 3,
-                                background: '#1e293b',
-                                border: '1px solid #334155',
-                                color: '#cbd5e1',
-                                '& .MuiAlert-icon': { color: '#60a5fa' }
-                              }}
-                            >
-                              <Typography variant="body2" sx={{ fontWeight: 600, mb: 0.5 }}>
-                                ✅ Recording Enabled - Processing
-                              </Typography>
-                              <Typography variant="caption">
-                                Recording is enabled for this call. It may still be processing. Check your <a href="https://dashboard.millis.ai" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', fontWeight: 'bold' }}>Millis Dashboard</a> for the recording.
-                              </Typography>
-                            </Alert>
-                          ) : (
-                            <Alert
-                              severity="info"
-                              sx={{
-                                mb: 3,
-                                background: '#1e293b',
-                                border: '1px solid #334155',
-                                color: '#cbd5e1',
-                                '& .MuiAlert-icon': { color: '#60a5fa' }
-                              }}
-                            >
-                              <Typography variant="body2" sx={{ fontWeight: 600, mb: 0.5 }}>
-                                No Recording Available
-                              </Typography>
-                              <Typography variant="caption">
-                                Recording was not enabled for this call. Enable <code style={{ background: '#0f172a', padding: '2px 6px', borderRadius: 4 }}>enable_recording: true</code> in agent settings.
-                              </Typography>
-                            </Alert>
-                          )}
+                            {call.recording_url || (call.recording && (call.recording.url || call.recording.recording_url)) ? (
+                              <div className="bg-white rounded-xl border-2 border-gray-200 p-5 shadow-sm">
+                                <div className="flex items-start gap-2 mb-3">
+                                  <svg className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                  </svg>
+                                  <p className="text-xs text-gray-600 font-mono break-all bg-gray-50 p-2 rounded-lg flex-1">
+                                    {call.recording_url || call.recording.url || call.recording.recording_url}
+                                  </p>
+                                </div>
+                                <audio
+                                  controls
+                                  className="w-full"
+                                  src={call.recording_url || call.recording.url || call.recording.recording_url}
+                                  preload="metadata"
+                                >
+                                  Your browser does not support the audio element.
+                                </audio>
+                              </div>
+                            ) : call.agent_config?.call_settings?.enable_recording ? (
+                              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
+                                <div className="flex items-start gap-3">
+                                  <svg className="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  </svg>
+                                  <div>
+                                    <p className="font-bold text-blue-900 mb-1">✅ Recording Enabled - Processing</p>
+                                    <p className="text-sm text-blue-800">
+                                      Recording is enabled for this call. It may still be processing. Check your{' '}
+                                      <a href="https://dashboard.millis.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-bold underline hover:text-blue-700">
+                                        Millis Dashboard
+                                      </a>{' '}
+                                      for the recording.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
+                                <div className="flex items-start gap-3">
+                                  <svg className="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  </svg>
+                                  <div>
+                                    <p className="font-bold text-blue-900 mb-1">No Recording Available</p>
+                                    <p className="text-sm text-blue-800">
+                                      Recording was not enabled for this call. Enable <code className="bg-gray-800 text-white px-2 py-1 rounded text-xs font-mono">enable_recording: true</code> in agent settings.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          </div>
 
-                          {/* Call Transcription */}
-                          {call.chat || call.transcription ? (
-                            <Box>
-                              <Typography variant="subtitle1" sx={{ color: '#fff', mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-                                <TranscriptIcon /> Call Transcription
-                              </Typography>
-                              <Paper sx={{
-                                p: 2,
-                                background: '#0f1117',
-                                border: '1px solid #1f2937',
-                                maxHeight: 400,
-                                overflow: 'auto'
-                              }}>
+                          {/* Transcription Section */}
+                          {(call.chat || call.transcription) && (
+                            <div>
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-2 rounded-lg">
+                                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                  </svg>
+                                </div>
+                                Call Transcription
+                              </h3>
+                              <div className="bg-white border-2 border-gray-200 rounded-xl p-4 max-h-96 overflow-auto shadow-sm">
                                 {(() => {
                                   try {
                                     let chatData = call.chat || call.transcription;
@@ -918,9 +709,9 @@ const Dashboard = () => {
                                     if (typeof chatData === 'string') {
                                       if (!chatData.trim().startsWith('[') && !chatData.trim().startsWith('{')) {
                                         return (
-                                          <Typography variant="body2" sx={{ color: '#e5e7eb', whiteSpace: 'pre-wrap', lineHeight: 1.8 }}>
+                                          <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">
                                             {chatData}
-                                          </Typography>
+                                          </p>
                                         );
                                       }
 
@@ -928,9 +719,9 @@ const Dashboard = () => {
                                         chatData = JSON.parse(chatData);
                                       } catch (parseError) {
                                         return (
-                                          <Alert severity="error" sx={{ background: '#7f1d1d', borderColor: '#991b1b' }}>
+                                          <div className="bg-red-50 border-2 border-red-200 rounded-lg p-3 text-red-800">
                                             Failed to parse transcription
-                                          </Alert>
+                                          </div>
                                         );
                                       }
                                     }
@@ -940,98 +731,84 @@ const Dashboard = () => {
                                         if (message.role === 'tool') return null;
 
                                         return (
-                                          <Box
+                                          <div
                                             key={index}
-                                            sx={{
-                                              mb: 1.5,
-                                              p: 1.5,
-                                              borderRadius: 1,
-                                              background: message.role === 'assistant' ? '#1e3a8a' : '#065f46',
-                                              border: '1px solid',
-                                              borderColor: message.role === 'assistant' ? '#1e40af' : '#047857'
-                                            }}
+                                            className={`mb-3 p-4 rounded-xl border-2 ${
+                                              message.role === 'assistant'
+                                                ? 'bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200'
+                                                : 'bg-gradient-to-r from-green-50 to-emerald-50 border-green-200'
+                                            }`}
                                           >
-                                            <Typography
-                                              variant="caption"
-                                              sx={{
-                                                fontWeight: 'bold',
-                                                color: '#fff',
-                                                display: 'block',
-                                                mb: 0.5,
-                                                opacity: 0.8
-                                              }}
-                                            >
-                                              {message.role === 'assistant' ? '🤖 Agent' : '👤 User'}
-                                            </Typography>
-                                            <Typography
-                                              variant="body2"
-                                              sx={{
-                                                color: '#fff',
-                                                whiteSpace: 'pre-wrap',
-                                                lineHeight: 1.6,
-                                                fontSize: '0.9rem'
-                                              }}
-                                            >
+                                            <p className={`text-xs font-bold mb-2 uppercase tracking-wide ${
+                                              message.role === 'assistant' ? 'text-blue-900' : 'text-green-900'
+                                            }`}>
+                                              {message.role === 'assistant' ? '🤖 AI Agent' : '👤 User'}
+                                            </p>
+                                            <p className={`text-sm whitespace-pre-wrap leading-relaxed ${
+                                              message.role === 'assistant' ? 'text-blue-900' : 'text-green-900'
+                                            }`}>
                                               {message.content}
-                                            </Typography>
-                                          </Box>
+                                            </p>
+                                          </div>
                                         );
                                       }).filter(Boolean);
                                     }
 
                                     return (
-                                      <Alert severity="warning" sx={{ background: '#78350f', borderColor: '#92400e' }}>
+                                      <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-3 text-amber-800">
                                         Unexpected transcription format
-                                      </Alert>
+                                      </div>
                                     );
                                   } catch (e) {
                                     return (
-                                      <Alert severity="error" sx={{ background: '#7f1d1d', borderColor: '#991b1b' }}>
+                                      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-3 text-red-800">
                                         Failed to display transcription
-                                      </Alert>
+                                      </div>
                                     );
                                   }
                                 })()}
-                              </Paper>
-                            </Box>
-                          ) : (
-                            <Alert
-                              severity="info"
-                              sx={{
-                                background: '#1e293b',
-                                border: '1px solid #334155',
-                                color: '#cbd5e1',
-                                '& .MuiAlert-icon': { color: '#60a5fa' }
-                              }}
-                            >
-                              No transcription available for this call
-                            </Alert>
+                              </div>
+                            </div>
                           )}
-                        </Box>
-                      </Collapse>
-                    </Paper>
-                  ))}
 
-                  {calls.length === 0 && !loading && (
-                    <Paper sx={{ p: 4, textAlign: 'center' }}>
-                      <Typography variant="h6" color="textSecondary">
-                        No calls found
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                        {isUsingMockData
-                          ? "Try adjusting your search criteria"
-                          : "Configure your Millis AI API key to load call data"
-                        }
-                      </Typography>
-                    </Paper>
-                  )}
-                </Box>
-              )}
-            </Container>
+                          {!call.chat && !call.transcription && (
+                            <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 mt-6">
+                              <div className="flex items-center gap-3">
+                                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <p className="text-blue-800 font-medium">No transcription available for this call</p>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ))}
+
+                {calls.length === 0 && (
+                  <div className="bg-white rounded-2xl border-2 border-gray-200 shadow-lg p-12 text-center">
+                    <div className="bg-gradient-to-r from-purple-100 to-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">No calls found</h3>
+                    <p className="text-gray-600">
+                      {isUsingMockData
+                        ? "Try adjusting your search criteria"
+                        : "Configure your Millis AI API key to load call data"
+                      }
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
           </>
         )}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 

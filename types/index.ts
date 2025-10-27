@@ -12,6 +12,11 @@ export interface Call {
   agent_id?: string;
   created_at?: string;
   updated_at?: string;
+  chat?: string | any[]; // Add chat property for transcription data
+  session_id?: string; // Add session_id property
+  agent_name?: string; // Add agent_name property
+  transcription?: string; // Add transcription property
+  transcription_formatted?: string; // Add formatted transcription
 }
 
 // Transcription segment

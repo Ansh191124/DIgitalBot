@@ -115,6 +115,29 @@ function SourceBadge({ source }: { source: Appointment['source'] }) {
   );
 }
 
+// Add this function to detect recently created appointments
+function isRecentlyCreated(createdAt: string): { isRecent: boolean; label: string; className: string } {
+  const now = new Date();
+  const created = new Date(createdAt);
+  const diffMinutes = (now.getTime() - created.getTime()) / (1000 * 60);
+  
+  if (diffMinutes < 60) {
+    return {
+      isRecent: true,
+      label: "Just Created",
+      className: "bg-green-100 text-green-700 border-green-300 animate-pulse"
+    };
+  } else if (diffMinutes < 24 * 60) {
+    return {
+      isRecent: true,
+      label: "Today",
+      className: "bg-blue-100 text-blue-700 border-blue-300"
+    };
+  }
+  
+  return { isRecent: false, label: "", className: "" };
+}
+
 export default function AppointmentsPage() {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [calendarAppointments, setCalendarAppointments] = useState<Appointment[]>([]);
@@ -267,7 +290,21 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
       const data = await response.json();
       
       if (data.success) {
-        setAppointments(data.appointments || []);
+        // ✅ Sort appointments by creation date (newest first) on frontend
+        const sortedAppointments = (data.appointments || []).sort((a: { createdAt: string | number | Date; }, b: { createdAt: string | number | Date; }) => {
+          const dateA = new Date(a.createdAt).getTime();
+          const dateB = new Date(b.createdAt).getTime();
+          return dateB - dateA; // Newest first
+        });
+
+        console.log('🆕 Appointments sorted by creation date (newest first)');
+        console.log('📅 Most recent appointments:', sortedAppointments.slice(0, 3).map((apt: { name: any; createdAt: any; source: any; }) => ({
+          name: apt.name,
+          created: apt.createdAt,
+          source: apt.source
+        })));
+
+        setAppointments(sortedAppointments);
         setStats(data.stats || {
           total: 0, today: 0, scheduled: 0, completed: 0, cancelled: 0, auto_created: 0, manual_created: 0,
         });
@@ -775,7 +812,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                     }
                   </h2>
                   <p className="text-sm text-gray-600 mt-1">
-                    Showing {appointments.length} appointment(s)
+                    Showing {appointments.length} appointment(s) • Sorted by creation date (newest first)
                   </p>
                 </div>
 
@@ -836,63 +873,78 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                   {/* Appointments List */}
                   <div className="space-y-3 max-h-[600px] overflow-y-auto">
                     {appointments.length > 0 ? (
-                      appointments.map(apt => (
-                        <div
-                          key={apt._id}
-                          className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border-2 border-gray-100 hover:border-blue-300 hover:shadow-md transition cursor-pointer"
-                          onClick={() => setSelectedAppointment(apt)}
-                        >
-                          <div className="flex justify-between items-start">
-                            <div className="flex-1">
-                              <div className="flex items-center gap-3 mb-2">
-                                <div className="bg-blue-100 p-2 rounded-lg">
-                                  <User className="w-5 h-5 text-blue-600" />
+                      appointments.map(apt => {
+                        const recentInfo = isRecentlyCreated(apt.createdAt);
+                        
+                        return (
+                          <div
+                            key={apt._id}
+                            className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border-2 border-gray-100 hover:border-blue-300 hover:shadow-md transition cursor-pointer"
+                            onClick={() => setSelectedAppointment(apt)}
+                          >
+                            <div className="flex justify-between items-start">
+                              <div className="flex-1">
+                                <div className="flex items-center gap-3 mb-2">
+                                  <div className="bg-blue-100 p-2 rounded-lg">
+                                    <User className="w-5 h-5 text-blue-600" />
+                                  </div>
+                                  <div>
+                                    <div className="font-bold text-lg text-gray-900">{apt.name}</div>
+                                    <div className="text-sm text-gray-500 flex items-center gap-1">
+                                      <Phone className="w-3 h-3" />
+                                      {apt.phone}
+                                    </div>
+                                  </div>
                                 </div>
-                                <div>
-                                  <div className="font-bold text-lg text-gray-900">{apt.name}</div>
-                                  <div className="text-sm text-gray-500 flex items-center gap-1">
+                                <div className="ml-12 space-y-2">
+                                  <div className="flex items-center gap-2 flex-wrap">
+                                    <SourceBadge source={apt.source} />
+                                    {/* ✅ Add Recently Created Badge */}
+                                    {recentInfo.isRecent && (
+                                      <span className={`px-2 py-1 rounded-full text-xs font-bold border ${recentInfo.className}`}>
+                                        🆕 {recentInfo.label}
+                                      </span>
+                                    )}
+                                    {apt.metadata?.confidence_score && (
+                                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
+                                        {Math.round(apt.metadata.confidence_score * 100)}% confidence
+                                      </span>
+                                    )}
+                                  </div>
+                                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                                    <div className="flex items-center gap-1.5">
+                                      <Calendar className="w-4 h-4 text-blue-500" />
+                                      {new Date(apt.date).toLocaleDateString()}
+                                    </div>
+                                    <div className="flex items-center gap-1.5">
+                                      <Clock className="w-4 h-4 text-blue-500" />
+                                      {apt.time || new Date(apt.date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-1.5 text-sm text-gray-700">
+                                    <FileText className="w-4 h-4 text-blue-500" />
+                                    {apt.purpose}
+                                  </div>
+                                  {/* ✅ Add Creation Timestamp */}
+                                  <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                                    <Clock className="w-3 h-3" />
+                                    Created: {new Date(apt.createdAt).toLocaleString()}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="flex flex-col items-end gap-2">
+                                <StatusBadge status={apt.status} />
+                                {apt.callId && (
+                                  <div className="flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-semibold">
                                     <Phone className="w-3 h-3" />
-                                    {apt.phone}
+                                    Linked Call
                                   </div>
-                                </div>
+                                )}
                               </div>
-                              <div className="ml-12 space-y-2">
-                                <div className="flex items-center gap-2">
-                                  <SourceBadge source={apt.source} />
-                                  {apt.metadata?.confidence_score && (
-                                    <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                                      {Math.round(apt.metadata.confidence_score * 100)}% confidence
-                                    </span>
-                                  )}
-                                </div>
-                                <div className="flex items-center gap-4 text-sm text-gray-600">
-                                  <div className="flex items-center gap-1.5">
-                                    <Calendar className="w-4 h-4 text-blue-500" />
-                                    {new Date(apt.date).toLocaleDateString()}
-                                  </div>
-                                  <div className="flex items-center gap-1.5">
-                                    <Clock className="w-4 h-4 text-blue-500" />
-                                    {apt.time || new Date(apt.date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                                  </div>
-                                </div>
-                                <div className="flex items-center gap-1.5 text-sm text-gray-700">
-                                  <FileText className="w-4 h-4 text-blue-500" />
-                                  {apt.purpose}
-                                </div>
-                              </div>
-                            </div>
-                            <div className="flex flex-col items-end gap-2">
-                              <StatusBadge status={apt.status} />
-                              {apt.callId && (
-                                <div className="flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-semibold">
-                                  <Phone className="w-3 h-3" />
-                                  Linked Call
-                                </div>
-                              )}
                             </div>
                           </div>
-                        </div>
-                      ))
+                        );
+                      })
                     ) : (
                       <div className="text-center py-12 text-gray-500">
                         <Calendar className="w-16 h-16 mx-auto text-gray-300 mb-3" />
@@ -1015,6 +1067,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
 }
 
 // --- Appointment Modal Component ---
+// Updated AppointmentModal Component with Doctor Name Display
 
 function AppointmentModal({ apt, onClose, onUpdate }: {
   apt: Appointment;
@@ -1065,6 +1118,12 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
                     <p className="text-purple-900 font-bold text-lg">
                       {Math.round(apt.metadata.confidence_score * 100)}%
                     </p>
+                  </div>
+                )}
+                {apt.metadata.doctor_name && (
+                  <div>
+                    <p className="text-purple-700 font-medium">Doctor Requested</p>
+                    <p className="text-purple-900 font-bold">{apt.metadata.doctor_name}</p>
                   </div>
                 )}
                 {apt.metadata.agent_name && (
@@ -1126,6 +1185,15 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
               Appointment Details
             </h3>
             <div className="grid grid-cols-2 gap-4">
+              {apt.metadata?.doctor_name && (
+                <div className="col-span-2 bg-green-100 border border-green-300 p-3 rounded-lg">
+                  <p className="text-sm text-green-700 font-medium flex items-center gap-2">
+                    <User className="w-4 h-4" />
+                    Doctor Requested
+                  </p>
+                  <p className="text-xl font-bold text-green-900 mt-1">{apt.metadata.doctor_name}</p>
+                </div>
+              )}
               <div>
                 <p className="text-sm text-gray-600 font-medium">Date</p>
                 <p className="text-lg font-bold text-gray-900">{new Date(apt.date).toLocaleDateString()}</p>
