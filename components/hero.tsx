@@ -147,7 +147,7 @@ export function Hero() {
                 vapiRef.current.stop()
                 setCallStatus('Stopping call...')
             } catch (error) {
-                console.error('Error stopping call:', error)
+                console.error('Error stopping call :', error)
             }
         } else {
             try {
