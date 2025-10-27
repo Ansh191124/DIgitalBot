@@ -45,7 +45,7 @@ interface PaginationInfo {
   per_page: number;
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://digital-api-tef8.onrender.com";
 
 function getAuthHeaders() {
   const headers: Record<string, string> = { "Content-Type": "application/json" };
