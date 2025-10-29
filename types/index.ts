@@ -9,14 +9,43 @@ export interface Call {
   start_time?: string;
   end_time?: string;
   recording_url?: string;
+  recordingUrl?: string;
+  call_recording?: string;
+  audio_url?: string;
+  audioUrl?: string;
+  recording?: string | {
+    url?: string;
+    recording_url?: string;
+    audio_url?: string;
+  };
   agent_id?: string;
+  agent_name?: string;
   created_at?: string;
   updated_at?: string;
-  chat?: string | any[]; // Add chat property for transcription data
-  session_id?: string; // Add session_id property
-  agent_name?: string; // Add agent_name property
-  transcription?: string; // Add transcription property
-  transcription_formatted?: string; // Add formatted transcription
+  chat?: string | any[];
+  transcription?: string | any[];
+  transcription_formatted?: string;
+  metadata?: {
+    recording_url?: string;
+    audio_url?: string;
+    call_recording?: string;
+    [key: string]: any;
+  };
+  agent_config?: {
+    call_settings?: {
+      enable_recording?: boolean;
+    };
+    [key: string]: any;
+  };
+  enable_recording?: boolean;
+  recording_enabled?: boolean;
+  settings?: {
+    enable_recording?: boolean;
+    [key: string]: any;
+  };
+  cost_breakdown?: any;
+  chars_used?: number;
+  function_calls?: any[];
 }
 
 // Transcription segment
