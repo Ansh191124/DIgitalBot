@@ -2,9 +2,12 @@
 export interface Call {
   id: string;
   call_id?: string;
+  session_id?: string;
   phone_number: string;
-  direction: 'inbound' | 'outbound';
-  status: 'completed' | 'missed' | 'ongoing' | 'failed';
+  from_number?: string;
+  to_number?: string;
+  direction: 'inbound' | 'outbound' | 'unknown';
+  status: 'completed' | 'missed' | 'ongoing' | 'failed' | 'user-ended' | 'agent-ended' | 'timeout' | 'error' | 'in-progress' | 'ringing' | 'connecting' | 'cancelled' | 'busy' | 'no-answer';
   duration?: number;
   start_time?: string;
   end_time?: string;

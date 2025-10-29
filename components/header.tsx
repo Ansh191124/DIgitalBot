@@ -131,19 +131,20 @@ export function Header() {
                                         onMouseLeave={() => setOpen(false)}
                                     >
                                         <Link
-                                            href="/signup?service=lead"
+                                            href="/services/leads"
                                             className="block px-3 py-2 hover:bg-gray-100 rounded transition-colors duration-200"
                                             onClick={() => setOpen(false)}
                                         >
                                             Lead Analysis Service
                                         </Link>
                                         <Link
-                                            href="/signup?service=appointment"
+                                            href="/services/appointments"
                                             className="block px-3 py-2 hover:bg-gray-100 rounded transition-colors duration-200"
                                             onClick={() => setOpen(false)}
                                         >
                                             Appointment Service
                                         </Link>
+
                                     </motion.div>
                                 )}
                             </AnimatePresence>
@@ -228,14 +229,14 @@ export function Header() {
                                 >
                                     <div className="text-base font-medium text-gray-900 mb-2">Our Services</div>
                                     <Link
-                                        href="/signup?service=lead"
+                                       href="/services/leads"
                                         className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         <div className="font-medium">Lead Analysis Service</div>
                                     </Link>
                                     <Link
-                                        href="/signup?service=appointment"
+                                        href="/services/appointments"
                                         className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
                                         onClick={() => setIsMenuOpen(false)}
                                     >

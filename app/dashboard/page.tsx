@@ -5,17 +5,21 @@ import { useEffect, useState } from "react";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart as RechartsPieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 interface Call {
-  Sid: string;
-  From: string;
-  To: string;
-  Status: string;
-  StartTime: string;
-  EndTime: string;
-  Duration: string;
-  Direction: string;
-  recordings: any[];
+  id: string;
+  session_id?: string;
+  from_number: string;
+  to_number: string;
+  status: string;
+  start_time: string;
+  end_time?: string;
+  duration: number;
+  direction: string;
+  agent_name: string;
+  agent_id?: string;
   transcription?: string;
-  summary?: string;
+  transcription_formatted?: string;
+  chat?: any;
+  recording_url?: string;
 }
 
 interface Analytics {
@@ -40,6 +44,7 @@ interface Analytics {
 }
 
 export default function AnalyticsOverview() {
+  const [mounted, setMounted] = useState(false);
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [loading, setLoading] = useState(false);
   const [dateFilter, setDateFilter] = useState("7");
@@ -50,77 +55,100 @@ export default function AnalyticsOverview() {
 
   const chartColors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'];
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const fetchAnalytics = async () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const params = new URLSearchParams();
-      params.append("limit", "1000");
-      const res = await fetch(`http://localhost:4000/api/calls?${params.toString()}`, {
-        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
+      
+      // Fetch calls from your backend API
+      const callsRes = await fetch(`https://digital-api-tef8.onrender.com/api/calls?limit=1000`, {
+        headers: { 
+          'Authorization': token ? `Bearer ${token}` : '',
+          'Content-Type': 'application/json' 
+        }
       });
-      if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
-      const data = await res.json();
-      const calls = data.calls || [];
+      
+      if (!callsRes.ok) {
+        throw new Error(`Failed to fetch calls: ${callsRes.status}`);
+      }
+      
+      const callsData = await callsRes.json();
+      const calls = callsData.data?.calls || callsData.calls || [];
+      
+      console.log('Fetched calls:', calls.length);
+      
       const now = new Date();
       const filterDays = parseInt(dateFilter);
       const filterDate = new Date(now.getTime() - (filterDays * 24 * 60 * 60 * 1000));
-      const filteredCalls = calls.filter((call: Call) => new Date(call.StartTime) >= filterDate);
-      const completed = filteredCalls.filter((c: Call) => c.Status === 'completed').length;
-      const failed = filteredCalls.filter((c: Call) => c.Status === 'failed').length;
-      const busy = filteredCalls.filter((c: Call) => c.Status === 'busy').length;
-      const inbound = filteredCalls.filter((c: Call) => c.Direction === 'inbound').length;
-      const outbound = filteredCalls.filter((c: Call) => c.Direction === 'outbound').length;
-      const transcribed = filteredCalls.filter((c: Call) => c.transcription).length;
-      const summarized = filteredCalls.filter((c: Call) => c.summary).length;
-      const totalDuration = filteredCalls.reduce((sum: number, call: Call) => sum + parseInt(call.Duration || '0'), 0);
+      
+      const filteredCalls = calls.filter((call: Call) => new Date(call.start_time) >= filterDate);
+      
+      const completed = filteredCalls.filter((c: Call) => c.status === 'completed' || c.status === 'user-ended' || c.status === 'agent-ended').length;
+      const failed = filteredCalls.filter((c: Call) => c.status === 'failed' || c.status === 'error').length;
+      const busy = filteredCalls.filter((c: Call) => c.status === 'busy' || c.status === 'no-answer').length;
+      const inbound = filteredCalls.filter((c: Call) => c.direction === 'inbound').length;
+      const outbound = filteredCalls.filter((c: Call) => c.direction === 'outbound').length;
+      const transcribed = filteredCalls.filter((c: Call) => c.transcription || c.transcription_formatted || c.chat).length;
+      const summarized = filteredCalls.filter((c: Call) => c.transcription_formatted).length;
+      
+      const totalDuration = filteredCalls.reduce((sum: number, call: Call) => sum + (call.duration || 0), 0);
       const avgDuration = filteredCalls.length > 0 ? totalDuration / filteredCalls.length : 0;
+      
       const today = new Date().toDateString();
-      const todaysCalls = filteredCalls.filter((call: Call) => new Date(call.StartTime).toDateString() === today).length;
+      const todaysCalls = filteredCalls.filter((call: Call) => new Date(call.start_time).toDateString() === today).length;
       const hourCounts: { [key: number]: number } = {};
       filteredCalls.forEach((call: Call) => {
-        const hour = new Date(call.StartTime).getHours();
+        const hour = new Date(call.start_time).getHours();
         hourCounts[hour] = (hourCounts[hour] || 0) + 1;
       });
       const peakHours = Object.entries(hourCounts).map(([hour, count]) => ({ hour: parseInt(hour), count })).sort((a, b) => b.count - a.count).slice(0, 5);
+      
       const dailyStats = [];
       for (let i = 6; i >= 0; i--) {
         const date = new Date(now.getTime() - (i * 24 * 60 * 60 * 1000));
         const dateStr = date.toDateString();
-        const dayCalls = filteredCalls.filter((call: Call) => new Date(call.StartTime).toDateString() === dateStr);
+        const dayCalls = filteredCalls.filter((call: Call) => new Date(call.start_time).toDateString() === dateStr);
         dailyStats.push({
           date: date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
           calls: dayCalls.length,
-          completed: dayCalls.filter((c: Call) => c.Status === 'completed').length,
-          failed: dayCalls.filter((c: Call) => c.Status === 'failed').length
+          completed: dayCalls.filter((c: Call) => c.status === 'completed' || c.status === 'user-ended' || c.status === 'agent-ended').length,
+          failed: dayCalls.filter((c: Call) => c.status === 'failed' || c.status === 'error').length
         });
       }
+      
       const statusCounts: { [key: string]: number } = {};
-      filteredCalls.forEach((call: Call) => { statusCounts[call.Status] = (statusCounts[call.Status] || 0) + 1; });
+      filteredCalls.forEach((call: Call) => { statusCounts[call.status] = (statusCounts[call.status] || 0) + 1; });
       const statusDistribution = Object.entries(statusCounts).map(([status, count]) => ({ status, count, percentage: filteredCalls.length > 0 ? (count / filteredCalls.length) * 100 : 0 }));
+      
       const hourlyDistribution = Array.from({ length: 24 }, (_, hour) => ({ hour: `${hour.toString().padStart(2, '0')}:00`, calls: hourCounts[hour] || 0 }));
+      
       const durationAnalysis = [
-        { range: '0-30s', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) <= 30).length },
-        { range: '30s-1m', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) > 30 && parseInt(c.Duration) <= 60).length },
-        { range: '1-2m', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) > 60 && parseInt(c.Duration) <= 120).length },
-        { range: '2-5m', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) > 120 && parseInt(c.Duration) <= 300).length },
-        { range: '5-10m', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) > 300 && parseInt(c.Duration) <= 600).length },
-        { range: '10m+', count: filteredCalls.filter((c: Call) => parseInt(c.Duration) > 600).length }
+        { range: '0-30s', count: filteredCalls.filter((c: Call) => c.duration <= 30).length },
+        { range: '30s-1m', count: filteredCalls.filter((c: Call) => c.duration > 30 && c.duration <= 60).length },
+        { range: '1-2m', count: filteredCalls.filter((c: Call) => c.duration > 60 && c.duration <= 120).length },
+        { range: '2-5m', count: filteredCalls.filter((c: Call) => c.duration > 120 && c.duration <= 300).length },
+        { range: '5-10m', count: filteredCalls.filter((c: Call) => c.duration > 300 && c.duration <= 600).length },
+        { range: '10m+', count: filteredCalls.filter((c: Call) => c.duration > 600).length }
       ];
       const weeklyComparison = Array.from({ length: 4 }, (_, i) => {
         const weekStart = new Date(now.getTime() - ((i + 1) * 7 * 24 * 60 * 60 * 1000));
         const weekEnd = new Date(weekStart.getTime() + (7 * 24 * 60 * 60 * 1000));
         const weekCalls = filteredCalls.filter((call: Call) => {
-          const callDate = new Date(call.StartTime);
+          const callDate = new Date(call.start_time);
           return callDate >= weekStart && callDate < weekEnd;
         });
-        const weekCompleted = weekCalls.filter((c: Call) => c.Status === 'completed').length;
+        const weekCompleted = weekCalls.filter((c: Call) => c.status === 'completed' || c.status === 'user-ended' || c.status === 'agent-ended').length;
         return { week: `Week ${i + 1}`, calls: weekCalls.length, successRate: weekCalls.length > 0 ? (weekCompleted / weekCalls.length) * 100 : 0 };
       }).reverse();
+      
       const prevPeriodStart = new Date(now.getTime() - (filterDays * 2 * 24 * 60 * 60 * 1000));
       const prevPeriodEnd = new Date(now.getTime() - (filterDays * 24 * 60 * 60 * 1000));
       const prevPeriodCalls = calls.filter((call: Call) => {
-        const callDate = new Date(call.StartTime);
+        const callDate = new Date(call.start_time);
         return callDate >= prevPeriodStart && callDate < prevPeriodEnd;
       }).length;
       const weeklyGrowth = prevPeriodCalls > 0 ? ((filteredCalls.length - prevPeriodCalls) / prevPeriodCalls) * 100 : 0;
@@ -144,16 +172,21 @@ export default function AnalyticsOverview() {
       const token = localStorage.getItem('token');
       const res = await fetch("https://digital-api-tef8.onrender.com/api/outbound-call", {
         method: "POST",
-        headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+        headers: { 
+          "Authorization": token ? `Bearer ${token}` : "", 
+          "Content-Type": "application/json" 
+        },
         body: JSON.stringify({ toNumber }),
       });
       const data = await res.json();
       if (res.ok) {
         setCallStatus("Call initiated successfully!");
-        fetchAnalytics();
+        if (mounted) {
+          fetchAnalytics();
+        }
         setToNumber("");
       } else {
-        setCallStatus(`Error: ${data.error}`);
+        setCallStatus(`Error: ${data.error || 'Failed to initiate call'}`);
       }
     } catch (err) {
       console.error(err);
@@ -387,8 +420,9 @@ export default function AnalyticsOverview() {
                         <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500 shrink-0" />
                         <h3 className="text-lg sm:text-xl font-bold text-slate-800">Call Volume Trend</h3>
                       </div>
-                      <span className="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold self-start sm:self-auto">Area Chart</span>
-                    </div>
+                    <span className="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold self-start sm:self-auto">Area Chart</span>
+                  </div>
+                  {mounted && (
                     <ResponsiveContainer width="100%" height={280}>
                       <AreaChart data={analytics.dailyStats}>
                         <defs>
@@ -410,7 +444,8 @@ export default function AnalyticsOverview() {
                         <Area type="monotone" dataKey="completed" stroke="#10b981" fillOpacity={1} fill="url(#completedGradient)" strokeWidth={2} name="Completed" />
                       </AreaChart>
                     </ResponsiveContainer>
-                  </div>
+                  )}
+                </div>
 
                   {/* Bar Chart */}
                   <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-200 shadow-lg overflow-hidden">
@@ -423,21 +458,23 @@ export default function AnalyticsOverview() {
                     </div>
                     <div className="overflow-x-auto -mx-4 sm:mx-0">
                       <div className="min-w-[500px] px-4 sm:px-0">
-                        <ResponsiveContainer width="100%" height={280}>
-                          <BarChart data={analytics.hourlyDistribution}>
-                            <defs>
-                              <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#8b5cf6" stopOpacity={1} />
-                                <stop offset="100%" stopColor="#3b82f6" stopOpacity={0.8} />
-                              </linearGradient>
-                            </defs>
-                            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                            <XAxis dataKey="hour" stroke="#64748b" fontSize={9} angle={-45} textAnchor="end" height={60} />
-                            <YAxis stroke="#64748b" fontSize={10} />
-                            <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
-                            <Bar dataKey="calls" fill="url(#barGradient)" radius={[6, 6, 0, 0]} />
-                          </BarChart>
-                        </ResponsiveContainer>
+                        {mounted && (
+                          <ResponsiveContainer width="100%" height={280}>
+                            <BarChart data={analytics.hourlyDistribution}>
+                              <defs>
+                                <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                                  <stop offset="0%" stopColor="#8b5cf6" stopOpacity={1} />
+                                  <stop offset="100%" stopColor="#3b82f6" stopOpacity={0.8} />
+                                </linearGradient>
+                              </defs>
+                              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                              <XAxis dataKey="hour" stroke="#64748b" fontSize={9} angle={-45} textAnchor="end" height={60} />
+                              <YAxis stroke="#64748b" fontSize={10} />
+                              <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                              <Bar dataKey="calls" fill="url(#barGradient)" radius={[6, 6, 0, 0]} />
+                            </BarChart>
+                          </ResponsiveContainer>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -482,17 +519,19 @@ export default function AnalyticsOverview() {
                       </div>
                       <span className="text-xs px-3 py-1 bg-green-100 text-green-700 rounded-full font-semibold self-start sm:self-auto">Line Chart</span>
                     </div>
-                    <ResponsiveContainer width="100%" height={280}>
-                      <LineChart data={analytics.weeklyComparison}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                        <XAxis dataKey="week" stroke="#64748b" fontSize={10} />
-                        <YAxis stroke="#64748b" fontSize={10} />
-                        <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
-                        <Legend wrapperStyle={{ paddingTop: '10px', fontSize: '12px' }} />
-                        <Line type="monotone" dataKey="calls" stroke="#3b82f6" strokeWidth={2} dot={{ fill: '#3b82f6', r: 4 }} activeDot={{ r: 6 }} name="Total Calls" />
-                        <Line type="monotone" dataKey="successRate" stroke="#10b981" strokeWidth={2} dot={{ fill: '#10b981', r: 4 }} activeDot={{ r: 6 }} name="Success Rate %" strokeDasharray="5 5" />
-                      </LineChart>
-                    </ResponsiveContainer>
+                    {mounted && (
+                      <ResponsiveContainer width="100%" height={280}>
+                        <LineChart data={analytics.weeklyComparison}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                          <XAxis dataKey="week" stroke="#64748b" fontSize={10} />
+                          <YAxis stroke="#64748b" fontSize={10} />
+                          <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                          <Legend wrapperStyle={{ paddingTop: '10px', fontSize: '12px' }} />
+                          <Line type="monotone" dataKey="calls" stroke="#3b82f6" strokeWidth={2} dot={{ fill: '#3b82f6', r: 4 }} activeDot={{ r: 6 }} name="Total Calls" />
+                          <Line type="monotone" dataKey="successRate" stroke="#10b981" strokeWidth={2} dot={{ fill: '#10b981', r: 4 }} activeDot={{ r: 6 }} name="Success Rate %" strokeDasharray="5 5" />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    )}
                   </div>
 
                 </div>
@@ -515,26 +554,28 @@ export default function AnalyticsOverview() {
                       </div>
                       <span className="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold self-start sm:self-auto">Donut Chart</span>
                     </div>
-                    <ResponsiveContainer width="100%" height={280}>
-                      <RechartsPieChart>
-                        <Pie 
-                          dataKey="count" 
-                          data={analytics.statusDistribution} 
-                          cx="50%" 
-                          cy="50%" 
-                          innerRadius={50} 
-                          outerRadius={90} 
-                          paddingAngle={5} 
-                          label={(entry: any) => `${entry.payload.status}: ${entry.value}`}
-                          labelLine={{ stroke: '#64748b', strokeWidth: 1 }}
-                        >
-                          {analytics.statusDistribution.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]} />
-                          ))}
-                        </Pie>
-                        <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
-                      </RechartsPieChart>
-                    </ResponsiveContainer>
+                    {mounted && (
+                      <ResponsiveContainer width="100%" height={280}>
+                        <RechartsPieChart>
+                          <Pie 
+                            dataKey="count" 
+                            data={analytics.statusDistribution} 
+                            cx="50%" 
+                            cy="50%" 
+                            innerRadius={50} 
+                            outerRadius={90} 
+                            paddingAngle={5} 
+                            label={(entry: any) => `${entry.payload.status}: ${entry.value}`}
+                            labelLine={{ stroke: '#64748b', strokeWidth: 1 }}
+                          >
+                            {analytics.statusDistribution.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]} />
+                            ))}
+                          </Pie>
+                          <Tooltip contentStyle={{ backgroundColor: 'rgba(255,255,255,0.95)', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px' }} />
+                        </RechartsPieChart>
+                      </ResponsiveContainer>
+                    )}
                     <div className="text-center mt-4">
                       <div className="text-2xl sm:text-3xl font-black text-slate-800">{analytics.totalCalls}</div>
                       <div className="text-xs sm:text-sm text-slate-500 font-medium">Total Calls</div>
@@ -750,38 +791,40 @@ export default function AnalyticsOverview() {
                     <div className="space-y-3">
                       {recentCalls.map((call) => (
                         <div 
-                          key={call.Sid} 
+                          key={call.id} 
                           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 sm:p-5 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors border border-slate-200"
                         >
                           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 min-w-0">
                             <div className="flex items-center gap-2 min-w-0">
-                              {call.Direction === 'inbound' ? (
+                              {call.direction === 'inbound' ? (
                                 <PhoneIncoming className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 shrink-0" />
                               ) : (
                                 <PhoneOutgoing className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500 shrink-0" />
                               )}
-                              <span className="font-semibold text-slate-800 text-sm sm:text-base truncate">{call.From} → {call.To}</span>
+                              <span className="font-semibold text-slate-800 text-sm sm:text-base truncate">{call.from_number} → {call.to_number}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              {call.Status === 'completed' && <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />}
-                              {call.Status === 'failed' && <XCircle className="w-4 h-4 text-red-500 shrink-0" />}
-                              {call.Status === 'busy' && <AlertCircle className="w-4 h-4 text-yellow-500 shrink-0" />}
+                              {(call.status === 'completed' || call.status === 'user-ended' || call.status === 'agent-ended') && <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />}
+                              {(call.status === 'failed' || call.status === 'error') && <XCircle className="w-4 h-4 text-red-500 shrink-0" />}
+                              {(call.status === 'busy' || call.status === 'no-answer') && <AlertCircle className="w-4 h-4 text-yellow-500 shrink-0" />}
                               <span 
                                 className={`px-2 sm:px-3 py-1 rounded-full text-xs font-bold ${
-                                  call.Status === 'completed' 
+                                  (call.status === 'completed' || call.status === 'user-ended' || call.status === 'agent-ended')
                                     ? 'bg-green-100 text-green-700' 
-                                    : call.Status === 'failed' 
+                                    : (call.status === 'failed' || call.status === 'error')
                                     ? 'bg-red-100 text-red-700' 
                                     : 'bg-yellow-100 text-yellow-700'
                                 }`}
                               >
-                                {call.Status}
+                                {call.status}
                               </span>
                             </div>
                           </div>
                           <div className="text-left sm:text-right shrink-0">
-                            <div className="text-sm font-bold text-slate-800">{call.Duration}s</div>
-                            <div className="text-xs text-slate-500">{new Date(call.StartTime).toLocaleTimeString()}</div>
+                            <div className="text-sm font-bold text-slate-800">{call.duration}s</div>
+                            <div className="text-xs text-slate-500" suppressHydrationWarning>
+                              {mounted ? new Date(call.start_time).toLocaleTimeString() : ''}
+                            </div>
                           </div>
                         </div>
                       ))}
