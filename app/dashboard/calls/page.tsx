@@ -19,34 +19,8 @@ const mockCalls: Call[] = [
     recording_url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
     chat: JSON.stringify([
       { role: "user", content: "Hello, I'd like to schedule an appointment" },
-      { role: "assistant", content: "Of course! I'd be happy to help you schedule an appointment. What type of appointment are you looking for?" },
-      { role: "user", content: "A dental checkup please" },
-      { role: "assistant", content: "Great! Let me check our available slots for a dental checkup. What dates work best for you?" }
+      { role: "assistant", content: "Of course! I'd be happy to help you schedule an appointment." }
     ])
-  },
-  {
-    id: "call_002",
-    phone_number: "+1987654321",
-    direction: "outbound",
-    status: "completed",
-    duration: 89,
-    start_time: "2024-10-24T11:30:00Z",
-    end_time: "2024-10-24T11:31:29Z",
-    recording_url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-    chat: JSON.stringify([
-      { role: "assistant", content: "Hello, this is a reminder call about your upcoming appointment" },
-      { role: "user", content: "Yes, thank you for the reminder" },
-      { role: "assistant", content: "Your appointment is scheduled for tomorrow at 2 PM. Will you be able to make it?" },
-      { role: "user", content: "Yes, I'll be there" }
-    ])
-  },
-  {
-    id: "call_003",
-    phone_number: "+1555666777",
-    direction: "inbound",
-    status: "missed",
-    duration: 0,
-    start_time: "2024-10-24T14:15:00Z"
   }
 ];
 
@@ -90,6 +64,22 @@ const Dashboard = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Helper function to get phone number from call object
+  const getPhoneNumber = (call: any): string => {
+    // Priority: from_number (caller) > to_number > phone_number > Unknown
+    return call.from_number || call.to_number || call.phone_number || 'Unknown';
+  };
+
+  // Helper function to get display phone with direction indicator
+  const getPhoneDisplay = (call: any): { phone: string; isInbound: boolean } => {
+    const isInbound = call.direction === 'inbound';
+    const phone = isInbound 
+      ? (call.from_number || call.phone_number || 'Unknown')
+      : (call.to_number || call.phone_number || 'Unknown');
+    
+    return { phone, isInbound };
+  };
 
   const fetchCalls = async (page = 1, limit = 100, search = '', isBackground = false) => {
     try {
@@ -151,7 +141,7 @@ const Dashboard = () => {
       setAvailableAgents(agentNames);
     } catch (err: any) {
       console.warn('Could not fetch agents:', err.message);
-      const agents = [...new Set(calls.map((call: Call) => call.agent_id).filter(Boolean))];
+      const agents = [...new Set(calls.map((call: Call) => call.agent_id || call.agent_name).filter(Boolean))];
       setAvailableAgents(agents as string[]);
     }
   };
@@ -194,7 +184,7 @@ const Dashboard = () => {
   const handleSearch = () => {
     if (isUsingMockData) {
       const filtered = mockCalls.filter(call =>
-        call.phone_number?.includes(searchQuery) ||
+        getPhoneNumber(call).includes(searchQuery) ||
         call.id.includes(searchQuery) ||
         call.status?.includes(searchQuery.toLowerCase())
       );
@@ -208,7 +198,9 @@ const Dashboard = () => {
     let filteredCalls = [...allCalls];
 
     if (selectedAgent) {
-      filteredCalls = filteredCalls.filter(call => call.agent_id === selectedAgent);
+      filteredCalls = filteredCalls.filter(call => 
+        call.agent_id === selectedAgent || call.agent_name === selectedAgent
+      );
     }
 
     if (selectedStatus) {
@@ -219,7 +211,7 @@ const Dashboard = () => {
 
     if (phoneFilter) {
       filteredCalls = filteredCalls.filter(call =>
-        call.phone_number?.includes(phoneFilter)
+        getPhoneNumber(call).includes(phoneFilter)
       );
     }
 
@@ -307,10 +299,16 @@ const Dashboard = () => {
   const getStatusColor = (status?: string) => {
     switch (status?.toLowerCase()) {
       case 'completed':
+      case 'user-ended':
+      case 'agent-ended':
         return 'bg-emerald-100 text-emerald-800 border-emerald-200';
       case 'missed':
+      case 'no-answer':
+      case 'busy':
         return 'bg-red-100 text-red-800 border-red-200';
       case 'ongoing':
+      case 'in-progress':
+      case 'ringing':
         return 'bg-amber-100 text-amber-800 border-amber-200';
       default:
         return 'bg-gray-100 text-gray-800 border-gray-200';
@@ -364,7 +362,7 @@ const Dashboard = () => {
                     <div className="flex items-center gap-2 mt-3 text-sm">
                       <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full">
                         <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                        <span>Connecting...</span>
+                        <span>Live</span>
                       </div>
                       <div className="text-purple-100">Last updated: {formatLastRefreshTime() || 'Just now'}</div>
                     </div>
@@ -505,6 +503,8 @@ const Dashboard = () => {
                           <option value="completed">Completed</option>
                           <option value="agent-ended">Agent Ended</option>
                           <option value="user-ended">User Ended</option>
+                          <option value="missed">Missed</option>
+                          <option value="no-answer">No Answer</option>
                         </select>
                       </div>
 
@@ -572,220 +572,262 @@ const Dashboard = () => {
 
               {/* Calls List */}
               <div className="space-y-4">
-                {calls.map((call: any) => (
-                  <div key={call.id} className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div
-                      onClick={() => handleCallClick(call.id)}
-                      className="p-6 cursor-pointer hover:bg-gray-50 transition-colors"
-                    >
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-                        <div>
-                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">ID</p>
-                          <p className="text-sm text-gray-900 font-mono font-medium">{call.session_id || call.id}</p>
-                        </div>
-
-                        <div>
-                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Agent</p>
-                          <p className="text-sm text-gray-900 font-medium">{call.agent_id || 'dr appointment'}</p>
-                        </div>
-
-                        <div>
-                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Phone</p>
-                          <div className="flex items-center gap-2">
-                            <p className="text-sm text-gray-900 font-medium">{call.phone_number || 'Unknown'}</p>
-                            {call.direction === 'inbound' && (
-                              <span className="px-2 py-0.5 text-xs bg-blue-100 text-blue-700 rounded-full font-semibold">→</span>
-                            )}
+                {calls.map((call: any) => {
+                  const { phone, isInbound } = getPhoneDisplay(call);
+                  
+                  return (
+                    <div key={call.id} className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                      <div
+                        onClick={() => handleCallClick(call.id)}
+                        className="p-6 cursor-pointer hover:bg-gray-50 transition-colors"
+                      >
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+                          <div>
+                            <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">ID</p>
+                            <p className="text-sm text-gray-900 font-mono font-medium">{call.session_id || call.id}</p>
                           </div>
-                        </div>
 
-                        <div>
-                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Status</p>
-                          <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full border ${getStatusColor(call.status || call.call_status || 'completed')}`}>
-                            {call.status || call.call_status || 'completed'}
-                          </span>
-                        </div>
+                          <div>
+                            <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Agent</p>
+                            <p className="text-sm text-gray-900 font-medium">{call.agent_name || call.agent_id || 'dr appointment'}</p>
+                          </div>
 
-                        <div>
-                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Duration</p>
-                          <p className="text-sm text-gray-900 font-medium">{formatDuration(call.duration)}</p>
-                        </div>
+                          <div>
+                            <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">
+                              {isInbound ? 'Caller' : 'Called To'}
+                            </p>
+                            <div className="flex items-center gap-2">
+                              <p className="text-sm text-gray-900 font-medium">{phone}</p>
+                              {isInbound ? (
+                                <span className="px-2 py-0.5 text-xs bg-blue-100 text-blue-700 rounded-full font-semibold" title="Inbound">
+                                  ↓ IN
+                                </span>
+                              ) : (
+                                <span className="px-2 py-0.5 text-xs bg-green-100 text-green-700 rounded-full font-semibold" title="Outbound">
+                                  ↑ OUT
+                                </span>
+                              )}
+                            </div>
+                          </div>
 
-                        <div className="text-right">
-                          <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Timestamp</p>
-                          <p className="text-xs text-gray-600 font-medium">
-                            {call.start_time ? new Date(call.start_time).toLocaleString() : 'N/A'}
-                          </p>
+                          <div>
+                            <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Status</p>
+                            <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full border ${getStatusColor(call.status || call.call_status || 'completed')}`}>
+                              {call.status || call.call_status || 'completed'}
+                            </span>
+                          </div>
+
+                          <div>
+                            <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Duration</p>
+                            <p className="text-sm text-gray-900 font-medium">{formatDuration(call.duration)}</p>
+                          </div>
+
+                          <div className="text-right">
+                            <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Timestamp</p>
+                            <p className="text-xs text-gray-600 font-medium">
+                              {call.start_time ? new Date(call.start_time).toLocaleString() : 'N/A'}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {expandedCall === call.id && (
-                      <>
-                        <div className="border-t border-gray-200"></div>
-                        <div className="p-6 bg-gradient-to-br from-gray-50 to-gray-100">
-                          {/* Recordings Section */}
-                          <div className="mb-6">
-                            <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                              <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-2 rounded-lg">
-                                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                              </div>
-                              Recordings & AI Analysis
-                            </h3>
-
-                            {call.recording_url || (call.recording && (call.recording.url || call.recording.recording_url)) ? (
-                              <div className="bg-white rounded-xl border-2 border-gray-200 p-5 shadow-sm">
-                                <div className="flex items-start gap-2 mb-3">
-                                  <svg className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                  </svg>
-                                  <p className="text-xs text-gray-600 font-mono break-all bg-gray-50 p-2 rounded-lg flex-1">
-                                    {call.recording_url || call.recording.url || call.recording.recording_url}
-                                  </p>
-                                </div>
-                                <audio
-                                  controls
-                                  className="w-full"
-                                  src={call.recording_url || call.recording.url || call.recording.recording_url}
-                                  preload="metadata"
-                                >
-                                  Your browser does not support the audio element.
-                                </audio>
-                              </div>
-                            ) : call.agent_config?.call_settings?.enable_recording ? (
-                              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
-                                <div className="flex items-start gap-3">
-                                  <svg className="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                  </svg>
-                                  <div>
-                                    <p className="font-bold text-blue-900 mb-1">✅ Recording Enabled - Processing</p>
-                                    <p className="text-sm text-blue-800">
-                                      Recording is enabled for this call. It may still be processing. Check your{' '}
-                                      <a href="https://dashboard.millis.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-bold underline hover:text-blue-700">
-                                        Millis Dashboard
-                                      </a>{' '}
-                                      for the recording.
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            ) : (
-                              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
-                                <div className="flex items-start gap-3">
-                                  <svg className="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                  </svg>
-                                  <div>
-                                    <p className="font-bold text-blue-900 mb-1">No Recording Available</p>
-                                    <p className="text-sm text-blue-800">
-                                      Recording was not enabled for this call. Enable <code className="bg-gray-800 text-white px-2 py-1 rounded text-xs font-mono">enable_recording: true</code> in agent settings.
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-
-                          {/* Transcription Section */}
-                          {(call.chat || call.transcription) && (
-                            <div>
+                      {expandedCall === call.id && (
+                        <>
+                          <div className="border-t border-gray-200"></div>
+                          <div className="p-6 bg-gradient-to-br from-gray-50 to-gray-100">
+                            {/* Call Details Section */}
+                            <div className="mb-6 bg-white rounded-xl border-2 border-gray-200 p-5">
                               <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
                                 <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-2 rounded-lg">
                                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                   </svg>
                                 </div>
-                                Call Transcription
+                                Call Details
                               </h3>
-                              <div className="bg-white border-2 border-gray-200 rounded-xl p-4 max-h-96 overflow-auto shadow-sm">
-                                {(() => {
-                                  try {
-                                    let chatData = call.chat || call.transcription;
-
-                                    if (typeof chatData === 'string') {
-                                      if (!chatData.trim().startsWith('[') && !chatData.trim().startsWith('{')) {
-                                        return (
-                                          <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">
-                                            {chatData}
-                                          </p>
-                                        );
-                                      }
-
-                                      try {
-                                        chatData = JSON.parse(chatData);
-                                      } catch (parseError) {
-                                        return (
-                                          <div className="bg-red-50 border-2 border-red-200 rounded-lg p-3 text-red-800">
-                                            Failed to parse transcription
-                                          </div>
-                                        );
-                                      }
-                                    }
-
-                                    if (Array.isArray(chatData)) {
-                                      return chatData.map((message: any, index: number) => {
-                                        if (message.role === 'tool') return null;
-
-                                        return (
-                                          <div
-                                            key={index}
-                                            className={`mb-3 p-4 rounded-xl border-2 ${
-                                              message.role === 'assistant'
-                                                ? 'bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200'
-                                                : 'bg-gradient-to-r from-green-50 to-emerald-50 border-green-200'
-                                            }`}
-                                          >
-                                            <p className={`text-xs font-bold mb-2 uppercase tracking-wide ${
-                                              message.role === 'assistant' ? 'text-blue-900' : 'text-green-900'
-                                            }`}>
-                                              {message.role === 'assistant' ? '🤖 AI Agent' : '👤 User'}
-                                            </p>
-                                            <p className={`text-sm whitespace-pre-wrap leading-relaxed ${
-                                              message.role === 'assistant' ? 'text-blue-900' : 'text-green-900'
-                                            }`}>
-                                              {message.content}
-                                            </p>
-                                          </div>
-                                        );
-                                      }).filter(Boolean);
-                                    }
-
-                                    return (
-                                      <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-3 text-amber-800">
-                                        Unexpected transcription format
-                                      </div>
-                                    );
-                                  } catch (e) {
-                                    return (
-                                      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-3 text-red-800">
-                                        Failed to display transcription
-                                      </div>
-                                    );
-                                  }
-                                })()}
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                  <p className="text-xs font-semibold text-gray-500 mb-1 uppercase">From Number</p>
+                                  <p className="text-sm text-gray-900 font-mono">{call.from_number || 'Unknown'}</p>
+                                </div>
+                                <div>
+                                  <p className="text-xs font-semibold text-gray-500 mb-1 uppercase">To Number</p>
+                                  <p className="text-sm text-gray-900 font-mono">{call.to_number || 'Unknown'}</p>
+                                </div>
+                                <div>
+                                  <p className="text-xs font-semibold text-gray-500 mb-1 uppercase">Direction</p>
+                                  <p className="text-sm text-gray-900 capitalize">{call.direction || 'Unknown'}</p>
+                                </div>
+                                <div>
+                                  <p className="text-xs font-semibold text-gray-500 mb-1 uppercase">Call ID</p>
+                                  <p className="text-sm text-gray-900 font-mono">{call.call_id || call.id}</p>
+                                </div>
                               </div>
                             </div>
-                          )}
 
-                          {!call.chat && !call.transcription && (
-                            <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 mt-6">
-                              <div className="flex items-center gap-3">
-                                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <p className="text-blue-800 font-medium">No transcription available for this call</p>
-                              </div>
+                            {/* Recordings Section */}
+                            <div className="mb-6">
+                              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-2 rounded-lg">
+                                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  </svg>
+                                </div>
+                                Recordings & AI Analysis
+                              </h3>
+
+                              {call.recording_url || (call.recording && (call.recording.url || call.recording.recording_url)) ? (
+                                <div className="bg-white rounded-xl border-2 border-gray-200 p-5 shadow-sm">
+                                  <div className="flex items-start gap-2 mb-3">
+                                    <svg className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                    <p className="text-xs text-gray-600 font-mono break-all bg-gray-50 p-2 rounded-lg flex-1">
+                                      {call.recording_url || call.recording.url || call.recording.recording_url}
+                                    </p>
+                                  </div>
+                                  <audio
+                                    controls
+                                    className="w-full"
+                                    src={call.recording_url || call.recording.url || call.recording.recording_url}
+                                    preload="metadata"
+                                  >
+                                    Your browser does not support the audio element.
+                                  </audio>
+                                </div>
+                              ) : call.agent_config?.call_settings?.enable_recording ? (
+                                <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
+                                  <div className="flex items-start gap-3">
+                                    <svg className="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <div>
+                                      <p className="font-bold text-blue-900 mb-1">✅ Recording Enabled - Processing</p>
+                                      <p className="text-sm text-blue-800">
+                                        Recording is enabled for this call. It may still be processing. Check your{' '}
+                                        <a href="https://dashboard.millis.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-bold underline hover:text-blue-700">
+                                          Millis Dashboard
+                                        </a>{' '}
+                                        for the recording.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
+                                  <div className="flex items-start gap-3">
+                                    <svg className="w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <div>
+                                      <p className="font-bold text-blue-900 mb-1">No Recording Available</p>
+                                      <p className="text-sm text-blue-800">
+                                        Recording was not enabled for this call. Enable <code className="bg-gray-800 text-white px-2 py-1 rounded text-xs font-mono">enable_recording: true</code> in agent settings.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
                             </div>
-                          )}
-                        </div>
-                      </>
-                    )}
-                  </div>
-                ))}
+
+                            {/* Transcription Section */}
+                            {(call.chat || call.transcription) && (
+                              <div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                  <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-2 rounded-lg">
+                                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                    </svg>
+                                  </div>
+                                  Call Transcription
+                                </h3>
+                                <div className="bg-white border-2 border-gray-200 rounded-xl p-4 max-h-96 overflow-auto shadow-sm">
+                                  {(() => {
+                                    try {
+                                      let chatData = call.chat || call.transcription;
+
+                                      if (typeof chatData === 'string') {
+                                        if (!chatData.trim().startsWith('[') && !chatData.trim().startsWith('{')) {
+                                          return (
+                                            <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">
+                                              {chatData}
+                                            </p>
+                                          );
+                                        }
+
+                                        try {
+                                          chatData = JSON.parse(chatData);
+                                        } catch (parseError) {
+                                          return (
+                                            <div className="bg-red-50 border-2 border-red-200 rounded-lg p-3 text-red-800">
+                                              Failed to parse transcription
+                                            </div>
+                                          );
+                                        }
+                                      }
+
+                                      if (Array.isArray(chatData)) {
+                                        return chatData.map((message: any, index: number) => {
+                                          if (message.role === 'tool') return null;
+
+                                          return (
+                                            <div
+                                              key={index}
+                                              className={`mb-3 p-4 rounded-xl border-2 ${
+                                                message.role === 'assistant'
+                                                  ? 'bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200'
+                                                  : 'bg-gradient-to-r from-green-50 to-emerald-50 border-green-200'
+                                              }`}
+                                            >
+                                              <p className={`text-xs font-bold mb-2 uppercase tracking-wide ${
+                                                message.role === 'assistant' ? 'text-blue-900' : 'text-green-900'
+                                              }`}>
+                                                {message.role === 'assistant' ? '🤖 AI Agent' : '👤 User'}
+                                              </p>
+                                              <p className={`text-sm whitespace-pre-wrap leading-relaxed ${
+                                                message.role === 'assistant' ? 'text-blue-900' : 'text-green-900'
+                                              }`}>
+                                                {message.content}
+                                              </p>
+                                            </div>
+                                          );
+                                        }).filter(Boolean);
+                                      }
+
+                                      return (
+                                        <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-3 text-amber-800">
+                                          Unexpected transcription format
+                                        </div>
+                                      );
+                                    } catch (e) {
+                                      return (
+                                        <div className="bg-red-50 border-2 border-red-200 rounded-lg p-3 text-red-800">
+                                          Failed to display transcription
+                                        </div>
+                                      );
+                                    }
+                                  })()}
+                                </div>
+                              </div>
+                            )}
+
+                            {!call.chat && !call.transcription && (
+                              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 mt-6">
+                                <div className="flex items-center gap-3">
+                                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  </svg>
+                                  <p className="text-blue-800 font-medium">No transcription available for this call</p>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
 
                 {calls.length === 0 && (
                   <div className="bg-white rounded-2xl border-2 border-gray-200 shadow-lg p-12 text-center">
