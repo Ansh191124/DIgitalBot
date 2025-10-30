@@ -161,61 +161,17 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased relative`}>
-        {/* Mobile-Optimized Full Page Background Video - Lazy Loaded */}
-        <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none -z-10" aria-hidden>
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            disablePictureInPicture
-            disableRemotePlayback
-            webkit-playsinline="true"
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100"
-            style={{ 
-              filter: 'blur(1px)', 
-              willChange: 'transform',
-              backfaceVisibility: 'hidden',
-              perspective: '1000px'
-            }}
-            aria-hidden
-          >
-            {/* Optimized video sources with lower quality for mobile */}
-            <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/q_auto:low,f_auto,w_1280/v1761044195/BACK_kazdn7.mp4" type="video/mp4" media="(max-width: 768px)" />
-            <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/q_auto:eco,f_auto,w_1920/v1761044195/BACK_kazdn7.mp4" type="video/mp4" />
-            <source src="https://res.cloudinary.com/dew9qfpbl/video/upload/q_auto:eco,f_webm,w_1920/v1761044195/BACK_kazdn7.webm" type="video/webm" />
-            Your browser does not support the video tag.
-          </video>
-          {/* Responsive overlay with mobile-friendly opacity */}
-          <div className="absolute inset-0 bg-linear-to-b from-white/10 via-white/5 to-white/10 sm:from-white/5 sm:via-transparent sm:to-white/5 pointer-events-none" />
-        </div>
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased relative bg-white`}>
         
         {/* Mobile Performance Optimization */}
         <style dangerouslySetInnerHTML={{
           __html: `
-            /* Mobile video optimizations */
+            /* Mobile optimizations */
             @media (max-width: 768px) {
-              video {
-                transform: translateZ(0);
-                -webkit-transform: translateZ(0);
-                -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
-              }
-              
               /* Optimize touch interactions */
               button, [role="button"] {
                 -webkit-tap-highlight-color: transparent;
                 touch-action: manipulation;
-              }
-              
-              /* Reduce complex animations on mobile */
-              .animate-spin-slow,
-              .animate-pulse-slow,
-              .animate-ping-slow,
-              .animate-ping-slower {
-                animation-duration: 4s !important;
               }
               
               /* Improve mobile performance */
@@ -223,109 +179,8 @@ export default function RootLayout({
                 -webkit-overflow-scrolling: touch;
               }
             }
-            
-            /* Reduce motion for users who prefer it */
-            @media (prefers-reduced-motion: reduce) {
-              video {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-              }
-            }
-            
-            /* Battery saving mode and small screens */
-            @media (prefers-reduced-motion: reduce), (max-width: 480px) and (max-height: 800px) {
-              video {
-                filter: blur(2px) !important;
-                opacity: 0.7 !important;
-              }
-            }
-            
-            /* Ultra small screens optimization */
-            @media (max-width: 375px) {
-              video {
-                transform: scale(1.1) translateZ(0);
-                filter: blur(1.5px);
-              }
-              
-              .container {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
-              }
-            }
-            
-            /* Landscape mobile orientation */
-            @media (max-height: 500px) and (orientation: landscape) {
-              video {
-                transform: scale(1.2) translateZ(0);
-                object-position: center center;
-              }
-            }
           `
         }} />
-        
-        {/* Mobile Video Enhancement Script */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Mobile video optimization
-              (function() {
-                if (typeof window === 'undefined') return;
-                
-                function optimizeVideo() {
-                  const video = document.querySelector('video');
-                  if (!video) return;
-                  
-                  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                  const isLowPerf = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
-                  const isSlowConnection = navigator.connection && navigator.connection.effectiveType && 
-                    (navigator.connection.effectiveType === 'slow-2g' || navigator.connection.effectiveType === '2g');
-                  
-                  // Optimize for mobile and low-performance devices
-                  if (isMobile || isLowPerf || isSlowConnection) {
-                    video.style.filter = 'blur(2px)';
-                    video.style.opacity = '0.8';
-                    
-                    // Pause video if page becomes hidden to save battery
-                    document.addEventListener('visibilitychange', function() {
-                      if (document.hidden) {
-                        video.pause();
-                      } else {
-                        video.play().catch(function() {});
-                      }
-                    });
-                  }
-                  
-                  // Handle orientation changes on mobile
-                  if (isMobile) {
-                    window.addEventListener('orientationchange', function() {
-                      setTimeout(function() {
-                        video.style.height = window.innerHeight + 'px';
-                      }, 100);
-                    });
-                  }
-                  
-                  // Fallback for devices that can't autoplay
-                  video.addEventListener('canplay', function() {
-                    if (video.paused) {
-                      video.play().catch(function() {
-                        // If autoplay fails, show a static background
-                        video.style.display = 'none';
-                        document.body.style.background = 'linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 50%, #e1f5fe 100%)';
-                      });
-                    }
-                  });
-                }
-                
-                if (document.readyState === 'loading') {
-                  document.addEventListener('DOMContentLoaded', optimizeVideo);
-                } else {
-                  optimizeVideo();
-                }
-              })();
-            `
-          }}
-        />
         
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />

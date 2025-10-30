@@ -148,19 +148,19 @@ export default function Pricing() {
             <Card
               key={index}
               className={`relative border-2 bg-white/90 backdrop-blur-md shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 rounded-3xl overflow-visible ${
-                plan.popular ? "border-sky-400" : "border-sky-200"
+                plan.popular ? "border-sky-500" : "border-sky-200"
               }`}
             >
               {plan.popular && (
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 rounded-t-3xl"></div>
+                <div className="absolute top-0 left-0 right-0 h-1 bg-sky-500 rounded-t-3xl"></div>
               )}
               {plan.popular && (
-                <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 text-white border-0 shadow-lg z-20 px-4 py-1.5 text-sm font-semibold">
+                <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-sky-500 text-white border-0 shadow-lg z-20 px-4 py-1.5 text-sm font-semibold">
                   Most Popular
                 </Badge>
               )}
               <CardHeader className="text-center pb-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-sky-400 to-sky-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <div className="w-16 h-16 bg-sky-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <plan.icon className="h-8 w-8 text-white" />
                 </div>
                 <CardTitle className="text-2xl text-gray-900 font-bold">{plan.name}</CardTitle>
@@ -168,7 +168,7 @@ export default function Pricing() {
                 <div className="mt-6">
                   {plan.usdPrice ? (
                     <>
-                      <span className="text-5xl font-extrabold bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">
+                      <span className="text-5xl font-extrabold text-sky-600">
                         {isINR ? `₹${plan.inrPrice.toLocaleString()}` : `$${plan.usdPrice}`}
                       </span>
                       <div className="text-gray-600 text-sm mt-2">
@@ -176,7 +176,7 @@ export default function Pricing() {
                       </div>
                     </>
                   ) : (
-                    <span className="text-4xl font-extrabold bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">
+                    <span className="text-4xl font-extrabold text-sky-600">
                       Let's Talk
                     </span>
                   )}
@@ -186,7 +186,7 @@ export default function Pricing() {
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start text-sm">
-                      <div className="h-5 w-5 rounded-full bg-gradient-to-r from-sky-500 to-sky-400 flex items-center justify-center mr-3 shrink-0 mt-0.5">
+                      <div className="h-5 w-5 rounded-full bg-sky-500 flex items-center justify-center mr-3 shrink-0 mt-0.5">
                         <Check className="h-3 w-3 text-white" />
                       </div>
                       <span className="text-gray-900 font-medium">
@@ -198,7 +198,7 @@ export default function Pricing() {
                 <Button
                   className={`w-full rounded-full font-semibold transition-all duration-300 ${
                     plan.popular
-                      ? "bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 text-white shadow-lg shadow-sky-300/50"
+                      ? "bg-sky-600 hover:bg-sky-700 text-white shadow-lg shadow-sky-300/50"
                       : "bg-white hover:bg-sky-50 text-sky-700 border-2 border-sky-300 hover:border-sky-400"
                   }`}
                   onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
@@ -223,7 +223,7 @@ export default function Pricing() {
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">
+              <span className="text-sky-600">
                 Frequently Asked Questions
               </span>
             </h2>
@@ -264,7 +264,7 @@ export default function Pricing() {
 
             <div className="relative z-10">
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                <span className="bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 bg-clip-text text-transparent">
+                <span className="text-sky-600">
                   Ready to get started?
                 </span>
               </h2>
@@ -274,7 +274,7 @@ export default function Pricing() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 text-white rounded-full shadow-lg shadow-sky-300/50 font-semibold transition-all duration-300"
+                  className="bg-sky-600 hover:bg-sky-700 text-white rounded-full shadow-lg shadow-sky-300/50 font-semibold transition-all duration-300"
                   onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
                 >
                   Get Started Today

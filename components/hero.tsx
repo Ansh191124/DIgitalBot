@@ -348,25 +348,6 @@ export function Hero() {
 
     const radius = isMounted ? (screenSize < 640 ? 130 : 170) : 170;
 
-    // Don't render complex interactive elements until mounted
-    if (!isMounted) {
-        return (
-            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen">
-                <div className="container mx-auto relative z-10 max-w-6xl">
-                    <div className="flex justify-center mb-12">
-                        <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-sm border border-sky-200/60 shadow-lg">
-                            <Sparkles className="h-4 w-4 text-sky-500" />
-                            <span className="font-medium">AI-Powered Customer Engagement Platform</span>
-                        </div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-4xl font-bold text-gray-900">Loading...</div>
-                    </div>
-                </div>
-            </section>
-        )
-    }
-
     return (
         <>
             <style dangerouslySetInnerHTML={{
@@ -649,9 +630,9 @@ export function Hero() {
                         
                         {/* Rich Snippet Optimized Description */}
                         <div className="max-w-5xl mx-auto mb-8">
-                            <p className="text-lg sm:text-xl text-gray-700 mb-4 leading-relaxed min-h-16 animate-fade-in-left">
+                            <p className="text-lg sm:text-xl text-gray-700 mb-4 leading-relaxed min-h-16 animate-fade-in-left" suppressHydrationWarning>
                                 <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">Ready-to-Use AI Voice Assistants</span> that never sleep, never get sick, never take breaks. 
-                                Get instant <span className="font-semibold text-sky-600">call automation</span>, <span className="font-semibold text-sky-600">detailed analytics dashboard</span>, and 
+                                Get instant <span className="font-semibold text-sky-600">call automation</span>, <span className="font-semibold text-sky-600">detailed analytics dashboard</span>, and
                                 <span className="font-semibold text-sky-600"> personalized business insights</span> to transform your customer service operations.
                             </p>
                             <p className="text-base sm:text-lg text-gray-600 leading-relaxed flex flex-wrap items-center justify-center gap-3 sm:gap-4 animate-fade-in-right">
@@ -829,19 +810,19 @@ export function Hero() {
                     <div className="flex flex-col items-center justify-center gap-16 animate-fade-in-up-2">
                         
                         {/* Voice Assistant Section */}
-                        <div className="w-full flex flex-col items-center justify-center">
-                            <div className="relative w-full h-80 sm:h-96 lg:h-[400px] flex items-center justify-center">
-                                <div className="relative w-full h-full flex items-center justify-center">
-                                    <div className="relative w-full max-w-xl h-full flex items-center justify-center">
-                                        <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-full flex flex-col items-center justify-center" suppressHydrationWarning>
+                            <div className="relative w-full h-80 sm:h-96 lg:h-[400px] flex items-center justify-center" suppressHydrationWarning>
+                                <div className="relative w-full h-full flex items-center justify-center" suppressHydrationWarning>
+                                    <div className="relative w-full max-w-xl h-full flex items-center justify-center" suppressHydrationWarning>
+                                        <div className="absolute inset-0 flex items-center justify-center" suppressHydrationWarning>
                                             <div className={`${isMobileDevice ? 'w-60 h-60' : 'w-80 h-80'} rounded-full transition-all duration-500 ${
                                                 isSpeaking
                                                     ? 'bg-linear-to-r from-sky-500/30 via-blue-500/30 to-sky-500/30 blur-3xl'
                                                     : 'bg-linear-to-r from-sky-400/20 via-blue-400/20 to-sky-400/20 blur-3xl'
-                                                }`}></div>
+                                                }`} suppressHydrationWarning></div>
                                         </div>
 
-                                        <div className={`relative transition-all duration-500 ${isSpeaking ? 'scale-110' : 'scale-105'}`}>
+                                        <div className={`relative transition-all duration-500 ${isSpeaking ? 'scale-110' : 'scale-105'}`} suppressHydrationWarning>
                                             <div
                                                 id="lottie-animation"
                                                 className="w-64 h-64 sm:w-80 sm:h-80"
@@ -850,9 +831,10 @@ export function Hero() {
                                                         ? 'hue-rotate(0deg) saturate(1.3) brightness(1.1)'
                                                         : 'hue-rotate(0deg) saturate(1.1) brightness(1.0)'
                                                 }}
+                                                suppressHydrationWarning
                                             ></div> 
                                             
-                                            <div className="absolute inset-0 flex items-center justify-center">
+                                            <div className="absolute inset-0 flex items-center justify-center" suppressHydrationWarning>
                                                 <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/10 animate-wave-1"></div>
                                                 <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/5 animate-wave-2" style={{ animationDelay: '0.3s' }}></div>
                                                 <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/0 animate-wave-3" style={{ animationDelay: '0.6s' }}></div>
@@ -868,8 +850,9 @@ export function Hero() {
                                                             : 'bg-sky-500/60 hover:bg-sky-600/70 text-white hover:scale-105'
                                                         }`}
                                                     aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
+                                                    suppressHydrationWarning
                                                 >
-                                                    <div className="mb-1">
+                                                    <div className="mb-1" suppressHydrationWarning>
                                                         {isCallActive ? (
                                                             <Square className="h-5 w-5 sm:h-6 sm:w-6" />
                                                         ) : (
@@ -877,7 +860,7 @@ export function Hero() {
                                                         )}
                                                     </div>
 
-                                                    <div className="flex items-end justify-center gap-0.5 h-4 sm:h-5"> 
+                                                    <div className="flex items-end justify-center gap-0.5 h-4 sm:h-5" suppressHydrationWarning> 
                                                         {[...Array(12)].map((_, i) => {
                                                             const centerIndex = 5.5;
                                                             const maxHeight = 12 - (Math.abs(i - centerIndex) * 0.8); 
@@ -952,14 +935,8 @@ export function Hero() {
                                 </div>
                             </div>
 
-                            {/* Transcript Display */}
-                            <div className={`w-full max-w-2xl p-4 rounded-2xl border transition-all duration-300 mb-6 ${isCallActive ? 'bg-white/80 border-sky-300 shadow-lg' : 'bg-white/60 border-gray-200'}`}>
-                                <div className="text-xs font-semibold uppercase text-sky-600 mb-2">{callStatus || "Ready to assist"}</div>
-                                <p className="text-sm sm:text-base text-gray-800 font-medium transition-colors duration-500">{transcript}</p>
-                            </div>
-
                             {/* Action Buttons */}
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center" suppressHydrationWarning>
                                 <Button
                                     size="lg"
                                     onClick={toggleCall}
@@ -968,6 +945,7 @@ export function Hero() {
                                         : 'bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-400/50 transform hover:scale-105'
                                     } flex items-center`}
                                     aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
+                                    suppressHydrationWarning
                                 >
                                     {isCallActive ? 'Stop Conversation' : 'Start Conversation'}
                                     {isCallActive ? (
@@ -988,139 +966,10 @@ export function Hero() {
                             </div>
                         </div>
 
-                        {/* Elegant Divider */}
-                        <div className="w-full flex items-center justify-center my-16 px-8">
-                            <div className="flex-1 h-px bg-linear-to-r from-transparent via-sky-200/40 to-transparent"></div>
-                            <div className="mx-6 flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-sky-400/30"></div>
-                                <div className="w-2 h-2 rounded-full bg-sky-400/50"></div>
-                                <div className="w-2 h-2 rounded-full bg-sky-400/30"></div>
-                            </div>
-                            <div className="flex-1 h-px bg-linear-to-r from-transparent via-sky-200/40 to-transparent"></div>
-                        </div>
-
-                        {/* Sample Conversations */}
-                        <div className="w-full flex flex-col items-center justify-center px-4">
-                            <h3 className="mb-8 sm:mb-12 text-transparent bg-clip-text bg-linear-to-r from-sky-400 via-sky-500 to-blue-600 font-bold text-2xl sm:text-3xl text-center tracking-tight">
-                                Sample Conversations
-                            </h3>
-
-                            <div className="relative w-full max-w-md h-[450px] sm:h-[550px] flex items-center justify-center mx-auto">
-                                <div className="absolute inset-0 bg-linear-to-br from-sky-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-
-                                {/* Center AI Agent Circle */}
-                                <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-linear-to-br from-sky-400 via-sky-500 to-blue-600 shadow-2xl flex items-center justify-center">
-                                    <div className="absolute inset-0 rounded-full bg-sky-400/30 animate-ping"></div>
-                                    <div className="absolute inset-0 rounded-full bg-linear-to-br from-sky-400/40 to-blue-500/40 animate-pulse"></div>
-                                    
-                                    <div className="text-center relative z-10">
-                                        <div className="text-white text-xs sm:text-sm font-bold tracking-wide">AI Agent</div>
-                                        
-                                    </div>
-                                </div>
-
-                                {/* Surrounding Circles */}
-                                {[
-                                    { label: "Support Inquiry", angle: -90, icon: "💬" },
-                                    { label: "Appointment Booking", angle: -18, icon: "📅" },
-                                    { label: "Order Status", angle: 54, icon: "📦" },
-                                    { label: "Game Character", angle: 126, icon: "🎮" },
-                                    { label: "Trainer", angle: 198, icon: "💪" }
-                                ].map((item, index) => {
-                                    const angleRad = (item.angle * Math.PI) / 180;
-                                    const x = Math.cos(angleRad) * radius;
-                                    const y = Math.sin(angleRad) * radius;
-                                    const isPlaying = playingCircle === index;
-
-                                    return (
-                                        <div key={index}>
-                                            <svg className="absolute w-full h-full pointer-events-none" style={{ top: 0, left: 0 }}>
-                                                <defs>
-                                                    <linearGradient id={`gradient-${index}`} x1="50%" y1="50%" x2={`calc(50% + ${x}px)`} y2={`calc(50% + ${y}px)`} gradientUnits="userSpaceOnUse">
-                                                        <stop offset="0%" stopColor={isPlaying ? "#38bdf8" : "#64748b"} stopOpacity={isPlaying ? "0.8" : "0.3"} />
-                                                        <stop offset="100%" stopColor={isPlaying ? "#0ea5e9" : "#475569"} stopOpacity={isPlaying ? "1" : "0.4"} />
-                                                    </linearGradient>
-                                                </defs>
-                                                <line
-                                                    x1="50%"
-                                                    y1="50%"
-                                                    x2={`calc(50% + ${x}px)`}
-                                                    y2={`calc(50% + ${y}px)`}
-                                                    stroke={`url(#gradient-${index})`}
-                                                    strokeWidth={isPlaying ? "3" : "1.5"}
-                                                    className="transition-all duration-300"
-                                                    style={{
-                                                        filter: isPlaying ? 'drop-shadow(0 0 8px rgba(56, 189, 248, 0.6))' : 'none'
-                                                    }}
-                                                />
-                                            </svg>
-
-                                            <button
-                                                onClick={() => setPlayingCircle(isPlaying ? null : index)}
-                                                className={`absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full shadow-2xl flex flex-col items-center justify-center border-2 sm:border-4 transition-all duration-300 ${isPlaying
-                                                    ? 'bg-linear-to-br from-sky-400 via-sky-500 to-blue-600 border-white/40 shadow-sky-400/80 scale-105'
-                                                    : 'bg-linear-to-br from-sky-700 via-sky-800 to-sky-900 border-white/20 hover:border-sky-300/60 hover:shadow-sky-300/30'
-                                                }`}
-                                                style={{
-                                                    left: `calc(50% + ${x}px)`,
-                                                    top: `calc(50% + ${y}px)`,
-                                                    transform: 'translate(-50%, -50%)',
-                                                    boxShadow: isPlaying 
-                                                        ? '0 20px 60px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.4)' 
-                                                        : '0 10px 30px rgba(0, 0, 0, 0.5)'
-                                                }}
-                                            >
-                                                {isPlaying && (
-                                                    <div className="absolute inset-0 rounded-full bg-sky-400/20 animate-ping"></div>
-                                                )}
-                                                
-                                                {!isPlaying ? (
-                                                    <>
-                                                        <div className="text-2xl sm:text-3xl mb-1 filter drop-shadow-lg">
-                                                            {item.icon}
-                                                        </div>
-                                                        <p className="text-[10px] sm:text-xs font-bold text-center px-1 sm:px-2 text-gray-300 leading-tight mb-1">
-                                                            {item.label}
-                                                        </p>
-                                                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-sky-500/30 flex items-center justify-center hover:bg-sky-500/50 transition-colors">
-                                                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-4 sm:h-4">
-                                                                <path d="M3 2L13 8L3 14V2Z" fill="#38bdf8" />
-                                                            </svg>
-                                                        </div>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <div className="text-2xl sm:text-3xl mb-1 filter drop-shadow-lg animate-bounce">
-                                                            {item.icon}
-                                                        </div>
-                                                        <div className="flex items-end justify-center gap-0.5 sm:gap-1 h-5 sm:h-7 mb-1">
-                                                            {[...Array(5)].map((_, i) => (
-                                                                <div
-                                                                    key={i}
-                                                                    className="w-1 sm:w-1.5 bg-white rounded-full shadow-lg shadow-white/50"
-                                                                    style={{
-                                                                        height: `${Math.random() * (screenSize < 640 ? 15 : 20) + 8}px`,
-                                                                        animation: `sound-bar-pulse 0.${4 + (i % 4)}s ease-in-out infinite`,
-                                                                        animationDelay: `${i * 0.06}s`
-                                                                    }}
-                                                                ></div>
-                                                            ))}
-                                                        </div>
-                                                        <p className="text-[10px] sm:text-xs font-bold text-center px-1 sm:px-2 text-white leading-tight drop-shadow-md">
-                                                            {item.label}
-                                                        </p>
-                                                    </>
-                                                )}
-                                            </button>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </div>
-
+                       
                         {/* Stats Section */}
                         <div className="mt-20 relative z-10">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center" suppressHydrationWarning>
                                 {stats.map((stat, i) => (
                                     <div
                                         key={i}
@@ -1129,7 +978,7 @@ export function Hero() {
                                         <div className="absolute -top-10 -left-10 w-40 h-40 bg-linear-to-tr from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
                                         <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-linear-to-bl from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
 
-                                        <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient relative z-10">
+                                        <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient relative z-10" suppressHydrationWarning>
                                             {stats[i].formatter(counts[i])}
                                             {stat.suffix}
                                         </div>

@@ -31,12 +31,11 @@ const values = [
 
 export default function About() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-sky-100 text-sky-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800 dark:text-white">
+    <main className="min-h-screen bg-white text-sky-900 dark:bg-slate-950 dark:text-white">
       <Header />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-200/50 to-transparent dark:from-sky-900/30 blur-3xl"></div>
         <div className="relative z-10">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
             About DigitalBot.ai
@@ -48,7 +47,7 @@ export default function About() {
       </section>
 
       {/* Story Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-sky-100 via-white to-sky-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -97,7 +96,7 @@ export default function About() {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-sky-50 to-sky-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-950">
         <div className="container mx-auto text-center">
           <div className="mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
