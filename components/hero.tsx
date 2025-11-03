@@ -46,21 +46,20 @@ export function Hero() {
     const [transcript, setTranscript] = useState("Hello! I'm your AI assistant. Click the microphone to start a conversation in any Language.")
     const [callStatus, setCallStatus] = useState("")
     const lottieAnimationRef = useRef<LottieAnimation | null>(null)
-    const [playingCircle, setPlayingCircle] = useState<number | null>(null)
-    const [screenSize, setScreenSize] = useState<number>(768)
     const [vapiLoaded, setVapiLoaded] = useState(false)
     const [isMobileDevice, setIsMobileDevice] = useState(false)
     const [reduceMotion, setReduceMotion] = useState(false)
-    const [typewriterComplete, setTypewriterComplete] = useState(false)
+    const soundBarHeightsRef = useRef<number[]>([])
 
     // Mount effect - only run on client
     useEffect(() => {
         setIsMounted(true)
         if (typeof window !== 'undefined') {
-            setScreenSize(window.innerWidth)
             // Force animations to be enabled for testing
             setIsMobileDevice(false)
             setReduceMotion(false)
+            // Initialize stable random heights for sound bars
+            soundBarHeightsRef.current = Array.from({ length: 12 }, () => Math.random())
             // Original detection (commented out for animation testing):
             // setIsMobileDevice(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768)
             // setReduceMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
@@ -239,57 +238,6 @@ export function Hero() {
         return () => intervals.forEach(clearInterval)
     }, [isMounted])
 
-    // Typewriter effect for description
-    useEffect(() => {
-        if (!isMounted) return
-
-        const typewriterElement = document.getElementById('typewriter-text')
-        if (!typewriterElement) return
-
-        const fullText = `<span class="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">Ready-to-Use AI Voice Assistants</span> that never sleep, never get sick, never take breaks. Get instant <span class="font-semibold text-sky-600">call automation</span>, <span class="font-semibold text-sky-600">detailed analytics dashboard</span>, and <span class="font-semibold text-sky-600">personalized business insights</span> to transform your customer service operations.`
-        
-        let currentIndex = 0
-        let isInsideTag = false
-        let currentHTML = ''
-
-        const typeNextCharacter = () => {
-            if (currentIndex < fullText.length) {
-                const char = fullText[currentIndex]
-                
-                if (char === '<') {
-                    isInsideTag = true
-                } else if (char === '>') {
-                    isInsideTag = false
-                    currentHTML += char
-                    typewriterElement.innerHTML = currentHTML
-                    currentIndex++
-                    setTimeout(typeNextCharacter, 0)
-                    return
-                }
-
-                if (isInsideTag) {
-                    currentHTML += char
-                    currentIndex++
-                    setTimeout(typeNextCharacter, 0)
-                } else {
-                    currentHTML += char
-                    typewriterElement.innerHTML = currentHTML + '<span class="animate-pulse text-sky-600">|</span>'
-                    currentIndex++
-                    setTimeout(typeNextCharacter, 5) // Typing speed - super fast
-                }
-            } else {
-                typewriterElement.innerHTML = currentHTML
-                setTypewriterComplete(true)
-            }
-        }
-
-        const timer = setTimeout(() => {
-            typeNextCharacter()
-        }, 100)
-
-        return () => clearTimeout(timer)
-    }, [isMounted])
-
     const faqs = [
         {
             q: "What is an AI voice assistant and how does it work?",
@@ -345,8 +293,6 @@ export function Hero() {
             description: "85% automation rate, 60% cost reduction, 40% better satisfaction. ROI in 90 days." 
         }
     ]
-
-    const radius = isMounted ? (screenSize < 640 ? 130 : 170) : 170;
 
     return (
         <>
@@ -630,9 +576,9 @@ export function Hero() {
                         
                         {/* Rich Snippet Optimized Description */}
                         <div className="max-w-5xl mx-auto mb-8">
-                            <p className="text-lg sm:text-xl text-gray-700 mb-4 leading-relaxed min-h-16 animate-fade-in-left" suppressHydrationWarning>
+                            <p className="text-lg sm:text-xl text-gray-700 mb-4 leading-relaxed animate-fade-in-left">
                                 <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">Ready-to-Use AI Voice Assistants</span> that never sleep, never get sick, never take breaks. 
-                                Get instant <span className="font-semibold text-sky-600">call automation</span>, <span className="font-semibold text-sky-600">detailed analytics dashboard</span>, and
+                                Get instant <span className="font-semibold text-sky-600">call automation</span>, <span className="font-semibold text-sky-600">detailed analytics dashboard</span>, and 
                                 <span className="font-semibold text-sky-600"> personalized business insights</span> to transform your customer service operations.
                             </p>
                             <p className="text-base sm:text-lg text-gray-600 leading-relaxed flex flex-wrap items-center justify-center gap-3 sm:gap-4 animate-fade-in-right">
@@ -810,19 +756,19 @@ export function Hero() {
                     <div className="flex flex-col items-center justify-center gap-16 animate-fade-in-up-2">
                         
                         {/* Voice Assistant Section */}
-                        <div className="w-full flex flex-col items-center justify-center" suppressHydrationWarning>
-                            <div className="relative w-full h-80 sm:h-96 lg:h-[400px] flex items-center justify-center" suppressHydrationWarning>
-                                <div className="relative w-full h-full flex items-center justify-center" suppressHydrationWarning>
-                                    <div className="relative w-full max-w-xl h-full flex items-center justify-center" suppressHydrationWarning>
-                                        <div className="absolute inset-0 flex items-center justify-center" suppressHydrationWarning>
+                        <div className="w-full flex flex-col items-center justify-center">
+                            <div className="relative w-full h-80 sm:h-96 lg:h-[400px] flex items-center justify-center">
+                                <div className="relative w-full h-full flex items-center justify-center">
+                                    <div className="relative w-full max-w-xl h-full flex items-center justify-center">
+                                        <div className="absolute inset-0 flex items-center justify-center">
                                             <div className={`${isMobileDevice ? 'w-60 h-60' : 'w-80 h-80'} rounded-full transition-all duration-500 ${
                                                 isSpeaking
                                                     ? 'bg-linear-to-r from-sky-500/30 via-blue-500/30 to-sky-500/30 blur-3xl'
                                                     : 'bg-linear-to-r from-sky-400/20 via-blue-400/20 to-sky-400/20 blur-3xl'
-                                                }`} suppressHydrationWarning></div>
+                                                }`}></div>
                                         </div>
 
-                                        <div className={`relative transition-all duration-500 ${isSpeaking ? 'scale-110' : 'scale-105'}`} suppressHydrationWarning>
+                                        <div className={`relative transition-all duration-500 ${isSpeaking ? 'scale-110' : 'scale-105'}`}>
                                             <div
                                                 id="lottie-animation"
                                                 className="w-64 h-64 sm:w-80 sm:h-80"
@@ -831,10 +777,9 @@ export function Hero() {
                                                         ? 'hue-rotate(0deg) saturate(1.3) brightness(1.1)'
                                                         : 'hue-rotate(0deg) saturate(1.1) brightness(1.0)'
                                                 }}
-                                                suppressHydrationWarning
                                             ></div> 
                                             
-                                            <div className="absolute inset-0 flex items-center justify-center" suppressHydrationWarning>
+                                            <div className="absolute inset-0 flex items-center justify-center">
                                                 <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/10 animate-wave-1"></div>
                                                 <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/5 animate-wave-2" style={{ animationDelay: '0.3s' }}></div>
                                                 <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/0 animate-wave-3" style={{ animationDelay: '0.6s' }}></div>
@@ -850,9 +795,8 @@ export function Hero() {
                                                             : 'bg-sky-500/60 hover:bg-sky-600/70 text-white hover:scale-105'
                                                         }`}
                                                     aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
-                                                    suppressHydrationWarning
                                                 >
-                                                    <div className="mb-1" suppressHydrationWarning>
+                                                    <div className="mb-1">
                                                         {isCallActive ? (
                                                             <Square className="h-5 w-5 sm:h-6 sm:w-6" />
                                                         ) : (
@@ -860,11 +804,12 @@ export function Hero() {
                                                         )}
                                                     </div>
 
-                                                    <div className="flex items-end justify-center gap-0.5 h-4 sm:h-5" suppressHydrationWarning> 
+                                                    <div className="flex items-end justify-center gap-0.5 h-4 sm:h-5"> 
                                                         {[...Array(12)].map((_, i) => {
                                                             const centerIndex = 5.5;
                                                             const maxHeight = 12 - (Math.abs(i - centerIndex) * 0.8); 
                                                             const minHeight = 2;
+                                                            const randomValue = soundBarHeightsRef.current[i] || 0.5;
                                                             
                                                             return (
                                                                 <div
@@ -878,7 +823,7 @@ export function Hero() {
                                                                     }`}
                                                                     style={{
                                                                         height: isSpeaking
-                                                                            ? `${Math.random() * (maxHeight - 4) + 4}px`
+                                                                            ? `${randomValue * (maxHeight - 4) + 4}px`
                                                                             : isCallActive
                                                                                 ? `${minHeight + (maxHeight - minHeight) * 0.3}px`
                                                                                 : `${minHeight}px`,
@@ -935,8 +880,14 @@ export function Hero() {
                                 </div>
                             </div>
 
+                            {/* Transcript Display */}
+                            <div className={`w-full max-w-2xl p-4 rounded-2xl border transition-all duration-300 mb-6 ${isCallActive ? 'bg-white/80 border-sky-300 shadow-lg' : 'bg-white/60 border-gray-200'}`}>
+                                <div className="text-xs font-semibold uppercase text-sky-600 mb-2">{callStatus || "Ready to assist"}</div>
+                                <p className="text-sm sm:text-base text-gray-800 font-medium transition-colors duration-500">{transcript}</p>
+                            </div>
+
                             {/* Action Buttons */}
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center" suppressHydrationWarning>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Button
                                     size="lg"
                                     onClick={toggleCall}
@@ -945,7 +896,6 @@ export function Hero() {
                                         : 'bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-400/50 transform hover:scale-105'
                                     } flex items-center`}
                                     aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
-                                    suppressHydrationWarning
                                 >
                                     {isCallActive ? 'Stop Conversation' : 'Start Conversation'}
                                     {isCallActive ? (
@@ -966,10 +916,9 @@ export function Hero() {
                             </div>
                         </div>
 
-                       
                         {/* Stats Section */}
                         <div className="mt-20 relative z-10">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center" suppressHydrationWarning>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                                 {stats.map((stat, i) => (
                                     <div
                                         key={i}
@@ -978,7 +927,7 @@ export function Hero() {
                                         <div className="absolute -top-10 -left-10 w-40 h-40 bg-linear-to-tr from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
                                         <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-linear-to-bl from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
 
-                                        <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient relative z-10" suppressHydrationWarning>
+                                        <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient relative z-10">
                                             {stats[i].formatter(counts[i])}
                                             {stat.suffix}
                                         </div>

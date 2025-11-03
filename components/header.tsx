@@ -116,7 +116,7 @@ export function Header() {
                                 <ChevronDown className={cn(
                                     "w-4 h-4 transition-transform duration-300",
                                     open && "rotate-180"
-                                )} />
+                                )} />   
                                 {/* Animated gradient underline */}
                                 <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-linear-to-r from-sky-400 via-sky-500 to-sky-600 rounded-full transition-all duration-500 group-hover:w-full" />
                                 {/* Floating Glow */}
@@ -131,109 +131,85 @@ export function Header() {
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: -10, scale: 0.95 }}
                                         transition={{ duration: 0.2 }}
-                                        className="absolute left-0 top-full mt-2 bg-white shadow-2xl rounded-lg p-3 w-72 max-h-96 overflow-y-auto border-2 border-sky-200 backdrop-blur-xl z-100"
-                                        style={{ position: 'absolute', top: '100%', left: 0, marginTop: '8px' }}
+                                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 bg-white shadow-2xl rounded-lg p-6 w-[900px] border-2 border-sky-200 backdrop-blur-xl z-100"
+                                        style={{ position: 'absolute', top: '100%', marginTop: '8px' }}
                                         onMouseLeave={() => setOpen(false)}
                                     >
-                                        <Link
-                                            href="/services/ai-voice-agent"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            AI Voice Agent
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-voice-bot"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            AI Voice Bot
-                                        </Link>
-                                        <Link
-                                            href="/services/voice-ai-business"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            Voice AI for Business
-                                        </Link>
-                                        <Link
-                                            href="/services/voice-automation-software"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            Voice Automation Software
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-customer-support"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            AI Customer Support
-                                        </Link>
-                                        <Link
-                                            href="/services/conversational-ai"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            Conversational AI
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-call-center"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            AI Call Center Automation
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-sales-agent"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            AI Sales Agent
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-customer-service"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            AI Customer Service
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-phone-answering"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            AI Phone Answering System
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-lead-generation"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            AI Lead Generation
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-virtual-receptionist"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            AI Virtual Receptionist
-                                        </Link>
-                                        <div className="border-t-2 border-sky-200 my-3"></div>
-                                        <Link
-                                            href="/signup?service=lead"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            Lead Analysis Service
-                                        </Link>
-                                        <Link
-                                            href="/signup?service=appointment"
-                                            className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700"
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            Appointment Service
-                                        </Link>
+                                        <div className="grid grid-cols-3 gap-3">
+                                            <Link
+                                                href="/services/ai-voice-bot"
+                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                AI Voice Bot
+                                            </Link>
+                                            <Link
+                                                href="/services/voice-ai-business"
+                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                Voice AI for Business
+                                            </Link>
+                                            <Link
+                                                href="/services/voice-automation-software"
+                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                Voice Automation Software
+                                            </Link>
+                                            <Link
+                                                href="/services/ai-customer-support"
+                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                AI Customer Support
+                                            </Link>
+                                            <Link
+                                                href="/services/conversational-ai"
+                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                Conversational AI
+                                            </Link>
+                                            <Link
+                                                href="/services/ai-call-center"
+                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                AI Call Center Automation
+                                            </Link>
+                                            <Link
+                                                href="/services/ai-sales-agent"
+                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                AI Sales Agent
+                                            </Link>
+                                            <Link
+                                                href="/services/ai-virtual-receptionist"
+                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                AI Virtual Receptionist
+                                            </Link>
+                                        </div>
+                                        <div className="border-t-2 border-sky-200 my-4"></div>
+                                        <div className="grid grid-cols-3 gap-3">
+                                            <Link
+                                                href="/signup?service=lead"
+                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                Lead Analysis Service
+                                            </Link>
+                                            <Link
+                                                href="/signup?service=appointment"
+                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
+                                                onClick={() => setOpen(false)}
+                                            >
+                                                Appointment Service
+                                            </Link>
+                                        </div>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
@@ -319,13 +295,6 @@ export function Header() {
                                     <div className="text-base font-medium text-gray-900 mb-2">Our Services</div>
                                     <div className="space-y-1">
                                         <Link
-                                            href="/services/ai-voice-agent"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            AI Voice Agent
-                                        </Link>
-                                        <Link
                                             href="/services/ai-voice-bot"
                                             className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
                                             onClick={() => setIsMenuOpen(false)}
@@ -373,27 +342,6 @@ export function Header() {
                                             onClick={() => setIsMenuOpen(false)}
                                         >
                                             AI Sales Agent
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-customer-service"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            AI Customer Service
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-phone-answering"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            AI Phone Answering System
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-lead-generation"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            AI Lead Generation
                                         </Link>
                                         <Link
                                             href="/services/ai-virtual-receptionist"
