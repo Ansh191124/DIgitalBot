@@ -1216,16 +1216,71 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
           </div>
 
           {/* Transcription Preview */}
+          
           {apt.transcription && (
-            <div className="bg-gray-50 border-2 border-gray-200 rounded-xl p-5">
-              <h3 className="text-lg font-bold mb-3 text-gray-900 flex items-center gap-2">
-                <FileText className="w-5 h-5 text-gray-600" />
+            <div className="bg-gray-50 border-2 border-gray-200 rounded-2xl p-6">
+              <h3 className="text-xl font-bold mb-3 text-gray-900 flex items-center gap-2">
+                <FileText className="w-6 h-6 text-gray-600" />
                 Call Transcription
               </h3>
-              <div className="text-sm text-gray-700 max-h-40 overflow-y-auto bg-white p-3 rounded border border-gray-200">
-                {typeof apt.transcription === 'string' 
-                  ? apt.transcription 
-                  : JSON.stringify(apt.transcription, null, 2)}
+              <div className="max-h-96 overflow-y-auto bg-white p-4 rounded-xl border border-gray-200">
+                {(() => {
+                  // Try to parse if it's a string
+                  let transcriptionData = apt.transcription;
+                  if (typeof apt.transcription === "string") {
+                    try {
+                      transcriptionData = JSON.parse(apt.transcription);
+                    } catch (e) {
+                      // If parsing fails, display as plain text
+                      return <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{apt.transcription}</p>;
+                    }
+                  }
+
+                  // If it's an array, render as conversation
+                  if (Array.isArray(transcriptionData)) {
+                    return (
+                      <div className="space-y-3">
+                        {transcriptionData.map((msg: any, idx: number) => (
+                          <div
+                            key={idx}
+                            className={`p-3 rounded-lg ${
+                              msg.role === "user"
+                                ? "bg-blue-50 border-l-4 border-blue-500"
+                                : "bg-purple-50 border-l-4 border-purple-500"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1">
+                              <span
+                                className={`text-xs font-bold uppercase ${
+                                  msg.role === "user" ? "text-blue-700" : "text-purple-700"
+                                }`}
+                              >
+                                {msg.role === "user" ? "Patient" : "Assistant"}
+                              </span>
+                            </div>
+                            <p className="text-sm text-gray-800 leading-relaxed">{msg.content}</p>
+                          </div>
+                        ))}
+                      </div>
+                    );
+                  }
+
+                  // If it's an object with text or transcript property
+                  if (transcriptionData.text || transcriptionData.transcript) {
+                    return (
+                      <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">
+                        {transcriptionData.text || transcriptionData.transcript}
+                      </p>
+                    );
+                  }
+
+                  // Fallback to JSON display
+                  return (
+                    <pre className="text-xs text-gray-600 font-mono whitespace-pre-wrap">
+                      {JSON.stringify(transcriptionData, null, 2)}
+                    </pre>
+                  );
+                })()}
               </div>
             </div>
           )}
