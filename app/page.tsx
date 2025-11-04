@@ -20,110 +20,624 @@ export default function Home() {
       <main id="main-content" className="min-h-screen" role="main">
         <Hero />
         
-       
-
-        {/* Voice Search Optimized Content - VSO */}
-        <section className="py-20 bg-linear-to-b from-gray-50/50 to-white/70 backdrop-blur-sm" role="region" aria-labelledby="voice-search-heading">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 id="voice-search-heading" className="text-3xl sm:text-4xl font-bold text-center mb-12 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
-                How AI Voice Agents Transform Customer Experience
-              </h2>
+        {/* SEO-Optimized Content Sections - DO NOT REMOVE */}
+        
+        {/* Stats Section - Above the Fold */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden" role="region" aria-labelledby="performance-stats">
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-orange-500/30 transition-transform duration-500 hover:scale-[1.02] relative overflow-hidden">
+                <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
+                <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 relative z-10">99.9%</div>
+                <div className="mt-2 text-gray-300 font-medium text-lg relative z-10">Uptime Guarantee</div>
+                <p className="mt-3 text-sm text-gray-400 relative z-10">Enterprise-grade reliability for your business</p>
+              </div>
               
-              <div className="space-y-12">
-                <div className="flex flex-col md:flex-row items-start gap-8">
-                  <div className="md:w-1/2">
-                    <h3 className="text-2xl font-semibold mb-4 text-gray-900">
-                      What makes AI Voice Agents different from chatbots?
-                    </h3>
-                    <p className="text-gray-700 text-lg leading-relaxed">
-                      Unlike traditional chatbots, AI Voice Agents process spoken language naturally, 
-                      understand emotional context, maintain conversation flow, and provide responses 
-                      through natural speech synthesis. This creates more engaging, accessible customer interactions 
-                      that feel authentically human and build stronger connections with your customers.
-                    </p>
+              <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-orange-500/30 transition-transform duration-500 hover:scale-[1.02] relative overflow-hidden">
+                <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
+                <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 relative z-10">&lt;750ms</div>
+                <div className="mt-2 text-gray-300 font-medium text-lg relative z-10">AI Response Time</div>
+                <p className="mt-3 text-sm text-gray-400 relative z-10">Lightning-fast voice AI interactions</p>
+              </div>
+              
+              <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-orange-500/30 transition-transform duration-500 hover:scale-[1.02] relative overflow-hidden">
+                <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
+                <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 relative z-10">24/7</div>
+                <div className="mt-2 text-gray-300 font-medium text-lg relative z-10">Always Available</div>
+                <p className="mt-3 text-sm text-gray-400 relative z-10">Never sleeps, never takes breaks</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* H1 Section - Primary Keywords */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden" role="region" aria-labelledby="main-heading">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `linear-gradient(to right, rgba(255, 107, 53, 0.15) 1px, transparent 1px),
+                               linear-gradient(to bottom, rgba(255, 107, 53, 0.15) 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }}></div>
+          </div>
+          
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="text-center mb-12">
+              <h1 id="main-heading" className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                <span className="block mb-2">AI Voice Agent Platform</span>
+                <span className="inline-block px-4 py-2 rounded-xl text-white bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 shadow-2xl text-2xl sm:text-3xl lg:text-4xl relative overflow-hidden border-2 border-orange-400/40">
+                  <span className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent"></span>
+                  <span className="relative z-10">Never Sleeps, Never Stops</span>
+                </span>
+              </h1>
+              
+              <div className="max-w-4xl mx-auto mb-8 p-6 bg-white/10 border border-orange-500/30 rounded-2xl shadow-2xl backdrop-blur-md">
+                <p className="text-xl sm:text-2xl font-bold text-gray-300 mb-3">
+                  "Your receptionist sleeps, gets sick, takes breaks."
+                </p>
+                <p className="text-2xl sm:text-3xl font-extrabold text-white inline-block bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 px-4 py-2 rounded-xl shadow-xl border border-orange-400/30">
+                  <span className="absolute inset-0 bg-gradient-to-tr from-white/25 via-transparent to-transparent"></span>
+                  <span className="relative z-10">WE NEVER DO.</span>
+                </p>
+              </div>
+              
+              <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-6">
+                Transform your business with <span className="font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">AI voice agents</span> that handle unlimited calls simultaneously, 
+                provide instant responses, and deliver <span className="font-semibold text-orange-400">detailed analytics</span> through your <span className="font-semibold text-orange-400">personal dashboard</span>. 
+                Our <span className="font-bold text-orange-400">AI voice assistant</span> platform automates customer service, lead qualification, appointment scheduling, and business communications with enterprise-grade accuracy.
+              </p>
+              
+              <div className="flex flex-wrap items-center justify-center gap-4 text-gray-400 text-sm sm:text-base">
+                <span className="inline-flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-orange-500"></span>
+                  <span className="font-semibold text-gray-300">Real-Time Analytics</span>
+                </span>
+                <span className="text-gray-600">•</span>
+                <span className="inline-flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-orange-500"></span>
+                  <span className="font-semibold text-gray-300">Personal Dashboard</span>
+                </span>
+                <span className="text-gray-600">•</span>
+                <span className="inline-flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-orange-500"></span>
+                  <span className="font-semibold text-gray-300">Automated Call Handling</span>
+                </span>
+                <span className="text-gray-600">•</span>
+                <span className="inline-flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-orange-500"></span>
+                  <span className="font-semibold text-gray-300">50+ Languages</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Voice Search Optimized Q&A - VSO */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 via-black to-gray-900 relative overflow-hidden" role="region" aria-labelledby="voice-search-qa">
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <h2 id="voice-search-qa" className="text-3xl sm:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
+              Common Questions About AI Voice Agents
+            </h2>
+            
+            <div className="space-y-8">
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all">
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  What is an AI voice agent and how does it work?
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  An AI voice agent is an intelligent conversational system that handles phone calls autonomously using advanced natural language processing. 
+                  Unlike human receptionists who need sleep, sick leave, and breaks, our AI voice agents operate 24/7/365 without interruption. 
+                  They understand spoken language, process customer requests in real-time, access your business data instantly, and respond with natural-sounding speech. 
+                  Every conversation is analyzed and stored in your personal dashboard with detailed analytics including call duration, customer sentiment, conversion rates, and actionable insights.
+                </p>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all">
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  How quickly can I deploy an AI voice assistant for my business?
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Our AI voice assistant platform enables deployment within 24-48 hours. The process includes: (1) Account creation and dashboard setup - 15 minutes, 
+                  (2) Business information integration and workflow customization - 2 hours, (3) Voice personality selection and training - 1 hour, 
+                  (4) Phone number provisioning or existing number integration - immediate, (5) Testing and quality assurance - 4 hours, 
+                  (6) Live deployment with full analytics tracking. You'll have access to real-time dashboards showing every call, conversation transcript, customer data, and performance metrics from day one.
+                </p>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all">
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  What makes your AI voice agent better than hiring a human receptionist?
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Our AI voice agents never sleep, never get sick, never take breaks, and never need vacations - providing consistent 24/7/365 availability. 
+                  They handle unlimited simultaneous calls (a human receptionist can only handle one), respond in under 750 milliseconds (humans average 2-3 seconds), 
+                  work in 50+ languages simultaneously, never forget customer information, provide perfect call transcriptions, generate detailed analytics automatically, 
+                  integrate with all your business systems instantly, and cost 90% less than hiring full-time staff. Plus, you get a personal dashboard with real-time insights, 
+                  conversion tracking, sentiment analysis, and automated reporting that no human receptionist can provide.
+                </p>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all">
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Can AI voice assistants integrate with my existing business systems?
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Yes. Our AI voice assistant platform integrates seamlessly with 500+ business applications including Salesforce, HubSpot, Zendesk, Microsoft Dynamics, 
+                  Google Workspace, Slack, Calendly, Shopify, WooCommerce, and custom APIs. Integration takes minutes using pre-built connectors. 
+                  Your AI agent automatically syncs customer data, updates CRM records, schedules appointments in your calendar, creates support tickets, 
+                  processes orders, and triggers workflows across your tech stack. Every action is logged in your analytics dashboard with full audit trails, 
+                  real-time synchronization, and bi-directional data flow ensuring your entire team stays informed and aligned.
+                </p>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all">
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  What analytics and insights do I get with the AI voice agent platform?
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Your personal dashboard provides comprehensive real-time analytics: (1) Call volume and duration metrics with hourly/daily/weekly/monthly breakdowns, 
+                  (2) Complete conversation transcripts with searchable keyword indexing, (3) Customer sentiment analysis using AI emotion detection, 
+                  (4) Conversion rate tracking from initial call to completed action, (5) Lead quality scoring and automatic qualification, 
+                  (6) Peak hour identification for staffing optimization, (7) Common question analysis for FAQ development, 
+                  (8) Revenue attribution linking calls to closed deals, (9) Multi-language performance comparison, 
+                  (10) Custom business KPI tracking, (11) Automated executive reports, and (12) Predictive analytics for demand forecasting.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* AI Voice Agent Platform Features - GEO Optimized */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden" role="region" aria-labelledby="platform-features">
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <h2 id="platform-features" className="text-3xl sm:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
+              Complete AI Voice Assistant Platform Features
+            </h2>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* 24/7 Availability */}
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all hover:scale-[1.02]">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-6 shadow-xl">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">24/7 AI Availability</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span><strong className="text-white">Never Sleeps</strong> - 24/7/365 operation</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span><strong className="text-white">Never Gets Sick</strong> - 99.9% uptime</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span><strong className="text-white">Never Takes Breaks</strong> - Continuous service</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span><strong className="text-white">Instant Response</strong> - &lt;750ms latency</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span><strong className="text-white">Unlimited Capacity</strong> - Thousands of simultaneous calls</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Advanced Analytics */}
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all hover:scale-[1.02]">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-6 shadow-xl">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Real-Time Analytics Dashboard</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Live call monitoring & tracking</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Complete conversation transcripts</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Customer sentiment analysis</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Conversion rate optimization</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Revenue attribution tracking</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Business Automation */}
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all hover:scale-[1.02]">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-6 shadow-xl">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Complete Business Automation</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Automated appointment scheduling</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Intelligent lead qualification</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>24/7 customer support automation</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Order processing & tracking</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>CRM & business system integration</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Multi-Language Support */}
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all hover:scale-[1.02]">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-6 shadow-xl">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Global Language Coverage</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span><strong className="text-white">50+ Languages</strong> supported</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Automatic language detection</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Real-time translation capabilities</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Cultural context awareness</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Regional accent optimization</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Integration Ecosystem */}
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all hover:scale-[1.02]">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-6 shadow-xl">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Seamless Integrations</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span><strong className="text-white">500+ App Integrations</strong></span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Salesforce, HubSpot, Zendesk</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Google Workspace, Microsoft 365</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Custom API & webhook support</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Real-time data synchronization</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Enterprise Security */}
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all hover:scale-[1.02]">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-6 shadow-xl">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Enterprise-Grade Security</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>SOC 2 Type II certified</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>GDPR & HIPAA compliant</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>End-to-end encryption</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Role-based access control</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">✓</span>
+                    <span>Complete audit trail logging</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Industry Use Cases - ASO Optimized */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 via-black to-gray-900 relative overflow-hidden" role="region" aria-labelledby="use-cases">
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <h2 id="use-cases" className="text-3xl sm:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
+              AI Voice Agent Solutions for Every Industry
+            </h2>
+            <p className="text-center text-gray-300 text-lg mb-16 max-w-3xl mx-auto">
+              From healthcare to e-commerce, our AI voice assistants deliver measurable ROI across all business sectors
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Healthcare */}
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
                   </div>
-                  <div className="md:w-1/2 bg-blue-50/70 backdrop-blur-sm p-8 rounded-xl shadow-sm border border-blue-100/50">
-                    <p className="text-blue-900 font-medium text-lg mb-3">
-                      "Our AI Voice Agent increased customer satisfaction by 40% and reduced 
-                      support costs by 60% within the first quarter."
-                    </p>
-                    <cite className="text-blue-700 text-sm not-italic">— Fortune 500 Customer Success Story</cite>
+                  <h3 className="text-2xl font-bold text-white">Healthcare & Medical</h3>
+                </div>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Automated appointment scheduling and reminders</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Patient pre-screening and triage</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Prescription refill automation</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>HIPAA-compliant patient communication</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Insurance verification and billing support</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Real Estate */}
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
                   </div>
+                  <h3 className="text-2xl font-bold text-white">Real Estate</h3>
+                </div>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>24/7 property inquiry handling</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Automated showing scheduling</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Lead qualification and scoring</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Property information distribution</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Follow-up automation and nurturing</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* E-commerce & Retail */}
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">E-commerce & Retail</h3>
+                </div>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Order status and tracking inquiries</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Product recommendations and upselling</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Returns and exchange processing</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Inventory availability checking</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Multi-channel customer support</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Financial Services */}
+              <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">Financial Services</h3>
+                </div>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Account balance and transaction inquiries</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Fraud alert notifications and verification</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Loan application pre-qualification</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Payment reminders and collections</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 mt-1">•</span>
+                    <span>Secure customer authentication</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ROI & Performance Metrics - GEO Optimized */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden" role="region" aria-labelledby="roi-metrics">
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <h2 id="roi-metrics" className="text-3xl sm:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
+              Proven ROI with AI Voice Agent Technology
+            </h2>
+            <p className="text-center text-gray-300 text-lg mb-16 max-w-3xl mx-auto">
+              Real businesses achieving extraordinary results with our AI voice assistant platform
+            </p>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-orange-500/20 text-center">
+                <div className="text-5xl font-bold text-orange-500 mb-2">90%</div>
+                <div className="text-white font-semibold mb-2">Cost Reduction</div>
+                <p className="text-gray-400 text-sm">vs. hiring human receptionists</p>
+              </div>
+              
+              <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-orange-500/20 text-center">
+                <div className="text-5xl font-bold text-orange-500 mb-2">40%</div>
+                <div className="text-white font-semibold mb-2">More Leads</div>
+                <p className="text-gray-400 text-sm">captured and qualified automatically</p>
+              </div>
+              
+              <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-orange-500/20 text-center">
+                <div className="text-5xl font-bold text-orange-500 mb-2">60%</div>
+                <div className="text-white font-semibold mb-2">Faster Response</div>
+                <p className="text-gray-400 text-sm">to customer inquiries</p>
+              </div>
+              
+              <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-orange-500/20 text-center">
+                <div className="text-5xl font-bold text-orange-500 mb-2">95%</div>
+                <div className="text-white font-semibold mb-2">Customer Satisfaction</div>
+                <p className="text-gray-400 text-sm">with AI voice interactions</p>
+              </div>
+            </div>
+
+            <div className="bg-white/5 backdrop-blur-md p-10 rounded-2xl border border-orange-500/30">
+              <h3 className="text-2xl font-bold text-white mb-8 text-center">Why Businesses Switch to AI Voice Agents</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="text-xl font-semibold text-orange-400 mb-4">Traditional Receptionists</h4>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 mt-1">✗</span>
+                      <span>Work only 8 hours per day</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 mt-1">✗</span>
+                      <span>Need sick leave and vacations</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 mt-1">✗</span>
+                      <span>Handle one call at a time</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 mt-1">✗</span>
+                      <span>Cost $30,000-$50,000 annually</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 mt-1">✗</span>
+                      <span>Limited analytics and reporting</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 mt-1">✗</span>
+                      <span>Inconsistent service quality</span>
+                    </li>
+                  </ul>
                 </div>
                 
-                <div className="flex flex-col md:flex-row-reverse items-start gap-8">
-                  <div className="md:w-1/2">
-                    <h3 className="text-2xl font-semibold mb-4 text-gray-900">
-                      How quickly can businesses deploy AI Voice Agents?
-                    </h3>
-                    <p className="text-gray-700 text-lg leading-relaxed">
-                      Our AI Voice Agent platform enables rapid deployment within days, not months. 
-                      Pre-built templates, intuitive drag-and-drop conversation builders, and seamless API integrations 
-                      accelerate time-to-market while maintaining enterprise-grade security, reliability, and compliance standards.
-                    </p>
-                  </div>
-                  <div className="md:w-1/2 bg-green-50/70 backdrop-blur-sm p-8 rounded-xl shadow-sm border border-green-100/50">
-                    <p className="text-green-900 font-medium text-lg">
-                      Deploy production-ready AI Voice Agents in as little as 3 days with 
-                      our enterprise onboarding program and dedicated technical support.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* AI Voice Assistant Platform Features - Business Automation */}
-        <section className="py-20 bg-linear-to-br from-sky-50/70 via-blue-50/50 to-indigo-50/70 backdrop-blur-sm" role="region" aria-labelledby="ai-voice-assistant-platform">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <header className="text-center mb-16">
-                <h2 id="ai-voice-assistant-platform" className="text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
-                  Why Choose Our <span className="bg-white/30 backdrop-blur-md rounded-lg px-2 py-1 text-sky-700 font-bold shadow-lg border border-sky-200/40">AI Voice Assistant</span> Platform?
-                </h2>
-                <p className="text-xl max-w-4xl mx-auto leading-relaxed bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 font-semibold">
-                  Unlike human receptionists who sleep, get sick, and take breaks, our <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">AI voice assistants never stop working</span>. 
-                  Get complete business call automation with <span className="font-semibold text-sky-600">detailed analytics</span> and <span className="font-semibold text-sky-600">personal dashboard insights</span>.
-                </p>
-              </header>
-
-              {/* Platform Features */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900 border-l-4 border-sky-500 pl-3">24/7 AI Availability</h3>
-                  <ul className="space-y-2 text-gray-700">
-                    <li>✓ <strong>Never Sleeps</strong> - 24/7/365 availability</li>
-                    <li>✓ <strong>Never Gets Sick</strong> - 99.9% uptime guarantee</li>
-                    <li>✓ <strong>Never Takes Breaks</strong> - Continuous operation</li>
-                    <li>✓ <strong>Instant Response</strong> - &lt;750ms latency</li>
-                    <li>✓ <strong>Multi-Language</strong> - 50+ language support</li>
-                    <li>✓ <strong>Unlimited Calls</strong> - Handle thousands simultaneously</li>
-                  </ul>
-                </div>
-
-                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900 border-l-4 border-blue-500 pl-3">Analytics Dashboard</h3>
-                  <ul className="space-y-2 text-gray-700">
-                    <li>✓ Real-Time Call Analytics</li>
-                    <li>✓ Customer Satisfaction Metrics</li>
-                    <li>✓ Conversion Rate Tracking</li>
-                    <li>✓ Peak Hours Analysis</li>
-                    <li>✓ Revenue Attribution</li>
-                    <li>✓ Custom Business Reports</li>
-                  </ul>
-                </div>
-
-                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-white/30 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900 border-l-4 border-indigo-500 pl-3">Business Automation</h3>
-                  <ul className="space-y-2 text-gray-700">
-                    <li>✓ Automated Appointment Booking</li>
-                    <li>✓ Lead Qualification & Routing</li>
-                    <li>✓ Customer Support Automation</li>
-                    <li>✓ Order Processing & Tracking</li>
-                    <li>✓ CRM Integration</li>
-                    <li>✓ Follow-up Automation</li>
+                <div>
+                  <h4 className="text-xl font-semibold text-orange-400 mb-4">AI Voice Assistants</h4>
+                  <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span><strong className="text-white">Work 24/7/365</strong> without breaks</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span><strong className="text-white">Never get sick</strong> or need time off</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span><strong className="text-white">Handle unlimited</strong> simultaneous calls</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span><strong className="text-white">Cost 90% less</strong> than human staff</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span><strong className="text-white">Complete analytics dashboard</strong> with insights</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span><strong className="text-white">Consistent excellence</strong> every interaction</span>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -131,11 +645,216 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Lead Form Component */}
         <LeadForm />
 
         {/* Modern CTA Component */}
         <CTA />
+
+        {/* Comprehensive Structured Data - SEO/GEO/VSO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://www.digitalbot.in/#organization",
+                  "name": "DigitalBot",
+                  "alternateName": "DigitalBot AI Voice Agent Platform",
+                  "url": "https://www.digitalbot.in",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.digitalbot.in/logo.png",
+                    "width": 600,
+                    "height": 600
+                  },
+                  "description": "AI Voice Agent Platform - Never Sleeps, Never Stops. 24/7 AI voice assistants that handle unlimited calls simultaneously with enterprise-grade analytics.",
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+91-XXXX-XXXXXX",
+                    "contactType": "customer service",
+                    "availableLanguage": ["en", "hi"],
+                    "areaServed": "Worldwide"
+                  },
+                  "sameAs": [
+                    "https://www.linkedin.com/company/digitalbot",
+                    "https://twitter.com/digitalbot",
+                    "https://www.facebook.com/digitalbot"
+                  ]
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.digitalbot.in/#website",
+                  "url": "https://www.digitalbot.in",
+                  "name": "DigitalBot - AI Voice Agent Platform",
+                  "description": "AI voice agents that never sleep, never get sick, never take breaks. Transform your business with 24/7 automated call handling and real-time analytics.",
+                  "publisher": {
+                    "@id": "https://www.digitalbot.in/#organization"
+                  },
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://www.digitalbot.in/?s={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                  }
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "DigitalBot AI Voice Agent",
+                  "applicationCategory": "BusinessApplication",
+                  "operatingSystem": "Cloud-based",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "INR",
+                    "description": "Free trial available"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "ratingCount": "2847",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  },
+                  "description": "AI Voice Assistant Platform with 99.9% uptime, <750ms response time, 24/7 availability, unlimited simultaneous calls, and comprehensive analytics dashboard.",
+                  "featureList": [
+                    "24/7/365 AI voice agent availability",
+                    "Never sleeps, never gets sick, never takes breaks",
+                    "99.9% uptime guarantee",
+                    "<750ms AI response latency",
+                    "Unlimited simultaneous call handling",
+                    "Real-time analytics dashboard",
+                    "Complete conversation transcripts",
+                    "Customer sentiment analysis",
+                    "50+ language support",
+                    "CRM and business system integration",
+                    "Automated appointment scheduling",
+                    "Lead qualification and scoring",
+                    "HIPAA and GDPR compliance",
+                    "Enterprise-grade security",
+                    "Custom workflow automation"
+                  ]
+                },
+                {
+                  "@type": "Service",
+                  "serviceType": "AI Voice Agent",
+                  "provider": {
+                    "@id": "https://www.digitalbot.in/#organization"
+                  },
+                  "areaServed": {
+                    "@type": "Country",
+                    "name": "Worldwide"
+                  },
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "AI Voice Assistant Services",
+                    "itemListElement": [
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "AI Call Center Automation",
+                          "description": "24/7 automated call handling with real-time analytics"
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "AI Virtual Receptionist",
+                          "description": "Never sleeps, never takes breaks - always available receptionist"
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "AI Customer Support Assistant",
+                          "description": "Instant customer support with sentiment analysis"
+                        }
+                      },
+                      {
+                        "@type": "Offer",
+                        "itemOffered": {
+                          "@type": "Service",
+                          "name": "AI Sales Agent",
+                          "description": "Automated lead qualification and conversion"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "@type": "FAQPage",
+                  "mainEntity": [
+                    {
+                      "@type": "Question",
+                      "name": "What is an AI voice agent and how does it work?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "An AI voice agent is an intelligent conversational system that handles phone calls autonomously using advanced natural language processing. Unlike human receptionists who need sleep, sick leave, and breaks, our AI voice agents operate 24/7/365 without interruption. They understand spoken language, process customer requests in real-time, access your business data instantly, and respond with natural-sounding speech. Every conversation is analyzed and stored in your personal dashboard with detailed analytics including call duration, customer sentiment, conversion rates, and actionable insights."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "How quickly can I deploy an AI voice assistant for my business?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Our AI voice assistant platform enables deployment within 24-48 hours. The process includes: (1) Account creation and dashboard setup - 15 minutes, (2) Business information integration and workflow customization - 2 hours, (3) Voice personality selection and training - 1 hour, (4) Phone number provisioning or existing number integration - immediate, (5) Testing and quality assurance - 4 hours, (6) Live deployment with full analytics tracking. You'll have access to real-time dashboards showing every call, conversation transcript, customer data, and performance metrics from day one."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "What makes your AI voice agent better than hiring a human receptionist?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Our AI voice agents never sleep, never get sick, never take breaks, and never need vacations - providing consistent 24/7/365 availability. They handle unlimited simultaneous calls (a human receptionist can only handle one), respond in under 750 milliseconds (humans average 2-3 seconds), work in 50+ languages simultaneously, never forget customer information, provide perfect call transcriptions, generate detailed analytics automatically, integrate with all your business systems instantly, and cost 90% less than hiring full-time staff. Plus, you get a personal dashboard with real-time insights, conversion tracking, sentiment analysis, and automated reporting that no human receptionist can provide."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "Can AI voice assistants integrate with my existing business systems?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. Our AI voice assistant platform integrates seamlessly with 500+ business applications including Salesforce, HubSpot, Zendesk, Microsoft Dynamics, Google Workspace, Slack, Calendly, Shopify, WooCommerce, and custom APIs. Integration takes minutes using pre-built connectors. Your AI agent automatically syncs customer data, updates CRM records, schedules appointments in your calendar, creates support tickets, processes orders, and triggers workflows across your tech stack. Every action is logged in your analytics dashboard with full audit trails, real-time synchronization, and bi-directional data flow ensuring your entire team stays informed and aligned."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "What analytics and insights do I get with the AI voice agent platform?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Your personal dashboard provides comprehensive real-time analytics: (1) Call volume and duration metrics with hourly/daily/weekly/monthly breakdowns, (2) Complete conversation transcripts with searchable keyword indexing, (3) Customer sentiment analysis using AI emotion detection, (4) Conversion rate tracking from initial call to completed action, (5) Lead quality scoring and automatic qualification, (6) Peak hour identification for staffing optimization, (7) Common question analysis for FAQ development, (8) Revenue attribution linking calls to closed deals, (9) Multi-language performance comparison, (10) Custom business KPI tracking, (11) Automated executive reports, and (12) Predictive analytics for demand forecasting."
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "Product",
+                  "name": "AI Voice Agent Platform",
+                  "description": "Enterprise AI voice assistant platform that never sleeps, never gets sick, and never takes breaks. 24/7 automated call handling with 99.9% uptime and complete analytics.",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "DigitalBot"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "2847"
+                  },
+                  "offers": {
+                    "@type": "AggregateOffer",
+                    "availability": "https://schema.org/InStock",
+                    "priceCurrency": "INR",
+                    "lowPrice": "0",
+                    "highPrice": "999999",
+                    "offerCount": "4"
+                  }
+                }
+              ]
+            })
+          }}
+        />
         
       </main>
       
