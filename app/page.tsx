@@ -126,9 +126,6 @@ export default function Home() {
                   </ul>
                 </div>
               </div>
-
-           
-              </div>
             </div>
           </div>
         </section>
