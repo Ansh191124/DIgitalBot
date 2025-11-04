@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
         subject: `New Lead: ${name} from ${company}`,
         from_name: "DigitalBot Lead Form",
         from_email: email,
-        to: to || "hello@digitalbot.ai",
+        to: to || "hello@metic.ai",
         message: emailContent,
         name: name,
         email: email,

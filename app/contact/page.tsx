@@ -26,8 +26,8 @@ const contactInfo = [
     icon: Mail,
     title: "Email Us",
     description: "Get in touch via email",
-    contact: "hello@digitalbot.ai",
-    action: "mailto:hello@digitalbot.ai",
+    contact: "hello@metic.ai",
+    action: "mailto:hello@metic.ai",
   },
   {
     icon: Phone,

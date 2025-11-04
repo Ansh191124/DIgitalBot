@@ -38,7 +38,7 @@ export function LeadForm() {
         },
         body: JSON.stringify({
           ...formData,
-          to: "hello@digitalbot.ai"
+          to: "hello@metic.ai"
         }),
       })
 
@@ -60,7 +60,7 @@ export function LeadForm() {
         setIsSuccess(false)
       }, 5000)
     } catch (err) {
-      setError("Failed to submit form. Please try again or email us directly at hello@digitalbot.ai")
+      setError("Failed to submit form. Please try again or email us directly at hello@metic.ai")
     } finally {
       setIsSubmitting(false)
     }
