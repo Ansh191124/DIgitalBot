@@ -513,13 +513,13 @@ export function Hero() {
             .animate-wave-3 { animation: wave-pulse-3 2s ease-out infinite; }
             `}} />
             
-            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen">
+            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">
 
                 {/* Futuristic Grid Pattern */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 z-0">
                     <div className="absolute inset-0" style={{
-                        backgroundImage: `linear-gradient(to right, rgba(56, 189, 248, 0.1) 1px, transparent 1px),
-                                         linear-gradient(to bottom, rgba(56, 189, 248, 0.1) 1px, transparent 1px)`,
+                        backgroundImage: `linear-gradient(to right, rgba(255, 107, 53, 0.1) 1px, transparent 1px),
+                                         linear-gradient(to bottom, rgba(255, 107, 53, 0.1) 1px, transparent 1px)`,
                         backgroundSize: '60px 60px'
                     }}></div>
                 </div>
@@ -527,30 +527,40 @@ export function Hero() {
                
                 {/* Subtle Gradient Orbs */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-sky-200/20 to-transparent rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-blue-100/15 to-transparent rounded-full blur-3xl"></div>
-                    <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-sky-100/10 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-orange-500/20 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-orange-600/15 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-orange-400/10 to-transparent rounded-full blur-3xl"></div>
                 </div>
 
                 {/* Animated Light Beams - Reduced on mobile */}
                 <div className={`absolute inset-0 overflow-hidden pointer-events-none ${isMobileDevice || reduceMotion ? 'opacity-10' : 'opacity-30'}`}>
-                    <div className={`absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-sky-400/40 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`}></div>
-                    <div className={`absolute top-0 right-1/3 w-px h-full bg-linear-to-b from-transparent via-blue-300/30 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`} style={{ animationDelay: '1s' }}></div>
+                    <div className={`absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-orange-400/40 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`}></div>
+                    <div className={`absolute top-0 right-1/3 w-px h-full bg-linear-to-b from-transparent via-orange-300/30 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`} style={{ animationDelay: '1s' }}></div>
                 </div>
 
                 <div className="container mx-auto relative z-10 max-w-6xl opacity-100">
+                    {/* Microphone Icon Above Everything */}
+                    <div className="flex justify-center mb-8 animate-fade-in-up-1">
+                        <div className="relative">
+                            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/30 to-orange-600/30 rounded-full blur-2xl"></div>
+                            <div className="relative bg-gradient-to-br from-orange-500 to-orange-600 p-6 rounded-full shadow-2xl border-2 border-orange-400/30 hover:scale-110 transition-transform duration-300">
+                                <Mic className="h-10 w-10 text-white drop-shadow-lg" />
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="flex justify-center mb-12 animate-fade-in-up-1">
-                        <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-sm border border-sky-200/60 shadow-lg">
-                            <Sparkles className="h-4 w-4 text-sky-500 animate-pulse" />
+                        <div className="inline-flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full text-sm text-orange-400 backdrop-blur-sm border border-orange-500/30 shadow-lg">
+                            <Sparkles className="h-4 w-4 text-orange-500 animate-pulse" />
                             <span className="font-medium">AI-Powered Customer Engagement Platform</span>
                         </div>
                     </div>
 
                     {/* SEO-Optimized Main Heading */}
                     <div className="text-center mb-16 animate-fade-in-up-1">
-                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
                             <span className="block">AI Voice Assistant</span>
-                            <span className="inline-block mt-1 px-3 py-1 rounded-lg text-white bg-linear-to-br from-sky-500 via-sky-600 to-blue-600 shadow-lg text-xl sm:text-2xl lg:text-3xl relative overflow-hidden border border-white/20">
+                            <span className="inline-block mt-1 px-3 py-1 rounded-lg text-white bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 shadow-lg text-xl sm:text-2xl lg:text-3xl relative overflow-hidden border border-orange-400/30">
                                 <span className="absolute inset-0 bg-linear-to-tr from-white/20 via-transparent to-transparent"></span>
                                 <span className="absolute inset-0 bg-linear-to-bl from-transparent via-transparent to-black/10"></span>
                                 <span className="relative z-10">Business Automation</span>
@@ -558,14 +568,14 @@ export function Hero() {
                             <span className="block mt-1 text-3xl sm:text-4xl lg:text-5xl">Platform</span>
                         </h1>
 
-                        <div className="mb-6 p-4 bg-white/30 border border-sky-200/30 rounded-xl shadow-xl max-w-3xl mx-auto relative overflow-hidden backdrop-blur-md">
-                            <div className="absolute inset-0 bg-linear-to-tr from-white/30 via-transparent to-transparent pointer-events-none"></div>
-                            <div className="absolute inset-0 border-l-4 border-sky-500/60 rounded-xl"></div>
+                        <div className="mb-6 p-4 bg-white/10 border border-orange-500/30 rounded-xl shadow-xl max-w-3xl mx-auto relative overflow-hidden backdrop-blur-md">
+                            <div className="absolute inset-0 bg-linear-to-tr from-orange-500/20 via-transparent to-transparent pointer-events-none"></div>
+                            <div className="absolute inset-0 border-l-4 border-orange-500/60 rounded-xl"></div>
                             <div className="relative z-10">
-                                <p className="text-base sm:text-lg font-semibold text-gray-800 mb-1">
+                                <p className="text-base sm:text-lg font-semibold text-gray-300 mb-1">
                                     "Your receptionist sleeps, gets sick, takes breaks."
                                 </p>
-                                <p className="text-lg sm:text-xl font-bold text-white inline-block bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 px-3 py-1 rounded-lg shadow-lg relative overflow-hidden border border-white/20">
+                                <p className="text-lg sm:text-xl font-bold text-white inline-block bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 px-3 py-1 rounded-lg shadow-lg relative overflow-hidden border border-orange-400/30">
                                     <span className="absolute inset-0 bg-linear-to-tr from-white/25 via-transparent to-transparent"></span>
                                     <span className="relative z-10">WE NEVER DO.</span>
                                 </p>
@@ -576,34 +586,34 @@ export function Hero() {
                         
                         {/* Rich Snippet Optimized Description */}
                         <div className="max-w-5xl mx-auto mb-8">
-                            <p className="text-lg sm:text-xl text-gray-700 mb-4 leading-relaxed animate-fade-in-left">
-                                <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">Ready-to-Use AI Voice Assistants</span> that never sleep, never get sick, never take breaks. 
-                                Get instant <span className="font-semibold text-sky-600">call automation</span>, <span className="font-semibold text-sky-600">detailed analytics dashboard</span>, and 
-                                <span className="font-semibold text-sky-600"> personalized business insights</span> to transform your customer service operations.
+                            <p className="text-lg sm:text-xl text-gray-300 mb-4 leading-relaxed animate-fade-in-left">
+                                <span className="font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">Ready-to-Use AI Voice Assistants</span> that never sleep, never get sick, never take breaks. 
+                                Get instant <span className="font-semibold text-orange-400">call automation</span>, <span className="font-semibold text-orange-400">detailed analytics dashboard</span>, and 
+                                <span className="font-semibold text-orange-400"> personalized business insights</span> to transform your customer service operations.
                             </p>
-                            <p className="text-base sm:text-lg text-gray-600 leading-relaxed flex flex-wrap items-center justify-center gap-3 sm:gap-4 animate-fade-in-right">
-                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                            <p className="text-base sm:text-lg text-gray-400 leading-relaxed flex flex-wrap items-center justify-center gap-3 sm:gap-4 animate-fade-in-right">
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-300">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
                                     Real-Time Analytics
                                 </span>
-                                <span className="text-gray-400">|</span>
-                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                <span className="text-gray-600">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-300">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
                                     Personal Dashboard
                                 </span>
-                                <span className="text-gray-400">|</span>
-                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                <span className="text-gray-600">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-300">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
                                     Automated Call Handling
                                 </span>
-                                <span className="text-gray-400">|</span>
-                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                <span className="text-gray-600">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-300">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
                                     Multi-Language Support
                                 </span>
-                                <span className="text-gray-400">|</span>
-                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-700">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                                <span className="text-gray-600">|</span>
+                                <span className="inline-flex items-center gap-1.5 font-semibold text-gray-300">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
                                     Easy Integration
                                 </span>
                             </p>
@@ -881,9 +891,9 @@ export function Hero() {
                             </div>
 
                             {/* Transcript Display */}
-                            <div className={`w-full max-w-2xl p-4 rounded-2xl border transition-all duration-300 mb-6 ${isCallActive ? 'bg-white/80 border-sky-300 shadow-lg' : 'bg-white/60 border-gray-200'}`}>
-                                <div className="text-xs font-semibold uppercase text-sky-600 mb-2">{callStatus || "Ready to assist"}</div>
-                                <p className="text-sm sm:text-base text-gray-800 font-medium transition-colors duration-500">{transcript}</p>
+                            <div className={`w-full max-w-2xl p-4 rounded-2xl border transition-all duration-300 mb-6 ${isCallActive ? 'bg-white/10 border-orange-500/30 shadow-lg' : 'bg-white/5 border-gray-700'}`}>
+                                <div className="text-xs font-semibold uppercase text-orange-400 mb-2">{callStatus || "Ready to assist"}</div>
+                                <p className="text-sm sm:text-base text-gray-200 font-medium transition-colors duration-500">{transcript}</p>
                             </div>
 
                             {/* Action Buttons */}
@@ -892,8 +902,8 @@ export function Hero() {
                                     size="lg"
                                     onClick={toggleCall}
                                     className={`text-white font-semibold rounded-full shadow-xl transition-all duration-300 group ${isCallActive
-                                        ? 'bg-linear-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-400/50 transform hover:scale-105'
-                                        : 'bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 shadow-sky-400/50 transform hover:scale-105'
+                                        ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-400/50 transform hover:scale-105'
+                                        : 'bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 hover:from-orange-700 hover:to-orange-500 shadow-orange-400/50 transform hover:scale-105'
                                     } flex items-center`}
                                     aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
                                 >
@@ -908,7 +918,7 @@ export function Hero() {
                                     size="lg"
                                     variant="outline"
                                     onClick={() => setShowVideo(true)}
-                                    className="text-sky-600 bg-white/70 border-sky-300 hover:bg-sky-50 rounded-full shadow-lg transition-transform hover:scale-105"
+                                    className="text-orange-400 bg-white/10 border-orange-500/30 hover:bg-white/20 rounded-full shadow-lg transition-transform hover:scale-105"
                                     aria-label="Watch demo video"
                                 >
                                     Watch Demo
@@ -922,16 +932,16 @@ export function Hero() {
                                 {stats.map((stat, i) => (
                                     <div
                                         key={i}
-                                        className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-sky-200 transition-transform duration-500 hover:scale-[1.02] relative overflow-hidden"
+                                        className="bg-white/5 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-orange-500/30 transition-transform duration-500 hover:scale-[1.02] relative overflow-hidden"
                                     >
-                                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-linear-to-tr from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
-                                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-linear-to-bl from-sky-400 via-sky-300 to-sky-200 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
+                                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
+                                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
 
-                                        <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 animate-gradient relative z-10">
+                                        <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 animate-gradient relative z-10">
                                             {stats[i].formatter(counts[i])}
                                             {stat.suffix}
                                         </div>
-                                        <div className="mt-2 text-gray-700 font-medium text-lg relative z-10">{stat.label}</div>
+                                        <div className="mt-2 text-gray-300 font-medium text-lg relative z-10">{stat.label}</div>
                                     </div>
                                 ))}
                             </div>
@@ -941,30 +951,30 @@ export function Hero() {
             </section>
 
             {/* Ready to Deploy Section */}
-            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-sm relative overflow-hidden">
+            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900 to-black backdrop-blur-sm relative overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
                     <div className="absolute inset-0" style={{
-                        backgroundImage: `linear-gradient(to right, rgba(56, 189, 248, 0.15) 1px, transparent 1px),
-                                         linear-gradient(to bottom, rgba(56, 189, 248, 0.15) 1px, transparent 1px)`,
+                        backgroundImage: `linear-gradient(to right, rgba(255, 107, 53, 0.15) 1px, transparent 1px),
+                                         linear-gradient(to bottom, rgba(255, 107, 53, 0.15) 1px, transparent 1px)`,
                         backgroundSize: '40px 40px'
                     }}></div>
                 </div>
 
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-radial from-sky-200/20 to-transparent rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-radial from-blue-100/15 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-radial from-orange-500/20 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-radial from-orange-600/15 to-transparent rounded-full blur-3xl"></div>
                 </div>
 
                 <div className="container mx-auto max-w-7xl relative z-10">
                     <div className="text-center mb-16">
-                        <div className="inline-flex items-center space-x-2 bg-sky-100 px-4 py-2 rounded-full text-sm text-sky-700 font-semibold mb-6">
+                        <div className="inline-flex items-center space-x-2 bg-orange-500/20 px-4 py-2 rounded-full text-sm text-orange-400 font-semibold mb-6 border border-orange-500/30">
                             <MessageSquare className="h-4 w-4" />
                             <span>Enterprise-Ready Solution</span>
                         </div>
-                        <h2 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-6">
+                        <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-lg mb-6">
                             Ready to Deploy AI Voice Assistant
                         </h2>
-                        <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 max-w-3xl mx-auto">
+                        <p className="text-lg sm:text-xl font-semibold bg-white/10 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-orange-500/30 text-orange-300 max-w-3xl mx-auto">
                             Launch your intelligent AI assistant in minutes. No coding required. Full customization available.
                         </p>
                     </div>
@@ -973,15 +983,15 @@ export function Hero() {
                         {deploymentFeatures.map((feature, index) => (
                             <div
                                 key={index}
-                                className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-sky-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden"
+                                className="bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-orange-500/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden"
                             >
                                 {/* Animated background gradient */}
-                                <div className="absolute inset-0 bg-linear-to-br from-sky-50/50 via-transparent to-blue-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 
                                 {/* Icon container - mobile optimized */}
                                 <div className="relative mb-3 sm:mb-4 flex items-center justify-center sm:justify-start">
                                     <div className="relative">
-                                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-sky-400 via-sky-500 to-blue-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-sky-400/50 group-hover:scale-110 transition-all duration-300 relative overflow-hidden">
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-orange-500/50 group-hover:scale-110 transition-all duration-300 relative overflow-hidden">
                                             {/* Glossy overlay effect */}
                                             <div className="absolute inset-0 bg-linear-to-tr from-white/30 via-white/10 to-transparent"></div>
                                             <div className="absolute inset-0 bg-linear-to-bl from-transparent via-transparent to-black/10"></div>
@@ -991,32 +1001,32 @@ export function Hero() {
                                         </div>
                                         
                                         {/* Animated ring on hover */}
-                                        <div className="absolute inset-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl border-2 border-sky-400/0 group-hover:border-sky-400/50 group-hover:scale-125 transition-all duration-500"></div>
+                                        <div className="absolute inset-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl border-2 border-orange-500/0 group-hover:border-orange-500/50 group-hover:scale-125 transition-all duration-500"></div>
                                     </div>
                                 </div>
                                 
                                 {/* Content - mobile optimized */}
                                 <div className="relative z-10 text-center sm:text-left">
-                                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1.5 sm:mb-2 group-hover:text-sky-700 transition-colors duration-300">{feature.title}</h3>
-                                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+                                    <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2 group-hover:text-orange-400 transition-colors duration-300">{feature.title}</h3>
+                                    <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">{feature.description}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    <div className="bg-linear-to-r from-sky-600 via-sky-500 to-blue-500 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
-                        <div className="absolute inset-0 bg-linear-to-r from-sky-400/20 to-blue-400/20 backdrop-blur-sm"></div>
+                    <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 backdrop-blur-sm"></div>
                         <div className="relative z-10">
                             <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
                                 Start Your Free Trial Today
                             </h3>
-                            <p className="text-xl text-sky-50 mb-8 max-w-2xl mx-auto">
+                            <p className="text-xl text-orange-50 mb-8 max-w-2xl mx-auto">
                                 Join thousands of businesses automating customer service with AI. No credit card required.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                                 <Button
                                     size="lg"
-                                    className="bg-white text-sky-600 hover:bg-gray-50 rounded-full shadow-xl font-bold px-8 py-6 text-lg transition-all hover:scale-105"
+                                    className="bg-white text-orange-600 hover:bg-gray-50 rounded-full shadow-xl font-bold px-8 py-6 text-lg transition-all hover:scale-105"
                                 >
                                     Get Started Free
                                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -1029,7 +1039,7 @@ export function Hero() {
                                     Schedule Demo
                                 </Button>
                             </div>
-                            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-sky-50">
+                            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-orange-50">
                                 <div className="flex items-center gap-2">
                                     <CheckCircle className="h-5 w-5" />
                                     <span className="text-sm font-medium">Free 14-day trial</span>
@@ -1049,29 +1059,29 @@ export function Hero() {
             </section>
 
             {/* FAQ Section (navigates to separate pages) */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-sm">
+            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 via-black to-gray-900 backdrop-blur-sm">
                 <div className="container mx-auto max-w-4xl">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-4">Frequently Asked Questions</h2>
-                        <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 max-w-3xl mx-auto">Everything you need to know about <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">AI voice assistants</span></p>
+                        <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-lg mb-4">Frequently Asked Questions</h2>
+                        <p className="text-lg sm:text-xl font-semibold bg-white/10 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-orange-500/30 text-orange-300 max-w-3xl mx-auto">Everything you need to know about <span className="font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">AI voice assistants</span></p>
                     </div>
 
                     <div className="space-y-4">
                         {faqs.map((faq, index) => (
-                            <div key={index} className="border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                            <div key={index} className="border border-orange-500/20 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                                 <button
                                     onClick={() => router.push(`/faq/${index}`)}
-                                    className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition-colors"
+                                    className="w-full flex items-center justify-between p-6 text-left bg-white/5 hover:bg-white/10 transition-colors"
                                 >
-                                    <h3 className="text-lg font-semibold text-gray-900 pr-4">{faq.q}</h3>
-                                    <ArrowRight className="h-5 w-5 text-sky-600 shrink-0 transition-transform duration-300" />
+                                    <h3 className="text-lg font-semibold text-white pr-4">{faq.q}</h3>
+                                    <ArrowRight className="h-5 w-5 text-orange-500 shrink-0 transition-transform duration-300" />
                                 </button>
                             </div>
                         ))}
                     </div>
 
                     <div className="mt-6 text-center">
-                        <button onClick={() => router.push('/faq')} className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-sky-600 text-white font-semibold hover:bg-sky-700 transition">
+                        <button onClick={() => router.push('/faq')} className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition">
                             View all FAQs
                             <ArrowRight className="h-4 w-4" />
                         </button>
