@@ -57,7 +57,7 @@ export function Header() {
                             
                             <div className="relative">
                                 <Image
-                                    src="/digitalbot-logo.svg"
+                                    src="/images/logos/logo.png"
                                     alt="DigitalBot.AI - AI Voice Assistant Platform"
                                     width={200}
                                     height={50}
