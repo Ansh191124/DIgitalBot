@@ -546,6 +546,27 @@ export function Hero() {
                         </div>
                     </div>
 
+                    {/* Stats Section - Moved to Top */}
+                    <div className="mb-20 relative z-10">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                            {stats.map((stat, i) => (
+                                <div
+                                    key={i}
+                                    className="bg-white/5 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-orange-500/30 transition-transform duration-500 hover:scale-[1.02] relative overflow-hidden"
+                                >
+                                    <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
+                                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
+
+                                    <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 animate-gradient relative z-10">
+                                        {stats[i].formatter(counts[i])}
+                                        {stat.suffix}
+                                    </div>
+                                    <div className="mt-2 text-gray-300 font-medium text-lg relative z-10">{stat.label}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
                     {/* Microphone Icon Above H1 */}
                     <div className="flex justify-center mb-6 animate-fade-in-up-1">
                         <div className="relative">
@@ -923,27 +944,6 @@ export function Hero() {
                                 >
                                     Watch Demo
                                 </Button>
-                            </div>
-                        </div>
-
-                        {/* Stats Section */}
-                        <div className="mt-20 relative z-10">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                                {stats.map((stat, i) => (
-                                    <div
-                                        key={i}
-                                        className="bg-white/5 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-orange-500/30 transition-transform duration-500 hover:scale-[1.02] relative overflow-hidden"
-                                    >
-                                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
-                                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-orange-500/30 via-orange-400/20 to-orange-300/10 rounded-full opacity-20 filter blur-3xl animate-pulse"></div>
-
-                                        <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 animate-gradient relative z-10">
-                                            {stats[i].formatter(counts[i])}
-                                            {stat.suffix}
-                                        </div>
-                                        <div className="mt-2 text-gray-300 font-medium text-lg relative z-10">{stat.label}</div>
-                                    </div>
-                                ))}
                             </div>
                         </div>
                     </div>
