@@ -669,9 +669,9 @@ export function Hero() {
                             </div>
 
                             {/* Transcript Display */}
-                            <div className={`w-full max-w-2xl p-4 rounded-2xl border transition-all duration-300 mb-6 ${isCallActive ? 'bg-white/10 border-orange-500/30 shadow-lg' : 'bg-white/5 border-gray-700'}`}>
-                                <div className="text-xs font-semibold uppercase text-orange-400 mb-2">{callStatus || "Ready to assist"}</div>
-                                <p className="text-sm sm:text-base text-gray-200 font-medium transition-colors duration-500">{transcript}</p>
+                            <div className={`w-full max-w-2xl p-4 rounded-2xl border transition-all duration-300 mb-6 ${isCallActive ? 'bg-white/90 border-orange-500 shadow-lg shadow-orange-500/30' : 'bg-white/80 border-purple-300'}`}>
+                                <div className="text-xs font-semibold uppercase text-orange-600 mb-2">{callStatus || "Ready to assist"}</div>
+                                <p className="text-sm sm:text-base text-gray-900 font-medium transition-colors duration-500">{transcript}</p>
                             </div>
 
                             {/* Action Buttons */}
