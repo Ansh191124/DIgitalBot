@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { AnimatePresence, motion } from "framer-motion"
-import { ChevronDown, Menu, X } from "lucide-react"
+import { ChevronDown, Menu, X, Sparkles, Zap, Phone } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -16,199 +16,202 @@ export function Header() {
     const pathname = usePathname()
 
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 50)
+        const handleScroll = () => setIsScrolled(window.scrollY > 20)
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
 
     const navItems = [
-        { href: "/", label: "Home" },
-        { href: "/about", label: "About" },
-        { href: "/services", label: "SaaS" },
-        { href: "/pricing", label: "Pricing" },
-        { href: "/contact", label: "Contact" },
-        
+        { href: "/", label: "Home", icon: Sparkles },
+        { href: "/about", label: "About", icon: null },
+        { href: "/services", label: "Solutions", icon: Zap },
+        { href: "/pricing", label: "Pricing", icon: null },
+        { href: "/contact", label: "Contact", icon: Phone },
     ]
 
     return (
         <header
             className={cn(
-                "fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent",
+                "fixed top-0 w-full z-50 transition-all duration-700",
                 isScrolled
-                    ? "backdrop-blur-xl bg-white/90 border-sky-200/50 shadow-lg shadow-sky-100/50"
-                    : "z from-white/80 via-sky-50/60 to-white/80 backdrop-blur-md"
+                    ? "backdrop-blur-2xl bg-gradient-to-r from-white/95 via-white/98 to-white/95 border-b border-orange-100/50 shadow-2xl shadow-orange-500/10"
+                    : "bg-gradient-to-b from-white/90 via-white/95 to-transparent backdrop-blur-md border-b border-white/20"
             )}
         >
+            {/* Animated gradient background overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-50/30 via-transparent to-orange-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+            
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    {/* Logo with neon-glow and floating orb */}
+                <div className="flex items-center justify-between h-20">
+                    {/* Enhanced Logo Section */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: -10 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="relative"
+                        initial={{ opacity: 0, scale: 0.9, x: -20 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+                        className="relative group"
                     >
-                        <Link href="/" className="flex items-center gap-2 relative group" onClick={() => setIsMenuOpen(false)}>
-                            {/* Floating Neon Orb */}
-                            <span className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-linear-to-r from-sky-400 via-sky-500 to-sky-600 opacity-30 blur-3xl animate-pulse-slow"></span>
-                            <Image
-                                src="https://res.cloudinary.com/dew9qfpbl/image/upload/f_webp,q_auto:eco,w_160/v1760082124/Gemini_Generated_Image_tgypq9tgypq9tgyp_-_Edited_1_m1xhrt.svg"
-                                alt="DigitalBot Logo"
-                                width={160}
-                                height={40}
-                                priority
-                                quality={85}
-                                className="h-14 w-auto relative z-10 hover:scale-110 transition-transform duration-500 right-6"
-                            />
+                        <Link href="/" className="flex items-center gap-3 relative" onClick={() => setIsMenuOpen(false)}>
+                            {/* Animated glow orbs */}
+                            <span className="absolute -top-6 -left-6 w-16 h-16 rounded-full bg-gradient-to-r from-orange-400/30 via-orange-500/40 to-orange-600/30 blur-3xl animate-pulse-glow" />
+                            <span className="absolute -bottom-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-r from-black/20 via-gray-800/20 to-black/20 blur-2xl animate-pulse-slow" />
+                            
+                            <div className="relative">
+                                <Image
+                                    src="https://res.cloudinary.com/dew9qfpbl/image/upload/f_webp,q_auto:eco,w_160/v1760082124/Gemini_Generated_Image_tgypq9tgypq9tgyp_-_Edited_1_m1xhrt.svg"
+                                    alt="DigitalBot - AI Voice Assistant"
+                                    width={180}
+                                    height={45}
+                                    priority
+                                    quality={95}
+                                    className="h-12 w-auto relative z-10 drop-shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_25px_rgba(249,115,22,0.4)]"
+                                />
+                            </div>
+                            
+                            {/* AI Badge */}
+                            <div className="absolute -bottom-2 -right-8 px-2 py-0.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-[9px] font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                                AI Powered
+                            </div>
                         </Link>
                     </motion.div>
 
-                    {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center space-x-8">
-                        {navItems.map((item, index) => (
-                            <motion.div
-                                key={item.href}
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.08, duration: 0.4 }}
-                            >
-                                <Link
-                                    href={item.href}
-                                    className={cn(
-                                        "text-sm font-semibold tracking-wide relative group transition-all duration-300",
-                                        pathname === item.href
-                                            ? "text-sky-600"
-                                            : "text-gray-700 hover:text-sky-500"
-                                    )}
+                    {/* Desktop Navigation - Enhanced */}
+                    <nav className="hidden lg:flex items-center gap-1">
+                        {navItems.map((item, index) => {
+                            const Icon = item.icon
+                            return (
+                                <motion.div
+                                    key={item.href}
+                                    initial={{ opacity: 0, y: -20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.1, duration: 0.5, type: "spring" }}
                                 >
-                                    {item.label}
-                                    {/* Animated gradient underline */}
-                                    <span
+                                    <Link
+                                        href={item.href}
                                         className={cn(
-                                            "absolute left-0 -bottom-1 h-0.5 w-0 bg-linear-to-r from-sky-400 via-sky-500 to-sky-600 rounded-full transition-all duration-500 group-hover:w-full",
-                                            pathname === item.href && "w-full"
+                                            "relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2",
+                                            pathname === item.href
+                                                ? "text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30"
+                                                : "text-gray-700 hover:text-orange-600 hover:bg-orange-50/50"
                                         )}
-                                    />
-                                    {/* Floating Glow */}
-                                    <span className="absolute -inset-1 rounded-full bg-linear-to-r from-sky-300/20 via-sky-400/20 to-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></span>
-                                </Link>
-                            </motion.div>
-                        ))}
+                                    >
+                                        {Icon && <Icon className="w-4 h-4" />}
+                                        <span className="relative z-10">{item.label}</span>
+                                        
+                                        {/* Hover effect */}
+                                        {pathname !== item.href && (
+                                            <>
+                                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-100 to-orange-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                                <span className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-400/20 to-orange-600/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
+                                            </>
+                                        )}
+                                        
+                                        {/* Active indicator */}
+                                        {pathname === item.href && (
+                                            <motion.span
+                                                layoutId="activeNav"
+                                                className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600"
+                                                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                            />
+                                        )}
+                                    </Link>
+                                </motion.div>
+                            )
+                        })}
 
-                        {/* Our Services Dropdown */}
+                        {/* Enhanced Services Dropdown */}
                         <motion.div
-                            initial={{ opacity: 0, y: -10 }}
+                            initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: navItems.length * 0.08, duration: 0.4 }}
+                            transition={{ delay: navItems.length * 0.1, duration: 0.5 }}
                             className="relative"
+                            onMouseEnter={() => setOpen(true)}
+                            onMouseLeave={() => setOpen(false)}
                         >
                             <button
-                                onClick={() => {
-                                    console.log('Dropdown clicked, current state:', open);
-                                    setOpen(!open);
-                                }}
-                                className={cn(
-                                    "text-sm font-semibold tracking-wide relative group transition-all duration-300 flex items-center gap-1",
-                                    "text-gray-700 hover:text-sky-500"
-                                )}
+                                className="relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50/50"
                             >
-                                Our Services
+                                <Zap className="w-4 h-4" />
+                                <span className="relative z-10">Our Services</span>
                                 <ChevronDown className={cn(
-                                    "w-4 h-4 transition-transform duration-300",
+                                    "w-4 h-4 transition-transform duration-300 relative z-10",
                                     open && "rotate-180"
-                                )} />   
-                                {/* Animated gradient underline */}
-                                <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-linear-to-r from-sky-400 via-sky-500 to-sky-600 rounded-full transition-all duration-500 group-hover:w-full" />
-                                {/* Floating Glow */}
-                                <span className="absolute -inset-1 rounded-full bg-linear-to-r from-sky-300/20 via-sky-400/20 to-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></span>
+                                )} />
+                                
+                                {/* Hover background */}
+                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-100 to-orange-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <span className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-400/20 to-orange-600/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
                             </button>
 
-                            {/* Services Dropdown Menu */}
+                            {/* Premium Services Dropdown Menu */}
                             <AnimatePresence>
                                 {open && (
                                     <motion.div
-                                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
                                         transition={{ duration: 0.2 }}
-                                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 bg-white shadow-2xl rounded-lg p-6 w-[900px] border-2 border-sky-200 backdrop-blur-xl z-100"
-                                        style={{ position: 'absolute', top: '100%', marginTop: '8px' }}
-                                        onMouseLeave={() => setOpen(false)}
+                                        className="absolute left-1/2 -translate-x-1/2 top-full mt-4 bg-white/95 backdrop-blur-2xl shadow-2xl rounded-2xl p-6 w-[920px] border-2 border-orange-100 z-[100]"
                                     >
-                                        <div className="grid grid-cols-3 gap-3">
-                                            <Link
-                                                href="/services/ai-voice-bot"
-                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                AI Voice Bot
-                                            </Link>
-                                            <Link
-                                                href="/services/voice-ai-business"
-                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                Voice AI for Business
-                                            </Link>
-                                            <Link
-                                                href="/services/voice-automation-software"
-                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                Voice Automation Software
-                                            </Link>
-                                            <Link
-                                                href="/services/ai-customer-support"
-                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                AI Customer Support
-                                            </Link>
-                                            <Link
-                                                href="/services/conversational-ai"
-                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                Conversational AI
-                                            </Link>
-                                            <Link
-                                                href="/services/ai-call-center"
-                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                AI Call Center Automation
-                                            </Link>
-                                            <Link
-                                                href="/services/ai-sales-agent"
-                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                AI Sales Agent
-                                            </Link>
-                                            <Link
-                                                href="/services/ai-virtual-receptionist"
-                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                AI Virtual Receptionist
-                                            </Link>
-                                        </div>
-                                        <div className="border-t-2 border-sky-200 my-4"></div>
-                                        <div className="grid grid-cols-3 gap-3">
-                                            <Link
-                                                href="/signup?service=lead"
-                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                Lead Analysis Service
-                                            </Link>
-                                            <Link
-                                                href="/signup?service=appointment"
-                                                className="block px-4 py-3 hover:bg-sky-100 rounded-md transition-colors duration-200 text-sm font-medium text-gray-700 hover:text-sky-700 border border-transparent hover:border-sky-200"
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                Appointment Service
-                                            </Link>
+                                        {/* Decorative gradient border */}
+                                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500/10 via-transparent to-orange-600/10 pointer-events-none" />
+                                        
+                                        <div className="relative z-10">
+                                            <div className="flex items-center gap-2 mb-5 pb-4 border-b border-orange-100">
+                                                <Sparkles className="w-5 h-5 text-orange-500" />
+                                                <h3 className="text-lg font-bold text-gray-900">AI-Powered Solutions</h3>
+                                            </div>
+                                            
+                                            <div className="grid grid-cols-3 gap-3 mb-4">
+                                                {[
+                                                    { href: "/services/ai-voice-bot", label: "AI Voice Bot", desc: "Intelligent voice automation" },
+                                                    { href: "/services/voice-ai-business", label: "Voice AI for Business", desc: "Enterprise solutions" },
+                                                    { href: "/services/voice-automation-software", label: "Voice Automation", desc: "Workflow automation" },
+                                                    { href: "/services/ai-customer-support", label: "AI Customer Support", desc: "24/7 assistance" },
+                                                    { href: "/services/conversational-ai", label: "Conversational AI", desc: "Natural conversations" },
+                                                    { href: "/services/ai-call-center", label: "AI Call Center", desc: "Call automation" },
+                                                    { href: "/services/ai-sales-agent", label: "AI Sales Agent", desc: "Sales automation" },
+                                                    { href: "/services/ai-virtual-receptionist", label: "Virtual Receptionist", desc: "Front desk AI" },
+                                                ].map((service) => (
+                                                    <Link
+                                                        key={service.href}
+                                                        href={service.href}
+                                                        className="group block p-4 hover:bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-xl transition-all duration-300 border-2 border-transparent hover:border-orange-200 hover:shadow-lg hover:shadow-orange-500/10"
+                                                        onClick={() => setOpen(false)}
+                                                    >
+                                                        <div className="flex items-start gap-3">
+                                                            <div className="w-2 h-2 rounded-full bg-orange-500 mt-2 group-hover:scale-150 transition-transform duration-300" />
+                                                            <div>
+                                                                <div className="text-sm font-bold text-gray-800 group-hover:text-orange-600 transition-colors mb-1">
+                                                                    {service.label}
+                                                                </div>
+                                                                <div className="text-xs text-gray-500">{service.desc}</div>
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                            
+                                            <div className="border-t-2 border-orange-100 pt-4 mt-2">
+                                                <div className="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider">Premium Services</div>
+                                                <div className="grid grid-cols-2 gap-3">
+                                                    <Link
+                                                        href="/signup?service=lead"
+                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300"
+                                                        onClick={() => setOpen(false)}
+                                                    >
+                                                        <Zap className="w-5 h-5 text-white" />
+                                                        <span className="text-sm font-bold text-white">Lead Analysis</span>
+                                                    </Link>
+                                                    <Link
+                                                        href="/signup?service=appointment"
+                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-black to-gray-800 rounded-xl hover:shadow-lg hover:shadow-black/30 transition-all duration-300"
+                                                        onClick={() => setOpen(false)}
+                                                    >
+                                                        <Phone className="w-5 h-5 text-white" />
+                                                        <span className="text-sm font-bold text-white">Appointments</span>
+                                                    </Link>
+                                                </div>
+                                            </div>
                                         </div>
                                     </motion.div>
                                 )}
@@ -216,182 +219,139 @@ export function Header() {
                         </motion.div>
                     </nav>
 
-                    {/* Desktop Buttons */}
-                    <div className="hidden md:flex items-center space-x-4">
-                        {/* <Button
-                            variant="outline"
-                            size="sm"
-                            className="relative overflow-hidden border-sky-400/70 text-sky-700 bg-white/60 hover:bg-sky-50 hover:border-sky-500 hover:text-sky-800 transition-all duration-300 rounded-full shadow-sm hover:shadow-sky-300"
-                            asChild
-                        >
-                            <Link href="/Register">
-                                <span className="relative z-10">SignUp</span>
-                                <span className="absolute inset-0 bg-linear-to-r from-sky-400/20 via-sky-500/20 to-sky-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></span>
-                            </Link>
-                        </Button> */}
-
+                    {/* Enhanced Desktop Buttons */}
+                    <div className="hidden lg:flex items-center gap-3">
                         <Button
-                            size="sm"
-                            className="relative bg-linear-to-r from-sky-500 via-sky-600 to-sky-700 text-white font-semibold rounded-full shadow-lg shadow-sky-300/40 hover:shadow-sky-400/60 transition-all duration-500 overflow-hidden group"
+                            size="lg"
+                            className="relative bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold rounded-full shadow-xl shadow-orange-500/40 hover:shadow-2xl hover:shadow-orange-600/50 transition-all duration-500 overflow-hidden group px-8"
                             asChild
                         >
                             <Link href="/login">
-                                <span className="relative z-10">Login</span>
-                                <span className="absolute inset-0 bg-linear-to-r from-sky-400/30 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
+                                <span className="relative z-10 flex items-center gap-2">
+                                    <Sparkles className="w-4 h-4" />
+                                    Get Started Free
+                                </span>
+                                <span className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
                             </Link>
                         </Button>
                     </div>
 
-                    {/* Mobile Menu Button */}
+                    {/* Modern Mobile Menu Button */}
                     <button
-                        className="md:hidden p-2 rounded-full bg-white/70 backdrop-blur-md hover:bg-sky-100 text-sky-700 hover:text-sky-800 transition-all duration-300 shadow-sm"
+                        className="lg:hidden p-3 rounded-2xl bg-gradient-to-br from-orange-50 to-white border-2 border-orange-200 hover:border-orange-400 text-orange-600 hover:text-orange-700 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-orange-500/20"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
                         {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                     </button>
                 </div>
 
-                {/* Mobile Menu */}
+                {/* Premium Mobile Menu */}
                 <AnimatePresence>
                     {isMenuOpen && (
                         <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="md:hidden absolute top-16 left-0 right-0 bg-linear-to-b from-white/95 via-sky-50/90 to-white/95 border-b border-sky-100 shadow-xl backdrop-blur-lg overflow-hidden rounded-b-2xl"
+                            className="lg:hidden overflow-hidden border-t border-orange-100 bg-gradient-to-b from-white via-orange-50/30 to-white backdrop-blur-xl"
                         >
-                            <nav className="flex flex-col space-y-1 p-4">
-                                {navItems.map((item, index) => (
-                                    <motion.div
-                                        key={item.href}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: index * 0.08 }}
-                                    >
-                                        <Link
-                                            href={item.href}
-                                            className={cn(
-                                                "px-3 py-2 text-base font-medium rounded-md transition-all duration-300 relative group overflow-hidden",
-                                                pathname === item.href
-                                                    ? "text-sky-700 bg-sky-100 shadow-inner"
-                                                    : "text-gray-700 hover:text-sky-700 hover:bg-sky-50"
-                                            )}
-                                            onClick={() => setIsMenuOpen(false)}
+                            <nav className="flex flex-col p-4 space-y-2 max-h-[calc(100vh-5rem)] overflow-y-auto">
+                                {navItems.map((item, index) => {
+                                    const Icon = item.icon
+                                    return (
+                                        <motion.div
+                                            key={item.href}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: index * 0.05 }}
                                         >
-                                            {item.label}
-                                            <span className="absolute -inset-1 bg-linear-to-r from-sky-300/20 via-sky-400/20 to-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl rounded-md"></span>
-                                        </Link>
-                                    </motion.div>
-                                ))}
+                                            <Link
+                                                href={item.href}
+                                                className={cn(
+                                                    "flex items-center gap-3 px-4 py-3.5 text-base font-semibold rounded-xl transition-all duration-300",
+                                                    pathname === item.href
+                                                        ? "text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30"
+                                                        : "text-gray-700 hover:text-orange-600 hover:bg-orange-50"
+                                                )}
+                                                onClick={() => setIsMenuOpen(false)}
+                                            >
+                                                {Icon && <Icon className="w-5 h-5" />}
+                                                {item.label}
+                                            </Link>
+                                        </motion.div>
+                                    )
+                                })}
 
-                                {/* Mobile Services */}
+                                {/* Mobile Services Section */}
                                 <motion.div
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: navItems.length * 0.08 }}
-                                    className="px-3 py-2"
+                                    transition={{ delay: navItems.length * 0.05 }}
+                                    className="pt-4 pb-2"
                                 >
-                                    <div className="text-base font-medium text-gray-900 mb-2">Our Services</div>
-                                    <div className="space-y-1">
-                                        <Link
-                                            href="/services/ai-voice-bot"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            AI Voice Bot
-                                        </Link>
-                                        <Link
-                                            href="/services/voice-ai-business"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            Voice AI for Business
-                                        </Link>
-                                        <Link
-                                            href="/services/voice-automation-software"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            Voice Automation Software
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-customer-support"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            AI Customer Support
-                                        </Link>
-                                        <Link
-                                            href="/services/conversational-ai"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            Conversational AI
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-call-center"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            AI Call Center Automation
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-sales-agent"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            AI Sales Agent
-                                        </Link>
-                                        <Link
-                                            href="/services/ai-virtual-receptionist"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            AI Virtual Receptionist
-                                        </Link>
-                                        <div className="border-t border-sky-100 my-2"></div>
+                                    <div className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-gray-900 mb-3">
+                                        <Sparkles className="w-4 h-4 text-orange-500" />
+                                        Our AI Services
+                                    </div>
+                                    <div className="space-y-1.5 bg-orange-50/50 rounded-xl p-3">
+                                        {[
+                                            "AI Voice Bot",
+                                            "Voice AI for Business",
+                                            "Voice Automation Software",
+                                            "AI Customer Support",
+                                            "Conversational AI",
+                                            "AI Call Center Automation",
+                                            "AI Sales Agent",
+                                            "AI Virtual Receptionist"
+                                        ].map((service, i) => (
+                                            <Link
+                                                key={i}
+                                                href={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`}
+                                                className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:text-orange-600 hover:bg-white rounded-lg transition-all duration-300"
+                                                onClick={() => setIsMenuOpen(false)}
+                                            >
+                                                {service}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                    
+                                    {/* Premium Services */}
+                                    <div className="mt-4 space-y-2">
                                         <Link
                                             href="/signup?service=lead"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
+                                            className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl shadow-lg shadow-orange-500/30 hover:shadow-xl transition-all duration-300"
                                             onClick={() => setIsMenuOpen(false)}
                                         >
-                                            Lead Analysis Service
+                                            <Zap className="w-5 h-5" />
+                                            <span className="font-bold">Lead Analysis</span>
                                         </Link>
                                         <Link
                                             href="/signup?service=appointment"
-                                            className="block px-3 py-2 text-sm text-gray-600 hover:text-sky-700 hover:bg-sky-50 rounded-md transition-all duration-300"
+                                            className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-black to-gray-800 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                                             onClick={() => setIsMenuOpen(false)}
                                         >
-                                            Appointment Service
+                                            <Phone className="w-5 h-5" />
+                                            <span className="font-bold">Appointment Booking</span>
                                         </Link>
                                     </div>
                                 </motion.div>
 
-                                {/* Mobile Buttons */}
+                                {/* Mobile CTA Button */}
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.3 }}
-                                    className="flex flex-col space-y-2 pt-4 border-t border-sky-100/60"
+                                    transition={{ delay: 0.4 }}
+                                    className="pt-4 border-t border-orange-100"
                                 >
                                     <Button
-                                        variant="outline"
-                                        className="justify-start border-sky-400 text-sky-700 hover:bg-sky-500 hover:text-white transition-all duration-300 rounded-full relative overflow-hidden group"
-                                        asChild
-                                    >
-                                        <Link href="/Register" onClick={() => setIsMenuOpen(false)}>
-                                            <span className="relative z-10">SignUp</span>
-                                            <span className="absolute inset-0 bg-linear-to-r from-sky-400/20 to-sky-600/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
-                                        </Link>
-                                    </Button>
-                                    <Button
-                                        className="bg-linear-to-r from-sky-500 via-sky-600 to-sky-700 hover:from-sky-600 hover:to-sky-800 text-white font-semibold justify-start rounded-full shadow-lg shadow-sky-300/40 hover:shadow-sky-400/60 transition-all duration-500 relative overflow-hidden group"
+                                        size="lg"
+                                        className="w-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:to-orange-800 text-white font-bold rounded-xl shadow-xl shadow-orange-500/40 transition-all duration-500 py-4"
                                         asChild
                                     >
                                         <Link href="/login" onClick={() => setIsMenuOpen(false)}>
-                                            <span className="relative z-10">Try Free</span>
-                                            <span className="absolute inset-0 bg-linear-to-r from-sky-400/30 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></span>
+                                            <Sparkles className="w-5 h-5 mr-2" />
+                                            Get Started Free
                                         </Link>
                                     </Button>
                                 </motion.div>
@@ -401,11 +361,30 @@ export function Header() {
                 </AnimatePresence>
             </div>
 
-            {/* Extra Neon Pulse Animation */}
+            {/* Custom Animations */}
             <style jsx>{`
+                @keyframes pulse-glow {
+                    0%, 100% { 
+                        transform: scale(1); 
+                        opacity: 0.3; 
+                    }
+                    50% { 
+                        transform: scale(1.1); 
+                        opacity: 0.5; 
+                    }
+                }
                 @keyframes pulse-slow {
-                    0%, 100% { transform: scale(1); opacity: 0.25; }
-                    50% { transform: scale(1.05); opacity: 0.35; }
+                    0%, 100% { 
+                        transform: scale(1); 
+                        opacity: 0.2; 
+                    }
+                    50% { 
+                        transform: scale(1.05); 
+                        opacity: 0.3; 
+                    }
+                }
+                .animate-pulse-glow {
+                    animation: pulse-glow 3s ease-in-out infinite;
                 }
                 .animate-pulse-slow {
                     animation: pulse-slow 4s ease-in-out infinite;
