@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { Footer } from "@/components/footer"
 import { CTA } from "@/components/cta"
+import { LeadForm } from "@/components/lead-form"
 
 export default function Home() {
   return (
@@ -129,6 +130,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Lead Form Component */}
+        <LeadForm />
 
         {/* Modern CTA Component */}
         <CTA />
