@@ -34,12 +34,15 @@ export function Header() {
             className={cn(
                 "fixed top-0 w-full z-50 transition-all duration-700",
                 isScrolled
-                    ? "backdrop-blur-2xl bg-gradient-to-r from-white/95 via-white/98 to-white/95 border-b border-orange-100/50 shadow-2xl shadow-orange-500/10"
-                    : "bg-gradient-to-b from-white/90 via-white/95 to-transparent backdrop-blur-md border-b border-white/20"
+                    ? "backdrop-blur-2xl bg-gradient-to-r from-white/95 via-orange-50/30 to-purple-50/30 border-b-2 border-gradient-to-r from-orange-300/50 via-pink-300/50 to-purple-300/50 shadow-2xl shadow-purple-500/20"
+                    : "bg-gradient-to-b from-white/90 via-white/95 to-transparent backdrop-blur-md border-b-2 border-orange-200/30"
             )}
         >
             {/* Animated gradient background overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-50/30 via-transparent to-orange-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-100/40 via-pink-100/30 to-purple-100/40 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+            
+            {/* Decorative top gradient line */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 opacity-80" />
             
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
@@ -51,9 +54,9 @@ export function Header() {
                         className="relative group"
                     >
                         <Link href="/" className="flex items-center gap-3 relative" onClick={() => setIsMenuOpen(false)}>
-                            {/* Animated glow orbs */}
-                            <span className="absolute -top-6 -left-6 w-16 h-16 rounded-full bg-gradient-to-r from-orange-400/30 via-orange-500/40 to-orange-600/30 blur-3xl animate-pulse-glow" />
-                            <span className="absolute -bottom-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-r from-black/20 via-gray-800/20 to-black/20 blur-2xl animate-pulse-slow" />
+                            {/* Animated multicolor glow orbs */}
+                            <span className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-gradient-to-r from-orange-400/40 via-pink-400/50 to-purple-400/40 blur-3xl animate-pulse-glow" />
+                            <span className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-r from-blue-400/30 via-cyan-400/30 to-teal-400/30 blur-2xl animate-float-slow" />
                             
                             <div className="relative">
                                 <Image
@@ -63,13 +66,13 @@ export function Header() {
                                     height={50}
                                     priority
                                     quality={95}
-                                    className="h-12 w-auto relative z-10 drop-shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_25px_rgba(249,115,22,0.4)]"
+                                    className="h-12 w-auto relative z-10 drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_30px_rgba(249,115,22,0.6)]"
                                 />
                             </div>
                             
-                            {/* AI Badge */}
-                            <div className="absolute -bottom-2 -right-8 px-2 py-0.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-[9px] font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
-                                AI Powered
+                            {/* Enhanced AI Badge */}
+                            <div className="absolute -bottom-2 -right-8 px-3 py-1 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white text-[9px] font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 border border-white/30">
+                                ✨ AI Powered
                             </div>
                         </Link>
                     </motion.div>
@@ -90,26 +93,26 @@ export function Header() {
                                         className={cn(
                                             "relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2",
                                             pathname === item.href
-                                                ? "text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30"
-                                                : "text-gray-700 hover:text-orange-600 hover:bg-orange-50/50"
+                                                ? "text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 shadow-lg shadow-purple-500/40"
+                                                : "text-gray-700 hover:text-orange-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-pink-50"
                                         )}
                                     >
                                         {Icon && <Icon className="w-4 h-4" />}
                                         <span className="relative z-10">{item.label}</span>
                                         
-                                        {/* Hover effect */}
+                                        {/* Enhanced Hover effect */}
                                         {pathname !== item.href && (
                                             <>
-                                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-100 to-orange-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                                <span className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-400/20 to-orange-600/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
+                                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                                <span className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-400/30 via-pink-400/30 to-purple-400/30 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
                                             </>
                                         )}
                                         
-                                        {/* Active indicator */}
+                                        {/* Enhanced Active indicator */}
                                         {pathname === item.href && (
                                             <motion.span
                                                 layoutId="activeNav"
-                                                className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600"
+                                                className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600"
                                                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
                                             />
                                         )}
@@ -128,7 +131,7 @@ export function Header() {
                             onMouseLeave={() => setOpen(false)}
                         >
                             <button
-                                className="relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50/50"
+                                className="relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2 text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50"
                             >
                                 <Zap className="w-4 h-4" />
                                 <span className="relative z-10">Our Services</span>
@@ -137,9 +140,9 @@ export function Header() {
                                     open && "rotate-180"
                                 )} />
                                 
-                                {/* Hover background */}
-                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-100 to-orange-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <span className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-400/20 to-orange-600/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
+                                {/* Enhanced Hover background */}
+                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <span className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-purple-400/30 via-pink-400/30 to-orange-400/30 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
                             </button>
 
                             {/* Premium Services Dropdown Menu */}
@@ -150,53 +153,53 @@ export function Header() {
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                                         transition={{ duration: 0.2 }}
-                                        className="absolute left-1/2 -translate-x-1/2 top-full mt-4 bg-white/95 backdrop-blur-2xl shadow-2xl rounded-2xl p-6 w-[920px] border-2 border-orange-100 z-[100]"
+                                        className="absolute left-1/2 -translate-x-1/2 top-full mt-4 bg-white/98 backdrop-blur-2xl shadow-2xl rounded-3xl p-6 w-[920px] border-2 border-gradient-to-r from-orange-300 via-pink-300 to-purple-300 z-[100]"
                                     >
-                                        {/* Decorative gradient border */}
-                                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500/10 via-transparent to-orange-600/10 pointer-events-none" />
+                                        {/* Enhanced Decorative gradient border */}
+                                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-500/10 via-pink-500/10 to-purple-500/10 pointer-events-none" />
                                         
                                         <div className="relative z-10">
-                                            <div className="flex items-center gap-2 mb-5 pb-4 border-b border-orange-100">
-                                                <Sparkles className="w-5 h-5 text-orange-500" />
-                                                <h3 className="text-lg font-bold text-gray-900">AI-Powered Solutions</h3>
+                                            <div className="flex items-center gap-2 mb-5 pb-4 border-b-2 border-gradient-to-r from-orange-200 via-pink-200 to-purple-200">
+                                                <Sparkles className="w-5 h-5 text-orange-500 animate-pulse" />
+                                                <h3 className="text-lg font-bold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">AI-Powered Solutions</h3>
                                             </div>
                                             
                                             <div className="grid grid-cols-3 gap-3 mb-4">
                                                 {[
-                                                    { href: "/services/ai-voice-bot", label: "AI Voice Bot", desc: "Intelligent voice automation" },
-                                                    { href: "/services/voice-ai-business", label: "Voice AI for Business", desc: "Enterprise solutions" },
-                                                    { href: "/services/voice-automation-software", label: "Voice Automation", desc: "Workflow automation" },
-                                                    { href: "/services/ai-customer-support", label: "AI Customer Support", desc: "24/7 assistance" },
-                                                    { href: "/services/conversational-ai", label: "Conversational AI", desc: "Natural conversations" },
-                                                    { href: "/services/ai-call-center", label: "AI Call Center", desc: "Call automation" },
-                                                    { href: "/services/ai-sales-agent", label: "AI Sales Agent", desc: "Sales automation" },
-                                                    { href: "/services/ai-virtual-receptionist", label: "Virtual Receptionist", desc: "Front desk AI" },
+                                                    { href: "/services/ai-voice-bot", label: "AI Voice Bot", desc: "Intelligent voice automation", color: "from-orange-500 to-pink-500" },
+                                                    { href: "/services/voice-ai-business", label: "Voice AI for Business", desc: "Enterprise solutions", color: "from-blue-500 to-cyan-500" },
+                                                    { href: "/services/voice-automation-software", label: "Voice Automation", desc: "Workflow automation", color: "from-purple-500 to-pink-500" },
+                                                    { href: "/services/ai-customer-support", label: "AI Customer Support", desc: "24/7 assistance", color: "from-teal-500 to-green-500" },
+                                                    { href: "/services/conversational-ai", label: "Conversational AI", desc: "Natural conversations", color: "from-pink-500 to-orange-500" },
+                                                    { href: "/services/ai-call-center", label: "AI Call Center", desc: "Call automation", color: "from-cyan-500 to-blue-500" },
+                                                    { href: "/services/ai-sales-agent", label: "AI Sales Agent", desc: "Sales automation", color: "from-orange-500 to-purple-500" },
+                                                    { href: "/services/ai-virtual-receptionist", label: "Virtual Receptionist", desc: "Front desk AI", color: "from-green-500 to-teal-500" },
                                                 ].map((service) => (
                                                     <Link
                                                         key={service.href}
                                                         href={service.href}
-                                                        className="group block p-4 hover:bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-xl transition-all duration-300 border-2 border-transparent hover:border-orange-200 hover:shadow-lg hover:shadow-orange-500/10"
+                                                        className="group block p-4 hover:bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 rounded-xl transition-all duration-300 border-2 border-transparent hover:border-orange-300 hover:shadow-lg hover:shadow-orange-500/20"
                                                         onClick={() => setOpen(false)}
                                                     >
                                                         <div className="flex items-start gap-3">
-                                                            <div className="w-2 h-2 rounded-full bg-orange-500 mt-2 group-hover:scale-150 transition-transform duration-300" />
+                                                            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.color} mt-2 group-hover:scale-150 transition-transform duration-300 shadow-lg`} />
                                                             <div>
-                                                                <div className="text-sm font-bold text-gray-800 group-hover:text-orange-600 transition-colors mb-1">
+                                                                <div className={`text-sm font-bold bg-gradient-to-r ${service.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform inline-block mb-1`}>
                                                                     {service.label}
                                                                 </div>
-                                                                <div className="text-xs text-gray-500">{service.desc}</div>
+                                                                <div className="text-xs text-gray-600">{service.desc}</div>
                                                             </div>
                                                         </div>
                                                     </Link>
                                                 ))}
                                             </div>
                                             
-                                            <div className="border-t-2 border-orange-100 pt-4 mt-2">
-                                                <div className="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider">Premium Services</div>
+                                            <div className="border-t-2 border-purple-200 pt-4 mt-2">
+                                                <div className="text-xs font-semibold text-gray-600 mb-3 uppercase tracking-wider">Premium Services</div>
                                                 <div className="grid grid-cols-2 gap-3">
                                                     <Link
                                                         href="/signup?service=lead"
-                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300"
+                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 rounded-xl hover:shadow-lg hover:shadow-purple-500/40 transition-all duration-300 hover:scale-105"
                                                         onClick={() => setOpen(false)}
                                                     >
                                                         <Zap className="w-5 h-5 text-white" />
@@ -204,7 +207,7 @@ export function Header() {
                                                     </Link>
                                                     <Link
                                                         href="/signup?service=appointment"
-                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-black to-gray-800 rounded-xl hover:shadow-lg hover:shadow-black/30 transition-all duration-300"
+                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-600 rounded-xl hover:shadow-lg hover:shadow-teal-500/40 transition-all duration-300 hover:scale-105"
                                                         onClick={() => setOpen(false)}
                                                     >
                                                         <Phone className="w-5 h-5 text-white" />
@@ -223,23 +226,23 @@ export function Header() {
                     <div className="hidden lg:flex items-center gap-3">
                         <Button
                             size="lg"
-                            className="relative bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold rounded-full shadow-xl shadow-orange-500/40 hover:shadow-2xl hover:shadow-orange-600/50 transition-all duration-500 overflow-hidden group px-8"
+                            className="relative bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold rounded-full shadow-xl shadow-purple-500/50 hover:shadow-2xl hover:shadow-purple-600/60 transition-all duration-500 overflow-hidden group px-8 border-2 border-white/20"
                             asChild
                         >
                             <Link href="/login">
                                 <span className="relative z-10 flex items-center gap-2">
-                                    <Sparkles className="w-4 h-4" />
+                                    <Sparkles className="w-4 h-4 animate-pulse" />
                                     Get Started Free
                                 </span>
-                                <span className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+                                <span className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <span className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
                             </Link>
                         </Button>
                     </div>
 
-                    {/* Modern Mobile Menu Button */}
+                    {/* Enhanced Mobile Menu Button */}
                     <button
-                        className="lg:hidden p-3 rounded-2xl bg-gradient-to-br from-orange-50 to-white border-2 border-orange-200 hover:border-orange-400 text-orange-600 hover:text-orange-700 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-orange-500/20"
+                        className="lg:hidden p-3 rounded-2xl bg-gradient-to-br from-orange-100 via-pink-100 to-purple-100 border-2 border-purple-300 hover:border-purple-500 text-purple-600 hover:text-purple-700 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-purple-500/30"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
                         {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

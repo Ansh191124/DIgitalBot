@@ -27,26 +27,30 @@ export function Footer() {
   ]
 
   return (
-    <footer className="relative bg-gradient-to-b from-white via-gray-50 to-white border-t-2 border-purple-200 overflow-hidden">
-      {/* Ultra Creative Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-200/40 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-200/30 via-transparent to-transparent pointer-events-none" />
+    <footer className="relative bg-gradient-to-b from-white via-orange-50/50 to-purple-50/50 border-t-2 border-gradient-to-r from-orange-300 via-pink-300 to-purple-300 overflow-hidden">
+      {/* Enhanced Creative Background Elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-200/50 via-pink-200/30 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-200/40 via-blue-200/30 to-transparent pointer-events-none" />
       
-      {/* Animated Orbs */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-orange-300/30 to-pink-300/20 rounded-full blur-3xl animate-float-slow" />
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-tl from-purple-300/20 to-blue-300/15 rounded-full blur-3xl animate-float-reverse" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-pink-200/20 to-orange-200/20 rounded-full blur-3xl animate-pulse-glow" />
+      {/* Enhanced Animated Orbs */}
+      <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-orange-300/40 via-pink-300/30 to-purple-300/20 rounded-full blur-3xl animate-float-slow" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-tl from-purple-400/30 via-blue-400/25 to-cyan-300/20 rounded-full blur-3xl animate-float-reverse" />
+      <div className="absolute top-1/2 left-1/3 w-[500px] h-[500px] bg-gradient-to-r from-pink-300/25 via-orange-300/25 to-teal-300/20 rounded-full blur-3xl animate-pulse-glow" />
       
       {/* Decorative Grid Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Premium Feature Banner */}
+        {/* Enhanced Premium Feature Banner */}
         <div className="py-12 mb-8">
-          <div className="bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 rounded-3xl p-8 shadow-2xl shadow-purple-500/50 relative overflow-hidden group">
-            {/* Animated shimmer effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+          <div className="relative bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 rounded-3xl p-8 shadow-2xl shadow-purple-500/60 overflow-hidden group border-2 border-white/30">
+            {/* Enhanced Animated shimmer effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            
+            {/* Decorative sparkles */}
+            <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-white/30 to-transparent rounded-full blur-2xl" />
+            <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tl from-white/30 to-transparent rounded-full blur-2xl" />
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="text-white">
@@ -54,16 +58,19 @@ export function Footer() {
                   <Sparkles className="w-8 h-8 animate-pulse" />
                   Start Your AI Journey Today
                 </h3>
-                <p className="text-white/90 text-base md:text-lg">
+                <p className="text-white/95 text-base md:text-lg font-medium">
                   Join 10,000+ businesses automating customer interactions with AI
                 </p>
               </div>
               <Link 
                 href="/signup"
-                className="group/btn px-8 py-4 bg-white text-purple-600 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center gap-3 whitespace-nowrap"
+                className="group/btn px-8 py-4 bg-white text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center gap-3 whitespace-nowrap border-2 border-white/50"
+                style={{ backgroundColor: 'white' }}
               >
-                Get Started Free
-                <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
+                  Get Started Free
+                </span>
+                <ArrowRight className="w-5 h-5 text-purple-600 group-hover/btn:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
@@ -95,20 +102,20 @@ export function Footer() {
               Transform customer interactions with intelligent automation.
             </p>
 
-            {/* Trust Badges */}
+            {/* Enhanced Trust Badges */}
             <div className="grid grid-cols-2 gap-3">
               {features.map((feature, idx) => {
                 const colors = [
-                  { bg: 'from-orange-100 to-pink-100', border: 'border-orange-300 hover:border-orange-500', icon: 'text-orange-600' },
-                  { bg: 'from-red-100 to-orange-100', border: 'border-red-300 hover:border-red-500', icon: 'text-red-600' },
-                  { bg: 'from-amber-100 to-orange-100', border: 'border-amber-300 hover:border-amber-500', icon: 'text-amber-600' },
-                  { bg: 'from-orange-100 to-pink-100', border: 'border-orange-300 hover:border-orange-500', icon: 'text-orange-600' },
+                  { bg: 'from-orange-100 via-pink-100 to-purple-100', border: 'border-orange-400 hover:border-pink-500', icon: 'from-orange-600 to-pink-600', shadow: 'hover:shadow-orange-500/30' },
+                  { bg: 'from-blue-100 via-cyan-100 to-teal-100', border: 'border-blue-400 hover:border-cyan-500', icon: 'from-blue-600 to-cyan-600', shadow: 'hover:shadow-blue-500/30' },
+                  { bg: 'from-purple-100 via-pink-100 to-orange-100', border: 'border-purple-400 hover:border-pink-500', icon: 'from-purple-600 to-pink-600', shadow: 'hover:shadow-purple-500/30' },
+                  { bg: 'from-teal-100 via-green-100 to-cyan-100', border: 'border-teal-400 hover:border-green-500', icon: 'from-teal-600 to-green-600', shadow: 'hover:shadow-teal-500/30' },
                 ]
                 const colorSet = colors[idx]
                 return (
-                  <div key={idx} className={`flex items-center gap-2 p-3 bg-white backdrop-blur-sm rounded-xl border-2 ${colorSet.border} shadow-sm hover:shadow-lg transition-all duration-300 group`}>
+                  <div key={idx} className={`flex items-center gap-2 p-3 bg-white backdrop-blur-sm rounded-xl border-2 ${colorSet.border} shadow-md ${colorSet.shadow} transition-all duration-300 group hover:scale-105`}>
                     <div className={`p-2 bg-gradient-to-br ${colorSet.bg} rounded-lg group-hover:scale-110 transition-transform`}>
-                      <feature.icon className={`w-4 h-4 ${colorSet.icon}`} />
+                      <feature.icon className={`w-4 h-4 bg-gradient-to-r ${colorSet.icon} bg-clip-text text-transparent`} style={{ WebkitTextFillColor: 'transparent', backgroundClip: 'text' }} />
                     </div>
                     <span className="text-xs font-semibold text-gray-800">{feature.text}</span>
                   </div>
@@ -116,19 +123,19 @@ export function Footer() {
               })}
             </div>
 
-            {/* Social Media - Creative Design */}
+            {/* Enhanced Social Media - Creative Design */}
             <div>
-              <h4 className="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <h4 className="text-sm font-bold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent mb-4 flex items-center gap-2">
                 <Globe className="w-4 h-4 text-orange-600" />
                 Connect With Us
               </h4>
               <div className="flex items-center gap-2">
                 {[
-                  { icon: Twitter, link: "https://twitter.com/digitalbot_ai", label: "Twitter", color: "from-blue-400 to-blue-600" },
-                  { icon: Linkedin, link: "https://linkedin.com/company/digitalbot-ai", label: "LinkedIn", color: "from-blue-600 to-blue-800" },
+                  { icon: Twitter, link: "https://twitter.com/digitalbot_ai", label: "Twitter", color: "from-blue-400 to-cyan-500" },
+                  { icon: Linkedin, link: "https://linkedin.com/company/digitalbot-ai", label: "LinkedIn", color: "from-blue-600 to-purple-600" },
                   { icon: Instagram, link: "https://www.instagram.com/digitalbotai/", label: "Instagram", color: "from-pink-500 to-purple-600" },
-                  { icon: Facebook, link: "https://www.facebook.com/profile.php?id=61580924391213", label: "Facebook", color: "from-blue-500 to-blue-700" },
-                  { icon: Mail, link: "mailto:contact@digitalbot.ai", label: "Email", color: "from-orange-500 to-red-600" }
+                  { icon: Facebook, link: "https://www.facebook.com/profile.php?id=61580924391213", label: "Facebook", color: "from-blue-500 to-teal-500" },
+                  { icon: Mail, link: "mailto:contact@digitalbot.ai", label: "Email", color: "from-orange-500 to-pink-600" }
                 ].map((social, idx) => (
                   <Link 
                     key={idx} 
@@ -138,12 +145,13 @@ export function Footer() {
                     aria-label={social.label}
                     className="group/social relative"
                   >
-                    <div className={`p-3 bg-gradient-to-br ${social.color} rounded-xl text-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110 hover:-rotate-6`}>
+                    <div className={`p-3 bg-gradient-to-br ${social.color} rounded-xl text-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-125 hover:rotate-12 border border-white/30`}>
                       <social.icon className="w-5 h-5" />
                     </div>
-                    {/* Tooltip */}
-                    <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover/social:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-lg">
+                    {/* Enhanced Tooltip */}
+                    <span className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover/social:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-xl border border-gray-700">
                       {social.label}
+                      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45" />
                     </span>
                   </Link>
                 ))}
@@ -151,24 +159,35 @@ export function Footer() {
             </div>
           </div>
 
-          {/* AI Services Grid - More Creative */}
+          {/* Enhanced AI Services Grid - More Creative */}
           <div className="lg:col-span-8">
             <div className="mb-6">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 rounded-xl shadow-lg">
+                <div className="p-2 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 rounded-xl shadow-lg animate-pulse-glow">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
                   AI-Powered Solutions
                 </h3>
               </div>
-              <p className="text-gray-600 text-sm">Explore our comprehensive suite of AI voice automation services</p>
+              <p className="text-gray-700 text-sm font-medium">Explore our comprehensive suite of AI voice automation services</p>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {services.map((service, idx) => {
                 const Icon = service.icon
                 const isHovered = hoveredService === idx
+                const colorSets = [
+                  { gradient: 'from-orange-500 via-pink-500 to-purple-600', border: 'border-orange-400', iconBg: 'from-orange-100 to-pink-100' },
+                  { gradient: 'from-blue-500 via-cyan-500 to-teal-600', border: 'border-blue-400', iconBg: 'from-blue-100 to-cyan-100' },
+                  { gradient: 'from-purple-500 via-pink-500 to-orange-600', border: 'border-purple-400', iconBg: 'from-purple-100 to-pink-100' },
+                  { gradient: 'from-teal-500 via-green-500 to-cyan-600', border: 'border-teal-400', iconBg: 'from-teal-100 to-green-100' },
+                  { gradient: 'from-pink-500 via-orange-500 to-purple-600', border: 'border-pink-400', iconBg: 'from-pink-100 to-orange-100' },
+                  { gradient: 'from-cyan-500 via-blue-500 to-purple-600', border: 'border-cyan-400', iconBg: 'from-cyan-100 to-blue-100' },
+                  { gradient: 'from-orange-500 via-amber-500 to-pink-600', border: 'border-orange-400', iconBg: 'from-orange-100 to-amber-100' },
+                  { gradient: 'from-green-500 via-teal-500 to-blue-600', border: 'border-green-400', iconBg: 'from-green-100 to-teal-100' },
+                ]
+                const colorSet = colorSets[idx % colorSets.length]
                 return (
                   <Link
                     key={idx}
@@ -178,24 +197,24 @@ export function Footer() {
                     className="group/card relative"
                   >
                     <div className={`
-                      relative p-5 rounded-2xl border-2 transition-all duration-500
+                      relative p-5 rounded-2xl border-2 transition-all duration-500 overflow-hidden
                       ${isHovered 
-                        ? 'bg-gradient-to-br ' + service.gradient + ' border-transparent shadow-2xl scale-105 -translate-y-2' 
-                        : 'bg-white backdrop-blur-sm border-orange-300 hover:border-orange-500 shadow-md hover:shadow-xl'
+                        ? `bg-gradient-to-br ${colorSet.gradient} border-transparent shadow-2xl scale-105 -translate-y-2` 
+                        : `bg-white backdrop-blur-sm ${colorSet.border} hover:border-opacity-100 shadow-md hover:shadow-xl`
                       }
                     `}>
-                      {/* Icon with animation */}
+                      {/* Icon with enhanced animation */}
                       <div className={`
                         mb-3 p-3 rounded-xl transition-all duration-500
                         ${isHovered 
-                          ? 'bg-white/20 backdrop-blur-md scale-110 rotate-6' 
-                          : 'bg-gradient-to-br from-orange-100 to-pink-100'
+                          ? 'bg-white/30 backdrop-blur-md scale-110 rotate-12' 
+                          : `bg-gradient-to-br ${colorSet.iconBg}`
                         }
                       `}>
                         <Icon className={`
                           w-6 h-6 transition-all duration-500
-                          ${isHovered ? 'text-white' : 'text-orange-600'}
-                        `} />
+                          ${isHovered ? 'text-white scale-110' : `bg-gradient-to-r ${colorSet.gradient} bg-clip-text text-transparent`}
+                        `} style={!isHovered ? { WebkitTextFillColor: 'transparent', backgroundClip: 'text' } : {}} />
                       </div>
                       
                       {/* Text */}
@@ -207,18 +226,23 @@ export function Footer() {
                       </h4>
                       <p className={`
                         text-xs transition-colors duration-500
-                        ${isHovered ? 'text-white/90' : 'text-gray-600'}
+                        ${isHovered ? 'text-white/95' : 'text-gray-700'}
                       `}>
                         {service.description}
                       </p>
                       
-                      {/* Arrow indicator */}
+                      {/* Enhanced Arrow indicator with pulse */}
                       <div className={`
                         absolute top-4 right-4 transition-all duration-500
-                        ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}
+                        ${isHovered ? 'opacity-100 translate-x-0 scale-110' : 'opacity-0 -translate-x-2'}
                       `}>
-                        <ArrowRight className="w-4 h-4 text-white" />
+                        <ArrowRight className="w-4 h-4 text-white animate-pulse" />
                       </div>
+                      
+                      {/* Shimmer effect on hover */}
+                      {isHovered && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer" />
+                      )}
                     </div>
                   </Link>
                 )
@@ -277,41 +301,41 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar - Ultra Modern */}
-        <div className="border-t-2 border-purple-200 pt-8 pb-6">
+        {/* Enhanced Bottom Bar - Ultra Modern */}
+        <div className="border-t-2 border-gradient-to-r from-orange-300 via-pink-300 to-purple-300 pt-8 pb-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            {/* Copyright with Animation */}
+            {/* Enhanced Copyright with Animation */}
             <div className="flex items-center gap-3">
               <div className="relative">
                 <div className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 animate-ping absolute" />
-                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600" />
+                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 shadow-lg" />
               </div>
-              <p className="text-gray-700 text-sm font-medium">
+              <p className="text-gray-800 text-sm font-semibold">
                 © 2025 <span className="font-bold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">DigitalBot.ai</span> • All rights reserved
               </p>
             </div>
 
-            {/* Badges */}
+            {/* Enhanced Badges with vibrant colors */}
             <div className="flex items-center gap-4 flex-wrap justify-center">
-              <div className="px-4 py-2 bg-gradient-to-r from-orange-100 to-pink-100 backdrop-blur-sm border-2 border-orange-300 rounded-full flex items-center gap-2">
-                <Shield className="w-4 h-4 text-orange-600" />
-                <span className="text-xs font-bold text-orange-700">SOC 2 Certified</span>
+              <div className="px-4 py-2 bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 backdrop-blur-sm border-2 border-orange-400 hover:border-pink-500 rounded-full flex items-center gap-2 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-orange-500/30">
+                <Shield className="w-4 h-4 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent" style={{ WebkitTextFillColor: 'transparent', backgroundClip: 'text' }} />
+                <span className="text-xs font-bold bg-gradient-to-r from-orange-700 to-pink-700 bg-clip-text text-transparent">SOC 2 Certified</span>
               </div>
-              <div className="px-4 py-2 bg-gradient-to-r from-green-100 to-teal-100 backdrop-blur-sm border-2 border-green-300 rounded-full flex items-center gap-2">
-                <Award className="w-4 h-4 text-green-600" />
-                <span className="text-xs font-bold text-green-700">99.9% Uptime</span>
+              <div className="px-4 py-2 bg-gradient-to-r from-green-100 via-teal-100 to-cyan-100 backdrop-blur-sm border-2 border-green-400 hover:border-teal-500 rounded-full flex items-center gap-2 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-green-500/30">
+                <Award className="w-4 h-4 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent" style={{ WebkitTextFillColor: 'transparent', backgroundClip: 'text' }} />
+                <span className="text-xs font-bold bg-gradient-to-r from-green-700 to-teal-700 bg-clip-text text-transparent">99.9% Uptime</span>
               </div>
-              <div className="px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 backdrop-blur-sm border-2 border-blue-300 rounded-full flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-blue-600" />
-                <span className="text-xs font-bold text-blue-700">Trusted by 10K+</span>
+              <div className="px-4 py-2 bg-gradient-to-r from-blue-100 via-cyan-100 to-purple-100 backdrop-blur-sm border-2 border-blue-400 hover:border-purple-500 rounded-full flex items-center gap-2 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-blue-500/30">
+                <TrendingUp className="w-4 h-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent" style={{ WebkitTextFillColor: 'transparent', backgroundClip: 'text' }} />
+                <span className="text-xs font-bold bg-gradient-to-r from-blue-700 to-purple-700 bg-clip-text text-transparent">Trusted by 10K+</span>
               </div>
             </div>
           </div>
 
-          {/* Tagline */}
+          {/* Enhanced Tagline with more vibrant gradient */}
           <div className="mt-6 text-center">
-            <p className="text-sm font-medium bg-gradient-to-r from-gray-600 via-orange-600 to-purple-600 bg-clip-text text-transparent">
-              🤖 Powered by Advanced AI • Built for Enterprise • Trusted Worldwide • Never Sleeps, Never Quits
+            <p className="text-sm font-bold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+              🤖 Powered by Advanced AI • Built for Enterprise • Trusted Worldwide • Never Sleeps, Never Quits ✨
             </p>
           </div>
         </div>
