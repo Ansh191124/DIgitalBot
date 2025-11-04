@@ -665,6 +665,155 @@ export default function Home() {
           </div>
         </section>
 
+        {/* FAQ Section - 12 Questions */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-purple-50 via-white to-orange-50 relative overflow-hidden" role="region" aria-labelledby="faq-section">
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="text-center mb-16">
+              <h2 id="faq-section" className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-gray-700 text-lg max-w-3xl mx-auto">
+                Everything you need to know about AI Voice Agents and AI Voice Assistants
+              </p>
+            </div>
+            
+            <div className="space-y-6">
+              {/* FAQ 1 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-orange-300 hover:border-orange-500 transition-all hover:shadow-2xl hover:shadow-orange-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent mb-4">
+                  What is an AI voice assistant and how does it work?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  An AI voice assistant is an intelligent conversational system that uses natural language processing and machine learning to understand and respond to customer queries in real-time. It processes spoken or text input, analyzes the intent, and provides relevant responses through advanced algorithms. Our AI voice assistant can handle complex conversations, learn from interactions, and continuously improve its responses to provide more accurate and helpful assistance to your customers.
+                </p>
+              </div>
+
+              {/* FAQ 2 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-blue-300 hover:border-blue-500 transition-all hover:shadow-2xl hover:shadow-blue-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
+                  How can AI voice assistants improve customer service?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  AI voice assistants enhance customer service by providing instant responses, handling multiple conversations simultaneously, reducing wait times, and offering consistent support around the clock. They can resolve common queries immediately, escalate complex issues to human agents when needed, and maintain detailed conversation logs for better service continuity. This results in higher customer satisfaction, reduced operational costs, and improved efficiency for your support team.
+                </p>
+              </div>
+
+              {/* FAQ 3 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-purple-300 hover:border-purple-500 transition-all hover:shadow-2xl hover:shadow-purple-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+                  Is the AI voice assistant secure for handling customer data?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Yes, our AI voice assistant employs enterprise-grade security measures including end-to-end encryption, compliance with GDPR and industry standards, regular security audits, and strict data privacy protocols. All customer interactions are encrypted and stored securely, with access controls and monitoring systems in place. We ensure that sensitive information is protected and handled according to the highest security standards and regulatory requirements.
+                </p>
+              </div>
+
+              {/* FAQ 4 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-teal-300 hover:border-teal-500 transition-all hover:shadow-2xl hover:shadow-teal-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-teal-600 to-green-600 bg-clip-text text-transparent mb-4">
+                  Can the AI voice assistant integrate with existing business systems?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Absolutely. Our AI voice assistant offers seamless integration with popular CRM systems, help desk software, e-commerce platforms, and custom APIs. This ensures smooth data flow and enables the assistant to access relevant customer information, update records, and perform actions within your existing workflows. We provide comprehensive integration support and documentation to make the setup process as smooth as possible.
+                </p>
+              </div>
+
+              {/* FAQ 5 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-pink-300 hover:border-pink-500 transition-all hover:shadow-2xl hover:shadow-pink-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                  What industries benefit most from AI voice assistants?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  AI voice assistants benefit various industries including healthcare, e-commerce, banking, hospitality, real estate, education, and telecommunications. Any business that values customer interaction and support can leverage AI voice assistants to improve service quality, reduce costs, and enhance customer experience. The technology is particularly valuable for businesses with high call volumes, repetitive queries, or 24/7 support requirements.
+                </p>
+              </div>
+
+              {/* FAQ 6 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-orange-300 hover:border-orange-500 transition-all hover:shadow-2xl hover:shadow-orange-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent mb-4">
+                  How quickly can I set up and deploy an AI voice assistant?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Setup time varies depending on your requirements and integrations, but most businesses can have a basic AI voice assistant running within 1-2 weeks. This includes initial configuration, training on your specific use cases, and basic integrations. More complex deployments with multiple integrations and custom features may take 2-4 weeks. We provide dedicated support throughout the setup process to ensure smooth deployment.
+                </p>
+              </div>
+
+              {/* FAQ 7 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-blue-300 hover:border-blue-500 transition-all hover:shadow-2xl hover:shadow-blue-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
+                  What kind of support and maintenance is provided?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  We offer comprehensive support including 24/7 technical assistance, regular system updates, performance monitoring, and continuous optimization. Our team provides training for your staff, handles system maintenance, and ensures the AI assistant stays updated with the latest features and security patches. We also offer analytics and reporting to help you track performance and identify areas for improvement.
+                </p>
+              </div>
+
+              {/* FAQ 8 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-purple-300 hover:border-purple-500 transition-all hover:shadow-2xl hover:shadow-purple-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+                  Can the AI voice assistant handle multiple languages?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Yes, our AI voice assistant supports multiple languages and can be configured to communicate in the languages your customers prefer. It can detect the customer's language automatically or be set to specific languages based on your business needs. The assistant maintains the same level of accuracy and understanding across different languages, ensuring consistent service quality for all your customers.
+                </p>
+              </div>
+
+              {/* FAQ 9 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-teal-300 hover:border-teal-500 transition-all hover:shadow-2xl hover:shadow-teal-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-teal-600 to-green-600 bg-clip-text text-transparent mb-4">
+                  What is the difference between an AI Voice Agent and traditional IVR systems?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  AI Voice Agents are significantly more advanced than traditional IVR (Interactive Voice Response) systems. While IVR relies on pre-recorded menus and limited options, AI Voice Agents use natural language understanding to have genuine conversations with customers. They can understand context, handle complex queries, learn from interactions, and provide personalized responses. AI Voice Agents offer a more natural, efficient, and satisfying customer experience compared to the rigid menu-driven approach of traditional IVR systems.
+                </p>
+              </div>
+
+              {/* FAQ 10 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-pink-300 hover:border-pink-500 transition-all hover:shadow-2xl hover:shadow-pink-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                  How much does an AI Voice Assistant platform cost?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Pricing for AI Voice Assistant platforms varies based on usage volume, features, and integration requirements. Most platforms offer flexible pricing models including per-minute usage, monthly subscriptions, or enterprise packages. Typical costs range from $0.05-$0.15 per minute for pay-as-you-go plans, or $500-$5000+ per month for subscription plans depending on call volume and features. Contact us for a customized quote based on your specific business needs and expected usage patterns.
+                </p>
+              </div>
+
+              {/* FAQ 11 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-orange-300 hover:border-orange-500 transition-all hover:shadow-2xl hover:shadow-orange-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent mb-4">
+                  Can AI Voice Agents make outbound calls for sales and appointments?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Yes, AI Voice Agents excel at making outbound calls for various purposes including sales outreach, appointment scheduling, follow-ups, reminders, and surveys. They can handle objections, answer questions, and even close deals or book appointments autonomously. Outbound AI Voice Agents work from your contact lists, respect calling preferences, and can adapt their approach based on the conversation. This enables businesses to scale their outreach efforts while maintaining personalized interactions.
+                </p>
+              </div>
+
+              {/* FAQ 12 */}
+              <div className="group bg-white p-8 rounded-2xl border-2 border-blue-300 hover:border-blue-500 transition-all hover:shadow-2xl hover:shadow-blue-200">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
+                  How accurate is the speech recognition in AI Voice Assistants?
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Modern AI Voice Assistants achieve 95-98% accuracy in speech recognition under normal conditions. Our platform uses advanced deep learning models trained on millions of conversations across various accents, dialects, and speaking styles. The system continuously improves through machine learning, adapting to your specific industry terminology and customer base. Accuracy can be affected by background noise, audio quality, and regional accents, but our AI is designed to handle these challenges effectively and request clarification when needed.
+                </p>
+              </div>
+            </div>
+
+            {/* CTA to FAQ Page */}
+            <div className="mt-16 text-center">
+              <Link 
+                href="/faq"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 rounded-xl shadow-2xl hover:shadow-orange-400 transition-all duration-300 hover:scale-105 border-2 border-orange-300"
+              >
+                View All FAQs & Detailed Answers
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <LeadForm />
 
         {/* Modern CTA Component */}
