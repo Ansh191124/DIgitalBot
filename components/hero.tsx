@@ -702,6 +702,13 @@ export function Hero() {
                                     Watch Demo
                                 </Button>
                             </div>
+
+                            {/* H1 Heading */}
+                            <div className="mt-12 text-center">
+                                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
+                                    AI Voice Agent | AI Voice Assistant
+                                </h1>
+                            </div>
                         </div>
                     </div>
                 </div>
