@@ -1,6 +1,7 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { Footer } from "@/components/footer"
+import { CTA } from "@/components/cta"
 
 export default function Home() {
   return (
@@ -127,36 +128,13 @@ export default function Home() {
               </div>
 
            
-              {/* Call to Action for AI Voice Assistant Platform */}
-              <div className="text-center mt-16">
-                <div className="bg-white/80 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-sky-200/40">
-                  <h3 className="text-3xl font-bold mb-4 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
-                    Ready for an AI Assistant That Never Sleeps?
-                  </h3>
-                  <p className="text-xl mb-6 text-sky-700 font-semibold">
-                    Get your AI voice assistant up and running in minutes.<br />
-                    <span className="bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent font-bold">Personal analytics dashboard included.</span> <span className="text-sky-600 font-bold">14-day free trial.</span> No setup fees.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <button className="bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 text-white font-bold px-8 py-4 rounded-full shadow-xl transition-all hover:scale-105 border border-white/30">
-                      Start Free Trial
-                    </button>
-                    <button className="bg-white/70 border-2 border-sky-300 text-sky-700 hover:bg-sky-50 font-semibold px-8 py-4 rounded-full shadow-lg transition-transform hover:scale-105">
-                      View Demo Dashboard
-                    </button>
-                  </div>
-                  <ul className="text-sm text-sky-600 mt-4 font-semibold flex flex-wrap gap-4 justify-center list-disc list-inside">
-                    <li>Never sleeps, never gets sick, never takes breaks</li>
-                    <li>Personal analytics dashboard</li>
-                    <li>Free 14-day trial</li>
-                    <li>99.9% uptime</li>
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Modern CTA Component */}
+        <CTA />
         
       </main>
       
