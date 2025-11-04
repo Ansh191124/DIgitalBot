@@ -7,12 +7,12 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "AI Voice Assistant Platform | DigitalBot.ai - Business Call Automation & Analytics Dashboard 2024",
-  description: "Ready-to-Use AI Voice Assistant Platform ⭐ Automate Business Calls 24/7 | Personal Analytics Dashboard | Never Sleeps, Never Gets Sick, Never Takes Breaks | Free 14-Day Trial",
-  keywords: "ai voice assistant, business call automation, automated receptionist, ai customer service, voice assistant platform, call automation software, ai phone system, automated call handling, business phone automation, ai receptionist, virtual receptionist, automated customer service, call center automation, voice ai platform, business automation tools, ai call center, automated phone system, intelligent voice assistant, ai powered receptionist, business call management, automated appointment booking, ai telephone system, voice automation platform, smart phone assistant, ai business solutions, automated customer support, intelligent call routing, ai voice technology, business process automation, automated lead qualification, ai sales assistant, voice activated assistant, automated call screening, ai phone answering, business communication automation, automated follow up calls, ai appointment scheduling, voice recognition system, automated customer interaction, ai powered phone system, business efficiency tools, automated response system, call handling automation, ai customer engagement, voice assistant analytics, automated business calls, ai communication platform, intelligent phone system, automated call distribution, ai voice bot, business telephony automation, automated inquiry handling, ai powered customer service, voice assistant dashboard, automated call management, business intelligence platform, ai voice solutions, automated phone assistant, call automation platform, voice ai technology, business automation software, ai receptionist service, automated call center, intelligent voice platform, ai phone bot, business call analytics, automated customer interaction, voice assistant integration, ai powered automation, business communication tools, automated phone support, ai voice system, call management platform, automated business communication, ai telephone assistant, voice automation software, intelligent call handling, ai customer interaction, automated phone service, business voice assistant, ai call management, automated reception system, voice ai assistant, business phone bot, ai powered calling, automated customer experience, voice assistant technology, ai business phone, automated call response, intelligent phone assistant, ai voice platform, business automation platform, automated telephony, ai customer care, voice assistant software, automated business support, ai phone automation, call center ai, automated voice system, business ai solutions, ai powered receptionist, automated customer calls, voice assistant service, ai telephone system, business call bot, automated phone calls, ai voice assistant platform, customer service automation, automated business processes, ai powered phone calls, voice assistant business, automated call solutions, ai receptionist system, business voice automation, automated customer queries, ai phone service, voice ai solutions, business call ai, automated telephone system, ai customer support, voice assistant analytics dashboard, automated business phone, ai call bot, business automation ai, automated voice assistant, ai phone platform, voice automation business, automated customer management, ai business assistant, voice ai platform business, automated call tracking, ai powered business calls, business voice ai, automated phone management, ai customer service platform",
-  authors: [{ name: "DigitalBot.ai Team - Website Developers India" }],
-  creator: "DigitalBot.ai - Professional Website Developer India",
-  publisher: "DigitalBot.ai - Leading Web Development Company India",
+  title: "AI Voice Agent | AI Voice Assistant Platform - DigitalBot.ai 2024",
+  description: "🤖 Leading AI Voice Agent & AI Voice Assistant Platform | 24/7 Automated Customer Service | Never Sleeps | Personal Analytics Dashboard | Enterprise-Grade Voice AI Technology | Free 14-Day Trial",
+  keywords: "ai voice agent, ai voice assistant, voice agent platform, ai assistant platform, conversational ai agent, intelligent voice assistant, ai voice technology, voice agent software, ai assistant software, automated voice agent, smart voice assistant, ai powered voice agent, enterprise voice assistant, business voice agent, ai voice agent platform, voice assistant solution, ai agent automation, voice ai assistant, conversational voice agent, ai customer service agent, voice assistant technology, ai voice bot, intelligent ai agent, voice agent system, ai assistant system, automated ai assistant, ai voice platform, voice agent service, ai assistant service, business ai voice agent, ai voice agent solution, voice assistant automation, ai agent platform, intelligent voice agent, ai voice assistant technology, voice agent automation, ai assistant automation, enterprise ai voice agent, business ai assistant, ai voice agent software, voice assistant platform, ai powered assistant, conversational ai assistant, ai voice agent system, voice assistant system, automated voice assistant, ai voice solutions, voice agent solutions, ai assistant solutions, enterprise voice agent, business voice assistant",
+  authors: [{ name: "DigitalBot.ai Team - AI Voice Technology Experts" }],
+  creator: "DigitalBot.ai - AI Voice Agent & Assistant Platform",
+  publisher: "DigitalBot.ai - Leading AI Voice Technology Provider",
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   metadataBase: new URL("https://digitalbot.ai"),
   alternates: {
@@ -30,15 +30,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://digitalbot.ai",
-    title: "AI Voice Assistant Platform | DigitalBot.ai - 24/7 Business Call Automation",
-    description: "🤖 Ready-to-Use AI Voice Assistant | Never Sleeps, Never Gets Sick, Never Takes Breaks | Personal Analytics Dashboard | Automated Customer Service | Free 14-Day Trial",
-    siteName: "DigitalBot.ai - AI Voice Assistant Platform",
+    title: "AI Voice Agent | AI Voice Assistant Platform - DigitalBot.ai",
+    description: "🤖 #1 AI Voice Agent & AI Voice Assistant Platform | Never Sleeps | 24/7 Automated Customer Service | Personal Analytics Dashboard | Free 14-Day Trial",
+    siteName: "DigitalBot.ai - AI Voice Agent & Assistant Platform",
     images: [
       {
-        url: "/og-ai-voice-assistant-platform.jpg",
+        url: "/og-ai-voice-agent-assistant.jpg",
         width: 1200,
         height: 630,
-        alt: "AI Voice Assistant Platform - DigitalBot.ai - Never Sleeps Never Takes Breaks",
+        alt: "AI Voice Agent & AI Voice Assistant Platform - DigitalBot.ai",
       },
     ],
   },
@@ -46,9 +46,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@digitalbot_ai",
     creator: "@digitalbot_ai",
-    title: "AI Voice Assistant Platform | Never Sleeps, Never Takes Breaks | DigitalBot.ai",
-    description: "🤖 Ready-to-Use AI Voice Assistant | 24/7 Business Call Automation | Personal Analytics Dashboard | Free 14-Day Trial",
-    images: ["/twitter-ai-voice-assistant-automation.jpg"],
+    title: "AI Voice Agent | AI Voice Assistant Platform | DigitalBot.ai",
+    description: "🤖 Leading AI Voice Agent & AI Voice Assistant Platform | 24/7 Automation | Never Sleeps | Free 14-Day Trial",
+    images: ["/twitter-ai-voice-agent-assistant.jpg"],
   },
   verification: {
     google: "f2bf8afb699100cd",
@@ -76,7 +76,7 @@ export default function RootLayout({
           "width": 400,
           "height": 400
         },
-        "description": "Leading AI Voice Agent platform for businesses. Create intelligent conversational AI assistants with advanced natural language processing.",
+        "description": "Leading AI Voice Agent and AI Voice Assistant platform for businesses. Create intelligent conversational AI agents with advanced natural language processing and voice technology.",
         "sameAs": [
           "https://twitter.com/digitalbot_ai",
           "https://linkedin.com/company/digitalbot-ai",
@@ -87,8 +87,8 @@ export default function RootLayout({
         "@type": "WebSite",
         "@id": "https://digitalbot.ai/#website",
         "url": "https://digitalbot.ai",
-        "name": "DigitalBot.ai - AI Voice Agent Platform",
-        "description": "AI Voice Agent platform for building intelligent conversational assistants. Advanced voice AI technology for customer service automation.",
+        "name": "DigitalBot.ai - AI Voice Agent & AI Voice Assistant Platform",
+        "description": "AI Voice Agent and AI Voice Assistant platform for building intelligent conversational agents. Advanced voice AI technology for customer service automation and business communication.",
         "publisher": {
           "@id": "https://digitalbot.ai/#organization"
         },
@@ -105,8 +105,8 @@ export default function RootLayout({
       },
       {
         "@type": "SoftwareApplication",
-        "name": "AI Voice Agent Platform",
-        "description": "Advanced AI Voice Agent platform with natural language processing, voice recognition, and conversational AI capabilities for businesses.",
+        "name": "AI Voice Agent & AI Voice Assistant Platform",
+        "description": "Advanced AI Voice Agent and AI Voice Assistant platform with natural language processing, voice recognition, and conversational AI capabilities for businesses. Automate customer service with intelligent voice agents.",
         "url": "https://digitalbot.ai",
         "category": "Business Software",
         "operatingSystem": "Web Browser",
@@ -130,26 +130,26 @@ export default function RootLayout({
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What is an AI Voice Agent?",
+            "name": "What is an AI Voice Agent and AI Voice Assistant?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "An AI Voice Agent is an intelligent conversational assistant that uses natural language processing and speech recognition to communicate with users through voice interactions. It can handle customer service, sales inquiries, appointment scheduling, and provide 24/7 automated support."
+              "text": "An AI Voice Agent and AI Voice Assistant are intelligent conversational systems that use natural language processing, speech recognition, and machine learning to communicate with users through voice interactions. They can handle customer service, sales inquiries, appointment scheduling, and provide 24/7 automated support for businesses."
             }
           },
           {
             "@type": "Question",
-            "name": "How does AI Voice Agent technology work?",
+            "name": "How does AI Voice Agent and AI Voice Assistant technology work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "AI Voice Agents combine speech recognition, natural language understanding, machine learning, and text-to-speech synthesis to create human-like conversations. They process spoken language, understand intent, access relevant information, and respond naturally in real-time."
+              "text": "AI Voice Agents and AI Voice Assistants combine speech recognition, natural language understanding, machine learning, and text-to-speech synthesis to create human-like conversations. They process spoken language, understand intent, access relevant information, and respond naturally in real-time to provide intelligent customer interactions."
             }
           },
           {
             "@type": "Question",
-            "name": "What are the benefits of using an AI Voice Agent?",
+            "name": "What are the benefits of using an AI Voice Agent and AI Voice Assistant?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "AI Voice Agents provide 24/7 customer support, reduce operational costs, improve response times, handle multiple conversations simultaneously, and offer personalized experiences. They can increase customer satisfaction while reducing the workload on human agents."
+              "text": "AI Voice Agents and AI Voice Assistants provide 24/7 customer support, reduce operational costs, improve response times, handle multiple conversations simultaneously, and offer personalized experiences. They can increase customer satisfaction while reducing the workload on human agents and never take breaks."
             }
           }
         ]
