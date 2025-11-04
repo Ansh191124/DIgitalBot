@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero"
 import { Footer } from "@/components/footer"
 import { CTA } from "@/components/cta"
 import { LeadForm } from "@/components/lead-form"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -89,7 +90,7 @@ export default function Home() {
                 Our <span className="font-bold text-orange-400">AI voice assistant</span> platform automates customer service, lead qualification, appointment scheduling, and business communications with enterprise-grade accuracy.
               </p>
               
-              <div className="flex flex-wrap items-center justify-center gap-4 text-gray-400 text-sm sm:text-base">
+              <div className="flex flex-wrap items-center justify-center gap-4 text-gray-400 text-sm sm:text-base mb-8">
                 <span className="inline-flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-orange-500"></span>
                   <span className="font-semibold text-gray-300">Real-Time Analytics</span>
@@ -109,6 +110,25 @@ export default function Home() {
                   <span className="w-2 h-2 rounded-full bg-orange-500"></span>
                   <span className="font-semibold text-gray-300">50+ Languages</span>
                 </span>
+              </div>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+                <Link 
+                  href="/pricing" 
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 rounded-xl shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105 border-2 border-orange-400/30"
+                >
+                  View Pricing Plans
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <Link 
+                  href="/contact" 
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-orange-400 bg-white/10 backdrop-blur-md rounded-xl border-2 border-orange-500/50 hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                >
+                  Start Free Trial
+                </Link>
               </div>
             </div>
           </div>
