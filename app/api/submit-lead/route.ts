@@ -5,6 +5,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { name, email, phone, company, message, to } = body
 
+    console.log("Form submission received:", { name, email, phone, company })
+    console.log("Web3Forms API Key present:", !!process.env.WEB3FORMS_ACCESS_KEY)
+
     // Validate required fields
     if (!name || !email || !phone || !company || !message) {
       return NextResponse.json(
@@ -40,27 +43,35 @@ export async function POST(request: NextRequest) {
 
     // For now, we'll use a simple approach with Web3Forms (free service)
     // You can replace this with your preferred email service (SendGrid, Resend, etc.)
+    const formData = {
+      access_key: process.env.WEB3FORMS_ACCESS_KEY,
+      subject: `New Lead: ${name} from ${company}`,
+      from_name: "DigitalBot Lead Form",
+      email: email,
+      name: name,
+      phone: phone,
+      company: company,
+      message: message,
+      to: to || "hello@metic.ai",
+    }
+
+    console.log("Sending to Web3Forms:", { ...formData, access_key: "***hidden***" })
+
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json",
       },
-      body: JSON.stringify({
-        access_key: process.env.WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY",
-        subject: `New Lead: ${name} from ${company}`,
-        from_name: "DigitalBot Lead Form",
-        from_email: email,
-        to: to || "hello@metic.ai",
-        message: emailContent,
-        name: name,
-        email: email,
-        phone: phone,
-        company: company,
-      }),
+      body: JSON.stringify(formData),
     })
 
-    if (!response.ok) {
-      throw new Error("Failed to send email")
+    const data = await response.json()
+    console.log("Web3Forms response:", data)
+
+    if (!response.ok || !data.success) {
+      console.error("Web3Forms error:", data)
+      throw new Error(data.message || "Failed to send email")
     }
 
     return NextResponse.json(
