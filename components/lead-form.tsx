@@ -31,35 +31,38 @@ export function LeadForm() {
     setError("")
 
     try {
-      const response = await fetch("/api/submit-lead", {
+      const form = e.target as HTMLFormElement
+      const formData = new FormData(form)
+      formData.append("access_key", "8f0556d8-66c3-4e2d-810e-5de948aff5ce")
+      formData.append("subject", `New Lead from ${formData.get("company")}`)
+      formData.append("from_name", "DigitalBot Lead Form")
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          to: "hello@metic.ai"
-        }),
+        body: formData
       })
 
-      if (!response.ok) {
-        throw new Error("Failed to submit form")
+      const data = await response.json()
+
+      if (data.success) {
+        setIsSuccess(true)
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: ""
+        })
+
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setIsSuccess(false)
+        }, 5000)
+      } else {
+        throw new Error(data.message || "Failed to submit form")
       }
-
-      setIsSuccess(true)
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        message: ""
-      })
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSuccess(false)
-      }, 5000)
     } catch (err) {
+      console.error("Form submission error:", err)
       setError("Failed to submit form. Please try again or email us directly at hello@metic.ai")
     } finally {
       setIsSubmitting(false)
@@ -178,6 +181,10 @@ export function LeadForm() {
 
                   {/* Form */}
                   <form onSubmit={handleSubmit} className="space-y-5">
+                    {/* Hidden field for recipient email */}
+                    <input type="hidden" name="redirect" value="false" />
+                    <input type="hidden" name="to" value="hello@metic.ai" />
+                    
                     {/* Name Field */}
                     <div>
                       <label htmlFor="name" className="block text-sm font-semibold text-gray-200 mb-2">
