@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <!-- iOS App Icon requires specific size and no transparency -->
+  <rect width="180" height="180" fill="#000000" rx="40"/>
+  
+  <!-- Robot head -->
+  <rect x="45" y="50" width="90" height="75" rx="12" fill="#FF6B35"/>
+  
+  <!-- Eyes -->
+  <circle cx="72" cy="75" r="10" fill="#FFFFFF"/>
+  <circle cx="108" cy="75" r="10" fill="#FFFFFF"/>
+  
+  <!-- Eye pupils -->
+  <circle cx="72" cy="75" r="4" fill="#000000"/>
+  <circle cx="108" cy="75" r="4" fill="#000000"/>
+  
+  <!-- Antenna -->
+  <line x1="90" y1="50" x2="90" y2="25" stroke="#FF6B35" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="90" cy="25" r="8" fill="#FF6B35"/>
+  
+  <!-- Smile -->
+  <path d="M 65 100 Q 90 110 115 100" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+  
+  <!-- Body/chest indicator -->
+  <rect x="80" y="125" width="20" height="15" rx="4" fill="#FF6B35" opacity="0.6"/>
+</svg>
