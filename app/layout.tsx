@@ -151,6 +151,78 @@ export default function RootLayout({
               "@type": "Answer",
               "text": "AI Voice Agents and AI Voice Assistants provide 24/7 customer support, reduce operational costs, improve response times, handle multiple conversations simultaneously, and offer personalized experiences. They can increase customer satisfaction while reducing the workload on human agents and never take breaks."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "Can AI Voice Assistants integrate with existing business systems?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, AI Voice Assistants offer seamless integration with CRM systems, help desk software, e-commerce platforms, and custom APIs. This ensures smooth data flow and enables the assistant to access customer information, update records, and perform actions within existing workflows."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between an AI Voice Agent and traditional IVR systems?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AI Voice Agents use natural language understanding for genuine conversations, while traditional IVR relies on pre-recorded menus. AI Voice Agents understand context, handle complex queries, learn from interactions, and provide personalized responses for a more natural customer experience."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does an AI Voice Assistant platform cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AI Voice Assistant platforms typically cost $0.05-$0.15 per minute for pay-as-you-go plans, or $500-$5000+ per month for subscription plans depending on call volume and features. Pricing varies based on usage volume, features, and integration requirements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can AI Voice Agents make outbound calls for sales and appointments?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, AI Voice Agents excel at outbound calls for sales outreach, appointment scheduling, follow-ups, reminders, and surveys. They can handle objections, answer questions, close deals, or book appointments autonomously while maintaining personalized interactions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How accurate is the speech recognition in AI Voice Assistants?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Modern AI Voice Assistants achieve 95-98% accuracy in speech recognition. They use advanced deep learning models trained on millions of conversations across various accents, dialects, and speaking styles, continuously improving through machine learning."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What analytics and reporting features are available?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AI Voice Assistant platforms provide comprehensive analytics including call volume metrics, conversation duration, resolution rates, customer sentiment analysis, query patterns, performance scores, real-time dashboards, detailed reports, KPIs, conversation recordings, and transcripts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the AI Voice Agent transfer calls to human agents when needed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, AI Voice Agents have intelligent escalation capabilities. They recognize complex queries or customer requests for human assistance and seamlessly transfer calls with all conversation context and customer information to ensure continuity."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the AI Voice Assistant learn and improve over time?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AI Voice Assistants use machine learning to continuously improve by analyzing conversation patterns, learning from feedback, adapting to new vocabulary, identifying customer intents, updating knowledge bases, and incorporating new training data from real interactions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if the AI Voice Agent encounters technical issues during a call?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The system maintains 99.9% uptime with automatic failover to backup servers, routing to human agents, or providing alternative contact methods. All conversations are logged with real-time monitoring and automated recovery protocols to ensure service continuity."
+            }
           }
         ]
       }
