@@ -27,26 +27,26 @@ export function Footer() {
   ]
 
   return (
-    <footer className="relative bg-gradient-to-b from-black via-gray-900 to-black border-t border-orange-500/20 overflow-hidden">
+    <footer className="relative bg-gradient-to-b from-white via-gray-50 to-white border-t-2 border-purple-200 overflow-hidden">
       {/* Ultra Creative Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-500/20 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-orange-600/10 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-200/40 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-200/30 via-transparent to-transparent pointer-events-none" />
       
       {/* Animated Orbs */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-orange-500/30 to-orange-600/20 rounded-full blur-3xl animate-float-slow" />
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-tl from-orange-600/20 to-red-600/15 rounded-full blur-3xl animate-float-reverse" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-full blur-3xl animate-pulse-glow" />
+      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-orange-300/30 to-pink-300/20 rounded-full blur-3xl animate-float-slow" />
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-tl from-purple-300/20 to-blue-300/15 rounded-full blur-3xl animate-float-reverse" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-pink-200/20 to-orange-200/20 rounded-full blur-3xl animate-pulse-glow" />
       
       {/* Decorative Grid Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.05]" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Premium Feature Banner */}
         <div className="py-12 mb-8">
-          <div className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 rounded-3xl p-8 shadow-2xl shadow-orange-500/50 relative overflow-hidden group">
+          <div className="bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 rounded-3xl p-8 shadow-2xl shadow-purple-500/50 relative overflow-hidden group">
             {/* Animated shimmer effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="text-white">
@@ -54,13 +54,13 @@ export function Footer() {
                   <Sparkles className="w-8 h-8 animate-pulse" />
                   Start Your AI Journey Today
                 </h3>
-                <p className="text-orange-100 text-base md:text-lg">
+                <p className="text-white/90 text-base md:text-lg">
                   Join 10,000+ businesses automating customer interactions with AI
                 </p>
               </div>
               <Link 
                 href="/signup"
-                className="group/btn px-8 py-4 bg-white text-orange-600 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center gap-3 whitespace-nowrap"
+                className="group/btn px-8 py-4 bg-white text-purple-600 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center gap-3 whitespace-nowrap"
               >
                 Get Started Free
                 <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
@@ -77,7 +77,7 @@ export function Footer() {
             <div className="group relative inline-block">
               <Link href="/" className="block">
                 {/* Glow effect */}
-                <div className="absolute -inset-6 bg-gradient-to-r from-orange-400/30 via-orange-500/30 to-orange-600/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                <div className="absolute -inset-6 bg-gradient-to-r from-orange-300/40 via-pink-300/40 to-purple-300/40 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 <Image
                   src="/images/logos/footer-logo.png"
                   alt="DigitalBot.AI - AI Voice Assistant Platform"
@@ -90,27 +90,36 @@ export function Footer() {
               </Link>
             </div>
 
-            <p className="text-gray-300 leading-relaxed text-base pr-4">
-              Leading <span className="font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">AI Voice Assistant Platform</span> trusted by enterprises worldwide. 
+            <p className="text-gray-700 leading-relaxed text-base pr-4">
+              Leading <span className="font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">AI Voice Assistant Platform</span> trusted by enterprises worldwide. 
               Transform customer interactions with intelligent automation.
             </p>
 
             {/* Trust Badges */}
             <div className="grid grid-cols-2 gap-3">
-              {features.map((feature, idx) => (
-                <div key={idx} className="flex items-center gap-2 p-3 bg-white/5 backdrop-blur-sm rounded-xl border border-orange-500/20 shadow-sm hover:bg-white/10 hover:border-orange-500/40 transition-all duration-300 group">
-                  <div className={`p-2 bg-gradient-to-br from-${feature.color}-500/20 to-${feature.color}-600/10 rounded-lg group-hover:scale-110 transition-transform`}>
-                    <feature.icon className={`w-4 h-4 text-${feature.color}-400`} />
+              {features.map((feature, idx) => {
+                const colors = [
+                  { bg: 'from-orange-100 to-pink-100', border: 'border-orange-300 hover:border-orange-500', icon: 'text-orange-600' },
+                  { bg: 'from-red-100 to-orange-100', border: 'border-red-300 hover:border-red-500', icon: 'text-red-600' },
+                  { bg: 'from-amber-100 to-orange-100', border: 'border-amber-300 hover:border-amber-500', icon: 'text-amber-600' },
+                  { bg: 'from-orange-100 to-pink-100', border: 'border-orange-300 hover:border-orange-500', icon: 'text-orange-600' },
+                ]
+                const colorSet = colors[idx]
+                return (
+                  <div key={idx} className={`flex items-center gap-2 p-3 bg-white backdrop-blur-sm rounded-xl border-2 ${colorSet.border} shadow-sm hover:shadow-lg transition-all duration-300 group`}>
+                    <div className={`p-2 bg-gradient-to-br ${colorSet.bg} rounded-lg group-hover:scale-110 transition-transform`}>
+                      <feature.icon className={`w-4 h-4 ${colorSet.icon}`} />
+                    </div>
+                    <span className="text-xs font-semibold text-gray-800">{feature.text}</span>
                   </div>
-                  <span className="text-xs font-semibold text-gray-200">{feature.text}</span>
-                </div>
-              ))}
+                )
+              })}
             </div>
 
             {/* Social Media - Creative Design */}
             <div>
-              <h4 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                <Globe className="w-4 h-4 text-orange-400" />
+              <h4 className="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <Globe className="w-4 h-4 text-orange-600" />
                 Connect With Us
               </h4>
               <div className="flex items-center gap-2">
