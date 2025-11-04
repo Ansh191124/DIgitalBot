@@ -25,51 +25,30 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Create email content
-    const emailContent = `
-      New Lead Form Submission
-      
-      Name: ${name}
-      Email: ${email}
-      Phone: ${phone}
-      Company: ${company}
-      
-      Message:
-      ${message}
-      
-      ---
-      Submitted at: ${new Date().toLocaleString()}
-    `
-
     // For now, we'll use a simple approach with Web3Forms (free service)
     // You can replace this with your preferred email service (SendGrid, Resend, etc.)
-    const formData = {
-      access_key: process.env.WEB3FORMS_ACCESS_KEY,
-      subject: `New Lead: ${name} from ${company}`,
-      from_name: "DigitalBot Lead Form",
-      email: email,
-      name: name,
-      phone: phone,
-      company: company,
-      message: message,
-      to: to || "hello@metic.ai",
-    }
+    const formData = new FormData()
+    formData.append("access_key", process.env.WEB3FORMS_ACCESS_KEY || "")
+    formData.append("subject", `New Lead: ${name} from ${company}`)
+    formData.append("from_name", "DigitalBot Lead Form")
+    formData.append("name", name)
+    formData.append("email", email)
+    formData.append("phone", phone)
+    formData.append("company", company)
+    formData.append("message", message)
+    formData.append("to", to || "hello@metic.ai")
 
-    console.log("Sending to Web3Forms:", { ...formData, access_key: "***hidden***" })
+    console.log("Sending to Web3Forms with access_key present:", !!process.env.WEB3FORMS_ACCESS_KEY)
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
-      body: JSON.stringify(formData),
+      body: formData,
     })
 
     const data = await response.json()
     console.log("Web3Forms response:", data)
 
-    if (!response.ok || !data.success) {
+    if (!data.success) {
       console.error("Web3Forms error:", data)
       throw new Error(data.message || "Failed to send email")
     }
