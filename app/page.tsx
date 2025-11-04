@@ -45,7 +45,7 @@ export default function Home() {
               
               <div className="bg-white backdrop-blur-md rounded-3xl p-8 shadow-2xl border-2 border-purple-400 transition-transform duration-500 hover:scale-[1.05] hover:shadow-purple-300 relative overflow-hidden group">
                 <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-purple-400 via-pink-400 to-orange-400 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
-                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-orange-400 via-pink-400 to-purple-400 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl from-orange-400 via-pink-400 to-purple-400 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
                 <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-orange-600 relative z-10 animate-pulse">24/7</div>
                 <div className="mt-2 text-gray-800 font-bold text-lg relative z-10">Always Available</div>
                 <p className="mt-3 text-sm text-gray-600 relative z-10">Never sleeps, never takes breaks</p>
