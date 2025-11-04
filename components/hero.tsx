@@ -539,15 +539,9 @@ export function Hero() {
                 </div>
 
                 <div className="container mx-auto relative z-10 max-w-6xl opacity-100">
-                    <div className="flex justify-center mb-12 animate-fade-in-up-1">
-                        <div className="inline-flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full text-sm text-orange-400 backdrop-blur-sm border border-orange-500/30 shadow-lg">
-                            <Sparkles className="h-4 w-4 text-orange-500 animate-pulse" />
-                            <span className="font-medium">AI-Powered Customer Engagement Platform</span>
-                        </div>
-                    </div>
-
-                    {/* Stats Section - Moved to Top */}
-                    <div className="mb-20 relative z-10">
+                    
+                    {/* Stats Section - FIRST THING IN HERO */}
+                    <div className="pt-8 pb-20 relative z-10">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                             {stats.map((stat, i) => (
                                 <div
@@ -564,6 +558,13 @@ export function Hero() {
                                     <div className="mt-2 text-gray-300 font-medium text-lg relative z-10">{stat.label}</div>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+
+                    <div className="flex justify-center mb-12 animate-fade-in-up-1">
+                        <div className="inline-flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full text-sm text-orange-400 backdrop-blur-sm border border-orange-500/30 shadow-lg">
+                            <Sparkles className="h-4 w-4 text-orange-500 animate-pulse" />
+                            <span className="font-medium">AI-Powered Customer Engagement Platform</span>
                         </div>
                     </div>
 
