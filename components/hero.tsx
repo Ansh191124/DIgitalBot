@@ -588,7 +588,7 @@ export function Hero() {
                                                         {isCallActive ? (
                                                             <Square className="h-8 w-8 sm:h-10 sm:w-10" />
                                                         ) : (
-                                                            <MessageSquare className="h-8 w-8 sm:h-10 sm:w-10" />
+                                                            <Mic className="h-8 w-8 sm:h-10 sm:w-10" />
                                                         )}
                                                     </div>
 
