@@ -57,10 +57,10 @@ export function Header() {
                             
                             <div className="relative">
                                 <Image
-                                    src="https://res.cloudinary.com/dew9qfpbl/image/upload/f_webp,q_auto:eco,w_160/v1760082124/Gemini_Generated_Image_tgypq9tgypq9tgyp_-_Edited_1_m1xhrt.svg"
-                                    alt="DigitalBot - AI Voice Assistant"
-                                    width={180}
-                                    height={45}
+                                    src="/digitalbot-logo.svg"
+                                    alt="DigitalBot.AI - AI Voice Assistant Platform"
+                                    width={200}
+                                    height={50}
                                     priority
                                     quality={95}
                                     className="h-12 w-auto relative z-10 drop-shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_25px_rgba(249,115,22,0.4)]"

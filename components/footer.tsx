@@ -79,8 +79,8 @@ export function Footer() {
                 {/* Glow effect */}
                 <div className="absolute -inset-6 bg-gradient-to-r from-orange-400/30 via-orange-500/30 to-orange-600/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 <Image
-                  src="https://res.cloudinary.com/dew9qfpbl/image/upload/f_webp,q_auto:eco,w_160/v1760082124/Gemini_Generated_Image_tgypq9tgypq9tgyp_-_Edited_1_m1xhrt.svg"
-                  alt="DigitalBot - AI Voice Assistant Platform"
+                  src="/digitalbot-logo.svg"
+                  alt="DigitalBot.AI - AI Voice Assistant Platform"
                   width={220}
                   height={55}
                   loading="lazy"

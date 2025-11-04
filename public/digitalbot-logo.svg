@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" fill="none">
+  <!-- DigitalBot.AI Text -->
+  <text x="20" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="60" fill="#FF6B35">Digital</text>
+  <text x="255" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="60" fill="#000000">Bot</text>
+  <text x="395" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="60" fill="#FF6B35">.</text>
+  <text x="415" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="60" fill="#000000">AI</text>
+  
+  <!-- Sound wave bars -->
+  <g transform="translate(15, 120)">
+    <!-- Black bars -->
+    <rect x="0" y="10" width="20" height="60" rx="10" fill="#000000"/>
+    <rect x="70" y="0" width="20" height="80" rx="10" fill="#000000"/>
+    <rect x="140" y="15" width="20" height="50" rx="10" fill="#000000"/>
+    <rect x="210" y="0" width="20" height="80" rx="10" fill="#000000"/>
+    <rect x="280" y="20" width="20" height="40" rx="10" fill="#000000"/>
+    <rect x="350" y="5" width="20" height="70" rx="10" fill="#000000"/>
+    <rect x="420" y="15" width="20" height="50" rx="10" fill="#000000"/>
+    
+    <!-- Orange bars -->
+    <rect x="35" y="5" width="20" height="70" rx="10" fill="#FF6B35"/>
+    <rect x="105" y="20" width="20" height="40" rx="10" fill="#FF6B35"/>
+    <rect x="175" y="15" width="20" height="50" rx="10" fill="#FF6B35"/>
+    <rect x="245" y="0" width="20" height="80" rx="10" fill="#FF6B35"/>
+    <rect x="315" y="20" width="20" height="40" rx="10" fill="#FF6B35"/>
+    <rect x="385" y="10" width="20" height="60" rx="10" fill="#FF6B35"/>
+    <rect x="455" y="15" width="20" height="50" rx="10" fill="#FF6B35"/>
+  </g>
+</svg>
