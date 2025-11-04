@@ -773,8 +773,8 @@ export function Hero() {
                                         <div className="absolute inset-0 flex items-center justify-center">
                                             <div className={`${isMobileDevice ? 'w-60 h-60' : 'w-80 h-80'} rounded-full transition-all duration-500 ${
                                                 isSpeaking
-                                                    ? 'bg-linear-to-r from-sky-500/30 via-blue-500/30 to-sky-500/30 blur-3xl'
-                                                    : 'bg-linear-to-r from-sky-400/20 via-blue-400/20 to-sky-400/20 blur-3xl'
+                                                    ? 'bg-gradient-to-r from-orange-500/30 via-orange-600/30 to-orange-500/30 blur-3xl'
+                                                    : 'bg-gradient-to-r from-orange-400/20 via-orange-500/20 to-orange-400/20 blur-3xl'
                                                 }`}></div>
                                         </div>
 
@@ -790,9 +790,9 @@ export function Hero() {
                                             ></div> 
                                             
                                             <div className="absolute inset-0 flex items-center justify-center">
-                                                <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/10 animate-wave-1"></div>
-                                                <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/5 animate-wave-2" style={{ animationDelay: '0.3s' }}></div>
-                                                <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-sky-400/0 animate-wave-3" style={{ animationDelay: '0.6s' }}></div>
+                                                <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-orange-400/10 animate-wave-1"></div>
+                                                <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-orange-400/5 animate-wave-2" style={{ animationDelay: '0.3s' }}></div>
+                                                <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-orange-400/0 animate-wave-3" style={{ animationDelay: '0.6s' }}></div>
                                            
                                                 <button
                                                     onClick={toggleCall}
@@ -802,15 +802,15 @@ export function Hero() {
                                                         backdrop-blur-sm
                                                         ${isCallActive 
                                                             ? 'bg-red-500/60 hover:bg-red-600/70 text-white animate-pulse-slow' 
-                                                            : 'bg-sky-500/60 hover:bg-sky-600/70 text-white hover:scale-105'
+                                                            : 'bg-orange-500/60 hover:bg-orange-600/70 text-white hover:scale-105'
                                                         }`}
                                                     aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
                                                 >
                                                     <div className="mb-1">
                                                         {isCallActive ? (
-                                                            <Square className="h-5 w-5 sm:h-6 sm:w-6" />
+                                                            <Square className="h-8 w-8 sm:h-10 sm:w-10" />
                                                         ) : (
-                                                            <Mic className="h-8 w-8 sm:h-8 sm:w-8" />
+                                                            <MessageSquare className="h-8 w-8 sm:h-10 sm:w-10" />
                                                         )}
                                                     </div>
 
@@ -826,10 +826,10 @@ export function Hero() {
                                                                     key={i}
                                                                     className={`w-0.5 sm:w-1 transition-all duration-300 rounded-full ${
                                                                         isSpeaking
-                                                                            ? 'bg-linear-to-t from-white via-sky-100 to-cyan-200 shadow-sm'
+                                                                            ? 'bg-gradient-to-t from-white via-orange-100 to-orange-200 shadow-sm'
                                                                             : isSpeaking
-                                                                                ? 'bg-linear-to-t from-white/60 via-sky-100/60 to-sky-200/60'
-                                                                                : 'bg-linear-to-t from-white/30 via-sky-100/30 to-sky-200/30'
+                                                                                ? 'bg-gradient-to-t from-white/60 via-orange-100/60 to-orange-200/60'
+                                                                                : 'bg-gradient-to-t from-white/30 via-orange-100/30 to-orange-200/30'
                                                                     }`}
                                                                     style={{
                                                                         height: isSpeaking
@@ -854,36 +854,36 @@ export function Hero() {
 
                                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                             <div className={`absolute w-56 sm:w-64 h-56 sm:h-64 rounded-full border-2 transition-all duration-500 ${
-                                                isSpeaking ? 'border-sky-400/60 border-dashed' : 'border-sky-400/30 border-dashed'
+                                                isSpeaking ? 'border-orange-400/60 border-dashed' : 'border-orange-400/30 border-dashed'
                                                 } ${!(isMobileDevice || reduceMotion) ? 'animate-spin-slow' : ''}`}></div>
                                             <div className={`absolute w-64 sm:w-72 h-64 sm:h-72 rounded-full border transition-all duration-500 ${
-                                                isSpeaking ? 'border-blue-300/50 border-dotted' : 'border-blue-300/25 border-dotted'
+                                                isSpeaking ? 'border-orange-300/50 border-dotted' : 'border-orange-300/25 border-dotted'
                                                 }`} style={!(isMobileDevice || reduceMotion) ? { animation: 'spin 25s linear infinite reverse' } : {}}></div>
 
                                             <div className={`w-48 sm:w-56 h-48 sm:h-56 rounded-full transition-all duration-300 ${
-                                                isSpeaking ? 'bg-sky-400/20' : 'bg-sky-400/10'
+                                                isSpeaking ? 'bg-orange-400/20' : 'bg-orange-400/10'
                                                 } ${!(isMobileDevice || reduceMotion) ? (isSpeaking ? 'animate-ping' : 'animate-ping-slow') : ''}`} style={{ animationDuration: '2s' }}></div>
                                             <div className={`absolute w-40 sm:w-48 h-40 sm:h-48 rounded-full transition-all duration-300 ${
-                                                isSpeaking ? 'bg-blue-400/15' : 'bg-blue-400/8'
+                                                isSpeaking ? 'bg-orange-400/15' : 'bg-orange-400/8'
                                                 } ${!(isMobileDevice || reduceMotion) ? (isSpeaking ? 'animate-ping' : 'animate-ping-slower') : ''}`} style={{ animationDuration: '3s', animationDelay: '0.5s' }}></div>
                                         </div>
 
                                         {isCallActive && (
                                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                                 <div className={`absolute w-72 sm:w-80 h-72 sm:h-80 rounded-full border-2 transition-all duration-300 ${
-                                                    isSpeaking ? 'border-sky-500/70 animate-ping' : 'border-sky-500/30 animate-ping'
+                                                    isSpeaking ? 'border-orange-500/70 animate-ping' : 'border-orange-500/30 animate-ping'
                                                     }`} style={{ animationDuration: '1.5s' }}></div>
                                                 <div className={`absolute w-80 sm:w-96 h-80 sm:h-96 rounded-full border transition-all duration-300 ${
-                                                    isSpeaking ? 'border-blue-500/60 animate-ping' : 'border-blue-500/20 animate-ping'
+                                                    isSpeaking ? 'border-orange-500/60 animate-ping' : 'border-orange-500/20 animate-ping'
                                                     }`} style={{ animationDuration: '2.5s', animationDelay: '0.3s' }}></div>
                                             </div>
                                         )}
 
                                         {isSpeaking && (
                                             <>
-                                                <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-sky-300 rounded-full animate-ping" style={{ animationDuration: '1.5s' }}></div>
-                                                <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-cyan-300 rounded-full animate-ping" style={{ animationDuration: '2s' }}></div>
-                                                <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-300 rounded-full animate-ping" style={{ animationDuration: '1.8s' }}></div>
+                                                <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-orange-300 rounded-full animate-ping" style={{ animationDuration: '1.5s' }}></div>
+                                                <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-orange-300 rounded-full animate-ping" style={{ animationDuration: '2s' }}></div>
+                                                <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-orange-300 rounded-full animate-ping" style={{ animationDuration: '1.8s' }}></div>
                                             </>
                                         )}
                                     </div>
