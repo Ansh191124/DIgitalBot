@@ -798,19 +798,6 @@ export default function Home() {
                 </p>
               </div>
             </div>
-
-            {/* CTA to FAQ Page */}
-            <div className="mt-16 text-center">
-              <Link 
-                href="/faq"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 rounded-xl shadow-2xl hover:shadow-orange-400 transition-all duration-300 hover:scale-105 border-2 border-orange-300"
-              >
-                View All FAQs & Detailed Answers
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
           </div>
         </section>
 
