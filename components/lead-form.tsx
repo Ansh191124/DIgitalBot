@@ -67,14 +67,14 @@ export function LeadForm() {
   }
 
   return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-gray-50 via-white to-orange-50/30">
+    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
       {/* Background Decorations */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-orange-100/40 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.015]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-orange-500/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.05]" />
       
       {/* Animated Orbs */}
-      <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-orange-300/20 to-orange-500/20 rounded-full blur-3xl animate-float-slow" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-tl from-orange-400/15 to-amber-500/15 rounded-full blur-3xl animate-float-reverse" />
+      <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-orange-500/30 to-orange-600/20 rounded-full blur-3xl animate-float-slow" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-tl from-orange-600/20 to-red-600/15 rounded-full blur-3xl animate-float-reverse" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
@@ -84,23 +84,23 @@ export function LeadForm() {
             {/* Left Side - Info */}
             <div className="space-y-8">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full">
-                <Sparkles className="w-4 h-4 text-orange-500 animate-pulse" />
-                <span className="text-sm font-bold text-orange-600">Get Started Today</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/20 border border-orange-500/40 rounded-full backdrop-blur-sm">
+                <Sparkles className="w-4 h-4 text-orange-400 animate-pulse" />
+                <span className="text-sm font-bold text-orange-400">Get Started Today</span>
               </div>
 
               {/* Heading */}
               <div>
                 <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
-                  <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                     Transform Your Business with
                   </span>
                   <br />
-                  <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
                     AI Voice Assistants
                   </span>
                 </h2>
-                <p className="text-xl text-gray-600 leading-relaxed">
+                <p className="text-xl text-gray-300 leading-relaxed">
                   Join thousands of businesses automating customer interactions. 
                   Get a personalized demo and discover how AI can revolutionize your operations.
                 </p>
@@ -115,30 +115,30 @@ export function LeadForm() {
                   { icon: Building2, text: "Enterprise-ready solution", color: "purple" }
                 ].map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-3 group">
-                    <div className={`p-2 bg-${feature.color}-100 rounded-lg group-hover:scale-110 transition-transform`}>
-                      <feature.icon className={`w-5 h-5 text-${feature.color}-600`} />
+                    <div className={`p-2 bg-${feature.color}-500/20 rounded-lg group-hover:scale-110 transition-transform border border-${feature.color}-500/30`}>
+                      <feature.icon className={`w-5 h-5 text-${feature.color}-400`} />
                     </div>
-                    <span className="text-gray-700 font-semibold">{feature.text}</span>
+                    <span className="text-gray-200 font-semibold">{feature.text}</span>
                   </div>
                 ))}
               </div>
 
               {/* Trust Indicators */}
-              <div className="pt-6 border-t border-gray-200">
-                <p className="text-sm text-gray-500 mb-3">Trusted by leading companies worldwide</p>
+              <div className="pt-6 border-t border-gray-700">
+                <p className="text-sm text-gray-400 mb-3">Trusted by leading companies worldwide</p>
                 <div className="flex items-center gap-6">
                   <div className="text-center">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">10K+</div>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">10K+</div>
                     <div className="text-xs text-gray-500">Active Users</div>
                   </div>
-                  <div className="w-px h-12 bg-gray-300" />
+                  <div className="w-px h-12 bg-gray-700" />
                   <div className="text-center">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">99.9%</div>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">99.9%</div>
                     <div className="text-xs text-gray-500">Uptime</div>
                   </div>
-                  <div className="w-px h-12 bg-gray-300" />
+                  <div className="w-px h-12 bg-gray-700" />
                   <div className="text-center">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">24/7</div>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">24/7</div>
                     <div className="text-xs text-gray-500">Support</div>
                   </div>
                 </div>
@@ -147,15 +147,15 @@ export function LeadForm() {
 
             {/* Right Side - Form */}
             <div className="relative">
-              <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl border border-orange-100 relative overflow-hidden">
+              <div className="bg-white/5 backdrop-blur-lg rounded-3xl p-8 md:p-10 shadow-2xl border border-orange-500/30 relative overflow-hidden">
                 {/* Decorative gradient */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-orange-500/10 to-transparent rounded-full blur-3xl" />
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-orange-500/20 to-transparent rounded-full blur-3xl" />
                 
                 <div className="relative z-10">
                   {/* Form Header */}
                   <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Request a Demo</h3>
-                    <p className="text-gray-600">Fill out the form and we'll get back to you within 24 hours</p>
+                    <h3 className="text-2xl font-bold text-white mb-2">Request a Demo</h3>
+                    <p className="text-gray-400">Fill out the form and we'll get back to you within 24 hours</p>
                   </div>
 
                   {/* Success Message */}
@@ -180,12 +180,12 @@ export function LeadForm() {
                   <form onSubmit={handleSubmit} className="space-y-5">
                     {/* Name Field */}
                     <div>
-                      <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="name" className="block text-sm font-semibold text-gray-200 mb-2">
                         Full Name *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <User className="h-5 w-5 text-gray-400" />
+                          <User className="h-5 w-5 text-gray-500" />
                         </div>
                         <Input
                           id="name"
@@ -194,7 +194,7 @@ export function LeadForm() {
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          className="pl-12 h-12 border-gray-300 focus:border-orange-500 focus:ring-orange-500 rounded-xl"
+                          className="pl-12 h-12 bg-white/10 border-gray-600 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500 rounded-xl"
                           placeholder="John Doe"
                         />
                       </div>
@@ -202,12 +202,12 @@ export function LeadForm() {
 
                     {/* Email Field */}
                     <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="email" className="block text-sm font-semibold text-gray-200 mb-2">
                         Work Email *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <Mail className="h-5 w-5 text-gray-400" />
+                          <Mail className="h-5 w-5 text-gray-500" />
                         </div>
                         <Input
                           id="email"
@@ -216,7 +216,7 @@ export function LeadForm() {
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="pl-12 h-12 border-gray-300 focus:border-orange-500 focus:ring-orange-500 rounded-xl"
+                          className="pl-12 h-12 bg-white/10 border-gray-600 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500 rounded-xl"
                           placeholder="john@company.com"
                         />
                       </div>
@@ -224,12 +224,12 @@ export function LeadForm() {
 
                     {/* Phone Field */}
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="phone" className="block text-sm font-semibold text-gray-200 mb-2">
                         Phone Number *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <Phone className="h-5 w-5 text-gray-400" />
+                          <Phone className="h-5 w-5 text-gray-500" />
                         </div>
                         <Input
                           id="phone"
@@ -238,7 +238,7 @@ export function LeadForm() {
                           required
                           value={formData.phone}
                           onChange={handleChange}
-                          className="pl-12 h-12 border-gray-300 focus:border-orange-500 focus:ring-orange-500 rounded-xl"
+                          className="pl-12 h-12 bg-white/10 border-gray-600 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500 rounded-xl"
                           placeholder="+1 (555) 000-0000"
                         />
                       </div>
@@ -246,12 +246,12 @@ export function LeadForm() {
 
                     {/* Company Field */}
                     <div>
-                      <label htmlFor="company" className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="company" className="block text-sm font-semibold text-gray-200 mb-2">
                         Company Name *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <Building2 className="h-5 w-5 text-gray-400" />
+                          <Building2 className="h-5 w-5 text-gray-500" />
                         </div>
                         <Input
                           id="company"
@@ -260,7 +260,7 @@ export function LeadForm() {
                           required
                           value={formData.company}
                           onChange={handleChange}
-                          className="pl-12 h-12 border-gray-300 focus:border-orange-500 focus:ring-orange-500 rounded-xl"
+                          className="pl-12 h-12 bg-white/10 border-gray-600 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500 rounded-xl"
                           placeholder="Your Company Inc."
                         />
                       </div>
@@ -268,12 +268,12 @@ export function LeadForm() {
 
                     {/* Message Field */}
                     <div>
-                      <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="message" className="block text-sm font-semibold text-gray-200 mb-2">
                         How can we help? *
                       </label>
                       <div className="relative">
                         <div className="absolute top-4 left-4 pointer-events-none">
-                          <MessageSquare className="h-5 w-5 text-gray-400" />
+                          <MessageSquare className="h-5 w-5 text-gray-500" />
                         </div>
                         <Textarea
                           id="message"
@@ -282,7 +282,7 @@ export function LeadForm() {
                           value={formData.message}
                           onChange={handleChange}
                           rows={4}
-                          className="pl-12 pt-3 border-gray-300 focus:border-orange-500 focus:ring-orange-500 rounded-xl resize-none"
+                          className="pl-12 pt-3 bg-white/10 border-gray-600 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500 rounded-xl resize-none"
                           placeholder="Tell us about your business needs..."
                         />
                       </div>
@@ -308,9 +308,9 @@ export function LeadForm() {
                     </Button>
 
                     {/* Privacy Note */}
-                    <p className="text-xs text-gray-500 text-center">
+                    <p className="text-xs text-gray-400 text-center">
                       By submitting this form, you agree to our{" "}
-                      <a href="/privacy" className="text-orange-600 hover:text-orange-700 underline">
+                      <a href="/privacy" className="text-orange-400 hover:text-orange-500 underline">
                         Privacy Policy
                       </a>
                       . We respect your privacy and never share your data.
