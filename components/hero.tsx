@@ -539,20 +539,20 @@ export function Hero() {
                 </div>
 
                 <div className="container mx-auto relative z-10 max-w-6xl opacity-100">
-                    {/* Microphone Icon Above Everything */}
-                    <div className="flex justify-center mb-8 animate-fade-in-up-1">
+                    <div className="flex justify-center mb-12 animate-fade-in-up-1">
+                        <div className="inline-flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full text-sm text-orange-400 backdrop-blur-sm border border-orange-500/30 shadow-lg">
+                            <Sparkles className="h-4 w-4 text-orange-500 animate-pulse" />
+                            <span className="font-medium">AI-Powered Customer Engagement Platform</span>
+                        </div>
+                    </div>
+
+                    {/* Microphone Icon Above H1 */}
+                    <div className="flex justify-center mb-6 animate-fade-in-up-1">
                         <div className="relative">
                             <div className="absolute inset-0 bg-gradient-to-r from-orange-500/30 to-orange-600/30 rounded-full blur-2xl"></div>
                             <div className="relative bg-gradient-to-br from-orange-500 to-orange-600 p-6 rounded-full shadow-2xl border-2 border-orange-400/30 hover:scale-110 transition-transform duration-300">
                                 <Mic className="h-10 w-10 text-white drop-shadow-lg" />
                             </div>
-                        </div>
-                    </div>
-
-                    <div className="flex justify-center mb-12 animate-fade-in-up-1">
-                        <div className="inline-flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full text-sm text-orange-400 backdrop-blur-sm border border-orange-500/30 shadow-lg">
-                            <Sparkles className="h-4 w-4 text-orange-500 animate-pulse" />
-                            <span className="font-medium">AI-Powered Customer Engagement Platform</span>
                         </div>
                     </div>
 
