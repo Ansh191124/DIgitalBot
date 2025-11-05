@@ -22,6 +22,9 @@ export default function Home() {
       <main id="main-content" className="min-h-screen" role="main">
         <Hero />
         
+        {/* Lead Form - Positioned Below Hero */}
+        <LeadForm />
+        
         {/* SEO-Optimized Content Sections - DO NOT REMOVE */}
         
         {/* Stats Section - Above the Fold */}
@@ -905,8 +908,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <LeadForm />
 
         {/* Modern CTA Component */}
         <CTA />
