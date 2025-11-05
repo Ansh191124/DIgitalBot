@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, ArrowRight, User, BookOpen, TrendingUp } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 const blogPosts = [
   {
@@ -16,6 +17,7 @@ const blogPosts = [
     readTime: "5 min read",
     category: "AI Trends",
     featured: true,
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop&q=80"
   },
   {
     title: "How to Implement Your First Chatbot: A Step-by-Step Guide",
@@ -26,6 +28,7 @@ const blogPosts = [
     readTime: "8 min read",
     category: "Tutorial",
     featured: false,
+    image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=500&fit=crop&q=80"
   },
   {
     title: "Measuring Chatbot Success: Key Metrics That Matter",
@@ -35,6 +38,7 @@ const blogPosts = [
     readTime: "6 min read",
     category: "Analytics",
     featured: false,
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&q=80"
   },
   {
     title: "Natural Language Processing: Making Chatbots More Human",
@@ -44,6 +48,7 @@ const blogPosts = [
     readTime: "10 min read",
     category: "Technology",
     featured: false,
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=500&fit=crop&q=80"
   },
   {
     title: "Case Study: How TechCorp Increased Customer Satisfaction by 40%",
@@ -53,6 +58,7 @@ const blogPosts = [
     readTime: "7 min read",
     category: "Case Study",
     featured: false,
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop&q=80"
   },
   {
     title: "Multi-Channel Chatbot Strategy: Reaching Customers Everywhere",
@@ -62,6 +68,7 @@ const blogPosts = [
     readTime: "9 min read",
     category: "Strategy",
     featured: false,
+    image: "https://images.unsplash.com/photo-1611926653670-6bbb83d81232?w=800&h=500&fit=crop&q=80"
   },
 ]
 
@@ -147,34 +154,49 @@ export default function Blog() {
                 </h2>
               </div>
               <div className="max-w-4xl mx-auto group">
-                <div className="bg-gradient-to-br from-white to-gray-50 border-2 border-purple-200 hover:border-purple-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500">
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
-                    <div className="flex items-center gap-2">
-                      <User className="h-4 w-4 text-blue-600" />
-                      <span>{featuredPost.author}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4 text-purple-600" />
-                      <span>{new Date(featuredPost.date).toLocaleDateString()}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-orange-600" />
-                      <span>{featuredPost.readTime}</span>
-                    </div>
+                <div className="bg-gradient-to-br from-white to-gray-50 border-2 border-purple-200 hover:border-purple-400 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500">
+                  {/* Featured Image */}
+                  <div className="relative h-80 w-full overflow-hidden">
+                    <Image
+                      src={featuredPost.image}
+                      alt={featuredPost.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <Badge className="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white border-none shadow-lg">
+                      {featuredPost.category}
+                    </Badge>
                   </div>
-                  <Badge className="bg-gradient-to-r from-orange-500 to-pink-500 text-white mb-4 border-none">
-                    {featuredPost.category}
-                  </Badge>
-                  <h3 className="text-3xl font-bold mb-4 text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
-                    {featuredPost.title}
-                  </h3>
-                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                    {featuredPost.excerpt}
-                  </p>
-                  <Button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
-                    Read Full Article
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  
+                  {/* Content */}
+                  <div className="p-8">
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
+                      <div className="flex items-center gap-2">
+                        <User className="h-4 w-4 text-blue-600" />
+                        <span>{featuredPost.author}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4 text-purple-600" />
+                        <span>{new Date(featuredPost.date).toLocaleDateString()}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-4 w-4 text-orange-600" />
+                        <span>{featuredPost.readTime}</span>
+                      </div>
+                    </div>
+                    <h3 className="text-3xl font-bold mb-4 text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                      {featuredPost.title}
+                    </h3>
+                    <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                      {featuredPost.excerpt}
+                    </p>
+                    <Button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
+                      Read Full Article
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -196,36 +218,51 @@ export default function Blog() {
               {regularPosts.map((post, index) => (
                 <div
                   key={index}
-                  className="group bg-white border-2 border-blue-200 hover:border-purple-400 rounded-2xl p-6 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group bg-white border-2 border-blue-200 hover:border-purple-400 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white border-none">
-                      {post.category}
-                    </Badge>
-                    <div className="flex items-center gap-1 text-sm text-gray-600">
-                      <Clock className="h-4 w-4 text-orange-600" />
-                      <span>{post.readTime}</span>
-                    </div>
+                  {/* Post Image */}
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <User className="h-4 w-4 text-blue-600" />
-                      <span>{post.author}</span>
+                  
+                  {/* Post Content */}
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white border-none">
+                        {post.category}
+                      </Badge>
+                      <div className="flex items-center gap-1 text-sm text-gray-600">
+                        <Clock className="h-4 w-4 text-orange-600" />
+                        <span>{post.readTime}</span>
+                      </div>
                     </div>
-                    <Button variant="ghost" size="sm" className="text-purple-600 hover:text-purple-700 hover:bg-purple-50">
-                      Read More
-                      <ArrowRight className="ml-1 h-3 w-3" />
-                    </Button>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-500 mt-2">
-                    <Calendar className="h-3 w-3" />
-                    <span>{new Date(post.date).toLocaleDateString()}</span>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300 line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <User className="h-4 w-4 text-blue-600" />
+                        <span>{post.author}</span>
+                      </div>
+                      <Button variant="ghost" size="sm" className="text-purple-600 hover:text-purple-700 hover:bg-purple-50">
+                        Read More
+                        <ArrowRight className="ml-1 h-3 w-3" />
+                      </Button>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-gray-500 mt-2">
+                      <Calendar className="h-3 w-3" />
+                      <span>{new Date(post.date).toLocaleDateString()}</span>
+                    </div>
                   </div>
                 </div>
               ))}
