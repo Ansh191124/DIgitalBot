@@ -103,191 +103,296 @@ export default function Pricing() {
     <main className="min-h-screen bg-white text-gray-900">
       <Header />
 
-      {/* Hero Section with Subtle Background */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-        {/* Subtle soft background glow */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-sky-100 rounded-full opacity-20 blur-3xl"></div>
-          <div className="absolute bottom-[-15%] right-[-10%] w-[600px] h-[600px] bg-sky-200 rounded-full opacity-10 blur-3xl"></div>
-          <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-sky-50 rounded-full opacity-20 blur-2xl"></div>
+      {/* Hero Section - Enhanced Creative Design */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50">
+        {/* Decorative Background Pattern */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(to right, rgba(249, 115, 22, 0.3) 1px, transparent 1px),
+                             linear-gradient(to bottom, rgba(236, 72, 153, 0.3) 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+          }}></div>
         </div>
 
-        <div className="container mx-auto relative z-10">
-          <h1 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-6">Pricing</h1>
-          <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 mb-12 max-w-4xl mx-auto">
-            Choose a plan that fits your business needs. Transparent pricing, no hidden fees, and a free trial to get started with AI voice automation.
-          </p>
+        {/* Decorative Floating Orbs */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-orange-400/20 via-pink-400/20 to-purple-400/20 rounded-full filter blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-blue-400/20 via-cyan-400/20 to-teal-400/20 rounded-full filter blur-3xl animate-float-reverse"></div>
 
-          {/* Currency Toggle */}
-          <div className="flex items-center justify-center space-x-4 mb-12">
-            <span className={`text-sm ${!isINR ? "text-gray-900 font-medium" : "text-gray-500"}`}>
-              USD
+        <div className="container mx-auto relative z-10">
+          <div className="inline-block mb-6">
+            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+              💰 Simple Pricing
             </span>
-            <Switch
-              checked={isINR}
-              onCheckedChange={setIsINR}
-              className="bg-sky-300 data-[state=checked]:bg-sky-600"
-            />
-            <span className={`text-sm ${isINR ? "text-gray-900 font-medium" : "text-gray-500"}`}>
-              INR
+          </div>
+          
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
+            <span className="block mb-3 bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+              Choose Your Perfect
+            </span>
+            <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 shadow-2xl text-3xl sm:text-4xl lg:text-5xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
+              <span className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent"></span>
+              <span className="relative z-10">AI Voice Plan</span>
+            </span>
+          </h1>
+          
+          <div className="max-w-4xl mx-auto mb-8 p-6 bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 border-2 border-orange-300 rounded-2xl shadow-xl">
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium">
+              <span className="font-bold text-orange-600">Transparent pricing</span>, no hidden fees, and a <span className="font-bold text-purple-600">free trial</span> to get started with AI voice automation. Choose a plan that fits your business needs.
+            </p>
+          </div>
+
+          {/* Currency Toggle - Enhanced */}
+          <div className="flex items-center justify-center space-x-4 mb-8">
+            <span className={`text-base font-bold ${!isINR ? "text-orange-600 scale-110" : "text-gray-500"} transition-all`}>
+              USD 💵
+            </span>
+            <div className="relative">
+              <Switch
+                checked={isINR}
+                onCheckedChange={setIsINR}
+                className="bg-gradient-to-r from-orange-300 to-pink-300 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-purple-500 data-[state=checked]:to-blue-500 shadow-lg"
+              />
+            </div>
+            <span className={`text-base font-bold ${isINR ? "text-purple-600 scale-110" : "text-gray-500"} transition-all`}>
+              INR 🇮🇳
             </span>
           </div>
         </div>
       </section>
 
-      {/* Pricing Cards */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
-        {/* Subtle background effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[10%] right-[5%] w-[400px] h-[400px] bg-sky-100 rounded-full opacity-15 blur-3xl"></div>
-          <div className="absolute bottom-[10%] left-[5%] w-[400px] h-[400px] bg-sky-50 rounded-full opacity-15 blur-3xl"></div>
-        </div>
-
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-          {plans.map((plan, index) => (
-            <Card
-              key={index}
-              className={`relative border-2 bg-white/90 backdrop-blur-md shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 rounded-3xl overflow-visible ${
-                plan.popular ? "border-sky-500" : "border-sky-200"
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute top-0 left-0 right-0 h-1 bg-sky-500 rounded-t-3xl"></div>
-              )}
-              {plan.popular && (
-                <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-sky-500 text-white border-0 shadow-lg z-20 px-4 py-1.5 text-sm font-semibold">
-                  Most Popular
-                </Badge>
-              )}
-              <CardHeader className="text-center pb-8">
-                <div className="w-16 h-16 bg-sky-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <plan.icon className="h-8 w-8 text-white" />
-                </div>
-                <CardTitle className="text-2xl text-gray-900 font-bold">{plan.name}</CardTitle>
-                <CardDescription className="text-gray-700 mt-2">{plan.description}</CardDescription>
-                <div className="mt-6">
-                  {plan.usdPrice ? (
-                    <>
-                      <span className="text-5xl font-extrabold text-sky-600">
-                        {isINR ? `₹${plan.inrPrice.toLocaleString()}` : `$${plan.usdPrice}`}
-                      </span>
-                      <div className="text-gray-600 text-sm mt-2">
-                        {plan.minutes} AI voice minutes
-                      </div>
-                    </>
-                  ) : (
-                    <span className="text-4xl font-extrabold text-sky-600">
-                      Let's Talk
-                    </span>
-                  )}
-                </div>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start text-sm">
-                      <div className="h-5 w-5 rounded-full bg-sky-500 flex items-center justify-center mr-3 shrink-0 mt-0.5">
-                        <Check className="h-3 w-3 text-white" />
-                      </div>
-                      <span className="text-gray-900 font-medium">
-                        {feature.name}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  className={`w-full rounded-full font-semibold transition-all duration-300 ${
-                    plan.popular
-                      ? "bg-sky-600 hover:bg-sky-700 text-white shadow-lg shadow-sky-300/50"
-                      : "bg-white hover:bg-sky-50 text-sky-700 border-2 border-sky-300 hover:border-sky-400"
-                  }`}
-                  onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
-                >
-                  {plan.cta}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-sky-50/30 relative overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-sky-100 rounded-full opacity-20 blur-3xl"></div>
-          <div className="absolute bottom-[10%] right-[10%] w-[300px] h-[300px] bg-sky-50 rounded-full opacity-20 blur-3xl"></div>
-        </div>
+      {/* Pricing Cards - Enhanced Creative Design */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-white via-blue-50 to-purple-50 overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-300/20 via-purple-300/20 to-pink-300/20 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-orange-300/20 via-pink-300/20 to-purple-300/20 rounded-full filter blur-3xl"></div>
 
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="text-sky-600">
-                Frequently Asked Questions
+            <div className="inline-block mb-6">
+              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+                🎯 Choose Your Plan
               </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+              Flexible Plans for Every Business
             </h2>
-            <p className="text-xl max-w-2xl mx-auto text-gray-700">
-              Got questions? We've got answers. If you can't find what you're looking for, contact us.
-            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {faqs.map((faq, index) => (
-              <Card
-                key={index}
-                className="border-2 border-sky-200 bg-white/90 backdrop-blur-md hover:shadow-xl hover:border-sky-300 transition-all duration-300 rounded-2xl"
-              >
-                <CardHeader>
-                  <CardTitle className="text-lg text-gray-900 font-semibold">{faq.question}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700">{faq.answer}</p>
-                </CardContent>
-              </Card>
-            ))}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {plans.map((plan, index) => {
+              const colors = [
+                { gradient: 'from-orange-500 via-pink-500 to-purple-500', border: 'border-orange-300', hover: 'hover:border-orange-500', icon: 'from-orange-400 to-pink-400', shadow: 'hover:shadow-orange-200', badge: 'from-orange-500 to-pink-500' },
+                { gradient: 'from-blue-500 via-purple-500 to-pink-500', border: 'border-blue-300', hover: 'hover:border-blue-500', icon: 'from-blue-400 to-purple-400', shadow: 'hover:shadow-blue-200', badge: 'from-blue-500 to-purple-500' },
+                { gradient: 'from-purple-500 via-pink-500 to-orange-500', border: 'border-purple-300', hover: 'hover:border-purple-500', icon: 'from-purple-400 to-pink-400', shadow: 'hover:shadow-purple-200', badge: 'from-purple-500 to-pink-500' },
+              ];
+              const color = colors[index];
+              
+              return (
+                <Card
+                  key={index}
+                  className={`relative border-4 ${plan.popular ? 'border-blue-400 hover:border-blue-500' : `${color.border} ${color.hover}`} bg-white shadow-2xl ${plan.popular ? 'hover:shadow-blue-300' : color.shadow} hover:shadow-2xl hover:scale-105 transition-all duration-500 rounded-3xl overflow-hidden group`}
+                >
+                  {/* Decorative Glow */}
+                  <div className="absolute -top-20 -right-20 w-60 h-60 bg-gradient-to-br from-purple-300/20 via-pink-300/20 to-orange-300/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+                  
+                  {plan.popular && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+                      <Badge className={`bg-gradient-to-r ${color.badge} text-white border-2 border-white shadow-2xl px-6 py-2 text-sm font-extrabold animate-pulse`}>
+                        ⭐ Most Popular
+                      </Badge>
+                    </div>
+                  )}
+                  
+                  <CardHeader className="text-center pb-8 pt-10 relative z-10">
+                    <div className={`w-20 h-20 bg-gradient-to-br ${color.icon} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all border-2 border-white`}>
+                      <plan.icon className="h-10 w-10 text-white" />
+                    </div>
+                    <CardTitle className="text-3xl text-gray-900 font-extrabold mb-3">{plan.name}</CardTitle>
+                    <CardDescription className="text-gray-600 text-base font-medium px-4">{plan.description}</CardDescription>
+                    <div className="mt-8">
+                      {plan.usdPrice ? (
+                        <>
+                          <div className={`text-5xl sm:text-6xl font-extrabold bg-gradient-to-r ${color.gradient} bg-clip-text text-transparent mb-2`}>
+                            {isINR ? `₹${plan.inrPrice.toLocaleString()}` : `$${plan.usdPrice}`}
+                          </div>
+                          <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 border-2 border-orange-200 shadow-lg">
+                            <span className="text-gray-700 font-bold text-sm">
+                              {plan.minutes} AI voice minutes
+                            </span>
+                          </div>
+                        </>
+                      ) : (
+                        <div className={`text-4xl sm:text-5xl font-extrabold bg-gradient-to-r ${color.gradient} bg-clip-text text-transparent`}>
+                          Let's Talk
+                        </div>
+                      )}
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-0 pb-8 px-6 relative z-10">
+                    <ul className="space-y-4 mb-8">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start text-sm">
+                          <div className={`h-6 w-6 rounded-full bg-gradient-to-r ${color.gradient} flex items-center justify-center mr-3 shrink-0 mt-0.5 shadow-lg`}>
+                            <Check className="h-4 w-4 text-white font-bold" />
+                          </div>
+                          <span className="text-gray-700 font-medium leading-relaxed">
+                            {feature.name}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button
+                      className={`w-full rounded-xl font-bold transition-all duration-300 h-14 text-lg shadow-2xl ${
+                        plan.popular
+                          ? `bg-gradient-to-r ${color.gradient} text-white hover:scale-105 border-2 border-white`
+                          : `bg-white text-gray-700 border-2 ${color.border} ${color.hover} hover:scale-105`
+                      }`}
+                      onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
+                    >
+                      {plan.cta}
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Background glow effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sky-100 rounded-full opacity-20 blur-3xl"></div>
-        </div>
+      {/* FAQ Section - Enhanced Creative Design */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-white overflow-hidden">
+        {/* Decorative Background */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(249, 115, 22, 0.1) 1px, transparent 0)`,
+          backgroundSize: '50px 50px'
+        }}></div>
+        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-orange-200/30 via-pink-200/30 to-purple-200/30 rounded-full filter blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-tr from-blue-200/30 via-purple-200/30 to-pink-200/30 rounded-full filter blur-3xl animate-float-reverse"></div>
 
         <div className="container mx-auto relative z-10">
-          <div className="bg-gradient-to-r from-sky-100 via-sky-50 to-sky-100 rounded-3xl p-12 text-center shadow-2xl border-2 border-sky-200 relative overflow-hidden">
-            {/* Inner glow effects */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-sky-300 rounded-full opacity-20 filter blur-3xl"></div>
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-sky-400 rounded-full opacity-15 filter blur-3xl"></div>
+          <div className="text-center mb-16">
+            <div className="inline-block mb-6">
+              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+                ❓ Frequently Asked Questions
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent mb-4">
+              Everything You Need to Know
+            </h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-6">
+              {faqs.map((faq, index) => {
+                const colors = [
+                  { border: 'border-orange-300', hover: 'hover:border-orange-500', bg: 'from-orange-50 to-pink-50', icon: 'from-orange-500 to-pink-500', shadow: 'hover:shadow-orange-200' },
+                  { border: 'border-blue-300', hover: 'hover:border-blue-500', bg: 'from-blue-50 to-purple-50', icon: 'from-blue-500 to-purple-500', shadow: 'hover:shadow-blue-200' },
+                  { border: 'border-purple-300', hover: 'hover:border-purple-500', bg: 'from-purple-50 to-pink-50', icon: 'from-purple-500 to-pink-500', shadow: 'hover:shadow-purple-200' },
+                  { border: 'border-pink-300', hover: 'hover:border-pink-500', bg: 'from-pink-50 to-orange-50', icon: 'from-pink-500 to-orange-500', shadow: 'hover:shadow-pink-200' },
+                ];
+                const color = colors[index % colors.length];
+
+                return (
+                  <AccordionItem
+                    key={index}
+                    value={`item-${index}`}
+                    className={`border-2 ${color.border} ${color.hover} bg-gradient-to-br ${color.bg} rounded-2xl px-6 py-2 shadow-xl ${color.shadow} hover:shadow-2xl transition-all duration-300 hover:scale-102 group`}
+                  >
+                    {/* Decorative Inner Glow */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    
+                    <AccordionTrigger className="text-left font-bold text-gray-900 text-lg hover:no-underline py-6 group relative">
+                      <div className="flex items-center gap-4 pr-4 w-full">
+                        <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${color.icon} flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all`}>
+                          <span className="text-white font-bold text-lg">{index + 1}</span>
+                        </div>
+                        <span className="flex-1">{faq.question}</span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-700 text-base leading-relaxed pt-2 pb-6 pl-14 pr-4">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                );
+              })}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - Enhanced Creative Design */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 overflow-hidden">
+        {/* Decorative Background Pattern */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 3px 3px, rgba(249, 115, 22, 0.15) 2px, transparent 0)`,
+          backgroundSize: '60px 60px'
+        }}></div>
+        
+        {/* Floating Orbs */}
+        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-br from-orange-400/30 via-pink-400/30 to-purple-400/30 rounded-full filter blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-tr from-blue-400/30 via-purple-400/30 to-pink-400/30 rounded-full filter blur-3xl animate-float-reverse"></div>
+
+        <div className="container mx-auto relative z-10">
+          <div className="bg-gradient-to-r from-white/90 via-white/80 to-white/90 backdrop-blur-sm rounded-3xl p-12 text-center shadow-2xl border-4 border-orange-300 relative overflow-hidden">
+            {/* Inner Decorative Glows */}
+            <div className="absolute -top-10 -left-10 w-60 h-60 bg-gradient-to-br from-orange-300/30 via-pink-300/30 to-purple-300/30 rounded-full filter blur-3xl"></div>
+            <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-gradient-to-tr from-blue-300/30 via-purple-300/30 to-pink-300/30 rounded-full filter blur-3xl"></div>
 
             <div className="relative z-10">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                <span className="text-sky-600">
-                  Ready to get started?
+              <div className="inline-block mb-8">
+                <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+                  🚀 Start Your Journey
+                </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl font-extrabold mb-6">
+                <span className="bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+                  Ready to Transform Your
+                </span>
+                <br />
+                <span className="inline-block mt-4 px-8 py-4 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white rounded-2xl shadow-2xl border-4 border-white animate-pulse">
+                  Customer Experience?
                 </span>
               </h2>
-              <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-700">
-                Join businesses using DigitalBot.ai to transform their customer experience with AI voice agents.
+
+              <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-10 leading-relaxed font-medium px-6 py-4 rounded-2xl bg-gradient-to-r from-orange-50 to-pink-50 border-2 border-orange-200 shadow-lg">
+                Join thousands of businesses using AI voice assistants to automate calls, boost conversions, and delight customers 24/7.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button 
-                  size="lg" 
-                  className="bg-sky-600 hover:bg-sky-700 text-white rounded-full shadow-lg shadow-sky-300/50 font-semibold transition-all duration-300"
+
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-10">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-orange-300 text-lg px-10 py-7 rounded-xl font-bold border-2 border-white"
                   onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
                 >
-                  Get Started Today
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  Get Started Free
+                  <ArrowRight className="ml-3 h-6 w-6" />
                 </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-2 border-sky-400 text-sky-700 hover:bg-sky-50 hover:border-sky-500 rounded-full font-semibold transition-all duration-300"
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-white text-gray-700 border-4 border-orange-400 hover:border-orange-500 hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-orange-200 text-lg px-10 py-7 rounded-xl font-bold"
                   onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
                 >
                   Contact Sales
                 </Button>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="flex flex-wrap justify-center gap-6 items-center">
+                <div className="flex items-center gap-3 px-6 py-3 bg-white rounded-xl shadow-lg border-2 border-orange-200 hover:scale-105 transition-all">
+                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 animate-pulse"></div>
+                  <span className="font-bold text-gray-700">🎯 No Credit Card</span>
+                </div>
+                <div className="flex items-center gap-3 px-6 py-3 bg-white rounded-xl shadow-lg border-2 border-blue-200 hover:scale-105 transition-all">
+                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 animate-pulse"></div>
+                  <span className="font-bold text-gray-700">⚡ Setup in 5 Minutes</span>
+                </div>
+                <div className="flex items-center gap-3 px-6 py-3 bg-white rounded-xl shadow-lg border-2 border-purple-200 hover:scale-105 transition-all">
+                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 animate-pulse"></div>
+                  <span className="font-bold text-gray-700">💎 Cancel Anytime</span>
+                </div>
               </div>
             </div>
           </div>
