@@ -822,37 +822,6 @@ export function Hero() {
                 </div>
             </section>
 
-            {/* FAQ Section (navigates to separate pages) */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-blue-50 to-purple-50 backdrop-blur-sm">
-                <div className="container mx-auto max-w-4xl">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-lg mb-4">Frequently Asked Questions</h2>
-                        <p className="text-lg sm:text-xl font-semibold bg-white backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-purple-300 text-gray-700 max-w-3xl mx-auto">Everything you need to know about <span className="font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">AI voice assistants</span></p>
-                    </div>
-
-                    <div className="space-y-4">
-                        {faqs.map((faq, index) => (
-                            <div key={index} className="border-2 border-purple-300 hover:border-purple-500 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:shadow-purple-200 transition-all">
-                                <button
-                                    onClick={() => router.push(`/faq/${index}`)}
-                                    className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-purple-50 transition-colors"
-                                >
-                                    <h3 className="text-lg font-semibold text-gray-900 pr-4">{faq.q}</h3>
-                                    <ArrowRight className="h-5 w-5 text-purple-600 shrink-0 transition-transform duration-300" />
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-6 text-center">
-                        <button onClick={() => router.push('/faq')} className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-semibold hover:from-blue-700 hover:to-pink-700 transition shadow-lg hover:shadow-xl hover:scale-105">
-                            View all FAQs
-                            <ArrowRight className="h-4 w-4" />
-                        </button>
-                    </div>
-                </div>
-            </section>
-
        
         </>
     )
