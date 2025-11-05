@@ -9,6 +9,7 @@ import Image from "next/image"
 
 const blogPosts = [
   {
+    slug: "future-of-ai-customer-service-2024",
     title: "The Future of AI Customer Service: Trends to Watch in 2024",
     excerpt:
       "Explore the latest developments in conversational AI and how they're reshaping customer service experiences.",
@@ -20,6 +21,7 @@ const blogPosts = [
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop&q=80"
   },
   {
+    slug: "implement-first-chatbot-guide",
     title: "How to Implement Your First Chatbot: A Step-by-Step Guide",
     excerpt:
       "Learn the essential steps to successfully deploy an AI chatbot for your business, from planning to launch.",
@@ -31,6 +33,7 @@ const blogPosts = [
     image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=500&fit=crop&q=80"
   },
   {
+    slug: "measuring-chatbot-success-metrics",
     title: "Measuring Chatbot Success: Key Metrics That Matter",
     excerpt: "Discover the most important KPIs to track when evaluating your chatbot's performance and ROI.",
     author: "Emily Watson",
@@ -41,6 +44,7 @@ const blogPosts = [
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&q=80"
   },
   {
+    slug: "nlp-making-chatbots-human",
     title: "Natural Language Processing: Making Chatbots More Human",
     excerpt: "Deep dive into NLP technologies that enable chatbots to understand and respond more naturally.",
     author: "David Kim",
@@ -51,6 +55,7 @@ const blogPosts = [
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=500&fit=crop&q=80"
   },
   {
+    slug: "techcorp-case-study-40-percent-increase",
     title: "Case Study: How TechCorp Increased Customer Satisfaction by 40%",
     excerpt: "Real-world example of how implementing AI chatbots transformed a company's customer service operations.",
     author: "Sarah Chen",
@@ -61,6 +66,7 @@ const blogPosts = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop&q=80"
   },
   {
+    slug: "multi-channel-chatbot-strategy",
     title: "Multi-Channel Chatbot Strategy: Reaching Customers Everywhere",
     excerpt: "Learn how to deploy chatbots across multiple platforms for a unified customer experience.",
     author: "Marcus Rodriguez",
@@ -68,7 +74,7 @@ const blogPosts = [
     readTime: "9 min read",
     category: "Strategy",
     featured: false,
-    image: "https://images.unsplash.com/photo-1611926653670-6bbb83d81232?w=800&h=500&fit=crop&q=80"
+    image: "https://images.unsplash.com/photo-1600267185393-e158a98703de?w=800&h=500&fit=crop&q=80"
   },
 ]
 
@@ -192,10 +198,12 @@ export default function Blog() {
                     <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                       {featuredPost.excerpt}
                     </p>
-                    <Button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
-                      Read Full Article
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    <Link href={`/blog/${featuredPost.slug}`}>
+                      <Button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
+                        Read Full Article
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -254,10 +262,12 @@ export default function Blog() {
                         <User className="h-4 w-4 text-blue-600" />
                         <span>{post.author}</span>
                       </div>
-                      <Button variant="ghost" size="sm" className="text-purple-600 hover:text-purple-700 hover:bg-purple-50">
-                        Read More
-                        <ArrowRight className="ml-1 h-3 w-3" />
-                      </Button>
+                      <Link href={`/blog/${post.slug}`}>
+                        <Button variant="ghost" size="sm" className="text-purple-600 hover:text-purple-700 hover:bg-purple-50">
+                          Read More
+                          <ArrowRight className="ml-1 h-3 w-3" />
+                        </Button>
+                      </Link>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-gray-500 mt-2">
                       <Calendar className="h-3 w-3" />
