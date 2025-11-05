@@ -6,6 +6,7 @@ import { Calendar, Clock, User, ArrowLeft, Share2, BookOpen, ArrowRight } from "
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
+import { Metadata } from "next"
 
 // Blog posts data
 const blogPosts = {
@@ -953,6 +954,82 @@ const blogPosts = {
   }
 }
 
+// Generate metadata for SEO
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const post = blogPosts[params.slug as keyof typeof blogPosts]
+
+  if (!post) {
+    return {
+      title: 'Blog Post Not Found | DigitalBot.AI',
+      description: 'The requested blog post could not be found.'
+    }
+  }
+
+  const siteUrl = 'https://www.digitalbot.ai'
+  const pageUrl = `${siteUrl}/blog/${params.slug}`
+
+  return {
+    title: `${post.title} | DigitalBot.AI Blog`,
+    description: post.excerpt,
+    keywords: [
+      'AI chatbot',
+      'conversational AI',
+      'customer service automation',
+      'AI voice agent',
+      'chatbot implementation',
+      'AI customer support',
+      'voice automation',
+      'natural language processing',
+      'machine learning',
+      'business automation'
+    ],
+    authors: [{ name: post.author }],
+    creator: post.author,
+    publisher: 'DigitalBot.AI',
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    alternates: {
+      canonical: pageUrl,
+    },
+    openGraph: {
+      type: 'article',
+      title: post.title,
+      description: post.excerpt,
+      url: pageUrl,
+      siteName: 'DigitalBot.AI',
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 600,
+          alt: post.title,
+        }
+      ],
+      publishedTime: post.date,
+      authors: [post.author],
+      tags: [post.category, 'AI', 'Chatbot', 'Automation', 'Customer Service'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+      creator: '@digitalbot_ai',
+      site: '@digitalbot_ai',
+    },
+    category: post.category,
+  }
+}
+
 export async function generateStaticParams() {
   return Object.keys(blogPosts).map((slug) => ({
     slug: slug,
@@ -966,8 +1043,99 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     notFound()
   }
 
+  // Structured Data for SEO
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `https://www.digitalbot.ai/blog/${params.slug}#article`,
+        headline: post.title,
+        description: post.excerpt,
+        image: {
+          '@type': 'ImageObject',
+          url: post.image,
+          width: 1200,
+          height: 600,
+        },
+        datePublished: post.date,
+        dateModified: post.date,
+        author: {
+          '@type': 'Person',
+          name: post.author,
+          url: 'https://www.digitalbot.ai/about',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'DigitalBot.AI',
+          url: 'https://www.digitalbot.ai',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://www.digitalbot.ai/digitalbot-logo.svg',
+          },
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `https://www.digitalbot.ai/blog/${params.slug}`,
+        },
+        articleSection: post.category,
+        keywords: 'AI chatbot, conversational AI, customer service automation, AI voice agent, chatbot implementation',
+        wordCount: post.content.split(' ').length,
+        timeRequired: post.readTime,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `https://www.digitalbot.ai/blog/${params.slug}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.digitalbot.ai',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Blog',
+            item: 'https://www.digitalbot.ai/blog',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: post.title,
+            item: `https://www.digitalbot.ai/blog/${params.slug}`,
+          },
+        ],
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `https://www.digitalbot.ai/blog/${params.slug}#webpage`,
+        url: `https://www.digitalbot.ai/blog/${params.slug}`,
+        name: post.title,
+        description: post.excerpt,
+        isPartOf: {
+          '@id': 'https://www.digitalbot.ai/#website',
+        },
+        primaryImageOfPage: {
+          '@id': `https://www.digitalbot.ai/blog/${params.slug}#primaryimage`,
+        },
+        datePublished: post.date,
+        dateModified: post.date,
+        breadcrumb: {
+          '@id': `https://www.digitalbot.ai/blog/${params.slug}#breadcrumb`,
+        },
+      },
+    ],
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       <Header />
 
       <main className="flex-1">
@@ -1037,7 +1205,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                 <Image
                   src={post.image}
-                  alt={post.title}
+                  alt={`${post.title} - Featured image for article about ${post.category.toLowerCase()}`}
                   fill
                   className="object-cover"
                   priority
