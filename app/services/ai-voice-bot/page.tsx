@@ -271,8 +271,7 @@ export default function AIVoiceBot() {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
           "reviewCount": "1250"
-        },
-        "category": "AI Voice Bot Software"
+        }
       },
       {
         "@type": "Service",

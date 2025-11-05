@@ -108,7 +108,6 @@ export default function RootLayout({
         "name": "AI Voice Agent & AI Voice Assistant Platform",
         "description": "Advanced AI Voice Agent and AI Voice Assistant platform with natural language processing, voice recognition, and conversational AI capabilities for businesses. Automate customer service with intelligent voice agents.",
         "url": "https://digitalbot.ai",
-        "category": "Business Software",
         "operatingSystem": "Web Browser",
         "applicationCategory": "BusinessApplication",
         "offers": {
