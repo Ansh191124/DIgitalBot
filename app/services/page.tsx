@@ -387,6 +387,193 @@ export default function Services() {
         </div>
       </section>
 
+      {/* FAQ Section - Exactly like homepage */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" role="region" aria-labelledby="faq-section">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-pink-500/20 rounded-full filter blur-3xl animate-float-slow"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full filter blur-3xl animate-float-reverse"></div>
+          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-full filter blur-3xl animate-pulse"></div>
+        </div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-block mb-6">
+              <span className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse">
+                Got Questions? We've Got Answers
+              </span>
+            </div>
+            <h2 id="faq-section" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-white">
+              <span className="block mb-2">Frequently Asked</span>
+              <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                Questions
+              </span>
+            </h2>
+            <p className="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+              Everything you need to know about <span className="text-orange-400 font-semibold">AI Voice Assistant Services</span>
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* FAQ 1 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                01
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-4 mt-2">
+                What AI voice assistant services do you offer?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                We offer comprehensive AI voice solutions including AI call centers, customer support automation, sales agents, virtual receptionists, voice bots, and enterprise voice automation software. Each service is customizable to your business needs and integrates seamlessly with your existing systems.
+              </p>
+            </div>
+
+            {/* FAQ 2 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-blue-500/30 hover:border-blue-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                02
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4 mt-2">
+                How quickly can I implement AI voice services?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                Most businesses launch their AI voice assistant within 5-10 days. We handle setup, CRM integration, conversation training, and testing. Our team provides hands-on support to ensure smooth deployment and immediate value delivery.
+              </p>
+            </div>
+
+            {/* FAQ 3 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-purple-500/30 hover:border-purple-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                03
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 mt-2">
+                Which industries benefit from AI voice assistants?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                AI voice assistants transform healthcare, real estate, hospitality, e-commerce, financial services, and technology sectors. Any business with customer communication needs benefits from 24/7 availability, instant responses, and scalable automation without hiring additional staff.
+              </p>
+            </div>
+
+            {/* FAQ 4 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-teal-500/30 hover:border-teal-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-teal-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-teal-500 to-green-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                04
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-teal-400 to-green-400 bg-clip-text text-transparent mb-4 mt-2">
+                Can AI voice services integrate with my existing systems?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                Yes! Our AI voice platform integrates with popular CRMs (Salesforce, HubSpot, Zoho), phone systems, help desk software, scheduling tools, and custom APIs. We ensure seamless data flow and real-time synchronization with your tech stack.
+              </p>
+            </div>
+
+            {/* FAQ 5 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-pink-500/30 hover:border-pink-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-pink-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                05
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-4 mt-2">
+                What ROI can I expect from AI voice automation?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                Businesses typically see 40-60% cost reduction, 85% faster response times, and 45% higher conversion rates. AI voice services deliver ROI within 30-60 days by eliminating staffing costs, reducing missed calls, and providing 24/7 availability without overtime or benefits.
+              </p>
+            </div>
+
+            {/* FAQ 6 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                06
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-4 mt-2">
+                Is AI voice technology secure and compliant?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                Absolutely. Our platform is SOC 2 and HIPAA compliant with end-to-end encryption, data privacy controls, GDPR compliance, and comprehensive audit trails. All conversations are encrypted and stored securely with role-based access controls.
+              </p>
+            </div>
+
+            {/* FAQ 7 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-blue-500/30 hover:border-blue-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                07
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4 mt-2">
+                How does AI handle multiple languages?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                Our AI voice assistants support 60+ languages with natural accents and context-aware translations. The system automatically detects the caller's language and responds fluently, making it perfect for global businesses serving diverse customer bases.
+              </p>
+            </div>
+
+            {/* FAQ 8 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-purple-500/30 hover:border-purple-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                08
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 mt-2">
+                What support do you provide after launch?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                We provide 24/7 technical support, regular performance optimization, conversation training updates, analytics reviews, and dedicated account management. Our team monitors your AI continuously and makes improvements based on real conversation data.
+              </p>
+            </div>
+
+            {/* FAQ 9 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-teal-500/30 hover:border-teal-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-teal-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-teal-500 to-green-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                09
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-teal-400 to-green-400 bg-clip-text text-transparent mb-4 mt-2">
+                Can I customize the AI voice and personality?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                Yes! You can customize voice tone, personality, speaking style, and conversation flow to match your brand. Choose from multiple voice options, adjust response speeds, and train the AI on your specific terminology and brand guidelines.
+              </p>
+            </div>
+
+            {/* FAQ 10 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-pink-500/30 hover:border-pink-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-pink-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                10
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-4 mt-2">
+                Do I need technical expertise to use AI voice services?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                Not at all! Our platform features a no-code visual builder for creating and managing conversations. We handle all technical setup, integration, and maintenance. You simply define your business rules and we make the AI work for you.
+              </p>
+            </div>
+
+            {/* FAQ 11 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                11
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-4 mt-2">
+                How scalable are AI voice assistant services?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                Infinitely scalable! Our cloud infrastructure handles unlimited concurrent calls without quality degradation. Whether you receive 10 calls or 10,000 calls daily, the AI maintains consistent performance with no additional setup or hiring required.
+              </p>
+            </div>
+
+            {/* FAQ 12 */}
+            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-blue-500/30 hover:border-blue-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/50">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                12
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4 mt-2">
+                What analytics and reporting do you provide?
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                Our real-time dashboard shows call volume, conversation outcomes, customer sentiment, response times, conversion rates, and ROI metrics. Access detailed transcripts, identify trends, and export custom reports to track performance against your business KPIs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-3xl"></div>
@@ -418,7 +605,7 @@ export default function Services() {
 
       <Footer />
 
-      {/* Structured Data */}
+      {/* Structured Data - Service Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -499,6 +686,115 @@ export default function Services() {
               "ratingValue": "4.8",
               "reviewCount": "500",
             },
+          }),
+        }}
+      />
+
+      {/* Structured Data - FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What AI voice assistant services do you offer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We offer comprehensive AI voice solutions including AI call centers, customer support automation, sales agents, virtual receptionists, voice bots, and enterprise voice automation software. Each service is customizable to your business needs and integrates seamlessly with your existing systems."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How quickly can I implement AI voice services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Most businesses launch their AI voice assistant within 5-10 days. We handle setup, CRM integration, conversation training, and testing. Our team provides hands-on support to ensure smooth deployment and immediate value delivery."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which industries benefit from AI voice assistants?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "AI voice assistants transform healthcare, real estate, hospitality, e-commerce, financial services, and technology sectors. Any business with customer communication needs benefits from 24/7 availability, instant responses, and scalable automation without hiring additional staff."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can AI voice services integrate with my existing systems?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes! Our AI voice platform integrates with popular CRMs (Salesforce, HubSpot, Zoho), phone systems, help desk software, scheduling tools, and custom APIs. We ensure seamless data flow and real-time synchronization with your tech stack."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What ROI can I expect from AI voice automation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Businesses typically see 40-60% cost reduction, 85% faster response times, and 45% higher conversion rates. AI voice services deliver ROI within 30-60 days by eliminating staffing costs, reducing missed calls, and providing 24/7 availability without overtime or benefits."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is AI voice technology secure and compliant?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolutely. Our platform is SOC 2 and HIPAA compliant with end-to-end encryption, data privacy controls, GDPR compliance, and comprehensive audit trails. All conversations are encrypted and stored securely with role-based access controls."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does AI handle multiple languages?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our AI voice assistants support 60+ languages with natural accents and context-aware translations. The system automatically detects the caller's language and responds fluently, making it perfect for global businesses serving diverse customer bases."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What support do you provide after launch?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We provide 24/7 technical support, regular performance optimization, conversation training updates, analytics reviews, and dedicated account management. Our team monitors your AI continuously and makes improvements based on real conversation data."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I customize the AI voice and personality?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes! You can customize voice tone, personality, speaking style, and conversation flow to match your brand. Choose from multiple voice options, adjust response speeds, and train the AI on your specific terminology and brand guidelines."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need technical expertise to use AI voice services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Not at all! Our platform features a no-code visual builder for creating and managing conversations. We handle all technical setup, integration, and maintenance. You simply define your business rules and we make the AI work for you."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How scalable are AI voice assistant services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Infinitely scalable! Our cloud infrastructure handles unlimited concurrent calls without quality degradation. Whether you receive 10 calls or 10,000 calls daily, the AI maintains consistent performance with no additional setup or hiring required."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What analytics and reporting do you provide?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our real-time dashboard shows call volume, conversation outcomes, customer sentiment, response times, conversion rates, and ROI metrics. Access detailed transcripts, identify trends, and export custom reports to track performance against your business KPIs."
+                }
+              }
+            ]
           }),
         }}
       />
