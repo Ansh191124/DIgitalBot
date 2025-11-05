@@ -86,12 +86,13 @@ export function Footer() {
                 {/* Glow effect */}
                 <div className="absolute -inset-6 bg-gradient-to-r from-orange-300/40 via-pink-300/40 to-purple-300/40 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 <Image
-                  src="/images/logos/footer-logo.svg"
+                  src="/images/logos/footer-logo.png"
                   alt="DigitalBot.AI - AI Voice Assistant Platform"
-                  width={200}
-                  height={52}
+                  width={220}
+                  height={55}
                   loading="lazy"
-                  className="h-14 w-auto relative z-10 transition-all duration-500 group-hover:scale-105 drop-shadow-2xl"
+                  quality={95}
+                  className="h-16 w-auto relative z-10 transition-all duration-500 group-hover:scale-110 drop-shadow-2xl"
                 />
               </Link>
             </div>

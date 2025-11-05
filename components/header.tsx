@@ -60,12 +60,13 @@ export function Header() {
                             
                             <div className="relative">
                                 <Image
-                                    src="/images/logos/logo.svg"
+                                    src="/images/logos/logo.png"
                                     alt="DigitalBot.AI - AI Voice Assistant Platform"
-                                    width={180}
-                                    height={48}
+                                    width={200}
+                                    height={50}
                                     priority
-                                    className="h-12 w-auto relative z-10 drop-shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_30px_rgba(249,115,22,0.6)]"
+                                    quality={95}
+                                    className="h-12 w-auto relative z-10 drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_30px_rgba(249,115,22,0.6)]"
                                 />
                             </div>
                             
