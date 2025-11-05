@@ -265,7 +265,6 @@ export function Footer() {
                   { name: "Contact", href: "/contact" }
                 ]},
                 { title: "Resources", links: [
-                  { name: "FAQs", href: "/faq" },
                   { name: "Tutorials", href: "/docs" },
                   { name: "Case Studies", href: "/blog" },
                   { name: "Webinars", href: "/blog" }
