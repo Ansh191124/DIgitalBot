@@ -229,3 +229,109 @@
 .animate-shimmer {
   animation: shimmer 2s infinite;
 }
+
+/* Blog Article Content Styling */
+.prose .bg-gradient-to-br.from-blue-100 {
+  background: linear-gradient(to bottom right, rgb(219, 234, 254), rgb(233, 213, 255), rgb(252, 231, 243));
+  border-left: 4px solid rgb(147, 51, 234);
+  padding: 2rem;
+  border-radius: 0 1rem 1rem 0;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  margin-bottom: 3rem;
+}
+
+.prose .bg-gradient-to-br.from-blue-100 p:first-child {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgb(88, 28, 135);
+  margin-bottom: 0.75rem;
+}
+
+.prose .bg-gradient-to-br.from-blue-100 p:last-child {
+  color: rgb(31, 41, 55);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.prose .bg-white.border-2.border-orange-300 {
+  background: white;
+  border: 2px solid rgb(253, 186, 116);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  margin: 2.5rem 0;
+}
+
+.prose .bg-white.border-2.border-orange-300 p:first-child {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, rgb(249, 115, 22), rgb(236, 72, 153), rgb(147, 51, 234));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.prose .bg-white.border-2.border-blue-300 {
+  background: white;
+  border: 2px solid rgb(147, 197, 253);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  margin: 2.5rem 0;
+}
+
+.prose .bg-white.border-2.border-blue-300 p:first-child {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, rgb(59, 130, 246), rgb(99, 102, 241), rgb(147, 51, 234));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.prose .bg-gradient-to-br.from-green-50 {
+  background: linear-gradient(to bottom right, rgb(240, 253, 244), rgb(209, 250, 229), rgb(204, 251, 241));
+  border: 2px solid rgb(134, 239, 172);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  margin: 2.5rem 0;
+}
+
+.prose .bg-gradient-to-br.from-green-50 p:first-child {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgb(20, 83, 45);
+  margin-bottom: 1rem;
+}
+
+.prose .bg-gradient-to-br.from-orange-50 {
+  background: linear-gradient(to bottom right, rgb(255, 247, 237), rgb(254, 243, 199), rgb(254, 249, 195));
+  border: 2px solid rgb(253, 186, 116);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  margin: 2.5rem 0;
+}
+
+.prose .bg-gradient-to-br.from-orange-50 p:first-child {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgb(124, 45, 18);
+  margin-bottom: 1rem;
+}
+
+/* Nested ULs inside special boxes should not have the gradient background */
+.prose .bg-white ul,
+.prose .bg-gradient-to-br ul {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
