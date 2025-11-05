@@ -388,7 +388,7 @@ export default function Services() {
       </section>
 
       {/* FAQ Section - Exactly like homepage */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" role="region" aria-labelledby="faq-section">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden" role="region" aria-labelledby="faq-section">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-pink-500/20 rounded-full filter blur-3xl animate-float-slow"></div>
