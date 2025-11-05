@@ -8,18 +8,18 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "About DigitalBot.ai - Leading AI Voice Agent & Voice Assistant Company 2025",
-  description: "Learn about DigitalBot.ai, the #1 AI voice agent and voice assistant platform. Founded 2021, serving 10K+ businesses with 50M+ conversations. 99.9% uptime, 24/7 AI automation.",
+  description: "Learn about DigitalBot.ai, the innovative AI voice agent and voice assistant platform. Founded 2024, serving 500+ businesses with 2M+ conversations. 99.9% uptime, 24/7 AI automation.",
   keywords: "about digitalbot, ai voice agent company, voice assistant platform, ai company, conversational ai company, voice ai technology, ai automation company, digital voice assistant, ai customer service company, voice agent provider, ai voice technology company, enterprise ai voice, business automation company, ai voice solutions, voice assistant technology company",
   openGraph: {
     title: "About DigitalBot.ai - Leading AI Voice Agent & Voice Assistant Company 2025",
-    description: "Learn about DigitalBot.ai, the #1 AI voice agent and voice assistant platform. Founded 2021, serving 10K+ businesses with 50M+ conversations. 99.9% uptime.",
+    description: "Learn about DigitalBot.ai, the innovative AI voice agent and voice assistant platform. Founded 2024, serving 500+ businesses with 2M+ conversations.",
     url: "https://digitalbot.ai/about",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "About DigitalBot.ai - Leading AI Voice Agent & Voice Assistant Company 2025",
-    description: "Learn about DigitalBot.ai, the #1 AI voice agent platform. Founded 2021, serving 10K+ businesses with 50M+ conversations.",
+    description: "Learn about DigitalBot.ai, the innovative AI voice agent platform. Founded 2024, serving 500+ businesses with 2M+ conversations.",
   },
   alternates: {
     canonical: "https://digitalbot.ai/about",
@@ -55,43 +55,43 @@ const values = [
 
 const milestones = [
   {
-    year: "2021",
+    year: "2024 Q1",
     title: "Founded DigitalBot.ai",
-    description: "Started with a vision to democratize AI voice agent technology for businesses",
+    description: "Started with a vision to democratize AI voice agent technology for businesses worldwide",
     icon: Building2
   },
   {
-    year: "2022",
-    title: "1,000 Businesses",
-    description: "Reached our first milestone serving 1,000+ active AI voice assistant customers",
+    year: "2024 Q2",
+    title: "First 100 Customers",
+    description: "Reached our first milestone serving 100+ businesses with AI voice assistant solutions",
     icon: TrendingUp
   },
   {
-    year: "2023",
-    title: "Global Expansion",
-    description: "Expanded AI voice agent platform to 50+ countries with multi-language support",
+    year: "2024 Q3",
+    title: "Platform Launch",
+    description: "Officially launched AI voice agent platform with multi-language support and analytics dashboard",
     icon: Globe
   },
   {
-    year: "2024",
-    title: "10M Conversations",
-    description: "Processed 10 million AI voice assistant conversations with 99.9% accuracy",
+    year: "2024 Q4",
+    title: "1M+ Conversations",
+    description: "Processed over 1 million AI voice assistant conversations with high accuracy rates",
     icon: Zap
   },
   {
     year: "2025",
-    title: "10K+ Enterprise Clients",
-    description: "Serving 10,000+ businesses with enterprise-grade AI voice agent solutions",
+    title: "Rapid Growth & Expansion",
+    description: "Growing rapidly with hundreds of businesses adopting our AI voice agent platform",
     icon: Award
   },
 ]
 
 const stats = [
-  { number: "10,000+", label: "Active Businesses Using AI Voice Agents", color: "from-orange-600 to-pink-600" },
-  { number: "50M+", label: "AI Voice Assistant Conversations", color: "from-blue-600 to-cyan-600" },
+  { number: "500+", label: "Active Businesses Using AI Voice Agents", color: "from-orange-600 to-pink-600" },
+  { number: "2M+", label: "AI Voice Assistant Conversations", color: "from-blue-600 to-cyan-600" },
   { number: "99.9%", label: "AI Voice Agent Uptime SLA", color: "from-purple-600 to-pink-600" },
   { number: "24/7", label: "AI Voice Support Availability", color: "from-teal-600 to-green-600" },
-  { number: "150+", label: "Countries Served Globally", color: "from-pink-600 to-orange-600" },
+  { number: "25+", label: "Countries Served Globally", color: "from-pink-600 to-orange-600" },
   { number: "<500ms", label: "AI Voice Response Time", color: "from-cyan-600 to-blue-600" },
 ]
 
@@ -153,10 +153,10 @@ export default function About() {
                   What is DigitalBot.ai?
                 </h3>
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  <strong>DigitalBot.ai is the leading AI voice agent and AI voice assistant platform</strong> founded in 2021. We specialize in creating intelligent conversational AI solutions that enable businesses to automate customer service, sales, and support through advanced voice technology.
+                  <strong>DigitalBot.ai is an innovative AI voice agent and AI voice assistant platform</strong> founded in 2024. We specialize in creating intelligent conversational AI solutions that enable businesses to automate customer service, sales, and support through advanced voice technology.
                 </p>
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  Our <strong>AI voice agent platform</strong> serves over <strong>10,000 businesses worldwide</strong>, processing more than <strong>50 million AI voice assistant conversations</strong> daily with industry-leading accuracy and reliability.
+                  Our <strong>AI voice agent platform</strong> serves <strong>500+ businesses worldwide</strong>, processing more than <strong>2 million AI voice assistant conversations</strong> with industry-leading accuracy and reliability.
                 </p>
                 
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
@@ -167,7 +167,7 @@ export default function About() {
                     "24/7 AI voice agent availability - never sleeps, never takes breaks",
                     "99.9% uptime SLA for enterprise reliability",
                     "<500ms AI voice response time for natural conversations",
-                    "150+ countries served with multi-language support",
+                    "25+ countries served with multi-language support",
                     "Enterprise-grade security and HIPAA compliance",
                     "Personal analytics dashboard for real-time insights"
                   ].map((item, idx) => (
@@ -213,13 +213,13 @@ export default function About() {
                   How Did DigitalBot.ai Start?
                 </h3>
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  <strong>Founded in 2021</strong>, DigitalBot.ai emerged from a simple observation: businesses were struggling to provide <strong>24/7 customer support</strong> while maintaining quality and personal touch. Our founders, with backgrounds in <strong>AI research and enterprise software</strong>, saw an opportunity to revolutionize customer service with <strong>AI voice agent technology</strong>.
+                  <strong>Founded in early 2024</strong>, DigitalBot.ai emerged from a simple observation: businesses were struggling to provide <strong>24/7 customer support</strong> while maintaining quality and personal touch. Our founders, with backgrounds in <strong>AI research and enterprise software</strong>, saw an opportunity to revolutionize customer service with <strong>AI voice agent technology</strong>.
                 </p>
                 <p className="text-gray-700 mb-6 leading-relaxed">
                   The problem was clear: traditional customer service was expensive, limited by business hours, and couldn't scale. We asked ourselves: <strong>"What if AI voice assistants could handle customer conversations as naturally as humans, but 24/7 without breaks?"</strong>
                 </p>
                 <p className="text-gray-700 leading-relaxed">
-                  Today, we serve <strong>over 10,000 businesses worldwide</strong>, processing <strong>millions of AI voice assistant conversations daily</strong>. Our AI voice agents have evolved from simple rule-based systems to sophisticated conversational agents that understand context, emotion, and intent with <strong>99.9% accuracy</strong>.
+                  In just one year, we've grown to serve <strong>over 500 businesses worldwide</strong>, processing <strong>millions of AI voice assistant conversations</strong>. Our AI voice agents have evolved rapidly to become sophisticated conversational agents that understand context, emotion, and intent with <strong>high accuracy</strong>.
                 </p>
               </div>
             </div>
@@ -299,11 +299,11 @@ export default function About() {
                 },
                 {
                   q: "When was DigitalBot.ai founded?",
-                  a: "DigitalBot.ai was founded in 2021 by AI research and enterprise software experts. Since then, we've grown to serve 10,000+ businesses worldwide with 50 million+ AI voice assistant conversations processed."
+                  a: "DigitalBot.ai was founded in 2024 by AI research and enterprise software experts. We've rapidly grown to serve 500+ businesses worldwide with 2 million+ AI voice assistant conversations processed."
                 },
                 {
                   q: "How many businesses use DigitalBot.ai?",
-                  a: "Over 10,000 businesses worldwide use DigitalBot.ai's AI voice agent platform across 150+ countries. We process 50 million+ AI voice assistant conversations with 99.9% uptime and enterprise-grade reliability."
+                  a: "Over 500 businesses worldwide use DigitalBot.ai's AI voice agent platform across 25+ countries. We process 2 million+ AI voice assistant conversations with 99.9% uptime and enterprise-grade reliability."
                 },
                 {
                   q: "What makes DigitalBot.ai different from other AI voice platforms?",
@@ -335,7 +335,7 @@ export default function About() {
               Ready to Transform Your Business with AI Voice Agents?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Join 10,000+ businesses using DigitalBot.ai's AI voice assistant platform. Start automating your customer service today with our free 14-day trial.
+              Join 500+ businesses using DigitalBot.ai's AI voice assistant platform. Start automating your customer service today with our free 14-day trial.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/signup">
@@ -366,22 +366,22 @@ export default function About() {
                 "alternateName": "DigitalBot AI Voice Agent Platform",
                 "url": "https://digitalbot.ai",
                 "logo": "https://digitalbot.ai/logo.png",
-                "foundingDate": "2021",
+                "foundingDate": "2024",
                 "founders": [
                   {
                     "@type": "Person",
                     "name": "DigitalBot.ai Founders"
                   }
                 ],
-                "description": "DigitalBot.ai is the leading AI voice agent and AI voice assistant platform founded in 2021. We serve 10,000+ businesses worldwide with 50 million+ conversations, 99.9% uptime, and 24/7 AI automation.",
+                "description": "DigitalBot.ai is an innovative AI voice agent and AI voice assistant platform founded in 2024. We serve 500+ businesses worldwide with 2 million+ conversations, 99.9% uptime, and 24/7 AI automation.",
                 "slogan": "AI Voice Agents That Never Sleep",
                 "numberOfEmployees": {
                   "@type": "QuantitativeValue",
-                  "value": "100-500"
+                  "value": "10-50"
                 },
                 "areaServed": {
                   "@type": "Place",
-                  "name": "Worldwide - 150+ Countries"
+                  "name": "Worldwide - 25+ Countries"
                 },
                 "knowsAbout": ["AI Voice Agent", "AI Voice Assistant", "Conversational AI", "Voice Automation", "Customer Service AI", "Voice Technology", "Natural Language Processing"],
                 "sameAs": [
@@ -390,8 +390,8 @@ export default function About() {
                 ],
                 "aggregateRating": {
                   "@type": "AggregateRating",
-                  "ratingValue": "4.9",
-                  "reviewCount": "10000",
+                  "ratingValue": "4.8",
+                  "reviewCount": "500",
                   "bestRating": "5"
                 }
               },
