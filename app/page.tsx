@@ -665,6 +665,210 @@ export default function Home() {
           </div>
         </section>
 
+        {/* FAQ Section - 12 Questions - Creative Design */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden" role="region" aria-labelledby="faq-section">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-pink-500/20 rounded-full filter blur-3xl animate-float-slow"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full filter blur-3xl animate-float-reverse"></div>
+            <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-full filter blur-3xl animate-pulse"></div>
+          </div>
+
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-block mb-6">
+                <span className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse">
+                  Got Questions? We've Got Answers
+                </span>
+              </div>
+              <h2 id="faq-section" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-white">
+                <span className="block mb-2">Frequently Asked</span>
+                <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                  Questions
+                </span>
+              </h2>
+              <p className="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+                Everything you need to know about <span className="text-orange-400 font-semibold">AI Voice Agents</span> and <span className="text-purple-400 font-semibold">AI Voice Assistants</span>
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* FAQ 1 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  01
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-4 mt-2">
+                  What is an AI voice assistant and how does it work?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  An AI voice assistant is an intelligent conversational system that uses natural language processing and machine learning to understand and respond to customer queries in real-time. It processes spoken or text input, analyzes the intent, and provides relevant responses through advanced algorithms.
+                </p>
+              </div>
+
+              {/* FAQ 2 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-blue-500/30 hover:border-blue-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  02
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4 mt-2">
+                  How can AI voice assistants improve customer service?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  AI voice assistants enhance customer service by providing instant responses, handling multiple conversations simultaneously, reducing wait times, and offering consistent support around the clock. They can resolve common queries immediately and escalate complex issues to human agents when needed.
+                </p>
+              </div>
+
+              {/* FAQ 3 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-purple-500/30 hover:border-purple-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  03
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 mt-2">
+                  Is the AI voice assistant secure for handling customer data?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Yes, our AI voice assistant employs enterprise-grade security measures including end-to-end encryption, compliance with GDPR and industry standards, regular security audits, and strict data privacy protocols. All customer interactions are encrypted and stored securely.
+                </p>
+              </div>
+
+              {/* FAQ 4 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-teal-500/30 hover:border-teal-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-teal-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-teal-500 to-green-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  04
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-teal-400 to-green-400 bg-clip-text text-transparent mb-4 mt-2">
+                  Can the AI voice assistant integrate with existing business systems?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Absolutely. Our AI voice assistant offers seamless integration with popular CRM systems, help desk software, e-commerce platforms, and custom APIs. This ensures smooth data flow and enables the assistant to access relevant customer information and update records.
+                </p>
+              </div>
+
+              {/* FAQ 5 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-pink-500/30 hover:border-pink-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-pink-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  05
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-4 mt-2">
+                  What industries benefit most from AI voice assistants?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  AI voice assistants benefit various industries including healthcare, e-commerce, banking, hospitality, real estate, education, and telecommunications. Any business that values customer interaction and support can leverage AI voice assistants to improve service quality and reduce costs.
+                </p>
+              </div>
+
+              {/* FAQ 6 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  06
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-4 mt-2">
+                  How quickly can I set up and deploy an AI voice assistant?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Setup time varies depending on your requirements and integrations, but most businesses can have a basic AI voice assistant running within 1-2 weeks. This includes initial configuration, training on your specific use cases, and basic integrations.
+                </p>
+              </div>
+
+              {/* FAQ 7 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-blue-500/30 hover:border-blue-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  07
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4 mt-2">
+                  What kind of support and maintenance is provided?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  We offer comprehensive support including 24/7 technical assistance, regular system updates, performance monitoring, and continuous optimization. Our team provides training for your staff, handles system maintenance, and ensures the AI assistant stays updated with the latest features.
+                </p>
+              </div>
+
+              {/* FAQ 8 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-purple-500/30 hover:border-purple-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  08
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 mt-2">
+                  Can the AI voice assistant handle multiple languages?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Yes, our AI voice assistant supports multiple languages and can be configured to communicate in the languages your customers prefer. It can detect the customer's language automatically or be set to specific languages based on your business needs.
+                </p>
+              </div>
+
+              {/* FAQ 9 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-teal-500/30 hover:border-teal-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-teal-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-teal-500 to-green-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  09
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-teal-400 to-green-400 bg-clip-text text-transparent mb-4 mt-2">
+                  What is the difference between an AI Voice Agent and traditional IVR systems?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  AI Voice Agents are significantly more advanced than traditional IVR systems. While IVR relies on pre-recorded menus and limited options, AI Voice Agents use natural language understanding to have genuine conversations with customers and provide personalized responses.
+                </p>
+              </div>
+
+              {/* FAQ 10 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-pink-500/30 hover:border-pink-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-pink-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  10
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-4 mt-2">
+                  How much does an AI Voice Assistant platform cost?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Pricing for AI Voice Assistant platforms varies based on usage volume, features, and integration requirements. Most platforms offer flexible pricing models including per-minute usage, monthly subscriptions, or enterprise packages. Typical costs range from $0.05-$0.15 per minute.
+                </p>
+              </div>
+
+              {/* FAQ 11 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  11
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-4 mt-2">
+                  Can AI Voice Agents make outbound calls for sales and appointments?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Yes, AI Voice Agents excel at making outbound calls for various purposes including sales outreach, appointment scheduling, follow-ups, reminders, and surveys. They can handle objections, answer questions, and even close deals or book appointments autonomously.
+                </p>
+              </div>
+
+              {/* FAQ 12 */}
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-blue-500/30 hover:border-blue-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/50">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+                  12
+                </div>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4 mt-2">
+                  How accurate is the speech recognition in AI Voice Assistants?
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Modern AI Voice Assistants achieve 95-98% accuracy in speech recognition under normal conditions. Our platform uses advanced deep learning models trained on millions of conversations across various accents, dialects, and speaking styles.
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom CTA */}
+            <div className="mt-16 text-center">
+              <div className="inline-block bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-3xl p-8 hover:border-orange-400 transition-all duration-500">
+                <h3 className="text-2xl font-bold text-white mb-4">Still have questions?</h3>
+                <p className="text-gray-300 mb-6 max-w-2xl">Our AI experts are here to help you find the perfect solution for your business</p>
+                <Link 
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 rounded-xl shadow-2xl hover:shadow-orange-400 transition-all duration-300 hover:scale-105 border-2 border-white/20"
+                >
+                  Get in Touch
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <LeadForm />
 
         {/* Modern CTA Component */}
