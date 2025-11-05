@@ -1,5 +1,3 @@
-"use client";
-
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Badge } from "@/components/ui/badge";
@@ -24,203 +22,311 @@ import {
   Shield,
   Smartphone,
   Zap,
+  Phone,
+  Users,
+  TrendingUp,
 } from "lucide-react";
+import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Voice Assistant Services | AI Call Center Solutions - DigitalBot.ai 2025",
+  description: "Transform your business with AI voice assistant services. AI call center, customer support, sales agents & virtual receptionists. Trusted by 500+ businesses.",
+  keywords: [
+    "ai voice assistant services",
+    "ai call center solutions",
+    "ai customer support",
+    "ai sales agent",
+    "virtual receptionist ai",
+    "voice automation software",
+    "conversational ai platform",
+    "ai voice bot services",
+    "business phone automation",
+    "ai appointment scheduling",
+    "voice ai for business",
+    "automated customer service",
+    "ai voice technology",
+    "enterprise voice ai",
+    "ai phone system",
+  ],
+  openGraph: {
+    title: "AI Voice Assistant Services | AI Call Center Solutions - DigitalBot.ai 2025",
+    description: "Transform your business with AI voice assistant services. AI call center, customer support, sales agents & virtual receptionists. Trusted by 500+ businesses.",
+    type: "website",
+    url: "https://digitalbot.ai/services",
+    images: [
+      {
+        url: "/images/ai-voice-agent.png",
+        width: 1200,
+        height: 630,
+        alt: "AI Voice Assistant Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Voice Assistant Services | AI Call Center Solutions - DigitalBot.ai 2025",
+    description: "Transform your business with AI voice assistant services. AI call center, customer support, sales agents & virtual receptionists. Trusted by 500+ businesses.",
+    images: ["/images/ai-voice-agent.png"],
+  },
+};
 
 const services = [
   {
-    icon: Bot,
-    title: "Custom Chatbot Development",
+    icon: Phone,
+    title: "AI Call Center",
     description:
-      "Tailored AI chatbots built for your specific business needs and workflows.",
+      "24/7 automated call handling with intelligent routing, real-time analytics, and seamless CRM integration.",
     features: [
-      "Custom conversation flows",
-      "Brand personality integration",
-      "Industry-specific training",
-      "Multi-platform deployment",
+      "Unlimited concurrent calls",
+      "Smart call routing",
+      "Real-time transcriptions",
+      "Multi-language support",
+    ],
+    popular: true,
+    href: "/services/ai-call-center",
+  },
+  {
+    icon: Headphones,
+    title: "AI Customer Support",
+    description:
+      "Instant, personalized customer service that resolves issues 24/7 with human-like conversations.",
+    features: [
+      "Instant issue resolution",
+      "Knowledge base integration",
+      "Sentiment analysis",
+      "Escalation protocols",
+    ],
+    popular: true,
+    href: "/services/ai-customer-support",
+  },
+  {
+    icon: Users,
+    title: "AI Sales Agent",
+    description:
+      "Intelligent sales conversations that qualify leads, book appointments, and close deals automatically.",
+    features: [
+      "Lead qualification",
+      "Product recommendations",
+      "Objection handling",
+      "Follow-up automation",
     ],
     popular: false,
+    href: "/services/ai-sales-agent",
   },
   {
     icon: MessageSquare,
-    title: "Conversational AI Platform",
+    title: "AI Virtual Receptionist",
     description:
-      "Build, deploy, and manage chatbots easily using our no-code platform.",
+      "Professional call answering and appointment scheduling that never misses a call or opportunity.",
     features: [
-      "Drag-and-drop builder",
-      "Pre-built templates",
-      "Real-time analytics",
-      "A/B testing tools",
-    ],
-    popular: true,
-  },
-  {
-    icon: Brain,
-    title: "Natural Language Processing",
-    description:
-      "AI that truly understands intent, tone, and context with precision.",
-    features: [
-      "Intent recognition",
-      "Sentiment analysis",
-      "Entity extraction",
-      "Context awareness",
+      "Call screening",
+      "Appointment booking",
+      "Message taking",
+      "Calendar integration",
     ],
     popular: false,
+    href: "/services/ai-virtual-receptionist",
+  },
+  {
+    icon: Bot,
+    title: "AI Voice Bot",
+    description:
+      "Custom voice bots for specific business workflows with natural conversations and smart integrations.",
+    features: [
+      "Custom workflows",
+      "API integrations",
+      "Voice customization",
+      "Analytics dashboard",
+    ],
+    popular: false,
+    href: "/services/ai-voice-bot",
   },
   {
     icon: Zap,
-    title: "Integration Services",
+    title: "Voice Automation Software",
     description:
-      "Seamlessly connect chatbots to your existing apps, CRMs, and APIs.",
+      "Enterprise-grade voice automation platform with advanced features and unlimited scalability.",
     features: [
-      "CRM integration",
-      "API connections",
-      "Database sync",
-      "Webhook support",
+      "No-code builder",
+      "Enterprise security",
+      "Custom integrations",
+      "Dedicated support",
     ],
     popular: false,
-  },
-  {
-    icon: Shield,
-    title: "Enterprise Security",
-    description:
-      "Advanced encryption and compliance to safeguard your data and trust.",
-    features: [
-      "End-to-end encryption",
-      "GDPR compliance",
-      "SOC 2 certified",
-      "Role-based access",
-    ],
-    popular: false,
-  },
-  {
-    icon: BarChart3,
-    title: "Analytics & Insights",
-    description:
-      "Actionable analytics to track chatbot performance and engagement.",
-    features: [
-      "Conversation analytics",
-      "Performance metrics",
-      "Customer insights",
-      "ROI tracking",
-    ],
-    popular: false,
+    href: "/services/voice-automation-software",
   },
 ];
 
 const industries = [
-  { name: "E-commerce", icon: Smartphone },
-  { name: "Healthcare", icon: Headphones },
-  { name: "Financial Services", icon: Shield },
-  { name: "Education", icon: Brain },
-  { name: "Real Estate", icon: Globe },
-  { name: "Technology", icon: Code },
+  { name: "Healthcare", icon: Headphones, description: "Patient scheduling & support" },
+  { name: "Real Estate", icon: Globe, description: "Property inquiries & tours" },
+  { name: "Hospitality", icon: Shield, description: "Reservations & guest services" },
+  { name: "E-commerce", icon: Smartphone, description: "Order tracking & support" },
+  { name: "Financial Services", icon: BarChart3, description: "Account support & queries" },
+  { name: "Technology", icon: Code, description: "Technical support & demos" },
+];
+
+const stats = [
+  { label: "Active Businesses", value: "500+", icon: Users },
+  { label: "Conversations Handled", value: "2M+", icon: MessageSquare },
+  { label: "Countries Served", value: "25+", icon: Globe },
+  { label: "Average Response Time", value: "<1s", icon: Zap },
 ];
 
 export default function Services() {
   return (
-    <main className="min-h-screen bg-linear-to-br from-sky-50 via-white to-indigo-50 text-gray-900 relative overflow-hidden">
-      {/* floating glow */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-sky-200/30 rounded-full blur-3xl animate-pulse-slow" />
-      <div className="absolute bottom-10 right-0 w-[400px] h-[400px] bg-indigo-200/40 rounded-full blur-3xl animate-pulse-slow" />
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
+      {/* Animated Background Orbs */}
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-r from-orange-500/20 to-pink-500/20 rounded-full blur-3xl animate-float-slow" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-float-reverse" />
+      <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse" />
 
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative">
-        <div className="relative z-10 container mx-auto">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
-            AI Voice Assistant Services
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative">
+        <div className="relative z-10 container mx-auto text-center">
+          {/* Breadcrumb */}
+          <nav className="flex justify-center mb-8" aria-label="Breadcrumb">
+            <ol className="inline-flex items-center space-x-2 text-sm">
+              <li>
+                <Link href="/" className="text-white/60 hover:text-white transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li className="text-white/40">/</li>
+              <li className="text-white font-medium">Services</li>
+            </ol>
+          </nav>
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+            What AI Voice Assistant Services Do We Offer?
           </h1>
-          <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 max-w-3xl mx-auto mb-8">
-            Transform customer engagement with <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">cutting-edge AI voice technology</span> — smart, secure, and scalable for businesses of all sizes.
+          <p className="text-xl sm:text-2xl text-white/80 max-w-4xl mx-auto mb-8 leading-relaxed">
+            We provide comprehensive AI voice assistant services including AI call centers, customer support automation, sales agents, and virtual receptionists. Trusted by <span className="font-bold text-orange-400">500+ businesses</span> across <span className="font-bold text-purple-400">25+ countries</span> to handle <span className="font-bold text-pink-400">2M+ conversations</span> monthly.
           </p>
-          <Button className="bg-linear-to-r from-sky-500 via-blue-400 to-indigo-500 text-white hover:from-indigo-600 hover:to-sky-600 rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-2xl transition-all hover:scale-105">
-            Explore Solutions
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
+            {stats.map((stat, index) => (
+              <div
+                key={index}
+                className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:bg-white/10 hover:scale-105 transition-all duration-300"
+              >
+                <stat.icon className="h-8 w-8 mx-auto mb-3 text-orange-400" />
+                <div className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-white/60">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact">
+              <Button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white hover:scale-105 transition-all rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-2xl">
+                Start Free Trial
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link href="/pricing">
+              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg backdrop-blur-xl">
+                View Pricing
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-white via-sky-50 to-white relative">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
-              Our Core Services
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+              Our AI Voice Assistant Services
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Scalable AI chatbot solutions designed for efficiency, innovation,
-              and customer delight.
+            <p className="text-lg text-white/70 max-w-3xl mx-auto">
+              Choose from our comprehensive suite of AI-powered voice solutions designed to automate and enhance every aspect of your business communication.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card
-                key={index}
-                className="relative bg-white/80 backdrop-blur-lg border border-sky-100 rounded-3xl shadow-lg hover:shadow-3xl hover:border-sky-300 transition-all duration-500 hover:-translate-y-2"
-              >
-                {service.popular && (
-                  <Badge className="absolute -top-2 left-4 bg-linear-to-r from-sky-500 to-indigo-500 text-white shadow-md">
-                    ⭐ Most Popular
-                  </Badge>
-                )}
-                <CardHeader>
-                  <div className="w-16 h-16 bg-linear-to-br from-sky-100 to-indigo-100 rounded-2xl flex items-center justify-center mb-4 mx-auto shadow-inner">
-                    <service.icon className="h-8 w-8 text-sky-600" />
+              <Link key={index} href={service.href}>
+                <Card className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl hover:bg-white/10 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 h-full group cursor-pointer">
+                  {/* Numbered Badge */}
+                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-500 rounded-2xl flex items-center justify-center font-bold text-white text-lg shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
+                    {String(index + 1).padStart(2, '0')}
                   </div>
-                  <CardTitle className="text-xl font-semibold text-sky-800 mb-2 text-center">
-                    {service.title}
-                  </CardTitle>
-                  <CardDescription className="text-gray-600 text-center">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-center text-sm text-gray-700"
-                      >
-                        <Check className="h-4 w-4 text-sky-600 mr-2" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full bg-linear-to-r from-sky-500 via-blue-400 to-indigo-500 text-white hover:scale-105 transition-all rounded-full shadow-md hover:shadow-xl">
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </CardContent>
-              </Card>
+
+                  {service.popular && (
+                    <Badge className="absolute -top-2 right-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow-lg animate-pulse">
+                      ⭐ Popular
+                    </Badge>
+                  )}
+
+                  <CardHeader className="pt-8">
+                    <div className="w-16 h-16 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center mb-4 mx-auto backdrop-blur-xl border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                      <service.icon className="h-8 w-8 text-orange-400" />
+                    </div>
+                    <CardTitle className="text-xl font-semibold text-white mb-2 text-center group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-pink-400 group-hover:bg-clip-text group-hover:text-transparent transition-all">
+                      {service.title}
+                    </CardTitle>
+                    <CardDescription className="text-white/70 text-center">
+                      {service.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3 mb-6">
+                      {service.features.map((feature, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-center text-sm text-white/80 group-hover:text-white transition-colors"
+                        >
+                          <Check className="h-4 w-4 text-orange-400 mr-2 flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex items-center justify-center text-orange-400 group-hover:text-pink-400 transition-colors font-medium">
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* Industries Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-r from-sky-50 via-white to-indigo-50">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-sky-700 mb-4">
-            Industries We Empower
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
-            Our AI chatbots help businesses across multiple domains achieve
-            smarter engagement and automation.
-          </p>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+              Industries We Serve
+            </h2>
+            <p className="text-lg text-white/70 max-w-3xl mx-auto">
+              Our AI voice assistants are trusted across multiple industries to deliver exceptional customer experiences and operational efficiency.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {industries.map((industry, index) => (
               <Card
                 key={index}
-                className="border-0 shadow-lg bg-white/90 rounded-2xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-400 group"
+                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 group"
               >
-                <CardContent className="p-6">
-                  <industry.icon className="h-8 w-8 text-sky-600 mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                  <p className="text-sm font-medium text-gray-800 group-hover:text-sky-600 transition-colors">
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center mb-4 mx-auto backdrop-blur-xl border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                    <industry.icon className="h-8 w-8 text-orange-400" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-pink-400 group-hover:bg-clip-text group-hover:text-transparent transition-all">
                     {industry.name}
-                  </p>
+                  </h3>
+                  <p className="text-sm text-white/60">{industry.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -228,39 +334,53 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-white via-sky-50 to-indigo-50">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-sky-700 mb-4">
-            How It Works
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
-            Simple, structured, and results-driven — we make AI integration
-            seamless.
-          </p>
+      {/* How It Works Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+              How Do Our AI Voice Services Work?
+            </h2>
+            <p className="text-lg text-white/70 max-w-3xl mx-auto">
+              Get started in three simple steps and transform your business communication with AI voice technology.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {["Consultation", "Development", "Deployment"].map((step, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "1",
+                title: "Consultation & Setup",
+                description: "We analyze your business needs and configure your AI voice assistant with custom workflows, integrations, and brand personality.",
+              },
+              {
+                step: "2",
+                title: "Training & Integration",
+                description: "Our team trains your AI on your specific use cases and seamlessly integrates with your existing CRM, phone system, and tools.",
+              },
+              {
+                step: "3",
+                title: "Launch & Optimize",
+                description: "Go live with 24/7 AI voice support and continuously improve performance with real-time analytics and ongoing optimization.",
+              },
+            ].map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-400 border border-sky-100 hover:border-sky-300"
+                className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 group"
               >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-linear-to-br from-sky-100 to-indigo-100 flex items-center justify-center shadow-inner">
-                  <span className="text-2xl font-bold text-sky-700">
-                    {idx + 1}
-                  </span>
+                {/* Step Number Badge */}
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-500 rounded-2xl flex items-center justify-center font-bold text-white text-xl shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
+                  {item.step}
                 </div>
-                <h3 className="text-xl font-semibold text-sky-800 mb-4">
-                  {step}
-                </h3>
-                <p className="text-gray-600">
-                  {step === "Consultation" &&
-                    "We assess your goals, challenges, and define the ideal AI strategy for your brand."}
-                  {step === "Development" &&
-                    "Our team designs and builds intelligent chatbots customized for your workflows."}
-                  {step === "Deployment" &&
-                    "We integrate, launch, and continuously optimize your chatbot for maximum performance."}
-                </p>
+
+                <div className="pt-8">
+                  <h3 className="text-xl font-semibold text-white mb-4 text-center group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-pink-400 group-hover:bg-clip-text group-hover:text-transparent transition-all">
+                    {item.title}
+                  </h3>
+                  <p className="text-white/70 text-center leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -268,31 +388,29 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 bg-linear-to-r from-sky-100 via-blue-50 to-indigo-100 text-center relative overflow-hidden">
-        <div className="absolute inset-0 flex justify-center items-center">
-          <div className="w-[600px] h-[600px] bg-linear-to-r from-sky-200 to-indigo-300 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
-        </div>
+      <section className="py-24 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-3xl"></div>
 
         <div className="container mx-auto relative z-10">
-          <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-12 shadow-2xl border border-sky-200 hover:border-sky-300 transition-all">
-            <h2 className="text-3xl font-extrabold text-sky-700 mb-4">
-              Ready to Get Started?
+          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-12 border border-white/10 hover:bg-white/10 transition-all text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+              Ready to Transform Your Business Communication?
             </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Let's explore how our AI chatbot services can elevate your
-              business and customer experience.
+            <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
+              Join 500+ businesses already using DigitalBot.ai to handle millions of customer conversations with AI voice technology. Start your free trial today.
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Button className="bg-linear-to-r from-sky-500 via-blue-400 to-indigo-500 text-white rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
-                Schedule Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                variant="outline"
-                className="border-sky-400 text-sky-700 hover:bg-sky-50 rounded-full px-8 py-6 text-lg"
-              >
-                View Pricing
-              </Button>
+              <Link href="/contact">
+                <Button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white hover:scale-105 transition-all rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-2xl">
+                  Start Free Trial
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/pricing">
+                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg backdrop-blur-xl">
+                  View Pricing Plans
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -300,21 +418,90 @@ export default function Services() {
 
       <Footer />
 
-      <style jsx>{`
-        @keyframes pulse-slow {
-          0%, 100% {
-            opacity: 0.2;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.35;
-            transform: scale(1.05);
-          }
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 6s ease-in-out infinite;
-        }
-      `}</style>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "AI Voice Assistant Services",
+            "description": "Comprehensive AI voice assistant services including AI call center, customer support, sales agents, and virtual receptionists. Trusted by 500+ businesses across 25+ countries.",
+            "provider": {
+              "@type": "Organization",
+              "name": "DigitalBot.ai",
+              "url": "https://digitalbot.ai",
+              "logo": "https://digitalbot.ai/images/logos/logo.svg",
+              "foundingDate": "2024",
+              "description": "Leading AI voice assistant platform serving 500+ businesses",
+            },
+            "serviceType": "AI Voice Assistant Services",
+            "areaServed": {
+              "@type": "GeoShape",
+              "name": "Global - 25+ Countries",
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "AI Voice Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "AI Call Center",
+                    "description": "24/7 automated call handling with intelligent routing and real-time analytics",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "AI Customer Support",
+                    "description": "Instant, personalized customer service that resolves issues 24/7",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "AI Sales Agent",
+                    "description": "Intelligent sales conversations that qualify leads and book appointments",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "AI Virtual Receptionist",
+                    "description": "Professional call answering and appointment scheduling 24/7",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "AI Voice Bot",
+                    "description": "Custom voice bots for specific business workflows",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Voice Automation Software",
+                    "description": "Enterprise-grade voice automation platform",
+                  },
+                },
+              ],
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "500",
+            },
+          }),
+        }}
+      />
     </main>
   );
 }
