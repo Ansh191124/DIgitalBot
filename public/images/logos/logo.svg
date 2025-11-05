@@ -1,0 +1,50 @@
+<svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient Definitions -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#EC4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1F2937;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#374151;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Icon: AI Voice Bot Symbol -->
+  <g transform="translate(0, 6)">
+    <!-- Outer Circle with Gradient -->
+    <circle cx="18" cy="18" r="17" fill="url(#logoGradient)" opacity="0.15"/>
+    <circle cx="18" cy="18" r="14" fill="url(#logoGradient)" opacity="0.25"/>
+    
+    <!-- Voice Wave Icon -->
+    <g transform="translate(6, 8)">
+      <!-- Center wave (tallest) -->
+      <rect x="10" y="4" width="4" height="16" rx="2" fill="url(#logoGradient)"/>
+      
+      <!-- Left waves -->
+      <rect x="5" y="7" width="3" height="10" rx="1.5" fill="url(#logoGradient)" opacity="0.8"/>
+      <rect x="0" y="9" width="3" height="6" rx="1.5" fill="url(#logoGradient)" opacity="0.6"/>
+      
+      <!-- Right waves -->
+      <rect x="16" y="7" width="3" height="10" rx="1.5" fill="url(#logoGradient)" opacity="0.8"/>
+      <rect x="21" y="9" width="3" height="6" rx="1.5" fill="url(#logoGradient)" opacity="0.6"/>
+    </g>
+    
+    <!-- AI Sparkle -->
+    <circle cx="28" cy="10" r="2" fill="#F97316" opacity="0.8"/>
+    <circle cx="26" cy="26" r="1.5" fill="#EC4899" opacity="0.7"/>
+  </g>
+  
+  <!-- Text: DigitalBot -->
+  <text x="46" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="url(#textGradient)">
+    Digital<tspan fill="url(#logoGradient)" font-weight="800">Bot</tspan>
+  </text>
+  
+  <!-- Tagline with dot -->
+  <circle cx="166" cy="18" r="2" fill="#F97316"/>
+  <text x="172" y="21" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" fill="#6B7280">
+    AI Voice
+  </text>
+</svg>
