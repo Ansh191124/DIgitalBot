@@ -284,43 +284,85 @@ export default function About() {
           </div>
         </section>
 
-        {/* Voice Search Q&A - VSO Optimized */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-orange-50 to-pink-50" id="faq">
-          <div className="container mx-auto max-w-6xl">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
-              Common Questions About DigitalBot.ai
-            </h2>
+        {/* Voice Search Q&A - VSO Optimized - Dark Theme Like Homepage */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden" id="faq" role="region" aria-labelledby="faq-section">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-pink-500/20 rounded-full filter blur-3xl animate-float-slow"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full filter blur-3xl animate-float-reverse"></div>
+            <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-full filter blur-3xl animate-pulse"></div>
+          </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="text-center mb-16">
+              <h2 id="faq-section" className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent drop-shadow-2xl">
+                Common Questions About DigitalBot.ai
+              </h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Get answers to frequently asked questions about our AI voice agent platform
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
               {[
                 {
+                  number: "01",
                   q: "What does DigitalBot.ai do?",
-                  a: "DigitalBot.ai provides AI voice agent and AI voice assistant platform that enables businesses to automate customer service, sales, and support 24/7. Our AI voice agents handle conversations naturally, understand context, and provide instant responses without human intervention."
+                  a: "DigitalBot.ai provides AI voice agent and AI voice assistant platform that enables businesses to automate customer service, sales, and support 24/7. Our AI voice agents handle conversations naturally, understand context, and provide instant responses without human intervention.",
+                  gradient: "from-orange-500 to-pink-500"
                 },
                 {
+                  number: "02",
                   q: "When was DigitalBot.ai founded?",
-                  a: "DigitalBot.ai was founded in 2024 by AI research and enterprise software experts. We've rapidly grown to serve 500+ businesses worldwide with 2 million+ AI voice assistant conversations processed."
+                  a: "DigitalBot.ai was founded in 2024 by AI research and enterprise software experts. We've rapidly grown to serve 500+ businesses worldwide with 2 million+ AI voice assistant conversations processed.",
+                  gradient: "from-blue-500 to-cyan-500"
                 },
                 {
+                  number: "03",
                   q: "How many businesses use DigitalBot.ai?",
-                  a: "Over 500 businesses worldwide use DigitalBot.ai's AI voice agent platform across 25+ countries. We process 2 million+ AI voice assistant conversations with 99.9% uptime and enterprise-grade reliability."
+                  a: "Over 500 businesses worldwide use DigitalBot.ai's AI voice agent platform across 25+ countries. We process 2 million+ AI voice assistant conversations with 99.9% uptime and enterprise-grade reliability.",
+                  gradient: "from-purple-500 to-pink-500"
                 },
                 {
+                  number: "04",
                   q: "What makes DigitalBot.ai different from other AI voice platforms?",
-                  a: "DigitalBot.ai offers 24/7 AI voice agents with <500ms response time, 99.9% uptime SLA, multi-language support, personal analytics dashboard, and enterprise-grade security. Our AI voice assistants understand context, emotion, and intent with industry-leading accuracy."
+                  a: "DigitalBot.ai offers 24/7 AI voice agents with <500ms response time, 99.9% uptime SLA, multi-language support, personal analytics dashboard, and enterprise-grade security. Our AI voice assistants understand context, emotion, and intent with industry-leading accuracy.",
+                  gradient: "from-teal-500 to-green-500"
                 },
                 {
+                  number: "05",
                   q: "Is DigitalBot.ai secure and compliant?",
-                  a: "Yes, DigitalBot.ai maintains enterprise-grade security with HIPAA compliance, SOC 2 certification, and end-to-end encryption. Our AI voice agent platform ensures your data is protected with 99.9% uptime SLA and 24/7 monitoring."
+                  a: "Yes, DigitalBot.ai maintains enterprise-grade security with HIPAA compliance, SOC 2 certification, and end-to-end encryption. Our AI voice agent platform ensures your data is protected with 99.9% uptime SLA and 24/7 monitoring.",
+                  gradient: "from-pink-500 to-orange-500"
                 },
                 {
+                  number: "06",
                   q: "How quickly can I deploy an AI voice agent?",
-                  a: "You can deploy an AI voice agent in minutes with DigitalBot.ai. Our platform offers pre-built templates, easy integration, and instant activation. Start your free 14-day trial today with no credit card required."
+                  a: "You can deploy an AI voice agent in minutes with DigitalBot.ai. Our platform offers pre-built templates, easy integration, and instant activation. Start your free 14-day trial today with no credit card required.",
+                  gradient: "from-cyan-500 to-blue-500"
                 }
               ].map((faq, idx) => (
-                <div key={idx} className="bg-white rounded-2xl p-6 shadow-xl border-2 border-orange-200 hover:border-orange-400 transition-all">
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">{faq.q}</h3>
-                  <p className="text-gray-700 leading-relaxed">{faq.a}</p>
+                <div 
+                  key={idx} 
+                  className="group relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-white/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl"
+                >
+                  {/* Gradient Border Effect */}
+                  <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${faq.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl`}></div>
+                  
+                  {/* Number Badge */}
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br ${faq.gradient} text-white font-bold text-lg mb-4 shadow-lg transform group-hover:rotate-12 transition-transform duration-500`}>
+                    {faq.number}
+                  </div>
+
+                  {/* Question */}
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-pink-400 group-hover:bg-clip-text transition-all duration-300">
+                    {faq.q}
+                  </h3>
+
+                  {/* Answer */}
+                  <p className="text-gray-300 leading-relaxed">
+                    {faq.a}
+                  </p>
                 </div>
               ))}
             </div>
