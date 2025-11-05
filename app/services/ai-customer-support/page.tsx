@@ -3,8 +3,51 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card"
 import { VoiceConversationPlayer } from "@/components/voice-conversation-player"
-import { HeartHandshake, Clock, Sparkles, Shield, Users, Bot, BarChart3, Globe, Workflow, Mic, MessageCircle, ClipboardCheck, Smile } from "lucide-react"
+import { HeartHandshake, Clock, Sparkles, Shield, Users, Bot, BarChart3, Globe, Workflow, Mic, MessageCircle, ClipboardCheck, Smile, ArrowRight, Check } from "lucide-react"
 import Link from "next/link"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "AI Customer Support | 24/7 Automated Customer Service - DigitalBot.ai 2025",
+  description: "Deploy AI customer support that resolves issues instantly 24/7. Personalized service across all channels. Trusted by 500+ businesses. Start free trial today.",
+  keywords: [
+    "ai customer support",
+    "ai customer service",
+    "automated customer support",
+    "ai support agent",
+    "ai chatbot customer service",
+    "24/7 customer support ai",
+    "ai help desk",
+    "automated support system",
+    "ai customer care",
+    "intelligent customer support",
+    "ai support automation",
+    "virtual customer service agent",
+    "ai powered support",
+    "customer service automation",
+    "ai support platform",
+  ],
+  openGraph: {
+    title: "AI Customer Support | 24/7 Automated Customer Service - DigitalBot.ai 2025",
+    description: "Deploy AI customer support that resolves issues instantly 24/7. Personalized service across all channels. Trusted by 500+ businesses.",
+    type: "website",
+    url: "https://digitalbot.ai/services/ai-customer-support",
+    images: [
+      {
+        url: "/images/ai-voice-agent.png",
+        width: 1200,
+        height: 630,
+        alt: "AI Customer Support Platform",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Customer Support | 24/7 Automated Customer Service - DigitalBot.ai 2025",
+    description: "Deploy AI customer support that resolves issues instantly 24/7. Personalized service across all channels. Trusted by 500+ businesses.",
+    images: ["/images/ai-voice-agent.png"],
+  },
+};
 
 const benefits = [
   {
@@ -159,10 +202,12 @@ const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "DigitalBot AI Customer Support",
-  "description": "AI-powered customer support platform that delivers personalized, 24/7 service across voice, chat, email, and social channels.",
+  "description": "AI-powered customer support platform that delivers personalized, 24/7 service across voice, chat, email, and social channels. Trusted by 500+ businesses.",
   "brand": {
     "@type": "Organization",
-    "name": "DigitalBot"
+    "name": "DigitalBot.ai",
+    "foundingDate": "2024",
+    "url": "https://digitalbot.ai"
   },
   "offers": {
     "@type": "Offer",
@@ -173,82 +218,119 @@ const productSchema = {
   },
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "1046"
+    "ratingValue": "4.8",
+    "reviewCount": "500"
   }
 }
 
 export default function AICustomerSupport() {
   return (
-    <main className="min-h-screen bg-white text-sky-900">
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
+      {/* Animated Background Orbs */}
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-r from-orange-500/20 to-pink-500/20 rounded-full blur-3xl animate-float-slow" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-float-reverse" />
+      <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse" />
+
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <Header />
 
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-16 right-1/3 w-[600px] h-[600px] bg-gradient-radial from-sky-200/25 via-blue-100/10 to-transparent blur-3xl" />
-          <div className="absolute top-2/3 left-0 w-[700px] h-[700px] bg-gradient-radial from-sky-100/15 to-transparent blur-3xl" />
-        </div>
-        <div className="relative z-10">
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
-            AI Customer Support Automation Suite
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative">
+        <div className="relative z-10 container mx-auto text-center">
+          {/* Breadcrumb */}
+          <nav className="flex justify-center mb-8" aria-label="Breadcrumb">
+            <ol className="inline-flex items-center space-x-2 text-sm">
+              <li>
+                <Link href="/" className="text-white/60 hover:text-white transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li className="text-white/40">/</li>
+              <li>
+                <Link href="/services" className="text-white/60 hover:text-white transition-colors">
+                  Services
+                </Link>
+              </li>
+              <li className="text-white/40">/</li>
+              <li className="text-white font-medium">AI Customer Support</li>
+            </ol>
+          </nav>
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+            What Is AI Customer Support Automation?
           </h1>
-          <p className="text-xl text-sky-700 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Turn every interaction into a loyalty moment with <span className="font-semibold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">DigitalBot AI customer support</span>. Resolve requests instantly, predict issues before they occur, and deliver human-quality experiences at scale.
+          <p className="text-xl sm:text-2xl text-white/80 max-w-4xl mx-auto mb-8 leading-relaxed">
+            AI customer support uses conversational AI to resolve customer inquiries instantly across all channels, 24/7. Trusted by <span className="font-bold text-orange-400">500+ businesses</span> to handle <span className="font-bold text-pink-400">2M+ conversations</span> monthly with personalized, empathetic service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-            <Button size="lg" className="bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 hover:from-sky-700 hover:to-sky-500 text-white shadow-xl" asChild>
-              <Link href="/signup">Launch AI Support Trial</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-sky-400 text-sky-700 hover:bg-sky-50" asChild>
-              <Link href="/contact">Talk to a Support Strategist</Link>
-            </Button>
+            <Link href="/signup">
+              <Button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white hover:scale-105 transition-all rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-2xl">
+                Start Free Trial
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg backdrop-blur-xl">
+                Book Demo
+              </Button>
+            </Link>
           </div>
-          <p className="text-sm text-gray-600">Trusted by SaaS, ecommerce, fintech, and healthcare leaders • 4.9/5 CSAT • Millions of conversations handled monthly</p>
+          <p className="text-sm text-white/60">✓ 500+ Businesses • ✓ 4.8/5 Rating • ✓ 2M+ Monthly Conversations</p>
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-sky-50 to-blue-50/40">
-        <div className="container mx-auto max-w-5xl">
+      {/* Content Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative">
+        <div className="container mx-auto max-w-5xl relative z-10">
           <article className="prose prose-lg max-w-none">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
               How AI Reinvents Customer Support
             </h2>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+            <p className="text-lg text-white/80 mb-6 leading-relaxed">
               Customers expect instant answers, personalized solutions, and empathetic service across every touchpoint. DigitalBot combines conversational AI, contextual memory, and workflow automation so your support organization can exceed those expectations without ballooning headcount.
             </p>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+            <p className="text-lg text-white/80 mb-6 leading-relaxed">
               Our AI learns from your historical tickets, community posts, product updates, and help center content. It captures brand voice, adapts to policy changes in minutes, and collaborates with human agents when nuanced judgement is required. Supervisors get full visibility into AI performance with the ability to intervene, coach, and iterate continuously.
             </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg text-white/80 leading-relaxed">
               With DigitalBot, support leaders reduce backlogs, improve customer satisfaction scores, and eliminate data silos. The result: happier customers, empowered agents, and a support org that transforms from a cost center into a growth engine.
             </p>
           </article>
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="container mx-auto">
+      {/* Benefits Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
+        <div className="container mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">
-              Benefits of DigitalBot AI Support
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+              Benefits of AI Customer Support
             </h2>
-            <p className="text-xl text-gray-700 max-w-4xl mx-auto">
+            <p className="text-xl text-white/70 max-w-4xl mx-auto">
               Empower your support team with automation that feels human and scales with demand.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="border-sky-200 hover:border-sky-400 transition-all duration-300 hover:shadow-xl">
-                <CardHeader>
-                  <div className="w-14 h-14 bg-linear-to-r from-sky-500 to-sky-600 rounded-xl flex items-center justify-center mb-4">
-                    <benefit.icon className="h-7 w-7 text-white" />
+              <Card key={index} className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl hover:bg-white/10 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 group">
+                {/* Numbered Badge */}
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-500 rounded-2xl flex items-center justify-center font-bold text-white text-lg shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                
+                <CardHeader className="pt-8">
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center mb-4 backdrop-blur-xl border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                    <benefit.icon className="h-7 w-7 text-orange-400" />
                   </div>
-                  <CardTitle className="text-sky-700 text-xl">{benefit.title}</CardTitle>
+                  <CardTitle className="text-white text-xl group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-pink-400 group-hover:bg-clip-text group-hover:text-transparent transition-all">
+                    {benefit.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed">{benefit.description}</CardDescription>
+                  <CardDescription className="text-white/70 leading-relaxed">
+                    {benefit.description}
+                  </CardDescription>
                 </CardContent>
               </Card>
             ))}
@@ -256,23 +338,29 @@ export default function AICustomerSupport() {
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-sky-50 to-blue-50/40">
-        <div className="container mx-auto max-w-6xl">
+      {/* Use Cases Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
+        <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">
-              AI Support Use Cases & Measurable Wins
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+              AI Support Use Cases & Proven Results
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-white/70 max-w-3xl mx-auto">
               Real-world outcomes from DigitalBot customers worldwide.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {useCases.map((useCase, index) => (
-              <Card key={index} className="border-sky-200 hover:border-sky-400 transition-all duration-300 hover:shadow-xl">
+              <Card key={index} className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl hover:bg-white/10 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-500">
                 <CardHeader>
-                  <CardTitle className="text-sky-700 text-2xl mb-3">{useCase.title}</CardTitle>
-                  <CardDescription className="text-gray-700 leading-relaxed mb-4">{useCase.description}</CardDescription>
-                  <span className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-semibold">✓ {useCase.results}</span>
+                  <CardTitle className="text-white text-2xl mb-3">{useCase.title}</CardTitle>
+                  <CardDescription className="text-white/70 leading-relaxed mb-4">
+                    {useCase.description}
+                  </CardDescription>
+                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-300 rounded-full text-sm font-semibold border border-green-500/30">
+                    <Check className="h-4 w-4 mr-2" />
+                    {useCase.results}
+                  </span>
                 </CardHeader>
               </Card>
             ))}
@@ -280,88 +368,101 @@ export default function AICustomerSupport() {
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="container mx-auto max-w-6xl">
+      {/* Features Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
+        <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">
-              Platform Capabilities Support Leaders Rely On
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+              Platform Capabilities Support Leaders Trust
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-white/70 max-w-3xl mx-auto">
               Deep technical advantages that keep customers informed and delighted.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {capabilityBlocks.map((feature, index) => (
-              <div key={index}>
-                <h3 className="text-2xl font-bold text-sky-700 mb-4 flex items-center gap-3">
-                  <feature.icon className="h-8 w-8 text-sky-600" />
+              <div key={index} className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:bg-white/10 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-500">
+                <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center backdrop-blur-xl border border-white/10">
+                    <feature.icon className="h-6 w-6 text-orange-400" />
+                  </div>
                   {feature.heading}
                 </h3>
-                <p className="text-gray-700 leading-relaxed">{feature.body}</p>
+                <p className="text-white/70 leading-relaxed">{feature.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-sky-200/20 to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-blue-100/15 to-transparent rounded-full blur-3xl" />
-          <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-sky-100/10 to-transparent rounded-full blur-3xl" />
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `linear-gradient(to right, rgba(56,189,248,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(56,189,248,0.1) 1px, transparent 1px)`, backgroundSize: "60px 60px" }} />
-        </div>
+      {/* Demo Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-sm border border-sky-200/60 shadow-lg mb-6">
-              <Mic className="h-4 w-4 text-sky-500 animate-pulse" />
-              <span className="font-medium">AI Customer Experience Demo</span>
+            <div className="inline-flex items-center space-x-2 bg-white/5 backdrop-blur-xl px-4 py-2 rounded-full text-sm text-white/80 border border-white/10 shadow-lg mb-6">
+              <Mic className="h-4 w-4 text-orange-400 animate-pulse" />
+              <span className="font-medium">Live AI Demo</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-4">
-              Hear DigitalBot Resolve a Support Ticket in Seconds
+            <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent mb-4">
+              Experience AI Customer Support in Action
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experience the calm, accurate, and friendly responses your customers will receive.
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+              Hear how AI resolves support tickets with calm, accurate, and friendly responses your customers will love.
             </p>
           </div>
-          <VoiceConversationPlayer audioSrc="/sample-conversation.mp3" />
+          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
+            <VoiceConversationPlayer audioSrc="/sample-conversation.mp3" />
+          </div>
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="container mx-auto max-w-4xl">
+      {/* FAQ Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
+        <div className="container mx-auto max-w-4xl relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">
-              AI Customer Support FAQ
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+              Frequently Asked Questions
             </h2>
-            <p className="text-xl text-gray-700">Get clarity on how DigitalBot fits into your support strategy.</p>
+            <p className="text-xl text-white/70">Get clarity on how AI customer support fits into your strategy.</p>
           </div>
           <div className="space-y-6">
             {faqSchema.mainEntity.map((faq, index) => (
-              <div key={index} className="bg-sky-50 rounded-xl p-6 border border-sky-200">
-                <h3 className="text-xl font-bold text-sky-900 mb-3">{faq.name}</h3>
-                <p className="text-gray-700 leading-relaxed">{faq.acceptedAnswer.text}</p>
+              <div key={index} className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all">
+                <h3 className="text-xl font-bold text-white mb-3">{faq.name}</h3>
+                <p className="text-white/70 leading-relaxed">{faq.acceptedAnswer.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-sky-600 via-sky-500 to-blue-600 text-white">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl sm:text-5xl font-bold mb-6">Elevate Customer Support with DigitalBot</h2>
-          <p className="text-xl mb-8 opacity-90 leading-relaxed">
-            Join leading brands delivering proactive, intelligent support experiences. Delight customers, empower agents, and prove ROI.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button size="lg" className="bg-white text-sky-700 hover:bg-gray-100 shadow-xl text-lg px-8 py-6" asChild>
-              <Link href="/signup">Start Your Free AI Support Trial</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6" asChild>
-              <Link href="/contact">Schedule a Personalized Demo</Link>
-            </Button>
+      {/* CTA Section */}
+      <section className="py-24 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-3xl"></div>
+
+        <div className="container mx-auto max-w-4xl relative z-10">
+          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-12 border border-white/10 hover:bg-white/10 transition-all text-center">
+            <h2 className="text-3xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+              Elevate Your Customer Support Today
+            </h2>
+            <p className="text-xl text-white/70 mb-8 leading-relaxed">
+              Join 500+ businesses delivering proactive, intelligent support experiences. Delight customers, empower agents, and prove ROI with DigitalBot AI.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Link href="/signup">
+                <Button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white hover:scale-105 transition-all rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-2xl">
+                  Start Free Trial
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg backdrop-blur-xl">
+                  Schedule Demo
+                </Button>
+              </Link>
+            </div>
+            <p className="text-sm text-white/60">✓ Dedicated Success Team • ✓ Transparent Pricing • ✓ Rapid Deployment</p>
           </div>
-          <p className="text-sm opacity-80">✓ Dedicated AI success team • ✓ Transparent pricing • ✓ Rapid value delivery</p>
         </div>
       </section>
 
