@@ -7,8 +7,8 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "AI Voice Agent | AI Voice Assistant Platform - DigitalBot.ai 2024",
-  description: "🤖 Leading AI Voice Agent & AI Voice Assistant Platform | 24/7 Automated Customer Service | Never Sleeps | Personal Analytics Dashboard | Enterprise-Grade Voice AI Technology | Free 14-Day Trial",
+  title: "AI Voice Agent | AI Voice Assistant Platform - DigitalBot.ai 2025",
+  description: "🤖 Leading AI Voice Agent & AI Voice Assistant Platform. 24/7 automated customer service that never sleeps. Personal analytics dashboard. Free 14-day trial!",
   keywords: "ai voice agent, ai voice assistant, voice agent platform, ai assistant platform, conversational ai agent, intelligent voice assistant, ai voice technology, voice agent software, ai assistant software, automated voice agent, smart voice assistant, ai powered voice agent, enterprise voice assistant, business voice agent, ai voice agent platform, voice assistant solution, ai agent automation, voice ai assistant, conversational voice agent, ai customer service agent, voice assistant technology, ai voice bot, intelligent ai agent, voice agent system, ai assistant system, automated ai assistant, ai voice platform, voice agent service, ai assistant service, business ai voice agent, ai voice agent solution, voice assistant automation, ai agent platform, intelligent voice agent, ai voice assistant technology, voice agent automation, ai assistant automation, enterprise ai voice agent, business ai assistant, ai voice agent software, voice assistant platform, ai powered assistant, conversational ai assistant, ai voice agent system, voice assistant system, automated voice assistant, ai voice solutions, voice agent solutions, ai assistant solutions, enterprise voice agent, business voice assistant",
   authors: [{ name: "DigitalBot.ai Team - AI Voice Technology Experts" }],
   creator: "DigitalBot.ai - AI Voice Agent & Assistant Platform",
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://digitalbot.ai",
-    title: "AI Voice Agent | AI Voice Assistant Platform - DigitalBot.ai",
-    description: "🤖 #1 AI Voice Agent & AI Voice Assistant Platform | Never Sleeps | 24/7 Automated Customer Service | Personal Analytics Dashboard | Free 14-Day Trial",
+    title: "AI Voice Agent | AI Voice Assistant Platform - DigitalBot.ai 2025",
+    description: "🤖 Leading AI Voice Agent & AI Voice Assistant Platform. 24/7 automated customer service that never sleeps. Personal analytics dashboard. Free 14-day trial!",
     siteName: "DigitalBot.ai - AI Voice Agent & Assistant Platform",
     images: [
       {
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@digitalbot_ai",
     creator: "@digitalbot_ai",
-    title: "AI Voice Agent | AI Voice Assistant Platform | DigitalBot.ai",
-    description: "🤖 Leading AI Voice Agent & AI Voice Assistant Platform | 24/7 Automation | Never Sleeps | Free 14-Day Trial",
+    title: "AI Voice Agent | AI Voice Assistant Platform - DigitalBot.ai 2025",
+    description: "🤖 Leading AI Voice Agent & AI Voice Assistant Platform. 24/7 automated customer service that never sleeps. Free 14-day trial!",
     images: ["/twitter-ai-voice-agent-assistant.jpg"],
   },
   verification: {
