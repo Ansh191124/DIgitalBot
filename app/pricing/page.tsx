@@ -104,38 +104,39 @@ export default function Pricing() {
       <Header />
 
       {/* Hero Section - Enhanced Creative Design */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50">
-        {/* Decorative Background Pattern */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
+            {/* Hero Section - Enhanced Creative Design */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-purple-50">
+        {/* Decorative Grid Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10 z-0">
           <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(249, 115, 22, 0.3) 1px, transparent 1px),
-                             linear-gradient(to bottom, rgba(236, 72, 153, 0.3) 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
+            backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+                             linear-gradient(to bottom, rgba(168, 85, 247, 0.2) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
           }}></div>
         </div>
 
-        {/* Decorative Floating Orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-orange-400/20 via-pink-400/20 to-purple-400/20 rounded-full filter blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-blue-400/20 via-cyan-400/20 to-teal-400/20 rounded-full filter blur-3xl animate-float-reverse"></div>
+        {/* Floating Gradient Orbs */}
+        <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-blue-200/30 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl"></div>
 
-        <div className="container mx-auto relative z-10">
+        <div className="container mx-auto relative z-10 text-center">
           <div className="inline-block mb-6">
-            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
               💰 Simple Pricing
             </span>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
-            <span className="block mb-3 bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <span className="block mb-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
               Choose Your Perfect
             </span>
-            <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 shadow-2xl text-3xl sm:text-4xl lg:text-5xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
+            <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 shadow-2xl text-2xl sm:text-3xl lg:text-4xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
               <span className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent"></span>
               <span className="relative z-10">AI Voice Plan</span>
             </span>
           </h1>
           
-          <div className="max-w-4xl mx-auto mb-8 p-6 bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 border-2 border-orange-300 rounded-2xl shadow-xl">
+          <div className="max-w-4xl mx-auto mb-8 p-6 bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 border-2 border-orange-400 rounded-2xl shadow-2xl backdrop-blur-md">
             <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium">
               <span className="font-bold text-orange-600">Transparent pricing</span>, no hidden fees, and a <span className="font-bold text-purple-600">free trial</span> to get started with AI voice automation. Choose a plan that fits your business needs.
             </p>
@@ -161,15 +162,15 @@ export default function Pricing() {
       </section>
 
       {/* Pricing Cards - Enhanced Creative Design */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-white via-blue-50 to-purple-50 overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-white via-blue-50 to-purple-50 overflow-hidden">
         {/* Decorative Background Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-300/20 via-purple-300/20 to-pink-300/20 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-orange-300/20 via-pink-300/20 to-purple-300/20 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-radial from-blue-200/30 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl"></div>
 
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-16">
             <div className="inline-block mb-6">
-              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
                 🎯 Choose Your Plan
               </span>
             </div>
@@ -261,14 +262,17 @@ export default function Pricing() {
       </section>
 
       {/* FAQ Section - Enhanced Creative Design */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-white overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-white via-blue-50 to-purple-50 overflow-hidden">
         {/* Decorative Background */}
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(249, 115, 22, 0.1) 1px, transparent 0)`,
-          backgroundSize: '50px 50px'
-        }}></div>
-        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-orange-200/30 via-pink-200/30 to-purple-200/30 rounded-full filter blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-tr from-blue-200/30 via-purple-200/30 to-pink-200/30 rounded-full filter blur-3xl animate-float-reverse"></div>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+                             linear-gradient(to bottom, rgba(168, 85, 247, 0.2) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }}></div>
+        </div>
+        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-radial from-blue-200/30 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl"></div>
 
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-16">
@@ -322,22 +326,25 @@ export default function Pricing() {
       </section>
 
       {/* CTA Section - Enhanced Creative Design */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 overflow-hidden">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-white via-blue-50 to-purple-50 overflow-hidden">
         {/* Decorative Background Pattern */}
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 3px 3px, rgba(249, 115, 22, 0.15) 2px, transparent 0)`,
-          backgroundSize: '60px 60px'
-        }}></div>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+                             linear-gradient(to bottom, rgba(168, 85, 247, 0.2) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }}></div>
+        </div>
         
         {/* Floating Orbs */}
-        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-br from-orange-400/30 via-pink-400/30 to-purple-400/30 rounded-full filter blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-tr from-blue-400/30 via-purple-400/30 to-pink-400/30 rounded-full filter blur-3xl animate-float-reverse"></div>
+        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-radial from-blue-200/30 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl"></div>
 
         <div className="container mx-auto relative z-10">
-          <div className="bg-gradient-to-r from-white/90 via-white/80 to-white/90 backdrop-blur-sm rounded-3xl p-12 text-center shadow-2xl border-4 border-orange-300 relative overflow-hidden">
+          <div className="bg-white/90 backdrop-blur-md rounded-3xl p-12 text-center shadow-2xl border-2 border-orange-400 relative overflow-hidden">
             {/* Inner Decorative Glows */}
-            <div className="absolute -top-10 -left-10 w-60 h-60 bg-gradient-to-br from-orange-300/30 via-pink-300/30 to-purple-300/30 rounded-full filter blur-3xl"></div>
-            <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-gradient-to-tr from-blue-300/30 via-purple-300/30 to-pink-300/30 rounded-full filter blur-3xl"></div>
+            <div className="absolute -top-10 -left-10 w-60 h-60 bg-gradient-to-br from-orange-400 via-pink-400 to-purple-400 opacity-20 rounded-full filter blur-3xl"></div>
+            <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-gradient-to-tr from-blue-400 via-cyan-400 to-teal-400 opacity-20 rounded-full filter blur-3xl"></div>
 
             <div className="relative z-10">
               <div className="inline-block mb-8">
