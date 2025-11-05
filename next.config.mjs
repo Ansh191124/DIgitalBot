@@ -60,23 +60,6 @@ const nextConfig = {
       },
     ];
   },
-
-  // Redirects www to non-www
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.digitalbot.ai',
-          },
-        ],
-        destination: 'https://digitalbot.ai/:path*',
-        permanent: true,
-      },
-    ];
-  },
 }
 
 export default nextConfig
