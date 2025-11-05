@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer"
 import { CTA } from "@/components/cta"
 import { LeadForm } from "@/components/lead-form"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Home() {
   return (
@@ -412,151 +413,187 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Industry Use Cases - ASO Optimized */}
+        {/* Industry Use Cases - With Images */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-orange-50 to-pink-50 relative overflow-hidden" role="region" aria-labelledby="use-cases">
-          <div className="container mx-auto max-w-6xl relative z-10">
-            <h2 id="use-cases" className="text-3xl sm:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+          <div className="container mx-auto max-w-7xl relative z-10">
+            <h2 id="use-cases" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
               AI Voice Agent Solutions for Every Industry
             </h2>
             <p className="text-center text-gray-700 text-lg mb-16 max-w-3xl mx-auto">
               From healthcare to e-commerce, our AI voice assistants deliver measurable ROI across all business sectors
             </p>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Healthcare */}
-              <div className="group bg-white p-8 rounded-2xl border-2 border-pink-300 hover:border-pink-500 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-pink-200">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-pink-500 via-purple-500 to-orange-600 flex items-center justify-center shadow-lg">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Healthcare & Medical */}
+              <div className="group bg-white rounded-3xl overflow-hidden border-2 border-pink-300 hover:border-pink-500 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-pink-200">
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src="/images/hospital.png"
+                    alt="AI Voice Assistant for Healthcare & Medical"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center shadow-xl">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white">Healthcare & Medical</h3>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Healthcare & Medical</h3>
                 </div>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-pink-500 mt-1">•</span>
-                    <span>Automated appointment scheduling and reminders</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-500 mt-1">•</span>
-                    <span>Patient pre-screening and triage</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-500 mt-1">•</span>
-                    <span>Prescription refill automation</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-pink-500 mt-1">•</span>
-                    <span>HIPAA-compliant patient communication</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-500 mt-1">•</span>
-                    <span>Insurance verification and billing support</span>
-                  </li>
-                </ul>
+                <div className="p-8">
+                  <ul className="space-y-3 text-gray-700">
+                    <li className="flex items-start gap-3">
+                      <span className="text-pink-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Automated Appointment Scheduling</strong> - 24/7 booking and reminders</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-purple-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Patient Pre-Screening</strong> - Triage and symptom assessment</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-orange-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Prescription Refills</strong> - Automated medication management</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-pink-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">HIPAA-Compliant</strong> - Secure patient communication</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
               {/* Real Estate */}
-              <div className="group bg-white p-8 rounded-2xl border-2 border-blue-300 hover:border-blue-500 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-200">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-600 flex items-center justify-center shadow-lg">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
+              <div className="group bg-white rounded-3xl overflow-hidden border-2 border-blue-300 hover:border-blue-500 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-200">
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src="/images/female-real-estate.jpg"
+                    alt="AI Voice Assistant for Real Estate"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-xl">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white">Real Estate</h3>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Real Estate</h3>
                 </div>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-1">•</span>
-                    <span>24/7 property inquiry handling</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-cyan-500 mt-1">•</span>
-                    <span>Automated showing scheduling</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-teal-500 mt-1">•</span>
-                    <span>Lead qualification and scoring</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-1">•</span>
-                    <span>Property information distribution</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-cyan-500 mt-1">•</span>
-                    <span>Follow-up automation and nurturing</span>
-                  </li>
-                </ul>
+                <div className="p-8">
+                  <ul className="space-y-3 text-gray-700">
+                    <li className="flex items-start gap-3">
+                      <span className="text-blue-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">24/7 Property Inquiries</strong> - Never miss a lead</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-cyan-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Automated Showing Scheduling</strong> - Instant appointments</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-teal-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Lead Qualification</strong> - Automatic buyer scoring</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-blue-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Follow-up Automation</strong> - Nurture leads effectively</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
-              {/* E-commerce & Retail */}
-              <div className="group bg-white p-8 rounded-2xl border-2 border-orange-300 hover:border-orange-500 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-200">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 flex items-center justify-center shadow-lg">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
+              {/* Hospitality & Hotels */}
+              <div className="group bg-white rounded-3xl overflow-hidden border-2 border-purple-300 hover:border-purple-500 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-200">
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src="/images/hotel-reception.jpg"
+                    alt="AI Voice Assistant for Hotels & Hospitality"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center shadow-xl">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white">Hotels & Hospitality</h3>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">E-commerce & Retail</h3>
                 </div>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-500 mt-1">•</span>
-                    <span>Order status and tracking inquiries</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-pink-500 mt-1">•</span>
-                    <span>Product recommendations and upselling</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-500 mt-1">•</span>
-                    <span>Returns and exchange processing</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-500 mt-1">•</span>
-                    <span>Inventory availability checking</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-pink-500 mt-1">•</span>
-                    <span>Multi-channel customer support</span>
-                  </li>
-                </ul>
+                <div className="p-8">
+                  <ul className="space-y-3 text-gray-700">
+                    <li className="flex items-start gap-3">
+                      <span className="text-purple-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Reservation Management</strong> - Booking and confirmations</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-pink-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Guest Services</strong> - Room service and concierge</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-orange-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Multi-Language Support</strong> - Serve international guests</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-purple-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">24/7 Front Desk</strong> - Always available assistance</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
-              {/* Financial Services */}
-              <div className="group bg-white p-8 rounded-2xl border-2 border-purple-300 hover:border-purple-500 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-200">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 via-pink-500 to-blue-600 flex items-center justify-center shadow-lg">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+              {/* E-commerce & Business */}
+              <div className="group bg-white rounded-3xl overflow-hidden border-2 border-orange-300 hover:border-orange-500 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-200">
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src="/images/ai-voice-agent.png"
+                    alt="AI Voice Agent for E-commerce & Business"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-pink-600 flex items-center justify-center shadow-xl">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white">E-commerce & Business</h3>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Financial Services</h3>
                 </div>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-500 mt-1">•</span>
-                    <span>Account balance and transaction inquiries</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-pink-500 mt-1">•</span>
-                    <span>Fraud alert notifications and verification</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-1">•</span>
-                    <span>Loan application pre-qualification</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-500 mt-1">•</span>
-                    <span>Payment reminders and collections</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-pink-500 mt-1">•</span>
-                    <span>Secure customer authentication</span>
-                  </li>
-                </ul>
+                <div className="p-8">
+                  <ul className="space-y-3 text-gray-700">
+                    <li className="flex items-start gap-3">
+                      <span className="text-orange-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Order Tracking</strong> - Real-time status updates</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-pink-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Customer Support</strong> - Instant query resolution</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-purple-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Product Recommendations</strong> - AI-powered upselling</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-orange-500 mt-1 text-lg">✓</span>
+                      <span><strong className="text-gray-900">Returns & Exchanges</strong> - Automated processing</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
