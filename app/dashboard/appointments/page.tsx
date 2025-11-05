@@ -413,7 +413,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
   useEffect(() => {
     const fetchPrompt = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/analysis-prompts`);
+        const response = await fetch(`${API_BASE_URL}/api/appointments/analysis-prompts`);
         if (response.ok) {
           const data = await response.json();
           setAiPrompt(data.appointment_prompt || aiPrompt);
@@ -427,7 +427,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
 
   const saveAiPrompt = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/analysis-prompts`, {
+      const response = await fetch(`${API_BASE_URL}/api/appointments/analysis-prompts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ appointment_prompt: aiPrompt })
