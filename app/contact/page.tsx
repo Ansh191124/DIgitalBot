@@ -114,149 +114,266 @@ export default function Contact() {
     <main className="min-h-screen bg-white text-foreground relative overflow-hidden">
       <Header />
 
-      {/* Hero Section - Mobile optimized */}
-      <section className="pt-20 sm:pt-32 pb-6 sm:pb-10 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="container mx-auto text-center">
-            <h1 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg mb-6">Contact Us</h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 max-w-3xl mx-auto animate-fade-in-up delay-200 px-2">
-            Ready to elevate your customer experience with AI? Our experts are just a message away.
-          </p>
+      {/* Hero Section - Enhanced Creative Design */}
+      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 overflow-hidden">
+        {/* Decorative Background Pattern */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(to right, rgba(249, 115, 22, 0.3) 1px, transparent 1px),
+                             linear-gradient(to bottom, rgba(236, 72, 153, 0.3) 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
+
+        {/* Decorative Floating Orbs */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-orange-400/20 via-pink-400/20 to-purple-400/20 rounded-full filter blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-blue-400/20 via-cyan-400/20 to-teal-400/20 rounded-full filter blur-3xl animate-float-reverse"></div>
+        
+        <div className="container mx-auto text-center relative z-10">
+          <div className="inline-block mb-6">
+            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+              💬 Get In Touch
+            </span>
+          </div>
+          
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
+            <span className="block mb-3 bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+              Let's Transform Your
+            </span>
+            <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 shadow-2xl text-3xl sm:text-4xl lg:text-5xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
+              <span className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent"></span>
+              <span className="relative z-10">Business Together</span>
+            </span>
+          </h1>
+          
+          <div className="max-w-3xl mx-auto mb-8 p-6 bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 border-2 border-orange-300 rounded-2xl shadow-xl">
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium">
+              Ready to <span className="font-bold text-orange-600">elevate your customer experience</span> with AI? Our experts are <span className="font-bold text-purple-600">just a message away</span>. Let's discuss how we can help your business grow.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Contact Form & Info - Mobile optimized */}
-      <section className="py-6 sm:py-10 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
+      {/* Contact Form & Info - Enhanced Creative Design */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-white via-blue-50 to-purple-50 overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-300/20 via-purple-300/20 to-pink-300/20 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-orange-300/20 via-pink-300/20 to-purple-300/20 rounded-full filter blur-3xl"></div>
+        
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start relative z-10">
 
-          {/* Contact Form */}
-          <Card className="bg-white border border-sky-100 shadow-xl hover:shadow-2xl transition-all duration-500 animate-fade-in-up">
-            <CardHeader className="p-4 sm:p-6">
-              <CardTitle className="text-xl sm:text-2xl font-bold text-sky-800">Send us a message</CardTitle>
-                <CardDescription className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 mb-6">Reach out to our team for support, partnership opportunities, or general inquiries. We're here to help your business grow with AI automation.</CardDescription>
+          {/* Contact Form - Enhanced */}
+          <Card className="bg-white border-4 border-orange-300 hover:border-orange-400 shadow-2xl hover:shadow-orange-200 transition-all duration-500 animate-fade-in-up relative overflow-hidden group">
+            {/* Decorative Glow */}
+            <div className="absolute -top-20 -right-20 w-60 h-60 bg-gradient-to-br from-orange-300/20 via-pink-300/20 to-purple-300/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+            
+            <CardHeader className="p-6 sm:p-8 relative z-10">
+              <div className="inline-block mb-4">
+                <span className="px-4 py-2 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg">
+                  ✉️ Contact Form
+                </span>
+              </div>
+              <CardTitle className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                Send us a message
+              </CardTitle>
+              <CardDescription className="text-base sm:text-lg font-medium bg-gradient-to-r from-orange-50 via-pink-50 to-purple-50 rounded-xl px-6 py-4 shadow-lg border-2 border-orange-200 text-gray-700">
+                Reach out to our team for <span className="font-bold text-orange-600">support</span>, <span className="font-bold text-purple-600">partnership opportunities</span>, or general inquiries. We're here to help your business grow with AI automation.
+              </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6">
-              {success && <div className="bg-green-100 text-green-800 p-3 rounded-md text-sm">{success}</div>}
-              {error && <div className="bg-red-100 text-red-800 p-3 rounded-md text-sm">{error}</div>}
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <CardContent className="space-y-6 p-6 sm:p-8 relative z-10">
+              {success && (
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-400 text-green-800 p-4 rounded-xl text-sm font-semibold shadow-lg">
+                  ✓ {success}
+                </div>
+              )}
+              {error && (
+                <div className="bg-gradient-to-r from-red-50 to-pink-50 border-2 border-red-400 text-red-800 p-4 rounded-xl text-sm font-semibold shadow-lg">
+                  ✗ {error}
+                </div>
+              )}
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-sm">First Name</Label>
-                    <Input id="firstName" placeholder="" value={form.firstName} onChange={handleChange} className="h-10 sm:h-11" />
+                    <Label htmlFor="firstName" className="text-sm font-bold text-gray-700">First Name</Label>
+                    <Input 
+                      id="firstName" 
+                      placeholder="John" 
+                      value={form.firstName} 
+                      onChange={handleChange} 
+                      className="h-12 border-2 border-gray-200 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all" 
+                    />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-sm">Last Name</Label>
-                    <Input id="lastName" placeholder="" value={form.lastName} onChange={handleChange} className="h-10 sm:h-11" />
+                    <Label htmlFor="lastName" className="text-sm font-bold text-gray-700">Last Name</Label>
+                    <Input 
+                      id="lastName" 
+                      placeholder="Doe" 
+                      value={form.lastName} 
+                      onChange={handleChange} 
+                      className="h-12 border-2 border-gray-200 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all" 
+                    />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm">Email <span className="text-red-500">*</span></Label>
-                    <Input id="email" type="email" placeholder="" value={form.email} onChange={handleChange} required className="h-10 sm:h-11" />
+                    <Label htmlFor="email" className="text-sm font-bold text-gray-700">
+                      Email <span className="text-red-500">*</span>
+                    </Label>
+                    <Input 
+                      id="email" 
+                      type="email" 
+                      placeholder="john@company.com" 
+                      value={form.email} 
+                      onChange={handleChange} 
+                      required 
+                      className="h-12 border-2 border-orange-200 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all" 
+                    />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-sm">Phone Number</Label>
+                    <Label htmlFor="phone" className="text-sm font-bold text-gray-700">
+                      Phone Number <span className="text-red-500">*</span>
+                    </Label>
                     <Input 
                       id="phone" 
                       type="tel" 
-                      placeholder="" 
+                      placeholder="+1 (555) 123-4567" 
                       value={form.phone} 
                       onChange={handleChange} 
-                      className="h-10 sm:h-11"
+                      required
+                      className="h-12 border-2 border-orange-200 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="company" className="text-sm">Company</Label>
-                  <Input id="company" placeholder="" value={form.company} onChange={handleChange} className="h-10 sm:h-11" />
+                  <Label htmlFor="company" className="text-sm font-bold text-gray-700">Company</Label>
+                  <Input 
+                    id="company" 
+                    placeholder="Your Company Name" 
+                    value={form.company} 
+                    onChange={handleChange} 
+                    className="h-12 border-2 border-gray-200 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all" 
+                  />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="inquiry" className="text-sm">Inquiry Type <span className="text-red-500">*</span></Label>
-                  <Select value={form.inquiry} onValueChange={handleSelectChange} required > 
-                    <SelectTrigger className="h-10 sm:h-11">
+                  <Label htmlFor="inquiry" className="text-sm font-bold text-gray-700">
+                    Inquiry Type <span className="text-red-500">*</span>
+                  </Label>
+                  <Select value={form.inquiry} onValueChange={handleSelectChange} required> 
+                    <SelectTrigger className="h-12 border-2 border-orange-200 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all">
                       <SelectValue placeholder="Select inquiry type" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="sales">Sales Inquiry</SelectItem>
-                      <SelectItem value="support">Technical Support</SelectItem>
-                      <SelectItem value="partnership">Partnership</SelectItem>
-                      <SelectItem value="demo">Request Demo</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="sales">💼 Sales Inquiry</SelectItem>
+                      <SelectItem value="support">🛠️ Technical Support</SelectItem>
+                      <SelectItem value="partnership">🤝 Partnership</SelectItem>
+                      <SelectItem value="demo">🎯 Request Demo</SelectItem>
+                      <SelectItem value="other">💡 Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-sm">Message</Label>
+                  <Label htmlFor="message" className="text-sm font-bold text-gray-700">Message</Label>
                   <Textarea
                     id="message"
                     placeholder="Tell us about your project and how we can help..."
-                    className="min-h-[100px] sm:min-h-[120px]"
+                    className="min-h-[140px] border-2 border-gray-200 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all"
                     value={form.message}
                     onChange={handleChange}
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-sky-500 to-blue-600 hover:opacity-90 text-white font-semibold shadow-md rounded-full transition-all duration-300 h-11 sm:h-12 text-sm sm:text-base"
+                  className="w-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:scale-105 text-white font-bold shadow-2xl hover:shadow-orange-400 rounded-xl transition-all duration-300 h-14 text-lg border-2 border-orange-300"
                   disabled={loading}
                 >
-                  <MessageCircle className="mr-2 h-4 w-4" />
+                  <MessageCircle className="mr-2 h-5 w-5" />
                   {loading ? "Sending..." : "Send Message"}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </form>
             </CardContent>
           </Card>
 
-          {/* Contact Information - Mobile optimized */}
-          <div className="space-y-6 sm:space-y-8 animate-fade-in-up delay-300">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-sky-800 mb-3 sm:mb-4">Let's start a conversation</h2>
-              <p className="text-sm sm:text-base text-gray-700 mb-6 sm:mb-8">
-                Whether you're scaling your AI or just beginning your automation journey, our team is ready to assist.
+          {/* Contact Information - Enhanced */}
+          <div className="space-y-8 animate-fade-in-up delay-300">
+            <div className="bg-white rounded-3xl p-8 border-2 border-purple-200 shadow-xl">
+              <div className="inline-block mb-4">
+                <span className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg">
+                  🚀 Let's Connect
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+                Let's start a conversation
+              </h2>
+              <p className="text-base text-gray-700 font-medium leading-relaxed">
+                Whether you're <span className="font-bold text-purple-600">scaling your AI</span> or just beginning your <span className="font-bold text-orange-600">automation journey</span>, our team is ready to assist.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-4 sm:gap-6">
-              {contactInfo.map((info, index) => (
-                <Card key={index} className="border border-sky-100 bg-white hover:shadow-xl transition-all duration-300">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-start space-x-3 sm:space-x-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-sky-400 to-indigo-400 rounded-lg flex items-center justify-center shrink-0">
-                        <info.icon className="h-5 w-5 text-white" />
+            <div className="grid grid-cols-1 gap-6">
+              {contactInfo.map((info, index) => {
+                const colors = [
+                  { bg: 'from-orange-100 via-pink-100 to-purple-100', border: 'border-orange-300', hover: 'hover:border-orange-500', icon: 'from-orange-400 to-pink-400', shadow: 'hover:shadow-orange-200' },
+                  { bg: 'from-blue-100 via-cyan-100 to-teal-100', border: 'border-blue-300', hover: 'hover:border-blue-500', icon: 'from-blue-400 to-cyan-400', shadow: 'hover:shadow-blue-200' },
+                  { bg: 'from-purple-100 via-pink-100 to-orange-100', border: 'border-purple-300', hover: 'hover:border-purple-500', icon: 'from-purple-400 to-pink-400', shadow: 'hover:shadow-purple-200' },
+                ];
+                const color = colors[index % colors.length];
+                
+                return (
+                  <Card key={index} className={`border-2 ${color.border} ${color.hover} bg-white ${color.shadow} hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden group`}>
+                    <CardContent className="p-6 relative">
+                      <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-purple-200/30 via-pink-200/30 to-orange-200/30 rounded-full filter blur-2xl group-hover:blur-xl transition-all"></div>
+                      <div className="flex items-start space-x-4 relative z-10">
+                        <div className={`w-14 h-14 bg-gradient-to-br ${color.icon} rounded-2xl flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all`}>
+                          <info.icon className="h-7 w-7 text-white" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-bold text-gray-900 mb-2 text-lg">{info.title}</h3>
+                          <p 
+                            className="text-sm text-gray-600 mb-3 break-words font-medium" 
+                            dangerouslySetInnerHTML={{ __html: info.description }} 
+                          />
+                          {info.contact && (
+                            <a href={info.action} className="text-sm font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all break-all">
+                              {info.contact} →
+                            </a>
+                          )}
+                        </div>
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-sky-800 mb-1 text-sm sm:text-base">{info.title}</h3>
-                        <p 
-                          className="text-xs sm:text-sm text-gray-600 mb-2 break-words" 
-                          dangerouslySetInnerHTML={{ __html: info.description }} 
-                        />
-                        <a href={info.action} className="text-xs sm:text-sm text-blue-700 hover:text-indigo-700 transition-colors break-all">
-                          {info.contact}
-                        </a>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
 
-            <Card className="border border-sky-100 bg-white shadow-md">
-              <CardContent className="p-4 sm:p-6">
-                <h3 className="font-semibold text-sky-800 mb-3 sm:mb-4 text-base sm:text-lg">Prefer to chat?</h3>
-                <p className="text-sm sm:text-base text-gray-700 mb-4">
-                  Try our AI chatbot for instant answers to common questions about our platform and services.
-                </p>
-                <Button
-                  variant="outline"
-                  className="border-sky-500 text-sky-700 hover:bg-sky-100 transition-all duration-300 w-full sm:w-auto text-sm sm:text-base h-10 sm:h-11"
-                >
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Start Chat
-                </Button>
+            <Card className="border-2 border-green-300 hover:border-green-500 bg-white shadow-xl hover:shadow-2xl hover:shadow-green-200 transition-all hover:scale-105 overflow-hidden group">
+              <CardContent className="p-8 relative">
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-green-200/30 via-emerald-200/30 to-teal-200/30 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+                <div className="relative z-10">
+                  <div className="inline-block mb-4">
+                    <span className="px-4 py-2 rounded-full bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg">
+                      💬 Instant Help
+                    </span>
+                  </div>
+                  <h3 className="font-extrabold text-2xl bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent mb-4">
+                    Prefer to chat?
+                  </h3>
+                  <p className="text-base text-gray-700 mb-6 font-medium">
+                    Try our <span className="font-bold text-green-600">AI chatbot</span> for instant answers to common questions about our platform and services.
+                  </p>
+                  <Button
+                    variant="outline"
+                    className="border-2 border-green-500 text-green-700 hover:bg-green-50 hover:scale-105 transition-all duration-300 w-full font-bold text-base h-12 rounded-xl shadow-lg"
+                  >
+                    <MessageCircle className="mr-2 h-5 w-5" />
+                    Start Chat Now
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
