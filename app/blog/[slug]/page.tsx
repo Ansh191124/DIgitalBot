@@ -19,12 +19,10 @@ const blogPosts = {
     category: "AI Trends",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop&q=80",
     content: `
-      <div class="bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 border-l-4 border-purple-600 p-8 rounded-r-2xl shadow-xl mb-12">
-        <p class="text-xl font-bold text-purple-900 mb-3">🎯 Key Insight</p>
-        <p class="text-gray-800 text-lg leading-relaxed italic m-0">Customer service is experiencing a transformative shift that's redefining how businesses connect with their audience. We're moving beyond simple chatbots into an era where artificial intelligence understands context, emotion, and intent with remarkable precision.</p>
-      </div>
+      <p class="lead-paragraph">Customer service is experiencing a transformative shift that's redefining how businesses connect with their audience. We're moving beyond simple chatbots into an era where artificial intelligence understands context, emotion, and intent with remarkable precision.</p>
 
       <h2>The Dawn of Intelligent Customer Engagement</h2>
+      
       <p>The integration of voice technology with artificial intelligence has opened new frontiers in customer interaction. Modern systems can now process natural speech patterns, detect emotional undertones, and respond with human-like empathy—capabilities that were science fiction just a few years ago.</p>
 
       <p>This evolution is creating unprecedented opportunities for businesses to deliver exceptional customer experiences while simultaneously reducing operational overhead.</p>
@@ -32,75 +30,89 @@ const blogPosts = {
       <h2>Revolutionary Trends Reshaping Customer Support</h2>
       
       <h3>Emotional Intelligence in Automated Systems</h3>
-      <p>Today's advanced platforms go far beyond keyword recognition. They analyze vocal inflections, word choice, and conversation patterns to gauge customer sentiment in real-time. When a customer sounds frustrated, the system adapts its tone and may escalate to human support. When they're satisfied, it can suggest complementary products or services naturally within the conversation flow.</p>
-
-      <p>This emotional awareness creates interactions that feel genuinely personal rather than scripted. Customers increasingly report that they can't distinguish between well-designed AI interactions and human representatives during routine inquiries.</p>
+      
+      <p>Today's advanced platforms go far beyond keyword recognition. They analyze vocal inflections, word choice, and conversation patterns to gauge customer sentiment in real-time.</p>
+      
+      <p>When a customer sounds frustrated, the system adapts its tone and may escalate to human support. When they're satisfied, it can suggest complementary products or services naturally within the conversation flow. This emotional awareness creates interactions that feel genuinely personal rather than scripted.</p>
 
       <h3>Seamless Cross-Platform Continuity</h3>
-      <p>The boundaries between communication channels are dissolving. A customer might initiate contact through a website chat widget during their lunch break, continue the conversation via phone while commuting home, and complete their transaction through a mobile app later that evening. The <a href="/" class="text-blue-600 hover:text-blue-700 font-semibold underline decoration-2 underline-offset-2">AI Voice Agent</a> maintains perfect context throughout this journey, eliminating the frustration of repeating information.</p>
-
-      <p>This unified experience extends beyond just conversation history. Advanced systems now synchronize user preferences, past interactions, purchase history, and even browsing behavior to create a truly personalized support journey regardless of the entry point.</p>
+      
+      <p>The boundaries between communication channels are dissolving. A customer might initiate contact through a website chat widget during their lunch break, continue the conversation via phone while commuting home, and complete their transaction through a mobile app later that evening.</p>
+      
+      <p>The <a href="/">AI Voice Agent</a> maintains perfect context throughout this journey, eliminating the frustration of repeating information. Advanced systems now synchronize user preferences, past interactions, purchase history, and even browsing behavior to create a truly personalized support journey.</p>
 
       <h3>Proactive Problem Resolution</h3>
-      <p>The most sophisticated systems have shifted from reactive to predictive support models. By analyzing usage patterns, system logs, and customer behavior, these platforms identify potential issues before customers even realize there's a problem. Imagine receiving a helpful message about a service disruption before you experience it, complete with solutions already in place.</p>
-
+      
+      <p>The most sophisticated systems have shifted from reactive to predictive support models. By analyzing usage patterns, system logs, and customer behavior, these platforms identify potential issues before customers even realize there's a problem.</p>
+      
       <p>This proactive approach transforms customer service from a cost center into a value generator, significantly improving retention and satisfaction metrics.</p>
 
       <h2>Measurable Business Transformation</h2>
       
-      <div class="bg-white border-2 border-orange-300 rounded-2xl p-8 shadow-lg my-10">
-        <p class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 mb-6">📊 Organizations implementing cutting-edge voice automation solutions are documenting impressive results:</p>
-        <ul class="m-0 p-0 bg-transparent border-0 shadow-none">
-          <li><strong>Cost Efficiency:</strong> 50-70% reduction in per-interaction support costs while maintaining or improving quality standards</li>
-          <li><strong>Global Availability:</strong> True 24/7/365 support without nighttime staffing premiums or weekend surcharges</li>
-          <li><strong>Response Speed:</strong> Sub-second response times creating instant gratification for customers</li>
-          <li><strong>Unlimited Scalability:</strong> Handle demand spikes during product launches or seasonal peaks without hiring temporary staff</li>
-          <li><strong>Consistency:</strong> Every customer receives the same high-quality information regardless of when they contact you</li>
-          <li><strong>Multilingual Support:</strong> Serve global markets with native-level language support across dozens of languages</li>
-        </ul>
-      </div>
+      <p>Organizations implementing cutting-edge voice automation solutions are documenting impressive results:</p>
+      
+      <ul>
+        <li><strong>Cost Efficiency:</strong> 50-70% reduction in per-interaction support costs</li>
+        <li><strong>Global Availability:</strong> True 24/7/365 support without nighttime staffing premiums</li>
+        <li><strong>Response Speed:</strong> Sub-second response times creating instant gratification</li>
+        <li><strong>Unlimited Scalability:</strong> Handle demand spikes without hiring temporary staff</li>
+        <li><strong>Consistency:</strong> Every customer receives the same high-quality information</li>
+        <li><strong>Multilingual Support:</strong> Serve global markets with native-level language support</li>
+      </ul>
 
       <h2>Strategic Implementation Roadmap</h2>
       
       <h3>Building the Foundation</h3>
-      <p>Successful deployment requires more than just technology adoption. Organizations need to reimagine their entire customer service philosophy. Start by identifying high-volume, routine interactions that consume disproportionate resources. These become your initial automation targets, delivering quick wins that build organizational confidence.</p>
+      
+      <p>Successful deployment requires more than just technology adoption. Organizations need to reimagine their entire customer service philosophy. Start by identifying high-volume, routine interactions that consume disproportionate resources.</p>
+      
+      <p>These become your initial automation targets, delivering quick wins that build organizational confidence.</p>
 
       <h3>Human-AI Collaboration Framework</h3>
-      <p>The future isn't about replacing human agents—it's about amplifying their capabilities. AI handles repetitive, data-driven tasks while your skilled representatives focus on complex problem-solving, relationship building, and high-value interactions. This division of labor improves job satisfaction for your team while delivering better outcomes for customers.</p>
+      
+      <p>The future isn't about replacing human agents—it's about amplifying their capabilities. AI handles repetitive, data-driven tasks while your skilled representatives focus on complex problem-solving, relationship building, and high-value interactions.</p>
 
       <h3>Data Quality and Privacy</h3>
+      
       <p>AI systems are only as good as the data they're trained on. Invest time in cleaning, organizing, and structuring your knowledge base. Equally important is implementing robust privacy protections and being transparent with customers about how their data is used and protected.</p>
 
-      <blockquote class="not-italic font-semibold text-xl">
-        "The businesses that thrive in the coming years will be those that view AI adoption as a strategic imperative rather than a technical project."
+      <blockquote>
+        <p>The businesses that thrive in the coming years will be those that view AI adoption as a strategic imperative rather than a technical project.</p>
       </blockquote>
 
       <h3>Continuous Learning and Optimization</h3>
+      
       <p>Deploy with a commitment to ongoing improvement. Analyze conversation logs, monitor customer satisfaction scores, and identify patterns in unresolved inquiries. Use these insights to refine your system's responses, expand its capabilities, and improve accuracy over time.</p>
 
       <h2>Preparing Your Organization for Tomorrow</h2>
-      <p>Start by conducting a thorough audit of your current customer service operations. Where are the bottlenecks? Which inquiries consume the most time? What questions do customers ask repeatedly? These pain points represent your greatest opportunities for automation and improvement.</p>
+      
+      <p>Start by conducting a thorough audit of your current customer service operations. Where are the bottlenecks? Which inquiries consume the most time? What questions do customers ask repeatedly?</p>
+      
+      <p>These pain points represent your greatest opportunities for automation and improvement.</p>
 
       <h2>The Competitive Advantage</h2>
-      <p>Early adopters of advanced customer service automation are building significant competitive moats. They're delivering experiences that competitors using traditional models simply cannot match at any price point. The gap between leaders and laggards in this space will only widen as the technology continues to advance.</p>
+      
+      <p>Early adopters of advanced customer service automation are building significant competitive moats. They're delivering experiences that competitors using traditional models simply cannot match at any price point.</p>
+      
+      <p>The gap between leaders and laggards in this space will only widen as the technology continues to advance.</p>
 
-      <div class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 border-2 border-green-300 rounded-2xl p-8 shadow-lg my-10">
-        <p class="text-xl font-bold text-green-900 mb-4">✅ Key Takeaways</p>
-        <ul class="m-0 p-0 bg-transparent border-0 shadow-none space-y-3">
-          <li>AI customer service has evolved beyond basic chatbots to emotionally intelligent systems</li>
-          <li>Cross-platform continuity creates seamless customer experiences across all channels</li>
-          <li>Proactive problem resolution transforms support from reactive to predictive</li>
-          <li>Implementation requires strategic planning, not just technology adoption</li>
-          <li>Early adopters gain significant competitive advantages that compound over time</li>
-        </ul>
-      </div>
+      <h2>Key Takeaways</h2>
+      
+      <ul>
+        <li>AI customer service has evolved beyond basic chatbots to emotionally intelligent systems</li>
+        <li>Cross-platform continuity creates seamless customer experiences across all channels</li>
+        <li>Proactive problem resolution transforms support from reactive to predictive</li>
+        <li>Implementation requires strategic planning, not just technology adoption</li>
+        <li>Early adopters gain significant competitive advantages that compound over time</li>
+      </ul>
 
       <h2>Looking Ahead</h2>
+      
       <p>The customer service landscape will continue evolving at an accelerating pace. We're approaching a future where AI systems will anticipate needs with uncanny accuracy, where language barriers disappear entirely, and where every interaction is perfectly tailored to individual preferences and circumstances.</p>
 
       <p>Organizations that invest in these capabilities today position themselves not just to compete but to lead in their respective markets. The question is no longer whether to adopt AI-powered customer service, but how quickly you can implement it effectively.</p>
 
-      <p class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mt-12">The future of customer engagement is here. The only question is whether you'll be leading the transformation or struggling to catch up.</p>
+      <p><strong>The future of customer engagement is here. The only question is whether you'll be leading the transformation or struggling to catch up.</strong></p>
     `
   },
   "implement-first-chatbot-guide": {
@@ -113,38 +125,34 @@ const blogPosts = {
     category: "Tutorial",
     image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1200&h=600&fit=crop&q=80",
     content: `
-      <div class="bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 border-l-4 border-purple-600 p-8 rounded-r-2xl shadow-xl mb-12">
-        <p class="text-xl font-bold text-purple-900 mb-3">📘 Tutorial Overview</p>
-        <p class="text-gray-800 text-lg leading-relaxed m-0">This comprehensive guide walks you through deploying your first conversational AI system—from strategic planning to successful launch and beyond. Whether you're a small business or enterprise, follow this proven roadmap to deliver real value from day one.</p>
-      </div>
-
-      <h2>Your Journey to Intelligent Automation Begins Here</h2>
-      <p>Deploying your first conversational AI system might feel overwhelming, but breaking the process into manageable phases makes it surprisingly straightforward. The key to success lies not in the complexity of your initial deployment, but in strategic planning and methodical execution.</p>
+      <p class="lead-paragraph">Deploying your first conversational AI system might feel overwhelming, but breaking the process into manageable phases makes it surprisingly straightforward. This comprehensive guide walks you through every critical decision and implementation step—from strategic planning to successful launch and beyond.</p>
 
       <h2>Phase One: Strategic Foundation</h2>
       
       <h3>Define Crystal-Clear Objectives</h3>
+      
       <p>Before writing a single line of code or configuring any platform, you need absolute clarity on what success looks like for your organization. Vague goals like "improve customer service" won't provide the direction needed to make smart implementation choices.</p>
 
-      <div class="bg-white border-2 border-blue-300 rounded-2xl p-8 shadow-lg my-10">
-        <p class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 mb-6">🎯 Instead, identify specific, measurable outcomes:</p>
-        <ul class="m-0 p-0 bg-transparent border-0 shadow-none">
-          <li><strong>Response Time Reduction:</strong> Cut average first-response time from 12 minutes to under 30 seconds</li>
-          <li><strong>Cost Savings:</strong> Reduce support costs by 40% while maintaining satisfaction scores above 85%</li>
-          <li><strong>Lead Qualification:</strong> Automatically qualify and route 200+ monthly leads to appropriate sales representatives</li>
-          <li><strong>Appointment Automation:</strong> Enable customers to schedule, modify, and cancel appointments without human intervention</li>
-          <li><strong>FAQ Resolution:</strong> Automatically resolve 80% of common questions without agent involvement</li>
-        </ul>
-      </div>
+      <p>Instead, identify specific, measurable outcomes:</p>
+      
+      <ul>
+        <li><strong>Response Time Reduction:</strong> Cut average first-response time from 12 minutes to under 30 seconds</li>
+        <li><strong>Cost Savings:</strong> Reduce support costs by 40% while maintaining satisfaction scores above 85%</li>
+        <li><strong>Lead Qualification:</strong> Automatically qualify and route 200+ monthly leads to appropriate sales representatives</li>
+        <li><strong>Appointment Automation:</strong> Enable customers to schedule, modify, and cancel appointments without human intervention</li>
+        <li><strong>FAQ Resolution:</strong> Automatically resolve 80% of common questions without agent involvement</li>
+      </ul>
 
       <p>Each objective should tie directly to a business metric you can track and report on. This creates accountability and helps justify the investment to stakeholders.</p>
 
       <h3>Map Your Customer Journey</h3>
+      
       <p>Study how customers currently interact with your business. Review support tickets, analyze common inquiries, and identify friction points in your existing process. The patterns you discover will reveal your highest-value automation opportunities.</p>
 
       <h2>Phase Two: Platform Selection</h2>
       
       <h3>Evaluate Your Technical Landscape</h3>
+      
       <p>Your choice of platform should align with your technical capabilities and business requirements. Consider these critical factors:</p>
 
       <p><strong>Ease of Implementation:</strong> How quickly can you deploy a working system? Some platforms offer pre-built templates and visual designers that let non-technical users create sophisticated flows. Others require programming knowledge but offer greater customization.</p>
@@ -158,52 +166,58 @@ const blogPosts = {
       <h2>Phase Three: Conversation Design</h2>
       
       <h3>Build Customer-Centric Flows</h3>
+      
       <p>Great conversation design feels natural and intuitive rather than robotic and rigid. Start by mapping the happy path—the ideal conversation flow when everything works perfectly. Then systematically address edge cases and potential confusion points.</p>
 
-      <p><strong>Opening Engagement:</strong> Your first message sets expectations for the entire interaction. Be clear about what the <a href="/" class="text-blue-600 hover:text-blue-700 font-semibold underline decoration-2 underline-offset-2">AI Voice Agent</a> can help with while maintaining a friendly, approachable tone. Avoid overwhelming users with lengthy explanations—get them engaged quickly.</p>
+      <p><strong>Opening Engagement:</strong> Your first message sets expectations for the entire interaction. Be clear about what the <a href="/">AI Voice Agent</a> can help with while maintaining a friendly, approachable tone. Avoid overwhelming users with lengthy explanations—get them engaged quickly.</p>
 
       <p><strong>Intent Identification:</strong> Design prompts that naturally guide users to express their needs clearly. Use buttons or quick replies for common requests to reduce typing and improve accuracy.</p>
 
       <p><strong>Information Collection:</strong> When you need data from users, explain why you're asking and what you'll do with it. Collect information progressively rather than firing off five questions in rapid succession.</p>
 
-      <blockquote class="not-italic font-semibold text-xl">
-        "Your bot's personality should reflect your brand voice. A financial services bot might be professional and reassuring. A fashion retailer might be enthusiastic and trendy."
+      <blockquote>
+        <p>Your bot's personality should reflect your brand voice. A financial services bot might be professional and reassuring. A fashion retailer might be enthusiastic and trendy.</p>
       </blockquote>
 
       <h3>Write Like a Human, Not a Robot</h3>
-      <p>Whatever your style, maintain consistency throughout all interactions. Use contractions, varied sentence structures, and occasional informal phrases to sound natural. Read your scripts aloud—if they sound stilted or awkward, they'll feel that way to users too.</p>
+      
+      <p>Whatever your style, maintain consistency throughout all interactions. Use contractions, varied sentence structures, and occasional informal phrases to sound natural.</p>
+      
+      <p>Read your scripts aloud—if they sound stilted or awkward, they'll feel that way to users too.</p>
 
       <h2>Phase Four: Development and Training</h2>
       
       <h3>Build Your Knowledge Foundation</h3>
+      
       <p>Train your system using real customer language, not corporate jargon. If customers say "my account is locked" rather than "I'm experiencing authentication difficulties," teach your bot to recognize the customer's phrasing.</p>
 
       <p>Create diverse training examples for each intent. Don't just teach "I want to schedule an appointment"—include "Can I book a meeting?", "Need to set up a call", "What times are available next week?", and dozens of other variations.</p>
 
       <h3>Configure Your Integrations</h3>
+      
       <p>Connect your bot to backend systems that provide the data and functionality it needs. Test these connections thoroughly—a bot that promises to check order status but can't actually access your order management system creates more frustration than having no bot at all.</p>
 
       <h2>Phase Five: Rigorous Testing</h2>
       
-      <div class="bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 border-2 border-orange-300 rounded-2xl p-8 shadow-lg my-10">
-        <p class="text-xl font-bold text-orange-900 mb-4">🧪 Testing Checklist</p>
-        <ul class="m-0 p-0 bg-transparent border-0 shadow-none space-y-3">
-          <li><strong>Internal Testing:</strong> Have team members who weren't involved in development use the bot</li>
-          <li><strong>Edge Case Testing:</strong> Try to break your bot with gibberish, off-topic questions, and sudden topic switches</li>
-          <li><strong>Integration Verification:</strong> Test every connection to external systems thoroughly</li>
-          <li><strong>Beta User Testing:</strong> Select real customers to test before full launch</li>
-        </ul>
-      </div>
-
-      <p>Testing is where theoretical designs meet practical reality. Conduct multiple rounds with increasing scope to spot confusing flows and unclear language.</p>
+      <p>Testing is where theoretical designs meet practical reality. Conduct multiple rounds with increasing scope:</p>
+      
+      <ul>
+        <li><strong>Internal Testing:</strong> Have team members who weren't involved in development use the bot to spot confusing flows</li>
+        <li><strong>Edge Case Testing:</strong> Try to break your bot with gibberish, off-topic questions, and sudden topic switches</li>
+        <li><strong>Integration Verification:</strong> Test every connection to external systems thoroughly</li>
+        <li><strong>Beta User Testing:</strong> Select real customers to test before full launch and gather detailed feedback</li>
+      </ul>
 
       <h2>Phase Six: Launch and Iteration</h2>
       
       <h3>Deploy Strategically</h3>
+      
       <p>Consider a phased rollout rather than instant universal deployment. Start with a percentage of traffic or specific customer segments. This controlled approach lets you identify and fix issues without impacting your entire customer base.</p>
 
       <h3>Monitor Continuously</h3>
+      
       <p>Track key performance indicators from day one:</p>
+      
       <ul>
         <li>Conversation completion rate</li>
         <li>Average resolution time</li>
@@ -214,27 +228,26 @@ const blogPosts = {
       </ul>
 
       <h3>Optimize Relentlessly</h3>
+      
       <p>Your first deployment is just the beginning. Review conversation logs weekly to identify improvement opportunities. Look for questions the bot struggles with, confusing flows users abandon, and opportunities to expand capabilities.</p>
 
       <h2>Best Practices for Long-Term Success</h2>
       
-      <div class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 border-2 border-green-300 rounded-2xl p-8 shadow-lg my-10">
-        <p class="text-xl font-bold text-green-900 mb-4">✅ Key Best Practices</p>
-        <ul class="m-0 p-0 bg-transparent border-0 shadow-none space-y-3">
-          <li><strong>Start Focused, Expand Gradually:</strong> Launch with a narrow scope and expand capabilities over time</li>
-          <li><strong>Transparency Builds Trust:</strong> Be clear that users are interacting with an automated system</li>
-          <li><strong>Easy Escalation is Essential:</strong> Make it simple for users to reach human support when needed</li>
-          <li><strong>Regular Updates Matter:</strong> Review and refresh your bot's knowledge base monthly</li>
-          <li><strong>Maintain Consistent Personality:</strong> Ensure tone and behavior align with brand guidelines</li>
-        </ul>
-      </div>
+      <ul>
+        <li><strong>Start Focused, Expand Gradually:</strong> Launch with a narrow scope and expand capabilities over time</li>
+        <li><strong>Transparency Builds Trust:</strong> Be clear that users are interacting with an automated system</li>
+        <li><strong>Easy Escalation is Essential:</strong> Make it simple for users to reach human support when needed</li>
+        <li><strong>Regular Updates Matter:</strong> Review and refresh your bot's knowledge base monthly</li>
+        <li><strong>Maintain Consistent Personality:</strong> Ensure tone and behavior align with brand guidelines</li>
+      </ul>
 
       <h2>Your Path Forward</h2>
+      
       <p>Implementing your first conversational AI system is a journey of continuous learning and refinement. Success comes not from achieving perfection on day one, but from launching with a solid foundation and commitment to ongoing optimization.</p>
 
       <p>Start with clear objectives, choose the right platform for your needs, design customer-centric conversations, test thoroughly, and iterate based on real user feedback. Follow this roadmap, and you'll build a system that delivers measurable value while creating the foundation for future expansion.</p>
 
-      <p class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mt-12">The businesses thriving with AI automation didn't wait for perfect conditions—they started with focused use cases and grew their capabilities over time. Your journey begins with that first step.</p>
+      <p><strong>The businesses thriving with AI automation didn't wait for perfect conditions—they started with focused use cases and grew their capabilities over time. Your journey begins with that first step.</strong></p>
     `
   },
   "measuring-chatbot-success-metrics": {
@@ -1048,16 +1061,16 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                 <article 
                   className="prose prose-lg max-w-none
                     prose-headings:font-bold
-                    prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b-2 prose-h2:border-gradient-to-r prose-h2:from-blue-200 prose-h2:via-purple-200 prose-h2:to-pink-200 prose-h2:bg-gradient-to-r prose-h2:from-blue-600 prose-h2:via-purple-600 prose-h2:to-pink-600 prose-h2:text-transparent prose-h2:bg-clip-text
-                    prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-5 prose-h3:text-gray-800 prose-h3:flex prose-h3:items-center prose-h3:gap-3 before:prose-h3:content-['▸'] before:prose-h3:text-purple-500 before:prose-h3:font-bold
-                    prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg prose-p:first-of-type:text-xl prose-p:first-of-type:font-medium prose-p:first-of-type:text-gray-800
+                    prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b-2 prose-h2:border-purple-200 prose-h2:bg-gradient-to-r prose-h2:from-blue-600 prose-h2:via-purple-600 prose-h2:to-pink-600 prose-h2:text-transparent prose-h2:bg-clip-text
+                    prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6 prose-h3:text-gray-900 prose-h3:font-bold
+                    prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
                     prose-a:text-blue-600 prose-a:font-semibold prose-a:no-underline hover:prose-a:text-blue-700 prose-a:underline prose-a:decoration-2 prose-a:underline-offset-4 hover:prose-a:decoration-blue-500
-                    prose-strong:text-gray-900 prose-strong:font-bold prose-strong:bg-yellow-50 prose-strong:px-1 prose-strong:py-0.5 prose-strong:rounded
-                    prose-ul:my-8 prose-ul:space-y-4 prose-ul:bg-gradient-to-br prose-ul:from-blue-50 prose-ul:via-purple-50 prose-ul:to-pink-50 prose-ul:p-8 prose-ul:rounded-2xl prose-ul:border-2 prose-ul:border-purple-200 prose-ul:shadow-md
-                    prose-ol:my-8 prose-ol:space-y-4 prose-ol:bg-gradient-to-br prose-ol:from-blue-50 prose-ol:via-purple-50 prose-ol:to-pink-50 prose-ol:p-8 prose-ol:rounded-2xl prose-ol:border-2 prose-ol:border-purple-200 prose-ol:shadow-md
-                    prose-li:text-gray-700 prose-li:text-lg prose-li:leading-relaxed prose-li:pl-2
+                    prose-strong:text-gray-900 prose-strong:font-bold
+                    prose-ul:my-10 prose-ul:space-y-4 prose-ul:bg-gradient-to-br prose-ul:from-blue-50 prose-ul:via-purple-50 prose-ul:to-pink-50 prose-ul:p-10 prose-ul:rounded-2xl prose-ul:border-2 prose-ul:border-purple-200 prose-ul:shadow-lg
+                    prose-ol:my-10 prose-ol:space-y-4 prose-ol:bg-gradient-to-br prose-ol:from-blue-50 prose-ol:via-purple-50 prose-ol:to-pink-50 prose-ol:p-10 prose-ol:rounded-2xl prose-ol:border-2 prose-ol:border-purple-200 prose-ol:shadow-lg
+                    prose-li:text-gray-800 prose-li:text-lg prose-li:leading-relaxed prose-li:pl-2
                     prose-li:marker:text-purple-600 prose-li:marker:font-bold prose-li:marker:text-xl
-                    prose-blockquote:border-l-4 prose-blockquote:border-purple-500 prose-blockquote:pl-8 prose-blockquote:pr-6 prose-blockquote:italic prose-blockquote:text-gray-700 prose-blockquote:bg-gradient-to-r prose-blockquote:from-purple-50 prose-blockquote:to-pink-50 prose-blockquote:py-6 prose-blockquote:my-8 prose-blockquote:rounded-r-xl prose-blockquote:shadow-lg
+                    prose-blockquote:border-l-4 prose-blockquote:border-purple-500 prose-blockquote:pl-8 prose-blockquote:pr-8 prose-blockquote:not-italic prose-blockquote:text-gray-800 prose-blockquote:bg-gradient-to-r prose-blockquote:from-purple-50 prose-blockquote:to-pink-50 prose-blockquote:py-8 prose-blockquote:my-12 prose-blockquote:rounded-r-xl prose-blockquote:shadow-lg prose-blockquote:font-semibold prose-blockquote:text-xl
                     prose-code:text-purple-600 prose-code:bg-purple-100 prose-code:px-3 prose-code:py-1 prose-code:rounded-md prose-code:font-semibold prose-code:text-base
                   "
                   dangerouslySetInnerHTML={{ __html: post.content }}
