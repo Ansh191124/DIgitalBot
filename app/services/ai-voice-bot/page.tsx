@@ -3,7 +3,6 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Bot, Brain, Mic, BarChart3, Shield, Workflow, ArrowRight, Play, Pause, Phone, MessageSquare, Clock, Users, Zap, Globe, Headphones, TrendingUp, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import { useState, useRef } from "react"
@@ -711,87 +710,66 @@ export default function AIVoiceBot() {
           `}</style>
         </section>
 
-        {/* FAQ Section - Comprehensive SEO with Accordion & Homepage Theme */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-blue-50 to-purple-50 relative overflow-hidden" aria-labelledby="faq-heading">
-          {/* Grid Background */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
-                               linear-gradient(to bottom, rgba(168, 85, 247, 0.2) 1px, transparent 1px)`,
-              backgroundSize: '60px 60px'
-            }}></div>
+        {/* FAQ Section - Matching Homepage Dark Theme */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden" role="region" aria-labelledby="faq-section">
+          {/* Animated Background Elements - Homepage Style */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-pink-500/20 rounded-full filter blur-3xl animate-float-slow"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full filter blur-3xl animate-float-reverse"></div>
+            <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-full filter blur-3xl animate-pulse"></div>
           </div>
 
-          {/* Floating Orbs */}
-          <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl"></div>
-
-          <div className="container mx-auto max-w-5xl relative z-10">
+          <div className="container mx-auto max-w-6xl relative z-10">
             {/* Section Header */}
             <div className="text-center mb-16">
-              <div className="inline-block mb-4">
-                <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl border-2 border-orange-300">
-                  ❓ Frequently Asked Questions
+              <div className="inline-block mb-6">
+                <span className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse">
+                  Got Questions? We've Got Answers
                 </span>
               </div>
-              <h2 id="faq-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  AI Voice Bot Questions Answered
+              <h2 id="faq-section" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-white">
+                <span className="block mb-2">Frequently Asked</span>
+                <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                  Questions
                 </span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Comprehensive answers about <strong className="text-orange-600">AI voice bot</strong> technology, implementation, and benefits
+              <p className="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+                Everything you need to know about <span className="text-orange-400 font-semibold">AI Voice Bots</span> and how to implement them
               </p>
             </div>
             
-            {/* Accordion FAQ - Homepage Style */}
-            <Accordion type="single" collapsible className="space-y-6">
+            {/* FAQ Grid - Homepage Dark Card Style */}
+            <div className="grid md:grid-cols-2 gap-6">
               {faqs.map((faq, index) => {
                 const colors = [
-                  { border: 'border-orange-400', bg: 'bg-gradient-to-br from-orange-50 to-pink-50', icon: 'bg-gradient-to-br from-orange-500 to-pink-500', glow: 'from-orange-400 via-pink-400 to-purple-400' },
-                  { border: 'border-blue-400', bg: 'bg-gradient-to-br from-blue-50 to-purple-50', icon: 'bg-gradient-to-br from-blue-500 to-purple-500', glow: 'from-blue-400 via-purple-400 to-pink-400' },
-                  { border: 'border-purple-400', bg: 'bg-gradient-to-br from-purple-50 to-pink-50', icon: 'bg-gradient-to-br from-purple-500 to-pink-500', glow: 'from-purple-400 via-pink-400 to-orange-400' },
-                  { border: 'border-pink-400', bg: 'bg-gradient-to-br from-pink-50 to-orange-50', icon: 'bg-gradient-to-br from-pink-500 to-orange-500', glow: 'from-pink-400 via-orange-400 to-purple-400' },
-                  { border: 'border-teal-400', bg: 'bg-gradient-to-br from-teal-50 to-blue-50', icon: 'bg-gradient-to-br from-teal-500 to-blue-500', glow: 'from-teal-400 via-blue-400 to-purple-400' },
-                  { border: 'border-indigo-400', bg: 'bg-gradient-to-br from-indigo-50 to-purple-50', icon: 'bg-gradient-to-br from-indigo-500 to-purple-500', glow: 'from-indigo-400 via-purple-400 to-pink-400' },
-                  { border: 'border-orange-400', bg: 'bg-gradient-to-br from-orange-50 to-pink-50', icon: 'bg-gradient-to-br from-orange-500 to-pink-500', glow: 'from-orange-400 via-pink-400 to-purple-400' },
-                  { border: 'border-blue-400', bg: 'bg-gradient-to-br from-blue-50 to-purple-50', icon: 'bg-gradient-to-br from-blue-500 to-purple-500', glow: 'from-blue-400 via-purple-400 to-pink-400' },
-                  { border: 'border-purple-400', bg: 'bg-gradient-to-br from-purple-50 to-pink-50', icon: 'bg-gradient-to-br from-purple-500 to-pink-500', glow: 'from-purple-400 via-pink-400 to-orange-400' },
-                  { border: 'border-pink-400', bg: 'bg-gradient-to-br from-pink-50 to-orange-50', icon: 'bg-gradient-to-br from-pink-500 to-orange-500', glow: 'from-pink-400 via-orange-400 to-purple-400' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-pink-500', textGradient: 'from-orange-400 to-pink-400', shadow: 'hover:shadow-orange-500/50' },
+                  { border: 'border-blue-500/30 hover:border-blue-400', gradient: 'from-blue-500 to-cyan-500', textGradient: 'from-blue-400 to-cyan-400', shadow: 'hover:shadow-blue-500/50' },
+                  { border: 'border-purple-500/30 hover:border-purple-400', gradient: 'from-purple-500 to-pink-500', textGradient: 'from-purple-400 to-pink-400', shadow: 'hover:shadow-purple-500/50' },
+                  { border: 'border-teal-500/30 hover:border-teal-400', gradient: 'from-teal-500 to-green-500', textGradient: 'from-teal-400 to-green-400', shadow: 'hover:shadow-teal-500/50' },
+                  { border: 'border-pink-500/30 hover:border-pink-400', gradient: 'from-pink-500 to-purple-500', textGradient: 'from-pink-400 to-purple-400', shadow: 'hover:shadow-pink-500/50' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-pink-500', textGradient: 'from-orange-400 to-pink-400', shadow: 'hover:shadow-orange-500/50' },
+                  { border: 'border-blue-500/30 hover:border-blue-400', gradient: 'from-blue-500 to-cyan-500', textGradient: 'from-blue-400 to-cyan-400', shadow: 'hover:shadow-blue-500/50' },
+                  { border: 'border-purple-500/30 hover:border-purple-400', gradient: 'from-purple-500 to-pink-500', textGradient: 'from-purple-400 to-pink-400', shadow: 'hover:shadow-purple-500/50' },
+                  { border: 'border-teal-500/30 hover:border-teal-400', gradient: 'from-teal-500 to-green-500', textGradient: 'from-teal-400 to-green-400', shadow: 'hover:shadow-teal-500/50' },
+                  { border: 'border-pink-500/30 hover:border-pink-400', gradient: 'from-pink-500 to-purple-500', textGradient: 'from-pink-400 to-purple-400', shadow: 'hover:shadow-pink-500/50' },
                 ];
                 const color = colors[index % colors.length];
 
                 return (
-                  <AccordionItem 
-                    key={index} 
-                    value={`faq-${index}`}
-                    className={`bg-white backdrop-blur-md rounded-3xl shadow-2xl border-2 ${color.border} transition-all duration-500 hover:scale-102 hover:shadow-3xl relative overflow-hidden group`}
-                  >
-                    {/* Decorative Glow */}
-                    <div className={`absolute -top-16 -right-16 w-64 h-64 bg-gradient-to-br ${color.glow} rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity`}></div>
-
-                    <AccordionTrigger className="px-8 py-6 hover:no-underline relative z-10">
-                      <div className="flex items-start gap-4 text-left w-full">
-                        <div className={`w-12 h-12 rounded-xl ${color.icon} flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all`}>
-                          <span className="text-white font-extrabold text-lg">{index + 1}</span>
-                        </div>
-                        <h3 className="text-xl font-bold text-gray-900 pr-8 leading-relaxed">
-                          {faq.question}
-                        </h3>
-                      </div>
-                    </AccordionTrigger>
-                    
-                    <AccordionContent className={`px-8 pb-8 relative z-10`}>
-                      <div className={`ml-16 p-6 rounded-2xl ${color.bg} border ${color.border}`}>
-                        <p className="text-gray-700 leading-relaxed text-base">
-                          {faq.answer}
-                        </p>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
+                  <div key={index} className={`group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border ${color.border} transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl ${color.shadow}`}>
+                    <div className={`absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br ${color.gradient} rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform`}>
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                    <h3 className={`text-xl font-bold bg-gradient-to-r ${color.textGradient} bg-clip-text text-transparent mb-4 mt-2`}>
+                      {faq.question}
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
                 );
               })}
-            </Accordion>
+            </div>
           </div>
         </section>
 
