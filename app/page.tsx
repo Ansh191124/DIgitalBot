@@ -70,13 +70,13 @@ export default function Home() {
           
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="text-center mb-12">
-              <h1 id="main-heading" className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h2 id="main-heading" className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 <span className="block mb-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">AI Voice Agent Platform</span>
                 <span className="inline-block px-6 py-3 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 shadow-2xl text-2xl sm:text-3xl lg:text-4xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
                   <span className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent"></span>
                   <span className="relative z-10">Never Sleeps, Never Stops</span>
                 </span>
-              </h1>
+              </h2>
               
               <div className="max-w-4xl mx-auto mb-8 p-6 bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 border-2 border-orange-400 rounded-2xl shadow-2xl backdrop-blur-md">
                 <p className="text-xl sm:text-2xl font-bold text-gray-700 mb-3">
