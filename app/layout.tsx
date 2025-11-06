@@ -14,9 +14,9 @@ export const metadata: Metadata = {
   creator: "DigitalBot.ai - AI Voice Agent & Assistant Platform",
   publisher: "DigitalBot.ai - Leading AI Voice Technology Provider",
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-  metadataBase: new URL("https://digitalbot.ai"),
+  metadataBase: new URL("https://www.digitalbot.ai"),
   alternates: {
-    canonical: "https://digitalbot.ai",
+    canonical: "https://www.digitalbot.ai",
   },
   icons: {
     icon: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://digitalbot.ai",
+    url: "https://www.digitalbot.ai",
     title: "AI Voice Agent | AI Voice Assistant Platform - DigitalBot.ai 2025",
     description: "🤖 Leading AI Voice Agent & AI Voice Assistant Platform. 24/7 automated customer service that never sleeps. Personal analytics dashboard. Free 14-day trial!",
     siteName: "DigitalBot.ai - AI Voice Agent & Assistant Platform",
@@ -67,12 +67,12 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://digitalbot.ai/#organization",
+        "@id": "https://www.digitalbot.ai/#organization",
         "name": "DigitalBot.ai",
-        "url": "https://digitalbot.ai",
+        "url": "https://www.digitalbot.ai",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://digitalbot.ai/logo.png",
+          "url": "https://www.digitalbot.ai/logo.png",
           "width": 400,
           "height": 400
         },
@@ -85,19 +85,19 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": "https://digitalbot.ai/#website",
-        "url": "https://digitalbot.ai",
+        "@id": "https://www.digitalbot.ai/#website",
+        "url": "https://www.digitalbot.ai",
         "name": "DigitalBot.ai - AI Voice Agent & AI Voice Assistant Platform",
         "description": "AI Voice Agent and AI Voice Assistant platform for building intelligent conversational agents. Advanced voice AI technology for customer service automation and business communication.",
         "publisher": {
-          "@id": "https://digitalbot.ai/#organization"
+          "@id": "https://www.digitalbot.ai/#organization"
         },
         "potentialAction": [
           {
             "@type": "SearchAction",
             "target": {
               "@type": "EntryPoint",
-              "urlTemplate": "https://digitalbot.ai/search?q={search_term_string}"
+              "urlTemplate": "https://www.digitalbot.ai/search?q={search_term_string}"
             },
             "query-input": "required name=search_term_string"
           }
@@ -107,7 +107,7 @@ export default function RootLayout({
         "@type": "SoftwareApplication",
         "name": "AI Voice Agent & AI Voice Assistant Platform",
         "description": "Advanced AI Voice Agent and AI Voice Assistant platform with natural language processing, voice recognition, and conversational AI capabilities for businesses. Automate customer service with intelligent voice agents.",
-        "url": "https://digitalbot.ai",
+        "url": "https://www.digitalbot.ai",
         "operatingSystem": "Web Browser",
         "applicationCategory": "BusinessApplication",
         "offers": {
