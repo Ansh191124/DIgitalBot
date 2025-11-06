@@ -3,6 +3,13 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Home, Search, ArrowLeft, Phone } from "lucide-react"
 import Link from "next/link"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "404 - Page Not Found | DigitalBot.ai",
+  description: "The page you're looking for doesn't exist. It may have been moved or deleted.",
+  robots: "noindex, nofollow", // Important: Tell search engines not to index 404 pages
+}
 
 export default function NotFound() {
   return (

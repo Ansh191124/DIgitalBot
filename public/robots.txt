@@ -1,29 +1,42 @@
-# robots.txt for DigitalBot.ai - Website Developer in India | AI Voice Agent Platform
+# robots.txt for DigitalBot.AI - AI Voice Assistant Platform
 
 # Allow all search engines to crawl the site
 User-agent: *
 Allow: /
-Allow: /services
+Allow: /services/
 Allow: /pricing
 Allow: /about
 Allow: /contact
-Allow: /blog
+Allow: /blog/
 Allow: /docs
-Allow: /faq
 Allow: /careers
-Allow: /website-developer-india
-Allow: /website-development-mumbai
-Allow: /website-development-delhi
-Allow: /website-development-bangalore
 
 # Disallow admin and private areas
 Disallow: /api/
 Disallow: /dashboard/
 Disallow: /login
-Disallow: /register
+Disallow: /signup
 Disallow: /admin/
 Disallow: /_next/
 Disallow: /node_modules/
+
+# Block old WordPress paths (from previous malware infection)
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /wp-admin/
+Disallow: /wp-json/
+Disallow: /*.php$
+Disallow: /xmlrpc.php
+Disallow: /wp-login.php
+Disallow: /trackback/
+Disallow: /feed/
+Disallow: /administrator/
+Disallow: /phpmyadmin/
+
+# Block numeric spam URLs (malware-generated patterns)
+Disallow: /*[0-9]*.htm
+Disallow: /*[0-9]*.html
+# Note: Crawlers will still find these, but middleware returns 410 Gone
 
 # Allow Google and Bing specialized bots
 User-agent: Googlebot
@@ -42,7 +55,7 @@ User-agent: Slurp
 Allow: /
 
 # Sitemap location
-Sitemap: https://digitalbot.ai/sitemap.xml
+Sitemap: https://www.digitalbot.ai/sitemap.xml
 
-# Crawl-delay for polite bots (optional)
-# Crawl-delay: 1
+# Crawl-delay for polite bots
+Crawl-delay: 1
