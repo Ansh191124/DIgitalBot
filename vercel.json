@@ -26,12 +26,52 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
-    }
-  ],
-  "rewrites": [
+    },
     {
       "source": "/(.*)",
-      "destination": "/"
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/wp-content/:path*",
+      "destination": "https://www.digitalbot.ai/410-gone",
+      "statusCode": 410
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "https://www.digitalbot.ai/410-gone",
+      "statusCode": 410
+    },
+    {
+      "source": "/wp-includes/:path*",
+      "destination": "https://www.digitalbot.ai/410-gone",
+      "statusCode": 410
+    },
+    {
+      "source": "/wp-json/:path*",
+      "destination": "https://www.digitalbot.ai/410-gone",
+      "statusCode": 410
+    },
+    {
+      "source": "/administrator/:path*",
+      "destination": "https://www.digitalbot.ai/410-gone",
+      "statusCode": 410
+    },
+    {
+      "source": "/xmlrpc.php",
+      "destination": "https://www.digitalbot.ai/410-gone",
+      "statusCode": 410
+    },
+    {
+      "source": "/wp-login.php",
+      "destination": "https://www.digitalbot.ai/410-gone",
+      "statusCode": 410
     }
   ]
 }
