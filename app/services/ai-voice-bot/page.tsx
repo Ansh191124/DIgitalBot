@@ -13,66 +13,66 @@ const features = [
     icon: Brain,
     title: "Advanced AI Technology",
     description: "Powered by cutting-edge natural language processing and deep learning algorithms for accurate voice understanding and human-like responses.",
-    color: "from-orange-500 to-pink-500",
+    color: "from-orange-500 to-orange-600",
     borderColor: "border-orange-400",
     gradientFrom: "bg-gradient-to-br from-orange-400",
-    gradientTo: "to-pink-400",
-    iconBg: "bg-gradient-to-br from-orange-100 to-pink-100",
+    gradientTo: "to-orange-600",
+    iconBg: "bg-gradient-to-br from-orange-100 to-orange-200",
     iconColor: "text-orange-600"
   },
   {
     icon: Mic,
     title: "Natural Voice Synthesis",
     description: "Crystal-clear, human-like voice output with emotion detection and contextual tone adjustment for authentic conversations.",
-    color: "from-blue-500 to-purple-500",
-    borderColor: "border-blue-400",
-    gradientFrom: "bg-gradient-to-br from-blue-400",
-    gradientTo: "to-purple-400",
-    iconBg: "bg-gradient-to-br from-blue-100 to-purple-100",
-    iconColor: "text-blue-600"
+    color: "from-orange-400 to-orange-500",
+    borderColor: "border-orange-400",
+    gradientFrom: "bg-gradient-to-br from-orange-400",
+    gradientTo: "to-orange-600",
+    iconBg: "bg-gradient-to-br from-orange-100 to-orange-200",
+    iconColor: "text-orange-600"
   },
   {
     icon: Workflow,
     title: "Custom Conversation Flows",
     description: "Design tailored dialogue paths for your specific business needs with our intuitive no-code conversation builder.",
-    color: "from-purple-500 to-pink-500",
-    borderColor: "border-purple-400",
-    gradientFrom: "bg-gradient-to-br from-purple-400",
-    gradientTo: "to-pink-400",
-    iconBg: "bg-gradient-to-br from-purple-100 to-pink-100",
-    iconColor: "text-purple-600"
+    color: "from-orange-400 to-orange-500",
+    borderColor: "border-orange-400",
+    gradientFrom: "bg-gradient-to-br from-orange-400",
+    gradientTo: "to-orange-600",
+    iconBg: "bg-gradient-to-br from-orange-100 to-orange-200",
+    iconColor: "text-orange-600"
   },
   {
     icon: BarChart3,
     title: "Real-Time Analytics Dashboard",
     description: "Comprehensive insights into every conversation with detailed metrics, sentiment analysis, and performance tracking.",
-    color: "from-pink-500 to-orange-500",
-    borderColor: "border-pink-400",
-    gradientFrom: "bg-gradient-to-br from-pink-400",
+    color: "from-orange-500 to-orange-500",
+    borderColor: "border-orange-400",
+    gradientFrom: "bg-gradient-to-br from-orange-400",
     gradientTo: "to-orange-400",
-    iconBg: "bg-gradient-to-br from-pink-100 to-orange-100",
-    iconColor: "text-pink-600"
+    iconBg: "bg-gradient-to-br from-orange-100 to-orange-100",
+    iconColor: "text-orange-600"
   },
   {
     icon: Shield,
     title: "Enterprise-Grade Security",
     description: "Bank-level encryption, SOC 2 compliance, GDPR ready with end-to-end data protection and privacy controls.",
-    color: "from-teal-500 to-blue-500",
+    color: "from-orange-500 to-orange-600",
     borderColor: "border-teal-400",
-    gradientFrom: "bg-gradient-to-br from-teal-400",
-    gradientTo: "to-blue-400",
-    iconBg: "bg-gradient-to-br from-teal-100 to-blue-100",
-    iconColor: "text-teal-600"
+    gradientFrom: "bg-gradient-to-br from-orange-500",
+    gradientTo: "to-orange-600",
+    iconBg: "bg-gradient-to-br from-teal-100 to-orange-200",
+    iconColor: "text-orange-600"
   },
   {
     icon: Bot,
     title: "Omnichannel Integration",
     description: "Seamlessly deploy across phone systems, web chat, mobile apps, WhatsApp, SMS, and messaging platforms.",
-    color: "from-indigo-500 to-purple-500",
+    color: "from-orange-500 to-orange-600",
     borderColor: "border-indigo-400",
-    gradientFrom: "bg-gradient-to-br from-indigo-400",
-    gradientTo: "to-purple-400",
-    iconBg: "bg-gradient-to-br from-indigo-100 to-purple-100",
+    gradientFrom: "bg-gradient-to-br from-orange-500",
+    gradientTo: "to-orange-600",
+    iconBg: "bg-gradient-to-br from-orange-100 to-orange-200",
     iconColor: "text-indigo-600"
   },
 ]
@@ -363,11 +363,11 @@ export default function AIVoiceBot() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <main className="min-h-screen bg-white text-gray-900" role="main">
+      <main className="min-h-screen bg-black text-white" role="main">
         <Header />
 
         {/* Hero Section - SEO Optimized with Homepage Theme */}
-        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-purple-50" aria-labelledby="hero-heading">
+        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-gray-900 to-orange-100" aria-labelledby="hero-heading">
           {/* Decorative Grid Background - Homepage Style */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10 z-0">
             <div className="absolute inset-0" style={{
@@ -378,14 +378,14 @@ export default function AIVoiceBot() {
           </div>
 
           {/* Floating Gradient Orbs - Homepage Style */}
-          <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-blue-200/30 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-pink-200/20 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-orange-200/20 to-transparent rounded-full blur-3xl"></div>
 
           <div className="container mx-auto text-center relative z-10 max-w-6xl">
             {/* Breadcrumb Navigation */}
             <nav aria-label="Breadcrumb" className="mb-8">
-              <ol className="flex items-center justify-center space-x-2 text-sm text-gray-600" itemScope itemType="https://schema.org/BreadcrumbList">
+              <ol className="flex items-center justify-center space-x-2 text-sm text-gray-400" itemScope itemType="https://schema.org/BreadcrumbList">
                 <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
                   <Link href="/" className="hover:text-orange-600 transition-colors" itemProp="item">
                     <span itemProp="name">Home</span>
@@ -409,45 +409,45 @@ export default function AIVoiceBot() {
 
             {/* Hero Badge - Homepage Style */}
             <div className="inline-block mb-6 animate-fade-in-up">
-              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
+              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
                 🤖 #1 AI Voice Bot Platform
               </span>
             </div>
 
             {/* H1 Heading - SEO Optimized Multi-line - Homepage Style */}
             <h1 id="hero-heading" className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="block mb-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="block mb-3 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent">
                 AI Voice Bot for Customer Service
               </span>
-              <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 shadow-2xl text-2xl sm:text-3xl lg:text-5xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
+              <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-2xl text-2xl sm:text-3xl lg:text-5xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
                 <span className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent"></span>
                 <span className="relative z-10">Automate 24/7 Phone Calls</span>
               </span>
             </h1>
 
             {/* SEO-Rich Description - Homepage Style Info Box */}
-            <div className="max-w-4xl mx-auto mb-10 p-6 bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 border-2 border-orange-400 rounded-2xl shadow-2xl backdrop-blur-md">
-              <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium">
-                Deploy <strong className="text-orange-600">AI Voice Bot</strong> powered by advanced <strong className="text-purple-600">Natural Language Processing</strong> to automate customer conversations. Handle unlimited calls simultaneously with <strong>human-like voice synthesis</strong>, reduce costs by 70%, and provide instant responses 24/7. No coding required - launch your <strong>AI Voice Bot</strong> in minutes.
+            <div className="max-w-4xl mx-auto mb-10 p-6 bg-gradient-to-r from-orange-100 via-orange-200 to-orange-200 border-2 border-orange-400 rounded-2xl shadow-2xl backdrop-blur-md">
+              <p className="text-lg sm:text-xl text-gray-300 leading-relaxed font-medium">
+                Deploy <strong className="text-orange-600">AI Voice Bot</strong> powered by advanced <strong className="text-orange-600">Natural Language Processing</strong> to automate customer conversations. Handle unlimited calls simultaneously with <strong>human-like voice synthesis</strong>, reduce costs by 70%, and provide instant responses 24/7. No coding required - launch your <strong>AI Voice Bot</strong> in minutes.
               </p>
             </div>
 
             {/* Key Benefits Grid - Homepage Style Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12">
               {benefits.map((benefit, index) => (
-                <div key={index} className="bg-white backdrop-blur-md rounded-3xl p-6 shadow-2xl border-2 border-orange-400 transition-transform duration-500 hover:scale-105 hover:shadow-orange-300 relative overflow-hidden group">
-                  <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-orange-400 via-pink-400 to-purple-400 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
+                <div key={index} className="bg-black backdrop-blur-md rounded-3xl p-6 shadow-2xl border-2 border-orange-400 transition-transform duration-500 hover:scale-105 hover:shadow-orange-300 relative overflow-hidden group">
+                  <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-orange-400 via-orange-500 to-orange-600 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
                   <benefit.icon className="h-12 w-12 text-orange-600 mx-auto mb-3 relative z-10" />
-                  <div className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 mb-2 relative z-10 animate-pulse">{benefit.stat}</div>
-                  <p className="font-extrabold text-gray-900 mb-1 relative z-10">{benefit.title}</p>
-                  <p className="text-sm text-gray-600 relative z-10">{benefit.description}</p>
+                  <div className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 mb-2 relative z-10 animate-pulse">{benefit.stat}</div>
+                  <p className="font-extrabold text-white mb-1 relative z-10">{benefit.title}</p>
+                  <p className="text-sm text-gray-400 relative z-10">{benefit.description}</p>
                 </div>
               ))}
             </div>
 
             {/* CTA Buttons - Homepage Style */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:scale-105 text-white shadow-2xl hover:shadow-orange-400 transition-all duration-300 border-2 border-orange-300 text-lg px-10 py-7 rounded-xl font-bold" asChild>
+              <Button size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:scale-105 text-white shadow-2xl hover:shadow-orange-400 transition-all duration-300 border-2 border-orange-300 text-lg px-10 py-7 rounded-xl font-bold" asChild>
                 <Link href="/signup">
                   Start Free Trial <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
@@ -460,17 +460,17 @@ export default function AIVoiceBot() {
             </div>
 
             {/* Trust Signals - SEO Keywords */}
-            <div className="mt-10 flex flex-wrap justify-center gap-4 text-sm text-gray-600">
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
+            <div className="mt-10 flex flex-wrap justify-center gap-4 text-sm text-gray-400">
+              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
                 <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">No Credit Card Required</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-blue-200 shadow-lg">
-                <CheckCircle className="h-4 w-4 text-blue-600" />
+              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+                <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">Setup in 5 Minutes</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-purple-200 shadow-lg">
-                <CheckCircle className="h-4 w-4 text-purple-600" />
+              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+                <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">1000+ Businesses Use AI Voice Bot</span>
               </div>
             </div>
@@ -478,27 +478,27 @@ export default function AIVoiceBot() {
         </section>
         
         {/* Features Section - SEO Optimized with Homepage Theme */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden" aria-labelledby="features-heading">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden" aria-labelledby="features-heading">
           {/* Decorative Background Elements */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-10">
             <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-gradient-radial from-orange-300 to-transparent rounded-full blur-3xl"></div>
-            <div className="absolute bottom-[10%] left-[10%] w-[600px] h-[600px] bg-gradient-radial from-purple-300 to-transparent rounded-full blur-3xl"></div>
+            <div className="absolute bottom-[10%] left-[10%] w-[600px] h-[600px] bg-gradient-radial from-orange-300 to-transparent rounded-full blur-3xl"></div>
           </div>
 
           <div className="container mx-auto relative z-10 max-w-7xl">
             {/* Section Header */}
             <div className="text-center mb-16">
               <div className="inline-block mb-4">
-                <span className="px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg border border-orange-300">
+                <span className="px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg border border-orange-300">
                   AI Voice Bot Features
                 </span>
               </div>
               <h2 id="features-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent">
                   Everything Your AI Voice Bot Needs
                 </span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 Enterprise-grade <strong className="text-orange-600">AI voice bot</strong> capabilities designed to transform your customer communication and automate phone interactions
               </p>
             </div>
@@ -508,7 +508,7 @@ export default function AIVoiceBot() {
               {features.map((feature, index) => (
                 <article 
                   key={index}
-                  className={`bg-white backdrop-blur-md rounded-3xl p-8 shadow-2xl ${feature.borderColor} border-2 transition-all duration-500 hover:scale-105 hover:shadow-3xl relative overflow-hidden group`}
+                  className={`bg-black backdrop-blur-md rounded-3xl p-8 shadow-2xl ${feature.borderColor} border-2 transition-all duration-500 hover:scale-105 hover:shadow-3xl relative overflow-hidden group`}
                   itemScope 
                   itemType="https://schema.org/SoftwareFeature"
                 >
@@ -521,10 +521,10 @@ export default function AIVoiceBot() {
                   </div>
                   
                   {/* Content */}
-                  <h3 itemProp="name" className="text-2xl font-extrabold text-gray-900 mb-4 relative z-10">
+                  <h3 itemProp="name" className="text-2xl font-extrabold text-white mb-4 relative z-10">
                     {feature.title}
                   </h3>
-                  <p itemProp="description" className="text-gray-600 leading-relaxed relative z-10">
+                  <p itemProp="description" className="text-gray-400 leading-relaxed relative z-10">
                     {feature.description}
                   </p>
                   
@@ -539,7 +539,7 @@ export default function AIVoiceBot() {
         </section>
 
         {/* Use Cases Section - Homepage Theme */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-blue-50 to-purple-50 relative overflow-hidden" aria-labelledby="usecases-heading">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-900 to-orange-100 relative overflow-hidden" aria-labelledby="usecases-heading">
           {/* Grid Background */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
             <div className="absolute inset-0" style={{
@@ -553,16 +553,16 @@ export default function AIVoiceBot() {
             {/* Section Header */}
             <div className="text-center mb-16">
               <div className="inline-block mb-4">
-                <span className="px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg border border-orange-300">
+                <span className="px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg border border-orange-300">
                   Real-World Applications
                 </span>
               </div>
               <h2 id="usecases-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent">
                   AI Voice Bot Use Cases
                 </span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 See how businesses leverage <strong className="text-orange-600">AI voice bot</strong> technology to streamline operations and enhance customer experience
               </p>
             </div>
@@ -572,21 +572,21 @@ export default function AIVoiceBot() {
               {useCases.map((useCase, index) => (
                 <article 
                   key={index}
-                  className="bg-white backdrop-blur-md rounded-3xl p-8 shadow-2xl border-2 border-orange-400 transition-all duration-500 hover:scale-105 hover:shadow-orange-300 relative overflow-hidden group"
+                  className="bg-black backdrop-blur-md rounded-3xl p-8 shadow-2xl border-2 border-orange-400 transition-all duration-500 hover:scale-105 hover:shadow-orange-300 relative overflow-hidden group"
                 >
                   {/* Decorative Glow */}
-                  <div className="absolute -top-16 -left-16 w-64 h-64 bg-gradient-to-br from-orange-400 via-pink-400 to-purple-400 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
+                  <div className="absolute -top-16 -left-16 w-64 h-64 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
                   
                   {/* Icon */}
-                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-orange-100 to-pink-100 mb-6 shadow-lg relative z-10">
+                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-200 mb-6 shadow-lg relative z-10">
                     <useCase.icon className="h-10 w-10 text-orange-600" />
                   </div>
                   
                   {/* Content */}
-                  <h3 className="text-2xl font-extrabold text-gray-900 mb-4 relative z-10">
+                  <h3 className="text-2xl font-extrabold text-white mb-4 relative z-10">
                     {useCase.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed relative z-10">
+                  <p className="text-gray-400 leading-relaxed relative z-10">
                     {useCase.description}
                   </p>
                 </article>
@@ -596,12 +596,12 @@ export default function AIVoiceBot() {
         </section>
 
         {/* Sample Conversation Section - Homepage Theme */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
           {/* Background with gradient orbs */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-orange-200/20 to-transparent rounded-full blur-3xl"></div>
-            <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-purple-200/15 to-transparent rounded-full blur-3xl"></div>
-            <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-pink-200/10 to-transparent rounded-full blur-3xl"></div>
+            <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-orange-200/15 to-transparent rounded-full blur-3xl"></div>
+            <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-orange-200/10 to-transparent rounded-full blur-3xl"></div>
           </div>
 
           {/* Grid Pattern Background */}
@@ -615,27 +615,27 @@ export default function AIVoiceBot() {
 
           <div className="max-w-4xl mx-auto relative z-10">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm backdrop-blur-sm border-2 border-orange-300 shadow-lg mb-6">
+              <div className="inline-flex items-center space-x-2 bg-black/80 px-4 py-2 rounded-full text-sm backdrop-blur-sm border-2 border-orange-300 shadow-lg mb-6">
                 <Mic className="h-4 w-4 text-orange-600 animate-pulse" />
                 <span className="font-medium text-orange-700">AI Voice Demonstration</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-lg mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent drop-shadow-lg mb-4">
                 Experience Natural AI Conversations
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
                 Listen to how our <strong className="text-orange-600">AI voice bot</strong> handles real customer interactions with human-like responses
               </p>
             </div>
 
             {/* Audio Player Card */}
-            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-2 border-orange-300 relative overflow-hidden">
+            <div className="bg-black/90 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-2 border-orange-300 relative overflow-hidden">
               {/* Glossy overlay effect */}
               <div className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent pointer-events-none"></div>
               <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-orange-50/20 pointer-events-none"></div>
 
               <div className="relative z-10">
                 {/* Waveform visualization area */}
-                <div className="flex items-center justify-center mb-6 h-24 bg-gradient-to-br from-orange-50 to-pink-50/30 rounded-2xl border-2 border-orange-200 relative overflow-hidden">
+                <div className="flex items-center justify-center mb-6 h-24 bg-gradient-to-br from-orange-50 to-orange-100/30 rounded-2xl border-2 border-orange-200 relative overflow-hidden">
                   {isPlaying ? (
                     <div className="flex items-end justify-center gap-1.5 h-16">
                       {WAVEFORM_HEIGHTS.map((sinValue, i) => {
@@ -643,7 +643,7 @@ export default function AIVoiceBot() {
                         return (
                           <div
                             key={i}
-                            className="w-1.5 bg-gradient-to-t from-orange-600 via-pink-500 to-purple-400 rounded-full transition-all duration-300"
+                            className="w-1.5 bg-gradient-to-t from-orange-600 via-orange-600 to-orange-600 rounded-full transition-all duration-300"
                             style={{
                               height: `${height}px`,
                               animation: `sound-wave ${0.5 + (i % 3) * 0.2}s ease-in-out infinite`,
@@ -660,7 +660,7 @@ export default function AIVoiceBot() {
                         return (
                           <div
                             key={i}
-                            className="w-1.5 bg-gradient-to-t from-orange-300/40 via-pink-200/40 to-purple-100/40 rounded-full"
+                            className="w-1.5 bg-gradient-to-t from-orange-300/40 via-orange-300/40 to-orange-200/40 rounded-full"
                             style={{
                               height: `${height}px`
                             }}
@@ -675,7 +675,7 @@ export default function AIVoiceBot() {
                 <div className="flex items-center justify-center">
                   <button
                     onClick={handlePlayPause}
-                    className="group relative flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-orange-600 via-pink-500 to-purple-600 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden border-2 border-orange-300"
+                    className="group relative flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-orange-600 via-orange-600 to-orange-700 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden border-2 border-orange-300"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-orange-400/30 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500"></div>
                     <div className="relative z-10 flex items-center gap-3">
@@ -710,25 +710,25 @@ export default function AIVoiceBot() {
         </section>
 
         {/* FAQ Section - Matching Homepage Dark Theme */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden" role="region" aria-labelledby="faq-section">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 relative overflow-hidden" role="region" aria-labelledby="faq-section">
           {/* Animated Background Elements - Homepage Style */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-pink-500/20 rounded-full filter blur-3xl animate-float-slow"></div>
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full filter blur-3xl animate-float-reverse"></div>
-            <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-full filter blur-3xl animate-pulse"></div>
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-full filter blur-3xl animate-float-slow"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-orange-400/20 to-orange-600/20 rounded-full filter blur-3xl animate-float-reverse"></div>
+            <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-full filter blur-3xl animate-pulse"></div>
           </div>
 
           <div className="container mx-auto max-w-6xl relative z-10">
             {/* Section Header */}
             <div className="text-center mb-16">
               <div className="inline-block mb-6">
-                <span className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse">
+                <span className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse">
                   Got Questions? We've Got Answers
                 </span>
               </div>
               <h2 id="faq-section" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-white">
                 <span className="block mb-2">Frequently Asked</span>
-                <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
                   Questions
                 </span>
               </h2>
@@ -741,16 +741,16 @@ export default function AIVoiceBot() {
             <div className="grid md:grid-cols-2 gap-6">
               {faqs.map((faq, index) => {
                 const colors = [
-                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-pink-500', textGradient: 'from-orange-400 to-pink-400', shadow: 'hover:shadow-orange-500/50' },
-                  { border: 'border-blue-500/30 hover:border-blue-400', gradient: 'from-blue-500 to-cyan-500', textGradient: 'from-blue-400 to-cyan-400', shadow: 'hover:shadow-blue-500/50' },
-                  { border: 'border-purple-500/30 hover:border-purple-400', gradient: 'from-purple-500 to-pink-500', textGradient: 'from-purple-400 to-pink-400', shadow: 'hover:shadow-purple-500/50' },
-                  { border: 'border-teal-500/30 hover:border-teal-400', gradient: 'from-teal-500 to-green-500', textGradient: 'from-teal-400 to-green-400', shadow: 'hover:shadow-teal-500/50' },
-                  { border: 'border-pink-500/30 hover:border-pink-400', gradient: 'from-pink-500 to-purple-500', textGradient: 'from-pink-400 to-purple-400', shadow: 'hover:shadow-pink-500/50' },
-                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-pink-500', textGradient: 'from-orange-400 to-pink-400', shadow: 'hover:shadow-orange-500/50' },
-                  { border: 'border-blue-500/30 hover:border-blue-400', gradient: 'from-blue-500 to-cyan-500', textGradient: 'from-blue-400 to-cyan-400', shadow: 'hover:shadow-blue-500/50' },
-                  { border: 'border-purple-500/30 hover:border-purple-400', gradient: 'from-purple-500 to-pink-500', textGradient: 'from-purple-400 to-pink-400', shadow: 'hover:shadow-purple-500/50' },
-                  { border: 'border-teal-500/30 hover:border-teal-400', gradient: 'from-teal-500 to-green-500', textGradient: 'from-teal-400 to-green-400', shadow: 'hover:shadow-teal-500/50' },
-                  { border: 'border-pink-500/30 hover:border-pink-400', gradient: 'from-pink-500 to-purple-500', textGradient: 'from-pink-400 to-purple-400', shadow: 'hover:shadow-pink-500/50' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-orange-600', textGradient: 'from-orange-400 to-orange-600', shadow: 'hover:shadow-orange-500/50' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-400 to-orange-500', textGradient: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-500/50' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-400 to-orange-500', textGradient: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-500/50' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-orange-600', textGradient: 'from-orange-500 to-orange-600', shadow: 'hover:shadow-orange-500/50' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-orange-600', textGradient: 'from-orange-400 to-orange-600', shadow: 'hover:shadow-orange-500/50' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-orange-600', textGradient: 'from-orange-400 to-orange-600', shadow: 'hover:shadow-orange-500/50' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-400 to-orange-500', textGradient: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-500/50' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-400 to-orange-500', textGradient: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-500/50' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-orange-600', textGradient: 'from-orange-500 to-orange-600', shadow: 'hover:shadow-orange-500/50' },
+                  { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-orange-600', textGradient: 'from-orange-400 to-orange-600', shadow: 'hover:shadow-orange-500/50' },
                 ];
                 const color = colors[index % colors.length];
 
@@ -773,7 +773,7 @@ export default function AIVoiceBot() {
         </section>
 
         {/* CTA Section - Conversion Optimized with Homepage Theme */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-blue-50 to-purple-50 relative overflow-hidden" aria-labelledby="cta-heading">
+        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-900 to-orange-100 relative overflow-hidden" aria-labelledby="cta-heading">
           {/* Decorative Grid */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
             <div className="absolute inset-0" style={{
@@ -784,39 +784,39 @@ export default function AIVoiceBot() {
           </div>
 
           {/* Floating Orbs */}
-          <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-gradient-radial from-blue-200/30 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-[20%] right-[10%] w-[600px] h-[600px] bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-gradient-radial from-pink-200/20 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-[20%] right-[10%] w-[600px] h-[600px] bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-gradient-radial from-orange-200/20 to-transparent rounded-full blur-3xl"></div>
 
           <div className="container mx-auto max-w-5xl text-center relative z-10">
             {/* CTA Badge */}
             <div className="inline-block mb-6 animate-fade-in-up">
-              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
+              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
                 🚀 Start Free Trial
               </span>
             </div>
 
             {/* CTA Heading - Multi-line Homepage Style */}
             <h2 id="cta-heading" className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="block mb-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="block mb-3 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent">
                 Transform Customer Service
               </span>
-              <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 shadow-2xl text-2xl sm:text-3xl lg:text-5xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
+              <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-2xl text-2xl sm:text-3xl lg:text-5xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
                 <span className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent"></span>
                 <span className="relative z-10">With AI Voice Bot Today</span>
               </span>
             </h2>
 
             {/* CTA Description */}
-            <div className="max-w-3xl mx-auto mb-10 p-6 bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 border-2 border-orange-400 rounded-2xl shadow-2xl backdrop-blur-md">
-              <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium">
-                Launch your <strong className="text-orange-600">AI voice bot</strong> in <strong>5 minutes</strong> and start automating customer conversations. <strong className="text-purple-600">No credit card required.</strong> Join 1000+ businesses saving 70% on support costs.
+            <div className="max-w-3xl mx-auto mb-10 p-6 bg-gradient-to-r from-orange-100 via-orange-200 to-orange-200 border-2 border-orange-400 rounded-2xl shadow-2xl backdrop-blur-md">
+              <p className="text-lg sm:text-xl text-gray-300 leading-relaxed font-medium">
+                Launch your <strong className="text-orange-600">AI voice bot</strong> in <strong>5 minutes</strong> and start automating customer conversations. <strong className="text-orange-600">No credit card required.</strong> Join 1000+ businesses saving 70% on support costs.
               </p>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button size="lg" className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:scale-105 text-white shadow-2xl hover:shadow-orange-400 transition-all duration-300 border-2 border-orange-300 text-lg px-10 py-7 rounded-xl font-bold" asChild>
+              <Button size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:scale-105 text-white shadow-2xl hover:shadow-orange-400 transition-all duration-300 border-2 border-orange-300 text-lg px-10 py-7 rounded-xl font-bold" asChild>
                 <Link href="/signup">
                   Start Free Trial Now <ArrowRight className="ml-2 h-6 w-6" />
                 </Link>
@@ -831,35 +831,35 @@ export default function AIVoiceBot() {
             
             {/* Trust Signals - Homepage Style Cards */}
             <div className="flex flex-wrap justify-center gap-6 items-center">
-              <div className="flex items-center gap-3 px-6 py-4 bg-white backdrop-blur-md rounded-xl shadow-2xl border-2 border-orange-300 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-orange-400 via-pink-400 to-purple-400 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
+              <div className="flex items-center gap-3 px-6 py-4 bg-black backdrop-blur-md rounded-xl shadow-2xl border-2 border-orange-300 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+                <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
                 <Shield className="h-6 w-6 text-orange-600 relative z-10" />
-                <span className="font-extrabold text-gray-900 relative z-10">Enterprise Security</span>
+                <span className="font-extrabold text-white relative z-10">Enterprise Security</span>
               </div>
-              <div className="flex items-center gap-3 px-6 py-4 bg-white backdrop-blur-md rounded-xl shadow-2xl border-2 border-blue-300 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
-                <Headphones className="h-6 w-6 text-blue-600 relative z-10" />
-                <span className="font-extrabold text-gray-900 relative z-10">24/7 Support</span>
+              <div className="flex items-center gap-3 px-6 py-4 bg-black backdrop-blur-md rounded-xl shadow-2xl border-2 border-orange-400 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+                <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
+                <Headphones className="h-6 w-6 text-orange-600 relative z-10" />
+                <span className="font-extrabold text-white relative z-10">24/7 Support</span>
               </div>
-              <div className="flex items-center gap-3 px-6 py-4 bg-white backdrop-blur-md rounded-xl shadow-2xl border-2 border-purple-300 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
-                <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-purple-400 via-pink-400 to-orange-400 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
-                <TrendingUp className="h-6 w-6 text-purple-600 relative z-10" />
-                <span className="font-extrabold text-gray-900 relative z-10">1000+ Businesses</span>
+              <div className="flex items-center gap-3 px-6 py-4 bg-black backdrop-blur-md rounded-xl shadow-2xl border-2 border-orange-400 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+                <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-400 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
+                <TrendingUp className="h-6 w-6 text-orange-600 relative z-10" />
+                <span className="font-extrabold text-white relative z-10">1000+ Businesses</span>
               </div>
             </div>
 
             {/* Additional Trust Signals */}
-            <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-gray-600">
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
+            <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-gray-400">
+              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
                 <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">Free 14-Day Trial</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-blue-200 shadow-lg">
-                <CheckCircle className="h-4 w-4 text-blue-600" />
+              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+                <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">Cancel Anytime</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-purple-200 shadow-lg">
-                <CheckCircle className="h-4 w-4 text-purple-600" />
+              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+                <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">Setup in 5 Minutes</span>
               </div>
             </div>
@@ -871,3 +871,7 @@ export default function AIVoiceBot() {
     </>
   )
 }
+
+
+
+

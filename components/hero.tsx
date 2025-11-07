@@ -513,29 +513,29 @@ export function Hero() {
             .animate-wave-3 { animation: wave-pulse-3 2s ease-out infinite; }
             `}} />
             
-            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen bg-gradient-to-b from-white via-blue-50 to-purple-50">
+            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen bg-gradient-to-b from-black via-gray-900 to-black">
 
                 {/* Futuristic Grid Pattern */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10 z-0">
                     <div className="absolute inset-0" style={{
-                        backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
-                                         linear-gradient(to bottom, rgba(168, 85, 247, 0.2) 1px, transparent 1px)`,
+                        backgroundImage: `linear-gradient(to right, rgba(249, 115, 22, 0.3) 1px, transparent 1px),
+                                         linear-gradient(to bottom, rgba(249, 115, 22, 0.3) 1px, transparent 1px)`,
                         backgroundSize: '60px 60px'
                     }}></div>
                 </div>
    
                
-                {/* Subtle Gradient Orbs */}
+                {/* Subtle Gradient Orbs - Glossy Orange */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-blue-200/30 to-transparent rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl"></div>
-                    <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-pink-200/20 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-orange-500/30 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-orange-600/25 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-orange-400/20 to-transparent rounded-full blur-3xl"></div>
                 </div>
 
                 {/* Animated Light Beams - Reduced on mobile */}
                 <div className={`absolute inset-0 overflow-hidden pointer-events-none ${isMobileDevice || reduceMotion ? 'opacity-10' : 'opacity-20'}`}>
-                    <div className={`absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-blue-400/30 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`}></div>
-                    <div className={`absolute top-0 right-1/3 w-px h-full bg-linear-to-b from-transparent via-purple-400/25 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`} style={{ animationDelay: '1s' }}></div>
+                    <div className={`absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-orange-500/30 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`}></div>
+                    <div className={`absolute top-0 right-1/3 w-px h-full bg-linear-to-b from-transparent via-orange-600/25 to-transparent ${!(isMobileDevice || reduceMotion) ? 'animate-pulse-slow' : ''}`} style={{ animationDelay: '1s' }}></div>
                 </div>
 
                 <div className="container mx-auto relative z-10 max-w-6xl opacity-100">
@@ -705,7 +705,7 @@ export function Hero() {
 
                             {/* H1 Heading */}
                             <div className="mt-12 text-center">
-                                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
+                                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-lg">
                                     AI Voice Agent | AI Voice Assistant
                                 </h1>
                             </div>
@@ -715,30 +715,30 @@ export function Hero() {
             </section>
 
             {/* Ready to Deploy Section */}
-            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-orange-50 to-pink-50 backdrop-blur-sm relative overflow-hidden">
+            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900 to-black backdrop-blur-sm relative overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
                     <div className="absolute inset-0" style={{
-                        backgroundImage: `linear-gradient(to right, rgba(251, 146, 60, 0.2) 1px, transparent 1px),
-                                         linear-gradient(to bottom, rgba(251, 146, 60, 0.2) 1px, transparent 1px)`,
+                        backgroundImage: `linear-gradient(to right, rgba(249, 115, 22, 0.3) 1px, transparent 1px),
+                                         linear-gradient(to bottom, rgba(249, 115, 22, 0.3) 1px, transparent 1px)`,
                         backgroundSize: '40px 40px'
                     }}></div>
                 </div>
 
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-radial from-pink-200/25 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-radial from-orange-500/30 to-transparent rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-radial from-orange-600/25 to-transparent rounded-full blur-3xl"></div>
                 </div>
 
                 <div className="container mx-auto max-w-7xl relative z-10">
                     <div className="text-center mb-16">
-                        <div className="inline-flex items-center space-x-2 bg-orange-100 px-4 py-2 rounded-full text-sm text-orange-700 font-semibold mb-6 border border-orange-300">
+                        <div className="inline-flex items-center space-x-2 bg-orange-500/20 px-4 py-2 rounded-full text-sm text-orange-400 font-semibold mb-6 border border-orange-500/30">
                             <MessageSquare className="h-4 w-4" />
                             <span>Enterprise-Ready Solution</span>
                         </div>
-                        <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent drop-shadow-lg mb-6">
+                        <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-lg mb-6">
                             Ready to Deploy AI Voice Assistant
                         </h2>
-                        <p className="text-lg sm:text-xl font-semibold bg-white backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-orange-300 text-gray-700 max-w-3xl mx-auto">
+                        <p className="text-lg sm:text-xl font-semibold bg-gray-900/80 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-orange-500/30 text-gray-200 max-w-3xl mx-auto">
                             Launch your intelligent AI assistant in minutes. No coding required. Full customization available.
                         </p>
                     </div>
@@ -747,15 +747,15 @@ export function Hero() {
                         {deploymentFeatures.map((feature, index) => (
                             <div
                                 key={index}
-                                className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border-2 border-orange-300 hover:border-orange-500 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden"
+                                className="bg-black/80 backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border-2 border-orange-500/30 hover:border-orange-500 hover:shadow-2xl hover:shadow-orange-500/30 hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden"
                             >
                                 {/* Animated background gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 via-transparent to-pink-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-orange-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 
                                 {/* Icon container - mobile optimized */}
                                 <div className="relative mb-3 sm:mb-4 flex items-center justify-center sm:justify-start">
                                     <div className="relative">
-                                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-orange-500/50 group-hover:scale-110 transition-all duration-300 relative overflow-hidden">
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-orange-500/50 group-hover:scale-110 transition-all duration-300 relative overflow-hidden">
                                             {/* Glossy overlay effect */}
                                             <div className="absolute inset-0 bg-linear-to-tr from-white/30 via-white/10 to-transparent"></div>
                                             <div className="absolute inset-0 bg-linear-to-bl from-transparent via-transparent to-black/10"></div>
@@ -771,15 +771,15 @@ export function Hero() {
                                 
                                 {/* Content - mobile optimized */}
                                 <div className="relative z-10 text-center sm:text-left">
-                                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1.5 sm:mb-2 group-hover:text-orange-600 transition-colors duration-300">{feature.title}</h3>
-                                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+                                    <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2 group-hover:text-orange-400 transition-colors duration-300">{feature.title}</h3>
+                                    <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{feature.description}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    <div className="bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-purple-600/20 backdrop-blur-sm"></div>
+                    <div className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 backdrop-blur-sm"></div>
                         <div className="relative z-10">
                             <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
                                 Start Your Free Trial Today
@@ -790,7 +790,7 @@ export function Hero() {
                             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                                 <Button
                                     size="lg"
-                                    className="bg-white text-orange-600 hover:bg-gray-50 rounded-full shadow-xl font-bold px-8 py-6 text-lg transition-all hover:scale-105"
+                                    className="bg-black text-white hover:bg-gray-900 rounded-full shadow-xl font-bold px-8 py-6 text-lg transition-all hover:scale-105 border-2 border-white/20"
                                 >
                                     Get Started Free
                                     <ArrowRight className="ml-2 h-5 w-5" />

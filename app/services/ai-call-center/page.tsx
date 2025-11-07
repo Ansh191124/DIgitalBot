@@ -234,7 +234,7 @@ export default function AICallCenter() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
         
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-purple-50 py-20 md:py-32">
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-gray-900 to-orange-100 py-20 md:py-32">
           {/* Animated Grid Background */}
           <div className="absolute inset-0 opacity-20">
             <div
@@ -250,43 +250,43 @@ export default function AICallCenter() {
           </div>
 
           {/* Floating Elements */}
-          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-radial from-blue-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
-          <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-300" />
-          <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-radial from-pink-200/20 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
+          <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-300" />
+          <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-radial from-orange-200/20 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-5xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white rounded-full px-6 py-2.5 mb-8 border-2 border-orange-300 shadow-lg">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full px-6 py-2.5 mb-8 border-2 border-orange-300 shadow-lg">
                 <Phone className="w-4 h-4" />
                 <span className="text-sm font-semibold tracking-wide">Enterprise AI Call Center</span>
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                   Transform Your Call Center
                 </span>
                 <br />
                 <span className="relative inline-block mt-2">
-                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-transparent bg-clip-text">
+                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-transparent bg-clip-text">
                     with AI Automation
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-pink-200/30 to-purple-200/30 blur-2xl -z-10 scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-orange-300/30 to-orange-400/30 blur-2xl -z-10 scale-110" />
                 </span>
               </h1>
 
-              <p className="text-xl md:text-2xl mb-10 text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl mb-10 text-gray-300 max-w-4xl mx-auto leading-relaxed">
                 Deploy an <strong>AI call center</strong> that handles unlimited customer calls 24/7 with intelligent routing, real-time analytics, and seamless CRM integration. 
-                Trusted by <span className="font-bold text-orange-600">500+ businesses</span> managing <span className="font-bold text-purple-600">2M+ conversations</span> monthly.
+                Trusted by <span className="font-bold text-orange-600">500+ businesses</span> managing <span className="font-bold text-orange-600">2M+ conversations</span> monthly.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white px-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-white px-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                   <Link href="/signup">
                     Start Free Trial
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-8">
+                <Button asChild size="lg" variant="outline" className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 px-8">
                   <Link href="/contact">
                     <Phone className="mr-2 w-5 h-5" />
                     Book Demo
@@ -294,18 +294,18 @@ export default function AICallCenter() {
                 </Button>
               </div>
 
-              <div className="inline-flex flex-col gap-4 bg-white/80 backdrop-blur-sm border-2 border-purple-200 rounded-2xl p-6 shadow-xl">
+              <div className="inline-flex flex-col gap-4 bg-black/80 backdrop-blur-sm border-2 border-orange-400 rounded-2xl p-6 shadow-xl">
                 <div className="flex flex-wrap gap-6 justify-center items-center text-sm font-medium">
                   <div className="flex items-center gap-2 text-green-700">
-                    <Check className="w-5 h-5 text-green-600" />
+                    <Check className="w-5 h-5 text-orange-600" />
                     <span>500+ Active Businesses</span>
                   </div>
                   <div className="flex items-center gap-2 text-blue-700">
-                    <Check className="w-5 h-5 text-blue-600" />
+                    <Check className="w-5 h-5 text-orange-600" />
                     <span>4.8/5 Customer Rating</span>
                   </div>
                   <div className="flex items-center gap-2 text-purple-700">
-                    <Shield className="w-5 h-5 text-purple-600" />
+                    <Shield className="w-5 h-5 text-orange-600" />
                     <span>SOC2 & HIPAA Compliant</span>
                   </div>
                   <div className="flex items-center gap-2 text-orange-700">
@@ -319,13 +319,13 @@ export default function AICallCenter() {
         </section>
 
         {/* Benefits Section */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-black">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 Why Choose DigitalBot for AI Call Centers?
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 Powerful automation, intuitive operations, and measurable outcomes for modern contact centers
               </p>
             </div>
@@ -334,18 +334,18 @@ export default function AICallCenter() {
               {benefits.map((benefit, index) => (
                 <div 
                   key={index}
-                  className="group relative bg-gradient-to-br from-white to-gray-50 border-2 border-purple-200 hover:border-purple-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group relative bg-gradient-to-br from-white to-gray-50 border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 via-pink-400/10 to-orange-400/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 via-orange-500/10 to-orange-400/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500" />
                   
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
                     <benefit.icon className="w-7 h-7 text-white" />
                   </div>
 
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                  <h3 className="text-xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-400 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
@@ -355,13 +355,13 @@ export default function AICallCenter() {
         </section>
 
         {/* Use Cases Section */}
-        <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+        <section className="py-20 bg-gradient-to-b from-white to-orange-100">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 AI Call Center Use Cases & Results
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 Proven automation playbooks that transform every customer touchpoint
               </p>
             </div>
@@ -370,12 +370,12 @@ export default function AICallCenter() {
               {useCases.map((useCase, index) => (
                 <div 
                   key={index}
-                  className="group bg-white border-2 border-blue-200 hover:border-purple-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group bg-black border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
-                  <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                  <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                     {useCase.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">
+                  <p className="text-gray-400 leading-relaxed mb-4">
                     {useCase.description}
                   </p>
                   <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 rounded-full text-sm font-semibold border-2 border-green-200">
@@ -389,13 +389,13 @@ export default function AICallCenter() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-black">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 Enterprise-Grade AI Call Center Features
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 Deep technical capabilities that keep your contact center fast, compliant, and future-proof
               </p>
             </div>
@@ -404,17 +404,17 @@ export default function AICallCenter() {
               {featureBlocks.map((feature, index) => (
                 <div 
                   key={index}
-                  className="group bg-gradient-to-br from-white to-gray-50 border-2 border-blue-200 hover:border-purple-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500"
+                  className="group bg-gradient-to-br from-white to-gray-50 border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                       <feature.icon className="h-6 w-6 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                    <h3 className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                       {feature.heading}
                     </h3>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">{feature.body}</p>
+                  <p className="text-gray-400 leading-relaxed">{feature.body}</p>
                 </div>
               ))}
             </div>
@@ -422,42 +422,42 @@ export default function AICallCenter() {
         </section>
 
         {/* Demo Section */}
-        <section className="py-20 bg-gradient-to-b from-blue-50 to-purple-50">
+        <section className="py-20 bg-gradient-to-b from-orange-50 to-orange-100">
           <div className="max-w-4xl mx-auto px-4">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white px-5 py-2 rounded-full text-sm backdrop-blur-sm border-2 border-orange-300 shadow-lg mb-6">
+              <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white px-5 py-2 rounded-full text-sm backdrop-blur-sm border-2 border-orange-300 shadow-lg mb-6">
                 <Mic className="h-4 w-4 animate-pulse" />
                 <span className="font-semibold">Live AI Demo</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent mb-4">
                 Hear Our AI Call Center in Action
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
                 Experience how AI routes calls, verifies identities, and resolves requests with human-level empathy
               </p>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-2xl border-2 border-purple-200">
+            <div className="bg-black rounded-2xl p-8 shadow-2xl border-2 border-orange-400">
               <VoiceConversationPlayer audioSrc="/sample-conversation.mp3" />
             </div>
           </div>
         </section>
 
         {/* FAQ Section - Dark Theme */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <section className="relative py-24 overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-20 -left-20 w-96 h-96 bg-gradient-radial from-orange-500/20 to-transparent rounded-full blur-3xl animate-float-slow" />
-            <div className="absolute bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-radial from-blue-500/15 to-transparent rounded-full blur-3xl animate-float-reverse" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-cyan-500/10 to-transparent rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-radial from-orange-400/15 to-transparent rounded-full blur-3xl animate-float-reverse" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-orange-500/10 to-transparent rounded-full blur-3xl animate-pulse" />
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
+              <div className="inline-flex items-center gap-2 bg-black/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
                 <HeadphonesIcon className="w-4 h-4 text-orange-400" />
                 <span className="text-sm font-semibold text-white">Common Questions</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 text-transparent bg-clip-text">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-transparent bg-clip-text">
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -473,12 +473,12 @@ export default function AICallCenter() {
                 >
                   <div className="flex gap-6">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
                         {index + 1}
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 via-pink-300 to-purple-300 text-transparent bg-clip-text">
+                      <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 text-transparent bg-clip-text">
                         {faq.name}
                       </h3>
                       <p className="text-gray-300 leading-relaxed">
@@ -493,45 +493,45 @@ export default function AICallCenter() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-blue-50 to-purple-50">
+        <section className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-gray-900 to-orange-100">
           {/* Animated Background */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-radial from-blue-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
+            <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white rounded-full px-6 py-2.5 mb-8 border-2 border-orange-300 shadow-lg">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full px-6 py-2.5 mb-8 border-2 border-orange-300 shadow-lg">
                 <Phone className="w-4 h-4" />
                 <span className="text-sm font-semibold">Modernize Your Call Center Today</span>
               </div>
 
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                   Ready to Transform
                 </span>
                 <br />
                 <span className="relative inline-block mt-2">
-                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-transparent bg-clip-text">
+                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-transparent bg-clip-text">
                     Your Contact Center?
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-pink-200/30 to-purple-200/30 blur-2xl -z-10 scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-orange-300/30 to-orange-400/30 blur-2xl -z-10 scale-110" />
                 </span>
               </h2>
 
-              <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
                 Join 500+ businesses using DigitalBot.ai to deliver world-class customer experiences with AI call center technology. Start your free trial today.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-white px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                   <Link href="/signup">
                     Start Free Trial
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-10 py-6 text-lg">
+                <Button asChild size="lg" variant="outline" className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 px-10 py-6 text-lg">
                   <Link href="/contact">
                     <Phone className="mr-2 w-5 h-5" />
                     Book Consultation
@@ -540,21 +540,21 @@ export default function AICallCenter() {
               </div>
 
               <div className="flex flex-wrap gap-8 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200">
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-200">
                   <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-gray-700">No Setup Fees</span>
+                  <span className="text-sm font-medium text-gray-300">No Setup Fees</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-blue-200">
-                  <Check className="w-5 h-5 text-blue-600" />
-                  <span className="text-sm font-medium text-gray-700">Enterprise Security</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                  <Check className="w-5 h-5 text-orange-600" />
+                  <span className="text-sm font-medium text-gray-300">Enterprise Security</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-purple-200">
-                  <Check className="w-5 h-5 text-purple-600" />
-                  <span className="text-sm font-medium text-gray-700">Dedicated Support</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                  <Check className="w-5 h-5 text-orange-600" />
+                  <span className="text-sm font-medium text-gray-300">Dedicated Support</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-pink-200">
-                  <Check className="w-5 h-5 text-pink-600" />
-                  <span className="text-sm font-medium text-gray-700">Rapid Deployment</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                  <Check className="w-5 h-5 text-orange-600" />
+                  <span className="text-sm font-medium text-gray-300">Rapid Deployment</span>
                 </div>
               </div>
             </div>
@@ -565,3 +565,7 @@ export default function AICallCenter() {
     </div>
   )
 }
+
+
+
+

@@ -75,13 +75,13 @@ export default function LoginPage(): JSX.Element {
 
   // 5. Component return type (JSX.Element)
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 p-4">
-      <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-orange-50 to-indigo-100 p-4">
+      <div className="bg-black p-8 rounded-2xl shadow-2xl w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
+          <h1 className="text-3xl font-bold text-gray-200 mb-2">
             Welcome Back
           </h1>
-          <p className="text-gray-600">
+          <p className="text-gray-400">
             Sign in to access your call dashboard
           </p>
         </div>
@@ -95,7 +95,7 @@ export default function LoginPage(): JSX.Element {
         {/* 6. Form event handler uses the typed handleLogin */}
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
               Email Address
             </label>
             <input
@@ -104,13 +104,13 @@ export default function LoginPage(): JSX.Element {
               value={email}
               // 7. Used the typed change handler
               onChange={handleEmailChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
               Password
             </label>
             <input
@@ -119,23 +119,26 @@ export default function LoginPage(): JSX.Element {
               value={password}
               // 8. Used the typed change handler
               onChange={handlePasswordChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
               required
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
 
-        <p className="text-center text-sm text-gray-600 mt-6">
+        <p className="text-center text-sm text-gray-400 mt-6">
           Don't have an account? Contact your administrator
         </p>
       </div>
     </div>
   );
 }
+
+
+

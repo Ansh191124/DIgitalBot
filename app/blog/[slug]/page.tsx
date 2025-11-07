@@ -1164,7 +1164,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                 Back to Blog
               </Link>
 
-              <Badge className="mb-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white border-none">
+              <Badge className="mb-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white border-none">
                 {post.category}
               </Badge>
 
@@ -1174,11 +1174,11 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
               <div className="flex flex-wrap items-center gap-6 text-gray-300 mb-8">
                 <div className="flex items-center gap-2">
-                  <User className="h-5 w-5 text-blue-400" />
+                  <User className="h-5 w-5 text-orange-400" />
                   <span>{post.author}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-purple-400" />
+                  <Calendar className="h-5 w-5 text-orange-400" />
                   <span>{new Date(post.date).toLocaleDateString('en-US', { 
                     year: 'numeric', 
                     month: 'long', 
@@ -1229,36 +1229,36 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                 <article 
                   className="prose prose-lg max-w-none
                     prose-headings:font-bold
-                    prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b-2 prose-h2:border-purple-200 prose-h2:bg-gradient-to-r prose-h2:from-blue-600 prose-h2:via-purple-600 prose-h2:to-pink-600 prose-h2:text-transparent prose-h2:bg-clip-text
-                    prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6 prose-h3:text-gray-900 prose-h3:font-bold
-                    prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
-                    prose-a:text-blue-600 prose-a:font-semibold prose-a:no-underline hover:prose-a:text-blue-700 prose-a:underline prose-a:decoration-2 prose-a:underline-offset-4 hover:prose-a:decoration-blue-500
-                    prose-strong:text-gray-900 prose-strong:font-bold
-                    prose-ul:my-10 prose-ul:space-y-4 prose-ul:bg-gradient-to-br prose-ul:from-blue-50 prose-ul:via-purple-50 prose-ul:to-pink-50 prose-ul:p-10 prose-ul:rounded-2xl prose-ul:border-2 prose-ul:border-purple-200 prose-ul:shadow-lg
-                    prose-ol:my-10 prose-ol:space-y-4 prose-ol:bg-gradient-to-br prose-ol:from-blue-50 prose-ol:via-purple-50 prose-ol:to-pink-50 prose-ol:p-10 prose-ol:rounded-2xl prose-ol:border-2 prose-ol:border-purple-200 prose-ol:shadow-lg
-                    prose-li:text-gray-800 prose-li:text-lg prose-li:leading-relaxed prose-li:pl-2
-                    prose-li:marker:text-purple-600 prose-li:marker:font-bold prose-li:marker:text-xl
-                    prose-blockquote:border-l-4 prose-blockquote:border-purple-500 prose-blockquote:pl-8 prose-blockquote:pr-8 prose-blockquote:not-italic prose-blockquote:text-gray-800 prose-blockquote:bg-gradient-to-r prose-blockquote:from-purple-50 prose-blockquote:to-pink-50 prose-blockquote:py-8 prose-blockquote:my-12 prose-blockquote:rounded-r-xl prose-blockquote:shadow-lg prose-blockquote:font-semibold prose-blockquote:text-xl
-                    prose-code:text-purple-600 prose-code:bg-purple-100 prose-code:px-3 prose-code:py-1 prose-code:rounded-md prose-code:font-semibold prose-code:text-base
+                    prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b-2 prose-h2:border-orange-200 prose-h2:bg-gradient-to-r prose-h2:from-orange-500 prose-h2:via-orange-600 prose-h2:to-orange-700 prose-h2:text-transparent prose-h2:bg-clip-text
+                    prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6 prose-h3:text-white prose-h3:font-bold
+                    prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
+                    prose-a:text-orange-400 prose-a:font-semibold prose-a:no-underline hover:prose-a:text-orange-300 prose-a:underline prose-a:decoration-2 prose-a:underline-offset-4 hover:prose-a:decoration-orange-500
+                    prose-strong:text-white prose-strong:font-bold
+                    prose-ul:my-10 prose-ul:space-y-4 prose-ul:bg-gradient-to-br prose-ul:from-orange-50 prose-ul:via-orange-100 prose-ul:to-orange-100 prose-ul:p-10 prose-ul:rounded-2xl prose-ul:border-2 prose-ul:border-orange-200 prose-ul:shadow-lg
+                    prose-ol:my-10 prose-ol:space-y-4 prose-ol:bg-gradient-to-br prose-ol:from-orange-50 prose-ol:via-orange-100 prose-ol:to-orange-100 prose-ol:p-10 prose-ol:rounded-2xl prose-ol:border-2 prose-ol:border-orange-200 prose-ol:shadow-lg
+                    prose-li:text-gray-200 prose-li:text-lg prose-li:leading-relaxed prose-li:pl-2
+                    prose-li:marker:text-orange-600 prose-li:marker:font-bold prose-li:marker:text-xl
+                    prose-blockquote:border-l-4 prose-blockquote:border-orange-500 prose-blockquote:pl-8 prose-blockquote:pr-8 prose-blockquote:not-italic prose-blockquote:text-gray-200 prose-blockquote:bg-gradient-to-r prose-blockquote:from-orange-50 prose-blockquote:to-orange-100 prose-blockquote:py-8 prose-blockquote:my-12 prose-blockquote:rounded-r-xl prose-blockquote:shadow-lg prose-blockquote:font-semibold prose-blockquote:text-xl
+                    prose-code:text-orange-400 prose-code:bg-orange-900/30 prose-code:px-3 prose-code:py-1 prose-code:rounded-md prose-code:font-semibold prose-code:text-base
                   "
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
 
                 {/* Decorative Divider */}
                 <div className="my-16 flex items-center justify-center">
-                  <div className="h-1 w-32 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
-                  <div className="mx-4 text-2xl text-purple-400">✦</div>
-                  <div className="h-1 w-32 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full"></div>
+                  <div className="h-1 w-32 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 rounded-full"></div>
+                  <div className="mx-4 text-2xl text-orange-400">✦</div>
+                  <div className="h-1 w-32 bg-gradient-to-r from-orange-700 via-orange-600 to-orange-500 rounded-full"></div>
                 </div>
 
                 {/* Share Section */}
-                <div className="mt-16 pt-8 border-t-2 border-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
-                  <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-2xl border-2 border-purple-200">
+                <div className="mt-16 pt-8 border-t-2 border-gradient-to-r from-orange-200 via-orange-300 to-orange-200">
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 bg-gradient-to-br from-orange-50 via-orange-100 to-orange-100 rounded-2xl border-2 border-orange-200">
                     <div>
-                      <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text mb-2">Share this article</h3>
+                      <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-transparent bg-clip-text mb-2">Share this article</h3>
                       <p className="text-gray-600">Help others discover valuable insights</p>
                     </div>
-                    <Button className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
+                    <Button className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-white shadow-lg hover:shadow-xl transition-all duration-300">
                       <Share2 className="mr-2 h-4 w-4" />
                       Share
                     </Button>
@@ -1266,13 +1266,13 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                 </div>
 
                 {/* Author Bio */}
-                <div className="mt-12 p-8 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-2xl border-2 border-purple-200 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="mt-12 p-8 bg-gradient-to-br from-orange-50 via-orange-100 to-orange-100 rounded-2xl border-2 border-orange-200 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="flex items-start gap-6">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0 shadow-lg">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0 shadow-lg">
                       {post.author.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text mb-2">About {post.author}</h4>
+                      <h4 className="text-xl font-bold bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-transparent bg-clip-text mb-2">About {post.author}</h4>
                       <p className="text-gray-700 leading-relaxed">
                         {post.author} is a thought leader in AI and conversational technologies, with years of experience helping businesses transform their customer service operations through innovative AI solutions.
                       </p>
@@ -1283,21 +1283,21 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
               {/* CTA Section */}
               <div className="mt-16 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 rounded-3xl"></div>
                 <div className="absolute inset-0 opacity-20">
                   <div
                     className="absolute inset-0"
                     style={{
                       backgroundImage: `
-                        linear-gradient(to right, rgb(147, 51, 234) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgb(59, 130, 246) 1px, transparent 1px)
+                        linear-gradient(to right, rgb(249, 115, 22) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgb(249, 115, 22) 1px, transparent 1px)
                       `,
                       backgroundSize: '40px 40px'
                     }}
                   />
                 </div>
                 <div className="relative text-center p-12 md:p-16">
-                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white rounded-full px-5 py-2 mb-6 border-2 border-orange-300 shadow-lg">
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full px-5 py-2 mb-6 border-2 border-orange-300 shadow-lg">
                     <BookOpen className="w-4 h-4" />
                     <span className="text-sm font-semibold">Ready to Get Started?</span>
                   </div>
@@ -1309,7 +1309,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                     Discover how AI voice agents can revolutionize your business communication and boost customer satisfaction
                   </p>
                   <Link href="/contact">
-                    <Button size="lg" className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white text-lg px-10 py-7 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
+                    <Button size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-white text-lg px-10 py-7 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
                       Get Started Free
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>

@@ -64,24 +64,24 @@ export default function Signup() {
   const getServiceInfo = () => {
     switch (selectedService) {
       case 'lead-analysis':
-        return { title: 'Lead Analysis Service', gradient: 'from-blue-500 to-purple-600' };
+        return { title: 'Lead Analysis Service', gradient: 'from-orange-400 to-orange-700' };
       case 'appointment':
-        return { title: 'Appointment Service', gradient: 'from-green-500 to-teal-600' };
+        return { title: 'Appointment Service', gradient: 'from-orange-500 to-orange-600' };
       default:
-        return { title: 'DigitalBot Service', gradient: 'from-indigo-500 to-purple-600' };
+        return { title: 'DigitalBot Service', gradient: 'from-orange-500 to-orange-700' };
     }
   };
 
   const { title, gradient } = getServiceInfo();
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+    <div className="flex justify-center items-center min-h-screen bg-gray-900">
       <motion.form
         onSubmit={handleSubmit}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="bg-white p-8 rounded-lg shadow-lg w-96"
+        className="bg-black p-8 rounded-lg shadow-lg w-96"
       >
         <h2 className={`text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r ${gradient}`}>
           Sign Up for {title}
@@ -133,7 +133,7 @@ export default function Signup() {
           type="submit"
           whileTap={{ scale: 0.97 }}
           disabled={loading}
-          className="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700 transition disabled:opacity-70"
+          className="bg-blue-600 text-white w-full py-2 rounded hover:bg-orange-700 transition disabled:opacity-70"
         >
           {loading ? 'Registering...' : 'Register'}
         </motion.button>
@@ -141,3 +141,7 @@ export default function Signup() {
     </div>
   );
 }
+
+
+
+
