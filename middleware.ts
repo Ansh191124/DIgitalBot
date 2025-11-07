@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 // Patterns from old WordPress malware attacks
 const SPAM_URL_PATTERNS = [
@@ -21,6 +21,17 @@ const SPAM_URL_PATTERNS = [
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+
+  // Protect dashboard routes - require authentication
+  if (pathname.startsWith('/dashboard')) {
+    const token = request.cookies.get('token')?.value || 
+                  request.headers.get('authorization')?.replace('Bearer ', '');
+    
+    if (!token) {
+      // Redirect to login if no token found
+      return NextResponse.redirect(new URL('/login', request.url));
+    }
+  }
 
   // Check if URL matches any spam pattern
   const isSpamUrl = SPAM_URL_PATTERNS.some(pattern => pattern.test(pathname))
