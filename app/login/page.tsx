@@ -1,5 +1,4 @@
 'use client';
-
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
@@ -34,6 +33,17 @@ export default function LoginPage(): JSX.Element {
     setError('');
     setLoading(true);
 
+    // Clear any old cached data first
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Clear all cookies
+    document.cookie.split(";").forEach((c) => {
+      document.cookie = c
+        .replace(/^ +/, "")
+        .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+
     try {
       const response = await fetch('https://digital-api-tef8.onrender.com/api/auth/login', {
         method: 'POST',
@@ -47,7 +57,12 @@ export default function LoginPage(): JSX.Element {
       const data: { token?: string; user?: User; error?: string } = await response.json();
 
       if (response.ok && data.token) {
+        // Store token in localStorage
         localStorage.setItem('token', data.token);
+        
+        // Store token in cookie for middleware access (expires in 24 hours)
+        document.cookie = `token=${data.token}; path=/; max-age=86400; SameSite=Strict`;
+        
         // Store user object as a JSON string
         if (data.user) {
           localStorage.setItem('user', JSON.stringify(data.user));

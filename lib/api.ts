@@ -10,9 +10,30 @@ const api = axios.create({
   },
 });
 
-// Request interceptor for debugging
+// Request interceptor to add auth token
 api.interceptors.request.use(
   (config) => {
+    // Add auth token from localStorage
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
+    
+    // Add cache busting for GET requests
+    if (config.method === 'get') {
+      config.params = {
+        ...config.params,
+        _t: Date.now(), // Add timestamp to prevent caching
+      };
+    }
+    
+    // Disable caching
+    config.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate';
+    config.headers['Pragma'] = 'no-cache';
+    config.headers['Expires'] = '0';
+    
     console.log(`Making ${config.method?.toUpperCase()} request to ${config.url}`);
     return config;
   },
@@ -21,13 +42,24 @@ api.interceptors.request.use(
   }
 );
 
-// Response interceptor for error handling
+// Response interceptor for error handling and auth
 api.interceptors.response.use(
   (response) => {
     return response;
   },
   (error) => {
     console.error('API Error:', error.response?.data || error.message);
+    
+    // Handle authentication errors
+    if (error.response?.status === 401 || error.response?.status === 403) {
+      // Clear invalid token
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('token');
+        // Redirect to login page
+        window.location.href = '/login';
+      }
+    }
+    
     return Promise.reject(error);
   }
 );
