@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { Sparkles, ArrowRight, Zap, TrendingUp, Award, CheckCircle2, Phone, Users } from "lucide-react"
 
@@ -22,62 +21,101 @@ export function CTA() {
   ]
 
   return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-orange-50 to-pink-50">
+    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-black">
       {/* Background Decorations */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-200/50 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/40 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.05]" style={{
+        backgroundImage: `linear-gradient(to right, rgba(6, 182, 212, 0.3) 1px, transparent 1px),
+                         linear-gradient(to bottom, rgba(6, 182, 212, 0.3) 1px, transparent 1px)`,
+        backgroundSize: '50px 50px'
+      }} />
       
-      {/* Animated Orbs */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-orange-300/30 to-pink-400/30 rounded-full blur-3xl animate-float-slow" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-tl from-purple-300/25 to-blue-400/25 rounded-full blur-3xl animate-float-reverse" />
+      {/* Animated Orbs - Trading Theme */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-cyan-500/30 to-teal-400/30 rounded-full blur-3xl animate-float-slow" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-tl from-teal-400/25 to-cyan-500/25 rounded-full blur-3xl animate-float-reverse" />
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-15px) translateX(5px); }
+            50% { transform: translateY(-20px) translateX(-5px); }
+            75% { transform: translateY(-15px) translateX(5px); }
+          }
+          @keyframes float-reverse {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(15px) translateX(-5px); }
+            50% { transform: translateY(20px) translateX(5px); }
+            75% { transform: translateY(15px) translateX(-5px); }
+          }
+          .animate-float-slow {
+            animation: float-slow 6s ease-in-out infinite;
+          }
+          .animate-float-reverse {
+            animation: float-reverse 5s ease-in-out infinite;
+          }
+        `
+      }} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Main CTA Card */}
         <div className="max-w-6xl mx-auto">
-          <div className="bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 rounded-3xl p-1 shadow-2xl shadow-purple-500/30 relative overflow-hidden group">
+          <div className="bg-gradient-to-br from-cyan-500 via-teal-500 to-cyan-600 rounded-3xl p-1 shadow-2xl shadow-cyan-500/40 relative overflow-hidden group">
             {/* Animated shimmer effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             
-            <div className="bg-white rounded-[22px] p-12 md:p-16 relative">
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-[22px] p-12 md:p-16 relative">
               {/* Content */}
               <div className="text-center relative z-10">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-100 to-pink-100 border-2 border-orange-300 rounded-full mb-6">
-                  <Sparkles className="w-4 h-4 text-orange-600 animate-pulse" />
-                  <span className="text-sm font-bold text-orange-700">Limited Time Offer</span>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-900/60 to-teal-900/60 border-2 border-cyan-500/50 rounded-full mb-6 backdrop-blur-sm">
+                  <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
+                  <span className="text-sm font-bold text-cyan-400">Limited Time Offer</span>
                 </div>
 
                 {/* Heading */}
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
-                  <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-clip-text text-transparent">
                     Ready to Transform Your
                   </span>
                   <br />
-                  <span className="bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent">
                     Customer Experience?
                   </span>
                 </h2>
 
                 {/* Subheading */}
-                <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
                   Join thousands of businesses automating customer interactions with AI.
-                  <span className="block mt-2 bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent font-semibold">Start free, scale fast, succeed faster.</span>
+                  <span className="block mt-2 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent font-semibold">Start free, scale fast, succeed faster.</span>
                 </p>
 
                 {/* Features Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-4xl mx-auto">
                   {features.map((feature, idx) => {
                     const colors = [
-                      'border-orange-300 hover:border-orange-500 text-orange-600',
-                      'border-blue-300 hover:border-blue-500 text-blue-600',
-                      'border-purple-300 hover:border-purple-500 text-purple-600',
-                      'border-pink-300 hover:border-pink-500 text-pink-600'
+                      { border: 'border-cyan-500/50', hover: 'hover:border-cyan-500', bg: 'from-cyan-500/20 to-teal-500/20', iconBg: 'from-cyan-400 to-teal-500', glow: 'from-cyan-500/20 to-teal-500/20' },
+                      { border: 'border-teal-500/50', hover: 'hover:border-teal-500', bg: 'from-teal-500/20 to-emerald-500/20', iconBg: 'from-teal-400 to-emerald-500', glow: 'from-teal-500/20 to-emerald-500/20' },
+                      { border: 'border-emerald-500/50', hover: 'hover:border-emerald-500', bg: 'from-emerald-500/20 to-cyan-500/20', iconBg: 'from-emerald-400 to-cyan-500', glow: 'from-emerald-500/20 to-cyan-500/20' },
+                      { border: 'border-cyan-500/50', hover: 'hover:border-cyan-400', bg: 'from-cyan-500/20 to-blue-500/20', iconBg: 'from-cyan-400 to-blue-500', glow: 'from-cyan-500/20 to-blue-500/20' }
                     ]
+                    const color = colors[idx]
                     return (
-                      <div key={idx} className={`flex items-center gap-2 justify-center p-3 bg-white backdrop-blur-sm rounded-xl border-2 ${colors[idx]} transition-all duration-300 group/feature hover:scale-105 shadow-sm hover:shadow-lg`}>
-                        <feature.icon className="w-5 h-5 group-hover/feature:scale-110 transition-transform" />
-                        <span className="text-sm font-semibold text-gray-800">{feature.text}</span>
+                      <div key={idx} className={`flex flex-col items-center gap-2 justify-center p-4 bg-gray-800/50 backdrop-blur-sm rounded-xl border-2 ${color.border} ${color.hover} transition-all duration-300 group/feature hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-cyan-500/30 relative`}>
+                        {/* Glow effect */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${color.glow} rounded-xl blur-lg opacity-0 group-hover/feature:opacity-100 transition-opacity duration-300`}></div>
+                        
+                        {/* Icon container */}
+                        <div className="relative">
+                          <div className={`p-2 bg-gradient-to-br ${color.iconBg} rounded-lg shadow-md`}>
+                            {/* Glossy overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-white/30 via-white/10 to-transparent rounded-lg pointer-events-none"></div>
+                            <feature.icon className="w-5 h-5 text-white relative z-10 drop-shadow-lg group-hover/feature:scale-110 transition-transform" />
+                          </div>
+                        </div>
+                        
+                        <span className="text-xs font-semibold text-gray-200 relative z-10">{feature.text}</span>
                       </div>
                     )
                   })}
@@ -85,43 +123,40 @@ export function CTA() {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                  <Button
-                    size="lg"
-                    className="group/btn px-10 py-7 bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 hover:from-orange-700 hover:to-purple-700 text-white rounded-2xl font-bold text-lg shadow-2xl shadow-purple-500/50 hover:shadow-purple-600/60 transition-all duration-300 hover:scale-105 flex items-center gap-3"
+                  <button
+                    className="group/btn px-10 py-7 bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white rounded-2xl font-bold text-lg shadow-2xl shadow-cyan-500/50 hover:shadow-cyan-600/70 transition-all duration-300 hover:scale-105 flex items-center gap-3"
                     onClick={() => router.push("/signup")}
                   >
                     <Phone className="w-6 h-6" />
                     Start Free Trial
                     <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
+                  </button>
 
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="px-10 py-7 bg-white border-2 border-purple-300 hover:bg-purple-50 hover:border-purple-500 text-gray-900 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center gap-3 hover:scale-105 shadow-lg"
+                  <button
+                    className="px-10 py-7 bg-gray-800/50 border-2 border-cyan-500/50 hover:bg-gray-700/50 hover:border-cyan-500 text-gray-200 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center gap-3 hover:scale-105 shadow-lg backdrop-blur-sm"
                     onClick={() => router.push("/contact")}
                   >
-                    <Users className="w-6 h-6" />
+                    <Users className="w-6 h-6 text-cyan-400" />
                     Talk to Sales
-                  </Button>
+                  </button>
                 </div>
 
                 {/* Trust Indicators */}
-                <div className="pt-8 border-t-2 border-gray-200">
+                <div className="pt-8 border-t-2 border-cyan-500/20">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
                     {stats.map((stat, idx) => {
                       const gradients = [
-                        'from-orange-600 to-pink-600',
-                        'from-blue-600 to-cyan-600',
-                        'from-purple-600 to-pink-600',
-                        'from-teal-600 to-green-600'
+                        'from-cyan-400 to-teal-400',
+                        'from-teal-400 to-emerald-400',
+                        'from-emerald-400 to-cyan-400',
+                        'from-cyan-400 to-blue-400'
                       ]
                       return (
                         <div key={idx} className="text-center group">
                           <div className={`text-3xl md:text-4xl font-extrabold bg-gradient-to-r ${gradients[idx]} bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform`}>
                             {stat.number}
                           </div>
-                          <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                          <div className="text-sm text-gray-400 font-medium">{stat.label}</div>
                         </div>
                       )
                     })}
@@ -135,26 +170,26 @@ export function CTA() {
               </div>
 
               {/* Decorative Elements */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-300/30 to-transparent rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-purple-300/30 to-transparent rounded-full blur-3xl" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-teal-500/20 to-transparent rounded-full blur-3xl" />
             </div>
           </div>
 
           {/* Additional Trust Section */}
           <div className="mt-12 text-center">
             <div className="inline-flex items-center gap-6 flex-wrap justify-center">
-              <div className="flex items-center gap-2 text-gray-700">
-                <Award className="w-5 h-5 text-orange-600" />
+              <div className="flex items-center gap-2 text-gray-300">
+                <Award className="w-5 h-5 text-cyan-400" />
                 <span className="text-sm font-semibold">SOC 2 Certified</span>
               </div>
-              <div className="w-px h-6 bg-gray-400" />
-              <div className="flex items-center gap-2 text-gray-700">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+              <div className="w-px h-6 bg-cyan-500/30" />
+              <div className="flex items-center gap-2 text-gray-300">
+                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                 <span className="text-sm font-semibold">GDPR Compliant</span>
               </div>
-              <div className="w-px h-6 bg-gray-400" />
-              <div className="flex items-center gap-2 text-gray-700">
-                <TrendingUp className="w-5 h-5 text-blue-600" />
+              <div className="w-px h-6 bg-cyan-500/30" />
+              <div className="flex items-center gap-2 text-gray-300">
+                <TrendingUp className="w-5 h-5 text-teal-400" />
                 <span className="text-sm font-semibold">Trusted by Fortune 500</span>
               </div>
             </div>

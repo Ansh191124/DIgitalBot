@@ -2,12 +2,12 @@
 
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { ArrowRight, Check, Rocket, Sparkles, TrendingUp, Calendar } from "lucide-react"
+import { ArrowRight, Check, Rocket, Sparkles, TrendingUp } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
@@ -105,56 +105,56 @@ export default function Pricing() {
       <Header />
 
       {/* Hero Section - Enhanced Creative Design */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-gray-800 via-gray-900 to-black">
         {/* Decorative Grid Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10 z-0">
           <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(249, 115, 22, 0.3) 1px, transparent 1px),
-                             linear-gradient(to bottom, rgba(249, 115, 22, 0.3) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, rgba(6, 182, 212, 0.3) 1px, transparent 1px),
+                             linear-gradient(to bottom, rgba(6, 182, 212, 0.3) 1px, transparent 1px)`,
             backgroundSize: '60px 60px'
           }}></div>
         </div>
 
         {/* Floating Gradient Orbs */}
-        <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-orange-500/30 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-orange-600/25 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-[10%] left-[5%] w-[400px] h-[400px] bg-cyan-500 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute bottom-[10%] right-[5%] w-[450px] h-[450px] bg-teal-400 rounded-full opacity-8 blur-3xl"></div>
 
         <div className="container mx-auto relative z-10 text-center">
           <div className="inline-block mb-6">
-            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-400">
-              💰 Simple Pricing
+            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-cyan-400">
+              � Premium Pricing
             </span>
           </div>
           
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="block mb-2 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
+            <span className="block mb-2 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-clip-text text-transparent">
               Choose Your Perfect
             </span>
-            <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-2xl text-2xl sm:text-3xl lg:text-4xl relative overflow-hidden border-2 border-orange-400 animate-gradient">
-              <span className="absolute inset-0 bg-gradient-to-tr from-orange-400/30 via-transparent to-transparent"></span>
+            <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-600 shadow-2xl text-2xl sm:text-3xl lg:text-4xl relative overflow-hidden border-2 border-cyan-400">
+              <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400/30 via-transparent to-transparent"></span>
               <span className="relative z-10">AI Voice Plan</span>
             </span>
           </h1>
           
-          <div className="max-w-4xl mx-auto mb-8 p-6 bg-gradient-to-r from-black via-gray-900 to-black border-2 border-orange-500 rounded-2xl shadow-2xl backdrop-blur-md">
+          <div className="max-w-4xl mx-auto mb-8 p-6 bg-gray-800/70 backdrop-blur-md border-2 border-cyan-500/50 rounded-2xl shadow-2xl">
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed font-medium">
-              <span className="font-bold text-orange-400">Transparent pricing</span>, no hidden fees, and a <span className="font-bold text-orange-500">free trial</span> to get started with AI voice automation. Choose a plan that fits your business needs.
+              <span className="font-bold text-cyan-400">Transparent pricing</span>, no hidden fees, and a <span className="font-bold text-teal-400">free trial</span> to get started with AI voice automation. Choose a plan that fits your business needs.
             </p>
           </div>
 
           {/* Currency Toggle - Enhanced */}
           <div className="flex items-center justify-center space-x-4 mb-8">
-            <span className={`text-base font-bold ${!isINR ? "text-orange-500 scale-110" : "text-gray-500"} transition-all`}>
+            <span className={`text-base font-bold ${!isINR ? "text-cyan-400 scale-110" : "text-gray-500"} transition-all`}>
               USD 💵
             </span>
             <div className="relative">
               <Switch
                 checked={isINR}
                 onCheckedChange={setIsINR}
-                className="bg-gradient-to-r from-orange-400 to-orange-600 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-orange-500 data-[state=checked]:to-orange-700 shadow-lg"
+                className="bg-gradient-to-r from-cyan-400 to-teal-500 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-teal-500 data-[state=checked]:to-cyan-600 shadow-lg"
               />
             </div>
-            <span className={`text-base font-bold ${isINR ? "text-orange-500 scale-110" : "text-gray-500"} transition-all`}>
+            <span className={`text-base font-bold ${isINR ? "text-cyan-400 scale-110" : "text-gray-500"} transition-all`}>
               INR 🇮🇳
             </span>
           </div>
@@ -162,39 +162,39 @@ export default function Pricing() {
       </section>
 
       {/* Pricing Cards - Enhanced Creative Design */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-gray-800 via-gray-900 to-black overflow-hidden">
         {/* Decorative Background Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-radial from-orange-500/30 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-radial from-orange-600/25 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500 rounded-full opacity-8 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-400 rounded-full opacity-10 blur-3xl"></div>
 
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-16">
             <div className="inline-block mb-6">
-              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-400">
+              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-cyan-400">
                 🎯 Choose Your Plan
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent mb-4">
-              Flexible Plans for Every Business
+            <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent mb-4">
+              Enterprise-Grade Solutions
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {plans.map((plan, index) => {
               const colors = [
-                { gradient: 'from-orange-500 via-orange-600 to-orange-700', border: 'border-orange-300', hover: 'hover:border-orange-500', icon: 'from-orange-400 to-orange-600', shadow: 'hover:shadow-orange-200', badge: 'from-orange-500 to-orange-600' },
-                { gradient: 'from-orange-400 via-orange-600 to-orange-600', border: 'border-orange-400', hover: 'hover:border-orange-500', icon: 'from-orange-400 to-orange-600', shadow: 'hover:shadow-orange-200', badge: 'from-orange-400 to-orange-500' },
-                { gradient: 'from-orange-500 via-orange-600 to-orange-500', border: 'border-orange-400', hover: 'hover:border-orange-500', icon: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-200', badge: 'from-orange-400 to-orange-500' },
+                { gradient: 'from-cyan-500 via-teal-500 to-cyan-600', border: 'border-cyan-500/30', hover: 'hover:border-cyan-500', icon: 'from-cyan-400 to-teal-500', shadow: 'hover:shadow-cyan-500/30', badge: 'from-cyan-500 to-teal-500' },
+                { gradient: 'from-teal-500 via-cyan-500 to-teal-600', border: 'border-teal-500/30', hover: 'hover:border-teal-500', icon: 'from-teal-400 to-cyan-500', shadow: 'hover:shadow-teal-500/30', badge: 'from-teal-500 to-cyan-500' },
+                { gradient: 'from-blue-500 via-cyan-500 to-teal-500', border: 'border-blue-500/30', hover: 'hover:border-blue-500', icon: 'from-blue-400 to-cyan-500', shadow: 'hover:shadow-blue-500/30', badge: 'from-blue-500 to-cyan-500' },
               ];
               const color = colors[index];
               
               return (
                 <Card
                   key={index}
-                  className={`relative border-4 ${plan.popular ? 'border-orange-400 hover:border-orange-500' : `${color.border} ${color.hover}`} bg-black shadow-2xl ${plan.popular ? 'hover:shadow-orange-300' : color.shadow} hover:shadow-2xl hover:scale-105 transition-all duration-500 rounded-3xl overflow-hidden group`}
+                  className={`relative border-2 ${plan.popular ? 'border-cyan-500 hover:border-cyan-400' : `${color.border} ${color.hover}`} bg-gray-800/70 backdrop-blur-md shadow-2xl ${plan.popular ? 'hover:shadow-cyan-500/50' : color.shadow} hover:shadow-2xl hover:scale-105 transition-all duration-500 rounded-3xl overflow-hidden group`}
                 >
                   {/* Decorative Glow */}
-                  <div className="absolute -top-20 -right-20 w-60 h-60 bg-gradient-to-br from-orange-300/20 via-orange-400/20 to-orange-300/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+                  <div className="absolute -top-20 -right-20 w-60 h-60 bg-gradient-to-br from-cyan-400/20 via-teal-400/20 to-cyan-400/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
                   
                   {plan.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
@@ -205,19 +205,19 @@ export default function Pricing() {
                   )}
                   
                   <CardHeader className="text-center pb-8 pt-10 relative z-10">
-                    <div className={`w-20 h-20 bg-gradient-to-br ${color.icon} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all border-2 border-white`}>
+                    <div className={`w-20 h-20 bg-gradient-to-br ${color.icon} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all border border-cyan-400/30`}>
                       <plan.icon className="h-10 w-10 text-white" />
                     </div>
                     <CardTitle className="text-3xl text-white font-extrabold mb-3">{plan.name}</CardTitle>
-                    <CardDescription className="text-gray-400 text-base font-medium px-4">{plan.description}</CardDescription>
+                    <CardDescription className="text-gray-300 text-base font-medium px-4">{plan.description}</CardDescription>
                     <div className="mt-8">
                       {plan.usdPrice ? (
                         <>
                           <div className={`text-5xl sm:text-6xl font-extrabold bg-gradient-to-r ${color.gradient} bg-clip-text text-transparent mb-2`} suppressHydrationWarning>
                             {isINR ? `₹${plan.inrPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}` : `$${plan.usdPrice}`}
                           </div>
-                          <div className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 via-orange-200 to-orange-200 border-2 border-orange-200 shadow-lg">
-                            <span className="text-gray-300 font-bold text-sm">
+                          <div className="inline-block px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-cyan-500/50 shadow-lg">
+                            <span className="text-cyan-400 font-bold text-sm">
                               {plan.minutes} AI voice minutes
                             </span>
                           </div>
@@ -236,7 +236,7 @@ export default function Pricing() {
                           <div className={`h-6 w-6 rounded-full bg-gradient-to-r ${color.gradient} flex items-center justify-center mr-3 shrink-0 mt-0.5 shadow-lg`}>
                             <Check className="h-4 w-4 text-white font-bold" />
                           </div>
-                          <span className="text-gray-300 font-medium leading-relaxed">
+                          <span className="text-gray-200 font-medium leading-relaxed">
                             {feature.name}
                           </span>
                         </li>
@@ -245,8 +245,8 @@ export default function Pricing() {
                     <Button
                       className={`w-full rounded-xl font-bold transition-all duration-300 h-14 text-lg shadow-2xl ${
                         plan.popular
-                          ? `bg-gradient-to-r ${color.gradient} text-white hover:scale-105 border-2 border-white`
-                          : `bg-black text-gray-300 border-2 ${color.border} ${color.hover} hover:scale-105`
+                          ? `bg-gradient-to-r ${color.gradient} text-white hover:scale-105 border-2 border-cyan-400`
+                          : `bg-gray-800/50 text-gray-200 border-2 ${color.border} ${color.hover} hover:scale-105 backdrop-blur-sm`
                       }`}
                       onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
                     >
@@ -262,26 +262,26 @@ export default function Pricing() {
       </section>
 
       {/* FAQ Section - Enhanced Creative Design */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-white via-gray-900 to-orange-100 overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-gray-800 via-gray-900 to-black overflow-hidden">
         {/* Decorative Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
           <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
-                             linear-gradient(to bottom, rgba(168, 85, 247, 0.2) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, rgba(6, 182, 212, 0.2) 1px, transparent 1px),
+                             linear-gradient(to bottom, rgba(20, 184, 166, 0.2) 1px, transparent 1px)`,
             backgroundSize: '60px 60px'
           }}></div>
         </div>
-        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-20 w-48 h-48 bg-cyan-500 rounded-full opacity-8 blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-48 h-48 bg-teal-400 rounded-full opacity-10 blur-3xl"></div>
 
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-16">
             <div className="inline-block mb-6">
-              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-cyan-400">
                 ❓ Frequently Asked Questions
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-orange-600 via-orange-600 to-orange-700 bg-clip-text text-transparent mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent mb-4">
               Everything You Need to Know
             </h2>
           </div>
@@ -290,10 +290,10 @@ export default function Pricing() {
             <Accordion type="single" collapsible className="space-y-6">
               {faqs.map((faq, index) => {
                 const colors = [
-                  { border: 'border-orange-300', hover: 'hover:border-orange-500', bg: 'from-orange-50 to-orange-100', icon: 'from-orange-500 to-orange-600', shadow: 'hover:shadow-orange-200' },
-                  { border: 'border-orange-400', hover: 'hover:border-orange-500', bg: 'from-orange-50 to-orange-100', icon: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-200' },
-                  { border: 'border-orange-400', hover: 'hover:border-orange-500', bg: 'from-orange-50 to-orange-100', icon: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-200' },
-                  { border: 'border-orange-400', hover: 'hover:border-orange-500', bg: 'from-orange-50 to-orange-50', icon: 'from-orange-500 to-orange-500', shadow: 'hover:shadow-pink-200' },
+                  { border: 'border-cyan-500/30', hover: 'hover:border-cyan-500', bg: 'from-gray-800/70 to-gray-800/50', icon: 'from-cyan-500 to-teal-500', shadow: 'hover:shadow-cyan-500/30' },
+                  { border: 'border-teal-500/30', hover: 'hover:border-teal-500', bg: 'from-gray-800/70 to-gray-800/50', icon: 'from-teal-500 to-cyan-500', shadow: 'hover:shadow-teal-500/30' },
+                  { border: 'border-blue-500/30', hover: 'hover:border-blue-500', bg: 'from-gray-800/70 to-gray-800/50', icon: 'from-blue-500 to-cyan-500', shadow: 'hover:shadow-blue-500/30' },
+                  { border: 'border-indigo-500/30', hover: 'hover:border-indigo-500', bg: 'from-gray-800/70 to-gray-800/50', icon: 'from-indigo-500 to-blue-500', shadow: 'hover:shadow-indigo-500/30' },
                 ];
                 const color = colors[index % colors.length];
 
@@ -301,10 +301,10 @@ export default function Pricing() {
                   <AccordionItem
                     key={index}
                     value={`item-${index}`}
-                    className={`border-2 ${color.border} ${color.hover} bg-gradient-to-br ${color.bg} rounded-2xl px-6 py-2 shadow-xl ${color.shadow} hover:shadow-2xl transition-all duration-300 hover:scale-102 group`}
+                    className={`border-2 ${color.border} ${color.hover} bg-gradient-to-br ${color.bg} backdrop-blur-md rounded-2xl px-6 py-2 shadow-xl ${color.shadow} hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group relative overflow-hidden`}
                   >
                     {/* Decorative Inner Glow */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                     
                     <AccordionTrigger className="text-left font-bold text-white text-lg hover:no-underline py-6 group relative">
                       <div className="flex items-center gap-4 pr-4 w-full">
@@ -326,51 +326,51 @@ export default function Pricing() {
       </section>
 
       {/* CTA Section - Enhanced Creative Design */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-white via-gray-900 to-orange-100 overflow-hidden">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-gray-800 via-gray-900 to-black overflow-hidden">
         {/* Decorative Background Pattern */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
           <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
-                             linear-gradient(to bottom, rgba(168, 85, 247, 0.2) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, rgba(6, 182, 212, 0.3) 1px, transparent 1px),
+                             linear-gradient(to bottom, rgba(20, 184, 166, 0.3) 1px, transparent 1px)`,
             backgroundSize: '60px 60px'
           }}></div>
         </div>
         
         {/* Floating Orbs */}
-        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-48 h-48 bg-cyan-500 rounded-full opacity-8 blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-48 h-48 bg-teal-400 rounded-full opacity-10 blur-3xl"></div>
 
         <div className="container mx-auto relative z-10">
-          <div className="bg-black/90 backdrop-blur-md rounded-3xl p-12 text-center shadow-2xl border-2 border-orange-400 relative overflow-hidden">
+          <div className="bg-gray-800/70 backdrop-blur-md rounded-3xl p-12 text-center shadow-2xl border-2 border-cyan-500/50 relative overflow-hidden">
             {/* Inner Decorative Glows */}
-            <div className="absolute -top-10 -left-10 w-60 h-60 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 opacity-20 rounded-full filter blur-3xl"></div>
-            <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-gradient-to-tr from-orange-400 via-orange-600 to-orange-600 opacity-20 rounded-full filter blur-3xl"></div>
+            <div className="absolute -top-10 -left-10 w-60 h-60 bg-gradient-to-br from-cyan-400 via-teal-500 to-cyan-600 opacity-20 rounded-full filter blur-3xl"></div>
+            <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-gradient-to-tr from-teal-400 via-cyan-600 to-teal-600 opacity-20 rounded-full filter blur-3xl"></div>
 
             <div className="relative z-10">
               <div className="inline-block mb-8">
-                <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+                <span className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-cyan-400">
                   🚀 Start Your Journey
                 </span>
               </div>
 
               <h2 className="text-4xl sm:text-5xl font-extrabold mb-6">
-                <span className="bg-gradient-to-r from-orange-600 via-orange-600 to-orange-700 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-clip-text text-transparent">
                   Ready to Transform Your
                 </span>
                 <br />
-                <span className="inline-block mt-4 px-8 py-4 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-2xl shadow-2xl border-4 border-white animate-pulse">
+                <span className="inline-block mt-4 px-8 py-4 bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-600 text-white rounded-2xl shadow-2xl border-2 border-cyan-400 animate-pulse">
                   Customer Experience?
                 </span>
               </h2>
 
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-medium px-6 py-4 rounded-2xl bg-gradient-to-r from-orange-50 to-orange-100 border-2 border-orange-200 shadow-lg">
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-medium px-6 py-4 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-cyan-500/50 shadow-lg">
                 Join thousands of businesses using AI voice assistants to automate calls, boost conversions, and delight customers 24/7.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-10">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-orange-300 text-lg px-10 py-7 rounded-xl font-bold border-2 border-white"
+                  className="bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-600 text-white hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-cyan-500/50 text-lg px-10 py-7 rounded-xl font-bold border-2 border-cyan-400"
                   onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
                 >
                   Get Started Free
@@ -379,7 +379,7 @@ export default function Pricing() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-black text-gray-300 border-4 border-orange-400 hover:border-orange-500 hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-orange-200 text-lg px-10 py-7 rounded-xl font-bold"
+                  className="bg-gray-800/50 text-gray-200 border-2 border-cyan-500/50 hover:border-cyan-500 hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-cyan-500/30 text-lg px-10 py-7 rounded-xl font-bold backdrop-blur-sm"
                   onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
                 >
                   Contact Sales
@@ -388,16 +388,16 @@ export default function Pricing() {
 
               {/* Trust Badges */}
               <div className="flex flex-wrap justify-center gap-6 items-center">
-                <div className="flex items-center gap-3 px-6 py-3 bg-black rounded-xl shadow-lg border-2 border-orange-200 hover:scale-105 transition-all">
-                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 animate-pulse"></div>
+                <div className="flex items-center gap-3 px-6 py-3 bg-gray-800/50 backdrop-blur-sm rounded-xl shadow-lg border border-cyan-500/50 hover:scale-105 transition-all">
+                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 animate-pulse"></div>
                   <span className="font-bold text-gray-300">🎯 No Credit Card</span>
                 </div>
-                <div className="flex items-center gap-3 px-6 py-3 bg-black rounded-xl shadow-lg border-2 border-orange-400 hover:scale-105 transition-all">
-                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 animate-pulse"></div>
+                <div className="flex items-center gap-3 px-6 py-3 bg-gray-800/50 backdrop-blur-sm rounded-xl shadow-lg border border-teal-500/50 hover:scale-105 transition-all">
+                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-teal-400 to-cyan-500 animate-pulse"></div>
                   <span className="font-bold text-gray-300">⚡ Setup in 5 Minutes</span>
                 </div>
-                <div className="flex items-center gap-3 px-6 py-3 bg-black rounded-xl shadow-lg border-2 border-orange-400 hover:scale-105 transition-all">
-                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 animate-pulse"></div>
+                <div className="flex items-center gap-3 px-6 py-3 bg-gray-800/50 backdrop-blur-sm rounded-xl shadow-lg border border-blue-500/50 hover:scale-105 transition-all">
+                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-cyan-500 animate-pulse"></div>
                   <span className="font-bold text-gray-300">💎 Cancel Anytime</span>
                 </div>
               </div>
