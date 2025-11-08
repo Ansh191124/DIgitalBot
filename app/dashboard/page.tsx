@@ -65,7 +65,7 @@ export default function AnalyticsOverview() {
       const token = localStorage.getItem('token');
       
       // Fetch calls from your backend API
-      const callsRes = await fetch(`http://localhost:4000/api/calls?limit=1000`, {
+      const callsRes = await fetch(`https://digital-api-tef8.onrender.com/api/calls?limit=1000`, {
         headers: { 
           'Authorization': token ? `Bearer ${token}` : '',
           'Content-Type': 'application/json' 
