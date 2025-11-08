@@ -103,7 +103,7 @@ export default function AIVirtualReceptionist() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50 to-purple-50 py-20 md:py-32">
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-gray-900 to-orange-100 py-20 md:py-32">
           {/* Animated Grid Background */}
           <div className="absolute inset-0 opacity-20">
             <div
@@ -119,42 +119,42 @@ export default function AIVirtualReceptionist() {
           </div>
 
           {/* Floating Gradient Orbs */}
-          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-radial from-blue-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-pink-200/20 to-transparent rounded-full blur-3xl animate-pulse delay-1000" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-orange-200/20 to-transparent rounded-full blur-3xl animate-pulse delay-1000" />
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-5xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white rounded-full px-5 py-2 mb-8 border-2 border-orange-300 shadow-lg">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full px-5 py-2 mb-8 border-2 border-orange-300 shadow-lg">
                 <Phone className="w-4 h-4" />
                 <span className="text-sm font-semibold">AI-Powered Reception</span>
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                   AI Virtual Receptionist
                 </span>
                 <br />
                 <span className="relative inline-block mt-2">
-                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-transparent bg-clip-text">
+                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-transparent bg-clip-text">
                     That Never Sleeps or Takes Breaks
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-pink-200/30 to-purple-200/30 blur-2xl -z-10 scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-orange-300/30 to-orange-400/30 blur-2xl -z-10 scale-110" />
                 </span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-gray-700 mb-10 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed">
                 Your <span className="font-bold text-orange-600">AI-powered virtual receptionist</span> answers every call, books appointments, and routes calls with human-like conversations—24/7, in over 30 languages.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-white px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                   <Link href="/signup">
                     Hire Your AI Receptionist
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-10 py-6 text-lg">
+                <Button asChild size="lg" variant="outline" className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 px-10 py-6 text-lg">
                   <Link href="/contact">
                     <Phone className="mr-2 w-5 h-5" />
                     See Demo
@@ -163,17 +163,17 @@ export default function AIVirtualReceptionist() {
               </div>
 
               <div className="flex flex-wrap gap-6 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-green-200">
-                  <Check className="w-5 h-5 text-green-600" />
-                  <span className="text-sm font-medium text-gray-700">24/7 Availability</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-green-200">
+                  <Check className="w-5 h-5 text-orange-600" />
+                  <span className="text-sm font-medium text-gray-300">24/7 Availability</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-blue-200">
-                  <Clock className="w-5 h-5 text-blue-600" />
-                  <span className="text-sm font-medium text-gray-700">Instant Call Answering</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                  <Clock className="w-5 h-5 text-orange-600" />
+                  <span className="text-sm font-medium text-gray-300">Instant Call Answering</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-purple-200">
-                  <Zap className="w-5 h-5 text-purple-600" />
-                  <span className="text-sm font-medium text-gray-700">70% Cost Reduction</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                  <Zap className="w-5 h-5 text-orange-600" />
+                  <span className="text-sm font-medium text-gray-300">70% Cost Reduction</span>
                 </div>
               </div>
             </div>
@@ -181,13 +181,13 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-black">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 Everything Your Front Desk Needs
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 Comprehensive reception capabilities powered by advanced AI technology
               </p>
             </div>
@@ -196,18 +196,18 @@ export default function AIVirtualReceptionist() {
               {features.map((feature, index) => (
                 <div 
                   key={index}
-                  className="group relative bg-gradient-to-br from-white to-gray-50 border-2 border-blue-200 hover:border-purple-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group relative bg-gradient-to-br from-white to-gray-50 border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-purple-400/10 to-pink-400/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 via-orange-500/10 to-orange-600/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500" />
                   
-                  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
                     <feature.icon className="w-7 h-7 text-white" />
                   </div>
 
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                  <h3 className="text-xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-400 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -217,13 +217,13 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* Benefits Section */}
-        <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+        <section className="py-20 bg-gradient-to-b from-white to-orange-100">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 Transform Your Reception Experience
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 Measurable results that impact your bottom line
               </p>
             </div>
@@ -232,12 +232,12 @@ export default function AIVirtualReceptionist() {
               {benefits.map((benefit, index) => (
                 <div 
                   key={index}
-                  className="group bg-white border-2 border-purple-200 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group bg-black border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
-                  <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-pink-600 group-hover:bg-clip-text transition-all duration-300">
+                  <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-400 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
@@ -247,13 +247,13 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* Use Cases Section */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-black">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 Industry-Specific Solutions
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 Tailored virtual receptionist capabilities for your industry
               </p>
             </div>
@@ -262,12 +262,12 @@ export default function AIVirtualReceptionist() {
               {useCases.map((useCase, index) => (
                 <div 
                   key={index}
-                  className="group bg-gradient-to-br from-white to-gray-50 border-2 border-blue-200 hover:border-purple-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500"
+                  className="group bg-gradient-to-br from-white to-gray-50 border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500"
                 >
-                  <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                  <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                     {useCase.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">
+                  <p className="text-gray-400 leading-relaxed mb-4">
                     {useCase.description}
                   </p>
                   <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 rounded-full text-sm font-semibold border-2 border-green-200">
@@ -281,26 +281,26 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* Sample Conversation Section */}
-        <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+        <section className="py-20 bg-gradient-to-b from-white to-orange-100">
           <div className="max-w-4xl mx-auto px-4">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white rounded-full px-5 py-2.5 mb-6 border-2 border-orange-300 shadow-lg">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full px-5 py-2.5 mb-6 border-2 border-orange-300 shadow-lg">
                 <Mic className="w-4 h-4 animate-pulse" />
                 <span className="text-sm font-semibold">AI Voice Demonstration</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent mb-4">
                 Experience Natural AI Conversations
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
                 Listen to how our AI receptionist handles real customer interactions with human-like responses
               </p>
             </div>
 
             {/* Audio Player Card */}
-            <div className="bg-white rounded-3xl p-8 border-2 border-purple-200 hover:border-purple-400 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+            <div className="bg-black rounded-3xl p-8 border-2 border-orange-400 hover:border-orange-400 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
               <div className="relative z-10">
                 {/* Waveform visualization area */}
-                <div className="flex items-center justify-center mb-6 h-24 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl border-2 border-blue-200 relative overflow-hidden">
+                <div className="flex items-center justify-center mb-6 h-24 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border-2 border-orange-400 relative overflow-hidden">
                   {isPlaying ? (
                     <div className="flex items-end justify-center gap-1.5 h-16">
                       {[...Array(40)].map((_, i) => {
@@ -308,7 +308,7 @@ export default function AIVirtualReceptionist() {
                         return (
                           <div
                             key={i}
-                            className="w-1.5 bg-gradient-to-t from-orange-500 via-pink-500 to-purple-500 rounded-full transition-all duration-300"
+                            className="w-1.5 bg-gradient-to-t from-orange-500 via-orange-600 to-orange-700 rounded-full transition-all duration-300"
                             style={{
                               height: `${height}px`,
                               animation: `sound-wave ${0.5 + (i % 3) * 0.2}s ease-in-out infinite`,
@@ -340,7 +340,7 @@ export default function AIVirtualReceptionist() {
                 <div className="flex items-center justify-center">
                   <button
                     onClick={handlePlayPause}
-                    className="group relative flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
+                    className="group relative flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
                   >
                     <div className="relative z-10 flex items-center gap-3">
                       {isPlaying ? (
@@ -374,21 +374,21 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* FAQ Section - Dark Theme */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <section className="relative py-24 overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-20 -left-20 w-96 h-96 bg-gradient-radial from-orange-500/20 to-transparent rounded-full blur-3xl animate-float-slow" />
-            <div className="absolute bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-radial from-blue-500/15 to-transparent rounded-full blur-3xl animate-float-reverse" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-cyan-500/10 to-transparent rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-radial from-orange-400/15 to-transparent rounded-full blur-3xl animate-float-reverse" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-orange-500/10 to-transparent rounded-full blur-3xl animate-pulse" />
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
+              <div className="inline-flex items-center gap-2 bg-black/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
                 <Phone className="w-4 h-4 text-orange-400" />
                 <span className="text-sm font-semibold text-white">Common Questions</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 text-transparent bg-clip-text">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-transparent bg-clip-text">
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -401,12 +401,12 @@ export default function AIVirtualReceptionist() {
               <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
                 <div className="flex gap-6">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
                       1
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 via-pink-300 to-purple-300 text-transparent bg-clip-text">
+                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 text-transparent bg-clip-text">
                       How does an AI virtual receptionist work?
                     </h3>
                     <p className="text-gray-300 leading-relaxed">
@@ -417,15 +417,15 @@ export default function AIVirtualReceptionist() {
               </div>
 
               {/* FAQ 2 */}
-              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-blue-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20">
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
                 <div className="flex gap-6">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
                       2
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-blue-300 to-cyan-300 text-transparent bg-clip-text">
+                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-cyan-300 text-transparent bg-clip-text">
                       Can it handle multiple calls simultaneously?
                     </h3>
                     <p className="text-gray-300 leading-relaxed">
@@ -436,15 +436,15 @@ export default function AIVirtualReceptionist() {
               </div>
 
               {/* FAQ 3 */}
-              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-purple-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
                 <div className="flex gap-6">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
                       3
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-purple-300 to-pink-300 text-transparent bg-clip-text">
+                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-pink-300 text-transparent bg-clip-text">
                       What happens if the AI can't answer a question?
                     </h3>
                     <p className="text-gray-300 leading-relaxed">
@@ -455,10 +455,10 @@ export default function AIVirtualReceptionist() {
               </div>
 
               {/* FAQ 4 */}
-              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-teal-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-teal-500/20">
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
                 <div className="flex gap-6">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-green-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
                       4
                     </div>
                   </div>
@@ -474,15 +474,15 @@ export default function AIVirtualReceptionist() {
               </div>
 
               {/* FAQ 5 */}
-              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-pink-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-pink-500/20">
+              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
                 <div className="flex gap-6">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
                       5
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-pink-300 to-purple-300 text-transparent bg-clip-text">
+                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-orange-500 text-transparent bg-clip-text">
                       Is it HIPAA compliant for healthcare practices?
                     </h3>
                     <p className="text-gray-300 leading-relaxed">
@@ -496,7 +496,7 @@ export default function AIVirtualReceptionist() {
               <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
                 <div className="flex gap-6">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
                       6
                     </div>
                   </div>
@@ -515,45 +515,45 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-blue-50 to-purple-50">
+        <section className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-gray-900 to-orange-100">
           {/* Animated Background */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-radial from-blue-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-gradient-radial from-purple-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
+            <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white rounded-full px-6 py-2.5 mb-8 border-2 border-orange-300 shadow-lg">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full px-6 py-2.5 mb-8 border-2 border-orange-300 shadow-lg">
                 <Phone className="w-4 h-4" />
                 <span className="text-sm font-semibold">Never Miss Another Call</span>
               </div>
 
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                   Ready to Hire Your
                 </span>
                 <br />
                 <span className="relative inline-block mt-2">
-                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-transparent bg-clip-text">
+                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-transparent bg-clip-text">
                     AI Receptionist?
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-pink-200/30 to-purple-200/30 blur-2xl -z-10 scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-orange-300/30 to-orange-400/30 blur-2xl -z-10 scale-110" />
                 </span>
               </h2>
 
-              <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
                 Join hundreds of businesses providing 24/7 phone coverage, perfect call handling, and exceptional customer experiences—all while reducing costs by 70%.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 text-white px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-white px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                   <Link href="/signup">
                     Get Started Free
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-10 py-6 text-lg">
+                <Button asChild size="lg" variant="outline" className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 px-10 py-6 text-lg">
                   <Link href="/contact">
                     <Phone className="mr-2 w-5 h-5" />
                     Schedule Demo
@@ -562,17 +562,17 @@ export default function AIVirtualReceptionist() {
               </div>
 
               <div className="flex flex-wrap gap-8 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200">
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-200">
                   <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-gray-700">No Credit Card Required</span>
+                  <span className="text-sm font-medium text-gray-300">No Credit Card Required</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-blue-200">
-                  <Check className="w-5 h-5 text-blue-600" />
-                  <span className="text-sm font-medium text-gray-700">Setup in 3-5 Days</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                  <Check className="w-5 h-5 text-orange-600" />
+                  <span className="text-sm font-medium text-gray-300">Setup in 3-5 Days</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-purple-200">
-                  <Check className="w-5 h-5 text-purple-600" />
-                  <span className="text-sm font-medium text-gray-700">Cancel Anytime</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                  <Check className="w-5 h-5 text-orange-600" />
+                  <span className="text-sm font-medium text-gray-300">Cancel Anytime</span>
                 </div>
               </div>
             </div>
@@ -583,3 +583,7 @@ export default function AIVirtualReceptionist() {
     </div>
   )
 }
+
+
+
+

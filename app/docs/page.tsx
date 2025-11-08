@@ -51,11 +51,11 @@ export default function Docs() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-orange-500 via-sky-500 to-orange-700 bg-clip-text text-transparent drop-shadow-lg">
             Documentation
           </h1>
-          <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 mb-8 max-w-3xl mx-auto">
-            Everything you need to build, deploy, and manage <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">intelligent AI voice assistants</span> with DigitalBot.ai
+          <p className="text-lg sm:text-xl font-semibold bg-black/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 mb-8 max-w-3xl mx-auto">
+            Everything you need to build, deploy, and manage <span className="font-bold bg-linear-to-r from-orange-500 via-sky-500 to-orange-700 bg-clip-text text-transparent">intelligent AI voice assistants</span> with DigitalBot.ai
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Button size="lg" className="bg-accent hover:bg-accent/90">
@@ -163,3 +163,7 @@ export default function Docs() {
     </main>
   )
 }
+
+
+
+

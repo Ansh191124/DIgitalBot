@@ -229,14 +229,14 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased relative bg-white`}>
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased relative bg-white`} suppressHydrationWarning>
         
         {/* Mobile Performance Optimization */}
         <style dangerouslySetInnerHTML={{

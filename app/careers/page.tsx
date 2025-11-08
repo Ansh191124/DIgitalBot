@@ -96,22 +96,22 @@ const benefits = [
 
 export default function Careers() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-sky-100 text-gray-800">
+    <main className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-gray-100">
       <Header />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-sky-100 via-white to-sky-50 opacity-70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black opacity-70"></div>
         <div className="relative z-10 container mx-auto">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-lg">
             Careers at DigitalBot.ai
           </h1>
-          <p className="text-lg sm:text-xl font-semibold bg-white/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 mb-8 max-w-3xl mx-auto">
-            Join our team and help shape the future of <span className="font-bold bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent">AI-powered business automation</span>. We value innovation, collaboration, and growth.
+          <p className="text-lg sm:text-xl font-semibold bg-black/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-orange-500/30 text-gray-300 mb-8 max-w-3xl mx-auto">
+            Join our team and help shape the future of <span className="font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">AI-powered business automation</span>. We value innovation, collaboration, and growth.
           </p>
           <Button
             size="lg"
-            className="bg-linear-to-r from-sky-500 via-blue-400 to-indigo-500 text-white hover:from-sky-600 hover:to-indigo-600 shadow-lg rounded-full transition-all duration-300"
+            className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white hover:from-orange-600 hover:to-orange-800 shadow-lg rounded-full transition-all duration-300"
           >
             View Open Positions
             <ArrowRight className="ml-2 h-5 w-5" />
@@ -120,13 +120,13 @@ export default function Careers() {
       </section>
 
       {/* Culture  Benefits Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-r from-sky-100 via-white to-sky-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-black via-gray-900 to-black">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-lg">
               Why Work With Us?
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               We believe in empowering talent and building products that truly make
               a difference.
             </p>
@@ -136,18 +136,18 @@ export default function Careers() {
             {benefits.map((benefit, index) => (
               <Card
                 key={index}
-                className="text-center border-0 shadow-lg bg-white/90 backdrop-blur-sm hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 rounded-2xl"
+                className="text-center border-2 border-orange-500 shadow-lg bg-black/90 backdrop-blur-sm hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500 transition-all duration-500 rounded-2xl"
               >
                 <CardHeader>
-                  <div className="w-14 h-14 bg-linear-to-br from-sky-100 to-sky-200 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <benefit.icon className="h-7 w-7 text-sky-600" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <benefit.icon className="h-7 w-7 text-white" />
                   </div>
-                  <CardTitle className="text-lg text-sky-700 font-semibold">
+                  <CardTitle className="text-lg text-orange-400 font-semibold">
                     {benefit.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600">
+                  <CardDescription className="text-gray-400">
                     {benefit.description}
                   </CardDescription>
                 </CardContent>
@@ -158,13 +158,13 @@ export default function Careers() {
       </section>
 
       {/* Open Positions */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-linear-to-r from-sky-600 via-sky-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-linear-to-r from-orange-500 via-sky-500 to-orange-700 bg-clip-text text-transparent drop-shadow-lg">
               Open Positions
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               Explore roles that fit your passion and expertise.
             </p>
           </div>
@@ -195,14 +195,14 @@ export default function Careers() {
                         </div>
                       </div>
                     </div>
-                    <Button className="bg-linear-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white rounded-full">
+                    <Button className="bg-linear-to-r from-orange-500 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white rounded-full">
                       Apply Now
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 mb-4">{position.description}</p>
+                  <p className="text-gray-400 mb-4">{position.description}</p>
                   <div>
                     <h4 className="font-semibold text-sky-700 mb-2">
                       Key Requirements:
@@ -230,13 +230,13 @@ export default function Careers() {
             <h2 className="text-3xl font-extrabold text-sky-700 mb-4">
               Don't See the Right Role?
             </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
               We’re always looking for passionate, curious minds. Share your
               resume, and we’ll reach out when the right opportunity comes along.
             </p>
             <Button
               size="lg"
-              className="bg-linear-to-r from-sky-500 via-blue-400 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 text-white font-semibold rounded-full shadow-lg"
+              className="bg-linear-to-r from-orange-500 via-orange-500 to-orange-600 hover:from-orange-500 hover:to-orange-600 text-white font-semibold rounded-full shadow-lg"
             >
               Send Resume
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -249,3 +249,6 @@ export default function Careers() {
     </main>
   );
 }
+
+
+

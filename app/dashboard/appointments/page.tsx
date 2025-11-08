@@ -65,11 +65,11 @@ function getAuthHeaders() {
 }
 
 const statusStyles: Record<Appointment['status'], string> = {
-  scheduled: "bg-blue-100 text-blue-700 border-blue-300",
+  scheduled: "bg-blue-100 text-blue-700 border-orange-400",
   confirmed: "bg-green-100 text-green-700 border-green-300",
-  completed: "bg-purple-100 text-purple-700 border-purple-300",
+  completed: "bg-purple-100 text-purple-700 border-orange-400",
   cancelled: "bg-red-100 text-red-700 border-red-300",
-  "no-show": "bg-gray-100 text-gray-700 border-gray-300",
+  "no-show": "bg-gray-800 text-gray-300 border-gray-300",
   rescheduled: "bg-yellow-100 text-yellow-700 border-yellow-300",
 };
 
@@ -107,7 +107,7 @@ function StatusBadge({ status }: { status: Appointment['status'] }) {
 function SourceBadge({ source }: { source: Appointment['source'] }) {
   return (
     <span className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${
-      source === 'millis_ai_auto' ? 'bg-purple-100 text-purple-700' : 'bg-gray-100 text-gray-700'
+      source === 'millis_ai_auto' ? 'bg-purple-100 text-purple-700' : 'bg-gray-800 text-gray-300'
     }`}>
       {sourceIcons[source]}
       {source === 'millis_ai_auto' ? 'AI Auto' : sourceLabels[source]}
@@ -131,7 +131,7 @@ function isRecentlyCreated(createdAt: string): { isRecent: boolean; label: strin
     return {
       isRecent: true,
       label: "Today",
-      className: "bg-blue-100 text-blue-700 border-blue-300"
+      className: "bg-blue-100 text-blue-700 border-orange-400"
     };
   }
   
@@ -523,7 +523,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
     const days = [];
 
     for (let i = 0; i < firstDay; i++) {
-      days.push(<div key={`empty-${i}`} className="h-24 bg-gray-50 rounded-lg"></div>);
+      days.push(<div key={`empty-${i}`} className="h-24 bg-gray-900 rounded-lg"></div>);
     }
 
     for (let day = 1; day <= daysInMonth; day++) {
@@ -539,21 +539,21 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
           onClick={() => handleDateClick(dateStr)}
           className={`h-24 p-2 rounded-lg cursor-pointer transition-all border-2 ${
             isSelected
-              ? "bg-blue-500 border-blue-600 shadow-lg scale-105"
+              ? "bg-blue-500 border-orange-600 shadow-lg scale-105"
               : isToday 
-              ? "bg-gradient-to-br from-blue-50 to-blue-100 border-blue-400 shadow-md" 
-              : "bg-white border-gray-200 hover:border-blue-300 hover:shadow-sm"
+              ? "bg-gradient-to-br from-orange-50 to-orange-200 border-orange-400 shadow-md" 
+              : "bg-black border-gray-200 hover:border-orange-300 hover:shadow-sm"
           }`}
         >
           <div className={`text-sm font-bold mb-1 ${
-            isSelected ? "text-white" : isToday ? "text-blue-700" : "text-gray-700"
+            isSelected ? "text-white" : isToday ? "text-blue-700" : "text-gray-300"
           }`}>
             {day}
           </div>
           
           {dateAppts.length > 0 && (
             <div className="space-y-1">
-              <div className={`text-xs font-bold ${isSelected ? "text-white" : "text-blue-600"}`}>
+              <div className={`text-xs font-bold ${isSelected ? "text-white" : "text-orange-600"}`}>
                 {dateAppts.length} {dateAppts.length === 1 ? 'apt' : 'apts'}
               </div>
               {dateAppts.slice(0, 2).map((apt, idx) => (
@@ -561,7 +561,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                   key={apt._id}
                   className={`text-xs px-1.5 py-0.5 rounded truncate flex items-center gap-1 ${
                     isSelected 
-                      ? "bg-white/20 text-white" 
+                      ? "bg-black/20 text-white" 
                       : statusStyles[apt.status]
                   }`}
                   onClick={(e) => {
@@ -574,7 +574,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                 </div>
               ))}
               {dateAppts.length > 2 && (
-                <div className={`text-xs ${isSelected ? "text-white" : "text-blue-600"}`}>
+                <div className={`text-xs ${isSelected ? "text-white" : "text-orange-600"}`}>
                   +{dateAppts.length - 2} more
                 </div>
               )}
@@ -594,12 +594,12 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
 
   if (loading && appointments.length === 0) {
     return (
-      <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
+      <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-white to-orange-100">
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <main className="flex-1 ml-60 p-6">
           <div className="text-center mt-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading appointments...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto"></div>
+            <p className="mt-4 text-gray-400">Loading appointments...</p>
           </div>
         </main>
       </div>
@@ -607,18 +607,18 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
   }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
+    <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-white to-orange-100">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <main className="flex-1 ml-60 p-6">
         <div className="max-w-7xl mx-auto space-y-6">
           {/* Header */}
-          <div className="bg-gradient-to-r from-purple-600 to-blue-500 rounded-2xl shadow-lg p-8 text-white">
+          <div className="bg-gradient-to-r from-orange-600 to-orange-600 rounded-2xl shadow-lg p-8 text-white">
             <div className="flex justify-between items-center">
               <div>
                 <h1 className="text-4xl font-bold">Appointment Management</h1>
                 <p className="text-blue-100 mt-2 text-lg">Manage appointments using Auto-Appointment System</p>
                 <div className="flex items-center gap-2 mt-2 text-sm">
-                  <div className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full">
+                  <div className="flex items-center gap-1 bg-black/20 px-3 py-1 rounded-full">
                     <div className={`w-2 h-2 rounded-full ${socket?.readyState === WebSocket.OPEN ? 'bg-green-400' : 'bg-red-400'}`}></div>
                     <span>{socket?.readyState === WebSocket.OPEN ? 'Live Updates Active' : 'Connecting...'}</span>
                   </div>
@@ -627,7 +627,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
               </div>
               <button
                 onClick={() => setShowPromptModal(true)}
-                className="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition backdrop-blur-sm"
+                className="flex items-center gap-2 bg-black/20 hover:bg-black/30 px-4 py-2 rounded-lg transition backdrop-blur-sm"
               >
                 <Settings className="w-5 h-5" />
                 <span className="font-semibold">AI Settings</span>
@@ -651,35 +651,35 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-            <div className="bg-white rounded-xl shadow-sm p-5 border-l-4 border-blue-500 hover:shadow-md transition">
+            <div className="bg-black rounded-xl shadow-sm p-5 border-l-4 border-orange-500 hover:shadow-md transition">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm text-gray-600 font-medium">Total</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-1">{stats.total}</p>
+                  <p className="text-sm text-gray-400 font-medium">Total</p>
+                  <p className="text-3xl font-bold text-white mt-1">{stats.total}</p>
                 </div>
                 <div className="bg-blue-100 p-3 rounded-lg">
-                  <Calendar className="w-6 h-6 text-blue-600" />
+                  <Calendar className="w-6 h-6 text-orange-600" />
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-5 border-l-4 border-green-500 hover:shadow-md transition">
+            <div className="bg-black rounded-xl shadow-sm p-5 border-l-4 border-orange-500 hover:shadow-md transition">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm text-gray-600 font-medium">Today</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-1">{stats.today}</p>
+                  <p className="text-sm text-gray-400 font-medium">Today</p>
+                  <p className="text-3xl font-bold text-white mt-1">{stats.today}</p>
                 </div>
                 <div className="bg-green-100 p-3 rounded-lg">
-                  <Clock className="w-6 h-6 text-green-600" />
+                  <Clock className="w-6 h-6 text-orange-600" />
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-5 border-l-4 border-yellow-500 hover:shadow-md transition">
+            <div className="bg-black rounded-xl shadow-sm p-5 border-l-4 border-yellow-500 hover:shadow-md transition">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm text-gray-600 font-medium">Scheduled</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-1">{stats.scheduled}</p>
+                  <p className="text-sm text-gray-400 font-medium">Scheduled</p>
+                  <p className="text-3xl font-bold text-white mt-1">{stats.scheduled}</p>
                 </div>
                 <div className="bg-yellow-100 p-3 rounded-lg">
                   <AlertCircle className="w-6 h-6 text-yellow-600" />
@@ -687,26 +687,26 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-5 border-l-4 border-purple-500 hover:shadow-md transition">
+            <div className="bg-black rounded-xl shadow-sm p-5 border-l-4 border-orange-500 hover:shadow-md transition">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm text-gray-600 font-medium">AI Auto-Created</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-1">{stats.auto_created}</p>
+                  <p className="text-sm text-gray-400 font-medium">AI Auto-Created</p>
+                  <p className="text-3xl font-bold text-white mt-1">{stats.auto_created}</p>
                 </div>
                 <div className="bg-purple-100 p-3 rounded-lg">
-                  <Zap className="w-6 h-6 text-purple-600" />
+                  <Zap className="w-6 h-6 text-orange-600" />
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm p-5 border-l-4 border-gray-500 hover:shadow-md transition">
+            <div className="bg-black rounded-xl shadow-sm p-5 border-l-4 border-gray-500 hover:shadow-md transition">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm text-gray-600 font-medium">Manual</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-1">{stats.manual_created}</p>
+                  <p className="text-sm text-gray-400 font-medium">Manual</p>
+                  <p className="text-3xl font-bold text-white mt-1">{stats.manual_created}</p>
                 </div>
-                <div className="bg-gray-100 p-3 rounded-lg">
-                  <User className="w-6 h-6 text-gray-600" />
+                <div className="bg-gray-800 p-3 rounded-lg">
+                  <User className="w-6 h-6 text-gray-400" />
                 </div>
               </div>
             </div>
@@ -717,26 +717,26 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
             {/* Left - Calendar & Today */}
             <div className="lg:col-span-1 space-y-4">
               {/* Calendar */}
-              <div className="bg-white rounded-xl shadow-sm p-5 border-t-4 border-purple-500">
+              <div className="bg-black rounded-xl shadow-sm p-5 border-t-4 border-orange-500">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="font-bold text-gray-900">
+                    <h3 className="font-bold text-white">
                       {currentMonth.toLocaleDateString("en-US", { month: "long", year: "numeric" })}
                     </h3>
                     {selectedDate && (
                       <button
                         onClick={() => handleDateClick("")}
-                        className="text-xs text-blue-600 hover:text-blue-800 mt-1"
+                        className="text-xs text-orange-600 hover:text-orange-800 mt-1"
                       >
                         Clear Filter
                       </button>
                     )}
                   </div>
                   <div className="flex gap-1">
-                    <button onClick={handlePrevMonth} className="p-1.5 hover:bg-gray-100 rounded-lg">
+                    <button onClick={handlePrevMonth} className="p-1.5 hover:bg-gray-800 rounded-lg">
                       <ChevronLeft className="w-5 h-5" />
                     </button>
-                    <button onClick={handleNextMonth} className="p-1.5 hover:bg-gray-100 rounded-lg">
+                    <button onClick={handleNextMonth} className="p-1.5 hover:bg-gray-800 rounded-lg">
                       <ChevronRight className="w-5 h-5" />
                     </button>
                   </div>
@@ -744,7 +744,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
 
                 <div className="grid grid-cols-7 gap-1 mb-2">
                   {["S", "M", "T", "W", "T", "F", "S"].map((day, i) => (
-                    <div key={i} className="text-center text-xs font-semibold text-gray-600 py-1">
+                    <div key={i} className="text-center text-xs font-semibold text-gray-400 py-1">
                       {day}
                     </div>
                   ))}
@@ -756,12 +756,12 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
               </div>
 
               {/* Today's Appointments */}
-              <div className="bg-white rounded-xl shadow-sm p-6 border-t-4 border-blue-500">
+              <div className="bg-black rounded-xl shadow-sm p-6 border-t-4 border-orange-500">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="bg-blue-100 p-2 rounded-lg">
-                    <Calendar className="w-5 h-5 text-blue-600" />
+                    <Calendar className="w-5 h-5 text-orange-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">Today's Schedule</h3>
+                  <h3 className="text-xl font-bold text-white">Today's Schedule</h3>
                 </div>
                 
                 {todayAppointments.length > 0 ? (
@@ -769,23 +769,23 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                     {todayAppointments.map(apt => (
                       <div
                         key={apt._id}
-                        className="bg-gradient-to-r from-blue-50 to-white p-4 rounded-lg border border-blue-200 cursor-pointer hover:shadow-md transition"
+                        className="bg-gradient-to-r from-orange-50 to-white p-4 rounded-lg border border-orange-400 cursor-pointer hover:shadow-md transition"
                         onClick={() => setSelectedAppointment(apt)}
                       >
                         <div className="flex justify-between items-start mb-2">
-                          <div className="font-bold text-gray-900">{apt.name}</div>
+                          <div className="font-bold text-white">{apt.name}</div>
                           <StatusBadge status={apt.status} />
                         </div>
                         <div className="flex items-center gap-1 mb-1">
                           <SourceBadge source={apt.source} />
                         </div>
-                        <div className="flex items-center gap-3 text-sm text-gray-600">
+                        <div className="flex items-center gap-3 text-sm text-gray-400">
                           <div className="flex items-center gap-1">
-                            <Clock className="w-4 h-4 text-blue-500" />
+                            <Clock className="w-4 h-4 text-orange-500" />
                             {new Date(apt.date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                           </div>
                         </div>
-                        <div className="mt-2 text-sm text-gray-700 truncate">
+                        <div className="mt-2 text-sm text-gray-300 truncate">
                           {apt.purpose}
                         </div>
                       </div>
@@ -802,16 +802,16 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
 
             {/* Right - Appointments List */}
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+              <div className="bg-black rounded-xl shadow-sm overflow-hidden">
                 {/* Header */}
-                <div className="bg-gradient-to-r from-gray-50 to-blue-50 border-b-2 border-blue-100 p-6">
-                  <h2 className="text-2xl font-bold text-gray-900">
+                <div className="bg-gradient-to-r from-gray-50 to-orange-100 border-b-2 border-blue-100 p-6">
+                  <h2 className="text-2xl font-bold text-white">
                     {selectedDate 
                       ? `Appointments on ${new Date(selectedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`
                       : "All Appointments"
                     }
                   </h2>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="text-sm text-gray-400 mt-1">
                     Showing {appointments.length} appointment(s) • Sorted by creation date (newest first)
                   </p>
                 </div>
@@ -829,7 +829,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                           setSearchTerm(e.target.value);
                           setPage(1);
                         }}
-                        className="w-full pl-10 pr-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition"
+                        className="w-full pl-10 pr-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition"
                       />
                     </div>
                     <select
@@ -838,7 +838,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                         setFilterStatus(e.target.value as any);
                         setPage(1);
                       }}
-                      className="px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 font-medium"
+                      className="px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 font-medium"
                     >
                       <option value="All">All Status</option>
                       <option value="scheduled">Scheduled</option>
@@ -854,7 +854,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                         setFilterSource(e.target.value as any);
                         setPage(1);
                       }}
-                      className="px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 font-medium"
+                      className="px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 font-medium"
                     >
                       <option value="All">All Sources</option>
                       <option value="millis_ai_auto">AI Auto-Created</option>
@@ -864,7 +864,7 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                     </select>
                     <button
                       onClick={() => fetchAppointments()}
-                      className="p-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-sm"
+                      className="p-2.5 bg-blue-600 text-white rounded-lg hover:bg-orange-700 transition shadow-sm"
                     >
                       <RefreshCw className="w-5 h-5" />
                     </button>
@@ -879,17 +879,17 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                         return (
                           <div
                             key={apt._id}
-                            className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border-2 border-gray-100 hover:border-blue-300 hover:shadow-md transition cursor-pointer"
+                            className="bg-gradient-to-r from-black to-gray-900 p-4 rounded-xl border-2 border-gray-100 hover:border-orange-300 hover:shadow-md transition cursor-pointer"
                             onClick={() => setSelectedAppointment(apt)}
                           >
                             <div className="flex justify-between items-start">
                               <div className="flex-1">
                                 <div className="flex items-center gap-3 mb-2">
                                   <div className="bg-blue-100 p-2 rounded-lg">
-                                    <User className="w-5 h-5 text-blue-600" />
+                                    <User className="w-5 h-5 text-orange-600" />
                                   </div>
                                   <div>
-                                    <div className="font-bold text-lg text-gray-900">{apt.name}</div>
+                                    <div className="font-bold text-lg text-white">{apt.name}</div>
                                     <div className="text-sm text-gray-500 flex items-center gap-1">
                                       <Phone className="w-3 h-3" />
                                       {apt.phone}
@@ -911,18 +911,18 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                                       </span>
                                     )}
                                   </div>
-                                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                                  <div className="flex items-center gap-4 text-sm text-gray-400">
                                     <div className="flex items-center gap-1.5">
-                                      <Calendar className="w-4 h-4 text-blue-500" />
+                                      <Calendar className="w-4 h-4 text-orange-500" />
                                       {new Date(apt.date).toLocaleDateString()}
                                     </div>
                                     <div className="flex items-center gap-1.5">
-                                      <Clock className="w-4 h-4 text-blue-500" />
+                                      <Clock className="w-4 h-4 text-orange-500" />
                                       {apt.time || new Date(apt.date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                                     </div>
                                   </div>
-                                  <div className="flex items-center gap-1.5 text-sm text-gray-700">
-                                    <FileText className="w-4 h-4 text-blue-500" />
+                                  <div className="flex items-center gap-1.5 text-sm text-gray-300">
+                                    <FileText className="w-4 h-4 text-orange-500" />
                                     {apt.purpose}
                                   </div>
                                   {/* ✅ Add Creation Timestamp */}
@@ -961,21 +961,21 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
 
           {/* Pagination */}
           {pagination && pagination.total_pages > 1 && !selectedDate && (
-            <div className="flex justify-between items-center bg-white rounded-xl shadow-sm p-4">
+            <div className="flex justify-between items-center bg-black rounded-xl shadow-sm p-4">
               <button
                 onClick={() => setPage(Math.max(1, page - 1))}
                 disabled={page === 1}
-                className="px-6 py-2.5 bg-blue-600 text-white rounded-lg disabled:opacity-50 disabled:bg-gray-300 hover:bg-blue-700 transition font-semibold"
+                className="px-6 py-2.5 bg-blue-600 text-white rounded-lg disabled:opacity-50 disabled:bg-gray-300 hover:bg-orange-700 transition font-semibold"
               >
                 Previous
               </button>
-              <span className="text-gray-700 font-medium">
+              <span className="text-gray-300 font-medium">
                 Page {page} of {pagination.total_pages}
               </span>
               <button
                 onClick={() => setPage(Math.min(pagination.total_pages, page + 1))}
                 disabled={page === pagination.total_pages}
-                className="px-6 py-2.5 bg-blue-600 text-white rounded-lg disabled:opacity-50 disabled:bg-gray-300 hover:bg-blue-700 transition font-semibold"
+                className="px-6 py-2.5 bg-blue-600 text-white rounded-lg disabled:opacity-50 disabled:bg-gray-300 hover:bg-orange-700 transition font-semibold"
               >
                 Next
               </button>
@@ -995,22 +995,22 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
         {/* AI PROMPT MODAL */}
         {showPromptModal && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-              <div className="bg-gradient-to-r from-purple-600 to-purple-500 p-6 flex justify-between items-center">
+            <div className="bg-black rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+              <div className="bg-gradient-to-r from-orange-600 to-orange-600 p-6 flex justify-between items-center">
                 <div>
                   <h2 className="text-2xl font-bold text-white">AI Analysis Settings</h2>
                   <p className="text-purple-100 text-sm mt-1">Customize how Millis AI analyzes calls for appointments</p>
                 </div>
                 <button 
                   onClick={() => setShowPromptModal(false)} 
-                  className="text-white hover:bg-white/20 p-2 rounded-lg transition"
+                  className="text-white hover:bg-black/20 p-2 rounded-lg transition"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
               <div className="p-6 space-y-4">
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="bg-blue-50 border border-orange-400 rounded-lg p-4">
                   <h3 className="font-semibold text-blue-900 mb-2">How it works:</h3>
                   <ul className="text-sm text-blue-800 space-y-1">
                     <li>• Calls are automatically transcribed by Millis AI</li>
@@ -1021,13 +1021,13 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-300 mb-2">
                     AI Analysis Prompt Template
                   </label>
                   <textarea
                     value={aiPrompt}
                     onChange={(e) => setAiPrompt(e.target.value)}
-                    className="w-full h-96 p-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-purple-500 font-mono text-sm"
+                    className="w-full h-96 p-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 font-mono text-sm"
                     placeholder="Enter your custom AI prompt..."
                   />
                   <p className="text-sm text-gray-500 mt-2">
@@ -1038,20 +1038,20 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
                 <div className="flex justify-between items-center pt-4 border-t">
                   <button
                     onClick={resetPrompt}
-                    className="px-6 py-2.5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-semibold transition"
+                    className="px-6 py-2.5 bg-gray-200 text-gray-300 rounded-lg hover:bg-gray-300 font-semibold transition"
                   >
                     Reset to Default
                   </button>
                   <div className="flex gap-3">
                     <button
                       onClick={() => setShowPromptModal(false)}
-                      className="px-6 py-2.5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-semibold transition"
+                      className="px-6 py-2.5 bg-gray-200 text-gray-300 rounded-lg hover:bg-gray-300 font-semibold transition"
                     >
                       Cancel
                     </button>
                     <button
                       onClick={saveAiPrompt}
-                      className="px-6 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-semibold transition shadow-md"
+                      className="px-6 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-orange-700 font-semibold transition shadow-md"
                     >
                       Save Changes
                     </button>
@@ -1077,28 +1077,28 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
   const color = statusColors[apt.status] || "gray";
 
   const headerClass = `bg-gradient-to-r ${
-    color === 'green' ? 'from-green-600 to-green-500' : 
+    color === 'green' ? 'from-orange-500 to-orange-600' : 
     color === 'yellow' ? 'from-yellow-600 to-yellow-500' :
-    color === 'blue' ? 'from-blue-600 to-blue-500' :
+    color === 'blue' ? 'from-orange-500 to-orange-600' :
     color === 'red' ? 'from-red-600 to-red-500' :
-    color === 'purple' ? 'from-purple-600 to-purple-500' :
+    color === 'purple' ? 'from-orange-600 to-orange-600' :
     'from-gray-600 to-gray-500'
   } p-6 flex justify-between items-center`;
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden transform transition-all">
+      <div className="bg-black rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden transform transition-all">
         <div className={headerClass}>
           <div>
             <h2 className="text-2xl font-bold text-white">Appointment Details</h2>
             {apt.source === 'millis_ai_auto' && (
-              <div className="flex items-center gap-2 mt-2 bg-white/20 px-3 py-1 rounded-full w-fit">
+              <div className="flex items-center gap-2 mt-2 bg-black/20 px-3 py-1 rounded-full w-fit">
                 <Zap className="w-4 h-4" />
                 <span className="text-sm font-medium">Auto-Created by AI</span>
               </div>
             )}
           </div>
-          <button onClick={onClose} className="text-white hover:bg-white/20 p-2 rounded-lg transition">
+          <button onClick={onClose} className="text-white hover:bg-black/20 p-2 rounded-lg transition">
             <X className="w-6 h-6" />
           </button>
         </div>
@@ -1106,7 +1106,7 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
         <div className="p-6 space-y-6 overflow-y-auto max-h-[calc(90vh-140px)]">
           {/* AI Metadata (if auto-created) */}
           {apt.source === 'millis_ai_auto' && apt.metadata && (
-            <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-5">
+            <div className="bg-purple-50 border-2 border-orange-400 rounded-xl p-5">
               <h3 className="text-lg font-bold mb-3 text-purple-900 flex items-center gap-2">
                 <Zap className="w-5 h-5" />
                 AI Analysis Details
@@ -1155,24 +1155,24 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
           )}
 
           {/* Patient Info */}
-          <div className="bg-gradient-to-r from-blue-50 to-white p-5 rounded-xl border-2 border-blue-100">
-            <h3 className="text-lg font-bold mb-4 text-gray-900 flex items-center gap-2">
-              <User className="w-5 h-5 text-blue-600" />
+          <div className="bg-gradient-to-r from-orange-50 to-white p-5 rounded-xl border-2 border-blue-100">
+            <h3 className="text-lg font-bold mb-4 text-white flex items-center gap-2">
+              <User className="w-5 h-5 text-orange-600" />
               Patient Information
             </h3>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-gray-600 font-medium">Name</p>
-                <p className="text-lg font-bold text-gray-900">{apt.name}</p>
+                <p className="text-sm text-gray-400 font-medium">Name</p>
+                <p className="text-lg font-bold text-white">{apt.name}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600 font-medium">Phone</p>
-                <p className="text-lg font-bold text-gray-900">{apt.phone}</p>
+                <p className="text-sm text-gray-400 font-medium">Phone</p>
+                <p className="text-lg font-bold text-white">{apt.phone}</p>
               </div>
               {apt.email && (
                 <div className="col-span-2">
-                  <p className="text-sm text-gray-600 font-medium">Email</p>
-                  <p className="text-lg font-bold text-gray-900">{apt.email}</p>
+                  <p className="text-sm text-gray-400 font-medium">Email</p>
+                  <p className="text-lg font-bold text-white">{apt.email}</p>
                 </div>
               )}
             </div>
@@ -1180,8 +1180,8 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
 
           {/* Appointment Details */}
           <div className="bg-gradient-to-r from-green-50 to-white p-5 rounded-xl border-2 border-green-100">
-            <h3 className="text-lg font-bold mb-4 text-gray-900 flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-green-600" />
+            <h3 className="text-lg font-bold mb-4 text-white flex items-center gap-2">
+              <Calendar className="w-5 h-5 text-orange-600" />
               Appointment Details
             </h3>
             <div className="grid grid-cols-2 gap-4">
@@ -1195,21 +1195,21 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
                 </div>
               )}
               <div>
-                <p className="text-sm text-gray-600 font-medium">Date</p>
-                <p className="text-lg font-bold text-gray-900">{new Date(apt.date).toLocaleDateString()}</p>
+                <p className="text-sm text-gray-400 font-medium">Date</p>
+                <p className="text-lg font-bold text-white">{new Date(apt.date).toLocaleDateString()}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600 font-medium">Time</p>
-                <p className="text-lg font-bold text-gray-900">{apt.time}</p>
+                <p className="text-sm text-gray-400 font-medium">Time</p>
+                <p className="text-lg font-bold text-white">{apt.time}</p>
               </div>
               <div className="col-span-2">
-                <p className="text-sm text-gray-600 font-medium">Purpose</p>
-                <p className="text-lg font-bold text-gray-900">{apt.purpose}</p>
+                <p className="text-sm text-gray-400 font-medium">Purpose</p>
+                <p className="text-lg font-bold text-white">{apt.purpose}</p>
               </div>
               {apt.notes && (
                 <div className="col-span-2">
-                  <p className="text-sm text-gray-600 font-medium">Notes</p>
-                  <p className="text-base text-gray-800 bg-gray-50 p-3 rounded-lg border border-gray-200">{apt.notes}</p>
+                  <p className="text-sm text-gray-400 font-medium">Notes</p>
+                  <p className="text-base text-gray-200 bg-gray-900 p-3 rounded-lg border border-gray-200">{apt.notes}</p>
                 </div>
               )}
             </div>
@@ -1218,12 +1218,12 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
           {/* Transcription Preview */}
           
           {apt.transcription && (
-            <div className="bg-gray-50 border-2 border-gray-200 rounded-2xl p-6">
-              <h3 className="text-xl font-bold mb-3 text-gray-900 flex items-center gap-2">
-                <FileText className="w-6 h-6 text-gray-600" />
+            <div className="bg-gray-900 border-2 border-gray-200 rounded-2xl p-6">
+              <h3 className="text-xl font-bold mb-3 text-white flex items-center gap-2">
+                <FileText className="w-6 h-6 text-gray-400" />
                 Call Transcription
               </h3>
-              <div className="max-h-96 overflow-y-auto bg-white p-4 rounded-xl border border-gray-200">
+              <div className="max-h-96 overflow-y-auto bg-black p-4 rounded-xl border border-gray-200">
                 {(() => {
                   // Try to parse if it's a string
                   let transcriptionData = apt.transcription;
@@ -1232,7 +1232,7 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
                       transcriptionData = JSON.parse(apt.transcription);
                     } catch (e) {
                       // If parsing fails, display as plain text
-                      return <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{apt.transcription}</p>;
+                      return <p className="text-sm text-gray-300 leading-relaxed whitespace-pre-wrap">{apt.transcription}</p>;
                     }
                   }
 
@@ -1245,8 +1245,8 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
                             key={idx}
                             className={`p-3 rounded-lg ${
                               msg.role === "user"
-                                ? "bg-blue-50 border-l-4 border-blue-500"
-                                : "bg-purple-50 border-l-4 border-purple-500"
+                                ? "bg-blue-50 border-l-4 border-orange-500"
+                                : "bg-purple-50 border-l-4 border-orange-500"
                             }`}
                           >
                             <div className="flex items-center gap-2 mb-1">
@@ -1258,7 +1258,7 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
                                 {msg.role === "user" ? "Patient" : "Assistant"}
                               </span>
                             </div>
-                            <p className="text-sm text-gray-800 leading-relaxed">{msg.content}</p>
+                            <p className="text-sm text-gray-200 leading-relaxed">{msg.content}</p>
                           </div>
                         ))}
                       </div>
@@ -1268,7 +1268,7 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
                   // If it's an object with text or transcript property
                   if (transcriptionData.text || transcriptionData.transcript) {
                     return (
-                      <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">
+                      <p className="text-sm text-gray-300 leading-relaxed whitespace-pre-wrap">
                         {transcriptionData.text || transcriptionData.transcript}
                       </p>
                     );
@@ -1276,7 +1276,7 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
 
                   // Fallback to JSON display
                   return (
-                    <pre className="text-xs text-gray-600 font-mono whitespace-pre-wrap">
+                    <pre className="text-xs text-gray-400 font-mono whitespace-pre-wrap">
                       {JSON.stringify(transcriptionData, null, 2)}
                     </pre>
                   );
@@ -1286,9 +1286,9 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
           )}
 
           {/* Status and Actions */}
-          <div className="bg-white p-5 rounded-xl border-2 border-gray-200 space-y-4">
+          <div className="bg-black p-5 rounded-xl border-2 border-gray-200 space-y-4">
             <div className="flex justify-between items-center pb-2 border-b">
-              <h3 className="text-lg font-bold text-gray-900">Current Status:</h3>
+              <h3 className="text-lg font-bold text-white">Current Status:</h3>
               <StatusBadge status={apt.status} />
             </div>
 
@@ -1297,21 +1297,21 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
               <button
                 onClick={() => onUpdate(apt._id, "scheduled")}
                 disabled={apt.status === "scheduled"}
-                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-blue-500 text-white hover:bg-blue-600"
+                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-blue-500 text-white hover:bg-orange-600"
               >
                 Schedule
               </button>
               <button
                 onClick={() => onUpdate(apt._id, "confirmed")}
                 disabled={apt.status === "confirmed"}
-                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-green-500 text-white hover:bg-green-600"
+                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-green-500 text-white hover:bg-orange-600"
               >
                 Confirm
               </button>
               <button
                 onClick={() => onUpdate(apt._id, "completed")}
                 disabled={apt.status === "completed"}
-                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-purple-500 text-white hover:bg-purple-600"
+                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-purple-500 text-white hover:bg-orange-600"
               >
                 Complete
               </button>
@@ -1325,7 +1325,7 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
               <button
                 onClick={() => onUpdate(apt._id, "no-show")}
                 disabled={apt.status === "no-show"}
-                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-gray-500 text-white hover:bg-gray-600"
+                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-gray-9000 text-white hover:bg-gray-600"
               >
                 No Show
               </button>
@@ -1341,7 +1341,7 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
             {/* Notification Note */}
             <div className="pt-4 border-t border-gray-100">
               <p className="text-sm text-gray-500 flex items-start gap-2">
-                <Mail className="w-4 h-4 text-blue-500 mt-0.5" />
+                <Mail className="w-4 h-4 text-orange-500 mt-0.5" />
                 Confirming this appointment will automatically send an email notification to the doctor.
               </p>
             </div>
@@ -1354,10 +1354,10 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
           </div>
         </div>
 
-        <div className="p-4 bg-gray-50 border-t flex justify-end">
+        <div className="p-4 bg-gray-900 border-t flex justify-end">
           <button
             onClick={onClose}
-            className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-medium transition"
+            className="px-6 py-2 bg-gray-200 text-gray-300 rounded-lg hover:bg-gray-300 font-medium transition"
           >
             Close
           </button>
@@ -1366,3 +1366,7 @@ function AppointmentModal({ apt, onClose, onUpdate }: {
     </div>
   );
 }
+
+
+
+

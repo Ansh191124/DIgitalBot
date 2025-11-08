@@ -13,9 +13,11 @@ export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
     const [open, setOpen] = useState(false)
+    const [mounted, setMounted] = useState(false)
     const pathname = usePathname()
 
     useEffect(() => {
+        setMounted(true)
         const handleScroll = () => setIsScrolled(window.scrollY > 20)
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
@@ -29,34 +31,39 @@ export function Header() {
         { href: "/contact", label: "Contact", icon: Phone },
     ]
 
+    // Use regular div on server, motion.div on client  
+    const MotionDiv: any = mounted ? motion.div : 'div'
+
     return (
         <header
             className={cn(
                 "fixed top-0 w-full z-50 transition-all duration-700",
                 isScrolled
-                    ? "backdrop-blur-2xl bg-gradient-to-r from-white/95 via-orange-50/30 to-purple-50/30 border-b-2 border-gradient-to-r from-orange-300/50 via-pink-300/50 to-purple-300/50 shadow-2xl shadow-purple-500/20"
-                    : "bg-gradient-to-b from-white/90 via-white/95 to-transparent backdrop-blur-md border-b-2 border-orange-200/30"
+                    ? "backdrop-blur-2xl bg-gradient-to-r from-black/95 via-gray-900/95 to-black/95 border-b-2 border-orange-500/50 shadow-2xl shadow-orange-500/20"
+                    : "bg-gradient-to-b from-black/90 via-black/95 to-transparent backdrop-blur-md border-b-2 border-orange-500/30"
             )}
         >
             {/* Animated gradient background overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-100/40 via-pink-100/30 to-purple-100/40 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-orange-600/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
             
             {/* Decorative top gradient line */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 opacity-80" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 opacity-80" />
             
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     {/* Enhanced Logo Section */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9, x: -20 }}
-                        animate={{ opacity: 1, scale: 1, x: 0 }}
-                        transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+                    <MotionDiv
+                        {...(mounted ? {
+                            initial: { opacity: 0, scale: 0.9, x: -20 },
+                            animate: { opacity: 1, scale: 1, x: 0 },
+                            transition: { duration: 0.6, type: "spring", stiffness: 100 }
+                        } : {})}
                         className="relative group"
                     >
                         <Link href="/" className="flex items-center gap-3 relative" onClick={() => setIsMenuOpen(false)}>
                             {/* Animated multicolor glow orbs */}
-                            <span className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-gradient-to-r from-orange-400/40 via-pink-400/50 to-purple-400/40 blur-3xl animate-pulse-glow" />
-                            <span className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-r from-blue-400/30 via-cyan-400/30 to-teal-400/30 blur-2xl animate-float-slow" />
+                            <span className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-gradient-to-r from-orange-400/40 via-orange-500/50 to-orange-600/40 blur-3xl animate-pulse-glow" />
+                            <span className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-r from-orange-500/30 via-orange-600/30 to-orange-700/30 blur-2xl animate-float-slow" />
                             
                             <div className="relative">
                                 <Image
@@ -71,30 +78,32 @@ export function Header() {
                             </div>
                             
                             {/* Enhanced AI Badge */}
-                            <div className="absolute -bottom-2 -right-8 px-3 py-1 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white text-[9px] font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 border border-white/30">
+                            <div className="absolute -bottom-2 -right-8 px-3 py-1 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-white text-[9px] font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 border border-white/30">
                                 ✨ AI Powered
                             </div>
                         </Link>
-                    </motion.div>
+                    </MotionDiv>
 
                     {/* Desktop Navigation - Enhanced */}
                     <nav className="hidden lg:flex items-center gap-1">
                         {navItems.map((item, index) => {
                             const Icon = item.icon
                             return (
-                                <motion.div
+                                <MotionDiv
                                     key={item.href}
-                                    initial={{ opacity: 0, y: -20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1, duration: 0.5, type: "spring" }}
+                                    {...(mounted ? {
+                                        initial: { opacity: 0, y: -20 },
+                                        animate: { opacity: 1, y: 0 },
+                                        transition: { delay: index * 0.1, duration: 0.5, type: "spring" }
+                                    } : {})}
                                 >
                                     <Link
                                         href={item.href}
                                         className={cn(
                                             "relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2",
                                             pathname === item.href
-                                                ? "text-white bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 shadow-lg shadow-purple-500/40"
-                                                : "text-gray-700 hover:text-orange-600 hover:bg-gradient-to-r hover:from-orange-50 hover:to-pink-50"
+                                                ? "text-white bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 shadow-lg shadow-orange-500/40"
+                                                : "text-gray-200 hover:text-orange-400 hover:bg-gradient-to-r hover:from-orange-900/30 hover:to-orange-800/30"
                                         )}
                                     >
                                         {Icon && <Icon className="w-4 h-4" />}
@@ -103,8 +112,8 @@ export function Header() {
                                         {/* Enhanced Hover effect */}
                                         {pathname !== item.href && (
                                             <>
-                                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                                <span className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-400/30 via-pink-400/30 to-purple-400/30 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
+                                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-900/20 via-orange-800/20 to-orange-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                                <span className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-500/30 via-orange-600/30 to-orange-500/30 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
                                             </>
                                         )}
                                         
@@ -112,17 +121,17 @@ export function Header() {
                                         {pathname === item.href && (
                                             <motion.span
                                                 layoutId="activeNav"
-                                                className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600"
+                                                className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600"
                                                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
                                             />
                                         )}
                                     </Link>
-                                </motion.div>
+                                </MotionDiv>
                             )
                         })}
 
                         {/* Enhanced Services Dropdown */}
-                        <motion.div
+                        <MotionDiv
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: navItems.length * 0.1, duration: 0.5 }}
@@ -131,7 +140,7 @@ export function Header() {
                             onMouseLeave={() => setOpen(false)}
                         >
                             <button
-                                className="relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2 text-gray-700 hover:text-purple-600 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50"
+                                className="relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2 text-gray-200 hover:text-orange-400 hover:bg-gradient-to-r hover:from-orange-900/30 hover:to-orange-800/30"
                             >
                                 <Zap className="w-4 h-4" />
                                 <span className="relative z-10">Our Services</span>
@@ -141,44 +150,44 @@ export function Header() {
                                 )} />
                                 
                                 {/* Enhanced Hover background */}
-                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <span className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-purple-400/30 via-pink-400/30 to-orange-400/30 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
+                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-900/20 via-orange-800/20 to-orange-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <span className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-orange-500/30 via-orange-600/30 to-orange-500/30 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
                             </button>
 
                             {/* Premium Services Dropdown Menu */}
                             <AnimatePresence>
                                 {open && (
-                                    <motion.div
+                                    <MotionDiv
                                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                                         transition={{ duration: 0.2 }}
-                                        className="absolute left-1/2 -translate-x-1/2 top-full mt-4 bg-white/98 backdrop-blur-2xl shadow-2xl rounded-3xl p-6 w-[920px] border-2 border-gradient-to-r from-orange-300 via-pink-300 to-purple-300 z-[100]"
+                                        className="absolute left-1/2 -translate-x-1/2 top-full mt-4 bg-black/98 backdrop-blur-2xl shadow-2xl rounded-3xl p-6 w-[920px] border-2 border-orange-500/50 z-[100]"
                                     >
                                         {/* Enhanced Decorative gradient border */}
-                                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-500/10 via-pink-500/10 to-purple-500/10 pointer-events-none" />
+                                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-500/10 via-orange-600/10 to-orange-500/10 pointer-events-none" />
                                         
                                         <div className="relative z-10">
-                                            <div className="flex items-center gap-2 mb-5 pb-4 border-b-2 border-gradient-to-r from-orange-200 via-pink-200 to-purple-200">
+                                            <div className="flex items-center gap-2 mb-5 pb-4 border-b-2 border-orange-500/30">
                                                 <Sparkles className="w-5 h-5 text-orange-500 animate-pulse" />
-                                                <h3 className="text-lg font-bold bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">AI-Powered Solutions</h3>
+                                                <h3 className="text-lg font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">AI-Powered Solutions</h3>
                                             </div>
                                             
                                             <div className="grid grid-cols-3 gap-3 mb-4">
                                                 {[
-                                                    { href: "/services/ai-voice-bot", label: "AI Voice Bot", desc: "Intelligent voice automation", color: "from-orange-500 to-pink-500" },
-                                                    { href: "/services/voice-ai-business", label: "Voice AI for Business", desc: "Enterprise solutions", color: "from-blue-500 to-cyan-500" },
-                                                    { href: "/services/voice-automation-software", label: "Voice Automation", desc: "Workflow automation", color: "from-purple-500 to-pink-500" },
-                                                    { href: "/services/ai-customer-support", label: "AI Customer Support", desc: "24/7 assistance", color: "from-teal-500 to-green-500" },
-                                                    { href: "/services/conversational-ai", label: "Conversational AI", desc: "Natural conversations", color: "from-pink-500 to-orange-500" },
-                                                    { href: "/services/ai-call-center", label: "AI Call Center", desc: "Call automation", color: "from-cyan-500 to-blue-500" },
-                                                    { href: "/services/ai-sales-agent", label: "AI Sales Agent", desc: "Sales automation", color: "from-orange-500 to-purple-500" },
-                                                    { href: "/services/ai-virtual-receptionist", label: "Virtual Receptionist", desc: "Front desk AI", color: "from-green-500 to-teal-500" },
+                                                    { href: "/services/ai-voice-bot", label: "AI Voice Bot", desc: "Intelligent voice automation", color: "from-orange-400 to-orange-600" },
+                                                    { href: "/services/voice-ai-business", label: "Voice AI for Business", desc: "Enterprise solutions", color: "from-orange-500 to-orange-700" },
+                                                    { href: "/services/voice-automation-software", label: "Voice Automation", desc: "Workflow automation", color: "from-orange-400 to-orange-600" },
+                                                    { href: "/services/ai-customer-support", label: "AI Customer Support", desc: "24/7 assistance", color: "from-orange-500 to-orange-700" },
+                                                    { href: "/services/conversational-ai", label: "Conversational AI", desc: "Natural conversations", color: "from-orange-400 to-orange-600" },
+                                                    { href: "/services/ai-call-center", label: "AI Call Center", desc: "Call automation", color: "from-orange-500 to-orange-700" },
+                                                    { href: "/services/ai-sales-agent", label: "AI Sales Agent", desc: "Sales automation", color: "from-orange-400 to-orange-600" },
+                                                    { href: "/services/ai-virtual-receptionist", label: "Virtual Receptionist", desc: "Front desk AI", color: "from-orange-500 to-orange-700" },
                                                 ].map((service) => (
                                                     <Link
                                                         key={service.href}
                                                         href={service.href}
-                                                        className="group block p-4 hover:bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 rounded-xl transition-all duration-300 border-2 border-transparent hover:border-orange-300 hover:shadow-lg hover:shadow-orange-500/20"
+                                                        className="group block p-4 hover:bg-gradient-to-br from-orange-900/30 via-orange-800/30 to-orange-900/30 rounded-xl transition-all duration-300 border-2 border-transparent hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/20"
                                                         onClick={() => setOpen(false)}
                                                     >
                                                         <div className="flex items-start gap-3">
@@ -187,19 +196,19 @@ export function Header() {
                                                                 <div className={`text-sm font-bold bg-gradient-to-r ${service.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform inline-block mb-1`}>
                                                                     {service.label}
                                                                 </div>
-                                                                <div className="text-xs text-gray-600">{service.desc}</div>
+                                                                <div className="text-xs text-gray-400">{service.desc}</div>
                                                             </div>
                                                         </div>
                                                     </Link>
                                                 ))}
                                             </div>
                                             
-                                            <div className="border-t-2 border-purple-200 pt-4 mt-2">
-                                                <div className="text-xs font-semibold text-gray-600 mb-3 uppercase tracking-wider">Premium Services</div>
+                                            <div className="border-t-2 border-orange-500/30 pt-4 mt-2">
+                                                <div className="text-xs font-semibold text-gray-400 mb-3 uppercase tracking-wider">Premium Services</div>
                                                 <div className="grid grid-cols-2 gap-3">
                                                     <Link
                                                         href="/signup?service=lead"
-                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 rounded-xl hover:shadow-lg hover:shadow-purple-500/40 transition-all duration-300 hover:scale-105"
+                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 rounded-xl hover:shadow-lg hover:shadow-orange-500/40 transition-all duration-300 hover:scale-105"
                                                         onClick={() => setOpen(false)}
                                                     >
                                                         <Zap className="w-5 h-5 text-white" />
@@ -207,26 +216,26 @@ export function Header() {
                                                     </Link>
                                                     <Link
                                                         href="/signup?service=appointment"
-                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-600 rounded-xl hover:shadow-lg hover:shadow-teal-500/40 transition-all duration-300 hover:scale-105"
+                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-black via-gray-900 to-black border-2 border-orange-500/50 rounded-xl hover:shadow-lg hover:shadow-orange-500/40 transition-all duration-300 hover:scale-105"
                                                         onClick={() => setOpen(false)}
                                                     >
-                                                        <Phone className="w-5 h-5 text-white" />
-                                                        <span className="text-sm font-bold text-white">Appointments</span>
+                                                        <Phone className="w-5 h-5 text-orange-400" />
+                                                        <span className="text-sm font-bold text-orange-400">Appointments</span>
                                                     </Link>
                                                 </div>
                                             </div>
                                         </div>
-                                    </motion.div>
+                                    </MotionDiv>
                                 )}
                             </AnimatePresence>
-                        </motion.div>
+                        </MotionDiv>
                     </nav>
 
                     {/* Enhanced Desktop Buttons */}
                     <div className="hidden lg:flex items-center gap-3">
                         <Button
                             size="lg"
-                            className="relative bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-bold rounded-full shadow-xl shadow-purple-500/50 hover:shadow-2xl hover:shadow-purple-600/60 transition-all duration-500 overflow-hidden group px-8 border-2 border-white/20"
+                            className="relative bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-white font-bold rounded-full shadow-xl shadow-orange-500/50 hover:shadow-2xl hover:shadow-orange-600/60 transition-all duration-500 overflow-hidden group px-8 border-2 border-white/20"
                             asChild
                         >
                             <Link href="/login">
@@ -234,7 +243,7 @@ export function Header() {
                                     <Sparkles className="w-4 h-4 animate-pulse" />
                                     Get Started Free
                                 </span>
-                                <span className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <span className="absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <span className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
                             </Link>
                         </Button>
@@ -242,7 +251,7 @@ export function Header() {
 
                     {/* Enhanced Mobile Menu Button */}
                     <button
-                        className="lg:hidden p-3 rounded-2xl bg-gradient-to-br from-orange-100 via-pink-100 to-purple-100 border-2 border-purple-300 hover:border-purple-500 text-purple-600 hover:text-purple-700 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-purple-500/30"
+                        className="lg:hidden p-3 rounded-2xl bg-gradient-to-br from-orange-900/30 via-orange-800/30 to-orange-900/30 border-2 border-orange-500/30 hover:border-orange-500 text-orange-400 hover:text-orange-300 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-orange-500/30"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
                         {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -252,18 +261,18 @@ export function Header() {
                 {/* Premium Mobile Menu */}
                 <AnimatePresence>
                     {isMenuOpen && (
-                        <motion.div
+                        <MotionDiv
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="lg:hidden overflow-hidden border-t border-orange-100 bg-gradient-to-b from-white via-orange-50/30 to-white backdrop-blur-xl"
+                            className="lg:hidden overflow-hidden border-t border-orange-500/30 bg-gradient-to-b from-black via-gray-900 to-black backdrop-blur-xl"
                         >
                             <nav className="flex flex-col p-4 space-y-2 max-h-[calc(100vh-5rem)] overflow-y-auto">
                                 {navItems.map((item, index) => {
                                     const Icon = item.icon
                                     return (
-                                        <motion.div
+                                        <MotionDiv
                                             key={item.href}
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
@@ -275,29 +284,29 @@ export function Header() {
                                                     "flex items-center gap-3 px-4 py-3.5 text-base font-semibold rounded-xl transition-all duration-300",
                                                     pathname === item.href
                                                         ? "text-white bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30"
-                                                        : "text-gray-700 hover:text-orange-600 hover:bg-orange-50"
+                                                        : "text-gray-200 hover:text-orange-400 hover:bg-orange-900/30"
                                                 )}
                                                 onClick={() => setIsMenuOpen(false)}
                                             >
                                                 {Icon && <Icon className="w-5 h-5" />}
                                                 {item.label}
                                             </Link>
-                                        </motion.div>
+                                        </MotionDiv>
                                     )
                                 })}
 
                                 {/* Mobile Services Section */}
-                                <motion.div
+                                <MotionDiv
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: navItems.length * 0.05 }}
                                     className="pt-4 pb-2"
                                 >
-                                    <div className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-gray-900 mb-3">
+                                    <div className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-gray-200 mb-3">
                                         <Sparkles className="w-4 h-4 text-orange-500" />
                                         Our AI Services
                                     </div>
-                                    <div className="space-y-1.5 bg-orange-50/50 rounded-xl p-3">
+                                    <div className="space-y-1.5 bg-orange-900/20 rounded-xl p-3 border border-orange-500/30">
                                         {[
                                             "AI Voice Bot",
                                             "Voice AI for Business",
@@ -311,7 +320,7 @@ export function Header() {
                                             <Link
                                                 key={i}
                                                 href={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`}
-                                                className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:text-orange-600 hover:bg-white rounded-lg transition-all duration-300"
+                                                className="block px-4 py-2.5 text-sm font-medium text-gray-300 hover:text-orange-400 hover:bg-orange-900/30 rounded-lg transition-all duration-300"
                                                 onClick={() => setIsMenuOpen(false)}
                                             >
                                                 {service}
@@ -331,17 +340,17 @@ export function Header() {
                                         </Link>
                                         <Link
                                             href="/signup?service=appointment"
-                                            className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-black to-gray-800 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                                            className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-black to-gray-900 border-2 border-orange-500/50 text-orange-400 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                                             onClick={() => setIsMenuOpen(false)}
                                         >
                                             <Phone className="w-5 h-5" />
                                             <span className="font-bold">Appointment Booking</span>
                                         </Link>
                                     </div>
-                                </motion.div>
+                                </MotionDiv>
 
                                 {/* Mobile CTA Button */}
-                                <motion.div
+                                <MotionDiv
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.4 }}
@@ -357,9 +366,9 @@ export function Header() {
                                             Get Started Free
                                         </Link>
                                     </Button>
-                                </motion.div>
+                                </MotionDiv>
                             </nav>
-                        </motion.div>
+                        </MotionDiv>
                     )}
                 </AnimatePresence>
             </div>
