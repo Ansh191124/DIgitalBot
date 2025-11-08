@@ -1,8 +1,28 @@
 "use client";
 import Sidebar from "@/components/Sidebar";
-import { AlertCircle, Calendar, ChevronLeft, ChevronRight, Clock, FileText, Mail, Phone, RefreshCw, Search, Settings, User, X, Zap } from "lucide-react";
+import {
+  AlertCircle,
+  Calendar,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  FileText,
+  Mail,
+  Phone,
+  RefreshCw,
+  Search,
+  User,
+  X,
+  Zap,
+  Building2,
+  Stethoscope,
+  ArrowLeft,
+  CheckCircle2,
+} from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 
+// ==================== TYPES ====================
 interface Appointment {
   _id: string;
   name: string;
@@ -28,52 +48,19 @@ interface Appointment {
   updatedAt: string;
 }
 
-type AppointmentStats = {
-  total: number;
-  today: number;
-  scheduled: number;
-  completed: number;
-  cancelled: number;
-  auto_created: number;
-  manual_created: number;
-};
-
-interface PaginationInfo {
-  current_page: number;
-  total_pages: number;
-  total_appointments: number;
-  per_page: number;
-}
-
+// ==================== CONSTANTS ====================
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://digital-api-tef8.onrender.com";
 
-function getAuthHeaders() {
-  const headers: Record<string, string> = { "Content-Type": "application/json" };
-  try {
-    if (typeof window !== "undefined") {
-      const token = localStorage.getItem("token") || "demo-token";
-      headers["Authorization"] = `Bearer ${token}`;
-    } else {
-      // Server-side fallback
-      headers["Authorization"] = `Bearer demo-token`;
-    }
-  } catch (e) {
-    // Fallback to demo token
-    headers["Authorization"] = `Bearer demo-token`;
-  }
-  return headers;
-}
-
-const statusStyles: Record<Appointment['status'], string> = {
-  scheduled: "bg-blue-100 text-blue-700 border-orange-400",
+const statusStyles: Record<Appointment["status"], string> = {
+  scheduled: "bg-blue-100 text-blue-700 border-blue-300",
   confirmed: "bg-green-100 text-green-700 border-green-300",
-  completed: "bg-purple-100 text-purple-700 border-orange-400",
+  completed: "bg-purple-100 text-purple-700 border-purple-300",
   cancelled: "bg-red-100 text-red-700 border-red-300",
-  "no-show": "bg-gray-800 text-gray-300 border-gray-300",
+  "no-show": "bg-gray-100 text-gray-700 border-gray-300",
   rescheduled: "bg-yellow-100 text-yellow-700 border-yellow-300",
 };
 
-const statusColors: Record<Appointment['status'], string> = {
+const statusColors: Record<Appointment["status"], string> = {
   scheduled: "blue",
   confirmed: "green",
   completed: "purple",
@@ -82,275 +69,356 @@ const statusColors: Record<Appointment['status'], string> = {
   rescheduled: "yellow",
 };
 
-const sourceIcons: Record<Appointment['source'], React.ReactNode> = {
-  millis_ai_auto: <Zap className="w-4 h-4" />,
-  manual: <User className="w-4 h-4" />,
-  web: <FileText className="w-4 h-4" />,
-  api: <Settings className="w-4 h-4" />,
-};
+// ==================== HELPER FUNCTIONS ====================
+function getAuthHeaders() {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (typeof window !== "undefined") {
+    try {
+      const token = localStorage.getItem("token") || "demo-token";
+      headers["Authorization"] = `Bearer ${token}`;
+    } catch (e) {
+      headers["Authorization"] = "Bearer demo-token";
+    }
+  }
+  return headers;
+}
 
-const sourceLabels: Record<Appointment['source'], string> = {
-  millis_ai_auto: "Auto-Created (AI)",
-  manual: "Manual Entry",
-  web: "Web Booking",
-  api: "API Created",
-};
-
-function StatusBadge({ status }: { status: Appointment['status'] }) {
+// ==================== BADGE COMPONENTS ====================
+function StatusBadge({ status }: { status: Appointment["status"] }) {
   return (
-    <span className={`px-3 py-1 rounded-full text-xs font-bold border-2 ${statusStyles[status]}`}>
+    <span className={`px-2.5 py-1 rounded-full text-xs font-bold border ${statusStyles[status]}`}>
       {status.charAt(0).toUpperCase() + status.slice(1)}
     </span>
   );
 }
 
-function SourceBadge({ source }: { source: Appointment['source'] }) {
+function SourceBadge({ source }: { source: Appointment["source"] }) {
+  const isAI = source === "millis_ai_auto";
   return (
-    <span className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${
-      source === 'millis_ai_auto' ? 'bg-purple-100 text-purple-700' : 'bg-gray-800 text-gray-300'
-    }`}>
-      {sourceIcons[source]}
-      {source === 'millis_ai_auto' ? 'AI Auto' : sourceLabels[source]}
+    <span
+      className={`flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium ${
+        isAI ? "bg-purple-100 text-purple-700" : "bg-gray-100 text-gray-600"
+      }`}
+    >
+      {isAI && <Zap className="w-3 h-3" />}
+      {isAI ? "AI" : source}
     </span>
   );
 }
 
-// Add this function to detect recently created appointments
-function isRecentlyCreated(createdAt: string): { isRecent: boolean; label: string; className: string } {
-  const now = new Date();
-  const created = new Date(createdAt);
-  const diffMinutes = (now.getTime() - created.getTime()) / (1000 * 60);
-  
-  if (diffMinutes < 60) {
-    return {
-      isRecent: true,
-      label: "Just Created",
-      className: "bg-green-100 text-green-700 border-green-300 animate-pulse"
-    };
-  } else if (diffMinutes < 24 * 60) {
-    return {
-      isRecent: true,
-      label: "Today",
-      className: "bg-blue-100 text-blue-700 border-orange-400"
-    };
-  }
-  
-  return { isRecent: false, label: "", className: "" };
+// ==================== APPOINTMENT MODAL ====================
+function AppointmentModal({
+  apt,
+  onClose,
+  onUpdate,
+}: {
+  apt: Appointment;
+  onClose: () => void;
+  onUpdate: (id: string, newStatus: Appointment["status"]) => void;
+}) {
+  const color = statusColors[apt.status] || "gray";
+  const gradientMap = {
+    green: "from-green-600 to-green-500",
+    yellow: "from-yellow-600 to-yellow-500",
+    blue: "from-blue-600 to-blue-500",
+    red: "from-red-600 to-red-500",
+    purple: "from-purple-600 to-purple-500",
+    gray: "from-gray-600 to-gray-500",
+  };
+  const headerClass = `bg-gradient-to-r ${gradientMap[color as keyof typeof gradientMap]} p-6 flex justify-between items-center`;
+
+  return (
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden">
+        {/* Header */}
+        <div className={headerClass}>
+          <div>
+            <h2 className="text-3xl font-bold text-white mb-2">Appointment Details</h2>
+            {apt.source === "millis_ai_auto" && (
+              <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full w-fit">
+                <Zap className="w-4 h-4" />
+                <span className="text-sm font-semibold">AI Auto-Created</span>
+              </div>
+            )}
+          </div>
+          <button onClick={onClose} className="text-white hover:bg-white/20 p-2.5 rounded-xl transition">
+            <X className="w-7 h-7" />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="p-8 space-y-6 overflow-y-auto max-h-[calc(90vh-200px)]">
+          {/* AI Analysis Section */}
+          {apt.source === "millis_ai_auto" && apt.metadata && (
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-6">
+              <h3 className="text-xl font-bold mb-4 text-purple-900 flex items-center gap-2">
+                <Zap className="w-6 h-6" />
+                AI Analysis Details
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {apt.metadata.confidence_score && (
+                  <div className="bg-white p-4 rounded-xl">
+                    <p className="text-sm text-purple-700 font-semibold mb-1">Confidence Score</p>
+                    <p className="text-3xl font-bold text-purple-900">
+                      {Math.round(apt.metadata.confidence_score * 100)}%
+                    </p>
+                  </div>
+                )}
+                {apt.metadata.doctor_name && (
+                  <div className="bg-white p-4 rounded-xl">
+                    <p className="text-sm text-purple-700 font-semibold mb-1">Doctor Requested</p>
+                    <p className="text-lg font-bold text-purple-900">Dr. {apt.metadata.doctor_name}</p>
+                  </div>
+                )}
+                {apt.metadata.call_duration && (
+                  <div className="bg-white p-4 rounded-xl">
+                    <p className="text-sm text-purple-700 font-semibold mb-1">Call Duration</p>
+                    <p className="text-lg font-bold text-purple-900">
+                      {Math.floor(apt.metadata.call_duration / 60)} minutes
+                    </p>
+                  </div>
+                )}
+                {apt.metadata.call_direction && (
+                  <div className="bg-white p-4 rounded-xl">
+                    <p className="text-sm text-purple-700 font-semibold mb-1">Call Type</p>
+                    <p className="text-lg font-bold text-purple-900 capitalize">{apt.metadata.call_direction}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Patient Information */}
+          <div className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 rounded-2xl p-6">
+            <h3 className="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
+              <User className="w-6 h-6 text-blue-600" />
+              Patient Information
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="text-sm text-gray-600 font-semibold mb-1">Full Name</p>
+                <p className="text-xl font-bold text-gray-900">{apt.name}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 font-semibold mb-1">Phone Number</p>
+                <p className="text-xl font-bold text-gray-900">{apt.phone}</p>
+              </div>
+              {apt.email && (
+                <div className="col-span-2">
+                  <p className="text-sm text-gray-600 font-semibold mb-1">Email Address</p>
+                  <p className="text-lg font-bold text-gray-900">{apt.email}</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Appointment Information */}
+          <div className="bg-gradient-to-br from-green-50 to-white border-2 border-green-200 rounded-2xl p-6">
+            <h3 className="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
+              <Calendar className="w-6 h-6 text-green-600" />
+              Appointment Information
+            </h3>
+            <div className="space-y-4">
+              {apt.metadata?.doctor_name && (
+                <div className="bg-green-100 border-2 border-green-300 p-4 rounded-xl">
+                  <p className="text-sm text-green-700 font-semibold flex items-center gap-2 mb-1">
+                    <Stethoscope className="w-4 h-4" />
+                    Assigned Doctor
+                  </p>
+                  <p className="text-2xl font-bold text-green-900">Dr. {apt.metadata.doctor_name}</p>
+                </div>
+              )}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white p-4 rounded-xl border-2 border-gray-200">
+                  <p className="text-sm text-gray-600 font-semibold mb-1">Date</p>
+                  <p className="text-lg font-bold text-gray-900">
+                    {new Date(apt.date).toLocaleDateString("en-US", {
+                      weekday: "short",
+                      month: "long",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </p>
+                </div>
+                <div className="bg-white p-4 rounded-xl border-2 border-gray-200">
+                  <p className="text-sm text-gray-600 font-semibold mb-1">Time</p>
+                  <p className="text-lg font-bold text-gray-900">{apt.time}</p>
+                </div>
+              </div>
+              <div className="bg-white p-4 rounded-xl border-2 border-gray-200">
+                <p className="text-sm text-gray-600 font-semibold mb-2">Purpose of Visit</p>
+                <p className="text-base text-gray-900 font-medium leading-relaxed">{apt.purpose}</p>
+              </div>
+              {apt.notes && (
+                <div className="bg-yellow-50 p-4 rounded-xl border-2 border-yellow-200">
+                  <p className="text-sm text-yellow-700 font-semibold mb-2">Additional Notes</p>
+                  <p className="text-sm text-gray-800">{apt.notes}</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Transcription */}
+          {apt.transcription && (
+            <div className="bg-gray-50 border-2 border-gray-200 rounded-2xl p-6">
+              <h3 className="text-xl font-bold mb-3 text-gray-900 flex items-center gap-2">
+                <FileText className="w-6 h-6 text-gray-600" />
+                Call Transcription
+              </h3>
+              <div className="text-sm text-gray-700 max-h-48 overflow-y-auto bg-white p-4 rounded-xl border border-gray-200 font-mono">
+                {typeof apt.transcription === "string"
+                  ? apt.transcription
+                  : JSON.stringify(apt.transcription, null, 2)}
+              </div>
+            </div>
+          )}
+
+          {/* Status Management */}
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+            <div className="flex justify-between items-center mb-5 pb-4 border-b-2 border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900">Update Status</h3>
+              <StatusBadge status={apt.status} />
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-5">
+              <button
+                onClick={() => onUpdate(apt._id, "scheduled")}
+                disabled={apt.status === "scheduled"}
+                className="px-4 py-3 text-sm font-bold rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed bg-blue-500 text-white hover:bg-blue-600 shadow-md hover:shadow-lg transform hover:scale-105"
+              >
+                📅 Schedule
+              </button>
+              <button
+                onClick={() => onUpdate(apt._id, "confirmed")}
+                disabled={apt.status === "confirmed"}
+                className="px-4 py-3 text-sm font-bold rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed bg-green-500 text-white hover:bg-green-600 shadow-md hover:shadow-lg transform hover:scale-105"
+              >
+                ✅ Confirm
+              </button>
+              <button
+                onClick={() => onUpdate(apt._id, "completed")}
+                disabled={apt.status === "completed"}
+                className="px-4 py-3 text-sm font-bold rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed bg-purple-500 text-white hover:bg-purple-600 shadow-md hover:shadow-lg transform hover:scale-105"
+              >
+                ✔ Complete
+              </button>
+              <button
+                onClick={() => onUpdate(apt._id, "rescheduled")}
+                disabled={apt.status === "rescheduled"}
+                className="px-4 py-3 text-sm font-bold rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed bg-yellow-500 text-white hover:bg-yellow-600 shadow-md hover:shadow-lg transform hover:scale-105"
+              >
+                🔄 Reschedule
+              </button>
+              <button
+                onClick={() => onUpdate(apt._id, "no-show")}
+                disabled={apt.status === "no-show"}
+                className="px-4 py-3 text-sm font-bold rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed bg-gray-500 text-white hover:bg-gray-600 shadow-md hover:shadow-lg transform hover:scale-105"
+              >
+                ❌ No Show
+              </button>
+              <button
+                onClick={() => onUpdate(apt._id, "cancelled")}
+                disabled={apt.status === "cancelled"}
+                className="px-4 py-3 text-sm font-bold rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed bg-red-500 text-white hover:bg-red-600 shadow-md hover:shadow-lg transform hover:scale-105"
+              >
+                🚫 Cancel
+              </button>
+            </div>
+
+            <div className="bg-blue-50 p-4 rounded-xl border border-blue-200">
+              <p className="text-sm text-blue-900 flex items-start gap-2">
+                <Mail className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span className="font-medium">
+                  Confirming this appointment will automatically send an email notification to the assigned doctor
+                  with all appointment details.
+                </span>
+              </p>
+            </div>
+          </div>
+
+          {/* Metadata Footer */}
+          <div className="text-xs text-gray-500 flex flex-wrap gap-4 justify-between pt-4 border-t-2 border-gray-200">
+            <span className="flex items-center gap-1">
+              <Clock className="w-3 h-3" />
+              Created: {new Date(apt.createdAt).toLocaleString()}
+            </span>
+            <span className="flex items-center gap-1">
+              <RefreshCw className="w-3 h-3" />
+              Updated: {new Date(apt.updatedAt).toLocaleString()}
+            </span>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="p-6 bg-gray-50 border-t-2 border-gray-200 flex justify-end">
+          <button
+            onClick={onClose}
+            className="px-8 py-3 bg-gray-700 hover:bg-gray-800 text-white rounded-xl font-bold transition shadow-md hover:shadow-lg"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
+// ==================== MAIN COMPONENT ====================
 export default function AppointmentsPage() {
+  const router = useRouter();
+  const [mounted, setMounted] = useState(false);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
-  const [calendarAppointments, setCalendarAppointments] = useState<Appointment[]>([]);
   const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [stats, setStats] = useState<AppointmentStats>({
-    total: 0, today: 0, scheduled: 0, completed: 0, cancelled: 0, auto_created: 0, manual_created: 0,
-  });
 
-  const [filterStatus, setFilterStatus] = useState<"All" | Appointment['status']>("All");
-  const [filterSource, setFilterSource] = useState<"All" | Appointment['source']>("All");
+  const [selectedDoctor, setSelectedDoctor] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [filterStatus, setFilterStatus] = useState<"All" | Appointment["status"]>("All");
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [page, setPage] = useState(1);
-  const [pagination, setPagination] = useState<PaginationInfo | null>(null);
-  const [showPromptModal, setShowPromptModal] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [socket, setSocket] = useState<WebSocket | null>(null);
-  const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
-  const [wsRetryCount, setWsRetryCount] = useState(0);
-  const [mounted, setMounted] = useState(false);
 
-  const [aiPrompt, setAiPrompt] = useState(`You are analyzing a clinic appointment booking call.
+  const hospitalName = "City General Hospital";
 
-TASK: Determine if patient is requesting an appointment with a doctor.
-
-Look for:
-- Patient asking for appointment
-- Doctor's name mentioned
-- Date/time preferences
-- Patient confirmation
-- Contact details (name, phone)
-
-RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
-{
-  "is_appointment": true/false,
-  "customer_name": "patient name or empty string",
-  "phone_number": "10-digit number or empty string",
-  "doctor_name": "doctor name if mentioned",
-  "appointment_date": "requested date/time or empty string",
-  "appointment_time": "requested time or empty string",
-  "is_confirmed": true/false,
-  "confidence_score": 0.0-1.0,
-  "reason_for_visit": "brief reason",
-  "notes": "any other details"
-}`);
-
-  // Mount state to prevent hydration errors
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // WebSocket setup
-  useEffect(() => {
-    if (!mounted) return;
-    
-    const setupWebSocket = () => {
-      try {
-        const wsUrl = `${API_BASE_URL.replace('http', 'ws')}/ws`;
-        console.log('Attempting WebSocket connection to:', wsUrl);
-        const ws = new WebSocket(wsUrl);
-        
-        ws.onopen = () => {
-          console.log('✅ WebSocket connected');
-          setWsRetryCount(0);
-        };
-        
-        ws.onmessage = (event) => {
-          const data = JSON.parse(event.data);
-          if (data.type === 'new_appointment' || data.type === 'appointment_updated') {
-            console.log('📅 Appointment update received:', data);
-            fetchAppointments();
-            fetchCalendarAppointments(currentMonth);
-            setLastUpdate(new Date());
-            
-            if (data.type === 'new_appointment') {
-              setSuccessMessage('🎉 New appointment auto-created from call!');
-              setTimeout(() => setSuccessMessage(null), 5000);
-            }
-          }
-        };
-        
-        ws.onerror = (error) => {
-          console.warn('⚠️ WebSocket error (live updates disabled):', error);
-        };
-        
-        ws.onclose = () => {
-          console.log('⚠️ WebSocket disconnected');
-          // Only retry a few times, then give up gracefully
-          if (wsRetryCount < 3) {
-            const retryDelay = Math.min(1000 * Math.pow(2, wsRetryCount), 10000);
-            setTimeout(() => {
-              setWsRetryCount(prev => prev + 1);
-              setupWebSocket();
-            }, retryDelay);
-          } else {
-            console.log('WebSocket max retries reached, continuing without live updates');
-          }
-        };
-        
-        setSocket(ws);
-        
-        return () => {
-          ws.close();
-        };
-      } catch (error) {
-        console.warn('WebSocket setup failed, continuing without live updates:', error);
-      }
-    };
-
-    setupWebSocket();
-  }, [mounted, wsRetryCount]);
-
   const fetchAppointments = useCallback(async () => {
+    if (!mounted) return;
+
     setLoading(true);
     setError(null);
     try {
-      const params = new URLSearchParams({
-        page: page.toString(),
-        limit: "50",
-      });
-
-      if (filterStatus !== "All") {
-        params.append("status", filterStatus);
-      }
-      if (filterSource !== "All") {
-        params.append("source", filterSource);
-      }
-      if (searchTerm) {
-        params.append("name", searchTerm);
-      }
-      if (selectedDate) {
-        params.append("from_date", selectedDate);
-        params.append("to_date", selectedDate);
-      }
+      const params = new URLSearchParams({ limit: "200" });
+      if (filterStatus !== "All") params.append("status", filterStatus);
+      if (searchTerm) params.append("name", searchTerm);
 
       const url = `${API_BASE_URL}/api/appointments?${params.toString()}`;
-      const response = await fetch(url, {
-        method: "GET",
-        headers: getAuthHeaders(),
-      });
+      const response = await fetch(url, { method: "GET", headers: getAuthHeaders() });
 
-      if (!response.ok) {
-        throw new Error(`HTTP Error: ${response.status}`);
-      }
-
+      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
       const data = await response.json();
-      
+
       if (data.success) {
-        // ✅ Sort appointments by creation date (newest first) on frontend
-        const sortedAppointments = (data.appointments || []).sort((a: { createdAt: string | number | Date; }, b: { createdAt: string | number | Date; }) => {
-          const dateA = new Date(a.createdAt).getTime();
-          const dateB = new Date(b.createdAt).getTime();
-          return dateB - dateA; // Newest first
-        });
-
-        console.log('🆕 Appointments sorted by creation date (newest first)');
-        console.log('📅 Most recent appointments:', sortedAppointments.slice(0, 3).map((apt: { name: any; createdAt: any; source: any; }) => ({
-          name: apt.name,
-          created: apt.createdAt,
-          source: apt.source
-        })));
-
+        const sortedAppointments = (data.appointments || []).sort(
+          (a: Appointment, b: Appointment) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
         setAppointments(sortedAppointments);
-        setStats(data.stats || {
-          total: 0, today: 0, scheduled: 0, completed: 0, cancelled: 0, auto_created: 0, manual_created: 0,
-        });
-        setPagination(data.pagination || null);
-      } else {
-        throw new Error(data.message || 'Failed to fetch appointments');
       }
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Failed to fetch appointments";
-      console.error('Failed to fetch appointments:', errorMessage);
-      setError(`${errorMessage}. Please refresh the page.`);
+      console.error("Failed to fetch appointments:", err);
+      setError("Failed to fetch appointments");
       setAppointments([]);
     }
     setLoading(false);
-  }, [page, filterStatus, filterSource, searchTerm, selectedDate]);
+  }, [filterStatus, searchTerm, mounted]);
 
-  const fetchCalendarAppointments = useCallback(async (date: Date) => {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    try {
-      const params = new URLSearchParams({
-        year: year.toString(),
-        month: month.toString(),
-      });
-      
-      const url = `${API_BASE_URL}/api/appointments/calendar?${params.toString()}`;
-      const response = await fetch(url, { headers: getAuthHeaders() });
-      
-      if (!response.ok) {
-        throw new Error("Failed to fetch calendar data");
-      }
-      
-      const data = await response.json();
-      if (data.success) {
-        setCalendarAppointments(data.appointments || []);
-      }
-    } catch (err) {
-      console.error("Calendar fetch error:", err);
-    }
-  }, []);
-
-  const updateAppointmentStatus = async (appointmentId: string | undefined, newStatus: Appointment['status']) => {
-    if (!appointmentId) {
-      setError("Invalid appointment id");
-      return;
-    }
+  const updateAppointmentStatus = async (appointmentId: string | undefined, newStatus: Appointment["status"]) => {
+    if (!appointmentId) return;
     try {
       const response = await fetch(`${API_BASE_URL}/api/appointments/${appointmentId}`, {
         method: "PUT",
@@ -359,171 +427,80 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
       });
 
       if (!response.ok) throw new Error("Failed to update");
-      
       const data = await response.json();
-      
+
       if (data.success) {
-        let notificationMessage = `Appointment status updated to ${newStatus}!`;
-        
-        if (newStatus === "confirmed") {
-          notificationMessage = `✅ Appointment confirmed! Email notification sent to doctor.`;
-        }
-        
-        setSuccessMessage(notificationMessage);
+        setSuccessMessage(
+          newStatus === "confirmed"
+            ? "✅ Appointment confirmed! Email sent to doctor."
+            : `Status updated to ${newStatus}!`
+        );
         setTimeout(() => setSuccessMessage(null), 5000);
-        
-        setError(null);
         setSelectedAppointment(null);
         await fetchAppointments();
-        await fetchCalendarAppointments(currentMonth);
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to update appointment");
+      setError("Failed to update appointment");
     }
   };
 
-  // Initial fetch
   useEffect(() => {
-    const initialize = async () => {
-      await fetchAppointments();
-      await fetchCalendarAppointments(currentMonth);
-    };
-
-    initialize();
-
-    const timer = setInterval(() => {
-      if (!socket || socket.readyState !== WebSocket.OPEN) {
-        fetchAppointments();
-        fetchCalendarAppointments(currentMonth);
-      }
-    }, 30000);
-
-    return () => clearInterval(timer);
-  }, [fetchAppointments, fetchCalendarAppointments, currentMonth, socket]);
-
-  useEffect(() => {
-    fetchAppointments();
-  }, [fetchAppointments]);
-
-  useEffect(() => {
-    fetchCalendarAppointments(currentMonth);
-  }, [currentMonth, fetchCalendarAppointments]);
-
-  // Load AI prompt
-  useEffect(() => {
-    const fetchPrompt = async () => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/appointments/analysis-prompts`);
-        if (response.ok) {
-          const data = await response.json();
-          setAiPrompt(data.appointment_prompt || aiPrompt);
-        }
-      } catch (error) {
-        console.error("Failed to fetch prompt:", error);
-      }
-    };
-    fetchPrompt();
-  }, []);
-
-  const saveAiPrompt = async () => {
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/appointments/analysis-prompts`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ appointment_prompt: aiPrompt })
-      });
-
-      if (response.ok) {
-        setSuccessMessage("✅ AI prompt saved successfully!");
-        setTimeout(() => setSuccessMessage(null), 5000);
-        setShowPromptModal(false);
-      } else {
-        setError("Failed to save prompt");
-      }
-    } catch (error) {
-      setError("Failed to save prompt");
+    if (mounted) {
+      fetchAppointments();
     }
-  };
+  }, [fetchAppointments, mounted]);
 
-  const resetPrompt = () => {
-    const defaultPrompt = `You are analyzing a clinic appointment booking call.
-
-TASK: Determine if patient is requesting an appointment with a doctor.
-
-Look for:
-- Patient asking for appointment
-- Doctor's name mentioned
-- Date/time preferences
-- Patient confirmation
-- Contact details (name, phone)
-
-RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
-{
-  "is_appointment": true/false,
-  "customer_name": "patient name or empty string",
-  "phone_number": "10-digit number or empty string",
-  "doctor_name": "doctor name if mentioned",
-  "appointment_date": "requested date/time or empty string",
-  "appointment_time": "requested time or empty string",
-  "is_confirmed": true/false,
-  "confidence_score": 0.0-1.0,
-  "reason_for_visit": "brief reason",
-  "notes": "any other details"
-}`;
-    setAiPrompt(defaultPrompt);
-  };
-
-  const todayAppointments = useMemo(() => appointments.filter(apt => 
-    new Date(apt.date).toDateString() === new Date().toDateString()
-  ), [appointments]);
-
-  const getAppointmentsForDate = useCallback((date: Date) => {
-    return calendarAppointments.filter(apt => {
-      const appointmentDate = new Date(apt.date);
-      appointmentDate.setHours(0, 0, 0, 0);
-      
-      const compareDate = new Date(date);
-      compareDate.setHours(0, 0, 0, 0);
-      
-      return appointmentDate.getTime() === compareDate.getTime();
+  // Group appointments by doctor
+  const doctorGroups = useMemo(() => {
+    const groups: Record<string, Appointment[]> = {};
+    appointments.forEach((apt) => {
+      const doctor = apt.metadata?.doctor_name || "Unassigned";
+      if (!groups[doctor]) groups[doctor] = [];
+      groups[doctor].push(apt);
     });
-  }, [calendarAppointments]);
+    return groups;
+  }, [appointments]);
 
-  const getDaysInMonth = (date: Date) => {
-    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-  };
+  const doctors = Object.keys(doctorGroups).sort();
 
-  const getFirstDayOfMonth = (date: Date) => {
-    return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
-  };
+  // Filter appointments by selected doctor and date
+  const filteredAppointments = useMemo(() => {
+    let filtered = appointments;
 
-  const handlePrevMonth = () => {
-    setCurrentMonth(prev => new Date(prev.getFullYear(), prev.getMonth() - 1));
-  };
-
-  const handleNextMonth = () => {
-    setCurrentMonth(prev => new Date(prev.getFullYear(), prev.getMonth() + 1));
-  };
-
-  const handleDateClick = (dateStr: string) => {
-    setSearchTerm("");
-    setFilterStatus("All");
-
-    if (selectedDate === dateStr) {
-      setSelectedDate(null);
-    } else {
-      setSelectedDate(dateStr);
-      setPage(1);
+    if (selectedDoctor) {
+      filtered = filtered.filter((apt) => (apt.metadata?.doctor_name || "Unassigned") === selectedDoctor);
     }
-  };
+
+    if (selectedDate) {
+      filtered = filtered.filter(
+        (apt) => new Date(apt.date).toDateString() === new Date(selectedDate).toDateString()
+      );
+    }
+
+    return filtered;
+  }, [appointments, selectedDoctor, selectedDate]);
+
+  // Get appointments for calendar
+  const getAppointmentsForDate = useCallback(
+    (date: Date) => {
+      return filteredAppointments.filter((apt) => {
+        const appointmentDate = new Date(apt.date);
+        appointmentDate.setHours(0, 0, 0, 0);
+        const compareDate = new Date(date);
+        compareDate.setHours(0, 0, 0, 0);
+        return appointmentDate.getTime() === compareDate.getTime();
+      });
+    },
+    [filteredAppointments]
+  );
 
   const renderCalendar = () => {
-    const daysInMonth = getDaysInMonth(currentMonth);
-    const firstDay = getFirstDayOfMonth(currentMonth);
+    const daysInMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate();
+    const firstDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1).getDay();
     const days = [];
 
     for (let i = 0; i < firstDay; i++) {
-      days.push(<div key={`empty-${i}`} className="h-24 bg-gray-900 rounded-lg"></div>);
+      days.push(<div key={`empty-${i}`} className="h-9 bg-gray-50/50 rounded"></div>);
     }
 
     for (let day = 1; day <= daysInMonth; day++) {
@@ -536,50 +513,27 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
       days.push(
         <div
           key={day}
-          onClick={() => handleDateClick(dateStr)}
-          className={`h-24 p-2 rounded-lg cursor-pointer transition-all border-2 ${
+          onClick={() => setSelectedDate(isSelected ? null : dateStr)}
+          className={`h-9 flex items-center justify-center rounded-lg cursor-pointer text-sm font-medium transition-all ${
             isSelected
-              ? "bg-blue-500 border-orange-600 shadow-lg scale-105"
-              : isToday 
-              ? "bg-gradient-to-br from-orange-50 to-orange-200 border-orange-400 shadow-md" 
-              : "bg-black border-gray-200 hover:border-orange-300 hover:shadow-sm"
+              ? "bg-gradient-to-br from-blue-600 to-blue-500 text-white shadow-lg scale-105"
+              : isToday
+              ? "bg-gradient-to-br from-blue-100 to-blue-50 text-blue-700 font-bold ring-2 ring-blue-400"
+              : dateAppts.length > 0
+              ? "bg-green-50 text-green-700 hover:bg-green-100 font-semibold"
+              : "hover:bg-gray-100 text-gray-600"
           }`}
         >
-          <div className={`text-sm font-bold mb-1 ${
-            isSelected ? "text-white" : isToday ? "text-blue-700" : "text-gray-300"
-          }`}>
+          <div className="relative">
             {day}
-          </div>
-          
-          {dateAppts.length > 0 && (
-            <div className="space-y-1">
-              <div className={`text-xs font-bold ${isSelected ? "text-white" : "text-orange-600"}`}>
-                {dateAppts.length} {dateAppts.length === 1 ? 'apt' : 'apts'}
+            {dateAppts.length > 0 && !isSelected && (
+              <div className="absolute -bottom-0.5 left-1/2 transform -translate-x-1/2 flex gap-0.5">
+                {dateAppts.slice(0, 3).map((_, i) => (
+                  <div key={i} className="w-1 h-1 bg-green-500 rounded-full"></div>
+                ))}
               </div>
-              {dateAppts.slice(0, 2).map((apt, idx) => (
-                <div
-                  key={apt._id}
-                  className={`text-xs px-1.5 py-0.5 rounded truncate flex items-center gap-1 ${
-                    isSelected 
-                      ? "bg-black/20 text-white" 
-                      : statusStyles[apt.status]
-                  }`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedAppointment(apt);
-                  }}
-                >
-                  {apt.source === 'millis_ai_auto' && <Zap className="w-3 h-3" />}
-                  {apt.name}
-                </div>
-              ))}
-              {dateAppts.length > 2 && (
-                <div className={`text-xs ${isSelected ? "text-white" : "text-orange-600"}`}>
-                  +{dateAppts.length - 2} more
-                </div>
-              )}
-            </div>
-          )}
+            )}
+          </div>
         </div>
       );
     }
@@ -587,786 +541,477 @@ RESPOND ONLY IN THIS JSON FORMAT (NO EXTRA TEXT):
     return days;
   };
 
-  // Prevent hydration mismatch by ensuring component is mounted
   if (!mounted) {
-    return null;
+    return (
+      <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
+        <div className="w-64 bg-gray-900"></div>
+        <main className="flex-1 ml-64"></main>
+      </div>
+    );
   }
 
-  if (loading && appointments.length === 0) {
+  // ==================== DOCTOR SELECTION VIEW ====================
+  if (!selectedDoctor) {
     return (
-      <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-white to-orange-100">
+      <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <main className="flex-1 ml-60 p-6">
-          <div className="text-center mt-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto"></div>
-            <p className="mt-4 text-gray-400">Loading appointments...</p>
+
+        <main className="flex-1 ml-64 p-8">
+          <div className="max-w-[1400px] mx-auto space-y-8">
+            {/* Hospital Header */}
+            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 opacity-90"></div>
+              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
+
+              <div className="relative z-10 p-8">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-start gap-5">
+                    <div className="bg-white/20 backdrop-blur-md p-5 rounded-2xl border border-white/30 shadow-xl">
+                      <Building2 className="w-12 h-12 text-white" />
+                    </div>
+                    <div>
+                      <h1 className="text-4xl font-bold text-white tracking-tight mb-2">{hospitalName}</h1>
+                      <p className="text-blue-100 text-lg font-medium mb-4">
+                        Advanced Appointment Management System
+                      </p>
+                      <div className="flex flex-wrap gap-3">
+                        <div className="bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl border border-white/30">
+                          <div className="text-white/80 text-xs font-medium mb-0.5">Total Appointments</div>
+                          <div className="text-white text-2xl font-bold">{appointments.length}</div>
+                        </div>
+                        <div className="bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl border border-white/30">
+                          <div className="text-white/80 text-xs font-medium mb-0.5">Active Doctors</div>
+                          <div className="text-white text-2xl font-bold">{doctors.length}</div>
+                        </div>
+                        <div className="bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl border border-white/30">
+                          <div className="text-white/80 text-xs font-medium mb-0.5">Today's Schedule</div>
+                          <div className="text-white text-2xl font-bold">
+                            {
+                              appointments.filter(
+                                (a) => new Date(a.date).toDateString() === new Date().toDateString()
+                              ).length
+                            }
+                          </div>
+                        </div>
+                        <div className="bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl border border-white/30">
+                          <div className="text-white/80 text-xs font-medium mb-0.5">AI Auto-Created</div>
+                          <div className="text-white text-2xl font-bold flex items-center gap-1">
+                            <Zap className="w-5 h-5" />
+                            {appointments.filter((a) => a.source === "millis_ai_auto").length}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    onClick={fetchAppointments}
+                    disabled={loading}
+                    className="bg-white/20 backdrop-blur-md hover:bg-white/30 p-3 rounded-xl transition border border-white/30 disabled:opacity-50"
+                  >
+                    <RefreshCw className={`w-6 h-6 text-white ${loading ? "animate-spin" : ""}`} />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Messages */}
+            {successMessage && (
+              <div className="bg-green-50 border-l-4 border-green-500 text-green-700 px-6 py-4 rounded-xl flex items-center gap-3 shadow-md">
+                <CheckCircle2 className="w-6 h-6" />
+                <span className="font-medium">{successMessage}</span>
+              </div>
+            )}
+            {error && (
+              <div className="bg-red-50 border-l-4 border-red-500 text-red-700 px-6 py-4 rounded-xl flex items-center gap-3 shadow-md">
+                <AlertCircle className="w-6 h-6" />
+                <span className="font-medium">{error}</span>
+              </div>
+            )}
+
+            {/* Doctor Selection Grid */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="bg-gradient-to-br from-purple-500 to-pink-500 p-3 rounded-xl shadow-lg">
+                  <Stethoscope className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">Select Doctor</h2>
+                  <p className="text-gray-500 text-sm">Click on a doctor card to view their appointments</p>
+                </div>
+              </div>
+
+              {loading ? (
+                <div className="flex justify-center items-center py-20">
+                  <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600"></div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                  {doctors.map((doctor) => {
+                    const doctorAppts = doctorGroups[doctor];
+                    const todayAppts = doctorAppts.filter(
+                      (a) => new Date(a.date).toDateString() === new Date().toDateString()
+                    );
+                    const confirmedAppts = doctorAppts.filter((a) => a.status === "confirmed").length;
+
+                    return (
+                      <div
+                        key={doctor}
+                        onClick={() => setSelectedDoctor(doctor)}
+                        className="group cursor-pointer rounded-2xl p-6 transition-all transform hover:scale-105 hover:shadow-2xl bg-gradient-to-br from-gray-50 to-white shadow-md border-2 border-gray-200 hover:border-blue-300"
+                      >
+                        <div className="flex items-center gap-3 mb-4 pb-4 border-b border-gray-200">
+                          <div className="p-3 rounded-xl bg-gradient-to-br from-blue-100 to-purple-100">
+                            <User className="w-7 h-7 text-blue-600" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-lg font-bold truncate text-gray-900">
+                              {doctor === "Unassigned" ? "⚠ Unassigned" : `Dr. ${doctor}`}
+                            </h3>
+                            <p className="text-xs text-gray-500">
+                              {doctor === "Unassigned" ? "No doctor assigned" : "Specialist"}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-3">
+                          <div className="flex items-center justify-between p-3 rounded-xl bg-blue-50">
+                            <div className="flex items-center gap-2">
+                              <Calendar className="w-4 h-4 text-blue-600" />
+                              <span className="text-sm font-medium text-gray-600">Total</span>
+                            </div>
+                            <span className="font-bold text-xl text-blue-600">{doctorAppts.length}</span>
+                          </div>
+
+                          <div className="flex items-center justify-between p-3 rounded-xl bg-green-50">
+                            <div className="flex items-center gap-2">
+                              <Clock className="w-4 h-4 text-green-600" />
+                              <span className="text-sm font-medium text-gray-600">Today</span>
+                            </div>
+                            <span
+                              className={`font-bold text-xl ${
+                                todayAppts.length > 0 ? "text-green-600" : "text-gray-400"
+                              }`}
+                            >
+                              {todayAppts.length}
+                            </span>
+                          </div>
+
+                          <div className="flex items-center justify-between p-3 rounded-xl bg-purple-50">
+                            <div className="flex items-center gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-purple-600" />
+                              <span className="text-sm font-medium text-gray-600">Confirmed</span>
+                            </div>
+                            <span className="font-bold text-xl text-purple-600">{confirmedAppts}</span>
+                          </div>
+                        </div>
+
+                        <div className="mt-4 pt-3 border-t border-gray-200 flex items-center justify-center text-blue-600 text-sm font-semibold opacity-0 group-hover:opacity-100 transition">
+                          <span>View Appointments</span>
+                          <ChevronRight className="w-4 h-4 ml-1" />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </div>
         </main>
       </div>
     );
   }
 
+  // ==================== DOCTOR'S APPOINTMENT VIEW ====================
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-white to-orange-100">
+    <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <main className="flex-1 ml-60 p-6">
-        <div className="max-w-7xl mx-auto space-y-6">
-          {/* Header */}
-          <div className="bg-gradient-to-r from-orange-600 to-orange-600 rounded-2xl shadow-lg p-8 text-white">
-            <div className="flex justify-between items-center">
-              <div>
-                <h1 className="text-4xl font-bold">Appointment Management</h1>
-                <p className="text-blue-100 mt-2 text-lg">Manage appointments using Auto-Appointment System</p>
-                <div className="flex items-center gap-2 mt-2 text-sm">
-                  <div className="flex items-center gap-1 bg-black/20 px-3 py-1 rounded-full">
-                    <div className={`w-2 h-2 rounded-full ${socket?.readyState === WebSocket.OPEN ? 'bg-green-400' : 'bg-red-400'}`}></div>
-                    <span>{socket?.readyState === WebSocket.OPEN ? 'Live Updates Active' : 'Connecting...'}</span>
-                  </div>
-                  <span className="text-xs">Last updated: {lastUpdate.toLocaleTimeString()}</span>
-                </div>
+
+      <main className="flex-1 ml-64 p-8">
+        <div className="max-w-[1600px] mx-auto space-y-6">
+          {/* Back Button & Doctor Header */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => {
+                setSelectedDoctor(null);
+                setSelectedDate(null);
+              }}
+              className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-gray-50 rounded-xl transition border border-gray-200 shadow-sm"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              <span className="font-semibold">Back to Doctors</span>
+            </button>
+          </div>
+
+          {/* Doctor Info Header */}
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-xl p-6 text-white">
+            <div className="flex items-center gap-4">
+              <div className="bg-white/20 backdrop-blur-sm p-4 rounded-xl">
+                <Stethoscope className="w-10 h-10" />
               </div>
-              <button
-                onClick={() => setShowPromptModal(true)}
-                className="flex items-center gap-2 bg-black/20 hover:bg-black/30 px-4 py-2 rounded-lg transition backdrop-blur-sm"
-              >
-                <Settings className="w-5 h-5" />
-                <span className="font-semibold">AI Settings</span>
-              </button>
+              <div className="flex-1">
+                <h1 className="text-3xl font-bold">Dr. {selectedDoctor}</h1>
+                <p className="text-blue-100 mt-1">
+                  {selectedDate
+                    ? `Viewing appointments for ${new Date(selectedDate).toLocaleDateString("en-US", {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                      })}`
+                    : "All Appointments"}{" "}
+                  • {filteredAppointments.length} total
+                </p>
+              </div>
+              <div className="flex gap-3">
+                {selectedDate && (
+                  <button
+                    onClick={() => setSelectedDate(null)}
+                    className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl transition backdrop-blur-sm font-semibold"
+                  >
+                    Clear Date Filter
+                  </button>
+                )}
+                <button
+                  onClick={fetchAppointments}
+                  disabled={loading}
+                  className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl transition backdrop-blur-sm disabled:opacity-50"
+                >
+                  <RefreshCw className={`w-5 h-5 ${loading ? "animate-spin" : ""}`} />
+                </button>
+              </div>
             </div>
           </div>
 
-          {/* Success/Error Messages */}
+          {/* Messages */}
           {successMessage && (
-            <div className="bg-green-50 border-2 border-green-200 text-green-700 px-4 py-3 rounded-lg flex items-center gap-2 animate-fade-in">
-              <Mail className="w-5 h-5" />
-              {successMessage}
+            <div className="bg-green-50 border-l-4 border-green-500 text-green-700 px-6 py-4 rounded-xl flex items-center gap-3 shadow-md">
+              <CheckCircle2 className="w-6 h-6" />
+              <span className="font-medium">{successMessage}</span>
             </div>
           )}
           {error && (
-            <div className="bg-red-50 border-2 border-red-200 text-red-700 px-4 py-3 rounded-lg flex items-center gap-2">
-              <AlertCircle className="w-5 h-5" />
-              {error}
+            <div className="bg-red-50 border-l-4 border-red-500 text-red-700 px-6 py-4 rounded-xl flex items-center gap-3 shadow-md">
+              <AlertCircle className="w-6 h-6" />
+              <span className="font-medium">{error}</span>
             </div>
           )}
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-            <div className="bg-black rounded-xl shadow-sm p-5 border-l-4 border-orange-500 hover:shadow-md transition">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-sm text-gray-400 font-medium">Total</p>
-                  <p className="text-3xl font-bold text-white mt-1">{stats.total}</p>
-                </div>
-                <div className="bg-blue-100 p-3 rounded-lg">
-                  <Calendar className="w-6 h-6 text-orange-600" />
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-black rounded-xl shadow-sm p-5 border-l-4 border-orange-500 hover:shadow-md transition">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-sm text-gray-400 font-medium">Today</p>
-                  <p className="text-3xl font-bold text-white mt-1">{stats.today}</p>
-                </div>
-                <div className="bg-green-100 p-3 rounded-lg">
-                  <Clock className="w-6 h-6 text-orange-600" />
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-black rounded-xl shadow-sm p-5 border-l-4 border-yellow-500 hover:shadow-md transition">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-sm text-gray-400 font-medium">Scheduled</p>
-                  <p className="text-3xl font-bold text-white mt-1">{stats.scheduled}</p>
-                </div>
-                <div className="bg-yellow-100 p-3 rounded-lg">
-                  <AlertCircle className="w-6 h-6 text-yellow-600" />
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-black rounded-xl shadow-sm p-5 border-l-4 border-orange-500 hover:shadow-md transition">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-sm text-gray-400 font-medium">AI Auto-Created</p>
-                  <p className="text-3xl font-bold text-white mt-1">{stats.auto_created}</p>
-                </div>
-                <div className="bg-purple-100 p-3 rounded-lg">
-                  <Zap className="w-6 h-6 text-orange-600" />
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-black rounded-xl shadow-sm p-5 border-l-4 border-gray-500 hover:shadow-md transition">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-sm text-gray-400 font-medium">Manual</p>
-                  <p className="text-3xl font-bold text-white mt-1">{stats.manual_created}</p>
-                </div>
-                <div className="bg-gray-800 p-3 rounded-lg">
-                  <User className="w-6 h-6 text-gray-400" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Content */}
-          <div className="grid lg:grid-cols-3 gap-6">
-            {/* Left - Calendar & Today */}
-            <div className="lg:col-span-1 space-y-4">
-              {/* Calendar */}
-              <div className="bg-black rounded-xl shadow-sm p-5 border-t-4 border-orange-500">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <h3 className="font-bold text-white">
-                      {currentMonth.toLocaleDateString("en-US", { month: "long", year: "numeric" })}
-                    </h3>
-                    {selectedDate && (
-                      <button
-                        onClick={() => handleDateClick("")}
-                        className="text-xs text-orange-600 hover:text-orange-800 mt-1"
-                      >
-                        Clear Filter
-                      </button>
-                    )}
-                  </div>
+          {/* Main Content: Calendar + Appointments */}
+          <div className="grid lg:grid-cols-12 gap-6">
+            {/* Calendar on the Right */}
+            <div className="lg:col-span-4 xl:col-span-3">
+              <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100 sticky top-6">
+                <div className="flex items-center justify-between mb-5">
+                  <h3 className="font-bold text-gray-900 text-lg">
+                    {currentMonth.toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                  </h3>
                   <div className="flex gap-1">
-                    <button onClick={handlePrevMonth} className="p-1.5 hover:bg-gray-800 rounded-lg">
-                      <ChevronLeft className="w-5 h-5" />
+                    <button
+                      onClick={() =>
+                        setCurrentMonth((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1))
+                      }
+                      className="p-2 hover:bg-gray-100 rounded-lg transition"
+                    >
+                      <ChevronLeft className="w-5 h-5 text-gray-600" />
                     </button>
-                    <button onClick={handleNextMonth} className="p-1.5 hover:bg-gray-800 rounded-lg">
-                      <ChevronRight className="w-5 h-5" />
+                    <button
+                      onClick={() =>
+                        setCurrentMonth((prev) => new Date(prev.getFullYear(), prev.getMonth() + 1))
+                      }
+                      className="p-2 hover:bg-gray-100 rounded-lg transition"
+                    >
+                      <ChevronRight className="w-5 h-5 text-gray-600" />
                     </button>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-7 gap-1 mb-2">
-                  {["S", "M", "T", "W", "T", "F", "S"].map((day, i) => (
-                    <div key={i} className="text-center text-xs font-semibold text-gray-400 py-1">
+                <div className="grid grid-cols-7 gap-1.5 mb-2">
+                  {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((day, i) => (
+                    <div key={i} className="text-center text-xs font-bold text-gray-500 py-1">
                       {day}
                     </div>
                   ))}
                 </div>
 
-                <div className="grid grid-cols-7 gap-1">
-                  {renderCalendar()}
-                </div>
-              </div>
+                <div className="grid grid-cols-7 gap-1.5">{renderCalendar()}</div>
 
-              {/* Today's Appointments */}
-              <div className="bg-black rounded-xl shadow-sm p-6 border-t-4 border-orange-500">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="bg-blue-100 p-2 rounded-lg">
-                    <Calendar className="w-5 h-5 text-orange-600" />
+                {/* Quick Stats */}
+                <div className="mt-6 pt-5 border-t border-gray-200 space-y-3">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600 font-medium">Showing:</span>
+                    <span className="font-bold text-gray-900 text-lg">{filteredAppointments.length}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white">Today's Schedule</h3>
-                </div>
-                
-                {todayAppointments.length > 0 ? (
-                  <div className="space-y-3 max-h-96 overflow-y-auto">
-                    {todayAppointments.map(apt => (
-                      <div
-                        key={apt._id}
-                        className="bg-gradient-to-r from-orange-50 to-white p-4 rounded-lg border border-orange-400 cursor-pointer hover:shadow-md transition"
-                        onClick={() => setSelectedAppointment(apt)}
-                      >
-                        <div className="flex justify-between items-start mb-2">
-                          <div className="font-bold text-white">{apt.name}</div>
-                          <StatusBadge status={apt.status} />
-                        </div>
-                        <div className="flex items-center gap-1 mb-1">
-                          <SourceBadge source={apt.source} />
-                        </div>
-                        <div className="flex items-center gap-3 text-sm text-gray-400">
-                          <div className="flex items-center gap-1">
-                            <Clock className="w-4 h-4 text-orange-500" />
-                            {new Date(apt.date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                          </div>
-                        </div>
-                        <div className="mt-2 text-sm text-gray-300 truncate">
-                          {apt.purpose}
-                        </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="bg-blue-50 p-2 rounded-lg text-center">
+                      <div className="text-xs text-blue-600 font-medium">Scheduled</div>
+                      <div className="text-lg font-bold text-blue-700">
+                        {filteredAppointments.filter((a) => a.status === "scheduled").length}
                       </div>
-                    ))}
+                    </div>
+                    <div className="bg-green-50 p-2 rounded-lg text-center">
+                      <div className="text-xs text-green-600 font-medium">Confirmed</div>
+                      <div className="text-lg font-bold text-green-700">
+                        {filteredAppointments.filter((a) => a.status === "confirmed").length}
+                      </div>
+                    </div>
                   </div>
-                ) : (
-                  <div className="text-center py-8 text-gray-500">
-                    <Calendar className="w-12 h-12 mx-auto text-gray-300 mb-2" />
-                    <p>No appointments today</p>
-                  </div>
-                )}
+                </div>
               </div>
             </div>
 
-            {/* Right - Appointments List */}
-            <div className="lg:col-span-2">
-              <div className="bg-black rounded-xl shadow-sm overflow-hidden">
-                {/* Header */}
-                <div className="bg-gradient-to-r from-gray-50 to-orange-100 border-b-2 border-blue-100 p-6">
-                  <h2 className="text-2xl font-bold text-white">
-                    {selectedDate 
-                      ? `Appointments on ${new Date(selectedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`
-                      : "All Appointments"
-                    }
-                  </h2>
-                  <p className="text-sm text-gray-400 mt-1">
-                    Showing {appointments.length} appointment(s) • Sorted by creation date (newest first)
-                  </p>
-                </div>
-
-                <div className="p-6">
-                  {/* Search & Filters */}
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    <div className="flex-1 min-w-64 relative">
+            {/* Appointments List on the Left */}
+            <div className="lg:col-span-8 xl:col-span-9">
+              <div className="bg-white rounded-2xl shadow-xl border border-gray-100">
+                {/* Search & Filters */}
+                <div className="p-6 border-b border-gray-200 bg-gray-50">
+                  <div className="flex gap-3">
+                    <div className="flex-1 relative">
                       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                       <input
                         type="text"
                         placeholder="Search patient name..."
                         value={searchTerm}
-                        onChange={(e) => {
-                          setSearchTerm(e.target.value);
-                          setPage(1);
-                        }}
-                        className="w-full pl-10 pr-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 transition"
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 text-gray-900 font-medium"
                       />
                     </div>
                     <select
                       value={filterStatus}
-                      onChange={(e) => {
-                        setFilterStatus(e.target.value as any);
-                        setPage(1);
-                      }}
-                      className="px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 font-medium"
+                      onChange={(e) => setFilterStatus(e.target.value as any)}
+                      className="px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 font-semibold text-gray-900 bg-white"
                     >
                       <option value="All">All Status</option>
                       <option value="scheduled">Scheduled</option>
                       <option value="confirmed">Confirmed</option>
                       <option value="completed">Completed</option>
                       <option value="cancelled">Cancelled</option>
-                      <option value="no-show">No Show</option>
-                      <option value="rescheduled">Rescheduled</option>
                     </select>
-                    <select
-                      value={filterSource}
-                      onChange={(e) => {
-                        setFilterSource(e.target.value as any);
-                        setPage(1);
-                      }}
-                      className="px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 font-medium"
-                    >
-                      <option value="All">All Sources</option>
-                      <option value="millis_ai_auto">AI Auto-Created</option>
-                      <option value="manual">Manual Entry</option>
-                      <option value="web">Web Booking</option>
-                      <option value="api">API Created</option>
-                    </select>
-                    <button
-                      onClick={() => fetchAppointments()}
-                      className="p-2.5 bg-blue-600 text-white rounded-lg hover:bg-orange-700 transition shadow-sm"
-                    >
-                      <RefreshCw className="w-5 h-5" />
-                    </button>
                   </div>
+                </div>
 
-                  {/* Appointments List */}
-                  <div className="space-y-3 max-h-[600px] overflow-y-auto">
-                    {appointments.length > 0 ? (
-                      appointments.map(apt => {
-                        const recentInfo = isRecentlyCreated(apt.createdAt);
-                        
-                        return (
-                          <div
-                            key={apt._id}
-                            className="bg-gradient-to-r from-black to-gray-900 p-4 rounded-xl border-2 border-gray-100 hover:border-orange-300 hover:shadow-md transition cursor-pointer"
-                            onClick={() => setSelectedAppointment(apt)}
-                          >
-                            <div className="flex justify-between items-start">
-                              <div className="flex-1">
-                                <div className="flex items-center gap-3 mb-2">
-                                  <div className="bg-blue-100 p-2 rounded-lg">
-                                    <User className="w-5 h-5 text-orange-600" />
-                                  </div>
-                                  <div>
-                                    <div className="font-bold text-lg text-white">{apt.name}</div>
-                                    <div className="text-sm text-gray-500 flex items-center gap-1">
-                                      <Phone className="w-3 h-3" />
-                                      {apt.phone}
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="ml-12 space-y-2">
-                                  <div className="flex items-center gap-2 flex-wrap">
-                                    <SourceBadge source={apt.source} />
-                                    {/* ✅ Add Recently Created Badge */}
-                                    {recentInfo.isRecent && (
-                                      <span className={`px-2 py-1 rounded-full text-xs font-bold border ${recentInfo.className}`}>
-                                        🆕 {recentInfo.label}
-                                      </span>
-                                    )}
-                                    {apt.metadata?.confidence_score && (
-                                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                                        {Math.round(apt.metadata.confidence_score * 100)}% confidence
-                                      </span>
-                                    )}
-                                  </div>
-                                  <div className="flex items-center gap-4 text-sm text-gray-400">
-                                    <div className="flex items-center gap-1.5">
-                                      <Calendar className="w-4 h-4 text-orange-500" />
-                                      {new Date(apt.date).toLocaleDateString()}
-                                    </div>
-                                    <div className="flex items-center gap-1.5">
-                                      <Clock className="w-4 h-4 text-orange-500" />
-                                      {apt.time || new Date(apt.date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                                    </div>
-                                  </div>
-                                  <div className="flex items-center gap-1.5 text-sm text-gray-300">
-                                    <FileText className="w-4 h-4 text-orange-500" />
-                                    {apt.purpose}
-                                  </div>
-                                  {/* ✅ Add Creation Timestamp */}
-                                  <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                                    <Clock className="w-3 h-3" />
-                                    Created: {new Date(apt.createdAt).toLocaleString()}
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex flex-col items-end gap-2">
-                                <StatusBadge status={apt.status} />
-                                {apt.callId && (
-                                  <div className="flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-semibold">
-                                    <Phone className="w-3 h-3" />
-                                    Linked Call
-                                  </div>
-                                )}
-                              </div>
+                {/* Appointments List */}
+                <div className="p-6 space-y-4 max-h-[calc(100vh-400px)] overflow-y-auto">
+                  {loading ? (
+                    <div className="flex justify-center items-center py-20">
+                      <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600"></div>
+                    </div>
+                  ) : filteredAppointments.length > 0 ? (
+                    filteredAppointments.map((apt) => (
+                      <div
+                        key={apt._id}
+                        onClick={() => setSelectedAppointment(apt)}
+                        className="group bg-gradient-to-br from-gray-50 to-white p-5 rounded-xl border-2 border-gray-200 hover:border-blue-400 hover:shadow-xl transition-all cursor-pointer"
+                      >
+                        <div className="flex gap-4">
+                          {/* Patient Avatar */}
+                          <div className="flex-shrink-0">
+                            <div className="bg-gradient-to-br from-blue-500 to-purple-500 p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
+                              <User className="w-7 h-7 text-white" />
                             </div>
                           </div>
-                        );
-                      })
-                    ) : (
-                      <div className="text-center py-12 text-gray-500">
-                        <Calendar className="w-16 h-16 mx-auto text-gray-300 mb-3" />
-                        <p className="text-lg font-medium">
-                          {selectedDate ? "No appointments on this date" : "No appointments found"}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Pagination */}
-          {pagination && pagination.total_pages > 1 && !selectedDate && (
-            <div className="flex justify-between items-center bg-black rounded-xl shadow-sm p-4">
-              <button
-                onClick={() => setPage(Math.max(1, page - 1))}
-                disabled={page === 1}
-                className="px-6 py-2.5 bg-blue-600 text-white rounded-lg disabled:opacity-50 disabled:bg-gray-300 hover:bg-orange-700 transition font-semibold"
-              >
-                Previous
-              </button>
-              <span className="text-gray-300 font-medium">
-                Page {page} of {pagination.total_pages}
-              </span>
-              <button
-                onClick={() => setPage(Math.min(pagination.total_pages, page + 1))}
-                disabled={page === pagination.total_pages}
-                className="px-6 py-2.5 bg-blue-600 text-white rounded-lg disabled:opacity-50 disabled:bg-gray-300 hover:bg-orange-700 transition font-semibold"
-              >
-                Next
-              </button>
-            </div>
-          )}
-        </div>
-
-        {/* APPOINTMENT MODAL */}
-        {selectedAppointment && (
-          <AppointmentModal
-            apt={selectedAppointment}
-            onClose={() => setSelectedAppointment(null)}
-            onUpdate={updateAppointmentStatus}
-          />
-        )}
-
-        {/* AI PROMPT MODAL */}
-        {showPromptModal && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-black rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-              <div className="bg-gradient-to-r from-orange-600 to-orange-600 p-6 flex justify-between items-center">
-                <div>
-                  <h2 className="text-2xl font-bold text-white">AI Analysis Settings</h2>
-                  <p className="text-purple-100 text-sm mt-1">Customize how Millis AI analyzes calls for appointments</p>
-                </div>
-                <button 
-                  onClick={() => setShowPromptModal(false)} 
-                  className="text-white hover:bg-black/20 p-2 rounded-lg transition"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-
-              <div className="p-6 space-y-4">
-                <div className="bg-blue-50 border border-orange-400 rounded-lg p-4">
-                  <h3 className="font-semibold text-blue-900 mb-2">How it works:</h3>
-                  <ul className="text-sm text-blue-800 space-y-1">
-                    <li>• Calls are automatically transcribed by Millis AI</li>
-                    <li>• The transcription is analyzed using your custom prompt</li>
-                    <li>• If an appointment is detected, it's automatically created</li>
-                    <li>• Email notifications are sent to the doctor</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-300 mb-2">
-                    AI Analysis Prompt Template
-                  </label>
-                  <textarea
-                    value={aiPrompt}
-                    onChange={(e) => setAiPrompt(e.target.value)}
-                    className="w-full h-96 p-4 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-orange-500 font-mono text-sm"
-                    placeholder="Enter your custom AI prompt..."
-                  />
-                  <p className="text-sm text-gray-500 mt-2">
-                    The AI will use this prompt to analyze call transcriptions and extract appointment details.
-                  </p>
-                </div>
-
-                <div className="flex justify-between items-center pt-4 border-t">
-                  <button
-                    onClick={resetPrompt}
-                    className="px-6 py-2.5 bg-gray-200 text-gray-300 rounded-lg hover:bg-gray-300 font-semibold transition"
-                  >
-                    Reset to Default
-                  </button>
-                  <div className="flex gap-3">
-                    <button
-                      onClick={() => setShowPromptModal(false)}
-                      className="px-6 py-2.5 bg-gray-200 text-gray-300 rounded-lg hover:bg-gray-300 font-semibold transition"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      onClick={saveAiPrompt}
-                      className="px-6 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-orange-700 font-semibold transition shadow-md"
-                    >
-                      Save Changes
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </main>
-    </div>
-  );
-}
-
-// --- Appointment Modal Component ---
-// Updated AppointmentModal Component with Doctor Name Display
-
-function AppointmentModal({ apt, onClose, onUpdate }: {
-  apt: Appointment;
-  onClose: () => void;
-  onUpdate: (id: string, newStatus: Appointment['status']) => void;
-}) {
-  const color = statusColors[apt.status] || "gray";
-
-  const headerClass = `bg-gradient-to-r ${
-    color === 'green' ? 'from-orange-500 to-orange-600' : 
-    color === 'yellow' ? 'from-yellow-600 to-yellow-500' :
-    color === 'blue' ? 'from-orange-500 to-orange-600' :
-    color === 'red' ? 'from-red-600 to-red-500' :
-    color === 'purple' ? 'from-orange-600 to-orange-600' :
-    'from-gray-600 to-gray-500'
-  } p-6 flex justify-between items-center`;
-
-  return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-black rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden transform transition-all">
-        <div className={headerClass}>
-          <div>
-            <h2 className="text-2xl font-bold text-white">Appointment Details</h2>
-            {apt.source === 'millis_ai_auto' && (
-              <div className="flex items-center gap-2 mt-2 bg-black/20 px-3 py-1 rounded-full w-fit">
-                <Zap className="w-4 h-4" />
-                <span className="text-sm font-medium">Auto-Created by AI</span>
-              </div>
-            )}
-          </div>
-          <button onClick={onClose} className="text-white hover:bg-black/20 p-2 rounded-lg transition">
-            <X className="w-6 h-6" />
-          </button>
-        </div>
-
-        <div className="p-6 space-y-6 overflow-y-auto max-h-[calc(90vh-140px)]">
-          {/* AI Metadata (if auto-created) */}
-          {apt.source === 'millis_ai_auto' && apt.metadata && (
-            <div className="bg-purple-50 border-2 border-orange-400 rounded-xl p-5">
-              <h3 className="text-lg font-bold mb-3 text-purple-900 flex items-center gap-2">
-                <Zap className="w-5 h-5" />
-                AI Analysis Details
-              </h3>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                {apt.metadata.confidence_score && (
-                  <div>
-                    <p className="text-purple-700 font-medium">Confidence Score</p>
-                    <p className="text-purple-900 font-bold text-lg">
-                      {Math.round(apt.metadata.confidence_score * 100)}%
-                    </p>
-                  </div>
-                )}
-                {apt.metadata.doctor_name && (
-                  <div>
-                    <p className="text-purple-700 font-medium">Doctor Requested</p>
-                    <p className="text-purple-900 font-bold">{apt.metadata.doctor_name}</p>
-                  </div>
-                )}
-                {apt.metadata.agent_name && (
-                  <div>
-                    <p className="text-purple-700 font-medium">AI Agent</p>
-                    <p className="text-purple-900 font-bold">{apt.metadata.agent_name}</p>
-                  </div>
-                )}
-                {apt.metadata.call_duration && (
-                  <div>
-                    <p className="text-purple-700 font-medium">Call Duration</p>
-                    <p className="text-purple-900 font-bold">{Math.floor(apt.metadata.call_duration / 60)} min</p>
-                  </div>
-                )}
-                {apt.metadata.call_direction && (
-                  <div>
-                    <p className="text-purple-700 font-medium">Call Type</p>
-                    <p className="text-purple-900 font-bold capitalize">{apt.metadata.call_direction}</p>
-                  </div>
-                )}
-                {apt.callId && (
-                  <div className="col-span-2">
-                    <p className="text-purple-700 font-medium">Linked Call ID</p>
-                    <p className="text-purple-900 font-mono text-xs">{apt.callId}</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-
-          {/* Patient Info */}
-          <div className="bg-gradient-to-r from-orange-50 to-white p-5 rounded-xl border-2 border-blue-100">
-            <h3 className="text-lg font-bold mb-4 text-white flex items-center gap-2">
-              <User className="w-5 h-5 text-orange-600" />
-              Patient Information
-            </h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-sm text-gray-400 font-medium">Name</p>
-                <p className="text-lg font-bold text-white">{apt.name}</p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-400 font-medium">Phone</p>
-                <p className="text-lg font-bold text-white">{apt.phone}</p>
-              </div>
-              {apt.email && (
-                <div className="col-span-2">
-                  <p className="text-sm text-gray-400 font-medium">Email</p>
-                  <p className="text-lg font-bold text-white">{apt.email}</p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Appointment Details */}
-          <div className="bg-gradient-to-r from-green-50 to-white p-5 rounded-xl border-2 border-green-100">
-            <h3 className="text-lg font-bold mb-4 text-white flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-orange-600" />
-              Appointment Details
-            </h3>
-            <div className="grid grid-cols-2 gap-4">
-              {apt.metadata?.doctor_name && (
-                <div className="col-span-2 bg-green-100 border border-green-300 p-3 rounded-lg">
-                  <p className="text-sm text-green-700 font-medium flex items-center gap-2">
-                    <User className="w-4 h-4" />
-                    Doctor Requested
-                  </p>
-                  <p className="text-xl font-bold text-green-900 mt-1">{apt.metadata.doctor_name}</p>
-                </div>
-              )}
-              <div>
-                <p className="text-sm text-gray-400 font-medium">Date</p>
-                <p className="text-lg font-bold text-white">{new Date(apt.date).toLocaleDateString()}</p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-400 font-medium">Time</p>
-                <p className="text-lg font-bold text-white">{apt.time}</p>
-              </div>
-              <div className="col-span-2">
-                <p className="text-sm text-gray-400 font-medium">Purpose</p>
-                <p className="text-lg font-bold text-white">{apt.purpose}</p>
-              </div>
-              {apt.notes && (
-                <div className="col-span-2">
-                  <p className="text-sm text-gray-400 font-medium">Notes</p>
-                  <p className="text-base text-gray-200 bg-gray-900 p-3 rounded-lg border border-gray-200">{apt.notes}</p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Transcription Preview */}
-          
-          {apt.transcription && (
-            <div className="bg-gray-900 border-2 border-gray-200 rounded-2xl p-6">
-              <h3 className="text-xl font-bold mb-3 text-white flex items-center gap-2">
-                <FileText className="w-6 h-6 text-gray-400" />
-                Call Transcription
-              </h3>
-              <div className="max-h-96 overflow-y-auto bg-black p-4 rounded-xl border border-gray-200">
-                {(() => {
-                  // Try to parse if it's a string
-                  let transcriptionData = apt.transcription;
-                  if (typeof apt.transcription === "string") {
-                    try {
-                      transcriptionData = JSON.parse(apt.transcription);
-                    } catch (e) {
-                      // If parsing fails, display as plain text
-                      return <p className="text-sm text-gray-300 leading-relaxed whitespace-pre-wrap">{apt.transcription}</p>;
-                    }
-                  }
-
-                  // If it's an array, render as conversation
-                  if (Array.isArray(transcriptionData)) {
-                    return (
-                      <div className="space-y-3">
-                        {transcriptionData.map((msg: any, idx: number) => (
-                          <div
-                            key={idx}
-                            className={`p-3 rounded-lg ${
-                              msg.role === "user"
-                                ? "bg-blue-50 border-l-4 border-orange-500"
-                                : "bg-purple-50 border-l-4 border-orange-500"
-                            }`}
-                          >
-                            <div className="flex items-center gap-2 mb-1">
-                              <span
-                                className={`text-xs font-bold uppercase ${
-                                  msg.role === "user" ? "text-blue-700" : "text-purple-700"
-                                }`}
-                              >
-                                {msg.role === "user" ? "Patient" : "Assistant"}
-                              </span>
+                          {/* Content */}
+                          <div className="flex-1 min-w-0">
+                            {/* Name & Status Row */}
+                            <div className="flex items-start justify-between mb-3">
+                              <div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-1">{apt.name}</h3>
+                                <div className="flex items-center gap-2 text-sm text-gray-600">
+                                  <Phone className="w-4 h-4" />
+                                  <span className="font-medium">{apt.phone}</span>
+                                </div>
+                              </div>
+                              <StatusBadge status={apt.status} />
                             </div>
-                            <p className="text-sm text-gray-200 leading-relaxed">{msg.content}</p>
-                          </div>
-                        ))}
-                      </div>
-                    );
-                  }
 
-                  // If it's an object with text or transcript property
-                  if (transcriptionData.text || transcriptionData.transcript) {
-                    return (
-                      <p className="text-sm text-gray-300 leading-relaxed whitespace-pre-wrap">
-                        {transcriptionData.text || transcriptionData.transcript}
+                            {/* Badges Row */}
+                            <div className="flex items-center gap-2 flex-wrap mb-3">
+                              <SourceBadge source={apt.source} />
+                              {apt.source === "millis_ai_auto" && (
+                                <span className="flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded-lg text-xs font-bold">
+                                  <Zap className="w-3 h-3" />
+                                  AI Automated
+                                </span>
+                              )}
+                              {apt.metadata?.confidence_score && (
+                                <span className="px-2 py-1 bg-green-100 text-green-700 rounded-lg text-xs font-bold">
+                                  {Math.round(apt.metadata.confidence_score * 100)}% Confidence
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Details Grid */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                              <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-lg">
+                                <Calendar className="w-4 h-4 text-blue-600" />
+                                <span className="text-sm font-semibold text-gray-700">
+                                  {new Date(apt.date).toLocaleDateString("en-US", {
+                                    month: "short",
+                                    day: "numeric",
+                                    year: "numeric",
+                                  })}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2 bg-purple-50 px-3 py-2 rounded-lg">
+                                <Clock className="w-4 h-4 text-purple-600" />
+                                <span className="text-sm font-semibold text-gray-700">{apt.time}</span>
+                              </div>
+                            </div>
+
+                            {/* Purpose */}
+                            <div className="bg-gray-50 px-4 py-3 rounded-lg border border-gray-200">
+                              <div className="flex items-start gap-2">
+                                <FileText className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <div className="text-xs text-gray-500 font-medium mb-1">Purpose of Visit</div>
+                                  <p className="text-sm text-gray-900 font-medium">{apt.purpose}</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Timestamp */}
+                            <div className="mt-3 text-xs text-gray-400 flex items-center gap-1">
+                              <Clock className="w-3 h-3" />
+                              Created{" "}
+                              {new Date(apt.createdAt).toLocaleString("en-US", {
+                                month: "short",
+                                day: "numeric",
+                                hour: "numeric",
+                                minute: "2-digit",
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="text-center py-16">
+                      <div className="bg-gray-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Calendar className="w-10 h-10 text-gray-400" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">No Appointments Found</h3>
+                      <p className="text-gray-500">
+                        {selectedDate
+                          ? "No appointments scheduled for this date"
+                          : "This doctor has no appointments yet"}
                       </p>
-                    );
-                  }
-
-                  // Fallback to JSON display
-                  return (
-                    <pre className="text-xs text-gray-400 font-mono whitespace-pre-wrap">
-                      {JSON.stringify(transcriptionData, null, 2)}
-                    </pre>
-                  );
-                })()}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-          )}
-
-          {/* Status and Actions */}
-          <div className="bg-black p-5 rounded-xl border-2 border-gray-200 space-y-4">
-            <div className="flex justify-between items-center pb-2 border-b">
-              <h3 className="text-lg font-bold text-white">Current Status:</h3>
-              <StatusBadge status={apt.status} />
-            </div>
-
-            {/* Status Update Buttons */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              <button
-                onClick={() => onUpdate(apt._id, "scheduled")}
-                disabled={apt.status === "scheduled"}
-                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-blue-500 text-white hover:bg-orange-600"
-              >
-                Schedule
-              </button>
-              <button
-                onClick={() => onUpdate(apt._id, "confirmed")}
-                disabled={apt.status === "confirmed"}
-                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-green-500 text-white hover:bg-orange-600"
-              >
-                Confirm
-              </button>
-              <button
-                onClick={() => onUpdate(apt._id, "completed")}
-                disabled={apt.status === "completed"}
-                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-purple-500 text-white hover:bg-orange-600"
-              >
-                Complete
-              </button>
-              <button
-                onClick={() => onUpdate(apt._id, "rescheduled")}
-                disabled={apt.status === "rescheduled"}
-                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-yellow-500 text-white hover:bg-yellow-600"
-              >
-                Reschedule
-              </button>
-              <button
-                onClick={() => onUpdate(apt._id, "no-show")}
-                disabled={apt.status === "no-show"}
-                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-gray-9000 text-white hover:bg-gray-600"
-              >
-                No Show
-              </button>
-              <button
-                onClick={() => onUpdate(apt._id, "cancelled")}
-                disabled={apt.status === "cancelled"}
-                className="px-3 py-2 text-sm font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed bg-red-500 text-white hover:bg-red-600"
-              >
-                Cancel
-              </button>
-            </div>
-
-            {/* Notification Note */}
-            <div className="pt-4 border-t border-gray-100">
-              <p className="text-sm text-gray-500 flex items-start gap-2">
-                <Mail className="w-4 h-4 text-orange-500 mt-0.5" />
-                Confirming this appointment will automatically send an email notification to the doctor.
-              </p>
-            </div>
-          </div>
-
-          {/* Metadata */}
-          <div className="text-xs text-gray-500 flex justify-between border-t pt-3">
-            <span>Created: {new Date(apt.createdAt).toLocaleString()}</span>
-            <span>Updated: {new Date(apt.updatedAt).toLocaleString()}</span>
           </div>
         </div>
+      </main>
 
-        <div className="p-4 bg-gray-900 border-t flex justify-end">
-          <button
-            onClick={onClose}
-            className="px-6 py-2 bg-gray-200 text-gray-300 rounded-lg hover:bg-gray-300 font-medium transition"
-          >
-            Close
-          </button>
-        </div>
-      </div>
+      {/* Appointment Details Modal */}
+      {selectedAppointment && (
+        <AppointmentModal
+          apt={selectedAppointment}
+          onClose={() => setSelectedAppointment(null)}
+          onUpdate={updateAppointmentStatus}
+        />
+      )}
     </div>
   );
 }
-
-
-
-
