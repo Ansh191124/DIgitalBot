@@ -64,7 +64,7 @@ export function Header() {
                     >
                         <Link href="/" className="flex items-center gap-3 relative" onClick={() => setIsMenuOpen(false)}>
                             {/* Animated multicolor glow orbs - Cyan/Teal */}
-                            <span className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-gradient-to-r from-cyan-400/40 via-teal-500/50 to-cyan-600/40 blur-3xl animate-pulse-glow" />
+                            <span className="absolute -top-6 -left-6 w-20 h-21 rounded-full bg-gradient-to-r from-cyan-400/40 via-teal-500/50 to-cyan-600/40 blur-3xl animate-pulse-glow" />
                             <span className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-r from-teal-400/30 via-cyan-500/30 to-teal-600/30 blur-2xl animate-float-slow" />
                             
                             <div className="relative">
