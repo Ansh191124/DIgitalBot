@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Calendar, LayoutDashboard, LogOut, PhoneCall, Users, X } from 'lucide-react';
+import { Calendar, LayoutDashboard, LogOut, PhoneCall, Users, X,CreditCard } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -31,6 +31,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
   const baseNavigation = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Calls', href: '/dashboard/calls', icon: PhoneCall },
+    { name: 'Billing', href: '/dashboard/billing', icon: CreditCard },
   ];
 
   const getServiceNavigation = () => {
