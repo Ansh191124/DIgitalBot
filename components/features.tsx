@@ -56,27 +56,27 @@ const features: Feature[] = [
 
 export function Features() {
     return (
-        <section className="relative py-12 md:py-20 bg-gradient-to-b from-gray-800 via-gray-900 to-black overflow-hidden">
-            {/* Floating background elements - Trading theme */}
-            <div className="absolute top-10 left-1/4 w-48 h-48 bg-cyan-500 rounded-full opacity-20 animate-pulse blur-2xl"></div>
-            <div className="absolute bottom-10 right-1/3 w-56 h-56 bg-teal-400 rounded-full opacity-20 animate-pulse blur-2xl"></div>
+        <section className="relative py-12 md:py-20 bg-white overflow-hidden">
+            {/* Floating background elements - Purple/Orange theme */}
+            <div className="absolute top-10 left-1/4 w-48 h-48 bg-purple-500 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_100px_rgba(249,115,22,0.3)]"></div>
+            <div className="absolute bottom-10 right-1/3 w-56 h-56 bg-purple-400 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_120px_rgba(249,115,22,0.3)]"></div>
             
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-12">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-900/60 to-teal-900/60 border border-cyan-500/50 rounded-full mb-6 backdrop-blur-sm">
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                        <span className="text-sm font-semibold text-cyan-400">Advanced AI Platform</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-purple-600/20 border border-purple-500/50 rounded-full mb-6 backdrop-blur-sm">
+                        <div className="w-2 h-2 bg-purple-600 rounded-full animate-pulse"></div>
+                        <span className="text-sm font-semibold text-purple-600">Advanced AI Platform</span>
                     </div>
                     <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl lg:text-5xl mb-4">
-                        <span className="bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 bg-clip-text text-transparent">
                             Revolutionary Features for
                         </span>
                         <br />
-                        <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-purple-600 via-purple-600 to-purple-700 bg-clip-text text-transparent">
                             Next-Gen Communication
                         </span>
                     </h2>
-                    <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+                    <p className="text-gray-700 text-lg max-w-3xl mx-auto">
                         Experience the future of AI-powered customer interactions with our cutting-edge platform
                     </p>
                 </div>
@@ -86,19 +86,19 @@ export function Features() {
                         // Define different cyan/teal color schemes for each card
                         const colorSchemes = [
                             { 
-                                bg: 'bg-gradient-to-br from-cyan-500 to-teal-500', 
-                                border: 'border-cyan-500/30 hover:border-cyan-500', 
-                                shadow: 'hover:shadow-cyan-500/30',
-                                glow: 'shadow-cyan-500/20'
+                                bg: 'bg-gradient-to-br from-purple-500 to-purple-500', 
+                                border: 'border-purple-500/30 hover:border-purple-500', 
+                                shadow: 'hover:shadow-orange-500/30',
+                                glow: 'shadow-orange-500/20'
                             },
                             { 
-                                bg: 'bg-gradient-to-br from-teal-500 to-cyan-600', 
-                                border: 'border-teal-500/30 hover:border-teal-500', 
-                                shadow: 'hover:shadow-teal-500/30',
-                                glow: 'shadow-teal-500/20'
+                                bg: 'bg-gradient-to-br from-purple-500 to-purple-600', 
+                                border: 'border-purple-500/30 hover:border-purple-500', 
+                                shadow: 'hover:shadow-orange-500/30',
+                                glow: 'shadow-orange-500/20'
                             },
                             { 
-                                bg: 'bg-gradient-to-br from-blue-500 to-cyan-500', 
+                                bg: 'bg-gradient-to-br from-blue-500 to-purple-500', 
                                 border: 'border-blue-500/30 hover:border-blue-500', 
                                 shadow: 'hover:shadow-blue-500/30',
                                 glow: 'shadow-blue-500/20'
@@ -116,36 +116,36 @@ export function Features() {
                                 glow: 'shadow-violet-500/20'
                             },
                             { 
-                                bg: 'bg-gradient-to-br from-cyan-400 to-teal-600', 
-                                border: 'border-cyan-400/30 hover:border-cyan-400', 
-                                shadow: 'hover:shadow-cyan-400/30',
-                                glow: 'shadow-cyan-400/20'
+                                bg: 'bg-gradient-to-br from-purple-400 to-purple-600', 
+                                border: 'border-purple-400/30 hover:border-purple-400', 
+                                shadow: 'hover:shadow-orange-400/30',
+                                glow: 'shadow-orange-400/20'
                             },
                         ]
                         const colors = colorSchemes[index % colorSchemes.length]
                         
                         return (
-                            <Card key={index} className={`group bg-gray-800/70 backdrop-blur-md border-2 ${colors.border} hover:shadow-2xl ${colors.shadow} transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-lg ${colors.glow} relative overflow-hidden`}>
+                            <Card key={index} className={`group bg-white/90 backdrop-blur-md border-2 ${colors.border} hover:shadow-2xl ${colors.shadow} transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-lg ${colors.glow} relative overflow-hidden`}>
                                 {/* Shimmer effect on hover */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                                 
                                 <CardHeader className="relative">
                                     <div className="flex items-center space-x-4">
                                         <div className={`p-3 rounded-xl ${colors.bg} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                                             <IconComponent className="w-6 h-6 text-white" /> 
                                         </div>
-                                        <CardTitle className="text-white font-bold text-lg">{feature.title}</CardTitle>
+                                        <CardTitle className="text-gray-900 font-bold text-lg">{feature.title}</CardTitle>
                                     </div>
                                 </CardHeader>
                                 <CardContent className="relative">
-                                    <CardDescription className="text-gray-300 leading-relaxed">
+                                    <CardDescription className="text-gray-700 leading-relaxed">
                                         {feature.description}
                                     </CardDescription>
                                     
                                     {/* Decorative element */}
                                     <div className="mt-4 flex items-center gap-2">
                                         <div className={`w-8 h-0.5 ${colors.bg} rounded-full`}></div>
-                                        <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full animate-pulse"></div>
+                                        <div className="w-2 h-2 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full animate-pulse"></div>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -156,3 +156,4 @@ export function Features() {
         </section>
     )
 }
+

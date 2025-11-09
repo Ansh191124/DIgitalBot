@@ -1,6 +1,6 @@
 "use client"
 
-import { Header } from "@/components/header"
+import { Header } from "@/components/header"`nimport { PageBackground } from "@/components/page-background"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Mic, Play, Pause, Bot, Zap, Clock, Shield, Users, TrendingUp, Phone, BarChart3, Headphones, CheckCircle, ArrowRight } from "lucide-react"
@@ -487,6 +487,7 @@ export default function VoiceAutomation() {
     </div>
   )
 }
+
 
 
 

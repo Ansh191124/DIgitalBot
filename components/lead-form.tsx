@@ -74,19 +74,19 @@ export function LeadForm() {
   }
 
   return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-black">
+    <section className="relative py-24 overflow-hidden bg-white">
       {/* Background Decorations */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-cyan-900/30 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-purple-500/20 via-transparent to-transparent" />
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.05]" style={{
-        backgroundImage: `linear-gradient(to right, rgba(6, 182, 212, 0.3) 1px, transparent 1px),
-                         linear-gradient(to bottom, rgba(6, 182, 212, 0.3) 1px, transparent 1px)`,
+        backgroundImage: `linear-gradient(to right, rgba(168, 85, 247, 0.3) 1px, transparent 1px),
+                         linear-gradient(to bottom, rgba(249, 115, 22, 0.3) 1px, transparent 1px)`,
         backgroundSize: '50px 50px'
       }} />
       
-      {/* Animated Orbs - Trading Theme */}
-      <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-cyan-500/30 via-teal-400/20 to-cyan-600/20 rounded-full blur-3xl animate-float-slow" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-tl from-teal-500/20 via-cyan-400/15 to-emerald-400/10 rounded-full blur-3xl animate-float-reverse" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-cyan-400/10 to-teal-400/10 rounded-full blur-3xl" />
+      {/* Animated Orbs - Purple/Orange Theme */}
+      <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-purple-500/30 via-purple-400/20 to-purple-600/20 rounded-full blur-3xl animate-float-slow shadow-[0_0_100px_rgba(249,115,22,0.3)]" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-tl from-purple-500/20 via-purple-400/15 to-purple-500/10 rounded-full blur-3xl animate-float-reverse shadow-[0_0_120px_rgba(249,115,22,0.25)]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-purple-400/10 to-purple-500/10 rounded-full blur-3xl" />
 
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -119,23 +119,23 @@ export function LeadForm() {
             {/* Left Side - Info */}
             <div className="space-y-8">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-900/50 to-teal-900/50 border-2 border-cyan-500/30 rounded-full backdrop-blur-sm">
-                <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
-                <span className="text-sm font-bold text-cyan-400">Get Started Today</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-purple-600/20 border-2 border-purple-500/30 rounded-full backdrop-blur-sm">
+                <Sparkles className="w-4 h-4 text-purple-600 animate-pulse" />
+                <span className="text-sm font-bold text-purple-600">Get Started Today</span>
               </div>
 
               {/* Heading */}
               <div>
                 <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
-                  <span className="bg-gradient-to-r from-gray-200 to-gray-400 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-gray-800 to-gray-900 bg-clip-text text-transparent">
                     Transform Your Business with
                   </span>
                   <br />
-                  <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-purple-600 via-purple-600 to-purple-700 bg-clip-text text-transparent">
                     AI Voice Assistants
                   </span>
                 </h2>
-                <p className="text-xl text-gray-300 leading-relaxed">
+                <p className="text-xl text-gray-700 leading-relaxed">
                   Join thousands of businesses automating customer interactions. 
                   Get a personalized demo and discover how AI can revolutionize your operations.
                 </p>
@@ -144,37 +144,37 @@ export function LeadForm() {
               {/* Features */}
               <div className="space-y-4">
                 {[
-                  { icon: Zap, text: "Setup in 5 minutes", gradient: "from-cyan-400 via-teal-400 to-cyan-500", border: "border-cyan-500/30", bg: "from-cyan-900/50 to-teal-900/50" },
-                  { icon: CheckCircle2, text: "No credit card required", gradient: "from-emerald-400 via-teal-400 to-cyan-400", border: "border-emerald-500/30", bg: "from-emerald-900/50 to-teal-900/50" },
-                  { icon: Phone, text: "Free consultation call", gradient: "from-cyan-400 via-blue-400 to-teal-400", border: "border-cyan-500/30", bg: "from-cyan-900/50 to-blue-900/50" },
-                  { icon: Building2, text: "Enterprise-ready solution", gradient: "from-teal-400 via-cyan-400 to-emerald-400", border: "border-teal-500/30", bg: "from-teal-900/50 to-cyan-900/50" }
+                  { icon: Zap, text: "Setup in 5 minutes", gradient: "from-purple-600 via-purple-600 to-purple-700", border: "border-purple-500/30", bg: "from-purple-500/20 to-purple-600/20" },
+                  { icon: CheckCircle2, text: "No credit card required", gradient: "from-purple-600 via-purple-600 to-purple-700", border: "border-purple-500/30", bg: "from-purple-500/20 to-purple-600/20" },
+                  { icon: Phone, text: "Free consultation call", gradient: "from-purple-600 via-purple-600 to-purple-700", border: "border-purple-500/30", bg: "from-purple-500/20 to-purple-600/20" },
+                  { icon: Building2, text: "Enterprise-ready solution", gradient: "from-purple-600 via-purple-600 to-purple-700", border: "border-purple-500/30", bg: "from-purple-500/20 to-purple-600/20" }
                 ].map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-3 group">
-                    <div className={`p-2 bg-gradient-to-r ${feature.bg} rounded-lg group-hover:scale-110 transition-transform border-2 ${feature.border} backdrop-blur-sm`}>
-                      <feature.icon className={`w-5 h-5 text-cyan-400`} />
+                    <div className={`p-2 bg-gradient-to-r ${feature.bg} rounded-lg group-hover:scale-110 transition-transform border-2 ${feature.border} backdrop-blur-sm shadow-lg shadow-orange-500/20`}>
+                      <feature.icon className={`w-5 h-5 text-purple-600`} />
                     </div>
-                    <span className="text-gray-200 font-semibold">{feature.text}</span>
+                    <span className="text-gray-800 font-semibold">{feature.text}</span>
                   </div>
                 ))}
               </div>
 
               {/* Trust Indicators */}
-              <div className="pt-6 border-t-2 border-cyan-500/20">
-                <p className="text-sm text-gray-400 mb-3">Trusted by leading companies worldwide</p>
+              <div className="pt-6 border-t-2 border-purple-500/20">
+                <p className="text-sm text-gray-600 mb-3">Trusted by leading companies worldwide</p>
                 <div className="flex items-center gap-6">
                   <div className="text-center">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent">10K+</div>
-                    <div className="text-xs text-gray-400">Active Users</div>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-purple-600 to-purple-700 bg-clip-text text-transparent">10K+</div>
+                    <div className="text-xs text-gray-600">Active Users</div>
                   </div>
-                  <div className="w-px h-12 bg-cyan-500/20" />
+                  <div className="w-px h-12 bg-purple-500/20" />
                   <div className="text-center">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-teal-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">99.9%</div>
-                    <div className="text-xs text-gray-400">Uptime</div>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-purple-600 to-purple-700 bg-clip-text text-transparent">99.9%</div>
+                    <div className="text-xs text-gray-600">Uptime</div>
                   </div>
-                  <div className="w-px h-12 bg-cyan-500/20" />
+                  <div className="w-px h-12 bg-purple-500/20" />
                   <div className="text-center">
-                    <div className="text-2xl font-bold bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">24/7</div>
-                    <div className="text-xs text-gray-400">Support</div>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-purple-600 to-purple-700 bg-clip-text text-transparent">24/7</div>
+                    <div className="text-xs text-gray-600">Support</div>
                   </div>
                 </div>
               </div>
@@ -182,33 +182,33 @@ export function LeadForm() {
 
             {/* Right Side - Form */}
             <div className="relative">
-              <div className="bg-gray-900/80 backdrop-blur-lg rounded-3xl p-8 md:p-10 shadow-2xl border-2 border-cyan-500/30 relative overflow-hidden">
+              <div className="bg-white/95 backdrop-blur-lg rounded-3xl p-8 md:p-10 shadow-2xl shadow-orange-500/30 border-2 border-purple-500/30 relative overflow-hidden">
                 {/* Decorative gradient */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-cyan-500/20 via-teal-400/15 to-transparent rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tl from-teal-500/20 via-cyan-400/15 to-transparent rounded-full blur-3xl" />
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-purple-500/20 via-purple-400/15 to-transparent rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tl from-purple-500/20 via-purple-400/15 to-transparent rounded-full blur-3xl" />
                 
                 <div className="relative z-10">
                   {/* Form Header */}
                   <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent mb-2">Request a Demo</h3>
-                    <p className="text-gray-400">Fill out the form and we'll get back to you within 24 hours</p>
+                    <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-700 bg-clip-text text-transparent mb-2">Request a Demo</h3>
+                    <p className="text-gray-600">Fill out the form and we'll get back to you within 24 hours</p>
                   </div>
 
                   {/* Success Message */}
                   {isSuccess && (
-                    <div className="mb-6 p-4 bg-emerald-900/30 border border-emerald-500/30 rounded-xl flex items-center gap-3 backdrop-blur-sm">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                    <div className="mb-6 p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl flex items-center gap-3 backdrop-blur-sm">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                       <div>
-                        <p className="text-emerald-400 font-semibold">Thank you for your interest!</p>
-                        <p className="text-emerald-300 text-sm">We'll contact you shortly at {formData.email}</p>
+                        <p className="text-emerald-600 font-semibold">Thank you for your interest!</p>
+                        <p className="text-emerald-700 text-sm">We'll contact you shortly at {formData.email}</p>
                       </div>
                     </div>
                   )}
 
                   {/* Error Message */}
                   {error && (
-                    <div className="mb-6 p-4 bg-red-900/30 border border-red-500/30 rounded-xl backdrop-blur-sm">
-                      <p className="text-red-400 text-sm">{error}</p>
+                    <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl backdrop-blur-sm">
+                      <p className="text-red-600 text-sm">{error}</p>
                     </div>
                   )}
 
@@ -216,12 +216,12 @@ export function LeadForm() {
                   <div className="space-y-5">
                     {/* Name Field */}
                     <div>
-                      <label htmlFor="name" className="block text-sm font-semibold text-gray-200 mb-2">
+                      <label htmlFor="name" className="block text-sm font-semibold text-gray-800 mb-2">
                         Full Name *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <User className="h-5 w-5 text-cyan-400" />
+                          <User className="h-5 w-5 text-purple-600" />
                         </div>
                         <input
                           id="name"
@@ -230,7 +230,7 @@ export function LeadForm() {
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full pl-12 h-12 bg-gray-800/50 border-2 border-cyan-500/30 text-gray-200 placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 rounded-xl backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-12 h-12 bg-white border-2 border-purple-500/30 text-gray-900 placeholder:text-gray-500 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/50 rounded-xl backdrop-blur-sm outline-none transition-all"
                           placeholder="John Doe"
                         />
                       </div>
@@ -238,12 +238,12 @@ export function LeadForm() {
 
                     {/* Email Field */}
                     <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-gray-200 mb-2">
+                      <label htmlFor="email" className="block text-sm font-semibold text-gray-800 mb-2">
                         Work Email *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <Mail className="h-5 w-5 text-cyan-400" />
+                          <Mail className="h-5 w-5 text-purple-600" />
                         </div>
                         <input
                           id="email"
@@ -252,7 +252,7 @@ export function LeadForm() {
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full pl-12 h-12 bg-gray-800/50 border-2 border-cyan-500/30 text-gray-200 placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 rounded-xl backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-12 h-12 bg-white border-2 border-purple-500/30 text-gray-900 placeholder:text-gray-500 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/50 rounded-xl backdrop-blur-sm outline-none transition-all"
                           placeholder="john@company.com"
                         />
                       </div>
@@ -260,12 +260,12 @@ export function LeadForm() {
 
                     {/* Phone Field */}
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-semibold text-gray-200 mb-2">
+                      <label htmlFor="phone" className="block text-sm font-semibold text-gray-800 mb-2">
                         Phone Number *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <Phone className="h-5 w-5 text-cyan-400" />
+                          <Phone className="h-5 w-5 text-purple-600" />
                         </div>
                         <input
                           id="phone"
@@ -274,7 +274,7 @@ export function LeadForm() {
                           required
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full pl-12 h-12 bg-gray-800/50 border-2 border-cyan-500/30 text-gray-200 placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 rounded-xl backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-12 h-12 bg-white border-2 border-purple-500/30 text-gray-900 placeholder:text-gray-500 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/50 rounded-xl backdrop-blur-sm outline-none transition-all"
                           placeholder="+1 (555) 000-0000"
                         />
                       </div>
@@ -282,12 +282,12 @@ export function LeadForm() {
 
                     {/* Company Field */}
                     <div>
-                      <label htmlFor="company" className="block text-sm font-semibold text-gray-200 mb-2">
+                      <label htmlFor="company" className="block text-sm font-semibold text-gray-800 mb-2">
                         Company Name *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <Building2 className="h-5 w-5 text-cyan-400" />
+                          <Building2 className="h-5 w-5 text-purple-600" />
                         </div>
                         <input
                           id="company"
@@ -296,7 +296,7 @@ export function LeadForm() {
                           required
                           value={formData.company}
                           onChange={handleChange}
-                          className="w-full pl-12 h-12 bg-gray-800/50 border-2 border-cyan-500/30 text-gray-200 placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 rounded-xl backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-12 h-12 bg-white border-2 border-purple-500/30 text-gray-900 placeholder:text-gray-500 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/50 rounded-xl backdrop-blur-sm outline-none transition-all"
                           placeholder="Your Company Inc."
                         />
                       </div>
@@ -304,12 +304,12 @@ export function LeadForm() {
 
                     {/* Message Field */}
                     <div>
-                      <label htmlFor="message" className="block text-sm font-semibold text-gray-200 mb-2">
+                      <label htmlFor="message" className="block text-sm font-semibold text-gray-800 mb-2">
                         How can we help? *
                       </label>
                       <div className="relative">
                         <div className="absolute top-4 left-4 pointer-events-none">
-                          <MessageSquare className="h-5 w-5 text-cyan-400" />
+                          <MessageSquare className="h-5 w-5 text-purple-600" />
                         </div>
                         <textarea
                           id="message"
@@ -318,7 +318,7 @@ export function LeadForm() {
                           value={formData.message}
                           onChange={handleChange}
                           rows={4}
-                          className="w-full pl-12 pt-3 bg-gray-800/50 border-2 border-cyan-500/30 text-gray-200 placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 rounded-xl resize-none backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-12 pt-3 bg-white border-2 border-purple-500/30 text-gray-900 placeholder:text-gray-500 focus:border-purple-600 focus:ring-2 focus:ring-purple-500/50 rounded-xl resize-none backdrop-blur-sm outline-none transition-all"
                           placeholder="Tell us about your business needs..."
                         />
                       </div>
@@ -328,7 +328,7 @@ export function LeadForm() {
                     <button
                       onClick={handleSubmit}
                       disabled={isSubmitting}
-                      className="w-full h-14 bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-600 hover:from-cyan-600 hover:via-teal-600 hover:to-cyan-700 text-white font-bold text-lg rounded-xl shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                      className="w-full h-14 bg-gradient-to-r from-purple-600 via-purple-500 to-purple-600 hover:from-purple-700 hover:via-purple-600 hover:to-purple-700 text-white font-bold text-lg rounded-xl shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                     >
                       {isSubmitting ? (
                         <>
@@ -346,7 +346,7 @@ export function LeadForm() {
                     {/* Privacy Note */}
                     <p className="text-xs text-gray-500 text-center">
                       By submitting this form, you agree to our{" "}
-                      <a href="/privacy" className="text-cyan-400 hover:text-cyan-300 underline">
+                      <a href="/privacy" className="text-purple-600 hover:text-purple-700 underline">
                         Privacy Policy
                       </a>
                       . We respect your privacy and never share your data.

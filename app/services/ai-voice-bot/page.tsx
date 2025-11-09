@@ -1,6 +1,6 @@
 "use client"
 
-import { Header } from "@/components/header"
+import { Header } from "@/components/header"`nimport { PageBackground } from "@/components/page-background"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Bot, Brain, Mic, BarChart3, Shield, Workflow, ArrowRight, Play, Pause, Phone, MessageSquare, Clock, Users, Zap, Globe, Headphones, TrendingUp, CheckCircle } from "lucide-react"
@@ -871,6 +871,7 @@ export default function AIVoiceBot() {
     </>
   )
 }
+
 
 
 

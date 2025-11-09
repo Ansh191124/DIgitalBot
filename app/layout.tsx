@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
-import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -254,10 +253,15 @@ export default function RootLayout({
                 -webkit-overflow-scrolling: touch;
               }
             }
+            
+            /* Prevent hydration flash */
+            .hero-section {
+              min-height: 100vh;
+            }
           `
         }} />
         
-        <Suspense fallback={null}>{children}</Suspense>
+        {children}
         <Analytics />
       </body>
     </html>

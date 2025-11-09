@@ -1,6 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { PageBackground } from '@/components/page-background';
 
 // Define the shape of the user data expected from the backend
 interface User {
@@ -90,8 +91,9 @@ export default function LoginPage(): JSX.Element {
 
   // 5. Component return type (JSX.Element)
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-orange-50 to-indigo-100 p-4">
-      <div className="bg-black p-8 rounded-2xl shadow-2xl w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-white p-4 relative overflow-hidden">
+      <PageBackground />
+      <div className="bg-black p-8 rounded-2xl shadow-2xl w-full max-w-md relative z-10">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-200 mb-2">
             Welcome Back
@@ -154,6 +156,8 @@ export default function LoginPage(): JSX.Element {
     </div>
   );
 }
+
+
 
 
 

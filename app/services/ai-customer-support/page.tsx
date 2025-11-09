@@ -1,4 +1,4 @@
-import { Header } from "@/components/header"
+import { Header } from "@/components/header"`nimport { PageBackground } from "@/components/page-background"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card"
@@ -565,6 +565,7 @@ export default function AICustomerSupport() {
     </div>
   )
 }
+
 
 
 
