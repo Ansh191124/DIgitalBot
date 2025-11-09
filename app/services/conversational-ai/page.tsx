@@ -1,6 +1,7 @@
 "use client"
 
-import { Header } from "@/components/header"`nimport { PageBackground } from "@/components/page-background"
+import { Header } from "@/components/header"
+import { PageBackground } from "@/components/page-background"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Mic, Play, Pause, Bot, Zap, Clock, Shield, Users, TrendingUp, MessageCircle, BarChart3, Headphones, CheckCircle, ArrowRight, Globe, Sparkles, Brain } from "lucide-react"
@@ -528,6 +529,7 @@ export default function ConversationalAI() {
     </div>
   )
 }
+
 
 
 

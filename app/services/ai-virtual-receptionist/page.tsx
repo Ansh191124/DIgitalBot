@@ -1,6 +1,7 @@
 "use client"
 
-import { Header } from "@/components/header"`nimport { PageBackground } from "@/components/page-background"
+import { Header } from "@/components/header"
+import { PageBackground } from "@/components/page-background"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Mic, Play, Pause, ArrowRight, Phone, Clock, Users, Calendar, MessageCircle, Headphones, Zap, Check, Shield } from "lucide-react"
@@ -583,6 +584,7 @@ export default function AIVirtualReceptionist() {
     </div>
   )
 }
+
 
 
 

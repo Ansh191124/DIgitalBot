@@ -1,6 +1,7 @@
 "use client"
 
-import { Header } from "@/components/header"`nimport { PageBackground } from "@/components/page-background"
+import { Header } from "@/components/header"
+import { PageBackground } from "@/components/page-background"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Mic, Play, Pause, ArrowRight, Target, TrendingUp, Phone, Users, Zap, Check } from "lucide-react"
@@ -415,6 +416,7 @@ export default function AISalesAgent() {
     </div>
   )
 }
+
 
 
 
