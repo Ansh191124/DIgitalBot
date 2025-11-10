@@ -438,7 +438,7 @@ export default function Hero() {
             }
             `}} />
 
-            <section className="pt-35 pb-16 px-9 sm:px-12 lg:px-10 relative overflow-hidden min-h-screen bg-light bg-orange-250">
+            <section className="pt-10 pb-4 px-4 sm:px-8 lg:px-26 relative overflow-hidden min-h-screen bg-light bg-orange-250">
 
                 {mounted && (
                   <>
@@ -457,9 +457,9 @@ export default function Hero() {
     
     {/* Voice Assistant Section */}
     <div className="w-full flex flex-col items-center justify-center">
-        <div className="relative w-full flex items-center justify-center mb-16" style={{height: '500px', overflow: 'hidden'}}>
-            <div className="absolute inset-0 flex items-center justify-center" style={{clipPath: 'inset(0)', maxWidth: '500px', maxHeight: '800px', margin: '0 auto'}}>
-                <div className="relative flex items-center justify-center" style={{width: '200px', height: '100px'}}>
+    <div className="relative w-full flex items-center justify-center mb-2 sm:mb-2" style={{height: '60vw', maxHeight: '500px', minHeight: '300px', overflow: 'hidden'}}>
+            <div className="absolute inset-0 flex items-center justify-center" style={{clipPath: 'inset(1)', maxWidth: '800px', maxHeight: '900px', margin: '0 auto'}}>
+            <div className="relative flex items-center justify-center w-[98vw] max-w-[480px] h-[65vw] max-h-[400px] sm:w-[700px] sm:h-[480px] lg:w-[850px] lg:h-[620px]">
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className={` rounded-full transition-all duration-500 ${
                             isSpeaking
@@ -471,7 +471,7 @@ export default function Hero() {
                     <div className={`relative transition-all duration-500 ${isSpeaking ? 'scale-110' : 'scale-105'}`}>
                         <div
                             id="lottie-animation"
-                            className="w-96 h-96"
+                            className="w-[80vw] h-[80vw] max-w-[420px] max-h-[420px] sm:w-[700px] sm:h-[480px] lg:w-[850px] lg:h-[620px]"
                             style={{
                                 filter: isSpeaking
                                     ? 'saturate(1.3) brightness(1.1)'
@@ -545,13 +545,14 @@ export default function Hero() {
     
 
                             {/* Transcript Display */}
-                            <div suppressHydrationWarning className={`w-full max-w-2xl p-8 rounded-2xl border transition-all duration-300 mb-8 ${isCallActive ? 'bg-white border-orange-500 shadow-lg shadow-orange-500/40' : 'bg-gray-100 border-gray-300'}`}>
-                                <div suppressHydrationWarning className="text-xs font-semibold uppercase text-orange-600 mb-2">{callStatus || "Ready to assist"}</div>
+                            <div suppressHydrationWarning className={`w-full max-w-2xl p-6 rounded-2xl border transition-all duration-300 mb-2 ${isCallActive ? 'bg-white border-orange-500 shadow-lg shadow-orange-500/40' : 'bg-gray-100 border-gray-300'}`}>
+                                <div suppressHydrationWarning className="text-xs font-semibold uppercase text-orange-600 mb-(-2)">{callStatus || "Ready to assist"}</div>
+                                
                                 <p suppressHydrationWarning className="text-sm sm:text-base text-gray-900 font-medium transition-colors duration-500">{transcript}</p>
                             </div>
 
                             {/* Action Buttons */}
-                            <div className="flex flex-col sm:flex-row gap-16 justify-center">
+                            <div className="flex flex-col sm:flex-row gap-8 justify-center">
                                 <button
                                     suppressHydrationWarning
                                     onClick={toggleCall}

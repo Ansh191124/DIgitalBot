@@ -33,31 +33,10 @@ export function Header() {
             className={cn(
                 "fixed top-0 w-full z-50 transition-all duration-700",
                 isScrolled
-                    ? "backdrop-blur-2xl bg-white/95 shadow-2xl shadow-gray-200/50"
-                    : "bg-white/90 backdrop-blur-md"
+                    ? "backdrop-blur-2xl bg-gray-50"
+                    : "bg-gray-50 backdrop-blur-md"
             )}
         >
-            {/* Animated gradient background overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 via-orange-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
-
-            {/* Subtle grid background with orange/purple tones */}
-            <div className="absolute inset-0 pointer-events-none opacity-10">
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        backgroundImage:
-                            "linear-gradient(to right, rgba(249, 115, 22, 0.25) 1px, transparent 1px), " +
-                            "linear-gradient(to bottom, rgba(168, 85, 247, 0.25) 1px, transparent 1px)",
-                        backgroundSize: "40px 40px"
-                    }}
-                />
-            </div>
-            
-            {/* Floating particles effect */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl animate-float-slow shadow-[0_0_60px_rgba(249,115,22,0.3)]" />
-                <div className="absolute top-0 right-1/4 w-40 h-40 bg-orange-600/10 rounded-full blur-3xl animate-float-reverse shadow-[0_0_80px_rgba(249,115,22,0.25)]" />
-            </div>
             
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
@@ -68,20 +47,21 @@ export function Header() {
                         transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
                         className="relative group"
                     >
-                        <Link href="/" className="flex items-center gap-3 relative" onClick={() => setIsMenuOpen(false)}>
+                            <Link href="/" className="flex items-center gap-12 relative ml-0 pl-0 mr-2" onClick={() => setIsMenuOpen(false)}>
                             {/* Animated multicolor glow orbs */}
                             <span className="absolute -top-6 -left-6 w-20 h-21 rounded-full bg-orange-500/40 blur-3xl animate-pulse-glow shadow-[0_0_50px_rgba(249,115,22,0.5)]" />
                             <span className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-orange-600/30 blur-2xl animate-float-slow shadow-[0_0_40px_rgba(249,115,22,0.4)]" />
                             
                             <div className="relative">
                                 <Image
-                                    src="/images/logos/logo.svg"
+                                    src="https://res.cloudinary.com/dew9qfpbl/image/upload/v1762800522/Digitalbot.Ai_-_1_-_Edited_1_vzybmz.svg"
                                     alt="DigitalBot.AI - AI Voice Assistant Platform"
-                                    width={200}
-                                    height={48}
+                                    width={1200}
+                                    height={320}
+                                    
                                     priority
-                                    quality={95}
-                                    className="h-10 w-auto relative z-10 drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_30px_rgba(249,115,22,0.6)]"
+                                    quality={125}
+                                        className="h-10 sm:h-16 lg:h-18 w-auto max-w-[160px] sm:max-w-[220px] lg:max-w-[320px] relative z-14 ml-0 pl-0 mr-12 transition-all duration-500 group-hover:scale-110"
                                 />
                             </div>
                             
@@ -106,7 +86,7 @@ export function Header() {
                                     <Link
                                         href={item.href}
                                         className={cn(
-                                            "relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2",
+                                            "relative  px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-3",
                                             pathname === item.href
                                                 ? "text-white bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 shadow-lg shadow-orange-500/50"
                                                 : "text-gray-900 hover:text-orange-600 hover:bg-gradient-to-r hover:from-gray-100/50 hover:to-gray-200/50"
@@ -269,7 +249,7 @@ export function Header() {
                         </Button>
                     </div>
 
-                    {/* Enhanced Mobile Menu Button - Purple with Orange Glow */}
+                    {/* Enhanced Mobile Menu Button - orange with Orange Glow */}
                     <button
                         className="lg:hidden p-3 rounded-2xl bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 border-2 border-gray-300 hover:border-orange-500 text-gray-900 hover:text-orange-600 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-orange-500/50"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -348,7 +328,7 @@ export function Header() {
                                         ))}
                                     </div>
                                     
-                                    {/* Premium Services - Purple with Orange Glow */}
+                                    {/* Premium Services - orange with Orange Glow */}
                                     <div className="mt-4 space-y-2">
                                         <Link
                                             href="/signup?service=lead"
@@ -369,7 +349,7 @@ export function Header() {
                                     </div>
                                 </motion.div>
 
-                                {/* Mobile CTA Button - Purple with Orange Glow */}
+                                {/* Mobile CTA Button - orange with Orange Glow */}
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -396,7 +376,6 @@ export function Header() {
         </header>
     )
 }
-
 
 
 
