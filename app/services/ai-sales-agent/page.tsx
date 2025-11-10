@@ -96,15 +96,15 @@ export default function AISalesAgent() {
               </div>
 
               <div className="flex flex-wrap gap-6 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-green-200">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-green-200">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">500+ Active Businesses</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <TrendingUp className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">2M+ Sales Conversations</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Zap className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">45% Higher Conversion</span>
                 </div>
@@ -130,7 +130,7 @@ export default function AISalesAgent() {
             </div>
 
             {/* Audio Player Card */}
-            <div className="bg-black rounded-3xl p-8 border-2 border-orange-400 hover:border-orange-400 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+            <div className="bg-white rounded-3xl p-8 border-2 border-orange-400 hover:border-orange-400 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
               <div className="relative z-10">
                 {/* Waveform visualization area */}
                 <div className="flex items-center justify-center mb-6 h-24 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border-2 border-orange-400 relative overflow-hidden">
@@ -217,7 +217,7 @@ export default function AISalesAgent() {
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-black/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
                 <Target className="w-4 h-4 text-orange-400" />
                 <span className="text-sm font-semibold text-white">Common Questions</span>
               </div>
@@ -395,15 +395,15 @@ export default function AISalesAgent() {
               </div>
 
               <div className="flex flex-wrap gap-8 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-200">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">No Credit Card Required</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">Setup in 7 Days</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">24/7 Support</span>
                 </div>
@@ -416,6 +416,8 @@ export default function AISalesAgent() {
     </div>
   )
 }
+
+
 
 
 

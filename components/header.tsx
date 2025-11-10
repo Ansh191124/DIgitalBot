@@ -38,7 +38,7 @@ export function Header() {
             )}
         >
             {/* Animated gradient background overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-purple-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 via-orange-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
 
             {/* Subtle grid background with orange/purple tones */}
             <div className="absolute inset-0 pointer-events-none opacity-10">
@@ -55,8 +55,8 @@ export function Header() {
             
             {/* Floating particles effect */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-float-slow shadow-[0_0_60px_rgba(249,115,22,0.3)]" />
-                <div className="absolute top-0 right-1/4 w-40 h-40 bg-purple-600/10 rounded-full blur-3xl animate-float-reverse shadow-[0_0_80px_rgba(249,115,22,0.25)]" />
+                <div className="absolute top-0 left-1/4 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl animate-float-slow shadow-[0_0_60px_rgba(249,115,22,0.3)]" />
+                <div className="absolute top-0 right-1/4 w-40 h-40 bg-orange-600/10 rounded-full blur-3xl animate-float-reverse shadow-[0_0_80px_rgba(249,115,22,0.25)]" />
             </div>
             
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,8 +70,8 @@ export function Header() {
                     >
                         <Link href="/" className="flex items-center gap-3 relative" onClick={() => setIsMenuOpen(false)}>
                             {/* Animated multicolor glow orbs */}
-                            <span className="absolute -top-6 -left-6 w-20 h-21 rounded-full bg-purple-500/40 blur-3xl animate-pulse-glow shadow-[0_0_50px_rgba(249,115,22,0.5)]" />
-                            <span className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-purple-600/30 blur-2xl animate-float-slow shadow-[0_0_40px_rgba(249,115,22,0.4)]" />
+                            <span className="absolute -top-6 -left-6 w-20 h-21 rounded-full bg-orange-500/40 blur-3xl animate-pulse-glow shadow-[0_0_50px_rgba(249,115,22,0.5)]" />
+                            <span className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-orange-600/30 blur-2xl animate-float-slow shadow-[0_0_40px_rgba(249,115,22,0.4)]" />
                             
                             <div className="relative">
                                 <Image
@@ -86,7 +86,7 @@ export function Header() {
                             </div>
                             
                             {/* Enhanced AI Badge */}
-                            <div className="absolute -bottom-2 -right-8 px-3 py-1 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white text-[9px] font-bold rounded-full shadow-lg shadow-orange-500/60 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 border border-white/30">
+                            <div className="absolute -bottom-2 -right-8 px-3 py-1 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white text-[9px] font-bold rounded-full shadow-lg shadow-orange-500/60 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 border border-white/30">
                                 ✨ AI Powered
                             </div>
                         </Link>
@@ -108,8 +108,8 @@ export function Header() {
                                         className={cn(
                                             "relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2",
                                             pathname === item.href
-                                                ? "text-white bg-gradient-to-r from-purple-600 via-purple-500 to-purple-700 shadow-lg shadow-orange-500/50"
-                                                : "text-gray-900 hover:text-purple-600 hover:bg-gradient-to-r hover:from-gray-100/50 hover:to-gray-200/50"
+                                                ? "text-white bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 shadow-lg shadow-orange-500/50"
+                                                : "text-gray-900 hover:text-orange-600 hover:bg-gradient-to-r hover:from-gray-100/50 hover:to-gray-200/50"
                                         )}
                                     >
                                         {Icon && <Icon className="w-4 h-4" />}
@@ -119,7 +119,7 @@ export function Header() {
                                         {pathname !== item.href && (
                                             <>
                                                 <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-gray-100/30 via-gray-200/30 to-gray-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                                <span className="absolute -inset-0.5 rounded-xl bg-purple-500/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300 shadow-[0_0_15px_rgba(249,115,22,0.4)]" />
+                                                <span className="absolute -inset-0.5 rounded-xl bg-orange-500/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300 shadow-[0_0_15px_rgba(249,115,22,0.4)]" />
                                             </>
                                         )}
                                         
@@ -127,7 +127,7 @@ export function Header() {
                                         {pathname === item.href && (
                                             <motion.span
                                                 layoutId="activeNav"
-                                                className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-600 via-purple-500 to-purple-700 shadow-lg shadow-orange-500/50"
+                                                className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 shadow-lg shadow-orange-500/50"
                                                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
                                             />
                                         )}
@@ -146,7 +146,7 @@ export function Header() {
                             onMouseLeave={() => setOpen(false)}
                         >
                             <button
-                                className="relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2 text-gray-900 hover:text-purple-600 hover:bg-gradient-to-r hover:from-gray-100/50 hover:to-gray-200/50"
+                                className="relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2 text-gray-900 hover:text-orange-600 hover:bg-gradient-to-r hover:from-gray-100/50 hover:to-gray-200/50"
                             >
                                 <Zap className="w-4 h-4" />
                                 <span className="relative z-10">Our Services</span>
@@ -157,7 +157,7 @@ export function Header() {
                                 
                                 {/* Enhanced Hover background */}
                                 <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-gray-100/30 via-gray-200/30 to-gray-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <span className="absolute -inset-0.5 rounded-xl bg-purple-500/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
+                                <span className="absolute -inset-0.5 rounded-xl bg-orange-500/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300 shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
                             </button>
 
                             {/* Premium Services Dropdown Menu - Enhanced */}
@@ -171,37 +171,37 @@ export function Header() {
                                         className="absolute left-1/2 -translate-x-1/2 top-full mt-4 bg-white backdrop-blur-2xl shadow-2xl shadow-gray-300/50 rounded-3xl p-6 w-[920px] border-2 border-gray-200 z-[100]"
                                     >
                                         {/* Enhanced Decorative gradient border */}
-                                        <div className="absolute inset-0 rounded-3xl bg-purple-500/5 pointer-events-none shadow-[inset_0_0_60px_rgba(249,115,22,0.15)]" />
+                                        <div className="absolute inset-0 rounded-3xl bg-orange-500/5 pointer-events-none shadow-[inset_0_0_60px_rgba(249,115,22,0.15)]" />
                                         
                                         {/* Animated background particles */}
                                         <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
-                                            <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl animate-pulse shadow-[0_0_60px_rgba(249,115,22,0.3)]" />
-                                            <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-600/10 rounded-full blur-3xl animate-pulse shadow-[0_0_60px_rgba(249,115,22,0.25)]" />
+                                            <div className="absolute top-0 right-0 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl animate-pulse shadow-[0_0_60px_rgba(249,115,22,0.3)]" />
+                                            <div className="absolute bottom-0 left-0 w-40 h-40 bg-orange-600/10 rounded-full blur-3xl animate-pulse shadow-[0_0_60px_rgba(249,115,22,0.25)]" />
                                         </div>
                                         
                                         <div className="relative z-10">
                                             <div className="flex items-center gap-2 mb-5 pb-4 border-b-2 border-gray-200">
-                                                <Activity className="w-5 h-5 text-purple-600 animate-pulse drop-shadow-[0_0_8px_rgba(249,115,22,0.5)]" />
-                                                <h3 className="text-lg font-bold bg-gradient-to-r from-purple-600 via-purple-500 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(249,115,22,0.3)]">AI-Powered Solutions</h3>
+                                                <Activity className="w-5 h-5 text-orange-600 animate-pulse drop-shadow-[0_0_8px_rgba(249,115,22,0.5)]" />
+                                                <h3 className="text-lg font-bold bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(249,115,22,0.3)]">AI-Powered Solutions</h3>
                                             </div>
                                             
                                             <div className="grid grid-cols-3 gap-3 mb-4">
                                                 {[
-                                                    { href: "/services/ai-voice-bot", label: "AI Voice Bot", desc: "Intelligent voice automation", color: "from-purple-500 to-purple-600", icon: Bot },
-                                                    { href: "/services/voice-ai-business", label: "Voice AI for Business", desc: "Enterprise solutions", color: "from-purple-500 to-purple-700", icon: TrendingUp },
-                                                    { href: "/services/voice-automation-software", label: "Voice Automation", desc: "Workflow automation", color: "from-purple-600 to-purple-700", icon: Zap },
-                                                    { href: "/services/ai-customer-support", label: "AI Customer Support", desc: "24/7 assistance", color: "from-purple-500 to-purple-700", icon: Sparkles },
-                                                    { href: "/services/conversational-ai", label: "Conversational AI", desc: "Natural conversations", color: "from-purple-600 to-purple-700", icon: Activity },
-                                                    { href: "/services/ai-call-center", label: "AI Call Center", desc: "Call automation", color: "from-purple-500 to-purple-600", icon: Phone },
-                                                    { href: "/services/ai-sales-agent", label: "AI Sales Agent", desc: "Sales automation", color: "from-purple-600 to-purple-700", icon: BarChart3 },
-                                                    { href: "/services/ai-virtual-receptionist", label: "Virtual Receptionist", desc: "Front desk AI", color: "from-purple-500 to-purple-600", icon: Sparkles },
+                                                    { href: "/services/ai-voice-bot", label: "AI Voice Bot", desc: "Intelligent voice automation", color: "from-orange-500 to-orange-600", icon: Bot },
+                                                    { href: "/services/voice-ai-business", label: "Voice AI for Business", desc: "Enterprise solutions", color: "from-orange-500 to-orange-700", icon: TrendingUp },
+                                                    { href: "/services/voice-automation-software", label: "Voice Automation", desc: "Workflow automation", color: "from-orange-600 to-orange-700", icon: Zap },
+                                                    { href: "/services/ai-customer-support", label: "AI Customer Support", desc: "24/7 assistance", color: "from-orange-500 to-orange-700", icon: Sparkles },
+                                                    { href: "/services/conversational-ai", label: "Conversational AI", desc: "Natural conversations", color: "from-orange-600 to-orange-700", icon: Activity },
+                                                    { href: "/services/ai-call-center", label: "AI Call Center", desc: "Call automation", color: "from-orange-500 to-orange-600", icon: Phone },
+                                                    { href: "/services/ai-sales-agent", label: "AI Sales Agent", desc: "Sales automation", color: "from-orange-600 to-orange-700", icon: BarChart3 },
+                                                    { href: "/services/ai-virtual-receptionist", label: "Virtual Receptionist", desc: "Front desk AI", color: "from-orange-500 to-orange-600", icon: Sparkles },
                                                 ].map((service) => {
                                                     const ServiceIcon = service.icon
                                                     return (
                                                         <Link
                                                             key={service.href}
                                                             href={service.href}
-                                                            className="group block p-4 hover:bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 rounded-xl transition-all duration-300 border-2 border-transparent hover:border-purple-400/50 hover:shadow-lg hover:shadow-orange-400/30 hover:scale-105"
+                                                            className="group block p-4 hover:bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 rounded-xl transition-all duration-300 border-2 border-transparent hover:border-orange-400/50 hover:shadow-lg hover:shadow-orange-400/30 hover:scale-105"
                                                             onClick={() => setOpen(false)}
                                                         >
                                                             <div className="flex items-start gap-3">
@@ -228,7 +228,7 @@ export function Header() {
                                                 <div className="grid grid-cols-2 gap-3">
                                                     <Link
                                                         href="/signup?service=lead"
-                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-purple-600 via-purple-500 to-purple-700 rounded-xl hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105"
+                                                        className="group flex items-center gap-3 p-3 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 rounded-xl hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105"
                                                         onClick={() => setOpen(false)}
                                                     >
                                                         <BarChart3 className="w-5 h-5 text-white" />
@@ -236,11 +236,11 @@ export function Header() {
                                                     </Link>
                                                     <Link
                                                         href="/signup?service=appointment"
-                                                        className="group flex items-center gap-3 p-3 bg-white border-2 border-purple-500/50 rounded-xl hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105"
+                                                        className="group flex items-center gap-3 p-3 bg-white border-2 border-orange-500/50 rounded-xl hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105"
                                                         onClick={() => setOpen(false)}
                                                     >
-                                                        <Phone className="w-5 h-5 text-purple-600" />
-                                                        <span className="text-sm font-bold text-purple-600">Appointments</span>
+                                                        <Phone className="w-5 h-5 text-orange-600" />
+                                                        <span className="text-sm font-bold text-orange-600">Appointments</span>
                                                     </Link>
                                                 </div>
                                             </div>
@@ -255,7 +255,7 @@ export function Header() {
                     <div className="hidden lg:flex items-center gap-3">
                         <Button
                             size="lg"
-                            className="relative bg-gradient-to-r from-purple-600 via-purple-500 to-purple-700 text-white font-bold rounded-full shadow-xl shadow-orange-500/60 hover:shadow-2xl hover:shadow-orange-600/70 transition-all duration-500 overflow-hidden group px-8 border-2 border-white/20"
+                            className="relative bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 text-white font-bold rounded-full shadow-xl shadow-orange-500/60 hover:shadow-2xl hover:shadow-orange-600/70 transition-all duration-500 overflow-hidden group px-8 border-2 border-white/20"
                             asChild
                         >
                             <Link href="/login">
@@ -263,7 +263,7 @@ export function Header() {
                                     <Sparkles className="w-4 h-4 animate-pulse" />
                                     Get Started Free
                                 </span>
-                                <span className="absolute inset-0 bg-gradient-to-r from-purple-600 via-purple-500 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <span className="absolute inset-0 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <span className="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
                             </Link>
                         </Button>
@@ -271,7 +271,7 @@ export function Header() {
 
                     {/* Enhanced Mobile Menu Button - Purple with Orange Glow */}
                     <button
-                        className="lg:hidden p-3 rounded-2xl bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 border-2 border-gray-300 hover:border-purple-500 text-gray-900 hover:text-purple-600 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-orange-500/50"
+                        className="lg:hidden p-3 rounded-2xl bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 border-2 border-gray-300 hover:border-orange-500 text-gray-900 hover:text-orange-600 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-orange-500/50"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
                         {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -303,8 +303,8 @@ export function Header() {
                                                 className={cn(
                                                     "flex items-center gap-3 px-4 py-3.5 text-base font-semibold rounded-xl transition-all duration-300",
                                                     pathname === item.href
-                                                        ? "text-white bg-gradient-to-r from-purple-600 via-purple-500 to-purple-700 shadow-lg shadow-orange-500/50"
-                                                        : "text-gray-900 hover:text-purple-600 hover:bg-gray-100"
+                                                        ? "text-white bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 shadow-lg shadow-orange-500/50"
+                                                        : "text-gray-900 hover:text-orange-600 hover:bg-gray-100"
                                                 )}
                                                 onClick={() => setIsMenuOpen(false)}
                                             >
@@ -323,7 +323,7 @@ export function Header() {
                                     className="pt-4 pb-2"
                                 >
                                     <div className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-gray-900 mb-3">
-                                        <Activity className="w-4 h-4 text-purple-600 animate-pulse" />
+                                        <Activity className="w-4 h-4 text-orange-600 animate-pulse" />
                                         Our AI Services
                                     </div>
                                     <div className="space-y-1.5 bg-gray-50 rounded-xl p-3 border border-gray-200">
@@ -340,7 +340,7 @@ export function Header() {
                                             <Link
                                                 key={i}
                                                 href={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`}
-                                                className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:text-purple-600 hover:bg-gray-100 rounded-lg transition-all duration-300"
+                                                className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-100 rounded-lg transition-all duration-300"
                                                 onClick={() => setIsMenuOpen(false)}
                                             >
                                                 {service}
@@ -352,7 +352,7 @@ export function Header() {
                                     <div className="mt-4 space-y-2">
                                         <Link
                                             href="/signup?service=lead"
-                                            className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-purple-600 via-purple-500 to-purple-700 text-white rounded-xl shadow-lg shadow-orange-500/50 hover:shadow-xl transition-all duration-300"
+                                            className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 text-white rounded-xl shadow-lg shadow-orange-500/50 hover:shadow-xl transition-all duration-300"
                                             onClick={() => setIsMenuOpen(false)}
                                         >
                                             <BarChart3 className="w-5 h-5" />
@@ -360,7 +360,7 @@ export function Header() {
                                         </Link>
                                         <Link
                                             href="/signup?service=appointment"
-                                            className="flex items-center gap-3 px-4 py-3 bg-white border-2 border-purple-500/50 text-purple-600 rounded-xl shadow-lg shadow-orange-500/50 hover:shadow-xl transition-all duration-300"
+                                            className="flex items-center gap-3 px-4 py-3 bg-white border-2 border-orange-500/50 text-orange-600 rounded-xl shadow-lg shadow-orange-500/50 hover:shadow-xl transition-all duration-300"
                                             onClick={() => setIsMenuOpen(false)}
                                         >
                                             <Phone className="w-5 h-5" />
@@ -378,7 +378,7 @@ export function Header() {
                                 >
                                     <Button
                                         size="lg"
-                                        className="w-full bg-gradient-to-r from-purple-600 via-purple-500 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold rounded-xl shadow-xl shadow-orange-500/60 transition-all duration-500 py-4"
+                                        className="w-full bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-bold rounded-xl shadow-xl shadow-orange-500/60 transition-all duration-500 py-4"
                                         asChild
                                     >
                                         <Link href="/login" onClick={() => setIsMenuOpen(false)}>
@@ -396,6 +396,7 @@ export function Header() {
         </header>
     )
 }
+
 
 
 

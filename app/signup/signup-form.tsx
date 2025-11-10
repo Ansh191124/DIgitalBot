@@ -99,7 +99,7 @@ export function SignupForm({ initialService }: SignupFormProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="bg-white/95 backdrop-blur-md p-8 rounded-lg shadow-2xl shadow-orange-500/30 w-96 border-2 border-purple-500 relative z-10"
+        className="bg-white/95 backdrop-blur-md p-8 rounded-lg shadow-2xl shadow-orange-500/30 w-96 border-2 border-orange-500 relative z-10"
       >
         <h2 className={`text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r ${gradient}`}>
           Sign Up for {title}
@@ -147,7 +147,7 @@ export function SignupForm({ initialService }: SignupFormProps) {
           type="submit"
           whileTap={{ scale: 0.97 }}
           disabled={loading}
-          className="bg-blue-600 text-white w-full py-2 rounded hover:bg-orange-700 transition disabled:opacity-70"
+          className="bg-orange-600 text-white w-full py-2 rounded hover:bg-orange-700 transition disabled:opacity-70"
         >
           {loading ? 'Registering...' : 'Register'}
         </motion.button>
@@ -155,3 +155,4 @@ export function SignupForm({ initialService }: SignupFormProps) {
     </div>
   )
 }
+

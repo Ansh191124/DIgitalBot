@@ -364,7 +364,7 @@ export default function AIVoiceBot() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <main className="min-h-screen bg-black text-white" role="main">
+      <main className="min-h-screen bg-white text-white" role="main">
         <Header />
 
         {/* Hero Section - SEO Optimized with Homepage Theme */}
@@ -436,7 +436,7 @@ export default function AIVoiceBot() {
             {/* Key Benefits Grid - Homepage Style Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12">
               {benefits.map((benefit, index) => (
-                <div key={index} className="bg-black backdrop-blur-md rounded-3xl p-6 shadow-2xl border-2 border-orange-400 transition-transform duration-500 hover:scale-105 hover:shadow-orange-300 relative overflow-hidden group">
+                <div key={index} className="bg-white backdrop-blur-md rounded-3xl p-6 shadow-2xl border-2 border-orange-400 transition-transform duration-500 hover:scale-105 hover:shadow-orange-300 relative overflow-hidden group">
                   <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr from-orange-400 via-orange-500 to-orange-600 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
                   <benefit.icon className="h-12 w-12 text-orange-600 mx-auto mb-3 relative z-10" />
                   <div className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 mb-2 relative z-10 animate-pulse">{benefit.stat}</div>
@@ -462,15 +462,15 @@ export default function AIVoiceBot() {
 
             {/* Trust Signals - SEO Keywords */}
             <div className="mt-10 flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
                 <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">No Credit Card Required</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
                 <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">Setup in 5 Minutes</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
                 <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">1000+ Businesses Use AI Voice Bot</span>
               </div>
@@ -479,7 +479,7 @@ export default function AIVoiceBot() {
         </section>
         
         {/* Features Section - SEO Optimized with Homepage Theme */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden" aria-labelledby="features-heading">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden" aria-labelledby="features-heading">
           {/* Decorative Background Elements */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-10">
             <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-gradient-radial from-orange-300 to-transparent rounded-full blur-3xl"></div>
@@ -509,7 +509,7 @@ export default function AIVoiceBot() {
               {features.map((feature, index) => (
                 <article 
                   key={index}
-                  className={`bg-black backdrop-blur-md rounded-3xl p-8 shadow-2xl ${feature.borderColor} border-2 transition-all duration-500 hover:scale-105 hover:shadow-3xl relative overflow-hidden group`}
+                  className={`bg-white backdrop-blur-md rounded-3xl p-8 shadow-2xl ${feature.borderColor} border-2 transition-all duration-500 hover:scale-105 hover:shadow-3xl relative overflow-hidden group`}
                   itemScope 
                   itemType="https://schema.org/SoftwareFeature"
                 >
@@ -573,7 +573,7 @@ export default function AIVoiceBot() {
               {useCases.map((useCase, index) => (
                 <article 
                   key={index}
-                  className="bg-black backdrop-blur-md rounded-3xl p-8 shadow-2xl border-2 border-orange-400 transition-all duration-500 hover:scale-105 hover:shadow-orange-300 relative overflow-hidden group"
+                  className="bg-white backdrop-blur-md rounded-3xl p-8 shadow-2xl border-2 border-orange-400 transition-all duration-500 hover:scale-105 hover:shadow-orange-300 relative overflow-hidden group"
                 >
                   {/* Decorative Glow */}
                   <div className="absolute -top-16 -left-16 w-64 h-64 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
@@ -597,7 +597,7 @@ export default function AIVoiceBot() {
         </section>
 
         {/* Sample Conversation Section - Homepage Theme */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
           {/* Background with gradient orbs */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-orange-200/20 to-transparent rounded-full blur-3xl"></div>
@@ -616,7 +616,7 @@ export default function AIVoiceBot() {
 
           <div className="max-w-4xl mx-auto relative z-10">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center space-x-2 bg-black/80 px-4 py-2 rounded-full text-sm backdrop-blur-sm border-2 border-orange-300 shadow-lg mb-6">
+              <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm backdrop-blur-sm border-2 border-orange-300 shadow-lg mb-6">
                 <Mic className="h-4 w-4 text-orange-600 animate-pulse" />
                 <span className="font-medium text-orange-700">AI Voice Demonstration</span>
               </div>
@@ -629,7 +629,7 @@ export default function AIVoiceBot() {
             </div>
 
             {/* Audio Player Card */}
-            <div className="bg-black/90 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-2 border-orange-300 relative overflow-hidden">
+            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 shadow-2xl border-2 border-orange-300 relative overflow-hidden">
               {/* Glossy overlay effect */}
               <div className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent pointer-events-none"></div>
               <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-orange-50/20 pointer-events-none"></div>
@@ -832,17 +832,17 @@ export default function AIVoiceBot() {
             
             {/* Trust Signals - Homepage Style Cards */}
             <div className="flex flex-wrap justify-center gap-6 items-center">
-              <div className="flex items-center gap-3 px-6 py-4 bg-black backdrop-blur-md rounded-xl shadow-2xl border-2 border-orange-300 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+              <div className="flex items-center gap-3 px-6 py-4 bg-white backdrop-blur-md rounded-xl shadow-2xl border-2 border-orange-300 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
                 <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
                 <Shield className="h-6 w-6 text-orange-600 relative z-10" />
                 <span className="font-extrabold text-white relative z-10">Enterprise Security</span>
               </div>
-              <div className="flex items-center gap-3 px-6 py-4 bg-black backdrop-blur-md rounded-xl shadow-2xl border-2 border-orange-400 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+              <div className="flex items-center gap-3 px-6 py-4 bg-white backdrop-blur-md rounded-xl shadow-2xl border-2 border-orange-400 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
                 <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
                 <Headphones className="h-6 w-6 text-orange-600 relative z-10" />
                 <span className="font-extrabold text-white relative z-10">24/7 Support</span>
               </div>
-              <div className="flex items-center gap-3 px-6 py-4 bg-black backdrop-blur-md rounded-xl shadow-2xl border-2 border-orange-400 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+              <div className="flex items-center gap-3 px-6 py-4 bg-white backdrop-blur-md rounded-xl shadow-2xl border-2 border-orange-400 hover:scale-105 transition-all duration-300 group relative overflow-hidden">
                 <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-400 rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity"></div>
                 <TrendingUp className="h-6 w-6 text-orange-600 relative z-10" />
                 <span className="font-extrabold text-white relative z-10">1000+ Businesses</span>
@@ -851,15 +851,15 @@ export default function AIVoiceBot() {
 
             {/* Additional Trust Signals */}
             <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
                 <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">Free 14-Day Trial</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
                 <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">Cancel Anytime</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
                 <CheckCircle className="h-4 w-4 text-orange-600" />
                 <span className="font-semibold">Setup in 5 Minutes</span>
               </div>
@@ -872,6 +872,8 @@ export default function AIVoiceBot() {
     </>
   )
 }
+
+
 
 
 

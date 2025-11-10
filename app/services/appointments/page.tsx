@@ -11,13 +11,15 @@ export default function AppointmentsPage() {
 
       <Link
         href="/signup?service=appointment"
-        className="inline-block bg-blue-600 text-white px-8 py-3 rounded-xl hover:bg-orange-700 transition-all"
+        className="inline-block bg-orange-600 text-white px-8 py-3 rounded-xl hover:bg-orange-700 transition-all"
       >
         Sign Up for Appointment
       </Link>
     </div>
   );
 }
+
+
 
 
 

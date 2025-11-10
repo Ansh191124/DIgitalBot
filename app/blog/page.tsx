@@ -134,11 +134,11 @@ export default function Blog() {
               </p>
 
               <div className="flex flex-wrap gap-6 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-purple-500">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-orange-500">
                   <TrendingUp className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-700">Latest AI Trends</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-purple-500">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-orange-500">
                   <BookOpen className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-700">Expert Guides</span>
                 </div>
@@ -161,7 +161,7 @@ export default function Blog() {
                 </h2>
               </div>
               <div className="max-w-4xl mx-auto group">
-                <div className="bg-gradient-to-br from-white to-gray-50 border-2 border-purple-500 hover:border-purple-500 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500">
+                <div className="bg-gradient-to-br from-white to-gray-50 border-2 border-orange-500 hover:border-orange-500 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500">
                   {/* Featured Image */}
                   <div className="relative h-80 w-full overflow-hidden">
                     <Image
@@ -227,7 +227,7 @@ export default function Blog() {
               {regularPosts.map((post, index) => (
                 <div
                   key={index}
-                  className="group bg-white border-2 border-purple-500 hover:border-purple-500 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group bg-white border-2 border-orange-500 hover:border-orange-500 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
                   {/* Post Image */}
                   <div className="relative h-48 w-full overflow-hidden">
@@ -284,7 +284,7 @@ export default function Blog() {
         {/* Newsletter Signup */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto bg-gradient-to-br from-orange-50 via-purple-50 to-orange-100 rounded-2xl p-12 text-center border-2 border-purple-500 shadow-xl">
+            <div className="max-w-3xl mx-auto bg-gradient-to-br from-orange-50 via-orange-50 to-orange-100 rounded-2xl p-12 text-center border-2 border-orange-500 shadow-xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 Stay Updated
               </h2>
@@ -295,7 +295,7 @@ export default function Blog() {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full px-6 py-3 rounded-full border-2 border-purple-500 bg-white text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-6 py-3 rounded-full border-2 border-orange-500 bg-white text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 />
                 <Button className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-white px-8 py-3 rounded-full whitespace-nowrap shadow-lg hover:shadow-xl transition-all duration-300">
                   Subscribe
@@ -310,6 +310,7 @@ export default function Blog() {
     </div>
   )
 }
+
 
 
 

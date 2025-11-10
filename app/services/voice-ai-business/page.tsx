@@ -218,15 +218,15 @@ export default function VoiceAIBusiness() {
           
           {/* Trust Signals */}
           <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">10,000+ Businesses</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">4.9/5 Rating</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">No Credit Card Required</span>
             </div>
@@ -235,7 +235,7 @@ export default function VoiceAIBusiness() {
       </section>
 
       {/* Introduction Section - SEO Rich Content */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-10">
           <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-gradient-radial from-orange-300 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-[10%] left-[10%] w-[600px] h-[600px] bg-gradient-radial from-orange-300 to-transparent rounded-full blur-3xl"></div>
@@ -311,7 +311,7 @@ export default function VoiceAIBusiness() {
               const color = colors[i % colors.length];
 
               return (
-                <div key={i} className={`bg-black backdrop-blur-md rounded-3xl p-8 shadow-2xl border-2 ${color.border} transition-all duration-500 hover:scale-105 hover:shadow-3xl relative overflow-hidden group`}>
+                <div key={i} className={`bg-white backdrop-blur-md rounded-3xl p-8 shadow-2xl border-2 ${color.border} transition-all duration-500 hover:scale-105 hover:shadow-3xl relative overflow-hidden group`}>
                   <div className={`absolute -top-16 -right-16 w-60 h-60 bg-gradient-to-br ${color.glow} rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity`}></div>
                   
                   <div className={`w-14 h-14 bg-gradient-to-r ${color.iconBg} rounded-xl flex items-center justify-center mb-6 shadow-lg relative z-10 group-hover:scale-110 group-hover:rotate-6 transition-all`}>
@@ -358,7 +358,7 @@ export default function VoiceAIBusiness() {
       </section>
 
       {/* Features Section - Technical depth for GEO */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-linear-to-r from-orange-500 via-sky-500 to-orange-700 bg-clip-text text-transparent">
@@ -485,7 +485,7 @@ export default function VoiceAIBusiness() {
 
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center space-x-2 bg-black/80 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-sm border border-sky-200/60 shadow-lg mb-6">
+            <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-sm border border-sky-200/60 shadow-lg mb-6">
               <Mic className="h-4 w-4 text-sky-500 animate-pulse" />
               <span className="font-medium">Voice AI for Business Demo</span>
             </div>
@@ -630,19 +630,19 @@ export default function VoiceAIBusiness() {
 
           {/* Trust Signals */}
           <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">No Credit Card Required</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">Deploy in 48 Hours</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">24/7 Expert Support</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">Cancel Anytime</span>
             </div>
@@ -655,6 +655,8 @@ export default function VoiceAIBusiness() {
     </>
   )
 }
+
+
 
 
 

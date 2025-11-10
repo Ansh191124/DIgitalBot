@@ -124,24 +124,24 @@ export default function Contact() {
         
         <div className="container mx-auto text-center relative z-10">
           <div className="inline-block mb-6">
-            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 via-purple-500 to-purple-600 text-gray-900 font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white/30">
+            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 text-gray-900 font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white/30">
               💬 Get In Touch
             </span>
           </div>
           
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
-            <span className="block mb-3 bg-gradient-to-r from-purple-400 via-purple-400 to-purple-500 bg-clip-text text-transparent">
+            <span className="block mb-3 bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 bg-clip-text text-transparent">
               Let's Transform Your
             </span>
-            <span className="inline-block px-8 py-4 rounded-2xl text-gray-900 bg-gradient-to-r from-purple-500 via-purple-500 to-purple-600 shadow-2xl text-3xl sm:text-4xl lg:text-5xl relative overflow-hidden border-2 border-white/30 animate-gradient">
-              <span className="absolute inset-0 bg-gradient-to-tr from-purple-400/30 via-transparent to-transparent"></span>
+            <span className="inline-block px-8 py-4 rounded-2xl text-gray-900 bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 shadow-2xl text-3xl sm:text-4xl lg:text-5xl relative overflow-hidden border-2 border-white/30 animate-gradient">
+              <span className="absolute inset-0 bg-gradient-to-tr from-orange-400/30 via-transparent to-transparent"></span>
               <span className="relative z-10">Business Together</span>
             </span>
           </h1>
           
-          <div className="max-w-3xl mx-auto mb-8 p-6 bg-white/80 backdrop-blur-md border-2 border-purple-500/50 rounded-2xl shadow-xl">
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed font-medium">
-              Ready to <span className="font-bold text-purple-400">elevate your customer experience</span> with AI? Our experts are <span className="font-bold text-purple-400">just a message away</span>. Let's discuss how we can help your business grow.
+          <div className="max-w-3xl mx-auto mb-8 p-6 bg-white/80 backdrop-blur-md border-2 border-orange-500/50 rounded-2xl shadow-xl">
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium">
+              Ready to <span className="font-bold text-orange-400">elevate your customer experience</span> with AI? Our experts are <span className="font-bold text-orange-400">just a message away</span>. Let's discuss how we can help your business grow.
             </p>
           </div>
         </div>
@@ -155,21 +155,21 @@ export default function Contact() {
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start relative z-10">
 
           {/* Contact Form - Enhanced */}
-          <Card className="bg-white/80 backdrop-blur-md border-2 border-purple-500/50 hover:border-purple-400/70 shadow-2xl hover:shadow-orange-400/30 transition-all duration-500 animate-fade-in-up relative overflow-hidden group">
+          <Card className="bg-white/80 backdrop-blur-md border-2 border-orange-500/50 hover:border-orange-400/70 shadow-2xl hover:shadow-orange-400/30 transition-all duration-500 animate-fade-in-up relative overflow-hidden group">
             {/* Decorative Glow */}
             <div className="absolute -top-20 -right-20 w-60 h-60 bg-cyan-400/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
             
             <CardHeader className="p-6 sm:p-8 relative z-10">
               <div className="inline-block mb-4">
-                <span className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-purple-500 to-purple-600 text-gray-900 font-bold text-xs uppercase tracking-wider shadow-lg">
+                <span className="px-4 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 text-gray-900 font-bold text-xs uppercase tracking-wider shadow-lg">
                   ✉️ Contact Form
                 </span>
               </div>
-              <CardTitle className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-purple-400 via-purple-400 to-purple-500 bg-clip-text text-transparent mb-4">
+              <CardTitle className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 bg-clip-text text-transparent mb-4">
                 Send us a message
               </CardTitle>
-              <CardDescription className="text-base sm:text-lg font-medium bg-white/50 rounded-xl px-6 py-4 shadow-lg border-2 border-gray-700/50 text-gray-300">
-                Reach out to our team for <span className="font-bold text-purple-400">support</span>, <span className="font-bold text-purple-400">partnership opportunities</span>, or general inquiries. We're here to help your business grow with AI automation.
+              <CardDescription className="text-base sm:text-lg font-medium bg-white/50 rounded-xl px-6 py-4 shadow-lg border-2 border-orange-500/50 text-gray-700">
+                Reach out to our team for <span className="font-bold text-orange-400">support</span>, <span className="font-bold text-orange-400">partnership opportunities</span>, or general inquiries. We're here to help your business grow with AI automation.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6 p-6 sm:p-8 relative z-10">
@@ -186,30 +186,30 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-sm font-bold text-gray-300">First Name</Label>
+                    <Label htmlFor="firstName" className="text-sm font-bold text-gray-700">First Name</Label>
                     <Input 
                       id="firstName" 
                       placeholder="John" 
                       value={form.firstName} 
                       onChange={handleChange} 
-                      className="h-12 bg-white/50 border-2 border-gray-700 focus:border-purple-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900" 
+                      className="h-12 bg-white/50 border-2 border-orange-500 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900" 
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-sm font-bold text-gray-300">Last Name</Label>
+                    <Label htmlFor="lastName" className="text-sm font-bold text-gray-700">Last Name</Label>
                     <Input 
                       id="lastName" 
                       placeholder="Doe" 
                       value={form.lastName} 
                       onChange={handleChange} 
-                      className="h-12 bg-white/50 border-2 border-gray-700 focus:border-purple-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900" 
+                      className="h-12 bg-white/50 border-2 border-orange-500 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900" 
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm font-bold text-gray-300">
+                    <Label htmlFor="email" className="text-sm font-bold text-gray-700">
                       Email <span className="text-red-400">*</span>
                     </Label>
                     <Input 
@@ -219,11 +219,11 @@ export default function Contact() {
                       value={form.email} 
                       onChange={handleChange} 
                       required 
-                      className="h-12 bg-white/50 border-2 border-purple-500/50 focus:border-purple-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900" 
+                      className="h-12 bg-white/50 border-2 border-orange-500/50 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900" 
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-sm font-bold text-gray-300">
+                    <Label htmlFor="phone" className="text-sm font-bold text-gray-700">
                       Phone Number <span className="text-red-400">*</span>
                     </Label>
                     <Input 
@@ -233,31 +233,31 @@ export default function Contact() {
                       value={form.phone} 
                       onChange={handleChange} 
                       required
-                      className="h-12 bg-white/50 border-2 border-purple-500/50 focus:border-purple-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900"
+                      className="h-12 bg-white/50 border-2 border-orange-500/50 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="company" className="text-sm font-bold text-gray-300">Company</Label>
+                  <Label htmlFor="company" className="text-sm font-bold text-gray-700">Company</Label>
                   <Input 
                     id="company" 
                     placeholder="Your Company Name" 
                     value={form.company} 
                     onChange={handleChange} 
-                    className="h-12 bg-white/50 border-2 border-gray-700 focus:border-purple-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900" 
+                    className="h-12 bg-white/50 border-2 border-orange-500 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900" 
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="inquiry" className="text-sm font-bold text-gray-300">
+                  <Label htmlFor="inquiry" className="text-sm font-bold text-gray-700">
                     Inquiry Type <span className="text-red-400">*</span>
                   </Label>
                   <Select value={form.inquiry} onValueChange={handleSelectChange} required> 
-                    <SelectTrigger className="h-12 bg-white/50 border-2 border-purple-500/50 focus:border-purple-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900">
+                    <SelectTrigger className="h-12 bg-white/50 border-2 border-orange-500/50 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900">
                       <SelectValue placeholder="Select inquiry type" />
                     </SelectTrigger>
-                    <SelectContent className="bg-white border-purple-500/50">
+                    <SelectContent className="bg-white border-orange-500/50">
                       <SelectItem value="sales">💼 Sales Inquiry</SelectItem>
                       <SelectItem value="support">🛠️ Technical Support</SelectItem>
                       <SelectItem value="partnership">🤝 Partnership</SelectItem>
@@ -268,18 +268,18 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-sm font-bold text-gray-300">Message</Label>
+                  <Label htmlFor="message" className="text-sm font-bold text-gray-700">Message</Label>
                   <Textarea
                     id="message"
                     placeholder="Tell us about your project and how we can help..."
-                    className="min-h-[140px] bg-white/50 border-2 border-gray-700 focus:border-purple-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900"
+                    className="min-h-[140px] bg-white/50 border-2 border-orange-500 focus:border-orange-400 rounded-xl shadow-sm hover:shadow-md transition-all text-gray-900"
                     value={form.message}
                     onChange={handleChange}
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-purple-500 via-purple-500 to-purple-600 hover:scale-105 text-gray-900 font-bold shadow-2xl hover:shadow-orange-400/50 rounded-xl transition-all duration-300 h-14 text-lg border-2 border-white/30"
+                  className="w-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 hover:scale-105 text-gray-900 font-bold shadow-2xl hover:shadow-orange-400/50 rounded-xl transition-all duration-300 h-14 text-lg border-2 border-white/30"
                   disabled={loading}
                 >
                   <MessageCircle className="mr-2 h-5 w-5" />
@@ -292,26 +292,26 @@ export default function Contact() {
 
           {/* Contact Information - Enhanced */}
           <div className="space-y-8 animate-fade-in-up delay-300">
-            <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 border-2 border-purple-500/50 shadow-xl">
+            <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 border-2 border-orange-500/50 shadow-xl">
               <div className="inline-block mb-4">
-                <span className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-purple-500 to-purple-600 text-gray-900 font-bold text-xs uppercase tracking-wider shadow-lg">
+                <span className="px-4 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 text-gray-900 font-bold text-xs uppercase tracking-wider shadow-lg">
                   🚀 Let's Connect
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-purple-400 via-purple-400 to-purple-500 bg-clip-text text-transparent mb-4">
+              <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 bg-clip-text text-transparent mb-4">
                 Let's start a conversation
               </h2>
-              <p className="text-base text-gray-300 font-medium leading-relaxed">
-                Whether you're <span className="font-bold text-purple-400">scaling your AI</span> or just beginning your <span className="font-bold text-purple-400">automation journey</span>, our team is ready to assist.
+              <p className="text-base text-gray-700 font-medium leading-relaxed">
+                Whether you're <span className="font-bold text-orange-400">scaling your AI</span> or just beginning your <span className="font-bold text-orange-400">automation journey</span>, our team is ready to assist.
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-6">
               {contactInfo.map((info, index) => {
                 const colors = [
-                  { bg: 'from-gray-800/80 via-gray-900/60 to-gray-800/80', border: 'border-purple-500/50', hover: 'hover:border-purple-400', icon: 'from-purple-500 to-purple-500', shadow: 'hover:shadow-orange-400/30' },
-                  { bg: 'from-gray-800/70 via-gray-900/50 to-gray-800/70', border: 'border-blue-500/50', hover: 'hover:border-blue-400', icon: 'from-blue-500 to-purple-500', shadow: 'hover:shadow-blue-400/30' },
-                  { bg: 'from-gray-800/80 via-gray-900/60 to-gray-800/80', border: 'border-indigo-500/50', hover: 'hover:border-indigo-400', icon: 'from-indigo-500 to-blue-500', shadow: 'hover:shadow-indigo-400/30' },
+                  { bg: 'from-white/90 via-white/95 to-white', border: 'border-orange-500/50', hover: 'hover:border-orange-400', icon: 'from-orange-500 to-orange-500', shadow: 'hover:shadow-orange-400/30' },
+                  { bg: 'from-white/90 via-white/95 to-white', border: 'border-orange-500/50', hover: 'hover:border-orange-400', icon: 'from-orange-500 to-orange-600', shadow: 'hover:shadow-orange-400/30' },
+                  { bg: 'from-white/90 via-white/95 to-white', border: 'border-orange-500/50', hover: 'hover:border-orange-400', icon: 'from-orange-500 to-orange-600', shadow: 'hover:shadow-orange-400/30' },
                 ];
                 const color = colors[index % colors.length];
                 
@@ -325,11 +325,11 @@ export default function Contact() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <h3 className="font-bold text-gray-900 mb-2 text-lg">{info.title}</h3>
-                          <p className="text-sm text-gray-400 mb-3 break-words font-medium">
+                          <p className="text-sm text-gray-600 mb-3 break-words font-medium">
                             {info.description}
                           </p>
                           {info.contact && (
-                            <a href={info.action} className="text-sm font-bold bg-gradient-to-r from-purple-400 to-purple-400 bg-clip-text text-transparent hover:from-purple-500 hover:to-purple-500 transition-all break-all">
+                            <a href={info.action} className="text-sm font-bold bg-gradient-to-r from-orange-400 to-orange-400 bg-clip-text text-transparent hover:from-orange-500 hover:to-orange-500 transition-all break-all">
                               {info.contact} →
                             </a>
                           )}
@@ -341,24 +341,24 @@ export default function Contact() {
               })}
             </div>
 
-            <Card className="border-2 border-purple-500/50 hover:border-purple-400 bg-white/80 backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-orange-400/30 transition-all hover:scale-105 overflow-hidden group">
+            <Card className="border-2 border-orange-500/50 hover:border-orange-400 bg-white/80 backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-orange-400/30 transition-all hover:scale-105 overflow-hidden group">
               <CardContent className="p-8 relative">
                 <div className="absolute -top-10 -right-10 w-40 h-40 bg-cyan-400/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
                 <div className="relative z-10">
                   <div className="inline-block mb-4">
-                    <span className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-purple-500 to-purple-600 text-gray-900 font-bold text-xs uppercase tracking-wider shadow-lg">
+                    <span className="px-4 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 text-gray-900 font-bold text-xs uppercase tracking-wider shadow-lg">
                       💬 Instant Help
                     </span>
                   </div>
-                  <h3 className="font-extrabold text-2xl bg-gradient-to-r from-purple-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                  <h3 className="font-extrabold text-2xl bg-gradient-to-r from-orange-400 to-orange-400 bg-clip-text text-transparent mb-4">
                     Prefer to chat?
                   </h3>
-                  <p className="text-base text-gray-300 mb-6 font-medium">
-                    Try our <span className="font-bold text-purple-400">AI chatbot</span> for instant answers to common questions about our platform and services.
+                  <p className="text-base text-gray-700 mb-6 font-medium">
+                    Try our <span className="font-bold text-orange-400">AI chatbot</span> for instant answers to common questions about our platform and services.
                   </p>
                   <Button
                     variant="outline"
-                    className="border-2 border-purple-500 text-purple-400 hover:bg-cyan-500/20 hover:scale-105 transition-all duration-300 w-full font-bold text-base h-12 rounded-xl shadow-lg bg-transparent"
+                    className="border-2 border-orange-500 text-orange-400 hover:bg-cyan-500/20 hover:scale-105 transition-all duration-300 w-full font-bold text-base h-12 rounded-xl shadow-lg bg-transparent"
                   >
                     <MessageCircle className="mr-2 h-5 w-5" />
                     Start Chat Now
@@ -385,5 +385,8 @@ export default function Contact() {
     </main>
   )
 }
+
+
+
 
 

@@ -164,15 +164,15 @@ export default function AIVirtualReceptionist() {
               </div>
 
               <div className="flex flex-wrap gap-6 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-green-200">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-green-200">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">24/7 Availability</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Clock className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">Instant Call Answering</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Zap className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">70% Cost Reduction</span>
                 </div>
@@ -182,7 +182,7 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 bg-black">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
@@ -233,7 +233,7 @@ export default function AIVirtualReceptionist() {
               {benefits.map((benefit, index) => (
                 <div 
                   key={index}
-                  className="group bg-black border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group bg-white border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
                   <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                     {benefit.title}
@@ -248,7 +248,7 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* Use Cases Section */}
-        <section className="py-20 bg-black">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
@@ -298,7 +298,7 @@ export default function AIVirtualReceptionist() {
             </div>
 
             {/* Audio Player Card */}
-            <div className="bg-black rounded-3xl p-8 border-2 border-orange-400 hover:border-orange-400 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+            <div className="bg-white rounded-3xl p-8 border-2 border-orange-400 hover:border-orange-400 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
               <div className="relative z-10">
                 {/* Waveform visualization area */}
                 <div className="flex items-center justify-center mb-6 h-24 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border-2 border-orange-400 relative overflow-hidden">
@@ -385,7 +385,7 @@ export default function AIVirtualReceptionist() {
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-black/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
                 <Phone className="w-4 h-4 text-orange-400" />
                 <span className="text-sm font-semibold text-white">Common Questions</span>
               </div>
@@ -563,15 +563,15 @@ export default function AIVirtualReceptionist() {
               </div>
 
               <div className="flex flex-wrap gap-8 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-200">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">No Credit Card Required</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">Setup in 3-5 Days</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">Cancel Anytime</span>
                 </div>
@@ -584,6 +584,8 @@ export default function AIVirtualReceptionist() {
     </div>
   )
 }
+
+
 
 
 

@@ -58,21 +58,21 @@ export function Features() {
     return (
         <section className="relative py-12 md:py-20 bg-white overflow-hidden">
             {/* Floating background elements - Purple/Orange theme */}
-            <div className="absolute top-10 left-1/4 w-48 h-48 bg-purple-500 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_100px_rgba(249,115,22,0.3)]"></div>
-            <div className="absolute bottom-10 right-1/3 w-56 h-56 bg-purple-400 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_120px_rgba(249,115,22,0.3)]"></div>
+            <div className="absolute top-10 left-1/4 w-48 h-48 bg-orange-500 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_100px_rgba(249,115,22,0.3)]"></div>
+            <div className="absolute bottom-10 right-1/3 w-56 h-56 bg-orange-400 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_120px_rgba(249,115,22,0.3)]"></div>
             
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-12">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-purple-600/20 border border-purple-500/50 rounded-full mb-6 backdrop-blur-sm">
-                        <div className="w-2 h-2 bg-purple-600 rounded-full animate-pulse"></div>
-                        <span className="text-sm font-semibold text-purple-600">Advanced AI Platform</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500/20 to-orange-600/20 border border-orange-500/50 rounded-full mb-6 backdrop-blur-sm">
+                        <div className="w-2 h-2 bg-orange-600 rounded-full animate-pulse"></div>
+                        <span className="text-sm font-semibold text-orange-600">Advanced AI Platform</span>
                     </div>
                     <h2 className="text-3xl font-bold tracking-tight text-center sm:text-4xl lg:text-5xl mb-4">
                         <span className="bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 bg-clip-text text-transparent">
                             Revolutionary Features for
                         </span>
                         <br />
-                        <span className="bg-gradient-to-r from-purple-600 via-purple-600 to-purple-700 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-orange-600 via-orange-600 to-orange-700 bg-clip-text text-transparent">
                             Next-Gen Communication
                         </span>
                     </h2>
@@ -86,19 +86,19 @@ export function Features() {
                         // Define different cyan/teal color schemes for each card
                         const colorSchemes = [
                             { 
-                                bg: 'bg-gradient-to-br from-purple-500 to-purple-500', 
-                                border: 'border-purple-500/30 hover:border-purple-500', 
+                                bg: 'bg-gradient-to-br from-orange-500 to-orange-500', 
+                                border: 'border-orange-500/30 hover:border-orange-500', 
                                 shadow: 'hover:shadow-orange-500/30',
                                 glow: 'shadow-orange-500/20'
                             },
                             { 
-                                bg: 'bg-gradient-to-br from-purple-500 to-purple-600', 
-                                border: 'border-purple-500/30 hover:border-purple-500', 
+                                bg: 'bg-gradient-to-br from-orange-500 to-orange-600', 
+                                border: 'border-orange-500/30 hover:border-orange-500', 
                                 shadow: 'hover:shadow-orange-500/30',
                                 glow: 'shadow-orange-500/20'
                             },
                             { 
-                                bg: 'bg-gradient-to-br from-blue-500 to-purple-500', 
+                                bg: 'bg-gradient-to-br from-blue-500 to-orange-500', 
                                 border: 'border-blue-500/30 hover:border-blue-500', 
                                 shadow: 'hover:shadow-blue-500/30',
                                 glow: 'shadow-blue-500/20'
@@ -116,8 +116,8 @@ export function Features() {
                                 glow: 'shadow-violet-500/20'
                             },
                             { 
-                                bg: 'bg-gradient-to-br from-purple-400 to-purple-600', 
-                                border: 'border-purple-400/30 hover:border-purple-400', 
+                                bg: 'bg-gradient-to-br from-orange-400 to-orange-600', 
+                                border: 'border-orange-400/30 hover:border-orange-400', 
                                 shadow: 'hover:shadow-orange-400/30',
                                 glow: 'shadow-orange-400/20'
                             },
@@ -145,7 +145,7 @@ export function Features() {
                                     {/* Decorative element */}
                                     <div className="mt-4 flex items-center gap-2">
                                         <div className={`w-8 h-0.5 ${colors.bg} rounded-full`}></div>
-                                        <div className="w-2 h-2 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full animate-pulse"></div>
+                                        <div className="w-2 h-2 bg-gradient-to-r from-orange-600 to-orange-700 rounded-full animate-pulse"></div>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -156,4 +156,5 @@ export function Features() {
         </section>
     )
 }
+
 

@@ -183,17 +183,17 @@ export default function VoiceAutomation() {
                 </Button>
               </div>
 
-              <div className="inline-flex flex-col gap-4 bg-black/80 backdrop-blur-sm border-2 border-orange-400 rounded-2xl p-6 shadow-xl">
+              <div className="inline-flex flex-col gap-4 bg-white/80 backdrop-blur-sm border-2 border-orange-400 rounded-2xl p-6 shadow-xl">
                 <div className="flex flex-wrap gap-6 justify-center items-center text-sm font-medium">
                   <div className="flex items-center gap-2 text-green-700">
                     <CheckCircle className="w-5 h-5 text-orange-600" />
                     <span>99.9% Uptime SLA</span>
                   </div>
-                  <div className="flex items-center gap-2 text-blue-700">
+                  <div className="flex items-center gap-2 text-orange-700">
                     <Shield className="w-5 h-5 text-orange-600" />
                     <span>SOC 2 Type II Certified</span>
                   </div>
-                  <div className="flex items-center gap-2 text-purple-700">
+                  <div className="flex items-center gap-2 text-orange-700">
                     <Shield className="w-5 h-5 text-orange-600" />
                     <span>GDPR & HIPAA Compliant</span>
                   </div>
@@ -208,7 +208,7 @@ export default function VoiceAutomation() {
         </section>
 
         {/* Benefits Grid */}
-        <section className="py-20 bg-black">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
@@ -343,7 +343,7 @@ export default function VoiceAutomation() {
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-black/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
                 <Headphones className="w-4 h-4 text-orange-400" />
                 <span className="text-sm font-semibold text-white">Common Questions</span>
               </div>
@@ -463,19 +463,19 @@ export default function VoiceAutomation() {
               </div>
 
               <div className="flex flex-wrap gap-8 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-200">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200">
                   <CheckCircle className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">No Credit Card Required</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <CheckCircle className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">14-Day Free Trial</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <CheckCircle className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">Cancel Anytime</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <CheckCircle className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">24/7 Support</span>
                 </div>
@@ -488,6 +488,8 @@ export default function VoiceAutomation() {
     </div>
   )
 }
+
+
 
 
 

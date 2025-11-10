@@ -32,19 +32,19 @@ const values = [
     icon: Target,
     title: "Customer-Centric",
     description: "Every AI voice agent feature we build is designed to solve real customer problems and drive measurable business value.",
-    color: "from-purple-500 to-purple-500"
+    color: "from-orange-500 to-orange-500"
   },
   {
     icon: Lightbulb,
     title: "Innovation First",
     description: "We push the boundaries of AI voice assistant technology to deliver cutting-edge conversational experiences.",
-    color: "from-blue-500 to-purple-500"
+    color: "from-orange-500 to-orange-500"
   },
   {
     icon: Award,
     title: "Excellence",
     description: "We maintain the highest standards in AI voice agent accuracy, security, and performance.",
-    color: "from-indigo-500 to-blue-500"
+    color: "from-orange-500 to-orange-500"
   },
   {
     icon: Users,
@@ -88,12 +88,12 @@ const milestones = [
 ]
 
 const stats = [
-  { number: "500+", label: "Active Businesses Using AI Voice Agents", color: "from-purple-500 to-purple-500" },
-  { number: "2M+", label: "AI Voice Assistant Conversations", color: "from-blue-500 to-purple-500" },
-  { number: "99.9%", label: "AI Voice Agent Uptime SLA", color: "from-indigo-500 to-blue-500" },
+  { number: "500+", label: "Active Businesses Using AI Voice Agents", color: "from-orange-500 to-orange-500" },
+  { number: "2M+", label: "AI Voice Assistant Conversations", color: "from-orange-500 to-orange-500" },
+  { number: "99.9%", label: "AI Voice Agent Uptime SLA", color: "from-orange-500 to-orange-500" },
   { number: "24/7", label: "AI Voice Support Availability", color: "from-violet-500 to-indigo-500" },
-  { number: "25+", label: "Countries Served Globally", color: "from-purple-500 to-purple-500" },
-  { number: "<500ms", label: "AI Voice Response Time", color: "from-blue-500 to-purple-500" },
+  { number: "25+", label: "Countries Served Globally", color: "from-orange-500 to-orange-500" },
+  { number: "<500ms", label: "AI Voice Response Time", color: "from-orange-500 to-orange-500" },
 ]
 
 export default function About() {
@@ -110,23 +110,23 @@ export default function About() {
             {/* Breadcrumb for SEO */}
             <nav className="mb-8 text-sm text-gray-600" aria-label="Breadcrumb">
               <ol className="flex justify-center items-center gap-2">
-                <li><Link href="/" className="hover:text-purple-400">Home</Link></li>
+                <li><Link href="/" className="hover:text-orange-400">Home</Link></li>
                 <li>/</li>
-                <li className="text-purple-400 font-semibold">About</li>
+                <li className="text-orange-400 font-semibold">About</li>
               </ol>
             </nav>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-purple-400 to-purple-500 bg-clip-text text-transparent drop-shadow-lg leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 bg-clip-text text-transparent drop-shadow-lg leading-tight">
               About DigitalBot.ai - AI Voice Agent Platform
             </h1>
             <p className="text-xl sm:text-2xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
-              We're on a mission to democratize <span className="font-bold bg-gradient-to-r from-purple-400 to-purple-400 bg-clip-text text-transparent">AI voice agent technology</span>, making intelligent <span className="font-bold bg-gradient-to-r from-purple-400 to-purple-400 bg-clip-text text-transparent">AI voice assistants</span> accessible to businesses of all sizes.
+              We're on a mission to democratize <span className="font-bold bg-gradient-to-r from-orange-400 to-orange-400 bg-clip-text text-transparent">AI voice agent technology</span>, making intelligent <span className="font-bold bg-gradient-to-r from-orange-400 to-orange-400 bg-clip-text text-transparent">AI voice assistants</span> accessible to businesses of all sizes.
             </p>
 
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
               {stats.slice(0, 4).map((stat, idx) => (
-                <div key={idx} className="bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-lg border border-gray-700/50 hover:border-purple-400/50 transition-all hover:scale-105 hover:shadow-orange-400/30">
+                <div key={idx} className="bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-lg border border-gray-700/50 hover:border-orange-400/50 transition-all hover:scale-105 hover:shadow-orange-400/30">
                   <div className={`text-3xl sm:text-4xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-2`}>
                     {stat.number}
                   </div>
@@ -140,7 +140,7 @@ export default function About() {
         {/* Who We Are - Answer Search Optimized */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white" id="who-we-are">
           <div className="container mx-auto max-w-6xl">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 via-purple-400 to-purple-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 bg-clip-text text-transparent">
               Who We Are: Leading AI Voice Agent Company
             </h2>
             
@@ -169,7 +169,7 @@ export default function About() {
                     "Personal analytics dashboard for real-time insights"
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
+                      <CheckCircle2 className="w-6 h-6 text-orange-400 flex-shrink-0 mt-1" />
                       <span className="text-gray-700">{item}</span>
                     </li>
                   ))}
@@ -178,7 +178,7 @@ export default function About() {
 
               <div className="relative">
                 <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-gray-700/50">
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-purple-400 bg-clip-text text-transparent mb-6">
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-orange-400 bg-clip-text text-transparent mb-6">
                     AI Voice Agent Platform Stats
                   </h3>
                   <div className="grid grid-cols-2 gap-6">
@@ -200,7 +200,7 @@ export default function About() {
         {/* Our Story - GEO Optimized */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white" id="our-story">
           <div className="container mx-auto max-w-6xl">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 via-purple-400 to-purple-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 bg-clip-text text-transparent">
               Our AI Voice Agent Journey: From Startup to Global Leader
             </h2>
 
@@ -234,7 +234,7 @@ export default function About() {
                         <milestone.icon className="w-8 h-8 text-gray-900" />
                       </div>
                     </div>
-                    <div className="flex-1 bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-lg border border-gray-700/50 hover:border-purple-400/50 transition-all hover:scale-[1.02] hover:shadow-orange-400/30">
+                    <div className="flex-1 bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-lg border border-gray-700/50 hover:border-orange-400/50 transition-all hover:scale-[1.02] hover:shadow-orange-400/30">
                       <div className={`inline-block px-4 py-1 rounded-full bg-gradient-to-r ${values[idx % 4].color} text-gray-900 font-bold text-sm mb-3`}>
                         {milestone.year}
                       </div>
@@ -252,7 +252,7 @@ export default function About() {
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white" id="our-values">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-purple-400 to-purple-500 bg-clip-text text-transparent">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 bg-clip-text text-transparent">
                 Our AI Voice Agent Core Values
               </h2>
               <p className="text-xl text-gray-700 max-w-3xl mx-auto">
@@ -264,7 +264,7 @@ export default function About() {
               {values.map((value, index) => (
                 <Card
                   key={index}
-                  className="group text-center border border-gray-700/50 hover:border-purple-400/50 bg-white/80 backdrop-blur-md rounded-3xl shadow-xl hover:shadow-orange-400/30 hover:scale-105 transition-all"
+                  className="group text-center border border-gray-700/50 hover:border-orange-400/50 bg-white/80 backdrop-blur-md rounded-3xl shadow-xl hover:shadow-orange-400/30 hover:scale-105 transition-all"
                 >
                   <CardHeader>
                     <div className={`w-16 h-16 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl group-hover:scale-110 transition-transform`}>
@@ -285,15 +285,15 @@ export default function About() {
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden" id="faq" role="region" aria-labelledby="faq-section">
           {/* Animated Background Elements - Purple/Orange */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 left-1/4 w-48 h-48 bg-purple-500 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_80px_rgba(249,115,22,0.3)]"></div>
-            <div className="absolute top-16 right-1/3 w-56 h-56 bg-purple-400 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_100px_rgba(249,115,22,0.3)]"></div>
-            <div className="absolute bottom-20 left-10 w-72 h-72 bg-purple-600 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_120px_rgba(249,115,22,0.25)]"></div>
-            <div className="absolute bottom-10 right-10 w-64 h-64 bg-purple-500 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_100px_rgba(249,115,22,0.3)]"></div>
+            <div className="absolute top-0 left-1/4 w-48 h-48 bg-orange-500 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_80px_rgba(249,115,22,0.3)]"></div>
+            <div className="absolute top-16 right-1/3 w-56 h-56 bg-orange-400 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_100px_rgba(249,115,22,0.3)]"></div>
+            <div className="absolute bottom-20 left-10 w-72 h-72 bg-orange-600 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_120px_rgba(249,115,22,0.25)]"></div>
+            <div className="absolute bottom-10 right-10 w-64 h-64 bg-orange-500 rounded-full opacity-20 animate-pulse blur-2xl shadow-[0_0_100px_rgba(249,115,22,0.3)]"></div>
           </div>
 
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="text-center mb-16">
-              <h2 id="faq-section" className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-purple-400 to-purple-500 bg-clip-text text-transparent drop-shadow-2xl">
+              <h2 id="faq-section" className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 bg-clip-text text-transparent drop-shadow-2xl">
                 Common Questions About DigitalBot.ai
               </h2>
               <p className="text-xl text-gray-700 max-w-3xl mx-auto">
@@ -307,19 +307,19 @@ export default function About() {
                   number: "01",
                   q: "What does DigitalBot.ai do?",
                   a: "DigitalBot.ai provides AI voice agent and AI voice assistant platform that enables businesses to automate customer service, sales, and support 24/7. Our AI voice agents handle conversations naturally, understand context, and provide instant responses without human intervention.",
-                  gradient: "from-purple-500 to-purple-500"
+                  gradient: "from-orange-500 to-orange-500"
                 },
                 {
                   number: "02",
                   q: "When was DigitalBot.ai founded?",
                   a: "DigitalBot.ai was founded in 2024 by AI research and enterprise software experts. We've rapidly grown to serve 500+ businesses worldwide with 2 million+ AI voice assistant conversations processed.",
-                  gradient: "from-blue-500 to-purple-500"
+                  gradient: "from-orange-500 to-orange-500"
                 },
                 {
                   number: "03",
                   q: "How many businesses use DigitalBot.ai?",
                   a: "Over 500 businesses worldwide use DigitalBot.ai's AI voice agent platform across 25+ countries. We process 2 million+ AI voice assistant conversations with 99.9% uptime and enterprise-grade reliability.",
-                  gradient: "from-indigo-500 to-blue-500"
+                  gradient: "from-orange-500 to-orange-500"
                 },
                 {
                   number: "04",
@@ -331,18 +331,18 @@ export default function About() {
                   number: "05",
                   q: "Is DigitalBot.ai secure and compliant?",
                   a: "Yes, DigitalBot.ai maintains enterprise-grade security with HIPAA compliance, SOC 2 certification, and end-to-end encryption. Our AI voice agent platform ensures your data is protected with 99.9% uptime SLA and 24/7 monitoring.",
-                  gradient: "from-purple-500 to-purple-500"
+                  gradient: "from-orange-500 to-orange-500"
                 },
                 {
                   number: "06",
                   q: "How quickly can I deploy an AI voice agent?",
                   a: "You can deploy an AI voice agent in minutes with DigitalBot.ai. Our platform offers pre-built templates, easy integration, and instant activation. Start your free 14-day trial today with no credit card required.",
-                  gradient: "from-blue-500 to-purple-500"
+                  gradient: "from-orange-500 to-orange-500"
                 }
               ].map((faq, idx) => (
                 <div 
                   key={idx} 
-                  className="group relative bg-white/80 backdrop-blur-md rounded-3xl p-8 border border-gray-700/50 hover:border-purple-400/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-orange-400/30"
+                  className="group relative bg-white/80 backdrop-blur-md rounded-3xl p-8 border border-gray-700/50 hover:border-orange-400/50 transition-all duration-500 hover:scale-[1.02] hover:shadow-orange-400/30"
                 >
                   {/* Gradient Border Effect */}
                   <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${faq.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl`}></div>
@@ -353,7 +353,7 @@ export default function About() {
                   </div>
 
                   {/* Question */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-orange-400 group-hover:bg-clip-text transition-all duration-300">
                     {faq.q}
                   </h3>
 
@@ -379,13 +379,13 @@ export default function About() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/signup">
-                <Button size="lg" className="bg-gradient-to-r from-purple-500 to-purple-600 text-white hover:shadow-orange-500/50 hover:scale-105 rounded-full px-8 py-6 text-lg font-bold shadow-2xl shadow-orange-500/40 transition-all">
+                <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:shadow-orange-500/50 hover:scale-105 rounded-full px-8 py-6 text-lg font-bold shadow-2xl shadow-orange-500/40 transition-all">
                   Start Free 14-Day Trial
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="bg-white border-2 border-purple-500 text-purple-600 hover:bg-purple-50 rounded-full px-8 py-6 text-lg font-bold transition-all">
+                <Button size="lg" variant="outline" className="bg-white border-2 border-orange-500 text-orange-600 hover:bg-orange-50 rounded-full px-8 py-6 text-lg font-bold transition-all">
                   Schedule a Demo
                 </Button>
               </Link>
@@ -448,6 +448,8 @@ export default function About() {
     </>
   )
 }
+
+
 
 
 
