@@ -437,144 +437,121 @@ export default function Hero() {
                 }
             }
             `}} />
-            
-            <section className="pt-20 pb-16 px-5 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen bg-white">
+
+            <section className="pt-35 pb-16 px-9 sm:px-12 lg:px-10 relative overflow-hidden min-h-screen bg-light bg-orange-250">
 
                 {mounted && (
                   <>
-                    {/* Subtle grid background with orange/purple tones */}
-                    <div className="absolute inset-0 pointer-events-none opacity-30 z-0">
-                        <div
-                            className="absolute inset-0"
-                            style={{
-                                backgroundImage:
-                                    "linear-gradient(to right, rgba(249, 115, 22, 0.4) 1px, transparent 1px), " +
-                                    "linear-gradient(to bottom, rgba(168, 85, 247, 0.4) 1px, transparent 1px)",
-                                backgroundSize: "40px 40px",
-                                filter: "drop-shadow(0 0 3px rgba(249, 115, 22, 0.3)) drop-shadow(0 0 3px rgba(168, 85, 247, 0.3))"
-                            }}
-                        />
-                    </div>
-                    {/* Subtle Gradient Orbs - Purple/Orange Mix Theme */}
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-orange-500/15 to-transparent rounded-full blur-3xl shadow-[0_0_100px_rgba(249,115,22,0.3)]"></div>
-                        <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-orange-600/12 to-transparent rounded-full blur-3xl shadow-[0_0_120px_rgba(249,115,22,0.25)]"></div>
-                        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-orange-500/10 to-transparent rounded-full blur-3xl shadow-[0_0_80px_rgba(249,115,22,0.2)]"></div>
-                    </div>
-                    {/* Animated Light Beams - Controlled by CSS media queries */}
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10 responsive-opacity">
-                        <div className="absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-orange-500/15 to-transparent animate-pulse-slow responsive-animate drop-shadow-[0_0_10px_rgba(249,115,22,0.4)]"></div>
-                        <div className="absolute top-0 right-1/3 w-px h-full bg-linear-to-b from-transparent via-orange-600/12 to-transparent animate-pulse-slow responsive-animate drop-shadow-[0_0_10px_rgba(249,115,22,0.3)]" style={{ animationDelay: '1s' }}></div>
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none  responsive-opacity">
+                        <div className="absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-white-500/15 to-transparent animate-pulse-slow responsive-animate drop-shadow-[0_0_10px_rgba(249,115,22,0.4)]"></div>
+                        <div className="absolute top-0 right-1/3 w-px h-full bg-linear-to-b from-transparent via-white-600/12 to-transparent animate-pulse-slow responsive-animate drop-shadow-[0_0_10px_rgba(249,115,22,0.3)]" style={{ animationDelay: '1s' }}></div>
                     </div>
                   </>
                 )}
 
 
-                <div className="container mx-auto relative z-10 max-w-6xl opacity-100">
+                <div className="container mx-auto relative z-30 max-w-6xl opacity-100">
                     
-                    {/* Centered Column Layout */}
-                    <div className="flex flex-col items-center justify-center gap-16 animate-fade-in-up-2 pt-8">
-                        
-                        {/* Voice Assistant Section */}
-                        <div className="w-full flex flex-col items-center justify-center">
-                            <div className="relative w-full flex items-center justify-center mb-16" style={{height: '350px', overflow: 'hidden'}}>
-                                <div className="absolute inset-0 flex items-center justify-center" style={{clipPath: 'inset(0)', maxWidth: '350px', maxHeight: '350px', margin: '0 auto'}}>
-                                    <div className="relative flex items-center justify-center" style={{width: '300px', height: '300px', overflow: 'hidden'}}>
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className={`w-64 h-64 rounded-full transition-all duration-500 ${
-                                                isSpeaking
-                                                    ? 'bg-orange-500/40 blur-3xl animate-pulse shadow-[0_0_100px_rgba(249,115,22,0.6)]'
-                                                    : 'bg-orange-500/25 blur-3xl shadow-[0_0_80px_rgba(249,115,22,0.4)]'
-                                                }`}></div>
-                                        </div>
+{/* Centered Column Layout */}
+<div className="flex flex-col items-center justify-center gap-10 animate-fade-in-up-2 pt-1/4">
+    
+    {/* Voice Assistant Section */}
+    <div className="w-full flex flex-col items-center justify-center">
+        <div className="relative w-full flex items-center justify-center mb-16" style={{height: '500px', overflow: 'hidden'}}>
+            <div className="absolute inset-0 flex items-center justify-center" style={{clipPath: 'inset(0)', maxWidth: '500px', maxHeight: '800px', margin: '0 auto'}}>
+                <div className="relative flex items-center justify-center" style={{width: '200px', height: '100px'}}>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className={` rounded-full transition-all duration-500 ${
+                            isSpeaking
+                                ? 'bg-orange-500/40 blur-3xl animate-pulse shadow-[0_0_200px_rgba(249,115,22,0.6)]'
+                                : 'bg-orange-500/25 blur-3xl shadow-[0_0_80px_rgba(249,115,22,0.4)]'
+                            }`}></div>
+                    </div>
 
-                                        <div className={`relative transition-all duration-500 ${isSpeaking ? 'scale-110' : 'scale-105'}`}>
-                                            <div
-                                                id="lottie-animation"
-                                                className="w-64 h-64"
-                                                style={{
-                                                    filter: isSpeaking
-                                                        ? 'saturate(1.3) brightness(1.1)'
-                                                        : 'saturate(1.1) brightness(1.0)'
-                                                }}
-                                            ></div> 
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <button
-                                                    onClick={toggleCall}
-                                                    disabled={callStatus.startsWith('Requesting') || callStatus.startsWith('Starting') || callStatus.startsWith('Stopping')}
-                                                    className={`relative z-30 flex flex-col items-center justify-center
-                                                        w-24 h-24 sm:w-28 sm:h-28 rounded-full transition-all duration-300
-                                                        backdrop-blur-md border-2
-                                                        ${isCallActive 
-                                                            ? 'bg-gradient-to-br from-red-500/70 via-red-600/70 to-red-700/70 border-red-400/50 hover:border-red-300 text-white shadow-2xl shadow-red-500/60 animate-pulse-slow hover:shadow-red-400/80' 
-                                                            : 'bg-gradient-to-br from-orange-500/70 via-orange-600/70 to-orange-700/70 border-orange-400/50 hover:border-orange-300 text-white shadow-2xl shadow-orange-500/60 hover:shadow-orange-400/80 hover:scale-110'
-                                                        }
-                                                        before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-tr before:from-white/20 before:to-transparent before:opacity-50
-                                                        `}
-                                                    aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
-                                                >
-                                                    {/* Glossy overlay effect */}
-                                                    <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white/30 via-white/10 to-transparent pointer-events-none"></div>
-                                                    <div className="absolute inset-0 rounded-full bg-gradient-to-bl from-transparent via-transparent to-black/20 pointer-events-none"></div>
-                                                    {/* Rotating ring effect */}
-                                                    {!isCallActive && mounted && (
-                                                        <div className="absolute inset-0 rounded-full border-2 border-dashed border-white/30 animate-spin-slow"></div>
-                                                    )}
-                                                    <div className="mb-1.5 relative z-10">
-                                                        {isCallActive ? (
-                                                            <Square className="h-10 w-10 sm:h-12 sm:w-12 drop-shadow-lg" />
-                                                        ) : (
-                                                            <Mic className="h-10 w-10 sm:h-12 sm:w-12 drop-shadow-lg" />
-                                                        )}
-                                                    </div>
-                                                    <div className="flex items-end justify-center gap-0.5 h-5 sm:h-6 relative z-10"> 
-                                                        {[...Array(12)].map((_, i) => {
-                                                            const centerIndex = 5.5;
-                                                            const maxHeight = 12 - (Math.abs(i - centerIndex) * 0.8); 
-                                                            const minHeight = 2;
-                                                            const randomValue = soundBarHeightsRef.current[i] || 0.5;
-                                                            return (
-                                                                <div
-                                                                    key={i}
-                                                                    className={`w-0.5 sm:w-1 transition-all duration-300 rounded-full ${
-                                                                        isSpeaking
-                                                                            ? 'bg-gradient-to-t from-white via-orange-100 to-white shadow-lg shadow-orange-200/50'
-                                                                            : isCallActive
-                                                                                ? 'bg-gradient-to-t from-white/70 via-orange-100/70 to-white/70 shadow-md shadow-orange-200/30'
-                                                                                : 'bg-gradient-to-t from-white/40 via-orange-100/40 to-white/40'
-                                                                    }`}
-                                                                    style={{
-                                                                        height: isSpeaking
-                                                                            ? `${randomValue * (maxHeight - 4) + 4}px`
-                                                                            : isCallActive
-                                                                                ? `${minHeight + (maxHeight - minHeight) * 0.3}px`
-                                                                                : `${minHeight}px`,
-                                                                        animation: isSpeaking
-                                                                            ? `sound-bar-pulse 0.${4 + (i % 4)}s ease-in-out infinite`
-                                                                            : isCallActive
-                                                                                ? `sound-bar-pulse 0.${6 + (i % 3)}s ease-in-out infinite`
-                                                                                : 'none',
-                                                                        animationDelay: `${i * 0.05}s`
-                                                                    }}
-                                                                ></div>
-                                                            );
-                                                        })}
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div className={`relative transition-all duration-500 ${isSpeaking ? 'scale-110' : 'scale-105'}`}>
+                        <div
+                            id="lottie-animation"
+                            className="w-96 h-96"
+                            style={{
+                                filter: isSpeaking
+                                    ? 'saturate(1.3) brightness(1.1)'
+                                    : 'saturate(1.1) brightness(1.0)'
+                            }}
+                        ></div> 
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <button
+                                onClick={toggleCall}
+                                disabled={callStatus.startsWith('Requesting') || callStatus.startsWith('Starting') || callStatus.startsWith('Stopping')}
+                                className={`relative z-30 flex flex-col items-center justify-center
+                                    w-20 h-20 sm:w-24 sm:h-24 rounded-full transition-all duration-300
+                                    backdrop-blur-md border-2
+                                    ${isCallActive 
+                                        ? 'bg-gradient-to-br from-red-500/70 via-red-600/70 to-red-700/70 border-red-400/50 hover:border-red-300 text-white shadow-2xl shadow-red-500/60 animate-pulse-slow hover:shadow-red-400/80' 
+                                        : 'bg-gradient-to-br from-orange-500/70 via-orange-600/70 to-orange-700/70 border-orange-400/50 hover:border-orange-300 text-white shadow-2xl shadow-orange-500/60 hover:shadow-orange-400/80 hover:scale-110'
+                                    }
+                                    before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-tr before:from-white/20 before:to-transparent before:opacity-50
+                                    `}
+                                aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
+                            >
+                                {/* Glossy overlay effect */}
+                                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white/30 via-white/10 to-transparent pointer-events-none"></div>
+                                <div className="absolute inset-0 rounded-full bg-gradient-to-bl from-transparent via-transparent to-black/20 pointer-events-none"></div>
+                                {/* Rotating ring effect */}
+                                {!isCallActive && mounted && (
+                                    <div className="absolute inset-0 rounded-full border-2 border-dashed border-white/30 animate-spin-slow"></div>
+                                )}
+                                <div className="mb-1 relative z-10">
+                                    <Mic className="h-6 w-6 sm:h-8 sm:w-8 drop-shadow-lg" />
                                 </div>
-                            </div>
+                                <div className="flex items-end justify-center gap-0.5 h-4 sm:h-10 relative z-10"> 
+                                    {[...Array(12)].map((_, i) => {
+                                        const centerIndex = 5.5;
+                                        const maxHeight = 12 - (Math.abs(i - centerIndex) * 0.8); 
+                                        const minHeight = 2;
+                                        const randomValue = soundBarHeightsRef.current[i] || 0.5;
+                                        return (
+                                            <div
+                                                key={i}
+                                                className={`w-0.5 sm:w-1 transition-all duration-300 rounded-full ${
+                                                    isSpeaking
+                                                        ? 'bg-gradient-to-t from-white via-orange-100 to-white shadow-lg shadow-orange-200/50'
+                                                        : isCallActive
+                                                            ? 'bg-gradient-to-t from-white/70 via-orange-100/70 to-white/70 shadow-md shadow-orange-200/30'
+                                                            : 'bg-gradient-to-t from-white/40 via-orange-100/40 to-white/40'
+                                                }`}
+                                                style={{
+                                                    height: isSpeaking
+                                                        ? `${randomValue * (maxHeight - 4) + 4}px`
+                                                        : isCallActive
+                                                            ? `${minHeight + (maxHeight - minHeight) * 0.3}px`
+                                                            : `${minHeight}px`,
+                                                    animation: isSpeaking
+                                                        ? `sound-bar-pulse 0.${4 + (i % 4)}s ease-in-out infinite`
+                                                        : isCallActive
+                                                            ? `sound-bar-pulse 0.${6 + (i % 3)}s ease-in-out infinite`
+                                                            : 'none',
+                                                    animationDelay: `${i * 0.05}s`
+                                                }}
+                                            ></div>
+                                        );
+                                    })}
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
 
                             {/* Transcript Display */}
-                            <div suppressHydrationWarning className={`w-full max-w-2xl p-4 rounded-2xl border transition-all duration-300 mb-6 ${isCallActive ? 'bg-white border-orange-500 shadow-lg shadow-orange-500/40' : 'bg-gray-100 border-gray-300'}`}>
+                            <div suppressHydrationWarning className={`w-full max-w-2xl p-8 rounded-2xl border transition-all duration-300 mb-8 ${isCallActive ? 'bg-white border-orange-500 shadow-lg shadow-orange-500/40' : 'bg-gray-100 border-gray-300'}`}>
                                 <div suppressHydrationWarning className="text-xs font-semibold uppercase text-orange-600 mb-2">{callStatus || "Ready to assist"}</div>
                                 <p suppressHydrationWarning className="text-sm sm:text-base text-gray-900 font-medium transition-colors duration-500">{transcript}</p>
                             </div>
 
                             {/* Action Buttons */}
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <div className="flex flex-col sm:flex-row gap-16 justify-center">
                                 <button
                                     suppressHydrationWarning
                                     onClick={toggleCall}
