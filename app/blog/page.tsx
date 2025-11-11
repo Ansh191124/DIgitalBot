@@ -89,7 +89,7 @@ export default function Blog() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white via-gray-900 to-orange-100 py-20 md:py-32">
+        <section className="relative overflow-hidden bg-gradient-to-b bg-white py-20 md:py-32">
           {/* Animated Grid Background */}
           <div className="absolute inset-0 opacity-20">
             <div
@@ -171,7 +171,7 @@ export default function Blog() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t bg-white to-transparent" />
                     <Badge className="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white border-none shadow-lg">
                       {featuredPost.category}
                     </Badge>

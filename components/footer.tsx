@@ -25,19 +25,8 @@ export function Footer() {
   ]
 
   return (
-    <footer className="relative bg-white border-t-2 border-orange-500/50 overflow-hidden">
-      {/* Trading Platform Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,_rgba(168,85,247,0.15)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,_rgba(249,115,22,0.15)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(168,85,247,0.1)_0%,_transparent_70%)]" />
-      
-      {/* Enhanced Glass Morphism Orbs */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-orange-500/30 via-orange-500/20 to-transparent rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-gradient-to-tl from-orange-400/25 via-orange-400/15 to-transparent rounded-full blur-3xl animate-pulse" />
-      <div className="absolute top-1/3 left-2/3 w-80 h-80 bg-gradient-to-tr from-orange-600/20 via-blue-500/10 to-transparent rounded-full blur-3xl animate-pulse" />
-      
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(249,115,22,0.1)_1px,transparent_1px)] bg-[size:100px_100px] opacity-20" />
+    <footer className="relative bg-white border-t-2 border-gray-200 overflow-hidden">
+      {/* Pure white background, all orange gradients and orbs removed for consistency */}
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -84,13 +73,13 @@ export function Footer() {
                 {/* Glow effect - Cyan/Teal */}
                 <div className="absolute -inset-6 bg-gradient-to-r from-orange-400/40 via-orange-400/40 to-orange-500/40 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 <Image
-                  src="/images/logos/footer-logo.svg"
+                  src="https://res.cloudinary.com/dew9qfpbl/image/upload/v1762853986/Untitled_design_abxlu4.svg"
                   alt="DigitalBot.AI - AI Voice Assistant Platform"
                   width={220}
                   height={48}
                   loading="lazy"
                   quality={95}
-                  className="h-16 w-auto relative z-10 transition-all duration-500 group-hover:scale-110 drop-shadow-2xl"
+                  className="h-16 w-auto relative z-10 transition-all duration-500 group-hover:scale-110"
                 />
               </Link>
             </div>

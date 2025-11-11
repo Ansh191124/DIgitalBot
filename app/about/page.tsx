@@ -50,7 +50,7 @@ const values = [
     icon: Users,
     title: "Collaboration",
     description: "We believe in the power of human-AI voice collaboration to transform business communication.",
-    color: "from-violet-500 to-indigo-500"
+    color: "from-orange-500 to-orange-500"
   },
 ]
 
@@ -91,7 +91,7 @@ const stats = [
   { number: "500+", label: "Active Businesses Using AI Voice Agents", color: "from-orange-500 to-orange-500" },
   { number: "2M+", label: "AI Voice Assistant Conversations", color: "from-orange-500 to-orange-500" },
   { number: "99.9%", label: "AI Voice Agent Uptime SLA", color: "from-orange-500 to-orange-500" },
-  { number: "24/7", label: "AI Voice Support Availability", color: "from-violet-500 to-indigo-500" },
+  { number: "24/7", label: "AI Voice Support Availability", color: "from-orange-500 to-orange-500" },
   { number: "25+", label: "Countries Served Globally", color: "from-orange-500 to-orange-500" },
   { number: "<500ms", label: "AI Voice Response Time", color: "from-orange-500 to-orange-500" },
 ]
@@ -325,7 +325,7 @@ export default function About() {
                   number: "04",
                   q: "What makes DigitalBot.ai different from other AI voice platforms?",
                   a: "DigitalBot.ai offers 24/7 AI voice agents with <500ms response time, 99.9% uptime SLA, multi-language support, personal analytics dashboard, and enterprise-grade security. Our AI voice assistants understand context, emotion, and intent with industry-leading accuracy.",
-                  gradient: "from-violet-500 to-indigo-500"
+                  gradient: "from-orange-500 to-orange-500"
                 },
                 {
                   number: "05",

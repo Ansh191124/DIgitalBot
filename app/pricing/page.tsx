@@ -322,7 +322,7 @@ export default function Pricing() {
       </section>
 
       {/* CTA Section - Enhanced Creative Design */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-gray-800 via-gray-900 to-black overflow-hidden">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br bg-white overflow-hidden">
         {/* Decorative Background Pattern */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
           <div className="absolute inset-0" style={{

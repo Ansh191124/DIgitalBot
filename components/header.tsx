@@ -31,10 +31,7 @@ export function Header() {
     return (
         <header
             className={cn(
-                "fixed top-0 w-full z-50 transition-all duration-700",
-                isScrolled
-                    ? "backdrop-blur-2xl bg-gray-50"
-                    : "bg-gray-50 backdrop-blur-md"
+                "fixed top-0 w-full z-50 transition-all duration-700 bg-white"
             )}
         >
             
@@ -48,20 +45,19 @@ export function Header() {
                         className="relative group"
                     >
                             <Link href="/" className="flex items-center gap-12 relative ml-0 pl-0 mr-2" onClick={() => setIsMenuOpen(false)}>
-                            {/* Animated multicolor glow orbs */}
-                            <span className="absolute -top-6 -left-6 w-20 h-21 rounded-full bg-orange-500/40 blur-3xl animate-pulse-glow shadow-[0_0_50px_rgba(249,115,22,0.5)]" />
-                            <span className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-orange-600/30 blur-2xl animate-float-slow shadow-[0_0_40px_rgba(249,115,22,0.4)]" />
+                            {/* Removed orange glow orbs for pure white header */}
+                            <span className="absolute -top-6 -left-6 w-20 h-21 rounded-full bg-white blur-3xl" />
+                            <span className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-white blur-2xl" />
                             
                             <div className="relative">
                                 <Image
-                                    src="https://res.cloudinary.com/dew9qfpbl/image/upload/v1762800522/Digitalbot.Ai_-_1_-_Edited_1_vzybmz.svg"
+                                    src="https://res.cloudinary.com/dew9qfpbl/image/upload/v1762853986/Untitled_design_abxlu4.svg"
                                     alt="DigitalBot.AI - AI Voice Assistant Platform"
                                     width={1200}
                                     height={320}
-                                    
                                     priority
                                     quality={125}
-                                        className="h-10 sm:h-16 lg:h-18 w-auto max-w-[160px] sm:max-w-[220px] lg:max-w-[320px] relative z-14 ml-0 pl-0 mr-12 transition-all duration-500 group-hover:scale-110"
+                                    className="h-10 sm:h-16 lg:h-18 w-auto max-w-[180px] sm:max-w-[260px] lg:max-w-[340px] relative z-14 ml-0 pl-0 mr-12 transition-all duration-500 group-hover:scale-110"
                                 />
                             </div>
                             

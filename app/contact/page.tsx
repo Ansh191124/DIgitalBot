@@ -120,7 +120,7 @@ export default function Contact() {
         <PageBackground />
 
         {/* Decorative Floating Orbs - Reduced */}
-        <div className="absolute top-20 right-10 w-56 h-56 bg-teal-400 rounded-full opacity-20 animate-pulse blur-2xl"></div>
+        <div className="absolute top-20 right-10 w-56 h-56 bg-orange-400 rounded-full opacity-20 animate-pulse blur-2xl"></div>
         
         <div className="container mx-auto text-center relative z-10">
           <div className="inline-block mb-6">
@@ -148,16 +148,16 @@ export default function Contact() {
       </section>
 
       {/* Contact Form & Info - Enhanced Creative Design */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b bg-white overflow-hidden">
         {/* Decorative Background Elements - Reduced */}
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500 rounded-full opacity-20 animate-pulse blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-500 rounded-full opacity-20 animate-pulse blur-3xl"></div>
         
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start relative z-10">
 
           {/* Contact Form - Enhanced */}
           <Card className="bg-white/80 backdrop-blur-md border-2 border-orange-500/50 hover:border-orange-400/70 shadow-2xl hover:shadow-orange-400/30 transition-all duration-500 animate-fade-in-up relative overflow-hidden group">
             {/* Decorative Glow */}
-            <div className="absolute -top-20 -right-20 w-60 h-60 bg-cyan-400/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+            <div className="absolute -top-20 -right-20 w-60 h-60 bg-orange-400/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
             
             <CardHeader className="p-6 sm:p-8 relative z-10">
               <div className="inline-block mb-4">
@@ -174,7 +174,7 @@ export default function Contact() {
             </CardHeader>
             <CardContent className="space-y-6 p-6 sm:p-8 relative z-10">
               {success && (
-                <div className="bg-white/80 border-2 border-emerald-400 text-emerald-400 p-4 rounded-xl text-sm font-semibold shadow-lg">
+                <div className="bg-white/80 border-2 border-orange-400 text-emerald-400 p-4 rounded-xl text-sm font-semibold shadow-lg">
                   ✓ {success}
                 </div>
               )}
@@ -318,7 +318,7 @@ export default function Contact() {
                 return (
                   <Card key={index} className={`border-2 ${color.border} ${color.hover} bg-white/80 backdrop-blur-md ${color.shadow} hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden group`}>
                     <CardContent className="p-6 relative">
-                      <div className="absolute -top-10 -right-10 w-32 h-32 bg-cyan-400/20 rounded-full filter blur-2xl group-hover:blur-xl transition-all"></div>
+                      <div className="absolute -top-10 -right-10 w-32 h-32 bg-orange-400/20 rounded-full filter blur-2xl group-hover:blur-xl transition-all"></div>
                       <div className="flex items-start space-x-4 relative z-10">
                         <div className={`w-14 h-14 bg-gradient-to-br ${color.icon} rounded-2xl flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all`}>
                           <info.icon className="h-7 w-7 text-gray-900" />
@@ -343,7 +343,7 @@ export default function Contact() {
 
             <Card className="border-2 border-orange-500/50 hover:border-orange-400 bg-white/80 backdrop-blur-md shadow-xl hover:shadow-2xl hover:shadow-orange-400/30 transition-all hover:scale-105 overflow-hidden group">
               <CardContent className="p-8 relative">
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-cyan-400/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-orange-400/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
                 <div className="relative z-10">
                   <div className="inline-block mb-4">
                     <span className="px-4 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 text-gray-900 font-bold text-xs uppercase tracking-wider shadow-lg">
@@ -358,7 +358,7 @@ export default function Contact() {
                   </p>
                   <Button
                     variant="outline"
-                    className="border-2 border-orange-500 text-orange-400 hover:bg-cyan-500/20 hover:scale-105 transition-all duration-300 w-full font-bold text-base h-12 rounded-xl shadow-lg bg-transparent"
+                    className="border-2 border-orange-500 text-orange-400 hover:bg-orange-500/20 hover:scale-105 transition-all duration-300 w-full font-bold text-base h-12 rounded-xl shadow-lg bg-transparent"
                   >
                     <MessageCircle className="mr-2 h-5 w-5" />
                     Start Chat Now
