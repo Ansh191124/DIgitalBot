@@ -61,14 +61,14 @@ export function Header() {
                             <span className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-white blur-2xl" />
                             
                             <div className="relative">
-                                <Image
-                                    src="https://res.cloudinary.com/dew9qfpbl/image/upload/v1762853986/Untitled_design_abxlu4.svg"
-                                    alt="DigitalBot.AI - AI Voice Assistant Platform"
-                                    width={1200}
-                                    height={320}
-                                    priority
-                                    quality={125}
-                                    className="h-10 sm:h-16 lg:h-18 w-auto max-w-[180px] sm:max-w-[260px] lg:max-w-[340px] relative z-14 ml-0 pl-0 mr-12 transition-all duration-500 group-hover:scale-110"
+                <Image
+                  src="https://res.cloudinary.com/dew9qfpbl/image/upload/v1762971494/Gemini_Generated_Image_a19f1ha19f1ha19f-Kittl_b9jogz.svg"
+                  alt="DigitalBot.AI - AI Voice Assistant Platform"
+                  width={1200}
+                  height={320}
+                  priority
+                  quality={125}
+                  className="h-14 max-w-[240px] sm:h-18 sm:max-w-[280px] lg:h-20 lg:max-w-[360px] w-auto relative z-14 ml-0 pl-0 mr-12 transition-all duration-500 group-hover:scale-110"
                                 />
                             </div>
                             

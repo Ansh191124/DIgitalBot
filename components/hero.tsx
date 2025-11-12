@@ -457,7 +457,7 @@ export default function Hero() {
     
     {/* Voice Assistant Section */}
     <div className="w-full flex flex-col items-center justify-center">
-    <div className="relative w-full flex items-center justify-center mb-2 sm:mb-2" style={{height: '60vw', maxHeight: '500px', minHeight: '300px', overflow: 'hidden'}}>
+    <div className="relative w-full flex items-center justify-center mb-2 sm:mb-6" style={{height: '60vw', maxHeight: '500px', minHeight: '300px', overflow: 'hidden'}}>
             <div className="absolute inset-0 flex items-center justify-center" style={{clipPath: 'inset(1)', maxWidth: '800px', maxHeight: '900px', margin: '0 auto'}}>
             <div className="relative flex items-center justify-center w-[98vw] max-w-[480px] h-[65vw] max-h-[400px] sm:w-[700px] sm:h-[480px] lg:w-[850px] lg:h-[620px]">
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -545,8 +545,8 @@ export default function Hero() {
     
 
                             {/* Transcript Display */}
-                            <div suppressHydrationWarning className={`w-full max-w-2xl p-6 rounded-2xl border transition-all duration-300 mb-2 ${isCallActive ? 'bg-white border-orange-500 shadow-lg shadow-orange-500/40' : 'bg-gray-100 border-gray-300'}`}>
-                                <div suppressHydrationWarning className="text-xs font-semibold uppercase text-orange-600 mb-(-2)">{callStatus || "Ready to assist"}</div>
+                            <div suppressHydrationWarning className={`w-full max-w-2xl p-6 rounded-2xl border transition-all duration-300 mb-6 ${isCallActive ? 'bg-white border-orange-500 shadow-lg shadow-orange-500/40' : 'bg-gray-100 border-gray-300'}`}>
+                                <div suppressHydrationWarning className="text-xs font-semibold uppercase text-orange-600 mb-4">{callStatus || "Ready to assist"}</div>
                                 
                                 <p suppressHydrationWarning className="text-sm sm:text-base text-gray-900 font-medium transition-colors duration-500">{transcript}</p>
                             </div>
