@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
+import { PageBackground } from "@/components/page-background"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -45,24 +46,25 @@ const quickLinks = [
 
 export default function Docs() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-white">
+      <PageBackground />
       <Header />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-linear-to-r from-orange-500 via-sky-500 to-orange-700 bg-clip-text text-transparent drop-shadow-lg">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(249,115,22,0.3)]">
             Documentation
           </h1>
-          <p className="text-lg sm:text-xl font-semibold bg-black/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-sky-200/30 text-sky-700 mb-8 max-w-3xl mx-auto">
-            Everything you need to build, deploy, and manage <span className="font-bold bg-linear-to-r from-orange-500 via-sky-500 to-orange-700 bg-clip-text text-transparent">intelligent AI voice assistants</span> with DigitalBot.ai
+          <p className="text-lg sm:text-xl font-semibold bg-white/90 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg shadow-orange-500/30 border border-orange-500/30 text-gray-700 mb-8 max-w-3xl mx-auto">
+            Everything you need to build, deploy, and manage <span className="font-bold bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 bg-clip-text text-transparent">intelligent AI voice assistants</span> with DigitalBot.ai
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Button size="lg" className="bg-accent hover:bg-accent/90">
+            <Button size="lg" className="bg-gradient-to-r from-orange-600 to-orange-800 hover:from-orange-700 hover:to-orange-900 text-white shadow-[0_0_20px_rgba(249,115,22,0.3)]">
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button size="lg" variant="outline">
+            <Button size="lg" variant="outline" className="border-orange-500 text-orange-700 hover:bg-orange-50">
               View API Reference
               <ExternalLink className="ml-2 h-4 w-4" />
             </Button>
@@ -71,27 +73,27 @@ export default function Docs() {
       </section>
 
       {/* Documentation Sections */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {docSections.map((section, index) => (
-              <Card key={index} className="border-border bg-card hover:shadow-lg transition-all duration-300">
+              <Card key={index} className="border-2 border-orange-500 bg-white hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                      <section.icon className="h-6 w-6 text-accent" />
+                    <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+                      <section.icon className="h-6 w-6 text-orange-700" />
                     </div>
-                    <Badge variant="secondary">{section.badge}</Badge>
+                    <Badge variant="secondary" className="bg-orange-100 text-orange-700">{section.badge}</Badge>
                   </div>
-                  <CardTitle className="text-xl text-card-foreground">{section.title}</CardTitle>
-                  <CardDescription className="text-muted-foreground">{section.description}</CardDescription>
+                  <CardTitle className="text-xl text-orange-800">{section.title}</CardTitle>
+                  <CardDescription className="text-gray-600">{section.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 mb-6">
                     {section.items.map((item, itemIndex) => (
                       <li
                         key={itemIndex}
-                        className="flex items-center text-sm text-muted-foreground hover:text-accent transition-colors cursor-pointer"
+                        className="flex items-center text-sm text-gray-600 hover:text-orange-700 transition-colors cursor-pointer"
                       >
                         <ArrowRight className="h-3 w-3 mr-2 shrink-0" />
                         {item}
@@ -100,7 +102,7 @@ export default function Docs() {
                   </ul>
                   <Button
                     variant="outline"
-                    className="w-full border-accent text-accent hover:bg-accent/10 bg-transparent"
+                    className="w-full border-orange-500 text-orange-700 hover:bg-orange-50 bg-transparent"
                   >
                     Explore Section
                   </Button>
@@ -115,8 +117,8 @@ export default function Docs() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Quick Links</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-orange-800 mb-4">Quick Links</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Jump to the most commonly accessed resources
             </p>
           </div>
@@ -124,13 +126,13 @@ export default function Docs() {
             {quickLinks.map((link, index) => (
               <Card
                 key={index}
-                className="border-border bg-card hover:shadow-md transition-all duration-300 group cursor-pointer"
+                className="border-2 border-orange-500 bg-white hover:shadow-md hover:shadow-orange-500/30 transition-all duration-300 group cursor-pointer"
               >
                 <CardContent className="p-6 text-center">
-                  <h3 className="font-semibold text-card-foreground mb-2 group-hover:text-accent transition-colors">
+                  <h3 className="font-semibold text-orange-800 mb-2 group-hover:text-orange-600 transition-colors">
                     {link.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{link.description}</p>
+                  <p className="text-sm text-gray-600">{link.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -139,19 +141,19 @@ export default function Docs() {
       </section>
 
       {/* Support Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container mx-auto">
-          <div className="bg-gradient-to-r from-accent/10 via-accent/5 to-accent/10 rounded-2xl p-12 text-center">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Need Help?</h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <div className="bg-white rounded-2xl p-12 text-center border-2 border-orange-500 shadow-lg shadow-orange-500/30">
+            <h2 className="text-3xl font-bold text-orange-800 mb-4">Need Help?</h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               Can't find what you're looking for? Our support team is here to help.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <Button size="lg" className="bg-accent hover:bg-accent/90">
+              <Button size="lg" className="bg-gradient-to-r from-orange-600 to-orange-800 hover:from-orange-700 hover:to-orange-900 text-white shadow-[0_0_20px_rgba(249,115,22,0.3)]">
                 Contact Support
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="border-border hover:bg-muted bg-transparent">
+              <Button size="lg" variant="outline" className="border-orange-500 text-orange-700 hover:bg-orange-50 bg-transparent">
                 Join Community
               </Button>
             </div>
@@ -163,6 +165,8 @@ export default function Docs() {
     </main>
   )
 }
+
+
 
 
 

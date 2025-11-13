@@ -2,6 +2,7 @@
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { PageBackground } from "@/components/page-background";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -96,22 +97,22 @@ const benefits = [
 
 export default function Careers() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-gray-100">
+    <main className="min-h-screen bg-white text-gray-900">
+      <PageBackground />
       <Header />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black opacity-70"></div>
         <div className="relative z-10 container mx-auto">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-lg">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(249,115,22,0.3)]">
             Careers at DigitalBot.ai
           </h1>
-          <p className="text-lg sm:text-xl font-semibold bg-black/40 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-orange-500/30 text-gray-300 mb-8 max-w-3xl mx-auto">
-            Join our team and help shape the future of <span className="font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">AI-powered business automation</span>. We value innovation, collaboration, and growth.
+          <p className="text-lg sm:text-xl font-semibold bg-white/90 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg shadow-orange-500/30 border border-orange-500/30 text-gray-700 mb-8 max-w-3xl mx-auto">
+            Join our team and help shape the future of <span className="font-bold bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 bg-clip-text text-transparent">AI-powered business automation</span>. We value innovation, collaboration, and growth.
           </p>
           <Button
             size="lg"
-            className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white hover:from-orange-600 hover:to-orange-800 shadow-lg rounded-full transition-all duration-300"
+            className="bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 text-white hover:from-orange-700 hover:to-orange-900 shadow-lg shadow-orange-500/40 rounded-full transition-all duration-300"
           >
             View Open Positions
             <ArrowRight className="ml-2 h-5 w-5" />
@@ -120,13 +121,13 @@ export default function Careers() {
       </section>
 
       {/* Culture  Benefits Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-black via-gray-900 to-black">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-lg">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(249,115,22,0.3)]">
               Why Work With Us?
             </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We believe in empowering talent and building products that truly make
               a difference.
             </p>
@@ -136,18 +137,18 @@ export default function Careers() {
             {benefits.map((benefit, index) => (
               <Card
                 key={index}
-                className="text-center border-2 border-orange-500 shadow-lg bg-black/90 backdrop-blur-sm hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500 transition-all duration-500 rounded-2xl"
+                className="text-center border-2 border-orange-500 shadow-lg shadow-orange-500/30 bg-white/90 backdrop-blur-sm hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-500 rounded-2xl"
               >
                 <CardHeader>
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-600 to-orange-800 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-[0_0_20px_rgba(249,115,22,0.3)]">
                     <benefit.icon className="h-7 w-7 text-white" />
                   </div>
-                  <CardTitle className="text-lg text-orange-400 font-semibold">
+                  <CardTitle className="text-lg text-orange-700 font-semibold">
                     {benefit.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-400">
+                  <CardDescription className="text-gray-600">
                     {benefit.description}
                   </CardDescription>
                 </CardContent>
@@ -158,13 +159,13 @@ export default function Careers() {
       </section>
 
       {/* Open Positions */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-linear-to-r from-orange-500 via-sky-500 to-orange-700 bg-clip-text text-transparent drop-shadow-lg">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(249,115,22,0.3)]">
               Open Positions
             </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Explore roles that fit your passion and expertise.
             </p>
           </div>
@@ -173,44 +174,44 @@ export default function Careers() {
             {openPositions.map((position, index) => (
               <Card
                 key={index}
-                className="border-0 bg-linear-to-br from-white via-sky-50 to-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-2xl"
+                className="border-2 border-orange-500 bg-white hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-1 transition-all duration-300 rounded-2xl"
               >
                 <CardHeader>
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
-                      <CardTitle className="text-xl text-sky-800 font-bold mb-2">
+                      <CardTitle className="text-xl text-orange-800 font-bold mb-2">
                         {position.title}
                       </CardTitle>
-                      <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
-                        <Badge className="bg-sky-100 text-sky-700 font-medium">
+                      <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600">
+                        <Badge className="bg-orange-100 text-orange-700 font-medium">
                           {position.department}
                         </Badge>
                         <div className="flex items-center">
-                          <MapPin className="h-4 w-4 mr-1 text-sky-500" />
+                          <MapPin className="h-4 w-4 mr-1 text-orange-500" />
                           {position.location}
                         </div>
                         <div className="flex items-center">
-                          <Clock className="h-4 w-4 mr-1 text-sky-500" />
+                          <Clock className="h-4 w-4 mr-1 text-orange-500" />
                           {position.type}
                         </div>
                       </div>
                     </div>
-                    <Button className="bg-linear-to-r from-orange-500 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white rounded-full">
+                    <Button className="bg-gradient-to-r from-orange-600 to-orange-800 hover:from-orange-700 hover:to-orange-900 text-white shadow-[0_0_20px_rgba(249,115,22,0.3)] rounded-full">
                       Apply Now
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400 mb-4">{position.description}</p>
+                  <p className="text-gray-600 mb-4">{position.description}</p>
                   <div>
-                    <h4 className="font-semibold text-sky-700 mb-2">
+                    <h4 className="font-semibold text-orange-700 mb-2">
                       Key Requirements:
                     </h4>
-                    <ul className="text-sm text-gray-500 space-y-1">
+                    <ul className="text-sm text-gray-600 space-y-1">
                       {position.requirements.map((req, reqIndex) => (
                         <li key={reqIndex} className="flex items-center">
-                          <ArrowRight className="h-3 w-3 mr-2 text-sky-500 shrink-0" />
+                          <ArrowRight className="h-3 w-3 mr-2 text-orange-500 shrink-0" />
                           {req}
                         </li>
                       ))}
@@ -224,19 +225,19 @@ export default function Careers() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 bg-linear-to-r from-sky-100 via-white to-sky-200 text-center">
+      <section className="py-24 px-6 bg-white text-center">
         <div className="container mx-auto">
-          <div className="bg-linear-to-br from-sky-50 via-white to-sky-100 rounded-3xl p-12 shadow-xl">
-            <h2 className="text-3xl font-extrabold text-sky-700 mb-4">
+          <div className="bg-white/90 rounded-3xl p-12 shadow-xl shadow-orange-500/30 border-2 border-orange-500">
+            <h2 className="text-3xl font-extrabold text-orange-700 mb-4">
               Don't See the Right Role?
             </h2>
-            <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-              We’re always looking for passionate, curious minds. Share your
-              resume, and we’ll reach out when the right opportunity comes along.
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              We're always looking for passionate, curious minds. Share your
+              resume, and we'll reach out when the right opportunity comes along.
             </p>
             <Button
               size="lg"
-              className="bg-linear-to-r from-orange-500 via-orange-500 to-orange-600 hover:from-orange-500 hover:to-orange-600 text-white font-semibold rounded-full shadow-lg"
+              className="bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 hover:from-orange-700 hover:to-orange-900 text-white font-semibold rounded-full shadow-lg shadow-orange-500/40"
             >
               Send Resume
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -249,6 +250,8 @@ export default function Careers() {
     </main>
   );
 }
+
+
 
 
 

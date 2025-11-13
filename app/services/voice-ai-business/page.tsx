@@ -1,4 +1,5 @@
 import { Header } from "@/components/header"
+import { PageBackground } from "@/components/page-background"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -164,7 +165,7 @@ export default function VoiceAIBusiness() {
       <main className="min-h-screen">
       
       {/* Hero Section - Homepage Theme */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-gray-900 to-orange-100" aria-labelledby="hero-heading">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-orange-100 to-white" aria-labelledby="hero-heading">
         {/* Decorative Grid Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10 z-0">
           <div className="absolute inset-0" style={{
@@ -182,7 +183,7 @@ export default function VoiceAIBusiness() {
         <div className="container mx-auto text-center relative z-10 max-w-6xl">
           {/* Hero Badge */}
           <div className="inline-block mb-6 animate-fade-in-up">
-            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
+            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-black font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
               🚀 Enterprise Voice AI Solutions
             </span>
           </div>
@@ -192,7 +193,7 @@ export default function VoiceAIBusiness() {
             <span className="block mb-3 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent">
               Voice AI for Business
             </span>
-            <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-2xl text-2xl sm:text-3xl lg:text-5xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
+            <span className="inline-block px-8 py-4 rounded-2xl text-black bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-2xl text-2xl sm:text-3xl lg:text-5xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
               <span className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent"></span>
               <span className="relative z-10">Transform Customer Experience</span>
             </span>
@@ -200,14 +201,14 @@ export default function VoiceAIBusiness() {
 
           {/* SEO-Rich Description */}
           <div className="max-w-4xl mx-auto mb-10 p-6 bg-gradient-to-r from-orange-100 via-orange-200 to-orange-200 border-2 border-orange-400 rounded-2xl shadow-2xl backdrop-blur-md">
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl text-black-300 leading-relaxed font-medium">
               Enterprise-grade <strong className="text-orange-600">voice AI for business</strong> that automates customer service, accelerates sales, and boosts productivity by <strong className="text-orange-600">400%</strong>. Deploy in <strong>48 hours</strong> with zero infrastructure.
             </p>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:scale-105 text-white shadow-2xl hover:shadow-orange-400 transition-all duration-300 border-2 border-orange-300 text-lg px-10 py-7 rounded-xl font-bold" asChild>
+            <Button size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:scale-105 text-black shadow-2xl hover:shadow-orange-400 transition-all duration-300 border-2 border-orange-300 text-lg px-10 py-7 rounded-xl font-bold" asChild>
               <Link href="/signup">Start Free Trial</Link>
             </Button>
             <Button size="lg" variant="outline" className="border-4 border-orange-400 text-orange-700 hover:bg-orange-50 hover:scale-105 transition-all duration-300 shadow-xl text-lg px-10 py-7 rounded-xl font-bold" asChild>
@@ -216,16 +217,16 @@ export default function VoiceAIBusiness() {
           </div>
           
           {/* Trust Signals */}
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-black-400">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">10,000+ Businesses</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">4.9/5 Rating</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">No Credit Card Required</span>
             </div>
@@ -234,7 +235,7 @@ export default function VoiceAIBusiness() {
       </section>
 
       {/* Introduction Section - SEO Rich Content */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-10">
           <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-gradient-radial from-orange-300 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-[10%] left-[10%] w-[600px] h-[600px] bg-gradient-radial from-orange-300 to-transparent rounded-full blur-3xl"></div>
@@ -244,7 +245,7 @@ export default function VoiceAIBusiness() {
           <article className="prose prose-lg max-w-none">
             <div className="text-center mb-12">
               <div className="inline-block mb-4">
-                <span className="px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg border border-orange-300">
+                <span className="px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-black font-bold text-xs uppercase tracking-wider shadow-lg border border-orange-300">
                   Complete Guide
                 </span>
               </div>
@@ -254,13 +255,13 @@ export default function VoiceAIBusiness() {
                 </span>
               </h2>
             </div>
-            <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+            <p className="text-lg text-black-300 mb-6 leading-relaxed">
               <strong>Voice AI for business</strong> represents the cutting edge of enterprise automation technology, combining advanced natural language processing, machine learning, and conversational AI to revolutionize how companies interact with customers. Unlike traditional IVR systems or simple chatbots, modern voice AI for business understands context, intent, and nuance in human speech, delivering experiences that feel remarkably natural and helpful.
             </p>
-            <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+            <p className="text-lg text-black-300 mb-6 leading-relaxed">
               Today's businesses face unprecedented challenges: rising customer expectations, 24/7 availability demands, global talent shortages, and pressure to reduce operational costs while improving service quality. <strong>Voice AI for business</strong> solves these challenges by providing scalable, intelligent automation that handles thousands of simultaneous conversations with consistent quality, emotional intelligence, and brand alignment.
             </p>
-            <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+            <p className="text-lg text-black-300 mb-6 leading-relaxed">
               The technology powering voice AI for business has reached a tipping point. Recent breakthroughs in large language models, speech synthesis, and real-time processing enable AI systems to conduct sophisticated multi-turn conversations, handle complex business logic, integrate with enterprise systems, and provide personalized experiences at a fraction of the cost of human-only operations.
             </p>
           </article>
@@ -268,7 +269,7 @@ export default function VoiceAIBusiness() {
       </section>
 
       {/* Benefits Grid - Homepage Theme */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-900 to-orange-100 relative overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-orange-100 to-white relative overflow-hidden">
         {/* Grid Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
           <div className="absolute inset-0" style={{
@@ -281,7 +282,7 @@ export default function VoiceAIBusiness() {
         <div className="container mx-auto relative z-10 max-w-7xl">
           <div className="text-center mb-16">
             <div className="inline-block mb-4">
-              <span className="px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg border border-orange-300">
+              <span className="px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-black font-bold text-xs uppercase tracking-wider shadow-lg border border-orange-300">
                 Enterprise Benefits
               </span>
             </div>
@@ -290,7 +291,7 @@ export default function VoiceAIBusiness() {
                 Why Leading Enterprises Choose Voice AI
               </span>
             </h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-black-400 max-w-3xl mx-auto leading-relaxed">
               Discover how <strong className="text-orange-600">voice AI for business</strong> transforms operations and delivers measurable ROI
             </p>
           </div>
@@ -310,14 +311,14 @@ export default function VoiceAIBusiness() {
               const color = colors[i % colors.length];
 
               return (
-                <div key={i} className={`bg-black backdrop-blur-md rounded-3xl p-8 shadow-2xl border-2 ${color.border} transition-all duration-500 hover:scale-105 hover:shadow-3xl relative overflow-hidden group`}>
+                <div key={i} className={`bg-white backdrop-blur-md rounded-3xl p-8 shadow-2xl border-2 ${color.border} transition-all duration-500 hover:scale-105 hover:shadow-3xl relative overflow-hidden group`}>
                   <div className={`absolute -top-16 -right-16 w-60 h-60 bg-gradient-to-br ${color.glow} rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity`}></div>
                   
                   <div className={`w-14 h-14 bg-gradient-to-r ${color.iconBg} rounded-xl flex items-center justify-center mb-6 shadow-lg relative z-10 group-hover:scale-110 group-hover:rotate-6 transition-all`}>
-                    <benefit.icon className="h-7 w-7 text-white" />
+                    <benefit.icon className="h-7 w-7 text-black" />
                   </div>
-                  <h3 className="text-xl font-extrabold text-white mb-4 relative z-10">{benefit.title}</h3>
-                  <p className="text-gray-400 leading-relaxed relative z-10">
+                  <h3 className="text-xl font-extrabold text-black mb-4 relative z-10">{benefit.title}</h3>
+                  <p className="text-black-400 leading-relaxed relative z-10">
                     {benefit.description}
                   </p>
                 </div>
@@ -328,25 +329,25 @@ export default function VoiceAIBusiness() {
       </section>
 
       {/* Use Cases Section - ASO & VSO Optimized */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-sky-50 to-orange-100/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-orange-100 to-white">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-linear-to-r from-orange-500 via-sky-500 to-orange-700 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-linear-to-r from-orange-500 via-orange-500 to-orange-700 bg-clip-text">
               Voice AI for Business: Real-World Applications & Results
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-black-300 max-w-3xl mx-auto">
               See how businesses across industries leverage voice AI to achieve breakthrough performance improvements.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {useCases.map((useCase, i) => (
-              <Card key={i} className="border-sky-200 hover:border-sky-400 transition-all duration-300 hover:shadow-xl">
+              <Card key={i} className="border-orange-200 hover:border-orange-400 transition-all duration-300 hover:shadow-xl">
                 <CardHeader>
-                  <CardTitle className="text-sky-700 text-2xl mb-3">{useCase.title}</CardTitle>
-                  <CardDescription className="text-gray-300 text-base leading-relaxed mb-4">
+                  <CardTitle className="text-black-700 text-2xl mb-3">{useCase.title}</CardTitle>
+                  <CardDescription className="text-black-300 text-base leading-relaxed mb-4">
                     {useCase.description}
                   </CardDescription>
-                  <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-semibold">
+                  <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold">
                     ✓ {useCase.results}
                   </div>
                 </CardHeader>
@@ -357,26 +358,26 @@ export default function VoiceAIBusiness() {
       </section>
 
       {/* Features Section - Technical depth for GEO */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-orange-100 to-white">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-linear-to-r from-orange-500 via-sky-500 to-orange-700 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-linear-to-r from-orange-500 via-orange-500 to-orange-700 bg-clip-text ">
               Advanced Capabilities: How Voice AI for Business Works
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-black-300 max-w-3xl mx-auto">
               Enterprise-grade technology stack powering the most sophisticated voice AI for business solutions.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-2xl font-bold text-sky-700 mb-4 flex items-center gap-3">
-                <BrainCircuit className="h-8 w-8 text-sky-600" />
+              <h3 className="text-2xl font-bold text-black-700 mb-4 flex items-center gap-3">
+                <BrainCircuit className="h-8 w-8 text-black-600" />
                 Natural Language Understanding
               </h3>
-              <p className="text-gray-300 leading-relaxed mb-4">
+              <p className="text-black-300 leading-relaxed mb-4">
                 Our voice AI for business leverages state-of-the-art transformer models trained on billions of business conversations to understand customer intent with 98% accuracy. The system recognizes context, handles multi-turn dialogues, and adapts to regional accents and industry-specific terminology.
               </p>
-              <ul className="space-y-2 text-gray-300">
+              <ul className="space-y-2 text-black-300">
                 <li className="flex items-start gap-2">
                   <span className="text-orange-600 font-bold">✓</span>
                   <span>Sentiment analysis for emotional intelligence</span>
@@ -392,14 +393,14 @@ export default function VoiceAIBusiness() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-sky-700 mb-4 flex items-center gap-3">
-                <Workflow className="h-8 w-8 text-sky-600" />
+              <h3 className="text-2xl font-bold text-black-700 mb-4 flex items-center gap-3">
+                <Workflow className="h-8 w-8 text-black-600" />
                 Enterprise Integration Ecosystem
               </h3>
-              <p className="text-gray-300 leading-relaxed mb-4">
+              <p className="text-black-300 leading-relaxed mb-4">
                 Voice AI for business seamlessly connects with your existing technology stack through 200+ pre-built integrations and robust API infrastructure. Connect to CRM platforms, helpdesk systems, payment processors, and custom databases without writing code.
               </p>
-              <ul className="space-y-2 text-gray-300">
+              <ul className="space-y-2 text-black-300">
                 <li className="flex items-start gap-2">
                   <span className="text-orange-600 font-bold">✓</span>
                   <span>Salesforce, HubSpot, Zendesk native integration</span>
@@ -415,14 +416,14 @@ export default function VoiceAIBusiness() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-sky-700 mb-4 flex items-center gap-3">
-                <Phone className="h-8 w-8 text-sky-600" />
+              <h3 className="text-2xl font-bold text-black-700 mb-4 flex items-center gap-3">
+                <Phone className="h-8 w-8 text-black-600" />
                 Omnichannel Voice Deployment
               </h3>
-              <p className="text-gray-300 leading-relaxed mb-4">
+              <p className="text-black-300 leading-relaxed mb-4">
                 Deploy voice AI for business across phone systems, web applications, mobile apps, and messaging platforms with unified conversation management. Maintain context as customers switch channels, ensuring seamless experiences regardless of touchpoint.
               </p>
-              <ul className="space-y-2 text-gray-300">
+              <ul className="space-y-2 text-black-300">
                 <li className="flex items-start gap-2">
                   <span className="text-orange-600 font-bold">✓</span>
                   <span>PSTN phone integration with carrier-grade reliability</span>
@@ -438,14 +439,14 @@ export default function VoiceAIBusiness() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-sky-700 mb-4 flex items-center gap-3">
-                <Shield className="h-8 w-8 text-sky-600" />
+              <h3 className="text-2xl font-bold text-black-700 mb-4 flex items-center gap-3">
+                <Shield className="h-8 w-8 text-black-600" />
                 Enterprise Security & Compliance
               </h3>
-              <p className="text-gray-300 leading-relaxed mb-4">
+              <p className="text-black-300 leading-relaxed mb-4">
                 Voice AI for business built on zero-trust architecture with military-grade encryption, comprehensive audit logging, and compliance with global data protection regulations. Your customer data remains secure, private, and under your complete control.
               </p>
-              <ul className="space-y-2 text-gray-300">
+              <ul className="space-y-2 text-black-300">
                 <li className="flex items-start gap-2">
                   <span className="text-orange-600 font-bold">✓</span>
                   <span>SOC 2 Type II, GDPR, HIPAA, PCI DSS certified</span>
@@ -465,12 +466,12 @@ export default function VoiceAIBusiness() {
       </section>
 
       {/* Sample Conversation Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-orange-400relative overflow-hidden">
         {/* Background with gradient orbs - matching hero section */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-sky-200/20 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-orange-200/20 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-orange-100/15 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-sky-100/10 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-orange-100/10 to-transparent rounded-full blur-3xl"></div>
         </div>
 
         {/* Grid Pattern Background */}
@@ -484,14 +485,14 @@ export default function VoiceAIBusiness() {
 
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center space-x-2 bg-black/80 px-4 py-2 rounded-full text-sm text-sky-700 backdrop-blur-sm border border-sky-200/60 shadow-lg mb-6">
-              <Mic className="h-4 w-4 text-sky-500 animate-pulse" />
+            <div className="inline-flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full text-sm text-black-700 backdrop-blur-sm border border-orange-200/60 shadow-lg mb-6">
+              <Mic className="h-4 w-4 text-black-500 animate-pulse" />
               <span className="font-medium">Voice AI for Business Demo</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-orange-500 via-sky-500 to-orange-700 bg-clip-text text-transparent drop-shadow-lg mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-orange-500 via-orange-500 to-orange-700 bg-clip-text text-transparent drop-shadow-lg mb-4">
               Experience Voice AI for Business in Action
             </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-black-400 max-w-2xl mx-auto">
               Listen to how our voice AI for business handles real customer interactions with natural, intelligent responses that drive satisfaction and conversion.
             </p>
           </div>
@@ -501,7 +502,7 @@ export default function VoiceAIBusiness() {
       </section>
 
       {/* FAQ Section - Homepage Dark Theme */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 relative overflow-hidden" role="region" aria-labelledby="faq-section">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-orange-100 to-white relative overflow-hidden" role="region" aria-labelledby="faq-section">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-full filter blur-3xl animate-float-slow"></div>
@@ -512,17 +513,17 @@ export default function VoiceAIBusiness() {
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16">
             <div className="inline-block mb-6">
-              <span className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse">
+              <span className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-black font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse">
                 Got Questions? We've Got Answers
               </span>
             </div>
-            <h2 id="faq-section" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-white">
+            <h2 id="faq-section" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-black">
               <span className="block mb-2">Frequently Asked</span>
               <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
                 Questions
               </span>
             </h2>
-            <p className="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-black-300 text-xl max-w-3xl mx-auto leading-relaxed">
               Everything you need to know about <span className="text-orange-400 font-semibold">Voice AI for Business</span>
             </p>
           </div>
@@ -561,13 +562,13 @@ export default function VoiceAIBusiness() {
               }
             ].map((faq, index) => (
               <div key={index} className={`group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border ${faq.color.border} transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl ${faq.color.shadow}`}>
-                <div className={`absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br ${faq.color.gradient} rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform`}>
+                <div className={`absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br ${faq.color.gradient} rounded-2xl flex items-center justify-center text-black font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform`}>
                   {String(index + 1).padStart(2, '0')}
                 </div>
                 <h3 className={`text-xl font-bold bg-gradient-to-r ${faq.color.textGradient} bg-clip-text text-transparent mb-4 mt-2`}>
                   {faq.question}
                 </h3>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-black-300 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
@@ -577,7 +578,7 @@ export default function VoiceAIBusiness() {
       </section>
 
       {/* CTA Section - Homepage Theme */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-900 to-orange-100 relative overflow-hidden" aria-labelledby="cta-heading">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-orange-100 to-white relative overflow-hidden" aria-labelledby="cta-heading">
         {/* Decorative Grid */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
           <div className="absolute inset-0" style={{
@@ -594,7 +595,7 @@ export default function VoiceAIBusiness() {
         <div className="container mx-auto max-w-5xl text-center relative z-10">
           {/* CTA Badge */}
           <div className="inline-block mb-6">
-            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
+            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-black font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
               🚀 Start Your Free Trial
             </span>
           </div>
@@ -604,7 +605,7 @@ export default function VoiceAIBusiness() {
             <span className="block mb-3 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent">
               Ready to Transform Your Business
             </span>
-            <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-2xl text-2xl sm:text-3xl lg:text-5xl relative overflow-hidden border-2 border-orange-300">
+            <span className="inline-block px-8 py-4 rounded-2xl text-black bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-2xl text-2xl sm:text-3xl lg:text-5xl relative overflow-hidden border-2 border-orange-300">
               <span className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent"></span>
               <span className="relative z-10">With Voice AI Today?</span>
             </span>
@@ -612,14 +613,14 @@ export default function VoiceAIBusiness() {
 
           {/* CTA Description */}
           <div className="max-w-3xl mx-auto mb-10 p-6 bg-gradient-to-r from-orange-100 via-orange-200 to-orange-200 border-2 border-orange-400 rounded-2xl shadow-2xl backdrop-blur-md">
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl text-black-300 leading-relaxed font-medium">
               Join <strong className="text-orange-600">10,000+ businesses</strong> using voice AI to automate customer service, accelerate sales, and boost productivity by <strong className="text-orange-600">400%</strong>. Start your free trial today with no credit card required.
             </p>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:scale-105 text-white shadow-2xl hover:shadow-orange-400 transition-all duration-300 border-2 border-orange-300 text-lg px-10 py-7 rounded-xl font-bold" asChild>
+            <Button size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:scale-105 text-black shadow-2xl hover:shadow-orange-400 transition-all duration-300 border-2 border-orange-300 text-lg px-10 py-7 rounded-xl font-bold" asChild>
               <Link href="/signup">Start Free Trial Now</Link>
             </Button>
             <Button size="lg" variant="outline" className="border-4 border-orange-400 text-orange-700 hover:bg-orange-50 hover:scale-105 transition-all duration-300 shadow-xl text-lg px-10 py-7 rounded-xl font-bold" asChild>
@@ -628,20 +629,20 @@ export default function VoiceAIBusiness() {
           </div>
 
           {/* Trust Signals */}
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-black-400">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">No Credit Card Required</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">Deploy in 48 Hours</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">24/7 Expert Support</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-orange-400 shadow-lg">
               <span className="text-orange-600 font-bold">✓</span>
               <span className="font-semibold">Cancel Anytime</span>
             </div>
@@ -654,6 +655,10 @@ export default function VoiceAIBusiness() {
     </>
   )
 }
+
+
+
+
 
 
 

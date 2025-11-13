@@ -1,4 +1,5 @@
 import { Header } from "@/components/header"
+import { PageBackground } from "@/components/page-background"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -234,7 +235,7 @@ export default function AICallCenter() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
         
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white via-gray-900 to-orange-100 py-20 md:py-32">
+        <section className="relative overflow-hidden bg-gradient-to-b from-white to-orange-100 py-20 md:py-32">
           {/* Animated Grid Background */}
           <div className="absolute inset-0 opacity-20">
             <div
@@ -294,17 +295,17 @@ export default function AICallCenter() {
                 </Button>
               </div>
 
-              <div className="inline-flex flex-col gap-4 bg-black/80 backdrop-blur-sm border-2 border-orange-400 rounded-2xl p-6 shadow-xl">
+              <div className="inline-flex flex-col gap-4 bg-white/80 backdrop-blur-sm border-2 border-orange-400 rounded-2xl p-6 shadow-xl">
                 <div className="flex flex-wrap gap-6 justify-center items-center text-sm font-medium">
                   <div className="flex items-center gap-2 text-green-700">
                     <Check className="w-5 h-5 text-orange-600" />
                     <span>500+ Active Businesses</span>
                   </div>
-                  <div className="flex items-center gap-2 text-blue-700">
+                  <div className="flex items-center gap-2 text-orange-700">
                     <Check className="w-5 h-5 text-orange-600" />
                     <span>4.8/5 Customer Rating</span>
                   </div>
-                  <div className="flex items-center gap-2 text-purple-700">
+                  <div className="flex items-center gap-2 text-orange-700">
                     <Shield className="w-5 h-5 text-orange-600" />
                     <span>SOC2 & HIPAA Compliant</span>
                   </div>
@@ -319,7 +320,7 @@ export default function AICallCenter() {
         </section>
 
         {/* Benefits Section */}
-        <section className="py-20 bg-black">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
@@ -370,7 +371,7 @@ export default function AICallCenter() {
               {useCases.map((useCase, index) => (
                 <div 
                   key={index}
-                  className="group bg-black border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group bg-white border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
                   <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                     {useCase.title}
@@ -389,7 +390,7 @@ export default function AICallCenter() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 bg-black">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
@@ -436,7 +437,7 @@ export default function AICallCenter() {
                 Experience how AI routes calls, verifies identities, and resolves requests with human-level empathy
               </p>
             </div>
-            <div className="bg-black rounded-2xl p-8 shadow-2xl border-2 border-orange-400">
+            <div className="bg-white rounded-2xl p-8 shadow-2xl border-2 border-orange-400">
               <VoiceConversationPlayer audioSrc="/sample-conversation.mp3" />
             </div>
           </div>
@@ -453,7 +454,7 @@ export default function AICallCenter() {
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-black/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
                 <HeadphonesIcon className="w-4 h-4 text-orange-400" />
                 <span className="text-sm font-semibold text-white">Common Questions</span>
               </div>
@@ -540,19 +541,19 @@ export default function AICallCenter() {
               </div>
 
               <div className="flex flex-wrap gap-8 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-200">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">No Setup Fees</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">Enterprise Security</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">Dedicated Support</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Check className="w-5 h-5 text-orange-600" />
                   <span className="text-sm font-medium text-gray-300">Rapid Deployment</span>
                 </div>
@@ -565,6 +566,10 @@ export default function AICallCenter() {
     </div>
   )
 }
+
+
+
+
 
 
 

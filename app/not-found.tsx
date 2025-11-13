@@ -15,15 +15,15 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gradient-to-b from-white via-orange-50 to-purple-50 flex items-center justify-center px-4 py-20">
+      <main className="min-h-screen bg-gradient-to-b from-white via-orange-50 to-orange-100 flex items-center justify-center px-4 py-20">
         <div className="max-w-2xl mx-auto text-center">
           {/* 404 Illustration */}
           <div className="mb-8">
-            <h1 className="text-9xl font-black bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent mb-4">
+            <h1 className="text-9xl font-black bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 bg-clip-text text-transparent mb-4">
               404
             </h1>
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-200/40 via-pink-200/30 to-purple-200/20 blur-3xl rounded-full" />
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-200/40 via-orange-300/30 to-orange-200/20 blur-3xl rounded-full" />
               <p className="text-4xl font-bold text-white mb-4 relative">
                 Page Not Found
               </p>
@@ -37,7 +37,7 @@ export default function NotFound() {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 hover:from-orange-600 hover:via-pink-600 hover:to-orange-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto">
+            <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto">
               <Link href="/" className="flex items-center gap-2">
                 <Home className="w-5 h-5" />
                 Back to Home
@@ -52,7 +52,7 @@ export default function NotFound() {
           </div>
 
           {/* Quick Links */}
-          <div className="border-t-2 border-purple-200 pt-8">
+          <div className="border-t-2 border-orange-200 pt-8">
             <p className="text-sm text-gray-400 mb-4 font-semibold">Popular Pages:</p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/services" className="text-orange-600 hover:text-orange-700 underline font-medium">

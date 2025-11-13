@@ -1,6 +1,7 @@
 "use client"
 
 import { Header } from "@/components/header"
+import { PageBackground } from "@/components/page-background"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Mic, Play, Pause, ArrowRight, Phone, Clock, Users, Calendar, MessageCircle, Headphones, Zap, Check, Shield } from "lucide-react"
@@ -103,20 +104,8 @@ export default function AIVirtualReceptionist() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white via-gray-900 to-orange-100 py-20 md:py-32">
-          {/* Animated Grid Background */}
-          <div className="absolute inset-0 opacity-20">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `
-                  linear-gradient(to right, rgb(59, 130, 246) 1px, transparent 1px),
-                  linear-gradient(to bottom, rgb(168, 85, 247) 1px, transparent 1px)
-                `,
-                backgroundSize: '60px 60px'
-              }}
-            />
-          </div>
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-orange-100 to-white-100 py-20 md:py-32">
+          
 
           {/* Floating Gradient Orbs */}
           <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
@@ -143,7 +132,7 @@ export default function AIVirtualReceptionist() {
                 </span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-black-300 mb-10 max-w-4xl mx-auto leading-relaxed">
                 Your <span className="font-bold text-orange-600">AI-powered virtual receptionist</span> answers every call, books appointments, and routes calls with human-like conversations—24/7, in over 30 languages.
               </p>
 
@@ -163,17 +152,17 @@ export default function AIVirtualReceptionist() {
               </div>
 
               <div className="flex flex-wrap gap-6 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-green-200">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200">
                   <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-gray-300">24/7 Availability</span>
+                  <span className="text-sm font-medium text-black-300">24/7 Availability</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Clock className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-gray-300">Instant Call Answering</span>
+                  <span className="text-sm font-medium text-black-300">Instant Call Answering</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Zap className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-gray-300">70% Cost Reduction</span>
+                  <span className="text-sm font-medium text-black-300">70% Cost Reduction</span>
                 </div>
               </div>
             </div>
@@ -181,13 +170,13 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 bg-black">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 Everything Your Front Desk Needs
               </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              <p className="text-xl text-black-400 max-w-3xl mx-auto">
                 Comprehensive reception capabilities powered by advanced AI technology
               </p>
             </div>
@@ -207,7 +196,7 @@ export default function AIVirtualReceptionist() {
                   <h3 className="text-xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-400 leading-relaxed">
+                  <p className="text-black-400 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -217,13 +206,13 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* Benefits Section */}
-        <section className="py-20 bg-gradient-to-b from-white to-orange-100">
+        <section className="py-20 bg-gradient-to-b from-white via-orange-100 to-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 Transform Your Reception Experience
               </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              <p className="text-xl text-black-400 max-w-3xl mx-auto">
                 Measurable results that impact your bottom line
               </p>
             </div>
@@ -232,12 +221,12 @@ export default function AIVirtualReceptionist() {
               {benefits.map((benefit, index) => (
                 <div 
                   key={index}
-                  className="group bg-black border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group bg-white border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
                   <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-400 leading-relaxed">
+                  <p className="text-black-400 leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
@@ -247,13 +236,13 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* Use Cases Section */}
-        <section className="py-20 bg-black">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 Industry-Specific Solutions
               </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              <p className="text-xl text-black-400 max-w-3xl mx-auto">
                 Tailored virtual receptionist capabilities for your industry
               </p>
             </div>
@@ -267,10 +256,10 @@ export default function AIVirtualReceptionist() {
                   <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                     {useCase.title}
                   </h3>
-                  <p className="text-gray-400 leading-relaxed mb-4">
+                  <p className="text-black-400 leading-relaxed mb-4">
                     {useCase.description}
                   </p>
-                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 rounded-full text-sm font-semibold border-2 border-green-200">
+                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-50 to-orange-50 text-orange-700 rounded-full text-sm font-semibold border-2 border-orange-400">
                     <Check className="h-4 w-4 mr-2" />
                     {useCase.results}
                   </span>
@@ -281,7 +270,7 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* Sample Conversation Section */}
-        <section className="py-20 bg-gradient-to-b from-white to-orange-100">
+        <section className="py-20 bg-gradient-to-b from-white via-orange-100 to-white">
           <div className="max-w-4xl mx-auto px-4">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full px-5 py-2.5 mb-6 border-2 border-orange-300 shadow-lg">
@@ -291,13 +280,13 @@ export default function AIVirtualReceptionist() {
               <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent mb-4">
                 Experience Natural AI Conversations
               </h2>
-              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              <p className="text-lg text-black-400 max-w-2xl mx-auto">
                 Listen to how our AI receptionist handles real customer interactions with human-like responses
               </p>
             </div>
 
             {/* Audio Player Card */}
-            <div className="bg-black rounded-3xl p-8 border-2 border-orange-400 hover:border-orange-400 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+            <div className="bg-white rounded-3xl p-8 border-2 border-orange-400 hover:border-orange-400 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
               <div className="relative z-10">
                 {/* Waveform visualization area */}
                 <div className="flex items-center justify-center mb-6 h-24 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border-2 border-orange-400 relative overflow-hidden">
@@ -374,7 +363,7 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* FAQ Section - Dark Theme */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900">
+        <section className="relative py-24 overflow-hidden bg-gradient-to-br bg-white">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-20 -left-20 w-96 h-96 bg-gradient-radial from-orange-500/20 to-transparent rounded-full blur-3xl animate-float-slow" />
@@ -384,14 +373,14 @@ export default function AIVirtualReceptionist() {
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-black/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
                 <Phone className="w-4 h-4 text-orange-400" />
-                <span className="text-sm font-semibold text-white">Common Questions</span>
+                <span className="text-sm font-semibold text-black">Common Questions</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-transparent bg-clip-text">
                 Frequently Asked Questions
               </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-black-300 max-w-3xl mx-auto">
                 Everything you need to know about AI virtual receptionists
               </p>
             </div>
@@ -409,7 +398,7 @@ export default function AIVirtualReceptionist() {
                     <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 text-transparent bg-clip-text">
                       How does an AI virtual receptionist work?
                     </h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-black-300 leading-relaxed">
                       Our AI receptionist uses advanced natural language processing to answer calls, understand caller intent, and respond naturally. It integrates with your calendar, CRM, and phone system to book appointments, route calls, take messages, and provide information—all in real-time, 24/7.
                     </p>
                   </div>
@@ -425,10 +414,10 @@ export default function AIVirtualReceptionist() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-cyan-300 text-transparent bg-clip-text">
+                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-orange-500 text-transparent bg-clip-text">
                       Can it handle multiple calls simultaneously?
                     </h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-black-300 leading-relaxed">
                       Yes! Unlike human receptionists, our AI can handle unlimited simultaneous calls without putting anyone on hold. Whether you receive 1 call or 100 at the same time, every caller gets instant, personalized attention.
                     </p>
                   </div>
@@ -444,10 +433,10 @@ export default function AIVirtualReceptionist() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-pink-300 text-transparent bg-clip-text">
+                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-orange-500 text-transparent bg-clip-text">
                       What happens if the AI can't answer a question?
                     </h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-black-300 leading-relaxed">
                       The AI is trained on your specific business information and policies. For complex scenarios, it can seamlessly transfer calls to the appropriate human team member, take detailed messages, or schedule callbacks—ensuring no caller is left without help.
                     </p>
                   </div>
@@ -463,10 +452,10 @@ export default function AIVirtualReceptionist() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-teal-300 to-green-300 text-transparent bg-clip-text">
+                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-orange-500 text-transparent bg-clip-text">
                       How long does setup take?
                     </h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-black-300 leading-relaxed">
                       Most businesses are live within 3-5 business days. We handle phone number setup, calendar integration, script customization, and testing. Our team provides hands-on support to ensure your AI receptionist is trained on your specific business needs before going live.
                     </p>
                   </div>
@@ -485,7 +474,7 @@ export default function AIVirtualReceptionist() {
                     <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-orange-500 text-transparent bg-clip-text">
                       Is it HIPAA compliant for healthcare practices?
                     </h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-black-300 leading-relaxed">
                       Yes! We offer HIPAA-compliant solutions for medical practices, including encrypted call recordings, secure data storage, and proper business associate agreements. Our AI follows all healthcare privacy regulations while scheduling appointments and handling patient information.
                     </p>
                   </div>
@@ -501,10 +490,10 @@ export default function AIVirtualReceptionist() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-pink-300 text-transparent bg-clip-text">
+                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-orange-500 text-transparent bg-clip-text">
                       What's the cost compared to hiring a receptionist?
                     </h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-black-300 leading-relaxed">
                       Our AI receptionist typically costs 70-80% less than hiring a full-time employee, with no benefits, sick days, or turnover. You get 24/7 coverage, unlimited call handling, and enterprise features for a fraction of traditional reception costs—with transparent monthly pricing and no long-term contracts.
                     </p>
                   </div>
@@ -515,7 +504,7 @@ export default function AIVirtualReceptionist() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-gray-900 to-orange-100">
+        <section className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-orange-100 to-white">
           {/* Animated Background */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
@@ -542,7 +531,7 @@ export default function AIVirtualReceptionist() {
                 </span>
               </h2>
 
-              <p className="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+              <p className="text-xl text-black-300 mb-10 max-w-3xl mx-auto">
                 Join hundreds of businesses providing 24/7 phone coverage, perfect call handling, and exceptional customer experiences—all while reducing costs by 70%.
               </p>
 
@@ -562,17 +551,17 @@ export default function AIVirtualReceptionist() {
               </div>
 
               <div className="flex flex-wrap gap-8 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-200">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200">
                   <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-gray-300">No Credit Card Required</span>
+                  <span className="text-sm font-medium text-black-300">No Credit Card Required</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-gray-300">Setup in 3-5 Days</span>
+                  <span className="text-sm font-medium text-black-300">Setup in 3-5 Days</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
                   <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-gray-300">Cancel Anytime</span>
+                  <span className="text-sm font-medium text-black-300">Cancel Anytime</span>
                 </div>
               </div>
             </div>
@@ -583,6 +572,10 @@ export default function AIVirtualReceptionist() {
     </div>
   )
 }
+
+
+
+
 
 
 

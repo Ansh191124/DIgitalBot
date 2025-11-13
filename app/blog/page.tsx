@@ -1,4 +1,5 @@
 import { Header } from "@/components/header"
+import { PageBackground } from "@/components/page-background"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -88,7 +89,7 @@ export default function Blog() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white via-gray-900 to-orange-100 py-20 md:py-32">
+        <section className="relative overflow-hidden bg-gradient-to-b bg-white py-20 md:py-32">
           {/* Animated Grid Background */}
           <div className="absolute inset-0 opacity-20">
             <div
@@ -128,18 +129,18 @@ export default function Blog() {
                 </span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-700 mb-10 max-w-3xl mx-auto leading-relaxed">
                 Explore insights and updates on AI voice assistants, automation, and business transformation. Stay ahead with our latest articles.
               </p>
 
               <div className="flex flex-wrap gap-6 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-orange-500">
                   <TrendingUp className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-gray-300">Latest AI Trends</span>
+                  <span className="text-sm font-medium text-gray-700">Latest AI Trends</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-black/80 backdrop-blur-sm rounded-full border border-orange-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-orange-500">
                   <BookOpen className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-gray-300">Expert Guides</span>
+                  <span className="text-sm font-medium text-gray-700">Expert Guides</span>
                 </div>
               </div>
             </div>
@@ -148,7 +149,7 @@ export default function Blog() {
 
         {/* Featured Post */}
         {featuredPost && (
-          <section className="py-20 bg-black">
+          <section className="py-20 bg-white">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full px-5 py-2 mb-4 border-2 border-orange-300 shadow-lg">
@@ -160,7 +161,7 @@ export default function Blog() {
                 </h2>
               </div>
               <div className="max-w-4xl mx-auto group">
-                <div className="bg-gradient-to-br from-white to-gray-50 border-2 border-orange-400 hover:border-orange-400 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500">
+                <div className="bg-gradient-to-br from-white to-gray-50 border-2 border-orange-500 hover:border-orange-500 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500">
                   {/* Featured Image */}
                   <div className="relative h-80 w-full overflow-hidden">
                     <Image
@@ -170,7 +171,7 @@ export default function Blog() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t bg-white to-transparent" />
                     <Badge className="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white border-none shadow-lg">
                       {featuredPost.category}
                     </Badge>
@@ -178,7 +179,7 @@ export default function Blog() {
                   
                   {/* Content */}
                   <div className="p-8">
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-4">
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
                       <div className="flex items-center gap-2">
                         <User className="h-4 w-4 text-orange-600" />
                         <span>{featuredPost.author}</span>
@@ -195,7 +196,7 @@ export default function Blog() {
                     <h3 className="text-3xl font-bold mb-4 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
                       {featuredPost.title}
                     </h3>
-                    <p className="text-lg text-gray-400 mb-6 leading-relaxed">
+                    <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                       {featuredPost.excerpt}
                     </p>
                     <Link href={`/blog/${featuredPost.slug}`}>
@@ -218,7 +219,7 @@ export default function Blog() {
               <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 Recent Articles
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 Stay updated with the latest in AI voice technology and best practices
               </p>
             </div>
@@ -226,7 +227,7 @@ export default function Blog() {
               {regularPosts.map((post, index) => (
                 <div
                   key={index}
-                  className="group bg-black border-2 border-orange-400 hover:border-orange-400 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group bg-white border-2 border-orange-500 hover:border-orange-500 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
                   {/* Post Image */}
                   <div className="relative h-48 w-full overflow-hidden">
@@ -246,7 +247,7 @@ export default function Blog() {
                       <Badge className="bg-gradient-to-r from-orange-400 to-orange-500 text-white border-none">
                         {post.category}
                       </Badge>
-                      <div className="flex items-center gap-1 text-sm text-gray-400">
+                      <div className="flex items-center gap-1 text-sm text-gray-600">
                         <Clock className="h-4 w-4 text-orange-600" />
                         <span>{post.readTime}</span>
                       </div>
@@ -254,11 +255,11 @@ export default function Blog() {
                     <h3 className="text-xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300 line-clamp-2">
                       {post.title}
                     </h3>
-                    <p className="text-gray-400 mb-6 leading-relaxed line-clamp-3">
+                    <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">
                       {post.excerpt}
                     </p>
                     <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                      <div className="flex items-center gap-2 text-sm text-gray-400">
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
                         <User className="h-4 w-4 text-orange-600" />
                         <span>{post.author}</span>
                       </div>
@@ -281,20 +282,20 @@ export default function Blog() {
         </section>
 
         {/* Newsletter Signup */}
-        <section className="py-20 bg-black">
+        <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto bg-gradient-to-br from-orange-50 via-purple-50 to-orange-100 rounded-2xl p-12 text-center border-2 border-orange-400 shadow-xl">
+            <div className="max-w-3xl mx-auto bg-gradient-to-br from-orange-50 via-orange-50 to-orange-100 rounded-2xl p-12 text-center border-2 border-orange-500 shadow-xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
                 Stay Updated
               </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
                 Subscribe to our newsletter for the latest insights on AI voice agents and conversational AI.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full px-6 py-3 rounded-full border-2 border-orange-400 bg-black text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full px-6 py-3 rounded-full border-2 border-orange-500 bg-white text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 />
                 <Button className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-white px-8 py-3 rounded-full whitespace-nowrap shadow-lg hover:shadow-xl transition-all duration-300">
                   Subscribe
@@ -309,6 +310,10 @@ export default function Blog() {
     </div>
   )
 }
+
+
+
+
 
 
 
