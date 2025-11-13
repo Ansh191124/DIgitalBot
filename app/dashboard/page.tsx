@@ -62,12 +62,13 @@ export default function AnalyticsOverview() {
   const fetchAnalytics = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem('token');
+      const token = 'demo-token'; // Use demo-token for development
+      const API_BASE_URL = 'http://localhost:4000/api'; // Local backend
       
       // Fetch calls from your backend API
-      const callsRes = await fetch(`https://digital-api-tef8.onrender.com/api/calls?limit=1000`, {
+      const callsRes = await fetch(`${API_BASE_URL}/calls?limit=1000`, {
         headers: { 
-          'Authorization': token ? `Bearer ${token}` : '',
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json' 
         }
       });
@@ -152,7 +153,18 @@ export default function AnalyticsOverview() {
         return callDate >= prevPeriodStart && callDate < prevPeriodEnd;
       }).length;
       const weeklyGrowth = prevPeriodCalls > 0 ? ((filteredCalls.length - prevPeriodCalls) / prevPeriodCalls) * 100 : 0;
-      const monthlyGrowth = Math.random() * 30 - 15;
+      
+      // Calculate monthly growth from actual data instead of random
+      const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+      const prevMonthStart = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+      const prevMonthEnd = new Date(now.getFullYear(), now.getMonth(), 0);
+      const thisMonthCalls = calls.filter((call: Call) => new Date(call.start_time) >= monthStart).length;
+      const lastMonthCalls = calls.filter((call: Call) => {
+        const callDate = new Date(call.start_time);
+        return callDate >= prevMonthStart && callDate <= prevMonthEnd;
+      }).length;
+      const monthlyGrowth = lastMonthCalls > 0 ? ((thisMonthCalls - lastMonthCalls) / lastMonthCalls) * 100 : 0;
+      
       const analyticsData: Analytics = { totalCalls: filteredCalls.length, completedCalls: completed, failedCalls: failed, avgDuration, inboundCalls: inbound, outboundCalls: outbound, busyCalls: busy, transcribedCalls: transcribed, summarizedCalls: summarized, todaysCalls, weeklyGrowth, monthlyGrowth, peakHours, dailyStats, statusDistribution, hourlyDistribution, durationAnalysis, weeklyComparison };
       setAnalytics(analyticsData);
       setRecentCalls(calls.slice(0, 5));
@@ -169,11 +181,13 @@ export default function AnalyticsOverview() {
     if (!toNumber) return alert("Please enter a number to call.");
     setCallStatus("Calling...");
     try {
-      const token = localStorage.getItem('token');
-      const res = await fetch("https://digital-api-tef8.onrender.com/api/outbound-call", {
+      const token = 'demo-token'; // Use demo-token for development
+      const API_BASE_URL = 'http://localhost:4000/api'; // Local backend
+      
+      const res = await fetch(`${API_BASE_URL}/outbound-call`, {
         method: "POST",
         headers: { 
-          "Authorization": token ? `Bearer ${token}` : "", 
+          "Authorization": `Bearer ${token}`, 
           "Content-Type": "application/json" 
         },
         body: JSON.stringify({ toNumber }),

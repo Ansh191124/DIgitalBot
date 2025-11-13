@@ -142,6 +142,7 @@ export function Header() {
                             onMouseLeave={() => setOpen(false)}
                         >
                             <button
+                                suppressHydrationWarning
                                 className="relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2 text-gray-200 hover:text-cyan-400 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-900/50"
                             >
                                 <Zap className="w-4 h-4" />
@@ -267,6 +268,7 @@ export function Header() {
 
                     {/* Enhanced Mobile Menu Button - Cyan/Teal */}
                     <button
+                        suppressHydrationWarning
                         className="lg:hidden p-3 rounded-2xl bg-gradient-to-br from-gray-800/50 via-gray-900/50 to-gray-800/50 border-2 border-cyan-500/30 hover:border-cyan-400 text-cyan-400 hover:text-cyan-300 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-cyan-500/30"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >

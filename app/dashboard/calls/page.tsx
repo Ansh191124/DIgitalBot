@@ -99,7 +99,39 @@ const Dashboard = () => {
         response = await callsAPI.getCalls({ page, limit });
       }
 
-      const callsData = response.data.data?.calls || response.data.data || [];
+      let callsData = response.data.data?.calls || response.data.data || [];
+
+      // Filter calls based on user's selected service
+      const userData = localStorage.getItem('user');
+      if (userData) {
+        const user = JSON.parse(userData);
+        const selectedService = user.selectedService;
+
+        // Filter logic based on service type
+        if (selectedService === 'lead-analysis' || selectedService === 'lead') {
+          // Show only lead-related calls (exclude appointment agent calls)
+          callsData = callsData.filter((call: any) => {
+            const agentName = (call.agent_name || '').toLowerCase();
+            const agentId = (call.agent_id || '').toLowerCase();
+            // Include if agent name/id contains 'lead' or exclude if it contains 'appointment' or 'doctor'
+            return agentName.includes('lead') || 
+                   agentId.includes('lead') || 
+                   (!agentName.includes('appointment') && !agentName.includes('doctor') && 
+                    !agentId.includes('appointment') && !agentId.includes('doctor'));
+          });
+        } else if (selectedService === 'appointment') {
+          // Show only appointment-related calls
+          callsData = callsData.filter((call: any) => {
+            const agentName = (call.agent_name || '').toLowerCase();
+            const agentId = (call.agent_id || '').toLowerCase();
+            // Include if agent name/id contains 'appointment' or 'doctor'
+            return agentName.includes('appointment') || 
+                   agentName.includes('doctor') || 
+                   agentId.includes('appointment') || 
+                   agentId.includes('doctor');
+          });
+        }
+      }
 
       if (isBackground && calls.length > 0) {
         const newCalls = callsData.filter((newCall: Call) =>
@@ -624,7 +656,7 @@ const Dashboard = () => {
 
                           <div className="text-right">
                             <p className="text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">Timestamp</p>
-                            <p className="text-xs text-gray-600 font-medium">
+                            <p className="text-xs text-gray-600 font-medium" suppressHydrationWarning>
                               {call.start_time ? new Date(call.start_time).toLocaleString() : 'N/A'}
                             </p>
                           </div>

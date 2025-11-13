@@ -17,10 +17,8 @@ export default function LoginPage(): JSX.Element {
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
-  // 2. useEffect hook (no specific type changes needed here)
+  // 2. useEffect hook
   useEffect(() => {
-    // Note: window check is often added for robustness in Next.js, though not strictly required here
-    // because 'use client' components run client-side.
     const token = localStorage.getItem('token');
     if (token) {
       router.push('/dashboard');
@@ -45,7 +43,10 @@ export default function LoginPage(): JSX.Element {
     });
 
     try {
-      const response = await fetch('https://digital-api-tef8.onrender.com/api/auth/login', {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+      console.log('🔐 Attempting login to:', API_URL);
+      
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

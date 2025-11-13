@@ -49,7 +49,7 @@ interface Appointment {
 }
 
 // ==================== CONSTANTS ====================
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://digital-api-tef8.onrender.com";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
 
 const statusStyles: Record<Appointment["status"], string> = {
   scheduled: "bg-blue-100 text-blue-700 border-blue-300",
@@ -231,7 +231,7 @@ function AppointmentModal({
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white p-4 rounded-xl border-2 border-gray-200">
                   <p className="text-sm text-gray-600 font-semibold mb-1">Date</p>
-                  <p className="text-lg font-bold text-gray-900">
+                  <p className="text-lg font-bold text-gray-900" suppressHydrationWarning>
                     {new Date(apt.date).toLocaleDateString("en-US", {
                       weekday: "short",
                       month: "long",
@@ -338,11 +338,11 @@ function AppointmentModal({
 
           {/* Metadata Footer */}
           <div className="text-xs text-gray-500 flex flex-wrap gap-4 justify-between pt-4 border-t-2 border-gray-200">
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1" suppressHydrationWarning>
               <Clock className="w-3 h-3" />
               Created: {new Date(apt.createdAt).toLocaleString()}
             </span>
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1" suppressHydrationWarning>
               <RefreshCw className="w-3 h-3" />
               Updated: {new Date(apt.updatedAt).toLocaleString()}
             </span>
@@ -396,7 +396,7 @@ export default function AppointmentsPage() {
       if (filterStatus !== "All") params.append("status", filterStatus);
       if (searchTerm) params.append("name", searchTerm);
 
-      const url = `${API_BASE_URL}/api/appointments?${params.toString()}`;
+      const url = `${API_BASE_URL}/appointments?${params.toString()}`;
       const response = await fetch(url, { method: "GET", headers: getAuthHeaders() });
 
       if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
@@ -420,7 +420,7 @@ export default function AppointmentsPage() {
   const updateAppointmentStatus = async (appointmentId: string | undefined, newStatus: Appointment["status"]) => {
     if (!appointmentId) return;
     try {
-      const response = await fetch(`${API_BASE_URL}/api/appointments/${appointmentId}`, {
+      const response = await fetch(`${API_BASE_URL}/appointments/${appointmentId}`, {
         method: "PUT",
         headers: getAuthHeaders(),
         body: JSON.stringify({ status: newStatus }),

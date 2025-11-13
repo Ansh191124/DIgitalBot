@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Calendar, LayoutDashboard, LogOut, PhoneCall, Users, X,CreditCard } from 'lucide-react';
+import { Calendar, LayoutDashboard, LogOut, PhoneCall, Users, X, CreditCard, Megaphone } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -22,8 +22,10 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [user, setUser] = useState<User | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const userData = localStorage.getItem('user');
     if (userData) setUser(JSON.parse(userData));
   }, []);
@@ -38,6 +40,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
     const serviceItems = [];
     if (user?.selectedService === 'lead-analysis' || user?.selectedService === 'lead') {
       serviceItems.push({ name: 'Leads', href: '/dashboard/leads', icon: Users });
+      serviceItems.push({ name: 'Campaigns', href: '/dashboard/campaigns', icon: Megaphone });
     }
     if (user?.selectedService === 'appointment') {
       serviceItems.push({ name: 'Appointments', href: '/dashboard/appointments', icon: Calendar });
@@ -52,6 +55,31 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
     localStorage.removeItem('user');
     router.push('/');
   };
+
+  // Wait for client-side mount to prevent hydration mismatch
+  if (!mounted) {
+    // Return a loading skeleton that matches the structure
+    return (
+      <>
+        {/* Desktop Sidebar Skeleton */}
+        <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
+          <div className="flex flex-col grow bg-slate-50 border-r border-gray-200 pt-5 pb-4 overflow-y-auto">
+            <div className="flex items-center shrink-0 px-4">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                DigitalBot
+              </h1>
+            </div>
+            <div className="mt-8 flex-1 px-2 space-y-2">
+              {/* Loading skeleton */}
+              <div className="h-10 bg-gray-200 rounded-lg animate-pulse"></div>
+              <div className="h-10 bg-gray-200 rounded-lg animate-pulse"></div>
+              <div className="h-10 bg-gray-200 rounded-lg animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

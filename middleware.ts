@@ -22,16 +22,8 @@ const SPAM_URL_PATTERNS = [
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Protect dashboard routes - require authentication
-  if (pathname.startsWith('/dashboard')) {
-    const token = request.cookies.get('token')?.value || 
-                  request.headers.get('authorization')?.replace('Bearer ', '');
-    
-    if (!token) {
-      // Redirect to login if no token found
-      return NextResponse.redirect(new URL('/login', request.url));
-    }
-  }
+  // AUTHENTICATION DISABLED - Allow all dashboard access
+  // No authentication checks in development
 
   // Check if URL matches any spam pattern
   const isSpamUrl = SPAM_URL_PATTERNS.some(pattern => pattern.test(pathname))
