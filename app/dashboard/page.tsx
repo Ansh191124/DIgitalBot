@@ -63,7 +63,7 @@ export default function AnalyticsOverview() {
     setLoading(true);
     try {
       const token = 'demo-token'; // Use demo-token for development
-      const API_BASE_URL = 'http://localhost:4000/api'; // Local backend
+      const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api'; // Local backend
       
       // Fetch calls from your backend API
       const callsRes = await fetch(`${API_BASE_URL}/calls?limit=1000`, {
@@ -182,7 +182,7 @@ export default function AnalyticsOverview() {
     setCallStatus("Calling...");
     try {
       const token = 'demo-token'; // Use demo-token for development
-      const API_BASE_URL = 'http://localhost:4000/api'; // Local backend
+      const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api'; // Local backend
       
       const res = await fetch(`${API_BASE_URL}/outbound-call`, {
         method: "POST",
