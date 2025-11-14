@@ -5,8 +5,8 @@ import { useCallback, useEffect, useState } from "react";
 // ==========================================
 // CONFIGURATION - FORCE LOCALHOST FOR DEVELOPMENT
 // ==========================================
-const API_BASE_URL = 'http://localhost:4000/api'; // FORCED LOCALHOST
-const WS_URL = 'ws://localhost:4000/ws'; // FORCED LOCALHOST
+const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api'; // FORCED LOCALHOST
+const WS_URL = 'ws://digital-api-tef8.onrender.com/ws'; // FORCED LOCALHOST
 console.log('🌐 API_BASE_URL:', API_BASE_URL);
 console.log('🔌 WS_URL:', WS_URL);
 
