@@ -225,7 +225,7 @@ export function Header() {
                 ))}
 
                 {/* Mobile Services */}
-                <div className="pt-3 mt-3 border-t border-gray-200">
+                <div className="pt-3 mt-3 border-t border-gray-201">
                   <div className="px-4 py-2 text-xs font-semibold text-gray-600 uppercase">Services</div>
                   <div className="space-y-1">
                     {services.slice(0, 6).map((service) => (
