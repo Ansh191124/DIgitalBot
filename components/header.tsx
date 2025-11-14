@@ -95,32 +95,6 @@ export function Header() {
               </a>
             ))}
 
-<<<<<<< HEAD
-                        {/* Enhanced Services Dropdown - Cyan/Teal */}
-                        <MotionDiv
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: navItems.length * 0.1, duration: 0.5 }}
-                            className="relative"
-                            onMouseEnter={() => setOpen(true)}
-                            onMouseLeave={() => setOpen(false)}
-                        >
-                            <button
-                                suppressHydrationWarning
-                                className="relative px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group flex items-center gap-2 text-gray-200 hover:text-cyan-400 hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-900/50"
-                            >
-                                <Zap className="w-4 h-4" />
-                                <span className="relative z-10">Our Services</span>
-                                <ChevronDown className={cn(
-                                    "w-4 h-4 transition-transform duration-300 relative z-10",
-                                    open && "rotate-180"
-                                )} />
-                                
-                                {/* Enhanced Hover background - Cyan/Teal */}
-                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-gray-800/30 via-gray-900/30 to-gray-800/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                <span className="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-cyan-500/30 via-teal-500/30 to-cyan-500/30 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
-                            </button>
-=======
             {/* Our Services Dropdown */}
             <div 
               className="relative"
@@ -134,7 +108,6 @@ export function Header() {
                 Our Services
                 <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
               </button>
->>>>>>> 1136a7e7cc4055b2734e723ed6ef547107ee1e88
 
               {/* Dropdown Panel - 3x3 Grid */}
               <AnimatePresence>
@@ -154,16 +127,6 @@ export function Header() {
                       <h3 className="text-base font-bold text-orange-600">AI-Powered Solutions</h3>
                     </div>
 
-<<<<<<< HEAD
-                    {/* Enhanced Mobile Menu Button - Cyan/Teal */}
-                    <button
-                        suppressHydrationWarning
-                        className="lg:hidden p-3 rounded-2xl bg-gradient-to-br from-gray-800/50 via-gray-900/50 to-gray-800/50 border-2 border-cyan-500/30 hover:border-cyan-400 text-cyan-400 hover:text-cyan-300 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-cyan-500/30"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    >
-                        {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                    </button>
-=======
                     {/* Services Grid - 3x3 */}
                     <div className="grid grid-cols-3 gap-3 mb-4">
                       {services.map((service) => {
@@ -276,7 +239,6 @@ export function Header() {
                       </a>
                     ))}
                   </div>
->>>>>>> 1136a7e7cc4055b2734e723ed6ef547107ee1e88
                 </div>
 
                 {/* Mobile CTA */}
