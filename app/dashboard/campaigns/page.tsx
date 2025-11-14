@@ -255,7 +255,7 @@ export default function CampaignsPage() {
       try {
         setLoading(true);
         const token = getAuthToken();
-        const API_BASE_URL = 'http://localhost:4000/api';
+        const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
         
         const response = await fetch(`${API_BASE_URL}/campaigns`, {
           headers: {
@@ -317,7 +317,7 @@ export default function CampaignsPage() {
   const handleToggleCampaign = async (campaignId: string, currentStatus: string) => {
     try {
       const token = getAuthToken();
-      const API_BASE_URL = 'http://localhost:4000/api';
+      const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
       
       const endpoint = currentStatus === 'active' ? 'pause' : 'resume';
       
@@ -528,7 +528,7 @@ export default function CampaignsPage() {
 
     try {
       const token = getAuthToken();
-      const API_BASE_URL = 'http://localhost:4000/api';
+      const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
       
       const newCampaign = {
         name: campaignName,
@@ -621,7 +621,7 @@ export default function CampaignsPage() {
 
     try {
       const token = getAuthToken();
-      const API_BASE_URL = 'http://localhost:4000/api';
+      const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
       
       const response = await fetch(`${API_BASE_URL}/campaigns/${campaignId}/launch`, {
         method: 'POST',
