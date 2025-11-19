@@ -62,7 +62,7 @@ export default function AnalyticsOverview() {
   const fetchAnalytics = async () => {
     setLoading(true);
     try {
-      const token = 'demo-token'; // Use demo-token for development
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : '';
       const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api'; // Local backend
       
       // Fetch calls from your backend API
