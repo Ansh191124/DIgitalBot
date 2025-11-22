@@ -120,8 +120,8 @@ export function Footer() {
                 {[
                   { icon: Twitter, link: "https://twitter.com/digitalbot_ai", label: "Twitter", color: "from-orange-500 to-orange-600" },
                   { icon: Linkedin, link: "https://linkedin.com/company/digitalbot-ai", label: "LinkedIn", color: "from-orange-600 to-orange-700" },
-                  { icon: Instagram, link: "https://www.instagram.com/digitalbotai/", label: "Instagram", color: "from-orange-500 to-orange-600" },
-                  { icon: Facebook, link: "https://www.facebook.com/profile.php?id=61580924391213", label: "Facebook", color: "from-orange-600 to-orange-700" },
+                  { icon: Instagram, link: "https://www.instagram.com/digitalbot._ai?utm_source=qr&igsh=MTc3emoxbmdqdmVz", label: "Instagram", color: "from-orange-500 to-orange-600" },
+                  { icon: Facebook, link: "https://www.facebook.com/profile.php?id=61583885495540", label: "Facebook", color: "from-orange-600 to-orange-700" },
                   { icon: Mail, link: "mailto:contact@digitalbot.ai", label: "Email", color: "from-orange-500 to-orange-600" }
                 ].map((social, idx) => (
                   <Link 
