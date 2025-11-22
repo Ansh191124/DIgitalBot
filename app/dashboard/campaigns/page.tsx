@@ -5,9 +5,29 @@ import { useEffect, useState, useRef } from "react";
 // Helper to get auth token
 const getAuthToken = () => {
   if (typeof window !== 'undefined') {
-    return localStorage.getItem('token') || 'demo-token';
+    return localStorage.getItem('token');
   }
-  return 'demo-token';
+  return null;
+};
+
+// Helper to get user info from token
+const getUserFromToken = () => {
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        return {
+          email: payload.email,
+          assignedPhoneNumber: payload.assignedPhoneNumber,
+          userId: payload.userId
+        };
+      } catch (error) {
+        console.error('Error parsing token:', error);
+      }
+    }
+  }
+  return null;
 };
 
 // Campaign Type
@@ -39,6 +59,7 @@ type Campaign = {
   };
   createdAt: string;
   updatedAt: string;
+  createdBy?: string;
   content?: {
     voiceAgentId?: string;
   };
@@ -57,13 +78,14 @@ const MenuIcon = () => (
 );
 
 // Campaign Card Component
-function CampaignCard({ campaign, onView, onEdit, onToggle, onLaunch, isLaunching }: { 
+function CampaignCard({ campaign, onView, onEdit, onToggle, onLaunch, isLaunching, userPhone }: { 
   campaign: Campaign; 
   onView: () => void;
   onEdit: () => void;
   onToggle: () => void;
   onLaunch: () => void;
   isLaunching?: boolean;
+  userPhone?: string;
 }) {
   const getStatusColor = (status: string) => {
     switch(status) {
@@ -102,6 +124,11 @@ function CampaignCard({ campaign, onView, onEdit, onToggle, onLaunch, isLaunchin
               <span className="px-3 py-1 rounded-lg text-xs font-semibold bg-purple-100 text-purple-700 border-2 border-purple-300">
                 {campaign.type}
               </span>
+              {userPhone && (
+                <span className="px-3 py-1 rounded-lg text-xs font-semibold bg-blue-100 text-blue-700 border-2 border-blue-300">
+                  📞 {userPhone}
+                </span>
+              )}
             </div>
           </div>
           
@@ -237,6 +264,7 @@ export default function CampaignsPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const [userInfo, setUserInfo] = useState<{email: string, assignedPhoneNumber: string, userId: string} | null>(null);
   
   // Create Campaign Modal states
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -249,12 +277,29 @@ export default function CampaignsPage() {
   const [uploadStep, setUploadStep] = useState<'form' | 'upload' | 'review'>('form');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Get user info on mount
+  useEffect(() => {
+    const user = getUserFromToken();
+    if (user) {
+      setUserInfo(user);
+      console.log('👤 Logged in user:', user);
+    }
+  }, []);
+
   // Fetch campaigns from backend API
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
         setLoading(true);
         const token = getAuthToken();
+        
+        if (!token) {
+          console.warn('⚠️ No authentication token found');
+          setCampaigns([]);
+          setLoading(false);
+          return;
+        }
+
         const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
         
         const response = await fetch(`${API_BASE_URL}/campaigns`, {
@@ -265,6 +310,11 @@ export default function CampaignsPage() {
         });
 
         if (!response.ok) {
+          if (response.status === 401 || response.status === 403) {
+            console.warn('⚠️ Authentication failed - please login again');
+            // Optionally redirect to login
+            // window.location.href = '/login';
+          }
           console.warn('Failed to fetch campaigns');
           setCampaigns([]);
           return;
@@ -317,6 +367,11 @@ export default function CampaignsPage() {
   const handleToggleCampaign = async (campaignId: string, currentStatus: string) => {
     try {
       const token = getAuthToken();
+      if (!token) {
+        alert('❌ Please login to perform this action');
+        return;
+      }
+
       const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
       
       const endpoint = currentStatus === 'active' ? 'pause' : 'resume';
@@ -518,16 +573,22 @@ export default function CampaignsPage() {
       return;
     }
 
-    // Validate Agent ID is required
-    if (!agentId || agentId.trim() === '') {
-      alert('❌ AI Agent ID is required!\n\nPlease enter your AI Voice Agent ID from your AI Voice Agent dashboard before creating a campaign.');
+    // Validate Agent ID is required for voice campaigns
+    if (campaignType === 'voice' && (!agentId || agentId.trim() === '')) {
+      alert('❌ AI Agent ID is required for voice campaigns!\n\nPlease enter your AI Voice Agent ID from your AI Voice Agent dashboard before creating a campaign.');
+      return;
+    }
+
+    // Check authentication
+    const token = getAuthToken();
+    if (!token) {
+      alert('❌ Please login to create a campaign');
       return;
     }
 
     setCreating(true);
 
     try {
-      const token = getAuthToken();
       const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
       
       const newCampaign = {
@@ -536,14 +597,13 @@ export default function CampaignsPage() {
         targetAudience: targetAudience,
         totalContacts: contacts.length,
         status: 'draft',
-        createdBy: 'user123',
         content: {
-          voiceAgentId: agentId
+          voiceAgentId: agentId || undefined
         },
         millisAI: {
-          agentId: agentId
+          agentId: agentId || undefined
         },
-        // Store contacts temporarily in metadata (we'll create proper ContactList model later)
+        // Store contacts temporarily in metadata
         metadata: {
           contacts: contacts
         }
@@ -574,20 +634,25 @@ export default function CampaignsPage() {
         setCsvFile(null);
         setUploadStep('form');
         
-        alert(`✅ Campaign "${campaignName}" created successfully with ${contacts.length} contacts!`);
+        alert(`✅ Campaign "${campaignName}" created successfully with ${contacts.length} contacts!\n\nCalls will be made from: ${userInfo?.assignedPhoneNumber || 'your assigned number'}`);
       } else {
         const errorData = await response.json().catch(() => null);
         const errorMessage = errorData?.error || errorData?.message || response.statusText;
-        throw new Error(errorMessage);
+        
+        if (response.status === 401 || response.status === 403) {
+          alert('❌ Authentication failed. Please login again.');
+        } else {
+          throw new Error(errorMessage);
+        }
       }
     } catch (error) {
       console.error('Error creating campaign:', error);
       const message = error instanceof Error ? error.message : 'Unknown error';
       
       if (message.includes('Network') || message.includes('fetch')) {
-        alert('❌ Network error! Please check:\n- Backend server is running on port 4000\n- No firewall blocking the connection');
-      } else if (message.includes('API key') || message.includes('MILLIS_API_KEY')) {
-        alert('❌ API Configuration Error!\n\nThe backend is missing the MILLIS_API_KEY.\nPlease add it to the .env file and restart the server.');
+        alert('❌ Network error! Please check:\n- Backend server is running\n- No firewall blocking the connection');
+      } else if (message.includes('phone number')) {
+        alert('❌ Phone Number Error!\n\nYou don\'t have an assigned phone number. Please contact support.');
       } else {
         alert(`❌ Failed to create campaign!\n\nError: ${message}\n\nPlease try again or contact support.`);
       }
@@ -608,19 +673,25 @@ export default function CampaignsPage() {
 
     // Check if campaign has Agent ID configured
     const campaignAgentId = campaign.content?.voiceAgentId || campaign.millisAI?.agentId;
-    if (!campaignAgentId || campaignAgentId.trim() === '') {
-      alert('❌ Cannot launch campaign!\n\nThis campaign is missing an AI Voice Agent ID. Please edit the campaign and add an Agent ID before launching.');
+    if (campaign.type === 'voice' && (!campaignAgentId || campaignAgentId.trim() === '')) {
+      alert('❌ Cannot launch campaign!\n\nThis voice campaign is missing an AI Voice Agent ID. Please edit the campaign and add an Agent ID before launching.');
       return;
     }
 
-    if (!confirm('🚀 Are you sure you want to launch this campaign? This will start making calls to all contacts.')) {
+    // Check authentication
+    const token = getAuthToken();
+    if (!token) {
+      alert('❌ Please login to launch a campaign');
+      return;
+    }
+
+    if (!confirm(`🚀 Are you sure you want to launch this campaign?\n\nThis will start making ${campaign.totalContacts} calls from your assigned phone number: ${userInfo?.assignedPhoneNumber || 'your number'}`)) {
       return;
     }
 
     setLaunching(true);
 
     try {
-      const token = getAuthToken();
       const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
       
       const response = await fetch(`${API_BASE_URL}/campaigns/${campaignId}/launch`, {
@@ -642,13 +713,17 @@ export default function CampaignsPage() {
             : c
         ));
         
-        alert(data.data.message || '✅ Campaign launched successfully!');
+        alert(data.data.message || `✅ Campaign launched successfully!\n\nMaking calls from: ${data.data.fromPhone || userInfo?.assignedPhoneNumber}`);
       } else {
         const errorData = await response.json().catch(() => null);
         const errorMessage = errorData?.error || errorData?.message || response.statusText;
         
         if (response.status === 500 && errorMessage.includes('MILLIS_API_KEY')) {
           throw new Error('API_KEY_MISSING');
+        } else if (response.status === 500 && errorMessage.includes('phone number')) {
+          throw new Error('NO_PHONE_NUMBER');
+        } else if (response.status === 403) {
+          throw new Error('UNAUTHORIZED');
         } else if (response.status === 400) {
           throw new Error(`Invalid request: ${errorMessage}`);
         } else {
@@ -661,8 +736,12 @@ export default function CampaignsPage() {
       
       if (message === 'API_KEY_MISSING') {
         alert('❌ Cannot Launch Campaign!\n\nThe backend server is missing the MILLIS_API_KEY environment variable.\n\nPlease:\n1. Add MILLIS_API_KEY to your .env file\n2. Restart the backend server\n3. Try launching again');
+      } else if (message === 'NO_PHONE_NUMBER') {
+        alert('❌ Cannot Launch Campaign!\n\nYou do not have an assigned phone number.\n\nPlease contact support to get a phone number assigned to your account.');
+      } else if (message === 'UNAUTHORIZED') {
+        alert('❌ Cannot Launch Campaign!\n\nYou are not authorized to launch this campaign.\nYou can only launch campaigns you created.');
       } else if (message.includes('Network') || message.includes('fetch')) {
-        alert('❌ Network error!\n\nCannot connect to backend server.\nPlease ensure the backend is running on port 4000.');
+        alert('❌ Network error!\n\nCannot connect to backend server.\nPlease ensure the backend is running.');
       } else if (message.includes('Invalid request')) {
         alert(`❌ Invalid Campaign Data!\n\n${message}\n\nPlease check the campaign configuration.`);
       } else {
@@ -733,6 +812,11 @@ export default function CampaignsPage() {
                 <p className="text-slate-600 mt-2 sm:mt-3 text-sm sm:text-base lg:text-lg">
                   AI-powered campaigns • Multi-channel • Smart automation
                 </p>
+                {userInfo?.assignedPhoneNumber && (
+                  <p className="text-sm text-purple-600 font-semibold mt-2">
+                    📞 Your calling number: {userInfo.assignedPhoneNumber}
+                  </p>
+                )}
               </div>
               
               <button
@@ -879,6 +963,7 @@ export default function CampaignsPage() {
                   onToggle={() => handleToggleCampaign(campaign._id, campaign.status)}
                   onLaunch={() => handleLaunchCampaign(campaign._id)}
                   isLaunching={launching}
+                  userPhone={userInfo?.assignedPhoneNumber}
                 />
               ))
             )}
@@ -903,6 +988,11 @@ export default function CampaignsPage() {
                 <div>
                   <h2 className="text-3xl font-black">🚀 Create New Campaign</h2>
                   <p className="text-purple-100 mt-1">Launch AI-powered bulk calling campaign</p>
+                  {userInfo?.assignedPhoneNumber && (
+                    <p className="text-purple-100 text-sm mt-1">
+                      📞 Calls will be made from: {userInfo.assignedPhoneNumber}
+                    </p>
+                  )}
                 </div>
                 <button
                   onClick={() => {
@@ -977,19 +1067,21 @@ export default function CampaignsPage() {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-2">
-                      AI Agent ID (for voice campaigns)
-                    </label>
-                    <input
-                      type="text"
-                      value={agentId}
-                      onChange={(e) => setAgentId(e.target.value)}
-                      placeholder="e.g., -OXrv5021Ddq4NGGbG0h"
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all"
-                    />
-                    <p className="text-xs text-gray-500 mt-1">Get this from your AI Voice Agent dashboard</p>
-                  </div>
+                  {campaignType === 'voice' && (
+                    <div>
+                      <label className="block text-sm font-bold text-gray-700 mb-2">
+                        AI Agent ID * (Required for Voice Campaigns)
+                      </label>
+                      <input
+                        type="text"
+                        value={agentId}
+                        onChange={(e) => setAgentId(e.target.value)}
+                        placeholder="e.g., -OXrv5021Ddq4NGGbG0h"
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all"
+                      />
+                      <p className="text-xs text-gray-500 mt-1">Get this from your Millis AI Voice Agent dashboard</p>
+                    </div>
+                  )}
 
                   <button
                     onClick={() => setUploadStep('upload')}
@@ -1100,6 +1192,18 @@ export default function CampaignsPage() {
                         <p className="text-sm text-gray-600 font-semibold">Total Contacts</p>
                         <p className="text-lg font-bold text-purple-600">{contacts.length}</p>
                       </div>
+                      {agentId && (
+                        <div className="col-span-2">
+                          <p className="text-sm text-gray-600 font-semibold">AI Agent ID</p>
+                          <p className="text-lg font-bold text-gray-900">{agentId}</p>
+                        </div>
+                      )}
+                      {userInfo?.assignedPhoneNumber && (
+                        <div className="col-span-2">
+                          <p className="text-sm text-gray-600 font-semibold">Calling From</p>
+                          <p className="text-lg font-bold text-blue-600">📞 {userInfo.assignedPhoneNumber}</p>
+                        </div>
+                      )}
                     </div>
                   </div>
 
