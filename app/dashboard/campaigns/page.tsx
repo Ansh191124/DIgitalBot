@@ -1,33 +1,13 @@
 "use client";
 import Sidebar from "@/components/Sidebar";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Helper to get auth token
 const getAuthToken = () => {
   if (typeof window !== 'undefined') {
-    return localStorage.getItem('token');
+    return localStorage.getItem('token') || 'demo-token';
   }
-  return null;
-};
-
-// Helper to get user info from token
-const getUserFromToken = () => {
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        return {
-          email: payload.email,
-          assignedPhoneNumber: payload.assignedPhoneNumber,
-          userId: payload.userId
-        };
-      } catch (error) {
-        console.error('Error parsing token:', error);
-      }
-    }
-  }
-  return null;
+  return 'demo-token';
 };
 
 // Campaign Type
@@ -59,7 +39,6 @@ type Campaign = {
   };
   createdAt: string;
   updatedAt: string;
-  createdBy?: string;
   content?: {
     voiceAgentId?: string;
   };
@@ -78,14 +57,13 @@ const MenuIcon = () => (
 );
 
 // Campaign Card Component
-function CampaignCard({ campaign, onView, onEdit, onToggle, onLaunch, isLaunching, userPhone }: { 
+function CampaignCard({ campaign, onView, onEdit, onToggle, onLaunch, isLaunching }: { 
   campaign: Campaign; 
   onView: () => void;
   onEdit: () => void;
   onToggle: () => void;
   onLaunch: () => void;
   isLaunching?: boolean;
-  userPhone?: string;
 }) {
   const getStatusColor = (status: string) => {
     switch(status) {
@@ -124,11 +102,6 @@ function CampaignCard({ campaign, onView, onEdit, onToggle, onLaunch, isLaunchin
               <span className="px-3 py-1 rounded-lg text-xs font-semibold bg-purple-100 text-purple-700 border-2 border-purple-300">
                 {campaign.type}
               </span>
-              {userPhone && (
-                <span className="px-3 py-1 rounded-lg text-xs font-semibold bg-blue-100 text-blue-700 border-2 border-blue-300">
-                  📞 {userPhone}
-                </span>
-              )}
             </div>
           </div>
           
@@ -264,7 +237,6 @@ export default function CampaignsPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('all');
   const [searchTerm, setSearchTerm] = useState('');
-  const [userInfo, setUserInfo] = useState<{email: string, assignedPhoneNumber: string, userId: string} | null>(null);
   
   // Create Campaign Modal states
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -277,29 +249,12 @@ export default function CampaignsPage() {
   const [uploadStep, setUploadStep] = useState<'form' | 'upload' | 'review'>('form');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Get user info on mount
-  useEffect(() => {
-    const user = getUserFromToken();
-    if (user) {
-      setUserInfo(user);
-      console.log('👤 Logged in user:', user);
-    }
-  }, []);
-
   // Fetch campaigns from backend API
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
         setLoading(true);
         const token = getAuthToken();
-        
-        if (!token) {
-          console.warn('⚠️ No authentication token found');
-          setCampaigns([]);
-          setLoading(false);
-          return;
-        }
-
         const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
         
         const response = await fetch(`${API_BASE_URL}/campaigns`, {
@@ -310,11 +265,6 @@ export default function CampaignsPage() {
         });
 
         if (!response.ok) {
-          if (response.status === 401 || response.status === 403) {
-            console.warn('⚠️ Authentication failed - please login again');
-            // Optionally redirect to login
-            // window.location.href = '/login';
-          }
           console.warn('Failed to fetch campaigns');
           setCampaigns([]);
           return;
@@ -367,11 +317,6 @@ export default function CampaignsPage() {
   const handleToggleCampaign = async (campaignId: string, currentStatus: string) => {
     try {
       const token = getAuthToken();
-      if (!token) {
-        alert('❌ Please login to perform this action');
-        return;
-      }
-
       const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
       
       const endpoint = currentStatus === 'active' ? 'pause' : 'resume';
@@ -399,12 +344,51 @@ export default function CampaignsPage() {
     }
   };
 
+  // Modal state for View/Edit
+  const [viewModalOpen, setViewModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
+
   const handleViewCampaign = (campaignId: string) => {
-    alert(`View campaign details: ${campaignId}\n\nThis will open a detailed campaign modal or page.`);
+    const campaign = campaigns.find(c => c._id === campaignId);
+    if (campaign) {
+      setSelectedCampaign(campaign);
+      setViewModalOpen(true);
+    }
   };
 
   const handleEditCampaign = (campaignId: string) => {
-    alert(`Edit campaign: ${campaignId}\n\nThis will open a campaign editor.`);
+    const campaign = campaigns.find(c => c._id === campaignId);
+    if (campaign) {
+      setSelectedCampaign(campaign);
+      setEditModalOpen(true);
+    }
+  };
+  // Edit form state (for demo, only name/type/targetAudience editable)
+  const [editName, setEditName] = useState('');
+  const [editType, setEditType] = useState<'voice' | 'sms' | 'email' | 'multi-channel'>('voice');
+  const [editTargetAudience, setEditTargetAudience] = useState('');
+
+  // When edit modal opens, populate fields
+  useEffect(() => {
+    if (editModalOpen && selectedCampaign) {
+      setEditName(selectedCampaign.name);
+      setEditType(selectedCampaign.type);
+      setEditTargetAudience(selectedCampaign.targetAudience);
+    }
+  }, [editModalOpen, selectedCampaign]);
+
+  // Save edit (demo: only updates local state)
+  const handleSaveEdit = () => {
+    if (!selectedCampaign) return;
+    // For demo, update local campaigns state
+    setCampaigns(campaigns.map(c =>
+      c._id === selectedCampaign._id
+        ? { ...c, name: editName, type: editType, targetAudience: editTargetAudience }
+        : c
+    ));
+    setEditModalOpen(false);
+    setSelectedCampaign(null);
   };
 
   // CSV Upload Handler
@@ -573,23 +557,17 @@ export default function CampaignsPage() {
       return;
     }
 
-    // Validate Agent ID is required for voice campaigns
-    if (campaignType === 'voice' && (!agentId || agentId.trim() === '')) {
-      alert('❌ AI Agent ID is required for voice campaigns!\n\nPlease enter your AI Voice Agent ID from your AI Voice Agent dashboard before creating a campaign.');
-      return;
-    }
-
-    // Check authentication
-    const token = getAuthToken();
-    if (!token) {
-      alert('❌ Please login to create a campaign');
+    // Validate Agent ID is required
+    if (!agentId || agentId.trim() === '') {
+      alert('❌ AI Agent ID is required!\n\nPlease enter your AI Voice Agent ID from your AI Voice Agent dashboard before creating a campaign.');
       return;
     }
 
     setCreating(true);
 
     try {
-      const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
+      const token = getAuthToken();
+      const API_BASE_URL = 'http://localhost:4000/api';
       
       const newCampaign = {
         name: campaignName,
@@ -597,13 +575,14 @@ export default function CampaignsPage() {
         targetAudience: targetAudience,
         totalContacts: contacts.length,
         status: 'draft',
+        createdBy: 'user123',
         content: {
-          voiceAgentId: agentId || undefined
+          voiceAgentId: agentId
         },
         millisAI: {
-          agentId: agentId || undefined
+          agentId: agentId
         },
-        // Store contacts temporarily in metadata
+        // Store contacts temporarily in metadata (we'll create proper ContactList model later)
         metadata: {
           contacts: contacts
         }
@@ -634,25 +613,20 @@ export default function CampaignsPage() {
         setCsvFile(null);
         setUploadStep('form');
         
-        alert(`✅ Campaign "${campaignName}" created successfully with ${contacts.length} contacts!\n\nCalls will be made from: ${userInfo?.assignedPhoneNumber || 'your assigned number'}`);
+        alert(`✅ Campaign "${campaignName}" created successfully with ${contacts.length} contacts!`);
       } else {
         const errorData = await response.json().catch(() => null);
         const errorMessage = errorData?.error || errorData?.message || response.statusText;
-        
-        if (response.status === 401 || response.status === 403) {
-          alert('❌ Authentication failed. Please login again.');
-        } else {
-          throw new Error(errorMessage);
-        }
+        throw new Error(errorMessage);
       }
     } catch (error) {
       console.error('Error creating campaign:', error);
       const message = error instanceof Error ? error.message : 'Unknown error';
       
       if (message.includes('Network') || message.includes('fetch')) {
-        alert('❌ Network error! Please check:\n- Backend server is running\n- No firewall blocking the connection');
-      } else if (message.includes('phone number')) {
-        alert('❌ Phone Number Error!\n\nYou don\'t have an assigned phone number. Please contact support.');
+        alert('❌ Network error! Please check:\n- Backend server is running on port 4000\n- No firewall blocking the connection');
+      } else if (message.includes('API key') || message.includes('MILLIS_API_KEY')) {
+        alert('❌ API Configuration Error!\n\nThe backend is missing the MILLIS_API_KEY.\nPlease add it to the .env file and restart the server.');
       } else {
         alert(`❌ Failed to create campaign!\n\nError: ${message}\n\nPlease try again or contact support.`);
       }
@@ -673,25 +647,19 @@ export default function CampaignsPage() {
 
     // Check if campaign has Agent ID configured
     const campaignAgentId = campaign.content?.voiceAgentId || campaign.millisAI?.agentId;
-    if (campaign.type === 'voice' && (!campaignAgentId || campaignAgentId.trim() === '')) {
-      alert('❌ Cannot launch campaign!\n\nThis voice campaign is missing an AI Voice Agent ID. Please edit the campaign and add an Agent ID before launching.');
+    if (!campaignAgentId || campaignAgentId.trim() === '') {
+      alert('❌ Cannot launch campaign!\n\nThis campaign is missing an AI Voice Agent ID. Please edit the campaign and add an Agent ID before launching.');
       return;
     }
 
-    // Check authentication
-    const token = getAuthToken();
-    if (!token) {
-      alert('❌ Please login to launch a campaign');
-      return;
-    }
-
-    if (!confirm(`🚀 Are you sure you want to launch this campaign?\n\nThis will start making ${campaign.totalContacts} calls from your assigned phone number: ${userInfo?.assignedPhoneNumber || 'your number'}`)) {
+    if (!confirm('🚀 Are you sure you want to launch this campaign? This will start making calls to all contacts.')) {
       return;
     }
 
     setLaunching(true);
 
     try {
+      const token = getAuthToken();
       const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api';
       
       const response = await fetch(`${API_BASE_URL}/campaigns/${campaignId}/launch`, {
@@ -713,17 +681,13 @@ export default function CampaignsPage() {
             : c
         ));
         
-        alert(data.data.message || `✅ Campaign launched successfully!\n\nMaking calls from: ${data.data.fromPhone || userInfo?.assignedPhoneNumber}`);
+        alert(data.data.message || '✅ Campaign launched successfully!');
       } else {
         const errorData = await response.json().catch(() => null);
         const errorMessage = errorData?.error || errorData?.message || response.statusText;
         
         if (response.status === 500 && errorMessage.includes('MILLIS_API_KEY')) {
           throw new Error('API_KEY_MISSING');
-        } else if (response.status === 500 && errorMessage.includes('phone number')) {
-          throw new Error('NO_PHONE_NUMBER');
-        } else if (response.status === 403) {
-          throw new Error('UNAUTHORIZED');
         } else if (response.status === 400) {
           throw new Error(`Invalid request: ${errorMessage}`);
         } else {
@@ -736,12 +700,8 @@ export default function CampaignsPage() {
       
       if (message === 'API_KEY_MISSING') {
         alert('❌ Cannot Launch Campaign!\n\nThe backend server is missing the MILLIS_API_KEY environment variable.\n\nPlease:\n1. Add MILLIS_API_KEY to your .env file\n2. Restart the backend server\n3. Try launching again');
-      } else if (message === 'NO_PHONE_NUMBER') {
-        alert('❌ Cannot Launch Campaign!\n\nYou do not have an assigned phone number.\n\nPlease contact support to get a phone number assigned to your account.');
-      } else if (message === 'UNAUTHORIZED') {
-        alert('❌ Cannot Launch Campaign!\n\nYou are not authorized to launch this campaign.\nYou can only launch campaigns you created.');
       } else if (message.includes('Network') || message.includes('fetch')) {
-        alert('❌ Network error!\n\nCannot connect to backend server.\nPlease ensure the backend is running.');
+        alert('❌ Network error!\n\nCannot connect to backend server.\nPlease ensure the backend is running on port 4000.');
       } else if (message.includes('Invalid request')) {
         alert(`❌ Invalid Campaign Data!\n\n${message}\n\nPlease check the campaign configuration.`);
       } else {
@@ -774,6 +734,134 @@ export default function CampaignsPage() {
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-100">
       {/* Mobile Menu Button */}
+            {/* View Campaign Modal */}
+            {viewModalOpen && selectedCampaign && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+                <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full overflow-y-auto animate-fadeIn">
+                  <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-t-3xl flex items-center justify-between">
+                    <div>
+                      <h2 className="text-2xl font-black flex items-center gap-2">📊 Campaign Details</h2>
+                      <p className="text-blue-100 mt-1">See all details for this campaign</p>
+                    </div>
+                    <button onClick={() => { setViewModalOpen(false); setSelectedCampaign(null); }} className="p-2 hover:bg-white/20 rounded-lg transition-all">
+                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div className="p-8 space-y-6">
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="text-3xl">{selectedCampaign.type === 'voice' ? '📞' : selectedCampaign.type === 'sms' ? '💬' : selectedCampaign.type === 'email' ? '📧' : '🌐'}</span>
+                      <h3 className="text-xl font-bold text-gray-900">{selectedCampaign.name}</h3>
+                      <span className={`px-3 py-1 rounded-lg text-xs font-bold border-2 ${selectedCampaign.status === 'active' ? 'bg-green-100 text-green-700 border-green-300' : selectedCampaign.status === 'scheduled' ? 'bg-blue-100 text-blue-700 border-blue-300' : selectedCampaign.status === 'completed' ? 'bg-gray-100 text-gray-700 border-gray-300' : selectedCampaign.status === 'paused' ? 'bg-yellow-100 text-yellow-700 border-yellow-300' : 'bg-purple-100 text-purple-700 border-purple-300'}`}>{selectedCampaign.status.toUpperCase()}</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 mb-4">
+                      <div>
+                        <div className="text-xs text-gray-600 mb-1">Type</div>
+                        <div className="font-semibold text-purple-700">{selectedCampaign.type}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-gray-600 mb-1">Target Audience</div>
+                        <div className="font-semibold text-blue-700">{selectedCampaign.targetAudience}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-gray-600 mb-1">Total Contacts</div>
+                        <div className="font-semibold text-green-700">{selectedCampaign.totalContacts}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-gray-600 mb-1">Created At</div>
+                        <div className="font-semibold text-gray-700">{new Date(selectedCampaign.createdAt).toLocaleString()}</div>
+                      </div>
+                    </div>
+                    <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl p-4 border-2 border-purple-200">
+                      <h4 className="text-sm font-bold text-purple-700 mb-3 flex items-center gap-2">
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                        Performance
+                      </h4>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <div className="text-xs text-gray-600 mb-1">Conversion Rate</div>
+                          <div className="text-lg font-bold text-gray-900">{selectedCampaign.performance.conversionRate.toFixed(1)}%</div>
+                        </div>
+                        <div>
+                          <div className="text-xs text-gray-600 mb-1">Engagement Score</div>
+                          <div className="text-lg font-bold text-gray-900">{selectedCampaign.performance.engagementScore.toFixed(1)}/10</div>
+                        </div>
+                        <div>
+                          <div className="text-xs text-gray-600 mb-1">Avg Sentiment</div>
+                          <div className="text-lg font-bold text-gray-900">{selectedCampaign.performance.avgSentiment > 0 ? '😊' : selectedCampaign.performance.avgSentiment < 0 ? '😞' : '😐'} {selectedCampaign.performance.avgSentiment.toFixed(2)}</div>
+                        </div>
+                        <div>
+                          <div className="text-xs text-gray-600 mb-1">Predicted ROI</div>
+                          <div className="text-lg font-bold text-green-600">{selectedCampaign.performance.predictedROI.toFixed(0)}%</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex justify-end mt-6">
+                      <button onClick={() => { setViewModalOpen(false); setSelectedCampaign(null); }} className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold hover:from-blue-700 hover:to-purple-700 transition-all">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Edit Campaign Modal */}
+            {editModalOpen && selectedCampaign && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+                <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full overflow-y-auto animate-fadeIn">
+                  <div className="sticky top-0 bg-gradient-to-r from-orange-600 to-pink-600 text-white p-6 rounded-t-3xl flex items-center justify-between">
+                    <div>
+                      <h2 className="text-2xl font-black flex items-center gap-2">✏️ Edit Campaign</h2>
+                      <p className="text-orange-100 mt-1">Update campaign details</p>
+                    </div>
+                    <button onClick={() => { setEditModalOpen(false); setSelectedCampaign(null); }} className="p-2 hover:bg-white/20 rounded-lg transition-all">
+                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div className="p-8 space-y-6">
+                    <div className="mb-4">
+                      <label className="block text-sm font-bold mb-2 text-gray-700">Campaign Name</label>
+                      <input
+                        type="text"
+                        value={editName}
+                        onChange={e => setEditName(e.target.value)}
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label className="block text-sm font-bold mb-2 text-gray-700">Type</label>
+                      <select
+                        value={editType}
+                        onChange={e => setEditType(e.target.value as any)}
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"
+                      >
+                        <option value="voice">Voice</option>
+                        <option value="sms">SMS</option>
+                        <option value="email">Email</option>
+                        <option value="multi-channel">Multi-Channel</option>
+                      </select>
+                    </div>
+                    <div className="mb-4">
+                      <label className="block text-sm font-bold mb-2 text-gray-700">Target Audience</label>
+                      <input
+                        type="text"
+                        value={editTargetAudience}
+                        onChange={e => setEditTargetAudience(e.target.value)}
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"
+                      />
+                    </div>
+                    <div className="flex justify-end mt-6 gap-3">
+                      <button onClick={() => { setEditModalOpen(false); setSelectedCampaign(null); }} className="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl font-bold hover:bg-gray-300 transition-all">Cancel</button>
+                      <button onClick={handleSaveEdit} className="px-6 py-3 bg-gradient-to-r from-orange-600 to-pink-600 text-white rounded-xl font-bold hover:from-orange-700 hover:to-pink-700 transition-all">Save Changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
         className="md:hidden fixed top-4 left-4 z-50 p-2.5 bg-white rounded-lg shadow-lg border-2 border-purple-200 hover:border-purple-400 transition-all"
@@ -812,11 +900,6 @@ export default function CampaignsPage() {
                 <p className="text-slate-600 mt-2 sm:mt-3 text-sm sm:text-base lg:text-lg">
                   AI-powered campaigns • Multi-channel • Smart automation
                 </p>
-                {userInfo?.assignedPhoneNumber && (
-                  <p className="text-sm text-purple-600 font-semibold mt-2">
-                    📞 Your calling number: {userInfo.assignedPhoneNumber}
-                  </p>
-                )}
               </div>
               
               <button
@@ -963,7 +1046,6 @@ export default function CampaignsPage() {
                   onToggle={() => handleToggleCampaign(campaign._id, campaign.status)}
                   onLaunch={() => handleLaunchCampaign(campaign._id)}
                   isLaunching={launching}
-                  userPhone={userInfo?.assignedPhoneNumber}
                 />
               ))
             )}
@@ -988,11 +1070,6 @@ export default function CampaignsPage() {
                 <div>
                   <h2 className="text-3xl font-black">🚀 Create New Campaign</h2>
                   <p className="text-purple-100 mt-1">Launch AI-powered bulk calling campaign</p>
-                  {userInfo?.assignedPhoneNumber && (
-                    <p className="text-purple-100 text-sm mt-1">
-                      📞 Calls will be made from: {userInfo.assignedPhoneNumber}
-                    </p>
-                  )}
                 </div>
                 <button
                   onClick={() => {
@@ -1067,21 +1144,19 @@ export default function CampaignsPage() {
                     />
                   </div>
 
-                  {campaignType === 'voice' && (
-                    <div>
-                      <label className="block text-sm font-bold text-gray-700 mb-2">
-                        AI Agent ID * (Required for Voice Campaigns)
-                      </label>
-                      <input
-                        type="text"
-                        value={agentId}
-                        onChange={(e) => setAgentId(e.target.value)}
-                        placeholder="e.g., -OXrv5021Ddq4NGGbG0h"
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all"
-                      />
-                      <p className="text-xs text-gray-500 mt-1">Get this from your Millis AI Voice Agent dashboard</p>
-                    </div>
-                  )}
+                  <div>
+                    <label className="block text-sm font-bold text-gray-700 mb-2">
+                      AI Agent ID (for voice campaigns)
+                    </label>
+                    <input
+                      type="text"
+                      value={agentId}
+                      onChange={(e) => setAgentId(e.target.value)}
+                      placeholder="e.g., -OXrv5021Ddq4NGGbG0h"
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">Get this from your AI Voice Agent dashboard</p>
+                  </div>
 
                   <button
                     onClick={() => setUploadStep('upload')}
@@ -1192,18 +1267,6 @@ export default function CampaignsPage() {
                         <p className="text-sm text-gray-600 font-semibold">Total Contacts</p>
                         <p className="text-lg font-bold text-purple-600">{contacts.length}</p>
                       </div>
-                      {agentId && (
-                        <div className="col-span-2">
-                          <p className="text-sm text-gray-600 font-semibold">AI Agent ID</p>
-                          <p className="text-lg font-bold text-gray-900">{agentId}</p>
-                        </div>
-                      )}
-                      {userInfo?.assignedPhoneNumber && (
-                        <div className="col-span-2">
-                          <p className="text-sm text-gray-600 font-semibold">Calling From</p>
-                          <p className="text-lg font-bold text-blue-600">📞 {userInfo.assignedPhoneNumber}</p>
-                        </div>
-                      )}
                     </div>
                   </div>
 
