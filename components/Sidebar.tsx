@@ -198,7 +198,6 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
                     <p className="text-xs text-gray-600 mt-1">
                       Assigned Number:{user.assignedPhoneNumber}
                     </p>
-                    )
                     <p className="text-xs text-blue-600 mt-1 capitalize">
                       {user.selectedService?.replace('_', ' ')} Service
                     </p>
