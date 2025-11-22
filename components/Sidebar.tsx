@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Calendar, LayoutDashboard, LogOut, PhoneCall, Users, X, CreditCard, Megaphone } from 'lucide-react';
+import { Calendar, CreditCard, LayoutDashboard, LogOut, Megaphone, PhoneCall, Users, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -16,6 +16,7 @@ interface User {
   selectedService?: string;
   name?: string;
   email?: string;
+  assignedPhoneNumber?: string;
 }
 
 export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
@@ -99,7 +100,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
       {/* Desktop Sidebar */}
       <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
         <div className="flex flex-col grow bg-slate-50 border-r border-gray-200 pt-5 pb-4 overflow-y-auto">
-          
+
           {/* Logo */}
           <div className="flex items-center shrink-0 px-4">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -113,6 +114,11 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
               <div className="bg-blue-50 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-300">
                 <p className="text-sm font-semibold text-gray-900">{user.name}</p>
                 <p className="text-xs text-gray-600">{user.email}</p>
+                {user.assignedPhoneNumber && (
+                  <p className="text-xs text-gray-700 mt-1">
+                    <span className="font-semibold">Assigned Number:</span> {user.assignedPhoneNumber}
+                  </p>
+                )}
                 <p className="text-xs text-blue-600 mt-1 capitalize">
                   {user.selectedService?.replace('_', ' ')} Service
                 </p>
@@ -149,14 +155,14 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
 
           {/* Logout */}
           <div className="shrink-0 flex border-t border-gray-200 p-4 mt-auto">
-  <button
-    onClick={handleLogout}
-    className="flex items-center justify-center w-full gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
-  >
-    <LogOut className="h-5 w-5" />
-    Logout
-  </button>
-</div>
+            <button
+              onClick={handleLogout}
+              className="flex items-center justify-center w-full gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl transition transform hover:-translate-y-1"
+            >
+              <LogOut className="h-5 w-5" />
+              Logout
+            </button>
+          </div>
 
         </div>
       </div>
@@ -189,6 +195,10 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
                   <div className="bg-blue-50 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-300">
                     <p className="text-sm font-semibold text-gray-900">{user.name}</p>
                     <p className="text-xs text-gray-600">{user.email}</p>
+                    <p className="text-xs text-gray-600 mt-1">
+                      Assigned Number:{user.assignedPhoneNumber}
+                    </p>
+                    )
                     <p className="text-xs text-blue-600 mt-1 capitalize">
                       {user.selectedService?.replace('_', ' ')} Service
                     </p>

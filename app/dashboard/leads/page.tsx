@@ -99,12 +99,13 @@ const formatPhone = (phone: string) => {
 // Get auth token helper - FORCE DEMO TOKEN
 const getAuthToken = () => {
   if (typeof window === 'undefined') return null;
-  
-  // ALWAYS use demo-token for development - DO NOT USE localStorage
-  const forcedToken = 'demo-token';
-  console.log('🔑🔑🔑 FORCING DEMO-TOKEN FOR DEVELOPMENT 🔑🔑🔑');
-  console.log('Token being used:', forcedToken);
-  return forcedToken;
+  const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = '/login';
+    return null;
+  }
+  console.log('🔑 Token from localStorage:', token);
+  return token;
 };
 
 // Icon Components
