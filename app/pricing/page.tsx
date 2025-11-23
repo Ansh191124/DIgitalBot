@@ -6,6 +6,7 @@ import { PageBackground } from "@/components/page-background"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { LeadFormMini } from "@/components/lead-form-mini"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
 import { ArrowRight, Check, Rocket, Sparkles, TrendingUp } from "lucide-react"
@@ -105,155 +106,44 @@ export default function Pricing() {
     <main className="min-h-screen bg-white text-gray-900">
       <Header />
 
-      {/* Hero Section - Enhanced Creative Design */}
+      {/* Request a Demo Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <PageBackground />
-
-        {/* Floating Gradient Orbs */}
-        <div className="absolute top-[10%] left-[5%] w-[400px] h-[400px] bg-orange-500 rounded-full opacity-10 blur-3xl"></div>
-        
-
         <div className="container mx-auto relative z-10 text-center">
           <div className="inline-block mb-6">
             <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-400">
-              💎 Premium Pricing
+              🚀 Request a Demo
             </span>
           </div>
-          
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="block mb-2 bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 bg-clip-text text-transparent">
-              Choose Your Perfect
+              Experience DigitalBot in Action
             </span>
             <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-2xl text-2xl sm:text-3xl lg:text-4xl relative overflow-hidden border-2 border-orange-400">
               <span className="absolute inset-0 bg-gradient-to-tr from-orange-400/30 via-transparent to-transparent"></span>
-              <span className="relative z-10">AI Voice Plan</span>
+              <span className="relative z-10">See How AI Voice Can Transform Your Business</span>
             </span>
           </h1>
-          
-          <div className="max-w-4xl mx-auto mb-8 p-6 bg-white/90 backdrop-blur-md border-2 border-orange-500/50 rounded-2xl shadow-2xl">
+          <div className="max-w-2xl mx-auto mb-8 p-6 bg-white/90 backdrop-blur-md border-2 border-orange-500/50 rounded-2xl shadow-2xl">
             <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium">
-              <span className="font-bold text-orange-600">Transparent pricing</span>, no hidden fees, and a <span className="font-bold text-orange-600">free trial</span> to get started with AI voice automation. Choose a plan that fits your business needs.
+              Ready to see the power of AI voice automation? Request a personalized demo and our team will show you how DigitalBot can streamline your customer interactions, boost productivity, and deliver real business results.
             </p>
           </div>
-
-          {/* Currency Toggle - Enhanced */}
-          <div className="flex items-center justify-center space-x-4 mb-8">
-            <span className={`text-base font-bold ${!isINR ? "text-orange-600 scale-110" : "text-gray-600"} transition-all`}>
-              USD 💵
-            </span>
-            <div className="relative">
-              <Switch
-                checked={isINR}
-                onCheckedChange={setIsINR}
-                className="bg-gradient-to-r from-orange-500 to-orange-600 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-orange-600 data-[state=checked]:to-orange-700 shadow-lg"
-              />
-            </div>
-            <span className={`text-base font-bold ${isINR ? "text-orange-600 scale-110" : "text-gray-600"} transition-all`}>
-              INR 🇮🇳
-            </span>
-          </div>
+          <Button
+            size="lg"
+            className="px-10 py-5 text-lg font-bold rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white shadow-xl hover:scale-105 transition-all duration-300"
+            onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
+          >
+            Request a Demo
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
         </div>
       </section>
 
-      {/* Pricing Cards - Enhanced Creative Design */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-white overflow-hidden">
-        {/* Decorative Background Elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500 rounded-full opacity-8 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-500 rounded-full opacity-10 blur-3xl"></div>
-
-        <div className="container mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-6">
-              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-400">
-                🎯 Choose Your Plan
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 bg-clip-text text-transparent mb-4">
-              Enterprise-Grade Solutions
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {plans.map((plan, index) => {
-              const colors = [
-                { gradient: 'from-orange-500 via-orange-500 to-orange-600', border: 'border-orange-500/30', hover: 'hover:border-orange-500', icon: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-500/30', badge: 'from-orange-500 to-orange-500' },
-                { gradient: 'from-orange-500 via-orange-500 to-orange-600', border: 'border-orange-500/30', hover: 'hover:border-orange-500', icon: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-500/30', badge: 'from-orange-500 to-orange-500' },
-                { gradient: 'from-orange-500 via-orange-500 to-orange-500', border: 'border-orange-500/30', hover: 'hover:border-orange-500', icon: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-500/30', badge: 'from-orange-500 to-orange-500' },
-              ];
-              const color = colors[index];
-              
-              return (
-                <Card
-                  key={index}
-                  className={`relative border-2 ${plan.popular ? 'border-orange-500 hover:border-orange-400' : `${color.border} ${color.hover}`} bg-white/70 backdrop-blur-md shadow-2xl ${plan.popular ? 'hover:shadow-orange-500/50' : color.shadow} hover:shadow-2xl hover:scale-105 transition-all duration-500 rounded-3xl overflow-hidden group`}
-                >
-                  {/* Decorative Glow */}
-                  <div className="absolute -top-20 -right-20 w-60 h-60 bg-gradient-to-br from-orange-400/20 via-orange-400/20 to-orange-400/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
-                  
-                  {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                      <Badge className={`bg-gradient-to-r ${color.badge} text-white border-2 border-white shadow-2xl px-6 py-2 text-sm font-extrabold animate-pulse`}>
-                        ⭐ Most Popular
-                      </Badge>
-                    </div>
-                  )}
-                  
-                  <CardHeader className="text-center pb-8 pt-10 relative z-10">
-                    <div className={`w-20 h-20 bg-gradient-to-br ${color.icon} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all border border-orange-400/30`}>
-                      <plan.icon className="h-10 w-10 text-white" />
-                    </div>
-                    <CardTitle className="text-3xl text-gray-900 font-extrabold mb-3">{plan.name}</CardTitle>
-                    <CardDescription className="text-gray-700 text-base font-medium px-4">{plan.description}</CardDescription>
-                    <div className="mt-8">
-                      {plan.usdPrice ? (
-                        <>
-                          <div className={`text-5xl sm:text-6xl font-extrabold bg-gradient-to-r ${color.gradient} bg-clip-text text-transparent mb-2`}>
-                            <span suppressHydrationWarning>
-                              {isINR ? `₹${plan.inrPrice.toLocaleString('en-IN')}` : `$${plan.usdPrice}`}
-                            </span>
-                          </div>
-                          <div className="inline-block px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm border border-orange-500/50 shadow-lg">
-                            <span className="text-orange-700 font-bold text-sm">
-                              {plan.minutes} AI voice minutes
-                            </span>
-                          </div>
-                        </>
-                      ) : (
-                        <div className={`text-4xl sm:text-5xl font-extrabold bg-gradient-to-r ${color.gradient} bg-clip-text text-transparent`}>
-                          Let's Talk
-                        </div>
-                      )}
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-0 pb-8 px-6 relative z-10">
-                    <ul className="space-y-4 mb-8">
-                      {plan.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start text-sm">
-                          <div className={`h-6 w-6 rounded-full bg-gradient-to-r ${color.gradient} flex items-center justify-center mr-3 shrink-0 mt-0.5 shadow-lg`}>
-                            <Check className="h-4 w-4 text-white font-bold" />
-                          </div>
-                          <span className="text-gray-800 font-medium leading-relaxed">
-                            {feature.name}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button
-                      className={`w-full rounded-xl font-bold transition-all duration-300 h-14 text-lg shadow-2xl ${
-                        plan.popular
-                          ? `bg-gradient-to-r ${color.gradient} text-white hover:scale-105 border-2 border-orange-400 shadow-orange-500/40`
-                          : `bg-white/50 text-gray-800 border-2 ${color.border} ${color.hover} hover:scale-105 backdrop-blur-sm`
-                      }`}
-                      onClick={() => window.open("https://www.digitalbot.ai/contact", "_blank")}
-                    >
-                      {plan.cta}
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+      {/* Contact Form Section - Small Precise */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white/80">
+        <div className="container mx-auto max-w-xl">
+          <LeadFormMini />
         </div>
       </section>
 
