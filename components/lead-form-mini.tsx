@@ -156,8 +156,8 @@ export function LeadFormMini() {
         By submitting, you agree to our <a href="/privacy" className="text-orange-600 underline">Privacy Policy</a>.
       </div>
       <div className="flex flex-col gap-1 text-xs text-center text-gray-500 mt-2">
-        <span>Email: <a href="mailto:hello@metic.ai" className="text-orange-600 underline">hello@metic.ai</a></span>
-        <span>Phone: <a href="tel:+919999999999" className="text-orange-600 underline">+91 99999 99999</a></span>
+        <span>Email: <a href="mailto:hello@digitalbot.ai" className="text-orange-600 underline">hello@digitalbot.ai</a></span>
+        <span>Phone: <a href="tel:+917892518414" className="text-orange-600 underline">+91 78925 18414</a></span>
       </div>
     </form>
   )
