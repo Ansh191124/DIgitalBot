@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 // CONFIGURATION - FORCE LOCALHOST FOR DEVELOPMENT
 // ==========================================
 const API_BASE_URL = 'https://digital-api-tef8.onrender.com/api'; // FORCED LOCALHOST
-const WS_URL = 'ws://digital-api-tef8.onrender.com/ws'; // FORCED LOCALHOST
+const WS_URL = 'wss://digital-api-tef8.onrender.com/ws'; // FORCED LOCALHOST
 console.log('🌐 API_BASE_URL:', API_BASE_URL);
 console.log('🔌 WS_URL:', WS_URL);
 
@@ -15,8 +15,8 @@ console.log('🔌 WS_URL:', WS_URL);
 // ==========================================
 type Call = {
   _id: string;
-  from?: string;
-  to?: string;
+  from_number?: string;
+  to_number?: string;
   status?: string;
   startTime?: string;
   duration?: number;
@@ -170,11 +170,11 @@ const LeadDetailsModal = ({ call, onClose }: { call: Call; onClose: () => void }
             </div>
             <div>
               <h3 className="text-xs sm:text-sm font-medium text-gray-500 mb-2">From</h3>
-              <p className="text-sm sm:text-base text-gray-900 break-all">{formatPhone(call.from || '')}</p>
+              <p className="text-sm sm:text-base text-gray-900 break-all">{(call.from_number || '')}</p>
             </div>
             <div>
               <h3 className="text-xs sm:text-sm font-medium text-gray-500 mb-2">To</h3>
-              <p className="text-sm sm:text-base text-gray-900 break-all">{formatPhone(call.to || '')}</p>
+              <p className="text-sm sm:text-base text-gray-900 break-all">{(call.to_number || '')}</p>
             </div>
           </div>
 
@@ -220,7 +220,48 @@ const LeadDetailsModal = ({ call, onClose }: { call: Call; onClose: () => void }
             <div>
               <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3">Transcription</h3>
               <div className="bg-gray-50 rounded-xl p-4 max-h-64 overflow-y-auto border border-gray-200">
-                <p className="text-xs sm:text-sm text-gray-700 whitespace-pre-wrap">{call.transcription || call.transcript}</p>
+                {(() => {
+                  let t = call.transcription || call.transcript;
+                  if (!t) return null;
+                  let messages = [];
+                  if (typeof t === 'string') {
+                    try {
+                      const parsed = JSON.parse(t);
+                      if (Array.isArray(parsed)) messages = parsed;
+                      else if (parsed.chat && Array.isArray(parsed.chat)) messages = parsed.chat;
+                      else if (parsed.messages && Array.isArray(parsed.messages)) messages = parsed.messages;
+                      else return <p className="text-xs sm:text-sm text-gray-700 whitespace-pre-wrap">{t}</p>;
+                    } catch {
+                      return <p className="text-xs sm:text-sm text-gray-700 whitespace-pre-wrap">{t}</p>;
+                    }
+                  } else if (Array.isArray(t)) {
+                    messages = t;
+                  } else if (typeof t === 'object' && t !== null) {
+                    if ('chat' in t && Array.isArray((t as any).chat)) messages = (t as any).chat;
+                    else if ('messages' in t && Array.isArray((t as any).messages)) messages = (t as any).messages;
+                    else return <p className="text-xs sm:text-sm text-gray-700 whitespace-pre-wrap">{Object.values(t).join('\n')}</p>;
+                  }
+                  if (!messages.length) return <p className="text-xs sm:text-sm text-gray-700 whitespace-pre-wrap">No transcription available.</p>;
+                  return (
+                    <div className="space-y-2">
+                      {messages.map((msg: any, idx: number) => {
+                        const role = msg.role || msg.speaker || '';
+                        const isUser = role === 'user' || role === 'Customer';
+                        const isAssistant = role === 'assistant' || role === 'Agent';
+                        return (
+                          <div key={idx} className={`flex ${isUser ? 'justify-start' : 'justify-end'}`}>
+                            <div className={`rounded-xl px-4 py-2 max-w-[80%] text-sm whitespace-pre-wrap shadow-md ${isUser ? 'bg-blue-100 text-blue-900' : isAssistant ? 'bg-green-100 text-green-900' : 'bg-gray-200 text-gray-800'}`}>
+                              <span className="block font-semibold mb-1 text-xs opacity-70">
+                                {isUser ? 'User' : isAssistant ? 'Assistant' : (role || 'Speaker')}
+                              </span>
+                              {msg.content || msg.text || JSON.stringify(msg)}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
               </div>
             </div>
           )}
@@ -336,7 +377,7 @@ function CallCard({
                   ID: {call._id.substring(0, 8)}
                 </span>
                 <span className="text-xs sm:text-sm text-gray-700 font-medium break-all">
-                  {formatPhone(call.from || '')} → {formatPhone(call.to || '')}
+                  {(call.from_number || '')} → {(call.to_number|| '')}
                 </span>
                 <span className="text-xs text-gray-500">{formatTimeAgo(call.startTime || call.createdAt)}</span>
                 <span className="text-xs sm:text-sm font-medium text-blue-700 bg-blue-50 px-2 py-1 rounded inline-block">
@@ -775,7 +816,7 @@ export default function LeadsPage() {
         return [
           call._id || '',
           call.name || 'Unknown',
-          call.phone || call.from || call.to || '',
+          call.phone || call.from_number || call.to_number|| '',
           callDate,
           call.duration || 0,
           leadQuality.toUpperCase(),
@@ -982,8 +1023,8 @@ export default function LeadsPage() {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(call => 
         call._id.toLowerCase().includes(term) ||
-        (call.from && call.from.toLowerCase().includes(term)) ||
-        (call.to && call.to.toLowerCase().includes(term)) ||
+        (call.from_number && call.from_number.toLowerCase().includes(term)) ||
+        (call.to_number && call.to_number.toLowerCase().includes(term)) ||
         (call.name && call.name.toLowerCase().includes(term)) ||
         (call.phone && call.phone.includes(term)) ||
         (call.productInterest && call.productInterest.toLowerCase().includes(term))

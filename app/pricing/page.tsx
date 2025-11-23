@@ -152,7 +152,7 @@ export default function Pricing() {
         {/* Decorative Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
           <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(168, 85, 247, 0.2) 1px, transparent 1px),
+            backgroundImage: `linear-gradient(to right, rgba(168, 86, 247, 0.2) 1px, transparent 1px),
                              linear-gradient(to bottom, rgba(249, 115, 22, 0.2) 1px, transparent 1px)`,
             backgroundSize: '60px 60px'
           }}></div>
