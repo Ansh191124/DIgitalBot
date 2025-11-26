@@ -117,34 +117,34 @@ export function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="fixed left-0 right-0 top-16 mx-auto max-w-7xl px-6 z-50"
+                    className="fixed left-0 right-0 top-16 mx-auto max-w-4xl px-4 z-50"
                   >
-                    <div className="bg-gradient-to-br from-orange-50 to-white border border-orange-200 rounded-3xl shadow-xl p-6"
+                    <div className="bg-gradient-to-br from-orange-50 to-white border border-orange-200 rounded-2xl shadow-xl p-4"
                   >
                     {/* Header */}
-                    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-orange-200">
-                      <Activity className="w-5 h-5 text-orange-600" />
-                      <h3 className="text-base font-bold text-orange-600">AI-Powered Solutions</h3>
+                    <div className="flex items-center gap-2 mb-3 pb-2 border-b border-orange-200">
+                      <Activity className="w-4 h-4 text-orange-600" />
+                      <h3 className="text-sm font-bold text-orange-600">AI-Powered Solutions</h3>
                     </div>
 
                     {/* Services Grid - 3x3 */}
-                    <div className="grid grid-cols-3 gap-3 mb-4">
+                    <div className="grid grid-cols-3 gap-2 mb-3">
                       {services.map((service) => {
                         const Icon = service.icon
                         return (
                           <a
                             key={service.href}
                             href={service.href}
-                            className="flex flex-col items-start gap-2 p-4 rounded-xl hover:bg-white transition-all group border border-transparent hover:border-orange-200"
+                            className="flex flex-col items-start gap-1.5 p-3 rounded-lg hover:bg-white transition-all group border border-transparent hover:border-orange-200"
                           >
-                            <div className="p-2 rounded-lg bg-orange-500 group-hover:bg-orange-600 transition-colors">
-                              <Icon className="w-5 h-5 text-white" />
+                            <div className="p-1.5 rounded-md bg-orange-500 group-hover:bg-orange-600 transition-colors">
+                              <Icon className="w-4 h-4 text-white" />
                             </div>
                             <div>
-                              <div className="text-sm font-semibold text-orange-600 mb-1">
+                              <div className="text-xs font-semibold text-orange-600 mb-0.5">
                                 {service.label}
                               </div>
-                              <div className="text-xs text-gray-600">{service.desc}</div>
+                              <div className="text-[10px] text-gray-600">{service.desc}</div>
                             </div>
                           </a>
                         )
@@ -152,24 +152,24 @@ export function Header() {
                     </div>
 
                     {/* Premium Services */}
-                    <div className="pt-3 border-t border-orange-200">
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="w-2 h-2 bg-orange-600 rounded-full animate-pulse" />
-                        <span className="text-xs font-semibold text-gray-600 uppercase">Premium Services</span>
+                    <div className="pt-2 border-t border-orange-200">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <div className="w-1.5 h-1.5 bg-orange-600 rounded-full animate-pulse" />
+                        <span className="text-[10px] font-semibold text-gray-600 uppercase">Premium Services</span>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
                         <a
                           href="/signup?service=lead"
-                          className="flex items-center gap-2 p-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-all text-sm font-semibold"
+                          className="flex items-center gap-1.5 p-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md transition-all text-xs font-semibold"
                         >
-                          <BarChart3 className="w-4 h-4" />
+                          <BarChart3 className="w-3 h-3" />
                           Lead Analysis
                         </a>
                         <a
                           href="/signup?service=appointment"
-                          className="flex items-center gap-2 p-2.5 bg-white hover:bg-orange-50 border border-orange-300 text-orange-600 rounded-lg transition-all text-sm font-semibold"
+                          className="flex items-center gap-1.5 p-2 bg-white hover:bg-orange-50 border border-orange-300 text-orange-600 rounded-md transition-all text-xs font-semibold"
                         >
-                          <Phone className="w-4 h-4" />
+                          <Phone className="w-3 h-3" />
                           Appointments
                         </a>
                       </div>
