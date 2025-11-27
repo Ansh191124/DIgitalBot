@@ -158,20 +158,19 @@ export function Header() {
                         <span className="text-[10px] font-semibold text-gray-600 uppercase">Premium Services</span>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        <a
-                          href="/signup?service=lead"
-                          className="flex items-center gap-1.5 p-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md transition-all text-xs font-semibold"
-                        >
-                          <BarChart3 className="w-3 h-3" />
+                       <Link href="/services/leads"
+                        className="flex items-center gap-1.5 p-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md transition-all text-xs font-semibold">
+                            <BarChart3 className="w-3 h-3" />
                           Lead Analysis
-                        </a>
-                        <a
-                          href="/signup?service=appointment"
-                          className="flex items-center gap-1.5 p-2 bg-white hover:bg-orange-50 border border-orange-300 text-orange-600 rounded-md transition-all text-xs font-semibold"
-                        >
-                          <Phone className="w-3 h-3" />
-                          Appointments
-                        </a>
+                        </Link>
+
+<Link
+  href="/services/appointments"
+  className="flex items-center gap-1.5 p-2 bg-white hover:bg-orange-50 border border-orange-300 text-orange-600 rounded-md transition-all text-xs font-semibold"
+>
+  <Phone className="w-3 h-3" />
+  Appointments
+</Link>
                       </div>
                     </div>
                     </div>

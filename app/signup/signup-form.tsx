@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { PageBackground } from '@/components/page-background'
+import { Sparkles, Lock, Mail, User } from 'lucide-react'
 
 interface SignupFormProps {
   initialService?: string
@@ -19,22 +20,11 @@ export function SignupForm({ initialService }: SignupFormProps) {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [selectedService, setSelectedService] = useState<ServiceKey>('')
 
-  // Initialize service from server-provided search param
+  // Initialize service based on query
   useEffect(() => {
-    if (!initialService) {
-      setSelectedService('')
-      return
-    }
-
-    if (initialService === 'lead') {
-      setSelectedService('lead-analysis')
-    } else if (initialService === 'appointment') {
-      setSelectedService('appointment')
-    } else if (initialService === 'lead-analysis') {
-      setSelectedService('lead-analysis')
-    } else {
-      setSelectedService('')
-    }
+    if (!initialService) return
+    if (initialService === 'lead' || initialService === 'lead-analysis') setSelectedService('lead-analysis')
+    else if (initialService === 'appointment') setSelectedService('appointment')
   }, [initialService])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,67 +82,88 @@ export function SignupForm({ initialService }: SignupFormProps) {
   const { title, gradient } = getServiceInfo()
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-white relative overflow-hidden">
+    <div className="flex justify-center items-center min-h-screen bg-white relative overflow-hidden px-4">
       <PageBackground />
+
+      {/* Animated glow */}
+      <div className="absolute w-[700px] h-[700px] bg-orange-500/20 blur-[180px] rounded-full -top-40 -left-20 animate-pulse" />
+
       <motion.form
         onSubmit={handleSubmit}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="bg-white/95 backdrop-blur-md p-8 rounded-lg shadow-2xl shadow-orange-500/30 w-96 border-2 border-orange-500 relative z-10"
+        className="relative z-10 bg-white/90 backdrop-blur-2xl p-10 rounded-3xl shadow-2xl shadow-orange-500/40 w-full max-w-md border border-orange-400/70 hover:shadow-orange-500/60 hover:scale-[1.02] transition-transform duration-300"
       >
-        <h2 className={`text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r ${gradient}`}>
-          Sign Up for {title}
-        </h2>
+        {/* Header */}
+        <div className="flex items-center gap-2 mb-6">
+          <Sparkles className="w-5 h-5 text-orange-600" />
+          <h2 className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${gradient}`}>
+            Sign Up for {title}
+          </h2>
+        </div>
 
+        {/* Name */}
         <div className="mb-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            value={form.name}
-            onChange={handleChange}
-            className={`border p-2 w-full rounded ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
-          />
+          <div className="flex items-center gap-2 border rounded px-3 py-2 bg-white/70 backdrop-blur">
+            <User className="w-5 h-5 text-gray-500" />
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              value={form.name}
+              onChange={handleChange}
+              className="w-full bg-transparent outline-none"
+            />
+          </div>
           {errors.name && <p className="text-sm text-red-500 mt-1">{errors.name}</p>}
         </div>
 
+        {/* Email */}
         <div className="mb-4">
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            className={`border p-2 w-full rounded ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-          />
+          <div className="flex items-center gap-2 border rounded px-3 py-2 bg-white/70 backdrop-blur">
+            <Mail className="w-5 h-5 text-gray-500" />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={form.email}
+              onChange={handleChange}
+              className="w-full bg-transparent outline-none"
+            />
+          </div>
           {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email}</p>}
         </div>
 
+        {/* Password */}
         <div className="mb-6">
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            className={`border p-2 w-full rounded ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
-          />
+          <div className="flex items-center gap-2 border rounded px-3 py-2 bg-white/70 backdrop-blur">
+            <Lock className="w-5 h-5 text-gray-500" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={form.password}
+              onChange={handleChange}
+              className="w-full bg-transparent outline-none"
+            />
+          </div>
           {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password}</p>}
         </div>
 
+        {/* Service error */}
         {errors.service && <p className="text-sm text-red-500 mb-4">{errors.service}</p>}
 
+        {/* Button */}
         <motion.button
           type="submit"
           whileTap={{ scale: 0.97 }}
           disabled={loading}
-          className="bg-orange-600 text-white w-full py-2 rounded hover:bg-orange-700 transition disabled:opacity-70"
+          className="bg-gradient-to-r from-orange-500 to-orange-700 text-white w-full py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition disabled:opacity-60"
         >
-          {loading ? 'Registering...' : 'Register'}
+          {loading ? 'Registering...' : 'Create Account'}
         </motion.button>
       </motion.form>
     </div>
   )
 }
-
