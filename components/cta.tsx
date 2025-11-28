@@ -1,200 +1,137 @@
 "use client"
 
+import { ArrowRight, Award, CheckCircle2, Phone, Shield, Star, TrendingUp, Users, Zap } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { Sparkles, ArrowRight, Zap, TrendingUp, Award, CheckCircle2, Phone, Users } from "lucide-react"
 
 export function CTA() {
   const router = useRouter()
 
   const features = [
-    { icon: CheckCircle2, text: "No Credit Card Required" },
-    { icon: Zap, text: "Setup in 5 Minutes" },
-    { icon: Award, text: "24/7 AI Support" },
+    { icon: CheckCircle2, text: "No Credit Card" },
+    { icon: Zap, text: "5 Min Setup" },
+    { icon: Award, text: "24/7 Support" },
     { icon: TrendingUp, text: "Scale Instantly" }
   ]
 
   const stats = [
-    { number: "10K+", label: "Active Businesses" },
-    { number: "99.9%", label: "Uptime SLA" },
-    { number: "24/7", label: "AI Available" },
-    { number: "5M+", label: "Calls Handled" }
+    { number: "10K+", label: "Businesses" },
+    { number: "99.9%", label: "Uptime" },
+    { number: "24/7", label: "Available" },
+    { number: "5M+", label: "Calls" }
   ]
 
   return (
-    <section className="relative py-24 overflow-hidden bg-white">
-      {/* Background Decorations */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-500/20 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.05]" style={{
-        backgroundImage: `linear-gradient(to right, rgba(168, 85, 247, 0.3) 1px, transparent 1px),
-                         linear-gradient(to bottom, rgba(249, 115, 22, 0.3) 1px, transparent 1px)`,
-        backgroundSize: '50px 50px'
-      }} />
-      
-      {/* Animated Orbs - Trading Theme */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-orange-500/30 to-orange-400/30 rounded-full blur-3xl animate-float-slow" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-tl from-orange-400/25 to-orange-500/25 rounded-full blur-3xl animate-float-reverse" />
+    <section className="relative py-12 overflow-hidden bg-gradient-to-br from-orange-50 via-white to-orange-100/30">
+      {/* Compact Background Elements */}
+      <div className="absolute top-10 left-20 w-24 h-24 bg-gradient-to-br from-orange-400/20 to-orange-500/20 rounded-full blur-xl animate-pulse" />
+      <div className="absolute bottom-10 right-20 w-32 h-32 bg-gradient-to-br from-orange-500/15 to-orange-600/15 rounded-full blur-xl animate-pulse delay-1000" />
 
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          @keyframes float-slow {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            25% { transform: translateY(-15px) translateX(5px); }
-            50% { transform: translateY(-20px) translateX(-5px); }
-            75% { transform: translateY(-15px) translateX(5px); }
-          }
-          @keyframes float-reverse {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            25% { transform: translateY(15px) translateX(-5px); }
-            50% { transform: translateY(20px) translateX(5px); }
-            75% { transform: translateY(15px) translateX(-5px); }
-          }
-          .animate-float-slow {
-            animation: float-slow 6s ease-in-out infinite;
-          }
-          .animate-float-reverse {
-            animation: float-reverse 5s ease-in-out infinite;
-          }
-        `
-      }} />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-5xl">
         
-        {/* Main CTA Card */}
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-gradient-to-br from-orange-500 via-orange-500 to-orange-600 rounded-3xl p-1 shadow-2xl shadow-orange-500/40 relative overflow-hidden group">
-            {/* Animated shimmer effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-            
-            <div className="bg-white/95 backdrop-blur-md rounded-[22px] p-12 md:p-16 relative border-2 border-orange-500/30">
-              {/* Content */}
-              <div className="text-center relative z-10">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500/20 to-orange-600/20 border-2 border-orange-500/50 rounded-full mb-6 backdrop-blur-sm">
-                  <Sparkles className="w-4 h-4 text-orange-600 animate-pulse" />
-                  <span className="text-sm font-bold text-orange-600">Limited Time Offer</span>
-                </div>
+        {/* Split Layout Design */}
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
+          
+          {/* Left Side - Content */}
+          <div className="space-y-6">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full mb-4">
+              <Star className="w-3 h-3 text-white animate-pulse" />
+              <span className="text-xs font-bold text-white">Start Free Today</span>
+            </div>
 
-                {/* Heading */}
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
-                  <span className="bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 bg-clip-text text-transparent">
-                    Ready to Transform Your
-                  </span>
-                  <br />
-                  <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 bg-clip-text text-transparent">
-                    Customer Experience?
-                  </span>
-                </h2>
+            {/* Heading */}
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
+              <span className="text-gray-900">Transform Your Business with</span>
+              <br />
+              <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                AI Voice Agents
+              </span>
+            </h2>
 
-                {/* Subheading */}
-                <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-                  Join thousands of businesses automating customer interactions with AI.
-                  <span className="block mt-2 bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent font-semibold">Start free, scale fast, succeed faster.</span>
-                </p>
+            {/* Subheading */}
+            <p className="text-base text-gray-700 leading-relaxed">
+              Join thousands of businesses automating customer interactions with AI.
+              <span className="block mt-2 text-orange-600 font-semibold">Start free, scale fast, succeed faster.</span>
+            </p>
 
-                {/* Features Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-4xl mx-auto">
-                  {features.map((feature, idx) => {
-                    const colors = [
-                      { border: 'border-orange-500/50', hover: 'hover:border-orange-500', bg: 'from-orange-500/20 to-orange-500/20', iconBg: 'from-orange-400 to-orange-500', glow: 'from-orange-500/20 to-orange-500/20' },
-                      { border: 'border-orange-500/50', hover: 'hover:border-orange-500', bg: 'from-orange-500/20 to-emerald-500/20', iconBg: 'from-orange-400 to-emerald-500', glow: 'from-orange-500/20 to-emerald-500/20' },
-                      { border: 'border-emerald-500/50', hover: 'hover:border-emerald-500', bg: 'from-emerald-500/20 to-orange-500/20', iconBg: 'from-emerald-400 to-orange-500', glow: 'from-emerald-500/20 to-orange-500/20' },
-                      { border: 'border-orange-500/50', hover: 'hover:border-orange-400', bg: 'from-orange-500/20 to-blue-500/20', iconBg: 'from-orange-400 to-blue-500', glow: 'from-orange-500/20 to-blue-500/20' }
-                    ]
-                    const color = colors[idx]
-                    return (
-                      <div key={idx} className={`flex flex-col items-center gap-2 justify-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border-2 ${color.border} ${color.hover} transition-all duration-300 group/feature hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-orange-500/30 relative`}>
-                        {/* Glow effect */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${color.glow} rounded-xl blur-lg opacity-0 group-hover/feature:opacity-100 transition-opacity duration-300`}></div>
-                        
-                        {/* Icon container */}
-                        <div className="relative">
-                          <div className={`p-2 bg-gradient-to-br ${color.iconBg} rounded-lg shadow-md`}>
-                            {/* Glossy overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-white/30 via-white/10 to-transparent rounded-lg pointer-events-none"></div>
-                            <feature.icon className="w-5 h-5 text-white relative z-10 drop-shadow-lg group-hover/feature:scale-110 transition-transform" />
-                          </div>
-                        </div>
-                        
-                        <span className="text-xs font-semibold text-gray-800 relative z-10">{feature.text}</span>
-                      </div>
-                    )
-                  })}
-                </div>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                  <button
-                    className="group/btn px-10 py-7 bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-2xl font-bold text-lg shadow-2xl shadow-orange-500/50 hover:shadow-orange-600/70 transition-all duration-300 hover:scale-105 flex items-center gap-3"
-                    onClick={() => router.push("/signup")}
-                  >
-                    <Phone className="w-6 h-6" />
-                    Start Free Trial
-                    <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
-
-                  <button
-                    className="px-10 py-7 bg-white/90 border-2 border-orange-500/50 hover:bg-orange-50 hover:border-orange-500 text-gray-900 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center gap-3 hover:scale-105 shadow-lg backdrop-blur-sm"
-                    onClick={() => router.push("/contact")}
-                  >
-                    <Users className="w-6 h-6 text-orange-600" />
-                    Talk to Sales
-                  </button>
-                </div>
-
-                {/* Trust Indicators */}
-                <div className="pt-8 border-t-2 border-orange-500/20">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-                    {stats.map((stat, idx) => {
-                      const gradients = [
-                        'from-orange-600 to-orange-700',
-                        'from-orange-600 to-emerald-600',
-                        'from-emerald-600 to-orange-600',
-                        'from-orange-600 to-blue-600'
-                      ]
-                      return (
-                        <div key={idx} className="text-center group">
-                          <div className={`text-3xl md:text-4xl font-extrabold bg-gradient-to-r ${gradients[idx]} bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform`}>
-                            {stat.number}
-                          </div>
-                          <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
-                        </div>
-                      )
-                    })}
+            {/* Features Grid - Horizontal */}
+            <div className="grid grid-cols-2 gap-3">
+              {features.map((feature, idx) => (
+                <div key={idx} className="flex items-center gap-2 p-3 bg-white/80 backdrop-blur-sm rounded-xl border border-orange-300/50 hover:border-orange-500 transition-all duration-300 hover:scale-[1.02] shadow-sm">
+                  <div className="p-1 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg">
+                    <feature.icon className="w-3 h-3 text-white" />
                   </div>
+                  <span className="text-xs font-semibold text-gray-800">{feature.text}</span>
                 </div>
+              ))}
+            </div>
 
-                {/* Fine Print */}
-                <p className="text-xs text-gray-500 mt-8">
-                  No credit card required • Cancel anytime • Enterprise support available
-                </p>
-              </div>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                className="group/btn px-6 py-4 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-xl font-bold text-sm shadow-lg shadow-orange-500/30 hover:shadow-orange-600/40 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                onClick={() => router.push("/signup")}
+              >
+                <Phone className="w-4 h-4" />
+                Start Free Trial
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </button>
 
-              {/* Decorative Elements */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-500/20 to-transparent rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-orange-500/20 to-transparent rounded-full blur-3xl" />
+              <button
+                className="px-6 py-4 bg-white/90 border border-orange-300/50 hover:bg-orange-50 hover:border-orange-500 text-gray-900 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 shadow-sm backdrop-blur-sm"
+                onClick={() => router.push("/contact")}
+              >
+                <Users className="w-4 h-4 text-orange-600" />
+                Talk to Sales
+              </button>
             </div>
           </div>
 
-          {/* Additional Trust Section */}
-          <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-6 flex-wrap justify-center">
-              <div className="flex items-center gap-2 text-gray-700">
-                <Award className="w-5 h-5 text-orange-600" />
-                <span className="text-sm font-semibold">SOC 2 Certified</span>
-              </div>
-              <div className="w-px h-6 bg-orange-500/30" />
-              <div className="flex items-center gap-2 text-gray-700">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                <span className="text-sm font-semibold">GDPR Compliant</span>
-              </div>
-              <div className="w-px h-6 bg-orange-500/30" />
-              <div className="flex items-center gap-2 text-gray-700">
-                <TrendingUp className="w-5 h-5 text-orange-600" />
-                <span className="text-sm font-semibold">Trusted by Fortune 500</span>
+          {/* Right Side - Stats Card */}
+          <div className="relative">
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-orange-300/50 shadow-lg p-6 relative overflow-hidden">
+              {/* Decorative Elements */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-orange-500/20 to-transparent rounded-full blur-xl" />
+              <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-orange-500/15 to-transparent rounded-full blur-xl" />
+              
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-4">
+                  <Shield className="w-4 h-4 text-orange-600" />
+                  <span className="text-sm font-bold text-orange-600">Trusted Platform</span>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  {stats.map((stat, idx) => (
+                    <div key={idx} className="text-center p-3 bg-gradient-to-br from-orange-50/80 to-white/80 rounded-xl border border-orange-200/50">
+                      <div className="text-xl font-extrabold bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent mb-1">
+                        {stat.number}
+                      </div>
+                      <div className="text-xs text-gray-600 font-medium">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Trust Indicators */}
+                <div className="space-y-2 text-xs text-gray-600">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                    <span>SOC 2 Certified • GDPR Compliant</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Award className="w-3 h-3 text-orange-600" />
+                    <span>Trusted by Fortune 500 Companies</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-3 h-3 text-orange-600" />
+                    <span>No credit card required • Cancel anytime</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   )

@@ -1,8 +1,8 @@
 "use client"
 
-import Link from "next/link"
+import { ArrowRight, Award, Bot, Building2, Clock, Facebook, Globe, HeadphonesIcon, Instagram, Linkedin, Mail, MessageSquare, Phone, Shield, Sparkles, TrendingUp, Twitter, Users, Zap } from "lucide-react"
 import Image from "next/image"
-import { Twitter, Linkedin, Mail, Instagram, Facebook, Sparkles, Zap, Phone, HeadphonesIcon, Bot, MessageSquare, Users, Building2, ArrowRight, Globe, Clock, Shield, Award, TrendingUp } from "lucide-react"
+import Link from "next/link"
 
 export function Footer() {
   
@@ -42,11 +42,11 @@ export function Footer() {
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="text-white">
-                <h3 className="text-2xl md:text-3xl font-bold mb-2 flex items-center gap-3">
-                  <Sparkles className="w-8 h-8 animate-pulse" />
+                <h3 className="text-lg md:text-xl font-bold mb-2 flex items-center gap-3">
+                  <Sparkles className="w-5 h-5 animate-pulse" />
                   Start Your AI Journey Today
                 </h3>
-                <p className="text-white/95 text-base md:text-lg font-medium">
+                <p className="text-white/95 text-sm md:text-base font-medium">
                   Join 10,000+ businesses automating customer interactions with AI
                 </p>
               </div>
