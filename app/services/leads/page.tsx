@@ -1,70 +1,77 @@
 "use client";
 
-import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import Link from "next/link";
-import Image from "next/image";
-import { 
-  BarChart3, Brain, PhoneCall, TrendingUp, CheckCircle, 
-  Target, Zap, Award, Users, MessageSquare,
-  ArrowRight, Star, Shield, Clock, ChevronRight, Sparkles
+import { Header } from "@/components/header";
+import {
+  ArrowRight,
+  Bot,
+  Brain,
+  CheckCircle,
+  Clock,
+  Phone,
+  PhoneCall,
+  Sparkles,
+  Star,
+  Target,
+  TrendingUp,
+  Users,
+  Zap
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function LeadsPage() {
-
   const features = [
     {
-      icon: <Brain className="w-12 h-12 text-orange-600 mb-4" />,
-      title: "AI Lead Scoring & Qualification",
-      description: "Advanced machine learning analyzes 50+ data points to qualify and score leads based on engagement, behavior, sentiment, and conversion likelihood."
+      icon: <Brain className="w-5 h-5 text-black" />,
+      title: "AI Lead Scoring",
+      description: "Machine learning analyzes 50+ data points to qualify and score leads based on conversion likelihood.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
     },
     {
-      icon: <PhoneCall className="w-12 h-12 text-orange-600 mb-4" />,
-      title: "Call Analytics & Transcription",
-      description: "AI-powered call transcription, sentiment analysis, intent detection, and keyword extraction to reveal real purchase signals instantly."
+      icon: <PhoneCall className="w-5 h-5 text-black" />,
+      title: "Call Analytics",
+      description: "AI-powered call transcription, sentiment analysis, and intent detection reveal purchase signals instantly.",
+      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80"
     },
     {
-      icon: <TrendingUp className="w-12 h-12 text-orange-600 mb-4" />,
-      title: "Predictive Lead Analytics",
-      description: "Predict future conversions, identify at-risk leads, and optimize sales performance with powerful predictive AI insights."
+      icon: <TrendingUp className="w-5 h-5 text-black" />,
+      title: "Predictive Analytics",
+      description: "Forecast conversions, identify at-risk leads, and optimize sales performance with AI insights.",
+      image: "https://images.unsplash.com/photo-1551434678-efb963407044?auto=format&fit=crop&w=800&q=80"
     },
     {
-      icon: <Target className="w-12 h-12 text-orange-600 mb-4" />,
-      title: "Smart Lead Routing",
-      description: "Automatically route hot leads to the right sales agents using AI that understands performance, availability, and lead category."
-    },
-    {
-      icon: <MessageSquare className="w-12 h-12 text-orange-600 mb-4" />,
-      title: "Multi-Channel Lead Tracking",
-      description: "Track leads from phone calls, SMS, email, chats, forms, and social media. One unified timeline for each customer."
-    },
-    {
-      icon: <Zap className="w-12 h-12 text-orange-600 mb-4" />,
-      title: "Instant Lead Alerts",
-      description: "Real-time alerts when hot leads engage, call, or show strong buying signals. Never miss an opportunity again."
+      icon: <Target className="w-5 h-5 text-black" />,
+      title: "Smart Routing",
+      description: "Automatically route hot leads to the right sales agents using AI-powered distribution.",
+      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
     }
   ];
 
   const benefits = [
     {
-      icon: <Award className="w-8 h-8 text-orange-600" />,
-      title: "3x Higher Conversions",
-      description: "Businesses using AI lead scoring average 3x more conversions."
+      icon: <Zap className="w-10 h-10 text-cyan-400" />,
+      title: "3x More Qualified Leads",
+      description: "AI identifies high-converting prospects",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
     },
     {
-      icon: <Clock className="w-8 h-8 text-orange-600" />,
-      title: "70% Time Savings",
-      description: "Automate lead qualification and reduce manual tasks."
+      icon: <Clock className="w-10 h-10 text-cyan-400" />,
+      title: "Save 20+ Hours Weekly",
+      description: "Automated lead scoring",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
     },
     {
-      icon: <Users className="w-8 h-8 text-orange-600" />,
-      title: "500+ Leads Per Campaign",
-      description: "Analyze and manage bulk leads effortlessly at scale."
+      icon: <TrendingUp className="w-10 h-10 text-cyan-400" />,
+      title: "47% Higher Close Rate",
+      description: "Focus on best opportunities",
+      image: "https://images.unsplash.com/photo-1551434678-efb963407044?auto=format&fit=crop&w=800&q=80"
     },
     {
-      icon: <BarChart3 className="w-8 h-8 text-orange-600" />,
-      title: "Real-Time Dashboards",
-      description: "Monitor performance metrics, lead quality and call insights instantly."
+      icon: <Users className="w-10 h-10 text-cyan-400" />,
+      title: "Better Team Performance",
+      description: "AI-powered insights",
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
     }
   ];
 
@@ -113,501 +120,447 @@ export default function LeadsPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white via-orange-50/40 to-white">
+    <div className="min-h-screen flex flex-col bg-black relative overflow-hidden">
+      {/* Cyberpunk Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-32 h-32 bg-cyan-500 rounded-full opacity-8 animate-pulse blur-xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-36 h-36 bg-cyan-400 rounded-full opacity-8 animate-pulse blur-xl delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-cyan-300 rounded-full opacity-6 animate-pulse blur-xl delay-500"></div>
+      </div>
       
       <Header />
 
-      <main className="flex-1">
+      <main className="flex-1 relative z-10">
 
         {/* HERO SECTION */}
-        <section className="px-6 md:px-10 text-center max-w-7xl mx-auto mt-32 mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full text-orange-700 font-semibold text-sm mb-6">
-            <Sparkles className="w-4 h-4" />
+        <section className="px-4 text-center mt-16 mb-12 relative">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 shadow-lg shadow-cyan-400/20 text-cyan-300 font-semibold text-xs mb-4 uppercase tracking-widest" style={{
+            clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+          }}>
+            <Sparkles className="w-3 h-3" />
             AI-Powered Lead Intelligence
           </div>
 
-          <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-800 text-transparent bg-clip-text">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 leading-tight uppercase tracking-wider">
+            <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text" style={{
+              textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+            }}>
               Convert More Leads
             </span>
             <br />
-            <span className="text-gray-800">Using Real-Time AI Insights</span>
+            <span className="text-white" style={{
+              textShadow: '0 0 15px rgba(255, 255, 255, 0.3)'
+            }}>With AI Intelligence</span>
           </h1>
 
-          <p className="text-gray-600 text-lg md:text-xl max-w-4xl mx-auto mb-10 leading-relaxed">
-            Analyze <strong>500+ customer calls</strong> per campaign, identify high-intent buyers,
-            and close deals 3× faster with predictive AI analytics.
+          <p className="text-cyan-300 text-sm sm:text-base max-w-3xl mx-auto mb-6 leading-relaxed">
+            Transform your sales process with <strong className="text-cyan-400">AI lead scoring and qualification</strong> that captures every opportunity. 
+            Increase conversions by <strong className="text-cyan-400">3x</strong> and save <strong className="text-cyan-400">20+ hours weekly</strong>.
           </p>
 
           {/* CTA BUTTONS */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 mb-8">
             <Link
               href="/signup?service=lead"
-              className="group inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:scale-[1.03] hover:shadow-2xl transition-all duration-300"
+              className="group inline-flex items-center gap-2 bg-cyan-400 text-black px-6 py-3 text-sm font-bold hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-400/50 transition-all duration-300 uppercase tracking-widest" style={{
+                clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))',
+                boxShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+              }}
             >
               Start Free Trial
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
 
             <Link
               href="#demo"
-              className="inline-flex items-center gap-2 bg-white text-orange-700 px-8 py-4 rounded-xl text-lg font-semibold border-2 border-orange-300 hover:border-orange-500 hover:shadow-lg transition-all duration-300"
+              className="inline-flex items-center gap-2 bg-transparent text-cyan-400 px-6 py-3 text-sm font-bold border-2 border-cyan-400/50 hover:border-cyan-400 hover:bg-cyan-400/10 hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-300 uppercase tracking-widest" style={{
+                clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+              }}
             >
               Watch Demo
-              <PhoneCall className="w-5 h-5" />
+              <Phone className="w-4 h-4" />
             </Link>
           </div>
 
           {/* TRUST BADGES */}
-          <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-500 mb-12">
+          <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-cyan-300 mb-8">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-orange-600" /> No Credit Card Required
+              <CheckCircle className="w-5 h-5 text-cyan-400" style={{ boxShadow: '0 0 10px rgba(0, 255, 255, 0.6)' }} /> 
+              <span className="font-medium uppercase tracking-wider">No Credit Card Required</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-orange-600" /> 14-Day Free Trial
+              <CheckCircle className="w-5 h-5 text-cyan-400" style={{ boxShadow: '0 0 10px rgba(0, 255, 255, 0.6)' }} /> 
+              <span className="font-medium uppercase tracking-wider">14-Day Free Trial</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-orange-600" /> Cancel Anytime
+              <CheckCircle className="w-5 h-5 text-cyan-400" style={{ boxShadow: '0 0 10px rgba(0, 255, 255, 0.6)' }} /> 
+              <span className="font-medium uppercase tracking-wider">24/7 Support</span>
             </div>
           </div>
 
-        {/* HERO CONTENT WITH IMAGE */}
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            
-            {/* Left - Image */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-orange-200">
-              <Image
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80"
-                alt="AI-powered lead management dashboard showing real-time analytics"
-                width={1400}
-                height={800}
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            </div>
 
-            {/* Right - Key Benefits */}
-            <div className="space-y-6 text-left">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
-                Transform Your Sales Pipeline With AI
+        </section>
+
+        {/* MAIN CONTENT WITH IMAGE */}
+        <section className="px-4 mb-20">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            {/* LEFT: FEATURES */}
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 shadow-lg shadow-cyan-400/20 text-cyan-300 font-semibold text-xs mb-4 uppercase tracking-widest" style={{
+                clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+              }}>
+                <Bot className="w-3 h-3 animate-pulse" />
+                AI That Never Stops
+              </div>
+              
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 text-cyan-300 uppercase tracking-wider leading-tight" style={{
+                textShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+              }}>
+                Intelligent Lead Management
+                <br />
+                <span className="text-white">Powered By Advanced AI</span>
               </h2>
+              
+              <p className="text-sm sm:text-base text-cyan-300 leading-relaxed mb-6">
+                Discover leads with <strong className="text-cyan-400">the highest conversion potential</strong> using AI that analyzes behavior, engagement, and buying signals automatically.
+              </p>
 
               <div className="space-y-4">
-                <div className="flex gap-4 items-start bg-white p-4 rounded-xl border-2 border-orange-100 hover:border-orange-300 transition-all">
-                  <div className="flex-shrink-0 w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <Brain className="w-6 h-6 text-orange-600" />
+                <div className="flex items-center gap-3 bg-black/40 backdrop-blur-md border border-cyan-400/30 p-3 shadow-lg shadow-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
+                }}>
+                  <div className="w-10 h-10 bg-cyan-400 flex items-center justify-center" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                    boxShadow: '0 0 10px rgba(0, 255, 255, 0.6)'
+                  }}>
+                    <Brain className="w-4 h-4 text-black" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-800 mb-1">Intelligent Lead Scoring</h3>
-                    <p className="text-gray-600 text-sm">Machine learning algorithms automatically rank leads by conversion probability, helping your team focus on high-value opportunities first.</p>
+                    <h4 className="font-bold text-cyan-400 text-sm mb-1 uppercase tracking-wider">Smart Lead Scoring</h4>
+                    <p className="text-cyan-300 text-xs leading-relaxed">AI ranks leads by conversion probability automatically</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4 items-start bg-white p-4 rounded-xl border-2 border-orange-100 hover:border-orange-300 transition-all">
-                  <div className="flex-shrink-0 w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <PhoneCall className="w-6 h-6 text-orange-600" />
+                <div className="flex items-center gap-3 bg-black/40 backdrop-blur-md border border-cyan-400/30 p-3 shadow-lg shadow-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
+                }}>
+                  <div className="w-10 h-10 bg-cyan-400 flex items-center justify-center" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                    boxShadow: '0 0 10px rgba(0, 255, 255, 0.6)'
+                  }}>
+                    <PhoneCall className="w-4 h-4 text-black" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-800 mb-1">Real-Time Call Intelligence</h3>
-                    <p className="text-gray-600 text-sm">Advanced speech analytics transcribe and analyze customer conversations, detecting buying signals, sentiment shifts, and objection patterns instantly.</p>
+                    <h4 className="font-bold text-cyan-400 text-sm mb-1 uppercase tracking-wider">Call Intelligence</h4>
+                    <p className="text-cyan-300 text-xs leading-relaxed">Real-time transcription and sentiment analysis</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4 items-start bg-white p-4 rounded-xl border-2 border-orange-100 hover:border-orange-300 transition-all">
-                  <div className="flex-shrink-0 w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-orange-600" />
+                <div className="flex items-center gap-3 bg-black/40 backdrop-blur-md border border-cyan-400/30 p-3 shadow-lg shadow-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
+                }}>
+                  <div className="w-10 h-10 bg-cyan-400 flex items-center justify-center" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                    boxShadow: '0 0 10px rgba(0, 255, 255, 0.6)'
+                  }}>
+                    <TrendingUp className="w-4 h-4 text-black" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-800 mb-1">Predictive Sales Analytics</h3>
-                    <p className="text-gray-600 text-sm">Forecast conversion likelihood, identify churn risks early, and receive AI-driven recommendations to optimize your entire sales funnel performance.</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 items-start bg-white p-4 rounded-xl border-2 border-orange-100 hover:border-orange-300 transition-all">
-                  <div className="flex-shrink-0 w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-orange-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-800 mb-1">Enterprise-Grade Security</h3>
-                    <p className="text-gray-600 text-sm">Bank-level encryption, SOC 2 Type II compliance, and GDPR-ready data protection ensure your customer information stays completely secure.</p>
+                    <h4 className="font-bold text-cyan-400 text-sm mb-1 uppercase tracking-wider">Predictive Analytics</h4>
+                    <p className="text-cyan-300 text-xs leading-relaxed">Forecast conversions and identify at-risk leads</p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4">
-                <Link
-                  href="/signup?service=lead"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all"
-                >
-                  Get Started Free
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        {/* BENEFITS SECTION */}
-        <section className="bg-gradient-to-b from-orange-50/40 to-white py-20 px-6 md:px-10">
-          <div className="max-w-7xl mx-auto">
-
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-                Why Top Companies Choose AI Lead Analysis
-              </h2>
-              <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-                Boost conversions, empower your team, and automate your sales pipeline
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {benefits.map((benefit, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white p-6 rounded-2xl border border-orange-200 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div className="flex justify-center mb-4">{benefit.icon}</div>
-                  <h3 className="font-bold text-xl text-orange-700 text-center mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600 text-center text-sm">
-                    {benefit.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURES SECTION */}
-        <section className="py-20 px-6 md:px-10">
-          <div className="max-w-7xl mx-auto">
-
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-                Powerful AI Features Built for Growth
-              </h2>
-              <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-                Everything you need to qualify, analyze, and convert leads with AI automation
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {features.map((feature, idx) => (
-                <div
-                  key={idx}
-                  className="group p-8 bg-white rounded-3xl border-2 border-orange-200 shadow-md hover:border-orange-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-                >
-                  <div className="flex justify-center">
-                    {feature.icon}
-                  </div>
-
-                  <h3 className="font-bold text-xl text-orange-700 text-center mb-3">
-                    {feature.title}
-                  </h3>
-
-                  <p className="text-gray-600 text-center leading-relaxed">
-                    {feature.description}
-                  </p>
-
-                  <div className="mt-6 text-center">
-                    <button className="text-orange-600 font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                      Learn more <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* HOW IT WORKS */}
-        <section className="bg-gradient-to-b from-white via-orange-50/40 to-white py-20">
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
-
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-                How AI Lead Analysis Works
-              </h2>
-              <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-                Four simple steps to transform your lead process
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-
-              {/* Steps */}
-              <div className="space-y-10">
-
-                {/* Step 1 */}
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                    1
+              <div className="bg-black/60 backdrop-blur-md border border-cyan-400/30 p-4 shadow-xl shadow-cyan-400/20 mt-6" style={{
+                clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+              }}>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex -space-x-1">
+                    <div className="w-6 h-6 bg-cyan-400 border border-black flex items-center justify-center text-black font-bold text-xs" style={{
+                      clipPath: 'polygon(0 0, calc(100% - 2px) 0, 100% 2px, 100% 100%, 2px 100%, 0 calc(100% - 2px))'
+                    }}>SC</div>
+                    <div className="w-6 h-6 bg-cyan-400 border border-black flex items-center justify-center text-black font-bold text-xs" style={{
+                      clipPath: 'polygon(0 0, calc(100% - 2px) 0, 100% 2px, 100% 100%, 2px 100%, 0 calc(100% - 2px))'
+                    }}>MJ</div>
+                    <div className="w-6 h-6 bg-cyan-400 border border-black flex items-center justify-center text-black font-bold text-xs" style={{
+                      clipPath: 'polygon(0 0, calc(100% - 2px) 0, 100% 2px, 100% 100%, 2px 100%, 0 calc(100% - 2px))'
+                    }}>ER</div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-xl text-gray-800 mb-2">Import Your Leads</h3>
-                    <p className="text-gray-600">
-                      Upload leads instantly via CSV, CRM integration, or APIs — including HubSpot, Salesforce, Zoho, and more.
-                    </p>
+                    <div className="font-bold text-cyan-400 text-sm uppercase tracking-wider">10,000+ Businesses</div>
+                    <div className="text-xs text-cyan-300">Transforming lead management</div>
                   </div>
                 </div>
-
-                {/* Step 2 */}
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                    2
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl text-gray-800 mb-2">AI Analyzes Calls</h3>
-                    <p className="text-gray-600">
-                      Powerful AI transcribes, analyzes sentiment, identifies objections, and detects buying intent.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Step 3 */}
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                    3
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl text-gray-800 mb-2">Get Smart Insights</h3>
-                    <p className="text-gray-600">
-                      Receive instant lead scores, next-best-actions, behavioral predictions, and follow-up recommendations.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Step 4 */}
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                    4
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl text-gray-800 mb-2">Close More Deals</h3>
-                    <p className="text-gray-600">
-                      Prioritize ready-to-buy leads and accelerate your sales pipeline with AI assistance.
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Image */}
-              <div>
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-orange-200">
-                  <Image
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
-                    alt="AI Lead Analysis"
-                    width={800}
-                    height={600}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* USE CASES */}
-        <section className="py-20 px-6 md:px-10">
-          <div className="max-w-7xl mx-auto">
-
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-                Built For Every Industry
-              </h2>
-              <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-                AI-powered lead management tailored for your business needs
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {useCases.map((useCase, idx) => (
-                <div
-                  key={idx}
-                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
-                >
-                  <div className="relative h-64">
-                    <Image
-                      src={useCase.image}
-                      alt={useCase.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="font-bold text-xl mb-2">{useCase.title}</h3>
-                    <p className="text-sm">{useCase.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </section>
-
-        {/* TESTIMONIALS */}
-        <section className="bg-gradient-to-b from-orange-50 to-white py-20">
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
-
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-                Loved By Teams Worldwide
-              </h2>
-              <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-                See how AI lead intelligence boosted conversions and productivity
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white p-8 rounded-2xl border-2 border-orange-100 shadow-md hover:shadow-xl transition-all"
-                >
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3 h-3 fill-cyan-400 text-cyan-400" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.6))' }} />
                     ))}
                   </div>
+                  <span className="text-xs text-cyan-300 font-medium uppercase tracking-wider">4.9/5 Rating</span>
+                </div>
+              </div>
+            </div>
 
-                  <p className="text-gray-700 italic mb-6">
-                    "{testimonial.content}"
+            {/* RIGHT: IMAGE */}
+            <div className="relative">
+              <div className="relative overflow-hidden shadow-2xl border border-cyan-400/30" style={{
+                clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))',
+                boxShadow: '0 0 30px rgba(0, 255, 255, 0.3)'
+              }}>
+                <Image
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+                  alt="AI lead management dashboard"
+                  width={800}
+                  height={600}
+                  className="object-cover w-full h-full filter contrast-125 brightness-110"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/40 via-black/20 to-cyan-800/40"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              </div>
+              
+              {/* FLOATING STATS */}
+              <div className="absolute -bottom-4 -left-3 bg-black/80 backdrop-blur-md border border-cyan-400/50 p-3 shadow-xl shadow-cyan-400/30" style={{
+                clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+              }}>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-cyan-400 flex items-center justify-center" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))'
+                  }}>
+                    <TrendingUp className="w-4 h-4 text-black" />
+                  </div>
+                  <div>
+                    <div className="text-xl font-bold text-cyan-400">47%</div>
+                    <div className="text-xs text-cyan-300 uppercase">Higher Close Rate</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="absolute -top-3 -right-3 bg-black/80 backdrop-blur-md border border-cyan-400/50 p-3 shadow-xl shadow-cyan-400/30" style={{
+                clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+              }}>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-cyan-400 flex items-center justify-center" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))'
+                  }}>
+                    <Clock className="w-4 h-4 text-black" />
+                  </div>
+                  <div>
+                    <div className="text-xl font-bold text-cyan-400">20+</div>
+                    <div className="text-xs text-cyan-300 uppercase">Hours Saved</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* STATS SECTION */}
+        <section className="bg-black py-16 relative overflow-hidden">
+          <div className="px-4 relative">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 mb-4 uppercase tracking-wider" style={{
+                textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+              }}>
+                Proven Results That
+                <br />
+                <span className="text-white">Speak for Themselves</span>
+              </h2>
+              <p className="text-sm sm:text-base text-cyan-300 max-w-2xl mx-auto">
+                Join thousands of businesses experiencing the power of <strong className="text-cyan-400">AI-driven lead intelligence</strong>
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="text-center bg-black/60 backdrop-blur-md border border-cyan-400/30 p-4 shadow-lg shadow-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}>
+                  {/* Image */}
+                  <div className="relative w-full h-24 mb-3 overflow-hidden border border-cyan-400/30" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))'
+                  }}>
+                    <Image
+                      src={benefit.image}
+                      alt={benefit.title}
+                      fill
+                      className="object-cover filter contrast-125 brightness-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/30 to-black/20"></div>
+                  </div>
+                  
+                  <div className="flex justify-center mb-3" style={{
+                    filter: 'drop-shadow(0 0 10px rgba(0, 255, 255, 0.6))'
+                  }}>
+                    {benefit.icon}
+                  </div>
+                  <div className="text-xl sm:text-2xl font-bold text-cyan-400 mb-1">{benefit.title.split(' ')[0]}</div>
+                  <div className="text-cyan-300 font-medium text-xs uppercase tracking-wider">{benefit.title.split(' ').slice(1).join(' ')}</div>
+                  <div className="text-cyan-300/80 text-xs mt-1">{benefit.description}</div>
+                </div>
+              ))}
+            </div>
+            
+            {/* CYBERPUNK BADGE */}
+            <div className="flex justify-center mt-8">
+              <div className="bg-black/60 backdrop-blur-md border border-cyan-400/50 px-4 py-3 shadow-lg shadow-cyan-400/20" style={{
+                clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+              }}>
+                <div className="flex items-center gap-3">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-cyan-400 text-cyan-400" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.6))' }} />
+                    ))}
+                  </div>
+                  <span className="text-cyan-300 font-semibold text-sm uppercase tracking-wider">Rated #1 AI Lead Platform</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FEATURES GRID */}
+        <section className="bg-black py-16 relative overflow-hidden">
+          <div className="px-4">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 shadow-lg shadow-cyan-400/20 text-cyan-300 font-semibold text-xs mb-4 uppercase tracking-widest" style={{
+                clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+              }}>
+                <Sparkles className="w-3 h-3" />
+                Complete AI Solution
+              </div>
+              
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-cyan-300 uppercase tracking-wider leading-tight" style={{
+                textShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+              }}>
+                Everything You Need to
+                <br />
+                <span className="text-white">Qualify & Convert Leads</span>
+              </h2>
+              <p className="text-sm sm:text-base text-cyan-300 max-w-3xl mx-auto leading-relaxed">
+                Powerful AI-driven features designed to capture every opportunity and maximize your conversion rates
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4 mb-12">
+              {features.map((feature, index) => (
+                <div key={index} className="bg-black/60 backdrop-blur-md border border-cyan-400/30 p-4 shadow-lg shadow-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}>
+                  {/* Image */}
+                  <div className="relative w-full h-32 mb-4 overflow-hidden border border-cyan-400/30" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))'
+                  }}>
+                    <Image
+                      src={feature.image}
+                      alt={feature.title}
+                      fill
+                      className="object-cover filter contrast-125 brightness-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/30 to-black/20"></div>
+                  </div>
+                  
+                  <div className="w-10 h-10 bg-cyan-400 flex items-center justify-center mb-3" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                    boxShadow: '0 0 10px rgba(0, 255, 255, 0.6)'
+                  }}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="font-bold text-cyan-400 text-sm mb-2 uppercase tracking-wider">
+                    {feature.title}
+                  </h3>
+                  <p className="text-cyan-300 text-xs leading-relaxed mb-2">
+                    {feature.description}
                   </p>
-
-                  <div className="border-t pt-4">
-                    <p className="font-bold text-gray-800">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
+                  <div className="flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase">
+                    <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" style={{ boxShadow: '0 0 5px rgba(0, 255, 255, 0.8)' }}></div>
+                    AI Powered
                   </div>
                 </div>
               ))}
             </div>
-
           </div>
         </section>
 
-        {/* STATS */}
-        <section className="py-20 bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 text-white">
-          <div className="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-4 gap-8 text-center">
-
-            <div>
-              <div className="text-5xl font-bold mb-2">10K+</div>
-              <div className="text-orange-100">Active Users</div>
+        {/* TESTIMONIAL SECTION */}
+        <section className="bg-black py-16 relative overflow-hidden">
+          <div className="px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 mb-4 uppercase tracking-wider" style={{
+                textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+              }}>
+                Why Leaders Choose
+                <br />
+                <span className="text-white">AI Lead Intelligence</span>
+              </h2>
+              <p className="text-sm sm:text-base text-cyan-300 max-w-3xl mx-auto">
+                Join thousands transforming their sales with <strong className="text-cyan-400">proven AI technology</strong>
+              </p>
             </div>
 
-            <div>
-              <div className="text-5xl font-bold mb-2">5M+</div>
-              <div className="text-orange-100">Calls Analyzed</div>
+            {/* TESTIMONIAL */}
+            <div className="bg-black/60 backdrop-blur-md border border-cyan-400/30 p-6 shadow-xl shadow-cyan-400/20 mb-12" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="flex gap-1 mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-cyan-400 text-cyan-400" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.6))' }} />
+                ))}
+              </div>
+              <p className="text-sm sm:text-base text-cyan-300 mb-4 leading-relaxed italic">
+                "Our conversion rate jumped <strong className="text-cyan-400">47% in the first month</strong>. The AI lead scoring is incredibly accurate and helped us focus on the right prospects."
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-cyan-400 flex items-center justify-center text-black font-bold text-sm" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 3px) 0, 100% 3px, 100% 100%, 3px 100%, 0 calc(100% - 3px))'
+                }}>
+                  SC
+                </div>
+                <div>
+                  <p className="font-bold text-cyan-400 text-sm uppercase tracking-wider">Sarah Chen</p>
+                  <p className="text-cyan-300 text-xs">Head of Sales, TechFlow Inc</p>
+                </div>
+              </div>
             </div>
-
-            <div>
-              <div className="text-5xl font-bold mb-2">3x</div>
-              <div className="text-orange-100">Conversion Growth</div>
-            </div>
-
-            <div>
-              <div className="text-5xl font-bold mb-2">99.9%</div>
-              <div className="text-orange-100">Uptime</div>
-            </div>
-
           </div>
         </section>
 
         {/* FINAL CTA */}
-        <section className="py-20 px-6 md:px-10 text-center max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-6">
-            Ready To Transform Your Lead Process?
-          </h2>
-
-          <p className="text-gray-600 text-lg mb-10 max-w-2xl mx-auto">
-            Start qualifying leads automatically, boost conversions, and grow faster with AI.
-          </p>
-
-          <Link
-            href="/signup?service=lead"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white px-12 py-5 rounded-2xl text-xl font-semibold hover:scale-[1.04] hover:shadow-2xl transition-all duration-300 mb-6"
-          >
-            Start Your Free Trial
-            <ArrowRight className="w-6 h-6" />
-          </Link>
-
-          <p className="text-sm text-gray-500">
-            No credit card needed • 14-day free trial • Cancel anytime
-          </p>
-        </section>
-
-        {/* FAQ */}
-        <section className="bg-gray-50 py-20 px-6 md:px-10">
-          <div className="max-w-4xl mx-auto">
-
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-              Frequently Asked Questions
+        <section className="bg-black py-16 relative overflow-hidden">
+          <div className="px-4 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 mb-4 uppercase tracking-wider" style={{
+              textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+            }}>
+              Ready to Transform
+              <br />
+              <span className="text-white">Your Lead Process?</span>
             </h2>
+            <p className="text-sm sm:text-base text-cyan-300 mb-8 max-w-3xl mx-auto">
+              Join hundreds of businesses capturing more revenue with <strong className="text-cyan-400">AI lead intelligence</strong>
+            </p>
+            
+            <Link
+              href="/signup?service=lead"
+              className="inline-flex items-center gap-3 bg-cyan-400 text-black px-8 py-4 text-sm font-bold hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-400/50 transition-all duration-300 uppercase tracking-widest mb-6" style={{
+                clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))',
+                boxShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+              }}
+            >
+              Get Started With AI Leads
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            
+            <p className="text-cyan-300 text-xs mb-8 uppercase tracking-wider">
+              ✓ Free 14-day trial • ✓ No credit card • ✓ 24/7 support
+            </p>
 
-            <div className="space-y-6">
-
-              {/* Q1 */}
-              <details className="group bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <summary className="text-lg font-semibold flex justify-between cursor-pointer">
-                  How does AI lead scoring work?
-                  <ChevronRight className="group-open:rotate-90 transition-transform" />
-                </summary>
-                <p className="mt-3 text-gray-600">
-                  AI evaluates 50+ data points (call sentiment, duration, keywords, engagement patterns)
-                  and assigns a quality score for each lead.
-                </p>
-              </details>
-
-              {/* Q2 */}
-              <details className="group bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <summary className="text-lg font-semibold flex justify-between cursor-pointer">
-                  Can it analyze bulk leads?
-                  <ChevronRight className="group-open:rotate-90 transition-transform" />
-                </summary>
-                <p className="mt-3 text-gray-600">
-                  Yes — analyze 500+ calls per campaign with real-time scoring and insights.
-                </p>
-              </details>
-
-              {/* Q3 */}
-              <details className="group bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <summary className="text-lg font-semibold flex justify-between cursor-pointer">
-                  What CRM integrations are available?
-                  <ChevronRight className="group-open:rotate-90 transition-transform" />
-                </summary>
-                <p className="mt-3 text-gray-600">
-                  Salesforce, HubSpot, Zoho, Pipedrive, and custom API integrations.
-                </p>
-              </details>
-
-              {/* Q4 */}
-              <details className="group bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <summary className="text-lg font-semibold flex justify-between cursor-pointer">
-                  Is my data secure?
-                  <ChevronRight className="group-open:rotate-90 transition-transform" />
-                </summary>
-                <p className="mt-3 text-gray-600">
-                  Fully encrypted, SOC 2 certified, GDPR compliant, and HIPAA-ready.
-                </p>
-              </details>
-
-              {/* Q5 */}
-              <details className="group bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <summary className="text-lg font-semibold flex justify-between cursor-pointer">
-                  How fast can I start?
-                  <ChevronRight className="group-open:rotate-90 transition-transform" />
-                </summary>
-                <p className="mt-3 text-gray-600">
-                  Setup in 5 minutes. Import leads → AI does the rest.
-                </p>
-              </details>
-
+            <div className="border-t border-cyan-400/30 pt-8">
+              <p className="text-cyan-300 text-xs leading-relaxed uppercase tracking-wider">
+                Powered by <strong className="text-cyan-400">DigitalBot.ai</strong> — delivering intelligent lead solutions
+              </p>
             </div>
-
           </div>
         </section>
 

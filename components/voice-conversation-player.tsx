@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useRef } from "react"
 import { Pause, Play } from "lucide-react"
+import { useRef, useState } from "react"
 
 const WAVEFORM_HEIGHTS = Array.from({ length: 40 }, (_, i) => Math.sin(i * 0.5))
 
@@ -26,16 +26,20 @@ export function VoiceConversationPlayer({ audioSrc }: VoiceConversationPlayerPro
   }
 
   return (
-    <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 shadow-2xl border border-sky-200/50 relative overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-tr from-white/30 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-linear-to-bl from-transparent via-transparent to-sky-50/20 pointer-events-none" />
+    <div className="bg-black/90 backdrop-blur-md p-4 shadow-2xl border border-cyan-400/30 relative overflow-hidden" style={{
+      clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+    }}>
+      <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400/5 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-cyan-900/10 pointer-events-none" />
 
       <div className="relative z-10">
-        <div className="flex items-center justify-center mb-6 h-24 bg-linear-to-br from-sky-50 to-blue-50/30 rounded-2xl border border-sky-100/50 relative overflow-hidden">
-          <div className="flex items-end justify-center gap-1.5 h-16">
+        <div className="flex items-center justify-center mb-4 h-16 bg-gradient-to-br from-cyan-400/10 to-cyan-900/20 border border-cyan-400/20 relative overflow-hidden" style={{
+          clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+        }}>
+          <div className="flex items-end justify-center gap-1 h-12">
             {WAVEFORM_HEIGHTS.map((sinValue, index) => {
-              const playingHeight = sinValue * 20 + 25
-              const idleHeight = sinValue * 15 + 15
+              const playingHeight = sinValue * 15 + 20
+              const idleHeight = sinValue * 10 + 12
               const height = isPlaying ? playingHeight : idleHeight
 
               return (
@@ -43,8 +47,8 @@ export function VoiceConversationPlayer({ audioSrc }: VoiceConversationPlayerPro
                   key={index}
                   className={
                     isPlaying
-                      ? "w-1.5 bg-linear-to-t from-sky-600 via-sky-500 to-sky-400 rounded-full transition-all duration-300"
-                      : "w-1.5 bg-linear-to-t from-sky-300/40 via-sky-200/40 to-sky-100/40 rounded-full"
+                      ? "w-1 bg-gradient-to-t from-cyan-500 via-cyan-400 to-cyan-300 rounded-full transition-all duration-300"
+                      : "w-1 bg-gradient-to-t from-cyan-600/30 via-cyan-500/20 to-cyan-400/10 rounded-full"
                   }
                   style={{
                     height: `${height}px`,
@@ -52,6 +56,7 @@ export function VoiceConversationPlayer({ audioSrc }: VoiceConversationPlayerPro
                       ? `sound-wave ${0.5 + (index % 3) * 0.2}s ease-in-out infinite`
                       : undefined,
                     animationDelay: isPlaying ? `${index * 0.05}s` : undefined,
+                    boxShadow: isPlaying ? '0 0 4px rgba(0, 255, 255, 0.4)' : undefined
                   }}
                 />
               )
@@ -62,15 +67,18 @@ export function VoiceConversationPlayer({ audioSrc }: VoiceConversationPlayerPro
         <div className="flex items-center justify-center">
           <button
             onClick={handlePlayPause}
-            className="group relative flex items-center gap-3 px-8 py-3 bg-linear-to-r from-sky-600 via-sky-500 to-sky-400 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
+            className="group relative flex items-center gap-2 px-4 py-2 bg-cyan-400 hover:bg-cyan-300 text-black shadow-xl hover:shadow-cyan-400/30 hover:scale-105 transition-all duration-300 overflow-hidden border border-cyan-400 uppercase tracking-wide text-xs font-bold"
+            style={{
+              clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+            }}
             aria-label={isPlaying ? "Pause voice AI demonstration" : "Play voice AI for business sample conversation"}
             type="button"
           >
-            <div className="absolute inset-0 bg-linear-to-r from-sky-400/30 to-transparent opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500" />
-            <div className="relative z-10 flex items-center gap-3">
-              {isPlaying ? <Pause className="w-5 h-5 animate-pulse" /> : <Play className="w-5 h-5" />}
-              <span className="font-semibold">
-                {isPlaying ? "Pause Voice AI Demo" : "Play Voice AI for Business Sample"}
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-300/30 to-transparent opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500" />
+            <div className="relative z-10 flex items-center gap-2">
+              {isPlaying ? <Pause className="w-3 h-3 animate-pulse" /> : <Play className="w-3 h-3" />}
+              <span className="font-bold">
+                {isPlaying ? "Pause AI Demo" : "Play AI Demo"}
               </span>
             </div>
           </button>

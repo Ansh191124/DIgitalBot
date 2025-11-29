@@ -1,12 +1,54 @@
-"use client"
 
-import { Header } from "@/components/header"
-import { PageBackground } from "@/components/page-background"
-import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Mic, Play, Pause, ArrowRight, Phone, Clock, Users, Calendar, MessageCircle, Headphones, Zap, Check, Shield } from "lucide-react"
-import Link from "next/link"
-import { useState, useRef } from "react"
+import { Footer } from '@/components/footer'
+import { Header } from '@/components/header'
+import { Button } from '@/components/ui/button'
+import { VoiceConversationPlayer } from '@/components/voice-conversation-player'
+import { ArrowRight, Calendar, Check, Headphones, MessageCircle, Mic, Phone, Shield, Users } from 'lucide-react'
+import { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: "AI Virtual Receptionist | 24/7 Call Answering & Appointment Booking - DigitalBot.ai 2025",
+  description: "Deploy an AI virtual receptionist that answers calls, books appointments, and routes calls 24/7. HIPAA compliant. 70% cost reduction. Multi-language support.",
+  keywords: [
+    "ai virtual receptionist",
+    "ai receptionist",
+    "virtual phone answering",
+    "ai call answering",
+    "automated receptionist",
+    "ai appointment booking",
+    "virtual assistant phone",
+    "ai phone system",
+    "automated call handling",
+    "ai call routing",
+    "virtual reception",
+    "ai phone answering service",
+    "automated phone assistant",
+    "ai customer service",
+    "virtual office assistant"
+  ],
+  openGraph: {
+    title: "AI Virtual Receptionist | 24/7 Call Answering & Appointment Booking - DigitalBot.ai 2025",
+    description: "Deploy an AI virtual receptionist that answers calls, books appointments, and routes calls 24/7 with HIPAA compliance and 70% cost reduction.",
+    type: "website",
+    url: "https://digitalbot.ai/services/ai-virtual-receptionist",
+    images: [
+      {
+        url: "/images/ai-voice-agent.png",
+        width: 1200,
+        height: 630,
+        alt: "AI Virtual Receptionist Platform",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Virtual Receptionist | 24/7 Call Answering & Appointment Booking - DigitalBot.ai 2025",
+    description: "Deploy an AI virtual receptionist that answers calls, books appointments, and routes calls 24/7 with HIPAA compliance and 70% cost reduction.",
+    images: ["/images/ai-voice-agent.png"],
+  },
+};
 
 const features = [
   {
@@ -84,149 +126,214 @@ const useCases = [
 ]
 
 export default function AIVirtualReceptionist() {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const audioRef = useRef<HTMLAudioElement>(null)
-
-  const handlePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause()
-      } else {
-        audioRef.current.play()
-      }
-      setIsPlaying(!isPlaying)
-    }
-  }
-
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white via-orange-100 to-white-100 py-20 md:py-32">
-          
+        {/* Hero Section - Cyberpunk Theme */}
+        <section className="relative overflow-hidden bg-black py-8 px-3 sm:px-4 lg:px-6">
+          {/* Cyberpunk Grid Background */}
+          <div className="absolute inset-0 opacity-20">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `
+                  linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)
+                `,
+                backgroundSize: '60px 60px',
+              }}
+            />
+          </div>
 
-          {/* Floating Gradient Orbs */}
-          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-orange-200/20 to-transparent rounded-full blur-3xl animate-pulse delay-1000" />
+          {/* Floating Cyan Elements */}
+          <div className="absolute top-5 right-10 w-24 h-24 bg-gradient-to-bl from-cyan-400/15 to-cyan-600/8 rounded-full blur-xl animate-pulse" />
+          <div className="absolute bottom-10 left-5 w-28 h-28 bg-gradient-to-tr from-cyan-500/8 to-cyan-400/12 rounded-full blur-xl animate-pulse" />
+          <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-cyan-300/6 via-cyan-400/10 to-cyan-500/6 rounded-full blur-lg" />
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-5xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full px-5 py-2 mb-8 border-2 border-orange-300 shadow-lg">
-                <Phone className="w-4 h-4" />
-                <span className="text-sm font-semibold">AI-Powered Reception</span>
-              </div>
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="grid lg:grid-cols-2 gap-6 items-start">
+              
+              {/* Left Content */}
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-3 py-1 mb-2 border border-cyan-400 uppercase tracking-widest" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}>
+                  <Phone className="w-3 h-3" />
+                  <span className="text-xs font-bold">AI-Powered Reception</span>
+                </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
-                  AI Virtual Receptionist
-                </span>
-                <br />
-                <span className="relative inline-block mt-2">
-                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-transparent bg-clip-text">
-                    That Never Sleeps or Takes Breaks
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-orange-300/30 to-orange-400/30 blur-2xl -z-10 scale-110" />
-                </span>
-              </h1>
+                <h1 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 leading-tight uppercase tracking-wide" style={{
+                  textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+                }}>
+                  AI Virtual Receptionist That Never Sleeps
+                </h1>
 
-              <p className="text-xl md:text-2xl text-black-300 mb-10 max-w-4xl mx-auto leading-relaxed">
-                Your <span className="font-bold text-orange-600">AI-powered virtual receptionist</span> answers every call, books appointments, and routes calls with human-like conversations—24/7, in over 30 languages.
-              </p>
+                <p className="text-cyan-300 text-sm max-w-2xl leading-relaxed mb-4">
+                  Your <span className="text-cyan-400 font-semibold">AI-powered virtual receptionist</span> answers every call, books appointments, and routes calls with human-like conversations—24/7, in over 30 languages.
+                </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-white px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                  <Link href="/signup">
-                    Hire Your AI Receptionist
-                    <ArrowRight className="ml-2 w-5 h-5" />
+                {/* Key Features Grid */}
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  <div className="flex items-center gap-1 text-xs">
+                    <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" style={{
+                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
+                    }}></span>
+                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">24/7 Available</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs">
+                    <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" style={{
+                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
+                    }}></span>
+                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Multi-Language</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs">
+                    <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" style={{
+                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
+                    }}></span>
+                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">HIPAA Compliant</span>
+                  </div>
+                </div>
+                
+                {/* Cyberpunk CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Link 
+                    href="/signup" 
+                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                    style={{
+                      clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                    }}
+                  >
+                    Hire AI Receptionist
+                    <ArrowRight className="w-3 h-3 ml-1" />
                   </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 px-10 py-6 text-lg">
-                  <Link href="/contact">
-                    <Phone className="mr-2 w-5 h-5" />
+                  <Link 
+                    href="/contact" 
+                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-cyan-400 bg-transparent border border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
+                    style={{
+                      clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                    }}
+                  >
+                    <Phone className="w-3 h-3 mr-1" />
                     See Demo
                   </Link>
-                </Button>
-              </div>
-
-              <div className="flex flex-wrap gap-6 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200">
-                  <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-black-300">24/7 Availability</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
-                  <Clock className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-black-300">Instant Call Answering</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
-                  <Zap className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-black-300">70% Cost Reduction</span>
                 </div>
               </div>
+              
+              {/* Right HD Image */}
+              <div className="relative">
+                <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-cyan-400/20 border border-cyan-400/30">
+                  <Image
+                    src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
+                    alt="AI Virtual Receptionist - 24/7 Call Answering and Appointment Booking System"
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-cyan-900/20 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
+                          <Phone className="w-4 h-4 text-cyan-300" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-cyan-300">Live Reception AI</div>
+                          <div className="text-xs text-cyan-400">Answering calls 24/7</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-cyan-400 font-medium">✓ 70% Cost Reduction</span>
+                        <span className="text-cyan-400 font-medium tracking-wide">Never Miss a Call</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
+        {/* Features Section - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full blur-lg animate-pulse" />
+            <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-cyan-500/12 to-cyan-600/12 rounded-full blur-lg animate-pulse delay-1000" />
+          </div>
+
+          <div className="container mx-auto max-w-7xl relative z-10">
+            <div className="text-left mb-8">
+              <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
+                textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+              }}>
                 Everything Your Front Desk Needs
               </h2>
-              <p className="text-xl text-black-400 max-w-3xl mx-auto">
+              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
                 Comprehensive reception capabilities powered by advanced AI technology
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
               {features.map((feature, index) => (
                 <div 
                   key={index}
-                  className="group relative bg-gradient-to-br from-white to-gray-50 border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20 p-4" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                  }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 via-orange-500/10 to-orange-600/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500" />
-                  
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                    <feature.icon className="w-7 h-7 text-white" />
+                  <div className="flex gap-3 items-start">
+                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center shadow-lg border border-cyan-400/30 flex-shrink-0">
+                      <feature.icon className="w-4 h-4 text-black" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                        {feature.title}
+                      </h3>
+                      <p className="text-cyan-300 leading-relaxed text-xs">
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-
-                  <h3 className="text-xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
-                    {feature.title}
-                  </h3>
-                  <p className="text-black-400 leading-relaxed">
-                    {feature.description}
-                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Benefits Section */}
-        <section className="py-20 bg-gradient-to-b from-white via-orange-100 to-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
+        {/* Benefits Section - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-16 right-32 w-16 h-16 bg-gradient-to-br from-cyan-300/20 to-cyan-400/20 rounded-full blur-lg animate-pulse delay-500" />
+            <div className="absolute bottom-20 left-20 w-28 h-28 bg-gradient-to-br from-cyan-500/15 to-cyan-600/15 rounded-full blur-lg animate-pulse delay-1000" />
+          </div>
+
+          <div className="container mx-auto max-w-5xl relative z-10">
+            <div className="text-left mb-8">
+              <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
+                textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+              }}>
                 Transform Your Reception Experience
               </h2>
-              <p className="text-xl text-black-400 max-w-3xl mx-auto">
+              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
                 Measurable results that impact your bottom line
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-4">
               {benefits.map((benefit, index) => (
                 <div 
                   key={index}
-                  className="group bg-white border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20 p-4" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                  }}
                 >
-                  <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
+                  <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                     {benefit.title}
                   </h3>
-                  <p className="text-black-400 leading-relaxed">
+                  <p className="text-cyan-300 leading-relaxed text-xs">
                     {benefit.description}
                   </p>
                 </div>
@@ -235,266 +342,240 @@ export default function AIVirtualReceptionist() {
           </div>
         </section>
 
-        {/* Use Cases Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
+        {/* Use Cases Section - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full blur-lg animate-pulse" />
+            <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-cyan-500/12 to-cyan-600/12 rounded-full blur-lg animate-pulse delay-1000" />
+          </div>
+
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="text-left mb-8">
+              <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
+                textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+              }}>
                 Industry-Specific Solutions
               </h2>
-              <p className="text-xl text-black-400 max-w-3xl mx-auto">
+              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
                 Tailored virtual receptionist capabilities for your industry
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-4">
               {useCases.map((useCase, index) => (
                 <div 
                   key={index}
-                  className="group bg-gradient-to-br from-white to-gray-50 border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500"
+                  className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20 p-4" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                  }}
                 >
-                  <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
-                    {useCase.title}
-                  </h3>
-                  <p className="text-black-400 leading-relaxed mb-4">
-                    {useCase.description}
-                  </p>
-                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-50 to-orange-50 text-orange-700 rounded-full text-sm font-semibold border-2 border-orange-400">
-                    <Check className="h-4 w-4 mr-2" />
-                    {useCase.results}
-                  </span>
+                  <div className="relative h-32">
+                    <Image
+                      src={`https://images.unsplash.com/photo-${index === 0 ? '1559039829-7533320ae181' : index === 1 ? '1507003211169-0a1dd7228f2d' : index === 2 ? '1581091226825-a6a2a5aee158' : '1556742049-0cfed4f41659'}?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110`}
+                      alt={`${useCase.title} - AI Virtual Receptionist Solution`}
+                      fill
+                      className="object-cover rounded-lg"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-cyan-900/20 to-transparent rounded-lg"></div>
+                  </div>
+                  <div className="mt-3">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                      {useCase.title}
+                    </h3>
+                    <p className="text-cyan-300 leading-relaxed text-xs mb-3">
+                      {useCase.description}
+                    </p>
+                    <span className="inline-flex items-center px-2 py-1 bg-cyan-400/10 text-cyan-400 text-xs font-semibold border border-cyan-400/30 backdrop-blur-sm" style={{
+                      clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
+                    }}>
+                      <Check className="h-3 w-3 mr-1" />
+                      {useCase.results}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Sample Conversation Section */}
-        <section className="py-20 bg-gradient-to-b from-white via-orange-100 to-white">
-          <div className="max-w-4xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full px-5 py-2.5 mb-6 border-2 border-orange-300 shadow-lg">
-                <Mic className="w-4 h-4 animate-pulse" />
-                <span className="text-sm font-semibold">AI Voice Demonstration</span>
+        {/* Demo Section - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full blur-lg animate-pulse" />
+          <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-cyan-500/12 to-cyan-600/12 rounded-full blur-lg animate-pulse delay-1000" />
+
+          <div className="max-w-4xl mx-auto relative z-10">
+            <div className="text-left mb-8">
+              <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-3 py-1 mb-4 border border-cyan-400 uppercase tracking-widest" style={{
+                clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+              }}>
+                <Mic className="w-3 h-3 animate-pulse" />
+                <span className="text-xs font-bold">AI Voice Demonstration</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent mb-4">
+              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 uppercase tracking-wide">
                 Experience Natural AI Conversations
               </h2>
-              <p className="text-lg text-black-400 max-w-2xl mx-auto">
+              <p className="text-cyan-300 text-sm max-w-2xl leading-relaxed">
                 Listen to how our AI receptionist handles real customer interactions with human-like responses
               </p>
             </div>
-
-            {/* Audio Player Card */}
-            <div className="bg-white rounded-3xl p-8 border-2 border-orange-400 hover:border-orange-400 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
-              <div className="relative z-10">
-                {/* Waveform visualization area */}
-                <div className="flex items-center justify-center mb-6 h-24 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border-2 border-orange-400 relative overflow-hidden">
-                  {isPlaying ? (
-                    <div className="flex items-end justify-center gap-1.5 h-16">
-                      {[...Array(40)].map((_, i) => {
-                        const height = Math.sin(i * 0.5) * 20 + 25;
-                        return (
-                          <div
-                            key={i}
-                            className="w-1.5 bg-gradient-to-t from-orange-500 via-orange-600 to-orange-700 rounded-full transition-all duration-300"
-                            style={{
-                              height: `${height}px`,
-                              animation: `sound-wave ${0.5 + (i % 3) * 0.2}s ease-in-out infinite`,
-                              animationDelay: `${i * 0.05}s`
-                            }}
-                          />
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center gap-1.5 h-16">
-                      {[...Array(40)].map((_, i) => {
-                        const height = Math.sin(i * 0.5) * 15 + 15;
-                        return (
-                          <div
-                            key={i}
-                            className="w-1.5 bg-gradient-to-t from-gray-300 via-gray-200 to-gray-100 rounded-full"
-                            style={{
-                              height: `${height}px`
-                            }}
-                          />
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-
-                {/* Play/Pause Control */}
-                <div className="flex items-center justify-center">
-                  <button
-                    onClick={handlePlayPause}
-                    className="group relative flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
-                  >
-                    <div className="relative z-10 flex items-center gap-3">
-                      {isPlaying ? (
-                        <Pause className="w-5 h-5 animate-pulse" />
-                      ) : (
-                        <Play className="w-5 h-5" />
-                      )}
-                      <span className="font-semibold">
-                        {isPlaying ? "Pause Conversation" : "Play Sample Conversation"}
-                      </span>
-                    </div>
-                  </button>
-                </div>
-              </div>
-
-              <audio
-                ref={audioRef}
-                src="/sample-conversation.mp3"
-                onEnded={() => setIsPlaying(false)}
-              />
+            <div className="bg-black/90 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-cyan-400/30">
+              <VoiceConversationPlayer audioSrc="/sample-receptionist-conversation.mp3" />
             </div>
           </div>
-
-          {/* CSS for waveform animation */}
-          <style jsx>{`
-            @keyframes sound-wave {
-              0%, 100% { transform: scaleY(0.5); }
-              50% { transform: scaleY(1); }
-            }
-          `}</style>
         </section>
 
-        {/* FAQ Section - Dark Theme */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-br bg-white">
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 -left-20 w-96 h-96 bg-gradient-radial from-orange-500/20 to-transparent rounded-full blur-3xl animate-float-slow" />
-            <div className="absolute bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-radial from-orange-400/15 to-transparent rounded-full blur-3xl animate-float-reverse" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-orange-500/10 to-transparent rounded-full blur-3xl animate-pulse" />
+        {/* FAQ Section - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          {/* Cyberpunk Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-10 left-20 w-24 h-24 bg-gradient-to-br from-cyan-400/20 to-cyan-500/20 rounded-full filter blur-xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-20 w-28 h-28 bg-gradient-to-br from-cyan-500/15 to-cyan-600/15 rounded-full filter blur-xl animate-pulse delay-1000"></div>
+            <div className="absolute top-32 right-32 w-20 h-20 bg-gradient-to-br from-cyan-300/25 to-cyan-400/25 rounded-full filter blur-lg animate-pulse delay-500"></div>
           </div>
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
-                <Phone className="w-4 h-4 text-orange-400" />
-                <span className="text-sm font-semibold text-black">Common Questions</span>
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="text-left mb-8">
+              <div className="inline-block mb-3">
+                <span className="px-3 py-1 bg-cyan-400 text-black font-semibold text-xs uppercase tracking-wide shadow-md animate-pulse" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}>
+                  <Phone className="w-3 h-3 inline mr-1" />
+                  Common Questions
+                </span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-transparent bg-clip-text">
-                Frequently Asked Questions
+              <h2 className="text-lg sm:text-xl font-bold mb-3 text-cyan-400 uppercase tracking-wide" style={{
+                textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+              }}>
+                AI Virtual Receptionist FAQ
               </h2>
-              <p className="text-xl text-black-300 max-w-3xl mx-auto">
-                Everything you need to know about AI virtual receptionists
+              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
+                Everything you need to know about <span className="text-cyan-400 font-semibold">AI virtual receptionists</span>
               </p>
             </div>
 
-            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-3">
               {/* FAQ 1 */}
-              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
-                <div className="flex gap-6">
+              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}>
+                <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
                       1
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 text-transparent bg-clip-text">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       How does an AI virtual receptionist work?
                     </h3>
-                    <p className="text-black-300 leading-relaxed">
-                      Our AI receptionist uses advanced natural language processing to answer calls, understand caller intent, and respond naturally. It integrates with your calendar, CRM, and phone system to book appointments, route calls, take messages, and provide information—all in real-time, 24/7.
+                    <p className="text-cyan-300 leading-relaxed text-xs">
+                      Our AI receptionist uses natural language processing to answer calls, understand caller intent, and respond naturally. It integrates with your calendar, CRM, and phone system for real-time operations.
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* FAQ 2 */}
-              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
-                <div className="flex gap-6">
+              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}>
+                <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
                       2
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-orange-500 text-transparent bg-clip-text">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       Can it handle multiple calls simultaneously?
                     </h3>
-                    <p className="text-black-300 leading-relaxed">
-                      Yes! Unlike human receptionists, our AI can handle unlimited simultaneous calls without putting anyone on hold. Whether you receive 1 call or 100 at the same time, every caller gets instant, personalized attention.
+                    <p className="text-cyan-300 leading-relaxed text-xs">
+                      Yes! Our AI can handle unlimited simultaneous calls without putting anyone on hold. Whether 1 call or 100, every caller gets instant, personalized attention.
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* FAQ 3 */}
-              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
-                <div className="flex gap-6">
+              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}>
+                <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
                       3
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-orange-500 text-transparent bg-clip-text">
-                      What happens if the AI can't answer a question?
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                      What if the AI can't answer a question?
                     </h3>
-                    <p className="text-black-300 leading-relaxed">
-                      The AI is trained on your specific business information and policies. For complex scenarios, it can seamlessly transfer calls to the appropriate human team member, take detailed messages, or schedule callbacks—ensuring no caller is left without help.
+                    <p className="text-cyan-300 leading-relaxed text-xs">
+                      The AI can seamlessly transfer calls to appropriate team members, take detailed messages, or schedule callbacks—ensuring no caller is left without help.
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* FAQ 4 */}
-              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
-                <div className="flex gap-6">
+              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}>
+                <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
                       4
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-orange-500 text-transparent bg-clip-text">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       How long does setup take?
                     </h3>
-                    <p className="text-black-300 leading-relaxed">
-                      Most businesses are live within 3-5 business days. We handle phone number setup, calendar integration, script customization, and testing. Our team provides hands-on support to ensure your AI receptionist is trained on your specific business needs before going live.
+                    <p className="text-cyan-300 leading-relaxed text-xs">
+                      Most businesses are live within 3-5 days. We handle phone setup, calendar integration, script customization, and testing with hands-on support.
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* FAQ 5 */}
-              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
-                <div className="flex gap-6">
+              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}>
+                <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
                       5
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-orange-500 text-transparent bg-clip-text">
-                      Is it HIPAA compliant for healthcare practices?
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                      Is it HIPAA compliant for healthcare?
                     </h3>
-                    <p className="text-black-300 leading-relaxed">
-                      Yes! We offer HIPAA-compliant solutions for medical practices, including encrypted call recordings, secure data storage, and proper business associate agreements. Our AI follows all healthcare privacy regulations while scheduling appointments and handling patient information.
+                    <p className="text-cyan-300 leading-relaxed text-xs">
+                      Yes! We offer HIPAA-compliant solutions with encrypted call recordings, secure data storage, and proper business associate agreements for healthcare practices.
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* FAQ 6 */}
-              <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
-                <div className="flex gap-6">
+              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}>
+                <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
                       6
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 to-orange-500 text-transparent bg-clip-text">
-                      What's the cost compared to hiring a receptionist?
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                      What's the cost vs hiring a receptionist?
                     </h3>
-                    <p className="text-black-300 leading-relaxed">
-                      Our AI receptionist typically costs 70-80% less than hiring a full-time employee, with no benefits, sick days, or turnover. You get 24/7 coverage, unlimited call handling, and enterprise features for a fraction of traditional reception costs—with transparent monthly pricing and no long-term contracts.
+                    <p className="text-cyan-300 leading-relaxed text-xs">
+                      Our AI typically costs 70-80% less than hiring full-time staff, with 24/7 coverage, unlimited call handling, and no benefits or turnover costs.
                     </p>
                   </div>
                 </div>
@@ -503,66 +584,70 @@ export default function AIVirtualReceptionist() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-orange-100 to-white">
-          {/* Animated Background */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
+        {/* Call to Action - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full blur-lg animate-pulse" />
+            <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-cyan-500/12 to-cyan-600/12 rounded-full blur-lg animate-pulse delay-1000" />
+            <div className="absolute top-16 right-32 w-16 h-16 bg-gradient-to-br from-cyan-300/20 to-cyan-400/20 rounded-full blur-lg animate-pulse delay-500" />
           </div>
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white rounded-full px-6 py-2.5 mb-8 border-2 border-orange-300 shadow-lg">
-                <Phone className="w-4 h-4" />
-                <span className="text-sm font-semibold">Never Miss Another Call</span>
-              </div>
-
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
-                  Ready to Hire Your
-                </span>
-                <br />
-                <span className="relative inline-block mt-2">
-                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-transparent bg-clip-text">
-                    AI Receptionist?
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-orange-300/30 to-orange-400/30 blur-2xl -z-10 scale-110" />
-                </span>
-              </h2>
-
-              <p className="text-xl text-black-300 mb-10 max-w-3xl mx-auto">
-                Join hundreds of businesses providing 24/7 phone coverage, perfect call handling, and exceptional customer experiences—all while reducing costs by 70%.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-white px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                  <Link href="/signup">
-                    Get Started Free
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
+          <div className="container mx-auto max-w-4xl text-left relative z-10">
+            <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-3 py-1 mb-4 border border-cyan-400 uppercase tracking-widest" style={{
+              clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+            }}>
+              <Phone className="w-3 h-3" />
+              <span className="text-xs font-bold">Never Miss Another Call</span>
+            </div>
+            
+            <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
+              textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+            }}>
+              Ready to Hire Your AI Receptionist?
+            </h2>
+            
+            <p className="text-cyan-300 text-sm mb-6 max-w-2xl leading-relaxed">
+              Join hundreds of businesses providing 24/7 phone coverage, perfect call handling, and exceptional customer experiences—all while reducing costs by 70%.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-3 mb-6">
+              <Link href="/signup">
+                <Button className="group relative bg-cyan-400 hover:bg-cyan-300 text-black px-6 py-2 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/30 border border-cyan-400 uppercase tracking-wide" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}>
+                  Get Started Free
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 px-10 py-6 text-lg">
-                  <Link href="/contact">
-                    <Phone className="mr-2 w-5 h-5" />
-                    Schedule Demo
-                  </Link>
+              </Link>
+              
+              <Link href="/contact">
+                <Button variant="outline" className="group bg-black hover:bg-cyan-400/10 text-cyan-400 hover:text-cyan-300 border border-cyan-400/30 hover:border-cyan-400 px-6 py-2 text-sm font-bold transition-all duration-300 backdrop-blur-md uppercase tracking-wide" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}>
+                  <Phone className="w-4 h-4 mr-2" />
+                  Schedule Demo
                 </Button>
+              </Link>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs text-cyan-300">
+              <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 border border-cyan-400/20 backdrop-blur-sm" style={{
+                clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
+              }}>
+                <Check className="w-3 h-3 text-cyan-400" />
+                <span>No Credit Card Required</span>
               </div>
-
-              <div className="flex flex-wrap gap-8 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200">
-                  <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-black-300">No Credit Card Required</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
-                  <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-black-300">Setup in 3-5 Days</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
-                  <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-black-300">Cancel Anytime</span>
-                </div>
+              <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 border border-cyan-400/20 backdrop-blur-sm" style={{
+                clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
+              }}>
+                <Check className="w-3 h-3 text-cyan-400" />
+                <span>Setup in 3-5 Days</span>
+              </div>
+              <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 border border-cyan-400/20 backdrop-blur-sm" style={{
+                clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
+              }}>
+                <Check className="w-3 h-3 text-cyan-400" />
+                <span>Cancel Anytime</span>
               </div>
             </div>
           </div>

@@ -1,12 +1,11 @@
-import { Header } from "@/components/header"
-import { PageBackground } from "@/components/page-background"
+
 import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card"
+import { Header } from "@/components/header"
 import { VoiceConversationPlayer } from "@/components/voice-conversation-player"
-import { HeartHandshake, Clock, Sparkles, Shield, Users, Bot, BarChart3, Globe, Workflow, Mic, MessageCircle, ClipboardCheck, Smile, ArrowRight, Check } from "lucide-react"
-import Link from "next/link"
+import { ArrowRight, BarChart3, Bot, Check, ClipboardCheck, Clock, Globe, HeartHandshake, MessageCircle, Mic, Shield, Smile, Sparkles, Users, Workflow } from "lucide-react"
 import { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "AI Customer Support | 24/7 Automated Customer Service - DigitalBot.ai 2025",
@@ -54,47 +53,56 @@ const benefits = [
   {
     icon: HeartHandshake,
     title: "Customer Empathy at Scale",
-    description: "Deliver empathetic conversations in real time with AI agents trained on your brand tone, knowledge base, and historical interactions." 
+    description: "Deliver empathetic conversations in real time with AI agents trained on your brand tone, knowledge base, and historical interactions.",
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
   },
   {
     icon: Clock,
     title: "Instant 24/7 Resolutions",
-    description: "Provide lightning-fast support across chat, voice, email, and messaging channels with AI that never sleeps and never keeps customers waiting." 
+    description: "Provide lightning-fast support across chat, voice, email, and messaging channels with AI that never sleeps and never keeps customers waiting.",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
   },
   {
     icon: Sparkles,
     title: "Personalized Journeys",
-    description: "Reference past purchases, preferences, and sentiment in every conversation to create delightful, relevant support experiences." 
+    description: "Reference past purchases, preferences, and sentiment in every conversation to create delightful, relevant support experiences.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
   },
   {
     icon: Shield,
     title: "Secure & Compliant",
-    description: "HIPAA, SOC 2, and GDPR compliant infrastructure with automatic redaction, encryption, and role-based access control for sensitive cases." 
+    description: "HIPAA, SOC 2, and GDPR compliant infrastructure with automatic redaction, encryption, and role-based access control for sensitive cases.",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=125&brightness=115"
   },
   {
     icon: Users,
     title: "Agent Augmentation",
-    description: "Give human teams AI copilots that summarize tickets, recommend next best actions, and draft responses in seconds." 
+    description: "Give human teams AI copilots that summarize tickets, recommend next best actions, and draft responses in seconds.",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
   },
   {
     icon: Bot,
     title: "Unified Knowledge Automation",
-    description: "Connect your FAQs, product docs, LMS, and community forums into a single AI-ready knowledge layer refreshed continuously." 
+    description: "Connect your FAQs, product docs, LMS, and community forums into a single AI-ready knowledge layer refreshed continuously.",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
   },
   {
     icon: BarChart3,
     title: "Outcome-Based Analytics",
-    description: "Track KPIs like first contact resolution, customer effort, sentiment trends, and churn risk through intuitive dashboards." 
+    description: "Track KPIs like first contact resolution, customer effort, sentiment trends, and churn risk through intuitive dashboards.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
   },
   {
     icon: Globe,
     title: "Global Language Support",
-    description: "Serve customers in 60+ languages with natural accents and adaptive translations that preserve context and nuance." 
+    description: "Serve customers in 60+ languages with natural accents and adaptive translations that preserve context and nuance.",
+    image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
   },
   {
     icon: Workflow,
     title: "No-Code Automation",
-    description: "Build, test, and optimize multi-step customer workflows without writing code using visual journeys and A/B testing tools." 
+    description: "Build, test, and optimize multi-step customer workflows without writing code using visual journeys and A/B testing tools.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
   }
 ]
 
@@ -102,22 +110,26 @@ const useCases = [
   {
     title: "Omnichannel Case Deflection",
     description: "Resolve up to 80% of repetitive questions across live chat, social media, and email with AI responses that access your knowledge base instantly.",
-    results: "Cut ticket backlog by 65%"
+    results: "Cut ticket backlog by 65%",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
   },
   {
     title: "Proactive Customer Care",
     description: "Automatically detect churn signals and reach out with personalized retention offers before customers submit cancellations.",
-    results: "Reduce churn by 35%"
+    results: "Reduce churn by 35%",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
   },
   {
     title: "Technical Troubleshooting",
     description: "Guide users through complex troubleshooting sequences with step-by-step instructions, multimedia explanations, and escalation to specialists when needed.",
-    results: "Increase first contact resolution to 92%"
+    results: "Increase first contact resolution to 92%",
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=125&brightness=115"
   },
   {
     title: "Order & Account Management",
     description: "Handle refunds, order tracking, account updates, and subscription changes automatically while syncing changes to CRM, billing, and ERP systems.",
-    results: "Save 3,000 agent hours per quarter"
+    results: "Save 3,000 agent hours per quarter",
+    image: "https://images.unsplash.com/photo-1553028826-f4804a6dba3b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=125&brightness=115"
   }
 ]
 
@@ -125,22 +137,26 @@ const capabilityBlocks = [
   {
     icon: MessageCircle,
     heading: "Context-Aware Conversation Engine",
-    body: "DigitalBot understands intent, sentiment, and emotion across sessions, giving customers consistent, human-quality interactions every time." 
+    body: "DigitalBot understands intent, sentiment, and emotion across sessions, giving customers consistent, human-quality interactions every time.",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=125&brightness=115"
   },
   {
     icon: ClipboardCheck,
     heading: "Automated Quality Management",
-    body: "Score 100% of interactions automatically against custom rubrics, surface coaching opportunities, and enforce compliance in real time." 
+    body: "Score 100% of interactions automatically against custom rubrics, surface coaching opportunities, and enforce compliance in real time.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=125&brightness=115"
   },
   {
     icon: Smile,
     heading: "Customer Delight Toolkit",
-    body: "Trigger loyalty offers, CSAT surveys, and follow-up journeys based on satisfaction levels and lifecycle stages to maximize customer happiness." 
+    body: "Trigger loyalty offers, CSAT surveys, and follow-up journeys based on satisfaction levels and lifecycle stages to maximize customer happiness.",
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=130&brightness=120"
   },
   {
     icon: BarChart3,
     heading: "Unified Support Intelligence",
-    body: "Gain a single view of all support metrics, including AI-only vs. blended team performance, trending topics, and agent adoption." 
+    body: "Gain a single view of all support metrics, including AI-only vs. blended team performance, trending topics, and agent adoption.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=125&brightness=115"
   }
 ]
 
@@ -234,255 +250,409 @@ export default function AICustomerSupport() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
         
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white to-orange-100 py-20 md:py-32">
-          {/* Animated Grid Background */}
+        {/* Hero Section - Cyberpunk Theme */}
+        <section className="relative overflow-hidden bg-black py-8 px-3 sm:px-4 lg:px-6">
+          {/* Cyberpunk Grid Background */}
           <div className="absolute inset-0 opacity-20">
             <div
               className="absolute inset-0"
               style={{
                 backgroundImage: `
-                  linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1px, transparent 1px)
+                  linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)
                 `,
                 backgroundSize: '60px 60px',
               }}
             />
           </div>
 
-          {/* Floating Elements */}
-          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
-          <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-300" />
-          <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-radial from-orange-200/20 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
+          {/* Floating Cyan Elements */}
+          <div className="absolute top-5 right-10 w-24 h-24 bg-gradient-to-bl from-cyan-400/15 to-cyan-600/8 rounded-full blur-xl animate-pulse" />
+          <div className="absolute bottom-10 left-5 w-28 h-28 bg-gradient-to-tr from-cyan-500/8 to-cyan-400/12 rounded-full blur-xl animate-pulse" />
+          <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-cyan-300/6 via-cyan-400/10 to-cyan-500/6 rounded-full blur-lg" />
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-5xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-black rounded-full px-6 py-2.5 mb-8 border-2 border-orange-300 shadow-lg">
-                <HeartHandshake className="w-4 h-4" />
-                <span className="text-sm font-semibold tracking-wide">AI-Powered Customer Support</span>
-              </div>
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="grid lg:grid-cols-2 gap-6 items-start">
+              
+              {/* Left Content */}
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-4 py-2 mb-4 border border-cyan-400 uppercase tracking-widest" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+                }}>
+                  <HeartHandshake className="w-4 h-4" />
+                  <span className="text-xs font-bold">AI Customer Support Platform</span>
+                </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-                <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
-                  Deliver Exceptional
-                </span>
-                <br />
-                <span className="relative inline-block mt-2">
-                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-transparent bg-clip-text">
-                    Customer Support 24/7
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-300 mb-3 leading-tight text-left">
+                  <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 drop-shadow-sm tracking-widest uppercase">AI Customer Support</span>
+                  <span className="inline-block px-4 py-2 rounded-xl text-black bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 shadow-lg shadow-cyan-400/40 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-400">
+                    <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-transparent to-transparent"></span>
+                    <span className="relative z-10 uppercase tracking-wider">Never Sleeps, Always Helps</span>
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-orange-300/30 to-orange-400/30 blur-2xl -z-10 scale-110" />
-                </span>
-              </h1>
-
-              <p className="text-xl md:text-2xl mb-10 text-black-300 max-w-4xl mx-auto leading-relaxed">
-                Transform customer service with <strong>AI customer support</strong> that resolves inquiries instantly across all channels. 
-                Trusted by <span className="font-bold text-orange-600">500+ businesses</span> handling <span className="font-bold text-orange-600">2M+ conversations</span> monthly.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-black px-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                  <Link href="/signup">
+                </h1>
+                
+                <div className="p-3 bg-cyan-400/5 backdrop-blur-md border border-cyan-400/30 shadow-md shadow-cyan-400/20" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+                }}>
+                  <p className="text-xs sm:text-sm font-bold text-cyan-400 mb-2">
+                    "Traditional support gets overwhelmed, takes breaks, works limited hours."
+                  </p>
+                  <p className="text-sm sm:text-base font-extrabold text-black inline-block bg-cyan-400 px-3 py-1 shadow-sm shadow-cyan-500/30 border border-cyan-400 uppercase tracking-wide" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                  }}>
+                    <span className="relative z-10">WE NEVER DO.</span>
+                  </p>
+                </div>
+                
+                <p className="text-xs sm:text-sm text-cyan-300 leading-relaxed">
+                  Transform customer service with <span className="font-bold text-cyan-400">AI customer support</span> that resolves inquiries instantly 24/7. 
+                  Trusted by <span className="font-semibold text-cyan-400">500+ businesses</span> handling <span className="font-semibold text-cyan-400">2M+ conversations</span> monthly. 
+                  Our <span className="font-bold text-cyan-400">AI support platform</span> delivers empathetic, personalized service across all channels.
+                </p>
+                
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="flex items-center gap-1">
+                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
+                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
+                    }}></span>
+                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">24/7 Support</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
+                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
+                    }}></span>
+                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Instant Resolution</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
+                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
+                    }}></span>
+                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">All Channels</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
+                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
+                    }}></span>
+                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">60+ Languages</span>
+                  </div>
+                </div>
+                
+                {/* Cyberpunk CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Link 
+                    href="/signup" 
+                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                    style={{
+                      clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                    }}
+                  >
                     Start Free Trial
-                    <ArrowRight className="ml-2 w-5 h-5" />
+                    <ArrowRight className="w-3 h-3 ml-1" />
                   </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 px-8">
-                  <Link href="/contact">
-                    <MessageCircle className="mr-2 w-5 h-5" />
+                  <Link 
+                    href="/contact" 
+                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-cyan-400 bg-transparent border border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
+                    style={{
+                      clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                    }}
+                  >
+                    <MessageCircle className="w-3 h-3 mr-1" />
                     Book Demo
                   </Link>
-                </Button>
+                </div>
               </div>
-
-              <div className="inline-flex flex-col gap-4 bg-white/80 backdrop-blur-sm border-2 border-orange-400 rounded-2xl p-6 shadow-xl">
-                <div className="flex flex-wrap gap-6 justify-center items-center text-sm font-medium">
-                  <div className="flex items-center gap-2 text-orange-700">
-                    <Check className="w-5 h-5 text-orange-600" />
-                    <span>500+ Businesses Trust Us</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-orange-700">
-                    <Check className="w-5 h-5 text-orange-600" />
-                    <span>4.8/5 Customer Rating</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-orange-700">
-                    <Check className="w-5 h-5 text-orange-600" />
-                    <span>2M+ Monthly Conversations</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-orange-700">
-                    <Clock className="w-5 h-5 text-orange-600" />
-                    <span>24/7 Instant Support</span>
+              
+              {/* Right HD Image */}
+              <div className="relative">
+                <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-cyan-400/20 border border-cyan-400/30">
+                  <Image
+                    src="https://images.unsplash.com/photo-1553028826-f4804a6dba3b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
+                    alt="AI Customer Support Technology - 24/7 Automated Service Dashboard"
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-cyan-900/20 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
+                          <HeartHandshake className="w-4 h-4 text-cyan-300" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-cyan-300">Live Support AI</div>
+                          <div className="text-xs text-cyan-400">24/7 customer care</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-cyan-400 font-medium">✓ Instant Response</span>
+                        <span className="text-cyan-400 font-medium tracking-wide">Always Available</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
         </section>
 
-        {/* Benefits Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
-                Benefits of AI Customer Support
+        {/* Benefits Section - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-cyan-400/15 to-cyan-600/8 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-cyan-500/10 to-cyan-400/15 rounded-full blur-2xl animate-pulse"></div>
+          </div>
+
+          <div className="container mx-auto max-w-7xl relative z-10">
+            <div className="text-left mb-6">
+              <h2 className="text-lg sm:text-xl font-bold mb-3 text-cyan-400 uppercase tracking-wide" style={{
+                textShadow: '0 0 12px rgba(0, 255, 255, 0.3)'
+              }}>
+                AI Customer Support Benefits
               </h2>
-              <p className="text-xl text-black-400 max-w-3xl mx-auto">
+              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
                 Empower your support team with automation that feels human and scales with demand
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {benefits.map((benefit, index) => (
                 <div 
                   key={index}
-                  className="group relative bg-gradient-to-br from-white to-gray-50 border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/20 overflow-hidden"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+                  }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 via-orange-500/10 to-orange-400/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500" />
-                  
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                    <benefit.icon className="w-7 h-7 text-black" />
+                  {/* Image Header */}
+                  <div className="relative h-32 overflow-hidden">
+                    <Image
+                      src={benefit.image}
+                      alt={`${benefit.title} - AI Customer Support`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
+                    <div className="absolute top-4 left-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl">
+                        <benefit.icon className="w-6 h-6 text-cyan-300" />
+                      </div>
+                    </div>
                   </div>
-
-                  <h3 className="text-xl font-bold mb-3 text-black group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-black-400 leading-relaxed">
-                    {benefit.description}
-                  </p>
+                  
+                  {/* Content */}
+                  <div className="p-4">
+                    <h3 className="text-sm font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors duration-300">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-cyan-300 text-xs leading-relaxed">
+                      {benefit.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Use Cases Section */}
-        <section className="py-20 bg-gradient-to-b from-white to-orange-100">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
+        {/* Use Cases Section - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full blur-lg animate-pulse" />
+          <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-cyan-500/12 to-cyan-600/12 rounded-full blur-lg animate-pulse delay-1000" />
+
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="text-left mb-6">
+              <h2 className="text-lg sm:text-xl font-bold mb-3 text-cyan-400 uppercase tracking-wide" style={{
+                textShadow: '0 0 12px rgba(0, 255, 255, 0.3)'
+              }}>
                 AI Support Use Cases & Proven Results
               </h2>
-              <p className="text-xl text-black-400 max-w-3xl mx-auto">
+              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
                 Real-world outcomes from DigitalBot customers worldwide
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-5">
               {useCases.map((useCase, index) => (
                 <div 
                   key={index}
-                  className="group bg-white border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  className="group relative bg-black/95 backdrop-blur-md rounded-2xl border border-cyan-400/30 hover:border-cyan-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-400/25 overflow-hidden"
                 >
-                  <h3 className="text-2xl font-bold mb-3 text-black group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
-                    {useCase.title}
-                  </h3>
-                  <p className="text-black-400 leading-relaxed mb-4">
-                    {useCase.description}
-                  </p>
-                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-50 to-emerald-50 text-orange-700 rounded-full text-sm font-semibold border-2 border-orange-200">
-                    <Check className="h-4 w-4 mr-2" />
-                    {useCase.results}
-                  </span>
+                  {/* Image Header */}
+                  <div className="relative h-40 overflow-hidden">
+                    <Image
+                      src={useCase.image}
+                      alt={`${useCase.title} - AI Customer Support Use Case`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <div className="bg-black/95 backdrop-blur-md rounded-lg px-3 py-1 border border-cyan-400/50">
+                        <div className="flex items-center gap-2 text-xs">
+                          <Check className="w-3 h-3 text-cyan-400 animate-pulse" />
+                          <span className="text-cyan-300 font-semibold">{useCase.results}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-5">
+                    <h3 className="text-base font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 tracking-wide">
+                      {useCase.title}
+                    </h3>
+                    <p className="text-cyan-300 leading-relaxed text-sm mb-4">
+                      {useCase.description}
+                    </p>
+                    <span className="inline-flex items-center px-3 py-1 bg-cyan-400/20 text-cyan-300 rounded-full text-xs font-semibold border border-cyan-400/30">
+                      <Check className="h-3 w-3 mr-2 text-cyan-400" />
+                      {useCase.results}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
+        {/* Features Section - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-cyan-400/15 to-cyan-600/8 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-cyan-500/10 to-cyan-400/15 rounded-full blur-2xl animate-pulse"></div>
+          </div>
+
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="text-left mb-6">
+              <h2 className="text-lg sm:text-xl font-bold mb-3 text-cyan-400 uppercase tracking-wide" style={{
+                textShadow: '0 0 12px rgba(0, 255, 255, 0.3)'
+              }}>
                 Platform Capabilities Support Leaders Trust
               </h2>
-              <p className="text-xl text-black-400 max-w-3xl mx-auto">
+              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
                 Deep technical advantages that keep customers informed and delighted
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-5">
               {capabilityBlocks.map((feature, index) => (
                 <div 
                   key={index}
-                  className="group bg-gradient-to-br from-white to-gray-50 border-2 border-orange-400 hover:border-orange-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500"
+                  className="group relative bg-black/95 backdrop-blur-md rounded-2xl border border-cyan-400/30 hover:border-cyan-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-400/25 overflow-hidden"
                 >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <feature.icon className="h-6 w-6 text-black" />
+                  {/* Image Header */}
+                  <div className="relative h-40 overflow-hidden">
+                    <Image
+                      src={feature.image}
+                      alt={`${feature.heading} - AI Customer Support Platform`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute top-4 left-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl">
+                        <feature.icon className="w-6 h-6 text-cyan-300" />
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-black group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-orange-700 group-hover:bg-clip-text transition-all duration-300">
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-5">
+                    <h3 className="text-base font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 tracking-wide">
                       {feature.heading}
                     </h3>
+                    <p className="text-cyan-300 leading-relaxed text-sm">
+                      {feature.body}
+                    </p>
                   </div>
-                  <p className="text-black-400 leading-relaxed">{feature.body}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Demo Section */}
-        <section className="py-20 bg-gradient-to-b from-orange-50 to-orange-100">
-          <div className="max-w-4xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-black px-5 py-2 rounded-full text-sm backdrop-blur-sm border-2 border-orange-300 shadow-lg mb-6">
-                <Mic className="h-4 w-4 animate-pulse" />
-                <span className="font-semibold">Live AI Demo</span>
+        {/* Demo Section - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full blur-lg animate-pulse" />
+          <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-cyan-500/12 to-cyan-600/12 rounded-full blur-lg animate-pulse delay-1000" />
+
+          <div className="max-w-4xl mx-auto relative z-10">
+            <div className="text-left mb-8">
+              <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-3 py-1 mb-4 border border-cyan-400 uppercase tracking-widest" style={{
+                clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+              }}>
+                <Mic className="w-3 h-3 animate-pulse" />
+                <span className="text-xs font-bold">Live AI Demo</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 bg-clip-text text-transparent mb-4">
+              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 uppercase tracking-wide">
                 Experience AI Customer Support in Action
               </h2>
-              <p className="text-lg text-black-400 max-w-2xl mx-auto">
+              <p className="text-cyan-300 text-sm max-w-2xl leading-relaxed">
                 Hear how AI resolves support tickets with calm, accurate, and friendly responses your customers will love
               </p>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-2xl border-2 border-orange-400">
+            <div className="bg-black/90 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-cyan-400/30">
               <VoiceConversationPlayer audioSrc="/sample-conversation.mp3" />
             </div>
           </div>
         </section>
 
-        {/* FAQ Section - Dark Theme */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-brbg-white via-gray-900 to-orange-900">
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 -left-20 w-96 h-96 bg-gradient-radial from-orange-500/20 to-transparent rounded-full blur-3xl animate-float-slow" />
-            <div className="absolute bottom-20 -right-20 w-[500px] h-[500px] bg-gradient-radial from-orange-400/15 to-transparent rounded-full blur-3xl animate-float-reverse" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-orange-500/10 to-transparent rounded-full blur-3xl animate-pulse" />
+        {/* FAQ Section - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          {/* Cyberpunk Background Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-10 left-20 w-24 h-24 bg-gradient-to-br from-cyan-400/20 to-cyan-500/20 rounded-full filter blur-xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-20 w-28 h-28 bg-gradient-to-br from-cyan-500/15 to-cyan-600/15 rounded-full filter blur-xl animate-pulse delay-1000"></div>
+            <div className="absolute top-32 right-32 w-20 h-20 bg-gradient-to-br from-cyan-300/25 to-cyan-400/25 rounded-full filter blur-lg animate-pulse delay-500"></div>
           </div>
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2.5 mb-6">
-                <MessageCircle className="w-4 h-4 text-orange-400" />
-                <span className="text-sm font-semibold text-black">Common Questions</span>
+          <div className="container mx-auto max-w-5xl relative z-10">
+            <div className="text-left mb-8">
+              <div className="inline-block mb-3">
+                <span className="px-3 py-1 bg-cyan-400 text-black font-semibold text-xs uppercase tracking-wide shadow-md animate-pulse" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}>
+                  <MessageCircle className="w-3 h-3 inline mr-1" />
+                  Common Questions
+                </span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-transparent bg-clip-text">
+              <h2 className="text-lg sm:text-xl font-bold mb-3 text-cyan-400 uppercase tracking-wide" style={{
+                textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+              }}>
                 Frequently Asked Questions
               </h2>
-              <p className="text-xl text-black-300 max-w-3xl mx-auto">
+              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
                 Get clarity on how AI customer support fits into your strategy
               </p>
             </div>
 
-            <div className="max-w-5xl mx-auto grid gap-6">
+            <div className="grid gap-3">
               {faqSchema.mainEntity.map((faq, index) => (
                 <div
                   key={index}
-                  className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-8 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20"
+                  className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                  }}
                 >
-                  <div className="flex gap-6">
+                  <div className="flex gap-4 p-4">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 rounded-xl flex items-center justify-center text-black font-bold text-lg shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                      <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
                         {index + 1}
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 text-transparent bg-clip-text">
+                      <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                         {faq.name}
                       </h3>
-                      <p className="text-black-300 leading-relaxed">
+                      <p className="text-cyan-300 leading-relaxed text-xs">
                         {faq.acceptedAnswer.text}
                       </p>
                     </div>
@@ -493,69 +663,85 @@ export default function AICustomerSupport() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="relative py-24 overflow-hidden bg-gradient-to-b from-white to-orange-100">
-          {/* Animated Background */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
+        {/* CTA Section - Cyberpunk Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+          {/* Cyberpunk Background */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-cyan-400/15 to-cyan-600/8 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-cyan-500/10 to-cyan-400/15 rounded-full blur-2xl animate-pulse"></div>
           </div>
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-black rounded-full px-6 py-2.5 mb-8 border-2 border-orange-300 shadow-lg">
+          <div className="container mx-auto max-w-4xl relative z-10">
+            <div className="text-center">
+              <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-4 py-2 mb-6 border border-cyan-400 uppercase tracking-widest" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}>
                 <HeartHandshake className="w-4 h-4" />
-                <span className="text-sm font-semibold">Transform Customer Support Today</span>
+                <span className="text-xs font-bold">Transform Customer Support Today</span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-700 text-transparent bg-clip-text">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 leading-tight">
+                <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 drop-shadow-sm tracking-widest uppercase">
                   Elevate Your Customer
                 </span>
-                <br />
-                <span className="relative inline-block mt-2">
-                  <span className="relative z-10 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-transparent bg-clip-text">
-                    Support Experience
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-200/30 via-orange-300/30 to-orange-400/30 blur-2xl -z-10 scale-110" />
+                <span className="inline-block px-4 py-2 rounded-xl text-black bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 shadow-lg shadow-cyan-400/40 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-400">
+                  <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-transparent to-transparent"></span>
+                  <span className="relative z-10 uppercase tracking-wider">Support Experience</span>
                 </span>
               </h2>
 
-              <p className="text-xl text-black-300 mb-10 max-w-3xl mx-auto">
-                Join 500+ businesses delivering proactive, intelligent support experiences. Delight customers, empower agents, and prove ROI with DigitalBot AI.
+              <p className="text-xs sm:text-sm text-cyan-300 mb-6 max-w-3xl mx-auto leading-relaxed">
+                Join <span className="font-bold text-cyan-400">500+ businesses</span> delivering proactive, intelligent support experiences. 
+                Delight customers, empower agents, and prove <span className="font-bold text-cyan-400">ROI</span> with DigitalBot AI.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:from-orange-600 hover:via-orange-700 hover:to-orange-800 text-black px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                  <Link href="/signup">
-                    Start Free Trial
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 px-10 py-6 text-lg">
-                  <Link href="/contact">
-                    <MessageCircle className="mr-2 w-5 h-5" />
-                    Schedule Demo
-                  </Link>
-                </Button>
+              <div className="flex flex-col sm:flex-row gap-2 justify-center items-center mb-8">
+                <Link 
+                  href="/signup" 
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                  }}
+                >
+                  Start Free Trial
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+                <Link 
+                  href="/contact" 
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-cyan-400 bg-transparent border border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                  }}
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Schedule Demo
+                </Link>
               </div>
 
-              <div className="flex flex-wrap gap-8 justify-center items-center">
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200">
-                  <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-black-300">Dedicated Success Team</span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <div className="flex items-center gap-1 p-2 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/20" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}>
+                  <Check className="w-3 h-3 text-cyan-400" />
+                  <span className="text-xs font-medium text-cyan-300 uppercase tracking-wide">Success Team</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
-                  <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-black-300">Transparent Pricing</span>
+                <div className="flex items-center gap-1 p-2 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/20" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}>
+                  <Check className="w-3 h-3 text-cyan-400" />
+                  <span className="text-xs font-medium text-cyan-300 uppercase tracking-wide">Clear Pricing</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
-                  <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-black-300">Rapid Deployment</span>
+                <div className="flex items-center gap-1 p-2 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/20" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}>
+                  <Check className="w-3 h-3 text-cyan-400" />
+                  <span className="text-xs font-medium text-cyan-300 uppercase tracking-wide">Fast Deploy</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-400">
-                  <Check className="w-5 h-5 text-orange-600" />
-                  <span className="text-sm font-medium text-black-300">24/7 Support</span>
+                <div className="flex items-center gap-1 p-2 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/20" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}>
+                  <Check className="w-3 h-3 text-cyan-400" />
+                  <span className="text-xs font-medium text-cyan-300 uppercase tracking-wide">24/7 Support</span>
                 </div>
               </div>
             </div>

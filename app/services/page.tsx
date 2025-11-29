@@ -1,6 +1,5 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { PageBackground } from "@/components/page-background";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,21 +13,19 @@ import {
   ArrowRight,
   BarChart3,
   Bot,
-  Brain,
   Check,
   Code,
   Globe,
   Headphones,
   MessageSquare,
+  Phone,
   Shield,
   Smartphone,
-  Zap,
-  Phone,
   Users,
-  TrendingUp,
+  Zap
 } from "lucide-react";
-import Link from "next/link";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "AI Voice Assistant Services | AI Call Center Solutions - DigitalBot.ai 2025",
@@ -177,169 +174,206 @@ const stats = [
 
 export default function Services() {
   return (
-    <main className="min-h-screen bg-white text-black-900 relative overflow-hidden">
+    <main className="min-h-screen bg-black text-white relative overflow-hidden">
       <Header />
 
-      {/* Hero Section - Creative Design */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <PageBackground />
+      {/* Hero Section - Cyberpunk Design */}
+      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black">
+        {/* Cyberpunk Grid Background */}
+        <div className="fixed inset-0 z-0" style={{
+          background: 'linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px)',
+          backgroundSize: '40px 40px'
+        }}></div>
 
-        {/* Decorative Floating Orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-orange-400/20 via-orange-500/20 to-orange-600/20 rounded-full filter blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-orange-400/20 via-orange-600/20 to-orange-600/20 rounded-full filter blur-3xl animate-float-reverse"></div>
+        {/* Cyberpunk Floating Elements */}
+        <div className="absolute top-20 left-10 w-48 h-48 bg-gradient-to-br from-cyan-400/15 via-cyan-500/15 to-cyan-600/15 rounded-full filter blur-2xl animate-float-slow"></div>
+        <div className="absolute bottom-20 right-10 w-56 h-56 bg-gradient-to-bl from-cyan-400/15 via-cyan-600/15 to-cyan-600/15 rounded-full filter blur-2xl animate-float-reverse"></div>
         
-        <div className="relative z-10 container mx-auto text-center">
+        <div className="relative z-10 container mx-auto text-left md:text-center">
           {/* Breadcrumb */}
-          <nav className="flex justify-center mb-8" aria-label="Breadcrumb">
-            <ol className="inline-flex items-center space-x-2 text-sm bg-white/80 backdrop-blur-md px-6 py-3 rounded-full border-2 border-orange-200 shadow-lg">
+          <nav className="flex justify-start md:justify-center mb-6" aria-label="Breadcrumb">
+            <ol className="inline-flex items-center space-x-2 text-xs bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-cyan-400/20 shadow-md shadow-cyan-500/15">
               <li>
-                <Link href="/" className="text-black-400 hover:text-orange-400 transition-colors font-medium">
+                <Link href="/" className="text-gray-400 hover:text-cyan-400 transition-colors font-medium">
                   Home
                 </Link>
               </li>
-              <li className="text-black-400">→</li>
-              <li className="text-orange-400 font-bold">Services</li>
+              <li className="text-gray-400">→</li>
+              <li className="text-cyan-400 font-bold">Services</li>
             </ol>
           </nav>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
-            <span className="block mb-3 bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4 uppercase tracking-wide">
+            <span className="block mb-2 shimmer-text text-cyan-400" style={{
+              textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+            }}>
               What AI Voice Assistant
             </span>
-            <span className="inline-block px-8 py-4 rounded-2xl text-black-900 bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 shadow-2xl text-3xl sm:text-4xl lg:text-5xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
-              <span className="absolute inset-0 bg-gradient-to-tr text-black30 via-transparent to-transparent"></span>
-              <span className="relative z-10">Services Do We Offer?</span>
+            <span className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-300 hover:shadow-[0_0_30px_rgba(0,255,255,0.6)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+            }}>
+              <span className="relative z-10 font-black tracking-wide">Services Do We Offer?</span>
             </span>
           </h1>
           
-          <div className="max-w-4xl mx-auto mb-8 p-6 bg-gradient-to-r text-black10 to-white/5 border-2 border-orange-400/50 rounded-2xl shadow-2xl backdrop-blur-md">
-            <p className="text-xl sm:text-2xl text-black-300 leading-relaxed">
-              We provide <span className="font-bold text-orange-400">comprehensive AI voice assistant services</span> including AI call centers, customer support automation, sales agents, and virtual receptionists. 
-              Trusted by <span className="font-extrabold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">500+ businesses</span> across <span className="font-extrabold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">25+ countries</span> to handle <span className="font-extrabold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">2M+ conversations</span> monthly.
+          <div className="max-w-5xl mx-auto mb-6 p-4 bg-gradient-to-r from-cyan-500/8 via-black/90 to-cyan-600/8 border border-cyan-400/30 rounded-xl shadow-lg backdrop-blur-md" style={{
+            clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+          }}>
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+              We provide <span className="font-bold text-cyan-400">comprehensive AI voice assistant services</span> including AI call centers, customer support automation, sales agents, and virtual receptionists. 
+              Trusted by <span className="font-extrabold shimmer-text text-cyan-400">500+ businesses</span> across <span className="font-extrabold shimmer-text text-cyan-400">25+ countries</span> to handle <span className="font-extrabold shimmer-text text-cyan-400">2M+ conversations</span> monthly.
             </p>
           </div>
           
-          {/* Stats Grid - Enhanced Design */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12">
+          {/* Stats Grid - Cyberpunk Design */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-6xl mx-auto mb-8">
             {stats.map((stat, index) => {
-              const colors = [
-                { border: 'border-orange-400', gradient: 'from-orange-500 to-orange-500', shadow: 'hover:shadow-orange-300', glow1: 'from-orange-400 via-orange-500 to-orange-600', glow2: 'from-orange-400 via-orange-600 to-orange-600' },
-                { border: 'border-orange-400', gradient: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-300', glow1: 'from-orange-400 via-orange-600 to-orange-600', glow2: 'from-orange-400 via-orange-500 to-orange-400' },
-                { border: 'border-orange-400', gradient: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-300', glow1: 'from-orange-400 via-orange-500 to-orange-400', glow2: 'from-orange-400 via-orange-500 to-orange-600' },
-                { border: 'border-orange-400', gradient: 'from-orange-500 to-orange-500', shadow: 'hover:shadow-orange-300', glow1: 'from-orange-400 via-orange-400 to-orange-400', glow2: 'from-orange-400 via-orange-500 to-orange-600' },
-              ];
-              const color = colors[index % colors.length];
-              
               return (
                 <div
                   key={index}
-                  className={`bg-white backdrop-blur-md rounded-2xl p-6 border-2 ${color.border} ${color.shadow} shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden group`}
+                  className="bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 shadow-md hover:shadow-[0_0_20px_rgba(0,255,255,0.3)] hover:scale-102 transition-all duration-300 relative overflow-hidden group"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                  }}
                 >
-                  <div className={`absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-tr ${color.glow1} rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity`}></div>
-                  <div className={`absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-bl ${color.glow2} rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity`}></div>
-                  <stat.icon className={`h-8 w-8 mx-auto mb-3 text-${color.gradient.split('-')[1].split(' ')[0]}-500 relative z-10`} />
-                  <div className={`text-3xl font-extrabold bg-gradient-to-r ${color.gradient} bg-clip-text text-transparent mb-1 relative z-10 animate-pulse`}>
+                  <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-tr from-cyan-400/15 via-cyan-500/15 to-cyan-600/15 rounded-full opacity-15 filter blur-2xl group-hover:opacity-25 transition-opacity"></div>
+                  <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-bl from-cyan-400/15 via-cyan-600/15 to-cyan-600/15 rounded-full opacity-15 filter blur-2xl group-hover:opacity-25 transition-opacity"></div>
+                  <stat.icon className="h-5 w-5 mx-auto mb-2 text-cyan-400 relative z-10" />
+                  <div className="text-xl font-extrabold shimmer-text text-cyan-400 mb-1 relative z-10">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-black-300 font-semibold relative z-10">{stat.label}</div>
+                  <div className="text-xs text-gray-300 font-semibold relative z-10 uppercase tracking-wide">{stat.label}</div>
                 </div>
               );
             })}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-start md:justify-center">
             <Link href="/contact">
-              <Button className="bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 text-black-900 hover:scale-105 transition-all rounded-xl px-8 py-6 text-lg shadow-2xl hover:shadow-orange-400 border-2 border-orange-300 animate-gradient">
+              <button className="bg-cyan-400 text-black hover:bg-cyan-300 font-bold px-4 py-3 text-sm uppercase tracking-wide transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,255,255,0.6)] flex items-center" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}>
                 Start Free Trial
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </button>
             </Link>
             <Link href="/pricing">
-              <Button variant="outline" className="border-2 border-orange-500 text-black-900 hover:bg-cyan-500/20 rounded-xl px-8 py-6 text-lg shadow-lg hover:scale-105 transition-all">
+              <button className="bg-transparent text-cyan-400 border border-cyan-400 hover:bg-cyan-400/10 font-bold px-4 py-3 text-sm uppercase tracking-wide transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(0,255,255,0.2)]" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}>
                 View Pricing
-              </Button>
+              </button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Services Grid - Enhanced Creative Design */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-white to-white overflow-hidden">
-        {/* Decorative Background Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-orange-300/20 via-orange-500/20 to-orange-500/20 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-orange-300/20 via-orange-400/20 to-orange-500/20 rounded-full filter blur-3xl"></div>
+      {/* Services Grid - Cyberpunk Design */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 relative bg-black overflow-hidden">
+        {/* Cyberpunk Background Elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-cyan-300/15 via-cyan-500/15 to-cyan-500/15 rounded-full filter blur-2xl"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-cyan-300/15 via-cyan-400/15 to-cyan-500/15 rounded-full filter blur-2xl"></div>
         
         <div className="container mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-6">
-              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 text-black-900 font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+          <div className="text-left md:text-center mb-10">
+            <div className="inline-block mb-4">
+              <span className="px-4 py-2 bg-cyan-500/8 border border-cyan-400/20 text-cyan-400 font-bold text-xs uppercase tracking-wide shadow-md" style={{
+                clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
+                boxShadow: '0 0 10px rgba(0, 255, 255, 0.2)'
+              }}>
                 ⭐ Premium AI Services
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-extrabold mb-6">
-              <span className="block mb-2 bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl font-extrabold mb-4 uppercase tracking-wide">
+              <span className="block mb-2 shimmer-text text-cyan-400" style={{
+                textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+              }}>
                 Our AI Voice Assistant
               </span>
-              <span className="inline-block px-6 py-3 rounded-xl text-black-900 bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 shadow-2xl border-2 border-orange-400">
+              <span className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg border border-cyan-300" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}>
                 Service Suite
               </span>
             </h2>
-            <p className="text-lg text-black-400 max-w-3xl mx-auto leading-relaxed">
-              Choose from our <span className="font-bold text-orange-400">comprehensive suite</span> of AI-powered voice solutions designed to <span className="font-bold text-orange-400">automate and enhance</span> every aspect of your business communication.
+            <p className="text-sm text-gray-400 max-w-4xl mx-auto leading-relaxed">
+              Choose from our <span className="font-bold text-cyan-400">comprehensive suite</span> of AI-powered voice solutions designed to <span className="font-bold text-cyan-400">automate and enhance</span> every aspect of your business communication.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((service, index) => {
-              const borderColors = ['border-orange-300', 'border-orange-400', 'border-orange-400', 'border-orange-400', 'border-orange-300', 'border-orange-400'];
-              const hoverBorderColors = ['hover:border-orange-500', 'hover:border-orange-500', 'hover:border-orange-500', 'hover:border-orange-500', 'hover:border-orange-500', 'hover:border-orange-500'];
-              const shadowColors = ['hover:shadow-orange-200', 'hover:shadow-orange-200', 'hover:shadow-orange-200', 'hover:shadow-orange-200', 'hover:shadow-orange-200', 'hover:shadow-orange-200'];
+              const serviceImages = [
+                'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=400&auto=format&fit=crop', // AI Call Center
+                'https://images.unsplash.com/photo-1553775282-20af80779df7?q=80&w=400&auto=format&fit=crop', // AI Customer Support
+                'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=400&auto=format&fit=crop', // AI Sales Agent
+                'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop', // AI Virtual Receptionist
+                'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=400&auto=format&fit=crop', // AI Voice Bot
+                'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=400&auto=format&fit=crop'  // Voice Automation
+              ];
               
               return (
                 <Link key={index} href={service.href}>
-                  <Card className={`relative bg-white border-2 ${borderColors[index]} ${hoverBorderColors[index]} rounded-3xl hover:scale-105 ${shadowColors[index]} shadow-xl hover:shadow-2xl transition-all duration-500 h-full group cursor-pointer overflow-hidden`}>
-                    {/* Decorative Glow Effect */}
-                    <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-orange-300/30 via-orange-400/30 to-orange-300/30 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+                  <Card className="relative bg-black border border-cyan-400/20 hover:border-cyan-300/40 hover:scale-102 hover:shadow-[0_0_25px_rgba(0,255,255,0.3)] shadow-md hover:shadow-lg transition-all duration-300 h-full group cursor-pointer overflow-hidden" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+                  }}>
+                    {/* HD Service Image */}
+                    <div className="relative h-24 sm:h-28 overflow-hidden">
+                      <img 
+                        src={serviceImages[index]} 
+                        alt={`${service.title} - AI Voice Assistant Service`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
+                      <div className="absolute top-2 left-2">
+                        <div className="p-1 bg-cyan-400/15 backdrop-blur-sm border border-cyan-300/20 rounded">
+                          <service.icon className="h-4 w-4 text-cyan-300" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Cyberpunk Glow Effect */}
+                    <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-br from-cyan-300/20 via-cyan-400/20 to-cyan-300/20 rounded-full filter blur-2xl group-hover:blur-xl transition-all"></div>
                     
-                    {/* Numbered Badge - Enhanced */}
-                    <div className="absolute -top-4 -left-4 w-14 h-14 bg-gradient-to-br from-orange-500 via-orange-500 to-orange-600 rounded-2xl flex items-center justify-center font-extrabold text-black-900 text-xl shadow-2xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 border-2 border-white">
+                    {/* Numbered Badge - Cyberpunk */}
+                    <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black rounded-lg flex items-center justify-center font-extrabold text-sm shadow-lg transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 border border-cyan-300" style={{
+                      boxShadow: '0 0 10px rgba(0, 255, 255, 0.4)'
+                    }}>
                       {String(index + 1).padStart(2, '0')}
                     </div>
 
                     {service.popular && (
-                      <Badge className="absolute -top-2 right-4 bg-gradient-to-r from-orange-500 to-orange-500 text-black-900 shadow-lg animate-pulse border-2 border-white">
+                      <Badge className="absolute -top-2 right-4 bg-cyan-400 text-black shadow-lg animate-pulse border-2 border-cyan-300">
                         ⭐ Popular
                       </Badge>
                     )}
 
-                    <CardHeader className="pt-10 pb-4">
-                      <div className="w-20 h-20 bg-gradient-to-br text-black10 to-white/5 rounded-2xl flex items-center justify-center mb-6 mx-auto border-2 border-orange-300/50 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg backdrop-blur-md">
-                        <service.icon className="h-10 w-10 text-orange-400" />
-                      </div>
-                      <CardTitle className="text-xl font-bold text-black-900 mb-3 text-center group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-orange-500 group-hover:bg-clip-text group-hover:text-transparent transition-all">
+                    <CardHeader className="pt-4 pb-3">
+                      <CardTitle className="text-sm font-bold text-cyan-400 mb-2 text-center group-hover:text-cyan-300 transition-all uppercase tracking-wide">
                         {service.title}
                       </CardTitle>
-                      <CardDescription className="text-black-400 text-center leading-relaxed">
+                      <CardDescription className="text-gray-300 text-center leading-relaxed text-xs">
                         {service.description}
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="pb-8">
-                      <ul className="space-y-3 mb-6">
+                    <CardContent className="pb-4">
+                      <ul className="space-y-1 mb-4">
                         {service.features.map((feature, idx) => (
                           <li
                             key={idx}
-                            className="flex items-center text-sm text-black-300 group-hover:text-black-900 transition-colors"
+                            className="flex items-center text-xs text-gray-300 group-hover:text-white transition-colors"
                           >
-                            <div className="w-5 h-5 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 flex items-center justify-center mr-3 flex-shrink-0">
-                              <Check className="h-3 w-3 text-black-900" />
+                            <div className="w-3 h-3 rounded-full bg-cyan-400 flex items-center justify-center mr-2 flex-shrink-0">
+                              <Check className="h-2 w-2 text-black" />
                             </div>
                             <span className="font-medium">{feature}</span>
                           </li>
                         ))}
                       </ul>
-                      <div className="flex items-center justify-center text-orange-400 group-hover:text-orange-400 transition-colors font-bold pt-4 border-t-2 border-gray-100">
+                      <div className="flex items-center justify-center text-cyan-400 group-hover:text-cyan-300 transition-colors font-bold pt-3 border-t border-cyan-400/15 uppercase tracking-wide text-xs">
                         Learn More
-                        <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform" />
+                        <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </CardContent>
                   </Card>
@@ -350,63 +384,93 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Industries Section - Enhanced */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-br from-white to-white overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
+      {/* Industries Section - Cyberpunk */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 relative bg-black overflow-hidden">
+        {/* Cyberpunk Grid Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-8">
           <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(168, 85, 247, 0.4) 1px, transparent 1px),
-                             linear-gradient(to bottom, rgba(236, 72, 153, 0.4) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
+            backgroundImage: `linear-gradient(to right, rgba(0, 255, 255, 0.2) 1px, transparent 1px),
+                             linear-gradient(to bottom, rgba(0, 255, 255, 0.2) 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
           }}></div>
         </div>
         
         <div className="container mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-6">
-              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-black-900 font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+          <div className="text-left md:text-center mb-10">
+            <div className="inline-block mb-4" style={{
+              clipPath: 'polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%)'
+            }}>
+              <span className="px-4 py-2 bg-cyan-400 text-black font-bold text-xs uppercase tracking-wide shadow-lg border border-cyan-300 block" style={{
+                boxShadow: '0 0 12px rgba(0, 255, 255, 0.4)'
+              }}>
                 🌍 Global Reach
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-extrabold mb-6">
-              <span className="block mb-2 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-500 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl font-extrabold mb-4">
+              <span className="block mb-2 shimmer-text text-cyan-400" style={{
+                clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))',
+                background: 'linear-gradient(90deg, #00ffff, #00cccc, #00ffff)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                animation: 'shimmer 2s infinite'
+              }}>
                 Industries We Serve
               </span>
-              <span className="inline-block text-black-300 text-2xl font-semibold">
-                Across <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">25+ Countries</span>
+              <span className="inline-block text-gray-300 text-lg font-semibold">
+                Across <span className="text-cyan-400">25+ Countries</span>
               </span>
             </h2>
-            <p className="text-lg text-black-400 max-w-3xl mx-auto leading-relaxed">
-              Our AI voice assistants are <span className="font-bold text-orange-400">trusted across multiple industries</span> to deliver exceptional customer experiences and <span className="font-bold text-orange-400">operational efficiency</span>.
+            <p className="text-sm text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Our AI voice assistants are <span className="font-bold text-cyan-400">trusted across multiple industries</span> to deliver exceptional customer experiences and <span className="font-bold text-cyan-400">operational efficiency</span>.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {industries.map((industry, index) => {
-              const colors = [
-                { bg: 'text-black10 to-white/5', border: 'border-orange-300', hover: 'hover:border-orange-500', icon: 'text-orange-400', shadow: 'hover:shadow-orange-200' },
-                { bg: 'text-black10 to-white/5', border: 'border-orange-400', hover: 'hover:border-orange-500', icon: 'text-orange-400', shadow: 'hover:shadow-orange-200' },
-                { bg: 'text-black10 to-white/5', border: 'border-orange-400', hover: 'hover:border-orange-500', icon: 'text-orange-400', shadow: 'hover:shadow-orange-200' },
-                { bg: 'text-black10 to-white/5', border: 'border-orange-400', hover: 'hover:border-orange-500', icon: 'text-orange-400', shadow: 'hover:shadow-orange-200' },
-                { bg: 'from-orange-100/10 via-green-100/5 to-emerald-100/5', border: 'border-orange-300', hover: 'hover:border-orange-500', icon: 'text-orange-400', shadow: 'hover:shadow-orange-200' },
-                { bg: 'text-black10 to-white/5', border: 'border-orange-400', hover: 'hover:border-orange-500', icon: 'text-orange-400', shadow: 'hover:shadow-orange-200' },
+              const industryImages = [
+                'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=400&auto=format&fit=crop', // Healthcare
+                'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=400&auto=format&fit=crop', // Real Estate
+                'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=400&auto=format&fit=crop', // E-commerce
+                'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=400&auto=format&fit=crop', // Finance
+                'https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=400&auto=format&fit=crop', // Hospitality
+                'https://images.unsplash.com/photo-1497486751825-1233686d5d80?q=80&w=400&auto=format&fit=crop'  // Education
               ];
-              const color = colors[index % colors.length];
               
               return (
                 <Card
                   key={index}
-                  className={`bg-white border-2 ${color.border} ${color.hover} rounded-2xl hover:scale-105 shadow-lg ${color.shadow} hover:shadow-2xl transition-all duration-300 group overflow-hidden`}
+                  className="bg-black border border-cyan-400/15 hover:border-cyan-300/30 hover:scale-102 hover:shadow-[0_0_20px_rgba(0,255,255,0.2)] shadow-md hover:shadow-lg transition-all duration-300 group overflow-hidden"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                  }}
                 >
-                  <CardContent className="p-8 text-center relative">
-                    <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-orange-200/30 via-orange-300/30 to-orange-200/30 rounded-full filter blur-2xl group-hover:blur-xl transition-all"></div>
-                    <div className={`w-20 h-20 bg-gradient-to-br ${color.bg} rounded-2xl flex items-center justify-center mb-6 mx-auto border-2 ${color.border} group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg relative z-10 backdrop-blur-md`}>
-                      <industry.icon className={`h-10 w-10 ${color.icon}`} />
+                  <CardContent className="p-4 text-center relative">
+                    {/* HD Industry Image */}
+                    <div className="relative w-full h-20 mb-3 overflow-hidden" style={{
+                      clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                    }}>
+                      <img 
+                        src={industryImages[index]} 
+                        alt={`${industry.name} - AI Voice Solutions`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent"></div>
+                      <div className="absolute bottom-1 left-1">
+                        <div className="p-1 bg-cyan-400/15 backdrop-blur-sm border border-cyan-300/20 rounded">
+                          <industry.icon className="h-4 w-4 text-cyan-300" />
+                        </div>
+                      </div>
                     </div>
-                    <h3 className={`text-xl font-bold text-black-900 mb-3 group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-orange-500 group-hover:bg-clip-text group-hover:text-transparent transition-all relative z-10`}>
+                    
+                    {/* Cyberpunk Glow */}
+                    <div className="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-br from-cyan-300/15 via-cyan-400/15 to-cyan-300/15 rounded-full filter blur-xl group-hover:blur-lg transition-all"></div>
+                    
+                    <h3 className="text-sm font-bold text-cyan-400 mb-2 group-hover:text-cyan-300 transition-all relative z-10 uppercase tracking-wide">
                       {industry.name}
                     </h3>
-                    <p className="text-sm text-black-400 font-medium relative z-10">{industry.description}</p>
+                    <p className="text-xs text-gray-300 font-medium relative z-10">{industry.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -415,33 +479,40 @@ export default function Services() {
         </div>
       </section>
 
-      {/* How It Works Section - Enhanced */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-white to-white overflow-hidden">
-        {/* Decorative Background */}
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-300/20 via-orange-400/20 to-orange-500/20 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-gradient-to-bl from-orange-300/20 via-orange-500/20 to-orange-500/20 rounded-full filter blur-3xl"></div>
+      {/* How It Works Section - Cyberpunk */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 relative bg-black overflow-hidden">
+        {/* Cyberpunk Background */}
+        <div className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-br from-cyan-300/15 via-cyan-400/15 to-cyan-500/15 rounded-full filter blur-2xl"></div>
+        <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-gradient-to-bl from-cyan-300/15 via-cyan-500/15 to-cyan-500/15 rounded-full filter blur-2xl"></div>
         
         <div className="container mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-6">
-              <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 text-black-900 font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+          <div className="text-left md:text-center mb-10">
+            <div className="inline-block mb-4" style={{
+              clipPath: 'polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%)'
+            }}>
+              <span className="px-4 py-2 bg-cyan-400 text-black font-bold text-xs uppercase tracking-wide shadow-lg border border-cyan-300 block" style={{
+                boxShadow: '0 0 12px rgba(0, 255, 255, 0.4)'
+              }}>
                 🚀 Simple Setup
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-extrabold mb-6">
-              <span className="block mb-3 bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl font-extrabold mb-4">
+              <span className="block mb-2 text-gray-300">
                 How Do Our AI Voice
               </span>
-              <span className="inline-block px-8 py-4 rounded-2xl text-black-900 bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 shadow-2xl border-2 border-orange-300">
+              <span className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg border border-cyan-300" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
+                boxShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+              }}>
                 Services Work?
               </span>
             </h2>
-            <p className="text-lg text-black-400 max-w-3xl mx-auto leading-relaxed">
-              Get started in <span className="font-bold text-orange-400">three simple steps</span> and transform your business communication with <span className="font-bold text-orange-400">AI voice technology</span>.
+            <p className="text-sm text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Get started in <span className="font-bold text-cyan-400">three simple steps</span> and transform your business communication with <span className="font-bold text-cyan-400">AI voice technology</span>.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
                 step: "1",
@@ -459,31 +530,30 @@ export default function Services() {
                 description: "Go live with 24/7 AI voice support and continuously improve performance with real-time analytics and ongoing optimization.",
               },
             ].map((item, idx) => {
-              const colors = [
-                { gradient: 'from-orange-500 via-orange-500 to-orange-600', border: 'border-orange-300', hover: 'hover:border-orange-500', shadow: 'hover:shadow-orange-200', textGradient: 'from-orange-400 to-orange-500' },
-                { gradient: 'from-orange-400 via-orange-500 to-orange-600', border: 'border-orange-400', hover: 'hover:border-orange-500', shadow: 'hover:shadow-orange-200', textGradient: 'from-orange-400 to-orange-500' },
-                { gradient: 'from-orange-500 via-orange-500 to-orange-500', border: 'border-orange-400', hover: 'hover:border-orange-500', shadow: 'hover:shadow-orange-200', textGradient: 'from-orange-400 to-orange-500' },
-              ];
-              const color = colors[idx];
-              
               return (
                 <div
                   key={idx}
-                  className={`relative bg-white rounded-3xl p-10 border-2 ${color.border} ${color.hover} hover:scale-105 ${color.shadow} shadow-xl hover:shadow-2xl transition-all duration-500 group overflow-hidden`}
+                  className="relative bg-black p-6 border border-cyan-400/20 hover:border-cyan-300/40 hover:scale-102 hover:shadow-[0_0_20px_rgba(0,255,255,0.2)] shadow-md hover:shadow-lg transition-all duration-300 group overflow-hidden"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+                  }}
                 >
-                  {/* Decorative Glow */}
-                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-orange-300/30 via-orange-400/30 to-orange-300/30 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+                  {/* Cyberpunk Glow */}
+                  <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-br from-cyan-300/20 via-cyan-400/20 to-cyan-300/20 rounded-full filter blur-2xl group-hover:blur-xl transition-all"></div>
                   
-                  {/* Step Number Badge - Enhanced */}
-                  <div className={`absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-br ${color.gradient} rounded-2xl flex items-center justify-center font-extrabold text-black-900 text-2xl shadow-2xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 border-4 border-white`}>
+                  {/* Step Number Badge - Cyberpunk */}
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-10 bg-cyan-400 text-black font-extrabold text-lg shadow-lg transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 border-2 border-cyan-300 flex items-center justify-center" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                    boxShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+                  }}>
                     {item.step}
                   </div>
 
-                  <div className="pt-12 relative z-10">
-                    <h3 className={`text-2xl font-extrabold text-black-900 mb-4 text-center group-hover:bg-gradient-to-r group-hover:${color.textGradient} group-hover:bg-clip-text group-hover:text-transparent transition-all`}>
+                  <div className="pt-8 relative z-10">
+                    <h3 className="text-lg font-extrabold text-cyan-400 mb-3 text-center group-hover:text-cyan-300 transition-all uppercase tracking-wide">
                       {item.title}
                     </h3>
-                    <p className="text-black-400 text-center leading-relaxed font-medium">
+                    <p className="text-gray-300 text-center leading-relaxed font-medium text-sm">
                       {item.description}
                     </p>
                   </div>
@@ -494,186 +564,257 @@ export default function Services() {
         </div>
       </section>
 
-      {/* FAQ Section - Exactly like homepage */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-white to-white   relative overflow-hidden" role="region" aria-labelledby="faq-section">
-        {/* Animated Background Elements */}
+      {/* FAQ Section - Cyberpunk */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden" role="region" aria-labelledby="faq-section">
+        {/* Cyberpunk Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-orange-500/20 rounded-full filter blur-3xl animate-float-slow"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-orange-400/20 to-orange-600/20 rounded-full filter blur-3xl animate-float-reverse"></div>
-          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-full filter blur-3xl animate-pulse"></div>
+          <div className="absolute top-0 left-1/4 w-64 h-64 bg-gradient-to-br from-cyan-500/15 to-cyan-600/15 rounded-full filter blur-2xl animate-float-slow"></div>
+          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full filter blur-2xl animate-float-reverse"></div>
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-cyan-500/15 to-cyan-600/15 rounded-full filter blur-2xl animate-pulse"></div>
         </div>
 
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-6">
-              <span className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 text-black-900 font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse">
+          <div className="text-left md:text-center mb-10">
+            <div className="inline-block mb-4" style={{
+              clipPath: 'polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%)'
+            }}>
+              <span className="px-4 py-2 bg-cyan-400 text-black font-bold text-xs uppercase tracking-wide shadow-lg block" style={{
+                boxShadow: '0 0 12px rgba(0, 255, 255, 0.4)'
+              }}>
                 Got Questions? We've Got Answers
               </span>
             </div>
-            <h2 id="faq-section" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-black-900">
-              <span className="block mb-2">Frequently Asked</span>
-              <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
+            <h2 id="faq-section" className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4">
+              <span className="block mb-2 text-gray-300">Frequently Asked</span>
+              <span className="shimmer-text text-cyan-400" style={{
+                clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))',
+                background: 'linear-gradient(90deg, #00ffff, #00cccc, #00ffff)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                animation: 'shimmer 2s infinite'
+              }}>
                 Questions
               </span>
             </h2>
-            <p className="text-black-300 text-xl max-w-3xl mx-auto leading-relaxed">
-              Everything you need to know about <span className="text-orange-400 font-semibold">AI Voice Assistant Services</span>
+            <p className="text-gray-300 text-sm max-w-4xl mx-auto leading-relaxed">
+              Everything you need to know about <span className="text-cyan-400 font-semibold">AI Voice Assistant Services</span>
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4">
             {/* FAQ 1 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-500 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 10px rgba(0, 255, 255, 0.4)'
+              }}>
                 01
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 What AI voice assistant services do you offer?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 We offer comprehensive AI voice solutions including AI call centers, customer support automation, sales agents, virtual receptionists, voice bots, and enterprise voice automation software. Each service is customizable to your business needs and integrates seamlessly with your existing systems.
               </p>
             </div>
 
             {/* FAQ 2 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 10px rgba(0, 255, 255, 0.4)'
+              }}>
                 02
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 How quickly can I implement AI voice services?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 Most businesses launch their AI voice assistant within 5-10 days. We handle setup, CRM integration, conversation training, and testing. Our team provides hands-on support to ensure smooth deployment and immediate value delivery.
               </p>
             </div>
 
             {/* FAQ 3 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 10px rgba(0, 255, 255, 0.4)'
+              }}>
                 03
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 Which industries benefit from AI voice assistants?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 AI voice assistants transform healthcare, real estate, hospitality, e-commerce, financial services, and technology sectors. Any business with customer communication needs benefits from 24/7 availability, instant responses, and scalable automation without hiring additional staff.
               </p>
             </div>
 
             {/* FAQ 4 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+              }}>
                 04
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 Can AI voice services integrate with my existing systems?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 Yes! Our AI voice platform integrates with popular CRMs (Salesforce, HubSpot, Zoho), phone systems, help desk software, scheduling tools, and custom APIs. We ensure seamless data flow and real-time synchronization with your tech stack.
               </p>
             </div>
 
             {/* FAQ 5 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+              }}>
                 05
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 What ROI can I expect from AI voice automation?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 Businesses typically see 40-60% cost reduction, 85% faster response times, and 45% higher conversion rates. AI voice services deliver ROI within 30-60 days by eliminating staffing costs, reducing missed calls, and providing 24/7 availability without overtime or benefits.
               </p>
             </div>
 
             {/* FAQ 6 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+              }}>
                 06
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 Is AI voice technology secure and compliant?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 Absolutely. Our platform is SOC 2 and HIPAA compliant with end-to-end encryption, data privacy controls, GDPR compliance, and comprehensive audit trails. All conversations are encrypted and stored securely with role-based access controls.
               </p>
             </div>
 
             {/* FAQ 7 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+              }}>
                 07
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 How does AI handle multiple languages?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 Our AI voice assistants support 60+ languages with natural accents and context-aware translations. The system automatically detects the caller's language and responds fluently, making it perfect for global businesses serving diverse customer bases.
               </p>
             </div>
 
             {/* FAQ 8 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+              }}>
                 08
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 What support do you provide after launch?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 We provide 24/7 technical support, regular performance optimization, conversation training updates, analytics reviews, and dedicated account management. Our team monitors your AI continuously and makes improvements based on real conversation data.
               </p>
             </div>
 
             {/* FAQ 9 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+              }}>
                 09
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 Can I customize the AI voice and personality?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 Yes! You can customize voice tone, personality, speaking style, and conversation flow to match your brand. Choose from multiple voice options, adjust response speeds, and train the AI on your specific terminology and brand guidelines.
               </p>
             </div>
 
             {/* FAQ 10 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+              }}>
                 10
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 Do I need technical expertise to use AI voice services?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 Not at all! Our platform features a no-code visual builder for creating and managing conversations. We handle all technical setup, integration, and maintenance. You simply define your business rules and we make the AI work for you.
               </p>
             </div>
 
             {/* FAQ 11 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+              }}>
                 11
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 How scalable are AI voice assistant services?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 Infinitely scalable! Our cloud infrastructure handles unlimited concurrent calls without quality degradation. Whether you receive 10 calls or 10,000 calls daily, the AI maintains consistent performance with no additional setup or hiring required.
               </p>
             </div>
 
             {/* FAQ 12 */}
-            <div className="group relative bg-gradient-to-br text-black10 to-white/5 backdrop-blur-md p-8 rounded-3xl border border-orange-500/30 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/50">
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl flex items-center justify-center text-black-900 font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">
+            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+              clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+            }}>
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+                clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
+                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+              }}>
                 12
               </div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent mb-4 mt-2">
+              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 What analytics and reporting do you provide?
               </h3>
-              <p className="text-black-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-xs">
                 Our real-time dashboard shows call volume, conversation outcomes, customer sentiment, response times, conversion rates, and ROI metrics. Access detailed transcripts, identify trends, and export custom reports to track performance against your business KPIs.
               </p>
             </div>
@@ -681,75 +822,96 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA Section - Enhanced Creative Design */}
-      <section className="py-24 px-6 relative overflow-hidden bg-gradient-to-br bg-white">
-        {/* Decorative Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
+      {/* CTA Section - Cyberpunk */}
+      <section className="py-12 px-4 relative overflow-hidden bg-black">
+        {/* Cyberpunk Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-8">
           <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle, rgba(249, 115, 22, 0.4) 1px, transparent 1px)`,
-            backgroundSize: '30px 30px'
+            backgroundImage: `radial-gradient(circle, rgba(0, 255, 255, 0.3) 1px, transparent 1px)`,
+            backgroundSize: '20px 20px'
           }}></div>
         </div>
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-orange-400/30 via-orange-500/30 to-orange-600/30 rounded-full filter blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-orange-400/30 via-orange-500/30 to-orange-600/30 rounded-full filter blur-3xl animate-float-reverse"></div>
+        <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-cyan-400/20 via-cyan-500/20 to-cyan-600/20 rounded-full filter blur-2xl animate-float-slow"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-cyan-400/20 via-cyan-500/20 to-cyan-600/20 rounded-full filter blur-2xl animate-float-reverse"></div>
         
         <div className="container mx-auto relative z-10">
-          <div className="bg-white rounded-3xl p-12 md:p-16 border-4 border-orange-300 hover:border-orange-400 shadow-2xl hover:shadow-orange-300 hover:scale-[1.02] transition-all text-center relative overflow-hidden group">
-            {/* Decorative Inner Glow */}
-            <div className="absolute -top-20 -left-20 w-60 h-60 bg-gradient-to-br from-orange-300/20 via-orange-400/20 to-orange-500/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
-            <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-gradient-to-tl from-orange-300/20 via-orange-500/20 to-orange-300/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+          <div className="bg-black p-6 md:p-8 border-2 border-cyan-400/30 hover:border-cyan-300/50 shadow-lg hover:shadow-[0_0_30px_rgba(0,255,255,0.3)] hover:scale-[1.01] transition-all text-left md:text-center relative overflow-hidden group" style={{
+            clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+          }}>
+            {/* Cyberpunk Inner Glow */}
+            <div className="absolute -top-20 -left-20 w-60 h-60 bg-gradient-to-br from-cyan-300/20 via-cyan-400/20 to-cyan-500/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+            <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-gradient-to-tl from-cyan-300/20 via-cyan-500/20 to-cyan-300/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
             
             <div className="relative z-10">
-              <div className="inline-block mb-6">
-                <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-black-900 font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-white">
+              <div className="inline-block mb-6" style={{
+                clipPath: 'polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)'
+              }}>
+                <span className="px-6 py-3 bg-cyan-400 text-black font-bold text-sm uppercase tracking-wider shadow-2xl block border-2 border-cyan-300" style={{
+                  boxShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+                }}>
                   Limited Time Offer
                 </span>
               </div>
               
-              <h2 className="text-4xl sm:text-5xl font-extrabold mb-6">
-                <span className="block mb-3 bg-gradient-to-r from-orange-600 via-orange-600 to-orange-700 bg-clip-text text-transparent">
+              <h2 className="text-2xl sm:text-3xl font-extrabold mb-4">
+                <span className="block mb-2 text-gray-300">
                   Ready to Transform Your
                 </span>
-                <span className="inline-block px-8 py-4 rounded-2xl text-black-900 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-2xl border-2 border-orange-300 animate-gradient relative">
-                  <span className="absolute inset-0 bg-gradient-to-tr text-black25 via-transparent to-transparent"></span>
+                <span className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg border border-cyan-300 animate-gradient relative" style={{
+                  clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
+                  boxShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+                }}>
                   <span className="relative z-10">Business Communication?</span>
                 </span>
               </h2>
               
-              <div className="max-w-2xl mx-auto mb-8 p-6 bg-gradient-to-r from-orange-100 via-orange-200 to-orange-200 border-2 border-orange-300 rounded-2xl">
-                <p className="text-lg text-black-300 leading-relaxed font-medium">
-                  Join <span className="font-extrabold bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">500+ businesses</span> already using DigitalBot.ai to handle <span className="font-extrabold bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">millions of customer conversations</span> with AI voice technology. <span className="font-bold text-orange-600">Start your free trial today</span>.
+              <div className="max-w-3xl mx-auto mb-6 p-4 bg-gradient-to-r from-cyan-500/8 via-cyan-400/4 to-cyan-500/8 border border-cyan-400/20" style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}>
+                <p className="text-sm text-gray-300 leading-relaxed font-medium">
+                  Join <span className="font-extrabold text-cyan-400">500+ businesses</span> already using DigitalBot.ai to handle <span className="font-extrabold text-cyan-400">millions of customer conversations</span> with AI voice technology. <span className="font-bold text-cyan-400">Start your free trial today</span>.
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
                 <Link href="/contact">
-                  <Button className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-black-900 hover:scale-105 transition-all rounded-xl px-10 py-7 text-xl font-bold shadow-2xl hover:shadow-orange-400 border-2 border-orange-300 animate-gradient">
+                  <Button className="bg-cyan-400 text-black hover:bg-cyan-300 hover:scale-102 transition-all px-6 py-3 text-sm font-bold shadow-lg border border-cyan-300 uppercase tracking-wide" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
+                    boxShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+                  }}>
                     Start Free Trial Now
-                    <ArrowRight className="ml-2 h-6 w-6" />
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
                 <Link href="/pricing">
-                  <Button variant="outline" className="border-2 border-orange-500 text-black-900 hover:bg-teal-500/20 rounded-xl px-10 py-7 text-xl font-bold shadow-lg hover:scale-105 transition-all">
+                  <Button variant="outline" className="border border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 px-6 py-3 text-sm font-bold shadow-md hover:scale-102 transition-all uppercase tracking-wide" style={{
+                    clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                  }}>
                     View Pricing Plans
                   </Button>
                 </Link>
               </div>
               
-              <div className="flex flex-wrap items-center justify-center gap-6 text-black-400 text-sm mt-8">
+              <div className="flex flex-wrap items-center justify-center gap-6 text-gray-400 text-sm mt-8">
                 <span className="inline-flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 animate-pulse"></span>
-                  <span className="font-semibold text-black-300">No Credit Card Required</span>
+                  <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" style={{
+                    boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
+                  }}></span>
+                  <span className="font-semibold text-gray-300 uppercase tracking-wide">No Credit Card Required</span>
                 </span>
-                <span className="text-black-400">•</span>
+                <span className="text-cyan-400">•</span>
                 <span className="inline-flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 animate-pulse"></span>
-                  <span className="font-semibold text-black-300">Cancel Anytime</span>
+                  <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" style={{
+                    boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
+                  }}></span>
+                  <span className="font-semibold text-gray-300 uppercase tracking-wide">Cancel Anytime</span>
                 </span>
-                <span className="text-black-400">•</span>
+                <span className="text-cyan-400">•</span>
                 <span className="inline-flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 animate-pulse"></span>
-                  <span className="font-semibold text-black-300">5-Min Setup</span>
+                  <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" style={{
+                    boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
+                  }}></span>
+                  <span className="font-semibold text-gray-300 uppercase tracking-wide">5-Min Setup</span>
                 </span>
               </div>
             </div>

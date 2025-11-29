@@ -2,7 +2,7 @@
 
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
-import { ArrowRight, BarChart3, Bot, Brain, CheckCircle, Clock, Globe, MessageCircle, Mic, Pause, Play,Shield, Sparkles, TrendingUp, Users, Zap } from "lucide-react"
+import { ArrowRight, BarChart3, Bot, Brain, CheckCircle, Clock, Globe, MessageCircle, Mic, Pause, Play, Shield, Sparkles, TrendingUp, Users, Zap } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"

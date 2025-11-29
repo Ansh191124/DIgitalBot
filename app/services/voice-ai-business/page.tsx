@@ -1,12 +1,9 @@
-import { Header } from "@/components/header"
-import { PageBackground } from "@/components/page-background"
 import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Header } from "@/components/header"
 import { VoiceConversationPlayer } from "@/components/voice-conversation-player"
-import { Building2, TrendingUp, Shield, Clock, Mic, Phone, Users, Zap, Target, BarChart3, HeadphonesIcon, BrainCircuit, Workflow } from "lucide-react"
+import { BarChart3, BrainCircuit, Building2, Clock, HeadphonesIcon, Mic, Phone, Shield, Target, TrendingUp, Users, Workflow, Zap } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
-
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -164,399 +161,540 @@ export default function VoiceAIBusiness() {
       
       <main className="min-h-screen">
       
-      {/* Hero Section - Homepage Theme */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-orange-50 to-white" aria-labelledby="hero-heading">
-        {/* Decorative Grid Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10 z-0">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
-                             linear-gradient(to bottom, rgba(168, 85, 247, 0.2) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }}></div>
-        </div>
+      {/* Hero Section - Cyberpunk Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black min-h-screen flex items-center" role="banner" aria-labelledby="hero-heading">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-6 items-center">
+            
+            {/* Left Content */}
+            <div className="text-center lg:text-left">
+              {/* Hero Badge */}
+              <div className="inline-block mb-4">
+                <span 
+                  className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                  }}
+                >
+                  <Zap className="mr-2 w-3 h-3" />
+                  Enterprise Voice AI
+                </span>
+              </div>
 
-        {/* Floating Gradient Orbs */}
-        <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-[10%] right-[5%] w-[700px] h-[700px] bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-orange-200/20 to-transparent rounded-full blur-3xl"></div>
+              {/* H1 Heading - Cyberpunk Style */}
+              <h1 id="hero-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+                <span className="block mb-2 bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-transparent">
+                  Voice AI for Business
+                </span>
+                <span 
+                  className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg text-xl sm:text-2xl lg:text-3xl font-bold uppercase tracking-wide border border-cyan-400 hover:shadow-cyan-400/50 transition-all duration-300"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+                  }}
+                >
+                  Transform Experience
+                </span>
+              </h1>
 
-        <div className="container mx-auto text-center relative z-10 max-w-6xl">
-          {/* Hero Badge */}
-          <div className="inline-block mb-6 animate-fade-in-up">
-            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
-              🚀 Enterprise Voice AI Solutions
-            </span>
-          </div>
+              {/* SEO-Rich Description */}
+              <div 
+                className="mb-6 p-4 bg-gray-900/80 border border-cyan-400/30 shadow-lg backdrop-blur-sm"
+                style={{
+                  clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                }}
+              >
+                <p className="text-sm sm:text-base text-cyan-100 leading-relaxed">
+                  Enterprise-grade <strong className="text-cyan-400">voice AI for business</strong> that automates customer service, accelerates sales, and boosts productivity by <strong className="text-cyan-400">400%</strong>. Deploy in <strong className="text-cyan-400">48 hours</strong> with zero infrastructure.
+                </p>
+              </div>
 
-          {/* H1 Heading - Multi-line Homepage Style */}
-          <h1 id="hero-heading" className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="block mb-3 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-900 bg-clip-text text-transparent">
-              Voice AI for Business
-            </span>
-            <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-2xl text-2xl sm:text-3xl lg:text-5xl relative overflow-hidden border-2 border-orange-300 animate-gradient">
-              <span className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent"></span>
-              <span className="relative z-10">Transform Customer Experience</span>
-            </span>
-          </h1>
-
-          {/* SEO-Rich Description */}
-          <div className="max-w-4xl mx-auto mb-10 p-6 bg-gradient-to-r from-orange-50 via-orange-100 to-orange-50 border-2 border-orange-300 rounded-2xl shadow-2xl backdrop-blur-md">
-            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium">
-              Enterprise-grade <strong className="text-orange-600">voice AI for business</strong> that automates customer service, accelerates sales, and boosts productivity by <strong className="text-orange-600">400%</strong>. Deploy in <strong>48 hours</strong> with zero infrastructure.
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:scale-105 text-white shadow-2xl hover:shadow-orange-400/50 transition-all duration-300 border-2 border-orange-300 text-lg px-10 py-7 rounded-xl font-bold" asChild>
-              <Link href="/signup">Start Free Trial</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-4 border-orange-400 text-orange-700 hover:bg-orange-50 hover:scale-105 transition-all duration-300 shadow-xl text-lg px-10 py-7 rounded-xl font-bold" asChild>
-              <Link href="/contact">Schedule Live Demo</Link>
-            </Button>
-          </div>
-          
-          {/* Trust Signals */}
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
-              <span className="text-orange-600 font-bold">✓</span>
-              <span className="font-semibold">10,000+ Businesses</span>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-6">
+                <Link 
+                  href="/signup"
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                  }}
+                >
+                  <Target className="mr-2 w-3 h-3" />
+                  Start Free Trial
+                </Link>
+                <Link 
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-cyan-400 bg-transparent border border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                  }}
+                >
+                  <Mic className="mr-2 w-3 h-3" />
+                  Schedule Demo
+                </Link>
+              </div>
+              
+              {/* Trust Signals */}
+              <div className="grid grid-cols-3 gap-2 text-xs">
+                {["10,000+ Businesses", "4.9/5 Rating", "No Credit Card"].map((signal, idx) => (
+                  <div key={idx} className="flex items-center gap-1 justify-center lg:justify-start">
+                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
+                      boxShadow: '0 0 4px rgba(0, 255, 255, 0.4)'
+                    }}></span>
+                    <span className="font-medium text-cyan-300">{signal}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-300 shadow-lg">
-              <span className="text-orange-600 font-bold">✓</span>
-              <span className="font-semibold">4.9/5 Rating</span>
+            
+            {/* Right HD Image */}
+            <div className="relative">
+              <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-cyan-400/20 border border-cyan-400/30">
+                <Image
+                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop"
+                  alt="Voice AI for Business Technology - Enterprise Communication Dashboard"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-cyan-900/20 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
+                        <Building2 className="w-4 h-4 text-cyan-300" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-cyan-300">Enterprise Voice AI</div>
+                        <div className="text-xs text-cyan-400">Business automation</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-cyan-400 font-medium">✓ 400%+ Productivity</span>
+                      <span className="text-cyan-400 font-medium tracking-wide">48hr Deploy</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-300 shadow-lg">
-              <span className="text-orange-600 font-bold">✓</span>
-              <span className="font-semibold">No Credit Card Required</span>
-            </div>
+            
           </div>
         </div>
       </section>
 
-      {/* Introduction Section - SEO Rich Content */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-10">
-          <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-gradient-radial from-orange-300 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-[10%] left-[10%] w-[600px] h-[600px] bg-gradient-radial from-orange-300 to-transparent rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="container mx-auto max-w-5xl relative z-10">
-          <article className="prose prose-lg max-w-none">
-            <div className="text-center mb-12">
-              <div className="inline-block mb-4">
-                <span className="px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg border border-orange-300">
+      {/* Introduction Section - Cyberpunk Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="intro-heading">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-6 items-center">
+            
+            {/* Left Content */}
+            <div>
+              <div className="mb-4">
+                <span 
+                  className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md border border-cyan-400 uppercase tracking-wide"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
+                  }}
+                >
                   Complete Guide
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-900 bg-clip-text text-transparent">
+              <h2 id="intro-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-transparent">
                   What is Voice AI for Business?
                 </span>
               </h2>
+              <div className="space-y-3 text-xs sm:text-sm text-cyan-100 leading-relaxed">
+                <p>
+                  <strong className="text-cyan-400">Voice AI for business</strong> represents the cutting edge of enterprise automation technology, combining advanced natural language processing, machine learning, and conversational AI to revolutionize how companies interact with customers. Unlike traditional IVR systems or simple chatbots, modern voice AI for business understands context, intent, and nuance in human speech.
+                </p>
+                <p>
+                  Today's businesses face unprecedented challenges: rising customer expectations, 24/7 availability demands, global talent shortages, and pressure to reduce operational costs while improving service quality. <strong className="text-cyan-400">Voice AI for business</strong> solves these challenges by providing scalable, intelligent automation that handles thousands of simultaneous conversations.
+                </p>
+                <p>
+                  The technology powering voice AI for business has reached a tipping point. Recent breakthroughs in large language models, speech synthesis, and real-time processing enable AI systems to conduct sophisticated multi-turn conversations, handle complex business logic, integrate with enterprise systems, and provide personalized experiences.
+                </p>
+              </div>
             </div>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              <strong>Voice AI for business</strong> represents the cutting edge of enterprise automation technology, combining advanced natural language processing, machine learning, and conversational AI to revolutionize how companies interact with customers. Unlike traditional IVR systems or simple chatbots, modern voice AI for business understands context, intent, and nuance in human speech, delivering experiences that feel remarkably natural and helpful.
-            </p>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Today's businesses face unprecedented challenges: rising customer expectations, 24/7 availability demands, global talent shortages, and pressure to reduce operational costs while improving service quality. <strong>Voice AI for business</strong> solves these challenges by providing scalable, intelligent automation that handles thousands of simultaneous conversations with consistent quality, emotional intelligence, and brand alignment.
-            </p>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              The technology powering voice AI for business has reached a tipping point. Recent breakthroughs in large language models, speech synthesis, and real-time processing enable AI systems to conduct sophisticated multi-turn conversations, handle complex business logic, integrate with enterprise systems, and provide personalized experiences at a fraction of the cost of human-only operations.
-            </p>
-          </article>
+            
+            {/* Right HD Image */}
+            <div className="relative">
+              <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-cyan-400/20 border border-cyan-400/30">
+                <Image
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+                  alt="Voice AI Technology Dashboard - Business Analytics and Customer Service Automation"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-cyan-900/20 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
+                        <BrainCircuit className="w-4 h-4 text-cyan-300" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-cyan-300">AI Intelligence</div>
+                        <div className="text-xs text-cyan-400">Natural language processing</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-cyan-400 font-medium">✓ 98% Accuracy</span>
+                      <span className="text-cyan-400 font-medium tracking-wide">Real-time</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
         </div>
       </section>
 
-      {/* Benefits Grid - Homepage Theme */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-orange-50 to-white relative overflow-hidden">
-        {/* Grid Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
-                             linear-gradient(to bottom, rgba(168, 85, 247, 0.2) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }}></div>
-        </div>
-
-        <div className="container mx-auto relative z-10 max-w-7xl">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-4">
-              <span className="px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg border border-orange-300">
+      {/* Benefits Grid - Cyberpunk Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="benefits-heading">
+        <div className="container mx-auto max-w-7xl">
+          {/* Section Header */}
+          <div className="text-center mb-6">
+            <div className="inline-block mb-3">
+              <span 
+                className="px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md border border-cyan-400 uppercase tracking-wide"
+                style={{
+                  clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
+                }}
+              >
                 Enterprise Benefits
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-orange-500 via-orange-700 to-orange-900 bg-clip-text text-transparent">
+            <h2 id="benefits-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-transparent">
                 Why Leading Enterprises Choose Voice AI
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Discover how <strong className="text-orange-600">voice AI for business</strong> transforms operations and delivers measurable ROI
+            <p className="text-sm sm:text-base text-cyan-100 max-w-2xl mx-auto leading-relaxed">
+              Discover how <strong className="text-cyan-400">voice AI for business</strong> transforms operations and delivers measurable ROI
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, i) => {
-              const colors = [
-                { border: 'border-orange-300', iconBg: 'from-orange-500 to-orange-600', glow: 'from-orange-400 via-orange-500 to-orange-600' },
-                { border: 'border-orange-300', iconBg: 'from-orange-400 to-orange-500', glow: 'from-orange-400 via-orange-500 to-orange-600' },
-                { border: 'border-orange-300', iconBg: 'from-orange-400 to-orange-500', glow: 'from-orange-400 via-orange-500 to-orange-400' },
-                { border: 'border-orange-300', iconBg: 'from-orange-500 to-orange-600', glow: 'from-orange-500 via-orange-500 to-orange-600' },
-                { border: 'border-orange-300', iconBg: 'from-orange-500 to-orange-500', glow: 'from-orange-400 via-orange-400 to-orange-600' },
-                { border: 'border-orange-300', iconBg: 'from-orange-500 to-orange-600', glow: 'from-orange-400 via-orange-500 to-orange-600' },
-                { border: 'border-orange-300', iconBg: 'from-orange-400 to-orange-500', glow: 'from-orange-400 via-orange-500 to-orange-600' },
-                { border: 'border-orange-300', iconBg: 'from-orange-400 to-orange-500', glow: 'from-orange-400 via-orange-500 to-orange-400' },
-                { border: 'border-orange-300', iconBg: 'from-orange-500 to-orange-600', glow: 'from-orange-500 via-orange-500 to-orange-600' },
-              ];
-              const color = colors[i % colors.length];
-
-              return (
-                <div key={i} className={`bg-white backdrop-blur-md rounded-3xl p-8 shadow-2xl border-2 ${color.border} transition-all duration-500 hover:scale-105 hover:shadow-3xl relative overflow-hidden group`}>
-                  <div className={`absolute -top-16 -right-16 w-60 h-60 bg-gradient-to-br ${color.glow} rounded-full opacity-20 filter blur-3xl group-hover:opacity-30 transition-opacity`}></div>
-                  
-                  <div className={`w-14 h-14 bg-gradient-to-r ${color.iconBg} rounded-xl flex items-center justify-center mb-6 shadow-lg relative z-10 group-hover:scale-110 group-hover:rotate-6 transition-all`}>
-                    <benefit.icon className="h-7 w-7 text-white" />
+          
+          {/* Benefits Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {benefits.map((benefit, i) => (
+              <div 
+                key={i} 
+                className="bg-gray-900/90 border border-cyan-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-cyan-400 hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 group"
+                style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <div 
+                    className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30 group-hover:scale-110 transition-transform"
+                    style={{
+                      clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))'
+                    }}
+                  >
+                    <benefit.icon className="w-4 h-4 text-cyan-300" />
                   </div>
-                  <h3 className="text-xl font-extrabold text-gray-900 mb-4 relative z-10">{benefit.title}</h3>
-                  <p className="text-gray-600 leading-relaxed relative z-10">
-                    {benefit.description}
-                  </p>
+                  <div className="flex-1">
+                    <h3 className="text-sm font-bold text-cyan-300 mb-2 leading-tight">{benefit.title}</h3>
+                    <p className="text-xs text-cyan-100 leading-relaxed">
+                      {benefit.description}
+                    </p>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases Section - ASO & VSO Optimized */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-orange-50 to-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-900 bg-clip-text text-transparent">
-              Voice AI for Business: Real-World Applications & Results
-            </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              See how businesses across industries leverage voice AI to achieve breakthrough performance improvements.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {useCases.map((useCase, i) => (
-              <Card key={i} className="border-orange-200 hover:border-orange-400 transition-all duration-300 hover:shadow-xl">
-                <CardHeader>
-                  <CardTitle className="text-gray-900 text-2xl mb-3">{useCase.title}</CardTitle>
-                  <CardDescription className="text-gray-700 text-base leading-relaxed mb-4">
-                    {useCase.description}
-                  </CardDescription>
-                  <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold">
-                    ✓ {useCase.results}
-                  </div>
-                </CardHeader>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section - Technical depth for GEO */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-orange-50 to-white">
+      {/* Use Cases Section - Cyberpunk Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="use-cases-heading">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-900 bg-clip-text text-transparent">
-              Advanced Capabilities: How Voice AI for Business Works
-            </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Enterprise-grade technology stack powering the most sophisticated voice AI for business solutions.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                <BrainCircuit className="h-8 w-8 text-orange-600" />
-                Natural Language Understanding
-              </h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Our voice AI for business leverages state-of-the-art transformer models trained on billions of business conversations to understand customer intent with 98% accuracy. The system recognizes context, handles multi-turn dialogues, and adapts to regional accents and industry-specific terminology.
-              </p>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>Sentiment analysis for emotional intelligence</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>Intent classification across 500+ business scenarios</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>Entity extraction for accurate data capture</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                <Workflow className="h-8 w-8 text-orange-600" />
-                Enterprise Integration Ecosystem
-              </h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Voice AI for business seamlessly connects with your existing technology stack through 200+ pre-built integrations and robust API infrastructure. Connect to CRM platforms, helpdesk systems, payment processors, and custom databases without writing code.
-              </p>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>Salesforce, HubSpot, Zendesk native integration</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>RESTful API for custom business workflows</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>Webhook support for real-time event processing</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                <Phone className="h-8 w-8 text-orange-600" />
-                Omnichannel Voice Deployment
-              </h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Deploy voice AI for business across phone systems, web applications, mobile apps, and messaging platforms with unified conversation management. Maintain context as customers switch channels, ensuring seamless experiences regardless of touchpoint.
-              </p>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>PSTN phone integration with carrier-grade reliability</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>WebRTC for browser-based voice interactions</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>Mobile SDK for iOS and Android applications</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                <Shield className="h-8 w-8 text-orange-600" />
-                Enterprise Security & Compliance
-              </h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Voice AI for business built on zero-trust architecture with military-grade encryption, comprehensive audit logging, and compliance with global data protection regulations. Your customer data remains secure, private, and under your complete control.
-              </p>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>SOC 2 Type II, GDPR, HIPAA, PCI DSS certified</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>End-to-end AES-256 encryption at rest and in transit</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-600 font-bold">✓</span>
-                  <span>Role-based access control with SSO integration</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sample Conversation Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
-     
-
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center space-x-2 bg-orange/80 px-4 py-2 rounded-full text-sm text-gray-700 backdrop-blur-sm border border-orange-200 shadow-lg mb-6">
-              <Mic className="h-4 w-4 text-orange-500 animate-pulse" />
-              <span className="font-medium">Voice AI for Business Demo</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-500 via-orange-700 to-orange-900 bg-clip-text text-transparent drop-shadow-lg mb-4">
-              Experience Voice AI for Business in Action
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Listen to how our voice AI for business handles real customer interactions with natural, intelligent responses that drive satisfaction and conversion.
-            </p>
-          </div>
-
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border-2 border-orange-300">
-            <VoiceConversationPlayer audioSrc="/sample-conversation.mp3" />
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section - Homepage Dark Theme */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-orange-50 to-white relative overflow-hidden" role="region" aria-labelledby="faq-section">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-full filter blur-3xl animate-float-slow"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-orange-400/20 to-orange-600/20 rounded-full filter blur-3xl animate-float-reverse"></div>
-          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-full filter blur-3xl animate-pulse"></div>
-        </div>
-
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-6">
-              <span className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse">
-                Got Questions? We've Got Answers
-              </span>
-            </div>
-            <h2 id="faq-section" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-gray-900">
-              <span className="block mb-2">Frequently Asked</span>
-              <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
-                Questions
+          {/* Section Header */}
+          <div className="text-center mb-6">
+            <h2 id="use-cases-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-transparent">
+                Voice AI for Business: Real-World Applications & Results
               </span>
             </h2>
-            <p className="text-gray-700 text-xl max-w-3xl mx-auto leading-relaxed">
-              Everything you need to know about <span className="text-orange-600 font-semibold">Voice AI for Business</span>
+            <p className="text-sm sm:text-base text-cyan-100 max-w-2xl mx-auto leading-relaxed">
+              See how businesses across industries leverage voice AI to achieve breakthrough performance improvements.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          {/* Use Cases Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {useCases.map((useCase, i) => (
+              <div 
+                key={i}
+                className="bg-gray-900/90 border border-cyan-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-cyan-400 hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 group"
+                style={{
+                  clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                }}
+              >
+                <div className="mb-3">
+                  <h3 className="text-sm font-bold text-cyan-300 mb-2 leading-tight">{useCase.title}</h3>
+                  <p className="text-xs text-cyan-100 leading-relaxed mb-3">
+                    {useCase.description}
+                  </p>
+                  <div 
+                    className="inline-flex items-center px-2 py-1 bg-cyan-400/20 border border-cyan-400/50 text-xs font-semibold text-cyan-300 shadow-sm"
+                    style={{
+                      clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))'
+                    }}
+                  >
+                    ✓ {useCase.results}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section - Cyberpunk Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="features-advanced-heading">
+        <div className="container mx-auto max-w-6xl">
+          {/* Section Header */}
+          <div className="text-center mb-6">
+            <h2 id="features-advanced-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-transparent">
+                Advanced Capabilities: How Voice AI for Business Works
+              </span>
+            </h2>
+            <p className="text-sm sm:text-base text-cyan-100 max-w-2xl mx-auto leading-relaxed">
+              Enterprise-grade technology stack powering the most sophisticated voice AI for business solutions.
+            </p>
+          </div>
+          
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              {
+                icon: BrainCircuit,
+                title: "Natural Language Understanding",
+                description: "Our voice AI for business leverages state-of-the-art transformer models trained on billions of business conversations to understand customer intent with 98% accuracy. The system recognizes context, handles multi-turn dialogues, and adapts to regional accents and industry-specific terminology.",
+                features: [
+                  "Sentiment analysis for emotional intelligence",
+                  "Intent classification across 500+ business scenarios",
+                  "Entity extraction for accurate data capture"
+                ]
+              },
+              {
+                icon: Workflow,
+                title: "Enterprise Integration Ecosystem",
+                description: "Voice AI for business seamlessly connects with your existing technology stack through 200+ pre-built integrations and robust API infrastructure. Connect to CRM platforms, helpdesk systems, payment processors, and custom databases without writing code.",
+                features: [
+                  "Salesforce, HubSpot, Zendesk native integration",
+                  "RESTful API for custom business workflows",
+                  "Webhook support for real-time event processing"
+                ]
+              },
+              {
+                icon: Phone,
+                title: "Omnichannel Voice Deployment",
+                description: "Deploy voice AI for business across phone systems, web applications, mobile apps, and messaging platforms with unified conversation management. Maintain context as customers switch channels, ensuring seamless experiences regardless of touchpoint.",
+                features: [
+                  "PSTN phone integration with carrier-grade reliability",
+                  "WebRTC for browser-based voice interactions",
+                  "Mobile SDK for iOS and Android applications"
+                ]
+              },
+              {
+                icon: Shield,
+                title: "Enterprise Security & Compliance",
+                description: "Voice AI for business built on zero-trust architecture with military-grade encryption, comprehensive audit logging, and compliance with global data protection regulations. Your customer data remains secure, private, and under your complete control.",
+                features: [
+                  "SOC 2 Type II, GDPR, HIPAA, PCI DSS certified",
+                  "End-to-end AES-256 encryption at rest and in transit",
+                  "Role-based access control with SSO integration"
+                ]
+              }
+            ].map((feature, i) => (
+              <div 
+                key={i}
+                className="bg-gray-900/90 border border-cyan-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-cyan-400 hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 group"
+                style={{
+                  clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                }}
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <div 
+                    className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30 group-hover:scale-110 transition-transform"
+                    style={{
+                      clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))'
+                    }}
+                  >
+                    <feature.icon className="w-4 h-4 text-cyan-300" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-sm font-bold text-cyan-300 mb-2 leading-tight">{feature.title}</h3>
+                    <p className="text-xs text-cyan-100 leading-relaxed mb-3">
+                      {feature.description}
+                    </p>
+                    <ul className="space-y-1">
+                      {feature.features.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-xs">
+                          <span className="text-cyan-400 font-bold mt-0.5">✓</span>
+                          <span className="text-cyan-200">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sample Conversation Section - Cyberpunk Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="demo-heading">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-6 items-center">
+            
+            {/* Left Content */}
+            <div>
+              <div className="mb-4">
+                <span 
+                  className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md border border-cyan-400 uppercase tracking-wide"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
+                  }}
+                >
+                  <Mic className="mr-2 w-3 h-3" />
+                  Voice AI Demo
+                </span>
+              </div>
+              <h2 id="demo-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-transparent">
+                  Experience Voice AI for Business in Action
+                </span>
+              </h2>
+              <p className="text-sm sm:text-base text-cyan-100 leading-relaxed mb-4">
+                Listen to how our voice AI for business handles real customer interactions with natural, intelligent responses that drive satisfaction and conversion.
+              </p>
+              
+              <div 
+                className="bg-gray-900/80 border border-cyan-400/30 p-4 shadow-lg backdrop-blur-sm"
+                style={{
+                  clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                }}
+              >
+                <VoiceConversationPlayer audioSrc="/sample-conversation.mp3" />
+              </div>
+            </div>
+            
+            {/* Right HD Image */}
+            <div className="relative">
+              <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-cyan-400/20 border border-cyan-400/30">
+                <Image
+                  src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2070&auto=format&fit=crop"
+                  alt="Voice AI Customer Service Dashboard - Real-time Analytics and Performance Metrics"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-cyan-900/20 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
+                        <HeadphonesIcon className="w-4 h-4 text-cyan-300" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-cyan-300">Live Demo</div>
+                        <div className="text-xs text-cyan-400">Voice AI conversation</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-cyan-400 font-medium">✓ Natural Speech</span>
+                      <span className="text-cyan-400 font-medium tracking-wide">Real-time</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section - Cyberpunk Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="faq-heading">
+        <div className="container mx-auto max-w-6xl">
+          {/* Section Header */}
+          <div className="text-center mb-6">
+            <div className="inline-block mb-3">
+              <span 
+                className="px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md border border-cyan-400 uppercase tracking-wide"
+                style={{
+                  clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
+                }}
+              >
+                Got Questions? We've Got Answers
+              </span>
+            </div>
+            <h2 id="faq-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
+              <span className="block mb-2 bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-transparent">
+                Frequently Asked
+              </span>
+              <span className="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">
+                Questions
+              </span>
+            </h2>
+            <p className="text-sm sm:text-base text-cyan-100 max-w-2xl mx-auto leading-relaxed">
+              Everything you need to know about <span className="text-cyan-400 font-semibold">Voice AI for Business</span>
+            </p>
+          </div>
+          
+          {/* FAQ Grid */}
+          <div className="grid md:grid-cols-2 gap-4">
             {[
               {
                 question: "What is voice AI for business?",
-                answer: "Voice AI for business is an advanced artificial intelligence technology that enables companies to automate customer interactions, sales processes, and support operations through natural voice conversations. It combines speech recognition, natural language processing, and machine learning to handle business communications at scale, operating 24/7 with human-like understanding and response capabilities.",
-                color: { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-orange-600', textGradient: 'from-orange-400 to-orange-600', shadow: 'hover:shadow-orange-500/50' }
+                answer: "Voice AI for business is an advanced artificial intelligence technology that enables companies to automate customer interactions, sales processes, and support operations through natural voice conversations. It combines speech recognition, natural language processing, and machine learning to handle business communications at scale, operating 24/7 with human-like understanding and response capabilities."
               },
               {
                 question: "How does voice AI improve business productivity?",
-                answer: "Voice AI for business boosts productivity by automating 80% of routine customer interactions, operating 24/7 without breaks, scaling instantly during peak demand, and freeing human teams to focus on complex, high-value tasks that require emotional intelligence and creative problem-solving. Companies typically see 300-400% productivity increases within the first 6 months of deployment.",
-                color: { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-400 to-orange-500', textGradient: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-500/50' }
+                answer: "Voice AI for business boosts productivity by automating 80% of routine customer interactions, operating 24/7 without breaks, scaling instantly during peak demand, and freeing human teams to focus on complex, high-value tasks that require emotional intelligence and creative problem-solving. Companies typically see 300-400% productivity increases within the first 6 months of deployment."
               },
               {
                 question: "Is voice AI for business secure and compliant?",
-                answer: "Yes, enterprise voice AI solutions provide bank-level security with SOC 2, GDPR, and HIPAA compliance, featuring end-to-end encryption, secure data storage, role-based access controls, and comprehensive audit trails to protect sensitive business and customer information. All data is encrypted at rest and in transit using AES-256 encryption.",
-                color: { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-400 to-orange-500', textGradient: 'from-orange-400 to-orange-500', shadow: 'hover:shadow-orange-500/50' }
+                answer: "Yes, enterprise voice AI solutions provide bank-level security with SOC 2, GDPR, and HIPAA compliance, featuring end-to-end encryption, secure data storage, role-based access controls, and comprehensive audit trails to protect sensitive business and customer information. All data is encrypted at rest and in transit using AES-256 encryption."
               },
               {
                 question: "How quickly can voice AI be deployed for business?",
-                answer: "Voice AI for business can be deployed in 24-48 hours with zero infrastructure setup required. The cloud-based platform integrates seamlessly with existing business systems, CRM, and communication tools through 200+ pre-built integrations, allowing companies to start automating conversations immediately without technical complexity.",
-                color: { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-orange-600', textGradient: 'from-orange-500 to-orange-600', shadow: 'hover:shadow-orange-500/50' }
+                answer: "Voice AI for business can be deployed in 24-48 hours with zero infrastructure setup required. The cloud-based platform integrates seamlessly with existing business systems, CRM, and communication tools through 200+ pre-built integrations, allowing companies to start automating conversations immediately without technical complexity."
               },
               {
                 question: "What ROI can businesses expect from voice AI?",
-                answer: "Businesses implementing voice AI typically see 300-400% productivity increases, $250K+ annual cost savings on customer service operations, 60% reduction in appointment no-shows, 350% improvement in sales team efficiency, and 95%+ customer satisfaction scores within the first 6 months of deployment. The average ROI payback period is under 3 months.",
-                color: { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-orange-600', textGradient: 'from-orange-400 to-orange-600', shadow: 'hover:shadow-orange-500/50' }
+                answer: "Businesses implementing voice AI typically see 300-400% productivity increases, $250K+ annual cost savings on customer service operations, 60% reduction in appointment no-shows, 350% improvement in sales team efficiency, and 95%+ customer satisfaction scores within the first 6 months of deployment. The average ROI payback period is under 3 months."
               },
               {
                 question: "Can voice AI integrate with my existing business systems?",
-                answer: "Absolutely. Voice AI for business offers 200+ native integrations with popular platforms like Salesforce, HubSpot, Zendesk, Microsoft Dynamics, and more. Additionally, robust RESTful APIs and webhook support enable custom integrations with proprietary systems, ensuring seamless data flow across your entire technology ecosystem.",
-                color: { border: 'border-orange-500/30 hover:border-orange-400', gradient: 'from-orange-500 to-orange-600', textGradient: 'from-orange-400 to-orange-600', shadow: 'hover:shadow-orange-500/50' }
+                answer: "Absolutely. Voice AI for business offers 200+ native integrations with popular platforms like Salesforce, HubSpot, Zendesk, Microsoft Dynamics, and more. Additionally, robust RESTful APIs and webhook support enable custom integrations with proprietary systems, ensuring seamless data flow across your entire technology ecosystem."
               }
             ].map((faq, index) => (
-              <div key={index} className={`group relative bg-gradient-to-br from-white/90 to-white/80 backdrop-blur-md p-8 rounded-3xl border ${faq.color.border} transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl ${faq.color.shadow}`}>
-                <div className={`absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br ${faq.color.gradient} rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform`}>
-                  {String(index + 1).padStart(2, '0')}
+              <div 
+                key={index} 
+                className="bg-gray-900/90 border border-cyan-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-cyan-400 hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 group"
+                style={{
+                  clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                }}
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <div 
+                    className="w-6 h-6 bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30 font-bold text-xs text-cyan-300 group-hover:scale-110 transition-transform"
+                    style={{
+                      clipPath: 'polygon(0 0, calc(100% - 3px) 0, 100% 3px, 100% 100%, 3px 100%, 0 calc(100% - 3px))'
+                    }}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                  <h3 className="text-sm font-bold text-cyan-300 leading-tight flex-1">
+                    {faq.question}
+                  </h3>
                 </div>
-                <h3 className={`text-xl font-bold bg-gradient-to-r ${faq.color.textGradient} bg-clip-text text-transparent mb-4 mt-2`}>
-                  {faq.question}
-                </h3>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-xs text-cyan-100 leading-relaxed ml-9">
                   {faq.answer}
                 </p>
               </div>
@@ -565,78 +703,85 @@ export default function VoiceAIBusiness() {
         </div>
       </section>
 
-      {/* CTA Section - Homepage Theme */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-orange-50 to-white relative overflow-hidden" aria-labelledby="cta-heading">
-        {/* Decorative Grid */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
-                             linear-gradient(to bottom, rgba(168, 85, 247, 0.2) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }}></div>
-        </div>
-
-        {/* Floating Orbs */}
-        <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-gradient-radial from-orange-200/30 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-[20%] right-[10%] w-[600px] h-[600px] bg-gradient-radial from-orange-200/25 to-transparent rounded-full blur-3xl"></div>
-
-        <div className="container mx-auto max-w-5xl text-center relative z-10">
-          {/* CTA Badge */}
-          <div className="inline-block mb-6">
-            <span className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white font-bold text-sm uppercase tracking-wider shadow-2xl animate-pulse border-2 border-orange-300">
-              🚀 Start Your Free Trial
-            </span>
-          </div>
-
-          {/* CTA Heading */}
-          <h2 id="cta-heading" className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="block mb-3 bg-gradient-to-r from-orange-500 via-orange-700 to-orange-900 bg-clip-text text-transparent">
-              Ready to Transform Your Business
-            </span>
-            <span className="inline-block px-8 py-4 rounded-2xl text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-2xl text-2xl sm:text-3xl lg:text-5xl relative overflow-hidden border-2 border-orange-300">
-              <span className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent"></span>
-              <span className="relative z-10">With Voice AI Today?</span>
-            </span>
-          </h2>
-
-          {/* CTA Description */}
-          <div className="max-w-3xl mx-auto mb-10 p-6 bg-gradient-to-r from-orange-50 via-orange-100 to-orange-50 border-2 border-orange-300 rounded-2xl shadow-2xl backdrop-blur-md">
-            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium">
-              Join <strong className="text-orange-600">10,000+ businesses</strong> using voice AI to automate customer service, accelerate sales, and boost productivity by <strong className="text-orange-600">400%</strong>. Start your free trial today with no credit card required.
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:scale-105 text-white shadow-2xl hover:shadow-orange-400/50 transition-all duration-300 border-2 border-orange-300 text-lg px-10 py-7 rounded-xl font-bold" asChild>
-              <Link href="/signup">Start Free Trial Now</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-4 border-orange-400 text-orange-700 hover:bg-orange-50 hover:scale-105 transition-all duration-300 shadow-xl text-lg px-10 py-7 rounded-xl font-bold" asChild>
-              <Link href="/contact">Talk to Voice AI Specialist</Link>
-            </Button>
-          </div>
-
-          {/* Trust Signals */}
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-200 shadow-lg">
-              <span className="text-orange-600 font-bold">✓</span>
-              <span className="font-semibold">No Credit Card Required</span>
+      {/* CTA Section - Cyberpunk Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="cta-heading">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center">
+            {/* CTA Badge */}
+            <div className="inline-block mb-4">
+              <span 
+                className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                style={{
+                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                }}
+              >
+                <Zap className="mr-2 w-3 h-3" />
+                Start Your Free Trial
+              </span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-300 shadow-lg">
-              <span className="text-orange-600 font-bold">✓</span>
-              <span className="font-semibold">Deploy in 48 Hours</span>
+
+            {/* CTA Heading */}
+            <h2 id="cta-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
+              <span className="block mb-2 bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-transparent">
+                Ready to Transform Your Business
+              </span>
+              <span 
+                className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg text-lg sm:text-xl lg:text-2xl font-bold uppercase tracking-wide border border-cyan-400 hover:shadow-cyan-400/50 transition-all duration-300"
+                style={{
+                  clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
+                }}
+              >
+                With Voice AI Today?
+              </span>
+            </h2>
+
+            {/* CTA Description */}
+            <div 
+              className="max-w-3xl mx-auto mb-6 p-4 bg-gray-900/80 border border-cyan-400/30 shadow-lg backdrop-blur-sm"
+              style={{
+                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+              }}
+            >
+              <p className="text-sm sm:text-base text-cyan-100 leading-relaxed">
+                Join <strong className="text-cyan-400">10,000+ businesses</strong> using voice AI to automate customer service, accelerate sales, and boost productivity by <strong className="text-cyan-400">400%</strong>. Start your free trial today with no credit card required.
+              </p>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-300 shadow-lg">
-              <span className="text-orange-600 font-bold">✓</span>
-              <span className="font-semibold">24/7 Expert Support</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-orange-300 shadow-lg">
-              <span className="text-orange-600 font-bold">✓</span>
-              <span className="font-semibold">Cancel Anytime</span>
+              
+              <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
+                <Link 
+                  href="/signup"
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                  }}
+                >
+                  Start Free Trial Now
+                </Link>
+                <Link 
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-cyan-400 bg-transparent border border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
+                  style={{
+                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
+                  }}
+                >
+                  Talk to Voice AI Specialist
+                </Link>
+              </div>
+              
+              {/* Trust Signals */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                {["No Credit Card Required", "Deploy in 48 Hours", "24/7 Expert Support", "Cancel Anytime"].map((signal, idx) => (
+                  <div key={idx} className="flex items-center gap-1 justify-center">
+                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
+                      boxShadow: '0 0 4px rgba(0, 255, 255, 0.4)'
+                    }}></span>
+                    <span className="font-medium text-cyan-300">{signal}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       <Footer />
       </main>
