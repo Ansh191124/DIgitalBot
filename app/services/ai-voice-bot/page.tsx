@@ -414,7 +414,7 @@ export default function AIVoiceBot() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <main className="min-h-screen bg-black text-cyan-300" role="main">
+      <main className="min-h-screen bg-black text-white" role="main">
         <Header />
 
         {/* Hero Section - Cyberpunk Theme */}
@@ -431,21 +431,21 @@ export default function AIVoiceBot() {
             <nav aria-label="Breadcrumb" className="mb-4">
               <ol className="flex items-center justify-center space-x-2 text-xs text-cyan-400" itemScope itemType="https://schema.org/BreadcrumbList">
                 <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                  <Link href="/" className="hover:text-cyan-300 transition-colors" itemProp="item">
+                  <Link href="/" className="hover:text-white transition-colors" itemProp="item">
                     <span itemProp="name">Home</span>
                   </Link>
                   <meta itemProp="position" content="1" />
                 </li>
                 <li className="text-cyan-400">/</li>
                 <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                  <Link href="/services" className="hover:text-cyan-300 transition-colors" itemProp="item">
+                  <Link href="/services" className="hover:text-white transition-colors" itemProp="item">
                     <span itemProp="name">Services</span>
                   </Link>
                   <meta itemProp="position" content="2" />
                 </li>
                 <li className="text-cyan-400">/</li>
                 <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                  <span itemProp="name" className="text-cyan-300 font-semibold">AI Voice Bot</span>
+                  <span itemProp="name" className="text-white font-semibold">AI Voice Bot</span>
                   <meta itemProp="position" content="3" />
                 </li>
               </ol>
@@ -462,7 +462,7 @@ export default function AIVoiceBot() {
 
             {/* H1 Heading - Cyberpunk Style */}
             <h1 id="hero-heading" className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 leading-tight">
-              <span className="block mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent">
+              <span className="block mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
                 AI Voice Bot for Customer Service
               </span>
               <span className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg shadow-cyan-500/30 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-300" style={{
@@ -477,7 +477,7 @@ export default function AIVoiceBot() {
             <div className="max-w-4xl mx-auto mb-6 p-3 bg-cyan-400/5 backdrop-blur-md border border-cyan-400/30 shadow-md shadow-cyan-500/25" style={{
               clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
             }}>
-              <p className="text-xs sm:text-sm text-cyan-300 leading-relaxed font-medium">
+              <p className="text-xs sm:text-sm text-white leading-relaxed font-medium">
                 Deploy <strong className="text-cyan-400">AI Voice Bot</strong> powered by advanced <strong className="text-cyan-400">Natural Language Processing</strong> to automate customer conversations. Handle unlimited calls simultaneously with <strong className="text-cyan-400">human-like voice synthesis</strong>, reduce costs by 70%, and provide instant responses 24/7. No coding required - launch your <strong className="text-cyan-400">AI Voice Bot</strong> in minutes.
               </p>
             </div>
@@ -492,10 +492,10 @@ export default function AIVoiceBot() {
                   <benefit.icon className="h-6 w-6 text-cyan-400 mx-auto mb-2 relative z-10" style={{
                     filter: 'drop-shadow(0 0 6px rgba(0, 255, 255, 0.4))'
                   }} />
-                  <div className="text-lg sm:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 mb-1 relative z-10" style={{
+                  <div className="text-lg sm:text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 mb-1 relative z-10" style={{
                     textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
                   }}>{benefit.stat}</div>
-                  <p className="font-extrabold text-cyan-300 mb-1 relative z-10 text-xs">{benefit.title}</p>
+                  <p className="font-extrabold text-white mb-1 relative z-10 text-xs">{benefit.title}</p>
                   <p className="text-xs text-cyan-400 relative z-10">{benefit.description}</p>
                 </div>
               ))}
@@ -521,19 +521,19 @@ export default function AIVoiceBot() {
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>
                 <CheckCircle className="h-3 w-3 text-cyan-400" />
-                <span className="font-semibold text-cyan-300">No Credit Card Required</span>
+                <span className="font-semibold text-white">No Credit Card Required</span>
               </div>
               <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/30 shadow-sm" style={{
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>
                 <CheckCircle className="h-3 w-3 text-cyan-400" />
-                <span className="font-semibold text-cyan-300">Setup in 5 Minutes</span>
+                <span className="font-semibold text-white">Setup in 5 Minutes</span>
               </div>
               <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/30 shadow-sm" style={{
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>
                 <CheckCircle className="h-3 w-3 text-cyan-400" />
-                <span className="font-semibold text-cyan-300">1000+ Businesses Use AI Voice Bot</span>
+                <span className="font-semibold text-white">1000+ Businesses Use AI Voice Bot</span>
               </div>
             </div>
           </div>
@@ -558,11 +558,11 @@ export default function AIVoiceBot() {
                 </span>
               </div>
               <h2 id="features-heading" className="text-lg sm:text-xl lg:text-2xl font-bold mb-3">
-                <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
                   Everything Your AI Voice Bot Needs
                 </span>
               </h2>
-              <p className="text-sm text-cyan-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm text-white max-w-3xl mx-auto leading-relaxed">
                 Enterprise-grade <strong className="text-cyan-400">AI voice bot</strong> capabilities designed to transform your customer communication and automate phone interactions
               </p>
             </div>
@@ -610,7 +610,7 @@ export default function AIVoiceBot() {
                     <div className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-tr from-cyan-400/20 via-cyan-500/20 to-cyan-600/20 rounded-full filter blur-xl group-hover:opacity-30 transition-opacity duration-300"></div>
                     
                     {/* Content */}
-                    <h3 itemProp="name" className="text-sm font-bold text-cyan-300 mb-2 relative z-10">
+                    <h3 itemProp="name" className="text-sm font-bold text-white mb-2 relative z-10">
                       {feature.title}
                     </h3>
                     <p itemProp="description" className="text-xs text-cyan-400 leading-relaxed relative z-10">
@@ -642,11 +642,11 @@ export default function AIVoiceBot() {
                 </span>
               </div>
               <h2 id="usecases-heading" className="text-lg sm:text-xl lg:text-2xl font-bold mb-3">
-                <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
                   AI Voice Bot Use Cases
                 </span>
               </h2>
-              <p className="text-sm text-cyan-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm text-white max-w-3xl mx-auto leading-relaxed">
                 See how businesses leverage <strong className="text-cyan-400">AI voice bot</strong> technology to streamline operations and enhance customer experience
               </p>
             </div>
@@ -690,7 +690,7 @@ export default function AIVoiceBot() {
                     <div className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-cyan-400/20 via-cyan-500/20 to-cyan-600/20 rounded-full filter blur-xl group-hover:opacity-30 transition-opacity"></div>
                     
                     {/* Content */}
-                    <h3 className="text-sm font-bold text-cyan-300 mb-2 relative z-10">
+                    <h3 className="text-sm font-bold text-white mb-2 relative z-10">
                       {useCase.title}
                     </h3>
                     <p className="text-xs text-cyan-400 leading-relaxed relative z-10">
@@ -718,14 +718,14 @@ export default function AIVoiceBot() {
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>
                 <Mic className="h-3 w-3 text-cyan-400 animate-pulse" />
-                <span className="font-medium text-cyan-300 text-xs">AI Voice Demonstration</span>
+                <span className="font-medium text-white text-xs">AI Voice Demonstration</span>
               </div>
-              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent mb-2" style={{
+              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-2" style={{
                 textShadow: '0 0 15px rgba(0, 255, 255, 0.3)'
               }}>
                 Experience Natural AI Conversations
               </h2>
-              <p className="text-sm text-cyan-300 max-w-2xl mx-auto">
+              <p className="text-sm text-white max-w-2xl mx-auto">
                 Listen to how our <strong className="text-cyan-400">AI voice bot</strong> handles real customer interactions with human-like responses
               </p>
             </div>
@@ -756,15 +756,15 @@ export default function AIVoiceBot() {
                   Got Questions? We've Got Answers
                 </span>
               </div>
-              <h2 id="faq-section" className="text-lg sm:text-xl lg:text-2xl font-bold mb-3 text-cyan-300">
+              <h2 id="faq-section" className="text-lg sm:text-xl lg:text-2xl font-bold mb-3 text-white">
                 <span className="block mb-1">Frequently Asked</span>
-                <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent" style={{
+                <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent" style={{
                   textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
                 }}>
                   Questions
                 </span>
               </h2>
-              <p className="text-cyan-300 text-sm max-w-3xl mx-auto leading-relaxed">
+              <p className="text-white text-sm max-w-3xl mx-auto leading-relaxed">
                 Everything you need to know about <span className="text-cyan-400 font-semibold">AI Voice Bots</span> and how to implement them
               </p>
             </div>
@@ -781,10 +781,10 @@ export default function AIVoiceBot() {
                     }}>
                       {String(index + 1).padStart(2, '0')}
                     </div>
-                    <h3 className="text-sm font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-2 mt-1">
+                    <h3 className="text-sm font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-2 mt-1">
                       {faq.question}
                     </h3>
-                    <p className="text-xs text-cyan-300 leading-relaxed">
+                    <p className="text-xs text-white leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -815,7 +815,7 @@ export default function AIVoiceBot() {
 
             {/* CTA Heading - Cyberpunk Style */}
             <h2 id="cta-heading" className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 leading-tight">
-              <span className="block mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent">
+              <span className="block mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
                 Transform Customer Service
               </span>
               <span className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg shadow-cyan-500/30 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-300" style={{
@@ -830,7 +830,7 @@ export default function AIVoiceBot() {
             <div className="max-w-3xl mx-auto mb-6 p-3 bg-cyan-400/5 backdrop-blur-md border border-cyan-400/30 shadow-md shadow-cyan-500/25" style={{
               clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
             }}>
-              <p className="text-xs sm:text-sm text-cyan-300 leading-relaxed font-medium">
+              <p className="text-xs sm:text-sm text-white leading-relaxed font-medium">
                 Launch your <strong className="text-cyan-400">AI voice bot</strong> in <strong className="text-cyan-400">5 minutes</strong> and start automating customer conversations. <strong className="text-cyan-400">No credit card required.</strong> Join 1000+ businesses saving 70% on support costs.
               </p>
             </div>
@@ -857,21 +857,21 @@ export default function AIVoiceBot() {
               }}>
                 <div className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-cyan-400/20 via-cyan-500/20 to-cyan-600/20 rounded-full filter blur-xl group-hover:opacity-30 transition-opacity"></div>
                 <Shield className="h-4 w-4 text-cyan-400 relative z-10" />
-                <span className="font-bold text-cyan-300 relative z-10 text-xs">Enterprise Security</span>
+                <span className="font-bold text-white relative z-10 text-xs">Enterprise Security</span>
               </div>
               <div className="flex items-center gap-2 px-3 py-2 bg-cyan-400/5 backdrop-blur-md border border-cyan-400/30 shadow-lg shadow-cyan-500/25 hover:scale-105 transition-all duration-300 group relative overflow-hidden" style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
               }}>
                 <div className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-cyan-400/20 via-cyan-500/20 to-cyan-600/20 rounded-full filter blur-xl group-hover:opacity-30 transition-opacity"></div>
                 <Headphones className="h-4 w-4 text-cyan-400 relative z-10" />
-                <span className="font-bold text-cyan-300 relative z-10 text-xs">24/7 Support</span>
+                <span className="font-bold text-white relative z-10 text-xs">24/7 Support</span>
               </div>
               <div className="flex items-center gap-2 px-3 py-2 bg-cyan-400/5 backdrop-blur-md border border-cyan-400/30 shadow-lg shadow-cyan-500/25 hover:scale-105 transition-all duration-300 group relative overflow-hidden" style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
               }}>
                 <div className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-cyan-400/20 via-cyan-500/20 to-cyan-400/20 rounded-full filter blur-xl group-hover:opacity-30 transition-opacity"></div>
                 <TrendingUp className="h-4 w-4 text-cyan-400 relative z-10" />
-                <span className="font-bold text-cyan-300 relative z-10 text-xs">1000+ Businesses</span>
+                <span className="font-bold text-white relative z-10 text-xs">1000+ Businesses</span>
               </div>
             </div>
 
@@ -881,19 +881,19 @@ export default function AIVoiceBot() {
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>
                 <CheckCircle className="h-3 w-3 text-cyan-400" />
-                <span className="font-semibold text-cyan-300">Free 14-Day Trial</span>
+                <span className="font-semibold text-white">Free 14-Day Trial</span>
               </div>
               <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/30 shadow-sm" style={{
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>
                 <CheckCircle className="h-3 w-3 text-cyan-400" />
-                <span className="font-semibold text-cyan-300">Cancel Anytime</span>
+                <span className="font-semibold text-white">Cancel Anytime</span>
               </div>
               <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/30 shadow-sm" style={{
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>
                 <CheckCircle className="h-3 w-3 text-cyan-400" />
-                <span className="font-semibold text-cyan-300">Setup in 5 Minutes</span>
+                <span className="font-semibold text-white">Setup in 5 Minutes</span>
               </div>
             </div>
           </div>

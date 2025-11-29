@@ -2,7 +2,7 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { Button } from "@/components/ui/button"
 import { VoiceConversationPlayer } from "@/components/voice-conversation-player"
-import { ArrowRight, Mic, Phone, CheckCircle, Target } from "lucide-react"
+import { ArrowRight, CheckCircle, Mic, Phone, Target } from "lucide-react"
 import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
@@ -89,7 +89,7 @@ export default function AISalesAgent() {
                   <span className="text-xs font-bold">AI Sales Agent Platform</span>
                 </div>
 
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-300 mb-3 leading-tight text-left">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 leading-tight text-left">
                   <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 drop-shadow-sm tracking-widest uppercase">AI Sales Agent</span>
                   <span className="inline-block px-4 py-2 rounded-xl text-black bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 shadow-lg shadow-cyan-400/40 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-400">
                     <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-transparent to-transparent"></span>
@@ -110,7 +110,7 @@ export default function AISalesAgent() {
                   </p>
                 </div>
                 
-                <p className="text-xs sm:text-sm text-cyan-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-white leading-relaxed">
                   Transform sales with <span className="font-bold text-cyan-400">AI sales agents</span> that qualify leads, handle objections, and close deals 24/7. 
                   Trusted by <span className="font-semibold text-cyan-400">500+ businesses</span> with <span className="font-semibold text-cyan-400">45% higher conversion</span> rates. 
                   Our <span className="font-bold text-cyan-400">AI sales platform</span> automates conversations and scales revenue without scaling headcount.
@@ -121,25 +121,25 @@ export default function AISalesAgent() {
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Lead Qualification</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">Lead Qualification</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Deal Closing</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">Deal Closing</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">24/7 Outreach</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">24/7 Outreach</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">CRM Integration</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">CRM Integration</span>
                   </div>
                 </div>
                 
@@ -187,7 +187,7 @@ export default function AISalesAgent() {
                           <Target className="w-4 h-4 text-cyan-300" />
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-cyan-300">Live Sales AI</div>
+                          <div className="text-sm font-bold text-white">Live Sales AI</div>
                           <div className="text-xs text-cyan-400">Closing deals 24/7</div>
                         </div>
                       </div>
@@ -220,7 +220,7 @@ export default function AISalesAgent() {
               <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 uppercase tracking-wide">
                 Hear AI Sales Agent in Action
               </h2>
-              <p className="text-cyan-300 text-sm max-w-2xl leading-relaxed">
+              <p className="text-white text-sm max-w-2xl leading-relaxed">
                 Listen to how our AI handles real sales conversations and closes deals naturally
               </p>
             </div>
@@ -254,7 +254,7 @@ export default function AISalesAgent() {
               }}>
                 AI Sales Agent FAQ
               </h2>
-              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
+              <p className="text-white text-sm max-w-3xl leading-relaxed">
                 Everything you need to know about <span className="text-cyan-400 font-semibold">AI Sales Agents</span>
               </p>
             </div>
@@ -274,7 +274,7 @@ export default function AISalesAgent() {
                     <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       What is an AI sales agent and how does it work?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       An AI sales agent is an intelligent voice assistant that handles sales conversations, qualifies leads, answers questions, handles objections, and closes deals automatically using natural language processing and machine learning.
                     </p>
                   </div>
@@ -295,7 +295,7 @@ export default function AISalesAgent() {
                     <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       Can AI sales agents replace human sales reps?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       AI sales agents complement your sales team by handling initial outreach, lead qualification, and follow-ups. This frees your human reps to focus on high-value conversations and relationship building.
                     </p>
                   </div>
@@ -316,7 +316,7 @@ export default function AISalesAgent() {
                     <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       How do AI sales agents qualify leads?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       AI sales agents ask intelligent qualifying questions, score leads based on your criteria, and automatically route hot leads to your sales team while nurturing cold leads with follow-up campaigns.
                     </p>
                   </div>
@@ -337,7 +337,7 @@ export default function AISalesAgent() {
                     <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       What is the ROI of using AI sales agents?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       Businesses typically see 45% higher conversion rates, 70% reduction in lead response time, and 3x more qualified leads. ROI is delivered within the first 30-60 days.
                     </p>
                   </div>
@@ -358,7 +358,7 @@ export default function AISalesAgent() {
                     <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       Can AI sales agents handle objections?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       Yes! Our AI is trained on thousands of sales conversations and can handle common objections about price, timing, competition, and features using proven sales techniques.
                     </p>
                   </div>
@@ -379,7 +379,7 @@ export default function AISalesAgent() {
                     <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       How quickly can I deploy AI sales agents?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       Most businesses are up and running within 5-7 days. We help configure sales scripts, integrate with CRM, and train the AI on your products/services.
                     </p>
                   </div>
@@ -411,7 +411,7 @@ export default function AISalesAgent() {
               Ready to 10X Your Sales with AI?
             </h2>
             
-            <p className="text-cyan-300 text-sm mb-6 max-w-2xl leading-relaxed">
+            <p className="text-white text-sm mb-6 max-w-2xl leading-relaxed">
               Join 500+ businesses using AI sales agents to qualify more leads, close more deals, and scale revenue without scaling headcount.
             </p>
             
@@ -435,7 +435,7 @@ export default function AISalesAgent() {
               </Link>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs text-cyan-300">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs text-white">
               <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 border border-cyan-400/20 backdrop-blur-sm" style={{
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>

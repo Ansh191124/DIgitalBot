@@ -126,7 +126,7 @@ export default function About() {
 
           <div className="container mx-auto max-w-7xl relative z-10 text-center">
             {/* Cyberpunk Breadcrumb */}
-            <nav className="mb-6 text-xs text-cyan-300" aria-label="Breadcrumb">
+            <nav className="mb-6 text-xs text-white" aria-label="Breadcrumb">
               <ol className="flex justify-center items-center gap-2">
                 <li><Link href="/" className="hover:text-cyan-400">Home</Link></li>
                 <li className="text-cyan-500">{'>'}</li>
@@ -153,7 +153,7 @@ export default function About() {
                 AI Voice Agent Platform
               </span>
             </h1>
-            <p className="text-sm text-cyan-300 mb-6 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-sm text-white mb-6 max-w-3xl mx-auto leading-relaxed">
               We're on a mission to democratize <span className="font-bold text-cyan-400">AI voice agent technology</span>, making intelligent <span className="font-bold text-cyan-400">AI voice assistants</span> accessible to businesses of all sizes.
             </p>
 
@@ -164,7 +164,7 @@ export default function About() {
                   <div className={`text-xl sm:text-2xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
                     {stat.number}
                   </div>
-                  <div className="text-xs text-cyan-300 font-medium">{stat.label}</div>
+                  <div className="text-xs text-white font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -225,10 +225,10 @@ export default function About() {
                 <h3 className="text-lg font-bold text-cyan-400 mb-3">
                   What is DigitalBot.ai?
                 </h3>
-                <p className="text-cyan-300 mb-4 leading-relaxed text-sm">
+                <p className="text-white mb-4 leading-relaxed text-sm">
                   <span className="text-cyan-400 font-bold">DigitalBot.ai is an innovative AI voice agent and AI voice assistant platform</span> founded in 2024. We specialize in creating intelligent conversational AI solutions that enable businesses to automate customer service, sales, and support through advanced voice technology.
                 </p>
-                <p className="text-cyan-300 mb-4 leading-relaxed text-sm">
+                <p className="text-white mb-4 leading-relaxed text-sm">
                   Our <span className="text-cyan-400 font-bold">AI voice agent platform</span> serves <span className="text-cyan-400 font-bold">500+ businesses worldwide</span>, processing more than <span className="text-cyan-400 font-bold">2 million AI voice assistant conversations</span> with industry-leading accuracy and reliability.
                 </p>
                 
@@ -248,7 +248,7 @@ export default function About() {
                       <div className="w-3 h-3 bg-cyan-400 flex items-center justify-center mt-1 flex-shrink-0" style={{clipPath: 'circle(50%)'}}>
                         <CheckCircle2 className="w-2 h-2 text-black" />
                       </div>
-                      <span className="text-cyan-300 text-sm">{item}</span>
+                      <span className="text-white text-sm">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -277,7 +277,7 @@ export default function About() {
                         <div className={`text-lg font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
                           {stat.number}
                         </div>
-                        <div className="text-xs text-cyan-300 font-medium">{stat.label}</div>
+                        <div className="text-xs text-white font-medium">{stat.label}</div>
                       </div>
                     ))}
                   </div>
@@ -340,13 +340,13 @@ export default function About() {
                 <h3 className="text-lg font-bold text-cyan-400 mb-3">
                   How Did DigitalBot.ai Start?
                 </h3>
-                <p className="text-cyan-300 mb-4 leading-relaxed text-sm">
+                <p className="text-white mb-4 leading-relaxed text-sm">
                   <span className="text-cyan-400 font-bold">Founded in early 2024</span>, DigitalBot.ai emerged from a simple observation: businesses were struggling to provide <span className="text-cyan-400 font-bold">24/7 customer support</span> while maintaining quality and personal touch. Our founders, with backgrounds in <span className="text-cyan-400 font-bold">AI research and enterprise software</span>, saw an opportunity to revolutionize customer service with <span className="text-cyan-400 font-bold">AI voice agent technology</span>.
                 </p>
-                <p className="text-cyan-300 mb-4 leading-relaxed text-sm">
+                <p className="text-white mb-4 leading-relaxed text-sm">
                   The problem was clear: traditional customer service was expensive, limited by business hours, and couldn't scale. We asked ourselves: <span className="text-cyan-400 font-bold">"What if AI voice assistants could handle customer conversations as naturally as humans, but 24/7 without breaks?"</span>
                 </p>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   In just one year, we've grown to serve <span className="text-cyan-400 font-bold">over 500 businesses worldwide</span>, processing <span className="text-cyan-400 font-bold">millions of AI voice assistant conversations</span>. Our AI voice agents have evolved rapidly to become sophisticated conversational agents that understand context, emotion, and intent with <span className="text-cyan-400 font-bold">high accuracy</span>.
                 </p>
               </div>
@@ -370,7 +370,7 @@ export default function About() {
                         {milestone.year}
                       </div>
                       <h4 className="text-sm font-bold text-cyan-400 mb-1">{milestone.title}</h4>
-                      <p className="text-cyan-300 text-xs">{milestone.description}</p>
+                      <p className="text-white text-xs">{milestone.description}</p>
                     </div>
                   </div>
                 </div>
@@ -411,7 +411,7 @@ export default function About() {
                   Core Values
                 </span>
               </h2>
-              <p className="text-sm text-cyan-300 max-w-2xl mx-auto">
+              <p className="text-sm text-white max-w-2xl mx-auto">
                 The principles that guide how we build the best <span className="text-cyan-400 font-bold">AI voice agent and voice assistant platform</span> for businesses worldwide
               </p>
             </div>
@@ -449,7 +449,7 @@ export default function About() {
                       <CardTitle className="text-cyan-400 text-sm">{value.title}</CardTitle>
                     </CardHeader>
                     <CardContent className="pt-0 pb-4">
-                      <CardDescription className="text-cyan-300 text-xs leading-relaxed">{value.description}</CardDescription>
+                      <CardDescription className="text-white text-xs leading-relaxed">{value.description}</CardDescription>
                     </CardContent>
                   </Card>
                 );
@@ -489,7 +489,7 @@ export default function About() {
                   About DigitalBot.ai
                 </span>
               </h2>
-              <p className="text-sm text-cyan-300 max-w-2xl mx-auto">
+              <p className="text-sm text-white max-w-2xl mx-auto">
                 Get answers to frequently asked questions about our <span className="text-cyan-400 font-semibold">AI voice agent platform</span>
               </p>
             </div>
@@ -544,12 +544,12 @@ export default function About() {
                   </div>
 
                   {/* Question */}
-                  <h3 className="text-sm font-bold text-cyan-400 mb-3 group-hover:text-cyan-300 transition-all duration-300">
+                  <h3 className="text-sm font-bold text-cyan-400 mb-3 group-hover:text-white transition-all duration-300">
                     {faq.q}
                   </h3>
 
                   {/* Answer */}
-                  <p className="text-cyan-300 leading-relaxed text-xs">
+                  <p className="text-white leading-relaxed text-xs">
                     {faq.a}
                   </p>
                 </div>
@@ -604,7 +604,7 @@ export default function About() {
                 </h2>
                 
                 <div className="max-w-xl mx-auto mb-6 p-4 bg-black/60 border border-cyan-500/50 backdrop-blur-md" style={{clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'}}>
-                  <p className="text-sm text-cyan-300 leading-relaxed font-medium">
+                  <p className="text-sm text-white leading-relaxed font-medium">
                     Join <span className="font-bold bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent">500+ businesses</span> using DigitalBot.ai's AI voice assistant platform. Start automating your customer service today with our <span className="font-bold text-cyan-400">free 14-day trial</span>.
                   </p>
                 </div>

@@ -194,11 +194,11 @@ export default function Services() {
           <nav className="flex justify-start md:justify-center mb-6" aria-label="Breadcrumb">
             <ol className="inline-flex items-center space-x-2 text-xs bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-cyan-400/20 shadow-md shadow-cyan-500/15">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-cyan-400 transition-colors font-medium">
+                <Link href="/" className="text-white hover:text-cyan-400 transition-colors font-medium">
                   Home
                 </Link>
               </li>
-              <li className="text-gray-400">→</li>
+              <li className="text-white">→</li>
               <li className="text-cyan-400 font-bold">Services</li>
             </ol>
           </nav>
@@ -219,7 +219,7 @@ export default function Services() {
           <div className="max-w-5xl mx-auto mb-6 p-4 bg-gradient-to-r from-cyan-500/8 via-black/90 to-cyan-600/8 border border-cyan-400/30 rounded-xl shadow-lg backdrop-blur-md" style={{
             clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
           }}>
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+            <p className="text-sm sm:text-base text-white leading-relaxed">
               We provide <span className="font-bold text-cyan-400">comprehensive AI voice assistant services</span> including AI call centers, customer support automation, sales agents, and virtual receptionists. 
               Trusted by <span className="font-extrabold shimmer-text text-cyan-400">500+ businesses</span> across <span className="font-extrabold shimmer-text text-cyan-400">25+ countries</span> to handle <span className="font-extrabold shimmer-text text-cyan-400">2M+ conversations</span> monthly.
             </p>
@@ -242,7 +242,7 @@ export default function Services() {
                   <div className="text-xl font-extrabold shimmer-text text-cyan-400 mb-1 relative z-10">
                     {stat.value}
                   </div>
-                  <div className="text-xs text-gray-300 font-semibold relative z-10 uppercase tracking-wide">{stat.label}</div>
+                  <div className="text-xs text-white font-semibold relative z-10 uppercase tracking-wide">{stat.label}</div>
                 </div>
               );
             })}
@@ -296,7 +296,7 @@ export default function Services() {
                 Service Suite
               </span>
             </h2>
-            <p className="text-sm text-gray-400 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-sm text-white max-w-4xl mx-auto leading-relaxed">
               Choose from our <span className="font-bold text-cyan-400">comprehensive suite</span> of AI-powered voice solutions designed to <span className="font-bold text-cyan-400">automate and enhance</span> every aspect of your business communication.
             </p>
           </div>
@@ -353,7 +353,7 @@ export default function Services() {
                       <CardTitle className="text-sm font-bold text-cyan-400 mb-2 text-center group-hover:text-cyan-300 transition-all uppercase tracking-wide">
                         {service.title}
                       </CardTitle>
-                      <CardDescription className="text-gray-300 text-center leading-relaxed text-xs">
+                      <CardDescription className="text-white text-center leading-relaxed text-xs">
                         {service.description}
                       </CardDescription>
                     </CardHeader>
@@ -362,7 +362,7 @@ export default function Services() {
                         {service.features.map((feature, idx) => (
                           <li
                             key={idx}
-                            className="flex items-center text-xs text-gray-300 group-hover:text-white transition-colors"
+                            className="flex items-center text-xs text-white group-hover:text-white transition-colors"
                           >
                             <div className="w-3 h-3 rounded-full bg-cyan-400 flex items-center justify-center mr-2 flex-shrink-0">
                               <Check className="h-2 w-2 text-black" />
@@ -413,11 +413,11 @@ export default function Services() {
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
                 color: 'transparent',
-                animation: 'shimmer 2s infinite'
+                
               }}>
                 Industries We Serve
               </span>
-              <span className="inline-block text-gray-300 text-lg font-semibold">
+              <span className="inline-block text-white text-lg font-semibold">
                 Across <span className="text-cyan-400">25+ Countries</span>
               </span>
             </h2>
@@ -470,7 +470,7 @@ export default function Services() {
                     <h3 className="text-sm font-bold text-cyan-400 mb-2 group-hover:text-cyan-300 transition-all relative z-10 uppercase tracking-wide">
                       {industry.name}
                     </h3>
-                    <p className="text-xs text-gray-300 font-medium relative z-10">{industry.description}</p>
+                    <p className="text-xs text-white font-medium relative z-10">{industry.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -778,7 +778,7 @@ export default function Services() {
               <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 Do I need technical expertise to use AI voice services?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-white leading-relaxed text-xs">
                 Not at all! Our platform features a no-code visual builder for creating and managing conversations. We handle all technical setup, integration, and maintenance. You simply define your business rules and we make the AI work for you.
               </p>
             </div>
@@ -796,7 +796,7 @@ export default function Services() {
               <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 How scalable are AI voice assistant services?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-white leading-relaxed text-xs">
                 Infinitely scalable! Our cloud infrastructure handles unlimited concurrent calls without quality degradation. Whether you receive 10 calls or 10,000 calls daily, the AI maintains consistent performance with no additional setup or hiring required.
               </p>
             </div>
@@ -814,7 +814,7 @@ export default function Services() {
               <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
                 What analytics and reporting do you provide?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-white leading-relaxed text-xs">
                 Our real-time dashboard shows call volume, conversation outcomes, customer sentiment, response times, conversion rates, and ROI metrics. Access detailed transcripts, identify trends, and export custom reports to track performance against your business KPIs.
               </p>
             </div>
@@ -868,7 +868,7 @@ export default function Services() {
               <div className="max-w-3xl mx-auto mb-6 p-4 bg-gradient-to-r from-cyan-500/8 via-cyan-400/4 to-cyan-500/8 border border-cyan-400/20" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
-                <p className="text-sm text-gray-300 leading-relaxed font-medium">
+                <p className="text-sm text-white leading-relaxed font-medium">
                   Join <span className="font-extrabold text-cyan-400">500+ businesses</span> already using DigitalBot.ai to handle <span className="font-extrabold text-cyan-400">millions of customer conversations</span> with AI voice technology. <span className="font-bold text-cyan-400">Start your free trial today</span>.
                 </p>
               </div>
@@ -892,26 +892,26 @@ export default function Services() {
                 </Link>
               </div>
               
-              <div className="flex flex-wrap items-center justify-center gap-6 text-gray-400 text-sm mt-8">
+              <div className="flex flex-wrap items-center justify-center gap-6 text-white text-sm mt-8">
                 <span className="inline-flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" style={{
                     boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
                   }}></span>
-                  <span className="font-semibold text-gray-300 uppercase tracking-wide">No Credit Card Required</span>
+                  <span className="font-semibold text-white uppercase tracking-wide">No Credit Card Required</span>
                 </span>
                 <span className="text-cyan-400">•</span>
                 <span className="inline-flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" style={{
                     boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
                   }}></span>
-                  <span className="font-semibold text-gray-300 uppercase tracking-wide">Cancel Anytime</span>
+                  <span className="font-semibold text-white uppercase tracking-wide">Cancel Anytime</span>
                 </span>
                 <span className="text-cyan-400">•</span>
                 <span className="inline-flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" style={{
                     boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
                   }}></span>
-                  <span className="font-semibold text-gray-300 uppercase tracking-wide">5-Min Setup</span>
+                  <span className="font-semibold text-white uppercase tracking-wide">5-Min Setup</span>
                 </span>
               </div>
             </div>

@@ -41,7 +41,7 @@ export default function AppointmentsPage() {
             }}>Appointment Again</span>
           </h1>
 
-          <p className="text-cyan-300 text-sm sm:text-base max-w-3xl mx-auto mb-6 leading-relaxed">
+          <p className="text-white text-sm sm:text-base max-w-3xl mx-auto mb-6 leading-relaxed">
             Transform your business with <strong className="text-cyan-400">24/7 AI appointment booking</strong> that captures every opportunity while you sleep. 
             No more <strong className="text-cyan-400">missed calls</strong>, no more scheduling chaos.
           </p>
@@ -71,7 +71,7 @@ export default function AppointmentsPage() {
           </div>
 
           {/* TRUST BADGES */}
-          <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-cyan-300 mb-8">
+          <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-white mb-8">
             <div className="flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-cyan-400" style={{ boxShadow: '0 0 10px rgba(0, 255, 255, 0.6)' }} /> 
               <span className="font-medium uppercase tracking-wider">No Credit Card Required</span>
@@ -100,7 +100,7 @@ export default function AppointmentsPage() {
                 AI That Never Sleeps
               </div>
               
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 text-cyan-300 uppercase tracking-wider leading-tight" style={{
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider leading-tight" style={{
                 textShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
               }}>
                 Your Virtual Receptionist
@@ -108,7 +108,7 @@ export default function AppointmentsPage() {
                 <span className="text-white">Works Around the Clock</span>
               </h2>
               
-              <p className="text-sm sm:text-base text-cyan-300 leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-white leading-relaxed mb-6">
                 Imagine having the world's most professional receptionist who <strong className="text-cyan-400">never takes breaks</strong>, never gets sick, and handles every conversation with perfect precision.
               </p>
 
@@ -124,7 +124,7 @@ export default function AppointmentsPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-cyan-400 text-sm mb-1 uppercase tracking-wider">Lightning Response</h4>
-                    <p className="text-cyan-300 text-xs leading-relaxed">Answers calls in under 750ms with natural conversations</p>
+                    <p className="text-white text-xs leading-relaxed">Answers calls in under 750ms with natural conversations</p>
                   </div>
                 </div>
 
@@ -139,7 +139,7 @@ export default function AppointmentsPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-cyan-400 text-sm mb-1 uppercase tracking-wider">Smart Scheduling</h4>
-                    <p className="text-cyan-300 text-xs leading-relaxed">Prevents conflicts and optimizes calendar automatically</p>
+                    <p className="text-white text-xs leading-relaxed">Prevents conflicts and optimizes calendar automatically</p>
                   </div>
                 </div>
 
@@ -154,7 +154,7 @@ export default function AppointmentsPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-cyan-400 text-sm mb-1 uppercase tracking-wider">Zero No-Shows</h4>
-                    <p className="text-cyan-300 text-xs leading-relaxed">Cuts missed appointments by 40% with smart reminders</p>
+                    <p className="text-white text-xs leading-relaxed">Cuts missed appointments by 40% with smart reminders</p>
                   </div>
                 </div>
               </div>
@@ -176,7 +176,7 @@ export default function AppointmentsPage() {
                   </div>
                   <div>
                     <div className="font-bold text-cyan-400 text-sm uppercase tracking-wider">1,000+ Businesses</div>
-                    <div className="text-xs text-cyan-300">Already transformed their scheduling</div>
+                    <div className="text-xs text-white">Already transformed their scheduling</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -185,7 +185,7 @@ export default function AppointmentsPage() {
                       <Star key={i} className="w-3 h-3 fill-cyan-400 text-cyan-400" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.6))' }} />
                     ))}
                   </div>
-                  <span className="text-xs text-cyan-300 font-medium uppercase tracking-wider">4.9/5 Rating</span>
+                  <span className="text-xs text-white font-medium uppercase tracking-wider">4.9/5 Rating</span>
                 </div>
               </div>
             </div>
@@ -220,7 +220,7 @@ export default function AppointmentsPage() {
                   </div>
                   <div>
                     <div className="text-xl font-bold text-cyan-400">45%</div>
-                    <div className="text-xs text-cyan-300 uppercase">More Bookings</div>
+                    <div className="text-xs text-white uppercase">More Bookings</div>
                   </div>
                 </div>
               </div>
@@ -236,7 +236,7 @@ export default function AppointmentsPage() {
                   </div>
                   <div>
                     <div className="text-xl font-bold text-cyan-400">24/7</div>
-                    <div className="text-xs text-cyan-300 uppercase">Available</div>
+                    <div className="text-xs text-white uppercase">Available</div>
                   </div>
                 </div>
               </div>
@@ -255,7 +255,7 @@ export default function AppointmentsPage() {
                 <br />
                 <span className="text-white">Speak for Themselves</span>
               </h2>
-              <p className="text-sm sm:text-base text-cyan-300 max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-white max-w-2xl mx-auto">
                 Join thousands of businesses experiencing the power of <strong className="text-cyan-400">AI-driven appointment scheduling</strong>
               </p>
             </div>
@@ -271,8 +271,8 @@ export default function AppointmentsPage() {
                   <Clock className="w-5 h-5 text-black" />
                 </div>
                 <div className="text-xl sm:text-2xl font-bold text-cyan-400 mb-1">24/7</div>
-                <div className="text-cyan-300 font-medium text-xs uppercase tracking-wider">Always Available</div>
-                <div className="text-cyan-300/80 text-xs mt-1">Never miss a call</div>
+                <div className="text-white font-medium text-xs uppercase tracking-wider">Always Available</div>
+                <div className="text-white/80 text-xs mt-1">Never miss a call</div>
               </div>
               
               <div className="text-center bg-black/60 backdrop-blur-md border border-cyan-400/30 p-4 shadow-lg shadow-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300" style={{
@@ -285,8 +285,8 @@ export default function AppointmentsPage() {
                   <Bell className="w-5 h-5 text-black" />
                 </div>
                 <div className="text-xl sm:text-2xl font-bold text-cyan-400 mb-1">40%</div>
-                <div className="text-cyan-300 font-medium text-xs uppercase tracking-wider">Fewer No-Shows</div>
-                <div className="text-cyan-300/80 text-xs mt-1">Smart reminders work</div>
+                <div className="text-white font-medium text-xs uppercase tracking-wider">Fewer No-Shows</div>
+                <div className="text-white/80 text-xs mt-1">Smart reminders work</div>
               </div>
               
               <div className="text-center bg-black/60 backdrop-blur-md border border-cyan-400/30 p-4 shadow-lg shadow-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300" style={{
@@ -299,8 +299,8 @@ export default function AppointmentsPage() {
                   <TrendingUp className="w-5 h-5 text-black" />
                 </div>
                 <div className="text-xl sm:text-2xl font-bold text-cyan-400 mb-1">3x</div>
-                <div className="text-cyan-300 font-medium text-xs uppercase tracking-wider">More Bookings</div>
-                <div className="text-cyan-300/80 text-xs mt-1">Capture every lead</div>
+                <div className="text-white font-medium text-xs uppercase tracking-wider">More Bookings</div>
+                <div className="text-white/80 text-xs mt-1">Capture every lead</div>
               </div>
               
               <div className="text-center bg-black/60 backdrop-blur-md border border-cyan-400/30 p-4 shadow-lg shadow-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300" style={{
@@ -313,8 +313,8 @@ export default function AppointmentsPage() {
                   <Award className="w-5 h-5 text-black" />
                 </div>
                 <div className="text-xl sm:text-2xl font-bold text-cyan-400 mb-1">60%</div>
-                <div className="text-cyan-300 font-medium text-xs uppercase tracking-wider">Cost Savings</div>
-                <div className="text-cyan-300/80 text-xs mt-1">vs human staff</div>
+                <div className="text-white font-medium text-xs uppercase tracking-wider">Cost Savings</div>
+                <div className="text-white/80 text-xs mt-1">vs human staff</div>
               </div>
             </div>
             
@@ -329,7 +329,7 @@ export default function AppointmentsPage() {
                       <Star key={i} className="w-4 h-4 fill-cyan-400 text-cyan-400" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.6))' }} />
                     ))}
                   </div>
-                  <span className="text-cyan-300 font-semibold text-sm uppercase tracking-wider">Rated #1 AI Scheduling Platform</span>
+                  <span className="text-white font-semibold text-sm uppercase tracking-wider">Rated #1 AI Scheduling Platform</span>
                 </div>
               </div>
             </div>
@@ -347,14 +347,14 @@ export default function AppointmentsPage() {
                 Complete AI Solution
               </div>
               
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-cyan-300 uppercase tracking-wider leading-tight" style={{
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider leading-tight" style={{
                 textShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
               }}>
                 Everything You Need to
                 <br />
                 <span className="text-white">Automate Scheduling</span>
               </h2>
-              <p className="text-sm sm:text-base text-cyan-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-white max-w-3xl mx-auto leading-relaxed">
                 Powerful AI-driven features designed to capture every booking opportunity and deliver an exceptional customer experience
               </p>
             </div>
@@ -372,7 +372,7 @@ export default function AppointmentsPage() {
                 <h3 className="font-bold text-cyan-400 text-sm mb-2 uppercase tracking-wider">
                   24/7 Instant Booking
                 </h3>
-                <p className="text-cyan-300 text-xs leading-relaxed mb-2">
+                <p className="text-white text-xs leading-relaxed mb-2">
                   Never miss another opportunity. Our AI answers every call in milliseconds and converts visitors into customers automatically.
                 </p>
                 <div className="flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase">
@@ -393,7 +393,7 @@ export default function AppointmentsPage() {
                 <h3 className="font-bold text-cyan-400 text-sm mb-2 uppercase tracking-wider">
                   Smart Calendar Sync
                 </h3>
-                <p className="text-cyan-300 text-xs leading-relaxed mb-2">
+                <p className="text-white text-xs leading-relaxed mb-2">
                   Eliminate double bookings forever. Real-time integration with all major calendar platforms ensures perfect accuracy.
                 </p>
                 <div className="flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase">
@@ -414,7 +414,7 @@ export default function AppointmentsPage() {
                 <h3 className="font-bold text-cyan-400 text-sm mb-2 uppercase tracking-wider">
                   Smart Reminders
                 </h3>
-                <p className="text-cyan-300 text-xs leading-relaxed mb-2">
+                <p className="text-white text-xs leading-relaxed mb-2">
                   Cut no-shows by 40% with intelligent multi-channel reminders that work automatically.
                 </p>
                 <div className="flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase">
@@ -435,7 +435,7 @@ export default function AppointmentsPage() {
                 <h3 className="font-bold text-cyan-400 text-sm mb-2 uppercase tracking-wider">
                   Human-Like Voice AI
                 </h3>
-                <p className="text-cyan-300 text-xs leading-relaxed mb-2">
+                <p className="text-white text-xs leading-relaxed mb-2">
                   Conversations so natural customers forget they're talking to AI. 50+ languages supported.
                 </p>
                 <div className="flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase">
@@ -458,13 +458,13 @@ export default function AppointmentsPage() {
                 Interactive Demo
               </div>
               
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-cyan-300 uppercase tracking-wider" style={{
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider" style={{
                 textShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
               }}>
                 Experience the <span className="text-white">Future of Booking</span>
               </h2>
               
-              <p className="text-sm sm:text-base text-cyan-300 mb-8 max-w-3xl mx-auto">
+              <p className="text-sm sm:text-base text-white mb-8 max-w-3xl mx-auto">
                 Witness how our AI handles real appointment conversations with <strong className="text-cyan-400">human-like precision</strong>
               </p>
 
@@ -486,14 +486,14 @@ export default function AppointmentsPage() {
         <section className="bg-black py-16 relative overflow-hidden">
           <div className="px-4">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 mb-4 uppercase tracking-wider" style={{
+              <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4 uppercase tracking-wider" style={{
                 textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
               }}>
                 Why Leaders Choose
                 <br />
                 <span className="text-white">AI Appointment Booking</span>
               </h2>
-              <p className="text-sm sm:text-base text-cyan-300 max-w-3xl mx-auto">
+              <p className="text-sm sm:text-base text-white max-w-3xl mx-auto">
                 Join thousands transforming their scheduling with <strong className="text-cyan-400">proven AI technology</strong>
               </p>
             </div>
@@ -507,7 +507,7 @@ export default function AppointmentsPage() {
                   <Star key={i} className="w-4 h-4 fill-cyan-400 text-cyan-400" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.6))' }} />
                 ))}
               </div>
-              <p className="text-sm sm:text-base text-cyan-300 mb-4 leading-relaxed italic">
+              <p className="text-sm sm:text-base text-white mb-4 leading-relaxed italic">
                 "We went from missing 30% of after-hours calls to capturing every single booking opportunity. Our appointment volume <strong className="text-cyan-400">increased by 45%</strong> in the first month."
               </p>
               <div className="flex items-center gap-3">
@@ -518,7 +518,7 @@ export default function AppointmentsPage() {
                 </div>
                 <div>
                   <p className="font-bold text-cyan-400 text-sm uppercase tracking-wider">Sarah Bennett</p>
-                  <p className="text-cyan-300 text-xs">Practice Manager, Bright Smile Dental</p>
+                  <p className="text-white text-xs">Practice Manager, Bright Smile Dental</p>
                 </div>
               </div>
             </div>
@@ -528,7 +528,7 @@ export default function AppointmentsPage() {
         {/* FINAL CTA */}
         <section className="bg-black py-16 relative overflow-hidden">
           <div className="px-4 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 mb-4 uppercase tracking-wider" style={{
+            <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4 uppercase tracking-wider" style={{
               textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
             }}>
               Ready to Automate
@@ -550,12 +550,12 @@ export default function AppointmentsPage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             
-            <p className="text-cyan-300 text-xs mb-8 uppercase tracking-wider">
+            <p className="text-white text-xs mb-8 uppercase tracking-wider">
               ✓ Free 14-day trial • ✓ Setup in 3 days • ✓ No credit card required
             </p>
 
             <div className="border-t border-cyan-400/30 pt-8">
-              <p className="text-cyan-300 text-xs leading-relaxed uppercase tracking-wider">
+              <p className="text-white text-xs leading-relaxed uppercase tracking-wider">
                 Powered by <strong className="text-cyan-400">DigitalBot.ai</strong> — delivering seamless booking experiences
               </p>
             </div>

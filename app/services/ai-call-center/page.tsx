@@ -269,7 +269,7 @@ export default function AICallCenter() {
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-5xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-6 py-2.5 mb-8 shadow-lg shadow-cyan-400/20 text-cyan-300 font-semibold text-sm uppercase tracking-widest" style={{
+              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-6 py-2.5 mb-8 shadow-lg shadow-cyan-400/20 text-white font-semibold text-sm uppercase tracking-widest" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
                 boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)'
               }}>
@@ -278,7 +278,7 @@ export default function AICallCenter() {
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-                <span className="text-cyan-300 uppercase tracking-wider" style={{
+                <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider" style={{
                   textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
                 }}>
                   Transform Your Call Center
@@ -292,7 +292,7 @@ export default function AICallCenter() {
                 </span>
               </h1>
 
-              <p className="text-sm sm:text-base md:text-lg mb-10 text-cyan-300 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg mb-10 text-white max-w-4xl mx-auto leading-relaxed">
                 Deploy an <strong className="text-cyan-400">AI call center</strong> that handles unlimited customer calls 24/7 with intelligent routing, real-time analytics, and seamless CRM integration. 
                 Trusted by <span className="font-bold text-cyan-400">500+ businesses</span> managing <span className="font-bold text-cyan-400">2M+ conversations</span> monthly.
               </p>
@@ -346,21 +346,21 @@ export default function AICallCenter() {
         <section className="py-16 bg-black relative overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-6 shadow-lg shadow-cyan-400/20 text-cyan-300 font-semibold text-xs uppercase tracking-widest" style={{
+              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-6 shadow-lg shadow-cyan-400/20 text-white font-semibold text-xs uppercase tracking-widest" style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
                 boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)'
               }}>
                 <Bot className="w-3 h-3 animate-pulse" />
                 AI Call Center Features
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-cyan-300 uppercase tracking-wider leading-tight" style={{
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider leading-tight" style={{
                 textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
               }}>
                 Why Choose DigitalBot
                 <br />
                 <span className="text-white">for AI Call Centers?</span>
               </h2>
-              <p className="text-sm sm:text-base text-cyan-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-white max-w-3xl mx-auto leading-relaxed">
                 Powerful automation, intuitive operations, and <strong className="text-cyan-400">measurable outcomes</strong> for modern contact centers
               </p>
             </div>
@@ -399,7 +399,7 @@ export default function AICallCenter() {
                   <h3 className="text-lg font-bold mb-3 text-cyan-400 group-hover:text-cyan-300 transition-colors uppercase tracking-wider leading-tight">
                     {benefit.title}
                   </h3>
-                  <p className="text-cyan-300 text-xs leading-relaxed">
+                  <p className="text-white text-xs leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
@@ -412,21 +412,21 @@ export default function AICallCenter() {
         <section className="py-16 bg-black relative overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-6 shadow-lg shadow-cyan-400/20 text-cyan-300 font-semibold text-xs uppercase tracking-widest" style={{
+              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-6 shadow-lg shadow-cyan-400/20 text-white font-semibold text-xs uppercase tracking-widest" style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
                 boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)'
               }}>
                 <Target className="w-3 h-3 animate-pulse" />
                 Proven Use Cases
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-cyan-300 uppercase tracking-wider leading-tight" style={{
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider leading-tight" style={{
                 textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
               }}>
                 AI Call Center Use Cases
                 <br />
                 <span className="text-white">& Results</span>
               </h2>
-              <p className="text-sm sm:text-base text-cyan-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-white max-w-3xl mx-auto leading-relaxed">
                 Proven automation playbooks that <strong className="text-cyan-400">transform every customer touchpoint</strong>
               </p>
             </div>
@@ -457,7 +457,7 @@ export default function AICallCenter() {
                   <h3 className="text-xl font-bold mb-3 text-cyan-400 group-hover:text-cyan-300 transition-colors uppercase tracking-wider leading-tight">
                     {useCase.title}
                   </h3>
-                  <p className="text-cyan-300 text-xs leading-relaxed mb-4">
+                  <p className="text-white text-xs leading-relaxed mb-4">
                     {useCase.description}
                   </p>
                   <span className="inline-flex items-center px-3 py-1.5 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 text-cyan-400 text-xs font-semibold uppercase tracking-widest" style={{
@@ -477,21 +477,21 @@ export default function AICallCenter() {
         <section className="py-16 bg-black relative overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-6 shadow-lg shadow-cyan-400/20 text-cyan-300 font-semibold text-xs uppercase tracking-widest" style={{
+              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-6 shadow-lg shadow-cyan-400/20 text-white font-semibold text-xs uppercase tracking-widest" style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
                 boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)'
               }}>
                 <Brain className="w-3 h-3 animate-pulse" />
                 Advanced Features
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-cyan-300 uppercase tracking-wider leading-tight" style={{
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider leading-tight" style={{
                 textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
               }}>
                 Enterprise-Grade AI
                 <br />
                 <span className="text-white">Call Center Features</span>
               </h2>
-              <p className="text-sm sm:text-base text-cyan-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-white max-w-3xl mx-auto leading-relaxed">
                 Deep technical capabilities that keep your contact center <strong className="text-cyan-400">fast, compliant, and future-proof</strong>
               </p>
             </div>
@@ -532,7 +532,7 @@ export default function AICallCenter() {
                       {feature.heading}
                     </h3>
                   </div>
-                  <p className="text-cyan-300 text-xs leading-relaxed">{feature.body}</p>
+                  <p className="text-white text-xs leading-relaxed">{feature.body}</p>
                 </div>
               ))}
             </div>
@@ -543,21 +543,21 @@ export default function AICallCenter() {
         <section className="py-16 bg-black relative overflow-hidden">
           <div className="max-w-4xl mx-auto px-4 relative z-10">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-6 shadow-lg shadow-cyan-400/20 text-cyan-300 font-semibold text-xs uppercase tracking-widest" style={{
+              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-6 shadow-lg shadow-cyan-400/20 text-white font-semibold text-xs uppercase tracking-widest" style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
                 boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)'
               }}>
                 <Mic className="h-3 w-3 animate-pulse" />
                 Live AI Demo
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-cyan-300 uppercase tracking-wider leading-tight" style={{
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider leading-tight" style={{
                 textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
               }}>
                 Hear Our AI Call Center
                 <br />
                 <span className="text-white">in Action</span>
               </h2>
-              <p className="text-sm sm:text-base text-cyan-300 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-white max-w-2xl mx-auto leading-relaxed">
                 Experience how AI <strong className="text-cyan-400">routes calls, verifies identities, and resolves requests</strong> with human-level empathy
               </p>
             </div>
@@ -580,21 +580,21 @@ export default function AICallCenter() {
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-6 shadow-lg shadow-cyan-400/20 text-cyan-300 font-semibold text-xs uppercase tracking-widest" style={{
+              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-6 shadow-lg shadow-cyan-400/20 text-white font-semibold text-xs uppercase tracking-widest" style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
                 boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)'
               }}>
                 <HeadphonesIcon className="w-3 h-3 animate-pulse" />
                 Common Questions
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-cyan-300 uppercase tracking-wider leading-tight" style={{
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider leading-tight" style={{
                 textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
               }}>
                 Frequently Asked
                 <br />
                 <span className="text-white">Questions</span>
               </h2>
-              <p className="text-sm sm:text-base text-cyan-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-white max-w-3xl mx-auto leading-relaxed">
                 Quick answers for leaders <strong className="text-cyan-400">evaluating AI call center solutions</strong>
               </p>
             </div>
@@ -621,7 +621,7 @@ export default function AICallCenter() {
                       <h3 className="text-lg font-bold mb-3 text-cyan-400 group-hover:text-cyan-300 transition-colors uppercase tracking-wider">
                         {faq.name}
                       </h3>
-                      <p className="text-cyan-300 text-xs leading-relaxed">
+                      <p className="text-white text-xs leading-relaxed">
                         {faq.acceptedAnswer.text}
                       </p>
                     </div>
@@ -642,7 +642,7 @@ export default function AICallCenter() {
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-8 shadow-lg shadow-cyan-400/20 text-cyan-300 font-semibold text-xs uppercase tracking-widest" style={{
+              <div className="inline-flex items-center gap-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-400/30 px-4 py-2 mb-8 shadow-lg shadow-cyan-400/20 text-white font-semibold text-xs uppercase tracking-widest" style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
                 boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)'
               }}>
@@ -651,7 +651,7 @@ export default function AICallCenter() {
               </div>
 
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                <span className="text-cyan-300 uppercase tracking-wider" style={{
+                <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider" style={{
                   textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
                 }}>
                   Ready to Transform
@@ -665,7 +665,7 @@ export default function AICallCenter() {
                 </span>
               </h2>
 
-              <p className="text-sm sm:text-base text-cyan-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-white mb-10 max-w-3xl mx-auto leading-relaxed">
                 Join <strong className="text-cyan-400">500+ businesses</strong> using DigitalBot.ai to deliver world-class customer experiences with AI call center technology. <strong className="text-cyan-400">Start your free trial today.</strong>
               </p>
 

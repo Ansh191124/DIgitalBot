@@ -84,7 +84,7 @@ export function Footer() {
               </Link>
             </div>
 
-            <p className="text-cyan-200 leading-relaxed text-base pr-4">
+            <p className="text-white leading-relaxed text-base pr-4">
               Leading <span className="font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">AI VOICE ASSISTANT PLATFORM</span> trusted by enterprises worldwide. 
               Transform customer interactions with intelligent automation.
             </p>
@@ -104,7 +104,7 @@ export function Footer() {
                     <div className={`p-2 bg-gradient-to-br ${colorSet.bg} rounded-lg group-hover:scale-110 transition-transform`}>
                       <feature.icon className={`w-4 h-4 text-cyan-400`} />
                     </div>
-                    <span className="text-xs font-semibold text-cyan-300 uppercase tracking-wide">{feature.text}</span>
+                    <span className="text-xs font-semibold text-white uppercase tracking-wide">{feature.text}</span>
                   </div>
                 )
               })}
@@ -157,7 +157,7 @@ export function Footer() {
                   AI-POWERED SOLUTIONS
                 </h3>
               </div>
-              <p className="text-cyan-200 text-sm font-medium">Explore our comprehensive suite of AI voice automation services</p>
+              <p className="text-white text-sm font-medium">Explore our comprehensive suite of AI voice automation services</p>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -195,10 +195,10 @@ export function Footer() {
                       </div>
                       
                       {/* Text */}
-                      <h4 className="font-bold text-sm mb-1 text-cyan-300 transition-colors duration-500 group-hover/card:text-black uppercase tracking-wide">
+                      <h4 className="font-bold text-sm mb-1 text-white transition-colors duration-500 group-hover/card:text-black uppercase tracking-wide">
                         {service.name}
                       </h4>
-                      <p className="text-xs text-cyan-400 transition-colors duration-500 group-hover/card:text-black/90">
+                      <p className="text-xs text-white transition-colors duration-500 group-hover/card:text-black/90">
                         {service.description}
                       </p>
                       
@@ -243,7 +243,7 @@ export function Footer() {
                 ]}
               ].map((column, idx) => (
                 <div key={idx}>
-                  <h4 className="font-bold text-cyan-300 mb-4 text-sm flex items-center gap-2 uppercase tracking-widest">
+                  <h4 className="font-bold text-white mb-4 text-sm flex items-center gap-2 uppercase tracking-widest">
                     <div className="w-1 h-4 bg-gradient-to-b from-cyan-300 via-cyan-400 to-cyan-500 rounded-full" />
                     {column.title}
                   </h4>
@@ -252,7 +252,7 @@ export function Footer() {
                       <li key={linkIdx}>
                         <Link 
                           href={link.href}
-                          className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
+                          className="text-sm text-white hover:text-cyan-300 transition-colors duration-300 flex items-center gap-2 group"
                         >
                           <span className="w-0 h-px bg-gradient-to-r from-cyan-400 to-cyan-500 group-hover:w-4 transition-all duration-300" />
                           {link.name}
@@ -275,7 +275,7 @@ export function Footer() {
                 <div className="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 animate-ping absolute" />
                 <div className="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 shadow-lg shadow-cyan-400/30" />
               </div>
-              <p className="text-cyan-200 text-sm font-semibold">
+              <p className="text-white text-sm font-semibold">
                 © 2025 <span className="font-bold bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent">DIGITALBOT.AI</span> • ALL RIGHTS RESERVED
               </p>
             </div>
@@ -284,15 +284,15 @@ export function Footer() {
             <div className="flex items-center gap-4 flex-wrap justify-center">
               <div className="px-4 py-2 bg-gradient-to-r from-black/90 via-black/95 to-black backdrop-blur-sm border-2 border-cyan-400/50 hover:border-cyan-300 rounded-full flex items-center gap-2 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-cyan-400/30">
                 <Shield className="w-4 h-4 text-cyan-400" />
-                <span className="text-xs font-bold text-cyan-300 uppercase tracking-widest">SOC 2 CERTIFIED</span>
+                <span className="text-xs font-bold text-white uppercase tracking-widest">SOC 2 CERTIFIED</span>
               </div>
               <div className="px-4 py-2 bg-gradient-to-r from-black/90 via-black/95 to-black backdrop-blur-sm border-2 border-cyan-400/50 hover:border-cyan-300 rounded-full flex items-center gap-2 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-cyan-400/30">
                 <Award className="w-4 h-4 text-cyan-400" />
-                <span className="text-xs font-bold text-cyan-300 uppercase tracking-widest">99.9% UPTIME</span>
+                <span className="text-xs font-bold text-white uppercase tracking-widest">99.9% UPTIME</span>
               </div>
               <div className="px-4 py-2 bg-gradient-to-r from-black/90 via-black/95 to-black backdrop-blur-sm border-2 border-cyan-400/50 hover:border-cyan-300 rounded-full flex items-center gap-2 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-cyan-400/30">
                 <TrendingUp className="w-4 h-4 text-cyan-400" />
-                <span className="text-xs font-bold text-cyan-300 uppercase tracking-widest">TRUSTED BY 10K+</span>
+                <span className="text-xs font-bold text-white uppercase tracking-widest">TRUSTED BY 10K+</span>
               </div>
             </div>
           </div>

@@ -111,7 +111,7 @@ export default function Contact() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-cyan-200 relative overflow-hidden">
+    <main className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Cyberpunk Grid Background */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" style={{
         backgroundImage: `linear-gradient(to right, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
@@ -155,7 +155,7 @@ export default function Contact() {
               </h1>
               
               <div className="max-w-4xl mx-auto lg:mx-0 mb-4 lg:mb-6 p-3 bg-black/90 backdrop-blur-md border border-cyan-400/25 rounded-xl shadow-lg shadow-cyan-400/20">
-                <p className="text-xs sm:text-sm lg:text-base text-cyan-200 leading-relaxed font-medium">
+                <p className="text-xs sm:text-sm lg:text-base text-white leading-relaxed font-medium">
                   Ready to <span className="font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">elevate your customer experience</span> with AI voice agents? Our experts are <span className="font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">just a message away</span>. Let's discuss how we can help your business grow with 24/7 AI automation.
                 </p>
               </div>
@@ -178,7 +178,7 @@ export default function Contact() {
                       <div className={`text-sm sm:text-base font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
                         {stat.number}
                       </div>
-                      <div className="text-[8px] sm:text-[10px] text-cyan-300 font-medium uppercase tracking-wide">{stat.label}</div>
+                      <div className="text-[8px] sm:text-[10px] text-white font-medium uppercase tracking-wide">{stat.label}</div>
                     </div>
                   )
                 })}
@@ -201,7 +201,7 @@ export default function Contact() {
                   <div className="bg-black/80 backdrop-blur-md px-4 py-2 rounded-2xl border border-cyan-400/30">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                      <span className="text-cyan-300 text-xs font-semibold uppercase tracking-wider">24/7 Live Support</span>
+                      <span className="text-white text-xs font-semibold uppercase tracking-wider">24/7 Live Support</span>
                     </div>
                   </div>
                 </div>
@@ -209,7 +209,7 @@ export default function Contact() {
                   <div className="bg-black/90 backdrop-blur-lg p-4 rounded-2xl border border-cyan-400/25 shadow-xl">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-cyan-300 text-sm font-bold uppercase tracking-wide mb-1">Expert AI Support Team</p>
+                        <p className="text-white text-sm font-bold uppercase tracking-wide mb-1">Expert AI Support Team</p>
                         <p className="text-cyan-400 text-xs font-medium">Enterprise-grade customer service</p>
                       </div>
                       <div className="flex items-center gap-1">
@@ -248,7 +248,7 @@ export default function Contact() {
               <CardTitle className="text-sm sm:text-base lg:text-lg font-bold bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent mb-3 uppercase tracking-wide">
                 Send us a message
               </CardTitle>
-              <CardDescription className="text-xs sm:text-sm font-medium bg-black/80 rounded-lg px-3 py-2 shadow-md border border-cyan-400/25 text-cyan-200">
+              <CardDescription className="text-xs sm:text-sm font-medium bg-black/80 rounded-lg px-3 py-2 shadow-md border border-cyan-400/25 text-white">
                 Reach out to our team for <span className="font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">AI voice automation support</span>, <span className="font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">partnership opportunities</span>, or general inquiries. We're here to help your business grow with cutting-edge voice AI technology.
               </CardDescription>
             </CardHeader>
@@ -266,7 +266,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-3">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <Label htmlFor="firstName" className="text-xs font-bold text-cyan-300 uppercase tracking-wide">First Name</Label>
+                    <Label htmlFor="firstName" className="text-xs font-bold text-white uppercase tracking-wide">First Name</Label>
                     <Input 
                       id="firstName" 
                       placeholder="John" 
@@ -276,7 +276,7 @@ export default function Contact() {
                     />
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="lastName" className="text-xs font-bold text-cyan-300 uppercase tracking-wide">Last Name</Label>
+                    <Label htmlFor="lastName" className="text-xs font-bold text-white uppercase tracking-wide">Last Name</Label>
                     <Input 
                       id="lastName" 
                       placeholder="Doe" 
@@ -289,7 +289,7 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <Label htmlFor="email" className="text-xs font-bold text-cyan-300 uppercase tracking-wide">
+                    <Label htmlFor="email" className="text-xs font-bold text-white uppercase tracking-wide">
                       Email <span className="text-red-400">*</span>
                     </Label>
                     <Input 
@@ -303,7 +303,7 @@ export default function Contact() {
                     />
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor="phone" className="text-xs font-bold text-cyan-300 uppercase tracking-wide">
+                    <Label htmlFor="phone" className="text-xs font-bold text-white uppercase tracking-wide">
                       Phone Number <span className="text-red-400">*</span>
                     </Label>
                     <Input 
@@ -319,7 +319,7 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-1">
-                  <Label htmlFor="company" className="text-xs font-bold text-cyan-300 uppercase tracking-wide">Company</Label>
+                  <Label htmlFor="company" className="text-xs font-bold text-white uppercase tracking-wide">Company</Label>
                   <Input 
                     id="company" 
                     placeholder="Your Company Name" 
@@ -330,29 +330,29 @@ export default function Contact() {
                 </div>
                 
                 <div className="space-y-1">
-                  <Label htmlFor="inquiry" className="text-xs font-bold text-cyan-300 uppercase tracking-wide">
+                  <Label htmlFor="inquiry" className="text-xs font-bold text-white uppercase tracking-wide">
                     Inquiry Type <span className="text-red-400">*</span>
                   </Label>
                   <Select value={form.inquiry} onValueChange={handleSelectChange} required> 
-                    <SelectTrigger className="h-8 bg-black/50 border border-cyan-400/50 focus:border-cyan-300 rounded-lg shadow-sm hover:shadow-md hover:shadow-cyan-400/20 transition-all text-cyan-200">
+                    <SelectTrigger className="h-8 bg-black/50 border border-cyan-400/50 focus:border-cyan-300 rounded-lg shadow-sm hover:shadow-md hover:shadow-cyan-400/20 transition-all text-white">
                       <SelectValue placeholder="Select inquiry type" className="text-cyan-400/50" />
                     </SelectTrigger>
                     <SelectContent className="bg-black border border-cyan-400/50">
-                      <SelectItem value="sales" className="text-cyan-200 hover:bg-cyan-400/20">💼 Sales Inquiry</SelectItem>
-                      <SelectItem value="support" className="text-cyan-200 hover:bg-cyan-400/20">🛠️ Technical Support</SelectItem>
-                      <SelectItem value="partnership" className="text-cyan-200 hover:bg-cyan-400/20">🤝 Partnership</SelectItem>
-                      <SelectItem value="demo" className="text-cyan-200 hover:bg-cyan-400/20">🎯 Request Demo</SelectItem>
-                      <SelectItem value="other" className="text-cyan-200 hover:bg-cyan-400/20">💡 Other</SelectItem>
+                      <SelectItem value="sales" className="text-white hover:bg-cyan-400/20">💼 Sales Inquiry</SelectItem>
+                      <SelectItem value="support" className="text-white hover:bg-cyan-400/20">🛠️ Technical Support</SelectItem>
+                      <SelectItem value="partnership" className="text-white hover:bg-cyan-400/20">🤝 Partnership</SelectItem>
+                      <SelectItem value="demo" className="text-white hover:bg-cyan-400/20">🎯 Request Demo</SelectItem>
+                      <SelectItem value="other" className="text-white hover:bg-cyan-400/20">💡 Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-1">
-                  <Label htmlFor="message" className="text-xs font-bold text-cyan-300 uppercase tracking-wide">Message</Label>
+                  <Label htmlFor="message" className="text-xs font-bold text-white uppercase tracking-wide">Message</Label>
                   <Textarea
                     id="message"
                     placeholder="Tell us about your AI voice automation project and how we can help..."
-                    className="min-h-[80px] bg-black/50 border border-cyan-400/50 focus:border-cyan-300 rounded-lg shadow-sm hover:shadow-md hover:shadow-cyan-400/20 transition-all text-cyan-200 placeholder:text-cyan-400/50"
+                    className="min-h-[80px] bg-black/50 border border-cyan-400/50 focus:border-cyan-300 rounded-lg shadow-sm hover:shadow-md hover:shadow-cyan-400/20 transition-all text-white placeholder:text-cyan-400/50"
                     value={form.message}
                     onChange={handleChange}
                   />
@@ -378,11 +378,11 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-cyan-200 text-sm font-semibold">Average response: 2 mins</span>
+                    <span className="text-white text-sm font-semibold">Average response: 2 mins</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
-                    <span className="text-cyan-200 text-sm font-semibold">Customer satisfaction: 98%</span>
+                    <span className="text-white text-sm font-semibold">Customer satisfaction: 98%</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
@@ -467,7 +467,7 @@ export default function Contact() {
               <h2 className="text-sm sm:text-base lg:text-lg font-bold bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent mb-2 uppercase tracking-wide">
                 Let's start a conversation
               </h2>
-              <p className="text-xs sm:text-sm text-cyan-200 font-medium leading-relaxed">
+              <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
                 Whether you're <span className="font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">scaling your AI voice automation</span> or just beginning your <span className="font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">digital transformation journey</span>, our expert AI team is ready to assist with voice agent deployment.
               </p>
             </div>
@@ -494,7 +494,7 @@ export default function Contact() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <h3 className="font-bold text-cyan-300 mb-1 text-sm sm:text-base uppercase tracking-wide">{info.title}</h3>
-                          <p className="text-[10px] sm:text-xs text-cyan-200/90 mb-2 break-words font-medium leading-relaxed">
+                          <p className="text-[10px] sm:text-xs text-white/90 mb-2 break-words font-medium leading-relaxed">
                             {info.description}
                           </p>
                           {info.contact && (
@@ -566,7 +566,7 @@ export default function Contact() {
                     <h3 className="font-bold text-sm sm:text-base bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-2 uppercase tracking-wide">
                       Prefer to chat with AI?
                     </h3>
-                    <p className="text-xs sm:text-sm text-cyan-200 mb-3 font-medium leading-relaxed">
+                    <p className="text-xs sm:text-sm text-white mb-3 font-medium leading-relaxed">
                       Try our <span className="font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">AI voice chatbot</span> for instant answers to common questions about our voice agent platform, pricing, and implementation services.
                     </p>
                     <Button
@@ -628,7 +628,7 @@ export default function Contact() {
                 <h3 className="text-sm font-bold text-cyan-400 mb-2 uppercase tracking-wide">
                   {faq.question}
                 </h3>
-                <p className="text-xs text-cyan-200 leading-relaxed">
+                <p className="text-xs text-white leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
@@ -686,12 +686,12 @@ export default function Contact() {
                       <span key={i} className="text-cyan-400 text-sm">⭐</span>
                     ))}
                   </div>
-                  <p className="text-xs text-cyan-200 mb-3 leading-relaxed italic">
+                  <p className="text-xs text-white mb-3 leading-relaxed italic">
                     "{testimonial.testimonial}"
                   </p>
                   <div className="border-t border-cyan-400/20 pt-2">
                     <p className="text-xs font-bold text-cyan-400">{testimonial.name}</p>
-                    <p className="text-xs text-cyan-300">{testimonial.role}</p>
+                    <p className="text-xs text-white">{testimonial.role}</p>
                     <p className="text-xs text-cyan-500">{testimonial.company}</p>
                   </div>
                 </div>
@@ -750,21 +750,21 @@ export default function Contact() {
                   </div>
                   <div className="space-y-2">
                     <div>
-                      <p className="text-xs font-semibold text-cyan-300">{office.city}</p>
-                      <p className="text-xs text-cyan-200">{office.address}</p>
+                      <p className="text-xs font-semibold text-white">{office.city}</p>
+                      <p className="text-xs text-white">{office.address}</p>
                     </div>
                     <div className="grid grid-cols-1 gap-2 text-xs">
                       <div className="flex justify-between">
                         <span className="text-cyan-400">Timezone:</span>
-                        <span className="text-cyan-200">{office.timezone}</span>
+                        <span className="text-white">{office.timezone}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-cyan-400">Hours:</span>
-                        <span className="text-cyan-200">{office.hours}</span>
+                        <span className="text-white">{office.hours}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-cyan-400">Phone:</span>
-                        <span className="text-cyan-200">{office.phone}</span>
+                        <span className="text-white">{office.phone}</span>
                       </div>
                     </div>
                   </div>
@@ -802,12 +802,12 @@ export default function Contact() {
                       <span className="text-black text-xs font-bold">{step.step}</span>
                     </div>
                     <p className="text-xs font-bold text-cyan-400 mb-1">{step.title}</p>
-                    <p className="text-xs text-cyan-200">{step.desc}</p>
+                    <p className="text-xs text-white">{step.desc}</p>
                   </div>
                 ))}
               </div>
               
-              <p className="text-xs text-cyan-200 text-center">
+              <p className="text-xs text-white text-center">
                 <span className="font-bold text-cyan-400">Average response time: 2 minutes</span> • No obligation • Free consultation
               </p>
             </div>

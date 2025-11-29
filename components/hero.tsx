@@ -513,7 +513,7 @@ export default function Hero() {
         </h1>
         
         {/* Cyberpunk Description */}
-        <p className="text-sm sm:text-base lg:text-lg text-gray-400 mb-6 lg:mb-8 max-w-xl leading-relaxed">
+        <p className="text-sm sm:text-base lg:text-lg text-white mb-6 lg:mb-8 max-w-xl leading-relaxed">
             Deploy intelligent AI voice agents that handle customer inquiries 24/7. 
             <span className="font-semibold text-cyan-400"> Reduce costs by 85%, improve satisfaction by 40%.</span> 
             Perfect for call centers, customer support, and sales automation.
@@ -693,7 +693,7 @@ export default function Hero() {
                         }}>
                             Choose Your AI Voice Solution
                         </h2>
-                        <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto">
+                        <p className="text-sm sm:text-base text-white max-w-2xl mx-auto">
                             Select from our comprehensive suite of AI voice services. Each solution is ready to deploy on our platform and can be customized for your business needs.
                         </p>
                     </div>
@@ -721,7 +721,7 @@ export default function Hero() {
                                 <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors">
                                     Doctor Appointments
                                 </h3>
-                                <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                                <p className="text-sm text-white leading-relaxed mb-4">
                                     24/7 AI scheduling for medical appointments. Handles patient inquiries, insurance verification, and appointment confirmations automatically.
                                 </p>
                                 <div className="flex items-center gap-2 text-xs text-cyan-400 font-semibold uppercase tracking-widest">
@@ -752,7 +752,7 @@ export default function Hero() {
                                 <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors">
                                     Virtual Receptionist
                                 </h3>
-                                <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                                <p className="text-sm text-white leading-relaxed mb-4">
                                     Professional AI receptionist that greets callers, routes calls, takes messages, and provides company information with human-like interaction.
                                 </p>
                                 <div className="flex items-center gap-2 text-xs text-cyan-400 font-semibold uppercase tracking-widest">
@@ -783,7 +783,7 @@ export default function Hero() {
                                 <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors">
                                     Lead Generation
                                 </h3>
-                                <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                                <p className="text-sm text-white leading-relaxed mb-4">
                                     Automated outbound calling for lead qualification, follow-ups, and appointment setting. Convert prospects into customers 24/7.
                                 </p>
                                 <div className="flex items-center gap-2 text-xs text-cyan-400 font-semibold uppercase tracking-widest">
@@ -814,7 +814,7 @@ export default function Hero() {
                                 <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors">
                                     Customer Care Agent
                                 </h3>
-                                <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                                <p className="text-sm text-white leading-relaxed mb-4">
                                     Intelligent customer support that handles inquiries, troubleshooting, and escalations with empathy and accuracy.
                                 </p>
                                 <div className="flex items-center gap-2 text-xs text-cyan-400 font-semibold uppercase tracking-widest">
@@ -845,7 +845,7 @@ export default function Hero() {
                                 <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors">
                                     AI Call Center
                                 </h3>
-                                <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                                <p className="text-sm text-white leading-relaxed mb-4">
                                     Complete call center automation with intelligent routing, queue management, and real-time analytics for enterprise-scale operations.
                                 </p>
                                 <div className="flex items-center gap-2 text-xs text-cyan-400 font-semibold uppercase tracking-widest">
@@ -875,7 +875,7 @@ export default function Hero() {
                         }}>
                             Why Choose Our AI Voice Assistant?
                         </h2>
-                        <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto">
+                        <p className="text-sm sm:text-base text-white max-w-2xl mx-auto">
                             Deploy intelligent voice automation that transforms customer interactions and drives measurable business results.
                         </p>
                     </div>
@@ -918,7 +918,7 @@ export default function Hero() {
                                         <h3 className="text-sm sm:text-base font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors uppercase tracking-wider">
                                             {feature.title}
                                         </h3>
-                                        <p className="text-xs text-gray-300 leading-relaxed line-clamp-3">
+                                        <p className="text-xs text-white leading-relaxed line-clamp-3">
                                             {feature.description}
                                         </p>
                                     </div>
@@ -936,7 +936,7 @@ export default function Hero() {
                             <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-400 mb-3 uppercase tracking-wider shimmer-text">
                                 Ready to Transform Your Customer Service?
                             </h3>
-                            <p className="text-sm sm:text-base text-gray-300 mb-6 max-w-xl mx-auto">
+                            <p className="text-sm sm:text-base text-white mb-6 max-w-xl mx-auto">
                                 Join 50,000+ companies using AI voice automation. Start your free trial - no credit card required.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4">
@@ -952,7 +952,7 @@ export default function Hero() {
                                     Book Demo
                                 </button>
                             </div>
-                            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-cyan-400 text-xs sm:text-sm uppercase tracking-widest">
+                            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-white text-xs sm:text-sm uppercase tracking-widest">
                                 <div className="flex items-center gap-1">
                                     <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4" />
                                     <span>14-day trial</span>

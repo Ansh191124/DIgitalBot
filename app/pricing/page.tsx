@@ -142,7 +142,7 @@ export default function Pricing() {
           </h1>
           
           <div className="max-w-3xl mx-auto mb-6 p-4 bg-black/60 border border-cyan-500/30 backdrop-blur-sm text-xs sm:text-sm">
-            <p className="text-cyan-300 leading-relaxed">
+            <p className="text-white leading-relaxed">
               Ready to see the power of AI voice automation? Request a personalized demo and our team will show you how DigitalBot can streamline your customer interactions, boost productivity, and deliver real business results.
             </p>
           </div>
@@ -225,7 +225,7 @@ export default function Pricing() {
                     </div>
                   </div>
                   <CardTitle className="text-lg text-cyan-400 mb-2">{plan.name}</CardTitle>
-                  <CardDescription className="text-xs text-cyan-300">
+                  <CardDescription className="text-xs text-white">
                     {plan.description}
                   </CardDescription>
                   <div className="mt-4">
@@ -252,7 +252,7 @@ export default function Pricing() {
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center gap-2 text-xs">
                         <Check className="h-3 w-3 text-cyan-400 shrink-0" />
-                        <span className="text-cyan-300">{feature.name}</span>
+                        <span className="text-white">{feature.name}</span>
                       </li>
                     ))}
                   </ul>
@@ -353,7 +353,7 @@ export default function Pricing() {
                       <span className="flex-1 text-xs">{faq.question}</span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-cyan-300 text-xs leading-relaxed pt-1 pb-4 pl-12 pr-4">
+                  <AccordionContent className="text-white text-xs leading-relaxed pt-1 pb-4 pl-12 pr-4">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -412,7 +412,7 @@ export default function Pricing() {
                 </span>
               </h2>
 
-              <p className="text-sm text-cyan-300 max-w-3xl mx-auto mb-6 leading-relaxed px-4 py-3 bg-black/50 border border-cyan-500/30 backdrop-blur-sm">
+              <p className="text-sm text-white max-w-3xl mx-auto mb-6 leading-relaxed px-4 py-3 bg-black/50 border border-cyan-500/30 backdrop-blur-sm">
                 Join thousands of businesses using AI voice assistants to automate calls, boost conversions, and delight customers 24/7.
               </p>
 

@@ -283,7 +283,7 @@ export default function AICustomerSupport() {
                   <span className="text-xs font-bold">AI Customer Support Platform</span>
                 </div>
 
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-300 mb-3 leading-tight text-left">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 leading-tight text-left">
                   <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 drop-shadow-sm tracking-widest uppercase">AI Customer Support</span>
                   <span className="inline-block px-4 py-2 rounded-xl text-black bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 shadow-lg shadow-cyan-400/40 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-400">
                     <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-transparent to-transparent"></span>
@@ -304,7 +304,7 @@ export default function AICustomerSupport() {
                   </p>
                 </div>
                 
-                <p className="text-xs sm:text-sm text-cyan-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-white leading-relaxed">
                   Transform customer service with <span className="font-bold text-cyan-400">AI customer support</span> that resolves inquiries instantly 24/7. 
                   Trusted by <span className="font-semibold text-cyan-400">500+ businesses</span> handling <span className="font-semibold text-cyan-400">2M+ conversations</span> monthly. 
                   Our <span className="font-bold text-cyan-400">AI support platform</span> delivers empathetic, personalized service across all channels.
@@ -315,25 +315,25 @@ export default function AICustomerSupport() {
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">24/7 Support</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">24/7 Support</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Instant Resolution</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">Instant Resolution</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">All Channels</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">All Channels</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">60+ Languages</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">60+ Languages</span>
                   </div>
                 </div>
                 
@@ -381,7 +381,7 @@ export default function AICustomerSupport() {
                           <HeartHandshake className="w-4 h-4 text-cyan-300" />
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-cyan-300">Live Support AI</div>
+                          <div className="text-sm font-bold text-white">Live Support AI</div>
                           <div className="text-xs text-cyan-400">24/7 customer care</div>
                         </div>
                       </div>
@@ -413,7 +413,7 @@ export default function AICustomerSupport() {
               }}>
                 AI Customer Support Benefits
               </h2>
-              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
+              <p className="text-white text-sm max-w-3xl leading-relaxed">
                 Empower your support team with automation that feels human and scales with demand
               </p>
             </div>
@@ -449,7 +449,7 @@ export default function AICustomerSupport() {
                     <h3 className="text-sm font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors duration-300">
                       {benefit.title}
                     </h3>
-                    <p className="text-cyan-300 text-xs leading-relaxed">
+                    <p className="text-white text-xs leading-relaxed">
                       {benefit.description}
                     </p>
                   </div>
@@ -471,7 +471,7 @@ export default function AICustomerSupport() {
               }}>
                 AI Support Use Cases & Proven Results
               </h2>
-              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
+              <p className="text-white text-sm max-w-3xl leading-relaxed">
                 Real-world outcomes from DigitalBot customers worldwide
               </p>
             </div>
@@ -496,7 +496,7 @@ export default function AICustomerSupport() {
                       <div className="bg-black/95 backdrop-blur-md rounded-lg px-3 py-1 border border-cyan-400/50">
                         <div className="flex items-center gap-2 text-xs">
                           <Check className="w-3 h-3 text-cyan-400 animate-pulse" />
-                          <span className="text-cyan-300 font-semibold">{useCase.results}</span>
+                          <span className="text-white font-semibold">{useCase.results}</span>
                         </div>
                       </div>
                     </div>
@@ -507,10 +507,10 @@ export default function AICustomerSupport() {
                     <h3 className="text-base font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 tracking-wide">
                       {useCase.title}
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-sm mb-4">
+                    <p className="text-white leading-relaxed text-sm mb-4">
                       {useCase.description}
                     </p>
-                    <span className="inline-flex items-center px-3 py-1 bg-cyan-400/20 text-cyan-300 rounded-full text-xs font-semibold border border-cyan-400/30">
+                    <span className="inline-flex items-center px-3 py-1 bg-cyan-400/20 text-white rounded-full text-xs font-semibold border border-cyan-400/30">
                       <Check className="h-3 w-3 mr-2 text-cyan-400" />
                       {useCase.results}
                     </span>
@@ -535,7 +535,7 @@ export default function AICustomerSupport() {
               }}>
                 Platform Capabilities Support Leaders Trust
               </h2>
-              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
+              <p className="text-white text-sm max-w-3xl leading-relaxed">
                 Deep technical advantages that keep customers informed and delighted
               </p>
             </div>
@@ -568,7 +568,7 @@ export default function AICustomerSupport() {
                     <h3 className="text-base font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 tracking-wide">
                       {feature.heading}
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-sm">
+                    <p className="text-white leading-relaxed text-sm">
                       {feature.body}
                     </p>
                   </div>
@@ -594,7 +594,7 @@ export default function AICustomerSupport() {
               <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 uppercase tracking-wide">
                 Experience AI Customer Support in Action
               </h2>
-              <p className="text-cyan-300 text-sm max-w-2xl leading-relaxed">
+              <p className="text-white text-sm max-w-2xl leading-relaxed">
                 Hear how AI resolves support tickets with calm, accurate, and friendly responses your customers will love
               </p>
             </div>
@@ -628,7 +628,7 @@ export default function AICustomerSupport() {
               }}>
                 Frequently Asked Questions
               </h2>
-              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
+              <p className="text-white text-sm max-w-3xl leading-relaxed">
                 Get clarity on how AI customer support fits into your strategy
               </p>
             </div>
@@ -652,7 +652,7 @@ export default function AICustomerSupport() {
                       <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                         {faq.name}
                       </h3>
-                      <p className="text-cyan-300 leading-relaxed text-xs">
+                      <p className="text-white leading-relaxed text-xs">
                         {faq.acceptedAnswer.text}
                       </p>
                     </div>
@@ -723,25 +723,25 @@ export default function AICustomerSupport() {
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
                   <Check className="w-3 h-3 text-cyan-400" />
-                  <span className="text-xs font-medium text-cyan-300 uppercase tracking-wide">Success Team</span>
+                  <span className="text-xs font-medium text-white uppercase tracking-wide">Success Team</span>
                 </div>
                 <div className="flex items-center gap-1 p-2 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/20" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
                   <Check className="w-3 h-3 text-cyan-400" />
-                  <span className="text-xs font-medium text-cyan-300 uppercase tracking-wide">Clear Pricing</span>
+                  <span className="text-xs font-medium text-white uppercase tracking-wide">Clear Pricing</span>
                 </div>
                 <div className="flex items-center gap-1 p-2 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/20" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
                   <Check className="w-3 h-3 text-cyan-400" />
-                  <span className="text-xs font-medium text-cyan-300 uppercase tracking-wide">Fast Deploy</span>
+                  <span className="text-xs font-medium text-white uppercase tracking-wide">Fast Deploy</span>
                 </div>
                 <div className="flex items-center gap-1 p-2 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/20" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
                   <Check className="w-3 h-3 text-cyan-400" />
-                  <span className="text-xs font-medium text-cyan-300 uppercase tracking-wide">24/7 Support</span>
+                  <span className="text-xs font-medium text-white uppercase tracking-wide">24/7 Support</span>
                 </div>
               </div>
             </div>

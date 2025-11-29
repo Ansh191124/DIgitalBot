@@ -75,7 +75,7 @@ export default function Home() {
               
               {/* Left Content */}
               <div className="space-y-4">
-                <h2 id="main-heading" className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-300 mb-3 leading-tight text-left">
+                <h2 id="main-heading" className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight text-left">
                   <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 drop-shadow-sm tracking-widest">AI Voice Agent Platform</span>
                   <span className="inline-block px-4 py-2 rounded-xl text-black bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 shadow-lg shadow-cyan-400/40 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-400">
                     <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-transparent to-transparent"></span>
@@ -96,7 +96,7 @@ export default function Home() {
                   </p>
                 </div>
                 
-                <p className="text-xs sm:text-sm text-cyan-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-white leading-relaxed">
                   Transform your business with <span className="font-bold text-cyan-400">AI voice agents</span> that handle unlimited calls simultaneously, 
                   provide instant responses, and deliver <span className="font-semibold text-cyan-400">detailed analytics</span> through your <span className="font-semibold text-cyan-400">personal dashboard</span>. 
                   Our <span className="font-bold text-cyan-400">AI voice assistant</span> platform automates customer service, lead qualification, and business communications.
@@ -107,25 +107,25 @@ export default function Home() {
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Real-Time Analytics</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">Real-Time Analytics</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Personal Dashboard</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">Personal Dashboard</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Call Automation</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">Call Automation</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">50+ Languages</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">50+ Languages</span>
                   </div>
                 </div>
                 
@@ -170,12 +170,12 @@ export default function Home() {
                     <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
                       <div className="flex items-center gap-3 mb-2">
                         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
-                          <svg className="w-4 h-4 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                           </svg>
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-cyan-300">Live Analytics</div>
+                          <div className="text-sm font-bold text-white">Live Analytics</div>
                           <div className="text-xs text-cyan-400">Real-time dashboard</div>
                         </div>
                       </div>
@@ -223,12 +223,12 @@ export default function Home() {
                     <div className="bg-black/95 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-4 h-4 bg-cyan-400 rounded-full animate-pulse"></div>
-                        <span className="text-sm font-semibold text-cyan-300">AI Assistant Live</span>
+                        <span className="text-sm font-semibold text-white">AI Assistant Live</span>
                       </div>
                       <div className="text-sm text-cyan-400 mb-2">Ready to answer your questions 24/7</div>
                       <div className="flex items-center gap-2">
-                        <div className="text-xs bg-cyan-400/20 text-cyan-300 px-2 py-1 rounded border border-cyan-400/30">FAQ Ready</div>
-                        <div className="text-xs bg-cyan-400/20 text-cyan-300 px-2 py-1 rounded border border-cyan-400/30">Instant Response</div>
+                        <div className="text-xs bg-cyan-400/20 text-white px-2 py-1 rounded border border-cyan-400/30">FAQ Ready</div>
+                        <div className="text-xs bg-cyan-400/20 text-white px-2 py-1 rounded border border-cyan-400/30">Instant Response</div>
                       </div>
                     </div>
                   </div>
@@ -243,7 +243,7 @@ export default function Home() {
                   <h3 className="text-base sm:text-lg font-bold text-cyan-400 mb-3 uppercase tracking-wider">
                     What is an AI voice agent and how does it work?
                   </h3>
-                  <p className="text-cyan-300 text-sm leading-relaxed">
+                  <p className="text-white text-sm leading-relaxed">
                     An AI voice agent is an intelligent conversational system that handles phone calls autonomously using advanced natural language processing. 
                     Unlike human receptionists who need sleep, sick leave, and breaks, our AI voice agents operate 24/7/365 without interruption. 
                     They understand spoken language, process customer requests in real-time, access your business data instantly, and respond with natural-sounding speech. 
@@ -257,7 +257,7 @@ export default function Home() {
                   <h3 className="text-base sm:text-lg font-bold text-cyan-400 mb-3 uppercase tracking-wider">
                     How quickly can I deploy an AI voice assistant for my business?
                   </h3>
-                  <p className="text-cyan-300 text-sm leading-relaxed">
+                  <p className="text-white text-sm leading-relaxed">
                     Our AI voice assistant platform enables deployment within 24-48 hours. The process includes: (1) Account creation and dashboard setup - 15 minutes, 
                     (2) Business information integration and workflow customization - 2 hours, (3) Voice personality selection and training - 1 hour, 
                     (4) Phone number provisioning or existing number integration - immediate, (5) Testing and quality assurance - 4 hours, 
@@ -271,7 +271,7 @@ export default function Home() {
                   <h3 className="text-base sm:text-lg font-bold text-cyan-400 mb-3 uppercase tracking-wider">
                     What makes your AI voice agent better than hiring a human receptionist?
                   </h3>
-                  <p className="text-cyan-300 text-sm leading-relaxed">
+                  <p className="text-white text-sm leading-relaxed">
                     Our AI voice agents never sleep, never get sick, never take breaks, and never need vacations - providing consistent 24/7/365 availability. 
                     They handle unlimited simultaneous calls (a human receptionist can only handle one), respond in under 750 milliseconds (humans average 2-3 seconds), 
                     work in 50+ languages simultaneously, never forget customer information, provide perfect call transcriptions, generate detailed analytics automatically, 
@@ -286,7 +286,7 @@ export default function Home() {
                   <h3 className="text-base sm:text-lg font-bold text-cyan-400 mb-3 uppercase tracking-wider">
                     Can AI voice assistants integrate with my existing business systems?
                   </h3>
-                  <p className="text-cyan-300 text-sm leading-relaxed">
+                  <p className="text-white text-sm leading-relaxed">
                     Yes. Our AI voice assistant platform integrates seamlessly with 500+ business applications including Salesforce, HubSpot, Zendesk, Microsoft Dynamics, 
                     Google Workspace, Slack, Calendly, Shopify, WooCommerce, and custom APIs. Integration takes minutes using pre-built connectors. 
                     Your AI agent automatically syncs customer data, updates CRM records, schedules appointments in your calendar, creates support tickets, 
@@ -301,7 +301,7 @@ export default function Home() {
                   <h3 className="text-base sm:text-lg font-bold text-cyan-400 mb-3 uppercase tracking-wider">
                     What analytics and insights do I get with the AI voice agent platform?
                   </h3>
-                  <p className="text-cyan-300 text-sm leading-relaxed">
+                  <p className="text-white text-sm leading-relaxed">
                     Your personal dashboard provides comprehensive real-time analytics: (1) Call volume and duration metrics with hourly/daily/weekly/monthly breakdowns, 
                     (2) Complete conversation transcripts with searchable keyword indexing, (3) Customer sentiment analysis using AI emotion detection, 
                     (4) Conversion rate tracking from initial call to completed action, (5) Lead quality scoring and automatic qualification, 
@@ -333,7 +333,7 @@ export default function Home() {
               }}>
                 Complete AI Voice Assistant Platform Features
               </h2>
-              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
+              <p className="text-white text-sm max-w-3xl leading-relaxed">
                 Discover the powerful capabilities that revolutionize business communication with cutting-edge AI technology
               </p>
             </div>
@@ -346,7 +346,7 @@ export default function Home() {
                 clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
               }}>
                 {/* Image Header */}
-                <div className="relative h-32 overflow-hidden">
+                <div className="relative h-40 overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop"
                     alt="24/7 AI Voice Assistant - Never Sleeps"
@@ -356,7 +356,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl">
-                      <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
@@ -365,35 +365,35 @@ export default function Home() {
                     <div className="bg-black/95 backdrop-blur-md rounded-lg px-3 py-1 border border-cyan-400/50">
                       <div className="flex items-center gap-2 text-xs">
                         <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                        <span className="text-cyan-300 font-semibold">Always Online 24/7</span>
+                        <span className="text-white font-semibold">Always Online 24/7</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 
                 {/* Content */}
-                <div className="p-4">
-                  <h3 className="text-sm font-bold text-cyan-400 mb-2 uppercase tracking-wide">24/7 AI Availability</h3>
-                  <ul className="space-y-1 text-cyan-200 text-xs">
-                    <li className="flex items-start gap-1">
-                      <span className="text-cyan-400 text-xs">✓</span>
-                      <span><strong className="text-cyan-300">Never Sleeps</strong> - 24/7/365 operation</span>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4 tracking-wide">24/7 AI Availability</h3>
+                  <ul className="space-y-3 text-white">
+                    <li className="flex items-start gap-2">
+                      <span className="text-cyan-400 mt-1">✓</span>
+                      <span>Never Sleeps - 24/7/365 operation</span>
                     </li>
-                    <li className="flex items-start gap-1">
-                      <span className="text-cyan-400 text-xs">✓</span>
-                      <span><strong className="text-cyan-300">Never Gets Sick</strong> - 99.9% uptime</span>
+                    <li className="flex items-start gap-2">
+                      <span className="text-cyan-400 mt-1">✓</span>
+                      <span>Never Gets Sick - 99.9% uptime</span>
                     </li>
-                    <li className="flex items-start gap-1">
-                      <span className="text-cyan-400 text-xs">✓</span>
-                      <span><strong className="text-cyan-300">Never Takes Breaks</strong> - Continuous service</span>
+                    <li className="flex items-start gap-2">
+                      <span className="text-cyan-400 mt-1">✓</span>
+                      <span>Never Takes Breaks - Continuous service</span>
                     </li>
-                    <li className="flex items-start gap-1">
-                      <span className="text-cyan-400 text-xs">✓</span>
-                      <span><strong className="text-cyan-300">Instant Response</strong> - &lt;750ms latency</span>
+                    <li className="flex items-start gap-2">
+                      <span className="text-cyan-400 mt-1">✓</span>
+                      <span>Instant Response - &lt;750ms latency</span>
                     </li>
-                    <li className="flex items-start gap-1">
-                      <span className="text-cyan-400 text-xs">✓</span>
-                      <span><strong className="text-cyan-300">Unlimited Capacity</strong> - Thousands of simultaneous calls</span>
+                    <li className="flex items-start gap-2">
+                      <span className="text-cyan-400 mt-1">✓</span>
+                      <span>Unlimited Capacity - Thousands of simultaneous calls</span>
                     </li>
                   </ul>
                 </div>
@@ -414,7 +414,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl">
-                      <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                       </svg>
                     </div>
@@ -442,7 +442,7 @@ export default function Home() {
                 {/* Content */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4 tracking-wide">Real-Time Analytics Dashboard</h3>
-                  <ul className="space-y-3 text-cyan-300">
+                  <ul className="space-y-3 text-white">
                     <li className="flex items-start gap-2">
                       <span className="text-cyan-400 mt-1">✓</span>
                       <span>Live call monitoring & tracking</span>
@@ -468,7 +468,9 @@ export default function Home() {
               </div>
 
               {/* Business Automation */}
-              <div className="group relative bg-black/95 backdrop-blur-md rounded-3xl border-2 border-cyan-400/40 hover:border-cyan-400 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-cyan-400/30 overflow-hidden">
+              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/20 overflow-hidden" style={{
+                clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+              }}>
                 {/* Image Header */}
                 <div className="relative h-40 overflow-hidden">
                   <Image
@@ -480,7 +482,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl">
-                      <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
@@ -489,7 +491,7 @@ export default function Home() {
                     <div className="bg-black/95 backdrop-blur-md rounded-lg px-3 py-1 border border-cyan-400/50">
                       <div className="flex items-center gap-2 text-xs">
                         <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                        <span className="text-cyan-300 font-semibold">Automation Active</span>
+                        <span className="text-white font-semibold">Automation Active</span>
                       </div>
                     </div>
                   </div>
@@ -498,7 +500,7 @@ export default function Home() {
                 {/* Content */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4 tracking-wide">Complete Business Automation</h3>
-                  <ul className="space-y-3 text-cyan-300">
+                  <ul className="space-y-3 text-white">
                     <li className="flex items-start gap-2">
                       <span className="text-cyan-400 mt-1">✓</span>
                       <span>Automated appointment scheduling</span>
@@ -524,9 +526,11 @@ export default function Home() {
               </div>
 
               {/* Multi-Language Support */}
-              <div className="group relative bg-black/95 backdrop-blur-md rounded-3xl border-2 border-cyan-400/40 hover:border-cyan-400 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-cyan-400/30 overflow-hidden">
+              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/20 overflow-hidden" style={{
+                clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+              }}>
                 {/* Image Header */}
-                <div className="relative h-40 overflow-hidden">
+                <div className="relative h-32 overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop"
                     alt="Global Language Coverage - AI Voice Assistant"
@@ -536,7 +540,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl">
-                      <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                       </svg>
                     </div>
@@ -545,7 +549,7 @@ export default function Home() {
                     <div className="bg-black/95 backdrop-blur-md rounded-lg px-3 py-1 border border-cyan-400/50">
                       <div className="flex items-center gap-2 text-xs">
                         <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-                        <span className="text-cyan-300 font-semibold">50+ Languages</span>
+                        <span className="text-white font-semibold">50+ Languages</span>
                       </div>
                     </div>
                   </div>
@@ -554,10 +558,10 @@ export default function Home() {
                 {/* Content */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4 tracking-wide">Global Language Coverage</h3>
-                  <ul className="space-y-3 text-cyan-300">
+                  <ul className="space-y-3 text-white">
                     <li className="flex items-start gap-2">
                       <span className="text-cyan-400 mt-1">✓</span>
-                      <span><strong className="text-cyan-300">50+ Languages</strong> supported</span>
+                      <span>50+ Languages supported</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-cyan-400 mt-1">✓</span>
@@ -580,9 +584,11 @@ export default function Home() {
               </div>
 
               {/* Integration Ecosystem */}
-              <div className="group relative bg-black/95 backdrop-blur-md rounded-3xl border-2 border-cyan-400/40 hover:border-cyan-400 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-cyan-400/30 overflow-hidden">
+              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/20 overflow-hidden" style={{
+                clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+              }}>
                 {/* Image Header */}
-                <div className="relative h-40 overflow-hidden">
+                <div className="relative h-32 overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop"
                     alt="Seamless Integrations - AI Voice Assistant"
@@ -592,7 +598,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl">
-                      <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
                       </svg>
                     </div>
@@ -601,7 +607,7 @@ export default function Home() {
                     <div className="bg-black/95 backdrop-blur-md rounded-lg px-3 py-1 border border-cyan-400/50">
                       <div className="flex items-center gap-2 text-xs">
                         <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
-                        <span className="text-cyan-300 font-semibold">500+ Integrations</span>
+                        <span className="text-white font-semibold">500+ Integrations</span>
                       </div>
                     </div>
                   </div>
@@ -610,10 +616,10 @@ export default function Home() {
                 {/* Content */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4 tracking-wide">Seamless Integrations</h3>
-                  <ul className="space-y-3 text-cyan-300">
+                  <ul className="space-y-3 text-white">
                     <li className="flex items-start gap-2">
                       <span className="text-cyan-400 mt-1">✓</span>
-                      <span><strong className="text-cyan-300">500+ App Integrations</strong></span>
+                      <span>500+ App Integrations</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-cyan-400 mt-1">✓</span>
@@ -636,9 +642,11 @@ export default function Home() {
               </div>
 
               {/* Enterprise Security */}
-              <div className="group relative bg-black/95 backdrop-blur-md rounded-3xl border-2 border-cyan-400/40 hover:border-cyan-400 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-cyan-400/30 overflow-hidden">
+              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/20 overflow-hidden" style={{
+                clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+              }}>
                 {/* Image Header */}
-                <div className="relative h-40 overflow-hidden">
+                <div className="relative h-32 overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop"
                     alt="Enterprise-Grade Security - AI Voice Assistant"
@@ -648,7 +656,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl">
-                      <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                       </svg>
                     </div>
@@ -657,7 +665,7 @@ export default function Home() {
                     <div className="bg-black/95 backdrop-blur-md rounded-lg px-3 py-1 border border-cyan-400/50">
                       <div className="flex items-center gap-2 text-xs">
                         <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                        <span className="text-cyan-300 font-semibold">Security Active</span>
+                        <span className="text-white font-semibold">Security Active</span>
                       </div>
                     </div>
                   </div>
@@ -666,7 +674,7 @@ export default function Home() {
                 {/* Content */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4 tracking-wide">Enterprise-Grade Security</h3>
-                  <ul className="space-y-3 text-cyan-300">
+                  <ul className="space-y-3 text-white">
                     <li className="flex items-start gap-2">
                       <span className="text-cyan-400 mt-1">✓</span>
                       <span>SOC 2 Type II certified</span>
@@ -714,7 +722,7 @@ export default function Home() {
                   }}>
                     AI Voice Agent Solutions
                   </h2>
-                  <div className="text-lg sm:text-xl lg:text-2xl font-semibold text-center text-cyan-300 mb-3 uppercase tracking-wider">
+                  <div className="text-lg sm:text-xl lg:text-2xl font-semibold text-center text-white mb-3 uppercase tracking-wider">
                     for Every Industry
                   </div>
                   <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-cyan-400 rounded-full" style={{
@@ -722,7 +730,7 @@ export default function Home() {
                   }}></div>
                 </div>
               </div>
-              <p className="text-center text-cyan-300 text-sm mb-4 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-center text-white text-sm mb-4 max-w-2xl mx-auto leading-relaxed">
                 From healthcare to e-commerce, our AI voice assistants deliver <span className="text-cyan-400 font-bold">measurable ROI</span> across all sectors
               </p>
               <div className="flex justify-center items-center gap-2 mb-3">
@@ -756,44 +764,44 @@ export default function Home() {
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl border-2 border-white/50">
-                        <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-cyan-300 mb-1 uppercase tracking-wider">Healthcare</h3>
-                        <h4 className="text-lg font-medium text-cyan-200 uppercase tracking-wide">& Medical</h4>
+                        <h3 className="text-2xl font-bold text-white mb-1 uppercase tracking-wider">Healthcare</h3>
+                        <h4 className="text-lg font-medium text-white uppercase tracking-wide">& Medical</h4>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="p-6">
-                  <ul className="space-y-3 text-cyan-300">
+                  <ul className="space-y-3 text-white">
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1 uppercase tracking-wider">Automated Appointment Scheduling</div>
+                        <div className="text-white font-semibold text-base mb-1 uppercase tracking-wider">Automated Appointment Scheduling</div>
                         <div className="text-cyan-400 text-sm">24/7 booking and reminders</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Patient Pre-Screening</div>
+                        <div className="text-white font-semibold text-base mb-1">Patient Pre-Screening</div>
                         <div className="text-cyan-400 text-sm">Triage and symptom assessment</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Prescription Refills</div>
+                        <div className="text-white font-semibold text-base mb-1">Prescription Refills</div>
                         <div className="text-cyan-400 text-sm">Automated medication management</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">HIPAA-Compliant</div>
+                        <div className="text-white font-semibold text-base mb-1">HIPAA-Compliant</div>
                         <div className="text-cyan-400 text-sm">Secure patient communication</div>
                       </div>
                     </li>
@@ -802,8 +810,10 @@ export default function Home() {
               </div>
 
               {/* Real Estate */}
-              <div className="group bg-black/95 rounded-2xl overflow-hidden border-2 border-cyan-400/60 hover:border-cyan-500 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-400/30">
-                <div className="relative h-56 overflow-hidden">
+              <div className="group bg-cyan-400/5 overflow-hidden border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-cyan-500/20" style={{
+                clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+              }}>
+                <div className="relative h-40 overflow-hidden">
                   <Image
                     src="/images/female-real-estate.jpg"
                     alt="AI Voice Assistant for Real Estate"
@@ -814,44 +824,44 @@ export default function Home() {
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl border-2 border-white/50">
-                        <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-cyan-300 mb-1">Real Estate</h3>
-                        <h4 className="text-lg font-medium text-cyan-200">Solutions</h4>
+                        <h3 className="text-2xl font-bold text-white mb-1">Real Estate</h3>
+                        <h4 className="text-lg font-medium text-white">Solutions</h4>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="p-6">
-                  <ul className="space-y-3 text-cyan-300">
+                  <ul className="space-y-3 text-white">
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">24/7 Property Inquiries</div>
+                        <div className="text-white font-semibold text-base mb-1">24/7 Property Inquiries</div>
                         <div className="text-cyan-400 text-sm">Never miss a lead</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Automated Showing Scheduling</div>
+                        <div className="text-white font-semibold text-base mb-1">Automated Showing Scheduling</div>
                         <div className="text-cyan-400 text-sm">Instant appointments</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Lead Qualification</div>
+                        <div className="text-white font-semibold text-base mb-1">Lead Qualification</div>
                         <div className="text-cyan-400 text-sm">Automatic buyer scoring</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Follow-up Automation</div>
+                        <div className="text-white font-semibold text-base mb-1">Follow-up Automation</div>
                         <div className="text-cyan-400 text-sm">Nurture leads effectively</div>
                       </div>
                     </li>
@@ -860,8 +870,10 @@ export default function Home() {
               </div>
 
               {/* Hospitality & Hotels */}
-              <div className="group bg-black/95 rounded-2xl overflow-hidden border-2 border-cyan-400/60 hover:border-cyan-500 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-400/30">
-                <div className="relative h-56 overflow-hidden">
+              <div className="group bg-cyan-400/5 overflow-hidden border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-cyan-500/20" style={{
+                clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+              }}>
+                <div className="relative h-40 overflow-hidden">
                   <Image
                     src="/images/hotel-reception.jpg"
                     alt="AI Voice Assistant for Hotels & Hospitality"
@@ -872,44 +884,44 @@ export default function Home() {
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl border-2 border-white/50">
-                        <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-cyan-300 mb-1">Hotels</h3>
-                        <h4 className="text-lg font-medium text-cyan-200">& Hospitality</h4>
+                        <h3 className="text-2xl font-bold text-white mb-1">Hotels</h3>
+                        <h4 className="text-lg font-medium text-white">& Hospitality</h4>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="p-6">
-                  <ul className="space-y-3 text-cyan-300">
+                  <ul className="space-y-3 text-white">
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Reservation Management</div>
+                        <div className="text-white font-semibold text-base mb-1">Reservation Management</div>
                         <div className="text-cyan-400 text-sm">Booking and confirmations</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Guest Services</div>
+                        <div className="text-white font-semibold text-base mb-1">Guest Services</div>
                         <div className="text-cyan-400 text-sm">Room service and concierge</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Multi-Language Support</div>
+                        <div className="text-white font-semibold text-base mb-1">Multi-Language Support</div>
                         <div className="text-cyan-400 text-sm">Serve international guests</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">24/7 Front Desk</div>
+                        <div className="text-white font-semibold text-base mb-1">24/7 Front Desk</div>
                         <div className="text-cyan-400 text-sm">Always available assistance</div>
                       </div>
                     </li>
@@ -918,8 +930,10 @@ export default function Home() {
               </div>
 
               {/* E-commerce & Business */}
-              <div className="group bg-black/95 rounded-2xl overflow-hidden border-2 border-cyan-400/60 hover:border-cyan-500 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-400/30">
-                <div className="relative h-56 overflow-hidden">
+              <div className="group bg-cyan-400/5 overflow-hidden border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-cyan-500/20" style={{
+                clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
+              }}>
+                <div className="relative h-40 overflow-hidden">
                   <Image
                     src="/images/ai-voice-agent.png"
                     alt="AI Voice Agent for E-commerce & Business"
@@ -930,44 +944,44 @@ export default function Home() {
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl border-2 border-white/50">
-                        <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-cyan-300 mb-1">E-commerce</h3>
-                        <h4 className="text-lg font-medium text-cyan-200">& Business</h4>
+                        <h3 className="text-2xl font-bold text-white mb-1">E-commerce</h3>
+                        <h4 className="text-lg font-medium text-white">& Business</h4>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="p-6">
-                  <ul className="space-y-3 text-cyan-300">
+                  <ul className="space-y-3 text-white">
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Order Tracking</div>
+                        <div className="text-white font-semibold text-base mb-1">Order Tracking</div>
                         <div className="text-cyan-400 text-sm">Real-time status updates</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Customer Support</div>
+                        <div className="text-white font-semibold text-base mb-1">Customer Support</div>
                         <div className="text-cyan-400 text-sm">Instant query resolution</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Product Recommendations</div>
+                        <div className="text-white font-semibold text-base mb-1">Product Recommendations</div>
                         <div className="text-cyan-400 text-sm">AI-powered upselling</div>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="text-cyan-400 mt-1 text-lg font-bold">✓</span>
                       <div>
-                        <div className="text-cyan-300 font-semibold text-base mb-1">Returns & Exchanges</div>
+                        <div className="text-white font-semibold text-base mb-1">Returns & Exchanges</div>
                         <div className="text-cyan-400 text-sm">Automated processing</div>
                       </div>
                     </li>
@@ -1001,7 +1015,7 @@ export default function Home() {
 
                 {/* Heading */}
                 <h2 id="roi-metrics" className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight uppercase tracking-wider">
-                  <span className="text-cyan-300">Proven ROI with</span>
+                  <span className="text-white">Proven ROI with</span>
                   <br />
                   <span className="text-cyan-400" style={{
                     textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
@@ -1011,7 +1025,7 @@ export default function Home() {
                 </h2>
 
                 {/* Subheading */}
-                <p className="text-base text-cyan-300 leading-relaxed">
+                <p className="text-base text-white leading-relaxed">
                   Real businesses achieving extraordinary results with our AI voice assistant platform.
                   <span className="block mt-2 text-cyan-400 font-semibold">Transform your customer experience today.</span>
                 </p>
@@ -1025,25 +1039,25 @@ export default function Home() {
                   <div className="text-2xl font-extrabold text-cyan-400 mb-1" style={{
                     textShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
                   }}>90%</div>
-                  <div className="text-cyan-300 font-semibold text-sm mb-1 uppercase tracking-wider">Cost Reduction</div>
-                  <p className="text-cyan-300 text-xs">vs. hiring human receptionists</p>
+                  <div className="text-white font-semibold text-sm mb-1 uppercase tracking-wider">Cost Reduction</div>
+                  <p className="text-white text-xs">vs. hiring human receptionists</p>
                 </div>
                 
                 <div className="group bg-gradient-to-br from-black/80 to-gray-900/90 backdrop-blur-sm p-4 rounded-xl border border-cyan-400/30 hover:border-cyan-500 transition-all duration-300 hover:scale-[1.03] shadow-sm">
                   <div className="text-2xl font-extrabold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-1 tracking-wide">40%</div>
-                  <div className="text-cyan-300 font-semibold text-sm mb-1">More Leads</div>
+                  <div className="text-white font-semibold text-sm mb-1">More Leads</div>
                   <p className="text-cyan-400 text-xs">captured and qualified</p>
                 </div>
                 
                 <div className="group bg-gradient-to-br from-black/80 to-gray-900/90 backdrop-blur-sm p-4 rounded-xl border border-cyan-400/30 hover:border-cyan-500 transition-all duration-300 hover:scale-[1.03] shadow-sm">
                   <div className="text-2xl font-extrabold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-1">60%</div>
-                  <div className="text-cyan-300 font-semibold text-sm mb-1">Faster Response</div>
+                  <div className="text-white font-semibold text-sm mb-1">Faster Response</div>
                   <p className="text-cyan-400 text-xs">to customer inquiries</p>
                 </div>
                 
                 <div className="group bg-black/90 backdrop-blur-sm p-4 rounded-xl border border-cyan-400/30 hover:border-cyan-500 transition-all duration-300 hover:scale-[1.03] shadow-sm">
                   <div className="text-2xl font-extrabold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-1">95%</div>
-                  <div className="text-cyan-300 font-semibold text-sm mb-1">Customer Satisfaction</div>
+                  <div className="text-white font-semibold text-sm mb-1">Customer Satisfaction</div>
                   <p className="text-cyan-400 text-xs">with AI voice interactions</p>
                 </div>
               </div>
@@ -1063,8 +1077,8 @@ export default function Home() {
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="text-sm font-semibold text-cyan-300 mb-3">Traditional Receptionists</h4>
-                    <ul className="space-y-2 text-xs text-cyan-400">
+                    <h4 className="text-sm font-semibold text-white mb-3">Traditional Receptionists</h4>
+                    <ul className="space-y-2 text-xs text-white">
                       <li className="flex items-start gap-2">
                         <span className="text-red-400 mt-0.5">✗</span>
                         <span>Work only 8 hours per day</span>
@@ -1089,27 +1103,27 @@ export default function Home() {
                   </div>
                   
                   <div>
-                    <h4 className="text-sm font-semibold text-cyan-300 mb-3">AI Voice Assistants</h4>
-                    <ul className="space-y-2 text-xs text-cyan-300">
+                    <h4 className="text-sm font-semibold text-white mb-3">AI Voice Assistants</h4>
+                    <ul className="space-y-2 text-xs text-white">
                       <li className="flex items-start gap-2">
                         <span className="text-cyan-400 mt-0.5">✓</span>
-                        <span><strong className="text-cyan-300">Work 24/7/365</strong> without breaks</span>
+                        <span><strong className="text-white">Work 24/7/365</strong> without breaks</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-cyan-400 mt-0.5">✓</span>
-                        <span><strong className="text-cyan-300">Never get sick</strong> or need time off</span>
+                        <span><strong className="text-white">Never get sick</strong> or need time off</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-cyan-400 mt-0.5">✓</span>
-                        <span><strong className="text-cyan-300">Handle unlimited</strong> simultaneous calls</span>
+                        <span><strong className="text-white">Handle unlimited</strong> simultaneous calls</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-cyan-400 mt-0.5">✓</span>
-                        <span><strong className="text-cyan-300">Cost 90% less</strong> than human staff</span>
+                        <span><strong className="text-white">Cost 90% less</strong> than human staff</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-cyan-400 mt-0.5">✓</span>
-                        <span><strong className="text-cyan-300">Complete analytics dashboard</strong> with insights</span>
+                        <span><strong className="text-white">Complete analytics dashboard</strong> with insights</span>
                       </li>
                     </ul>
                   </div>
@@ -1137,7 +1151,7 @@ export default function Home() {
                   Got Questions? We've Got Answers
                 </span>
               </div>
-              <h2 id="faq-section" className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 text-cyan-300 uppercase tracking-wide">
+              <h2 id="faq-section" className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 text-white uppercase tracking-wide">
                 <span className="block mb-1">Frequently Asked</span>
                 <span className="text-cyan-400" style={{
                   textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
@@ -1145,7 +1159,7 @@ export default function Home() {
                   Questions
                 </span>
               </h2>
-              <p className="text-cyan-300 text-sm max-w-2xl leading-relaxed">
+              <p className="text-white text-sm max-w-2xl leading-relaxed">
                 Everything you need to know about <span className="text-cyan-400 font-semibold">AI Voice Agents</span> and <span className="text-cyan-400 font-semibold">AI Voice Assistants</span>
               </p>
             </div>
@@ -1163,7 +1177,7 @@ export default function Home() {
                 <h3 className="text-sm font-bold text-cyan-400 mb-2 mt-1 uppercase tracking-wide">
                   What is an AI voice assistant and how does it work?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-xs">
+                <p className="text-white leading-relaxed text-xs">
                   An AI voice assistant is an intelligent conversational system that uses natural language processing and machine learning to understand and respond to customer queries in real-time.
                 </p>
               </div>
@@ -1176,7 +1190,7 @@ export default function Home() {
                 <h3 className="text-base font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 mt-1 tracking-wide">
                   How can AI voice assistants improve customer service?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   AI voice assistants enhance customer service by providing instant responses, handling multiple conversations simultaneously, and offering consistent support around the clock.
                 </p>
               </div>
@@ -1189,7 +1203,7 @@ export default function Home() {
                 <h3 className="text-base font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 mt-1 tracking-wide">
                   Is the AI voice assistant secure for handling customer data?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   Yes, our AI voice assistant employs enterprise-grade security measures including end-to-end encryption, GDPR compliance, and strict data privacy protocols.
                 </p>
               </div>
@@ -1202,7 +1216,7 @@ export default function Home() {
                 <h3 className="text-base font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-3 mt-1">
                   Can the AI voice assistant integrate with existing business systems?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   Absolutely. Our AI voice assistant offers seamless integration with popular CRM systems, help desk software, e-commerce platforms, and custom APIs.
                 </p>
               </div>
@@ -1215,7 +1229,7 @@ export default function Home() {
                 <h3 className="text-base font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-3 mt-1">
                   What industries benefit most from AI voice assistants?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   AI voice assistants benefit various industries including healthcare, e-commerce, banking, hospitality, real estate, education, and telecommunications.
                 </p>
               </div>
@@ -1228,7 +1242,7 @@ export default function Home() {
                 <h3 className="text-base font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-3 mt-1">
                   How quickly can I set up and deploy an AI voice assistant?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   Setup time varies depending on your requirements and integrations, but most businesses can have a basic AI voice assistant running within 1-2 weeks.
                 </p>
               </div>
@@ -1241,7 +1255,7 @@ export default function Home() {
                 <h3 className="text-base font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-3 mt-1">
                   What kind of support and maintenance is provided?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   We offer comprehensive support including 24/7 technical assistance, regular system updates, performance monitoring, and continuous optimization.
                 </p>
               </div>
@@ -1254,7 +1268,7 @@ export default function Home() {
                 <h3 className="text-base font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-3 mt-1">
                   Can the AI voice assistant handle multiple languages?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   Yes, our AI voice assistant supports multiple languages and can be configured to communicate in the languages your customers prefer.
                 </p>
               </div>
@@ -1267,7 +1281,7 @@ export default function Home() {
                 <h3 className="text-base font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-3 mt-1">
                   What is the difference between an AI Voice Agent and traditional IVR systems?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   AI Voice Agents are significantly more advanced than traditional IVR systems. While IVR relies on pre-recorded menus, AI Voice Agents use natural language understanding.
                 </p>
               </div>
@@ -1280,7 +1294,7 @@ export default function Home() {
                 <h3 className="text-base font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-3 mt-1">
                   How much does an AI Voice Assistant platform cost?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   Pricing varies based on usage volume, features, and integration requirements. Most platforms offer flexible pricing models from $0.05-$0.15 per minute.
                 </p>
               </div>
@@ -1293,7 +1307,7 @@ export default function Home() {
                 <h3 className="text-base font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-3 mt-1">
                   Can AI Voice Agents make outbound calls for sales and appointments?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   Yes, AI Voice Agents excel at making outbound calls for sales outreach, appointment scheduling, follow-ups, reminders, and surveys. They can handle objections and close deals.
                 </p>
               </div>
@@ -1306,7 +1320,7 @@ export default function Home() {
                 <h3 className="text-base font-bold bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent mb-3 mt-1">
                   How accurate is the speech recognition in AI Voice Assistants?
                 </h3>
-                <p className="text-cyan-300 leading-relaxed text-sm">
+                <p className="text-white leading-relaxed text-sm">
                   Modern AI Voice Assistants achieve 95-98% accuracy in speech recognition. Our platform uses advanced deep learning models trained on millions of conversations.
                 </p>
               </div>
@@ -1315,11 +1329,11 @@ export default function Home() {
             {/* Bottom CTA */}
             <div className="mt-8 text-center">
               <div className="inline-block bg-black/90 backdrop-blur-sm border border-cyan-400/30 rounded-2xl p-6 hover:border-cyan-500 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/25">
-                <h3 className="text-lg font-bold text-cyan-300 mb-3">Still have questions?</h3>
-                <p className="text-cyan-300 mb-4 max-w-lg text-sm">Our AI experts are here to help you find the perfect solution for your business</p>
+                <h3 className="text-lg font-bold text-white mb-3">Still have questions?</h3>
+                <p className="text-white mb-4 max-w-lg text-sm">Our AI experts are here to help you find the perfect solution for your business</p>
                 <Link 
                   href="/contact"
-                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-cyan-300 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-xl shadow-lg hover:shadow-cyan-400/30 transition-all duration-300 hover:scale-105"
+                  className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-xl shadow-lg hover:shadow-cyan-400/30 transition-all duration-300 hover:scale-105"
                 >
                   Get in Touch
                   <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

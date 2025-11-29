@@ -2,11 +2,11 @@
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { Button } from '@/components/ui/button'
-import { VoiceConversationPlayer } from '@/components/voice-conversation-player'
 import { ArrowRight, Calendar, Check, Headphones, MessageCircle, Mic, Phone, Shield, Users } from 'lucide-react'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { VoiceConversationPlayer } from '@/components/voice-conversation-player'
 
 export const metadata: Metadata = {
   title: "AI Virtual Receptionist | 24/7 Call Answering & Appointment Booking - DigitalBot.ai 2025",
@@ -164,13 +164,13 @@ export default function AIVirtualReceptionist() {
                   <span className="text-xs font-bold">AI-Powered Reception</span>
                 </div>
 
-                <h1 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 leading-tight uppercase tracking-wide" style={{
+                <h1 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 leading-tight uppercase tracking-wide" style={{
                   textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
                 }}>
                   AI Virtual Receptionist That Never Sleeps
                 </h1>
 
-                <p className="text-cyan-300 text-sm max-w-2xl leading-relaxed mb-4">
+                <p className="text-white text-sm max-w-2xl leading-relaxed mb-4">
                   Your <span className="text-cyan-400 font-semibold">AI-powered virtual receptionist</span> answers every call, books appointments, and routes calls with human-like conversations—24/7, in over 30 languages.
                 </p>
 
@@ -180,19 +180,19 @@ export default function AIVirtualReceptionist() {
                     <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">24/7 Available</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">24/7 Available</span>
                   </div>
                   <div className="flex items-center gap-1 text-xs">
                     <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Multi-Language</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">Multi-Language</span>
                   </div>
                   <div className="flex items-center gap-1 text-xs">
                     <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">HIPAA Compliant</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">HIPAA Compliant</span>
                   </div>
                 </div>
                 
@@ -237,10 +237,10 @@ export default function AIVirtualReceptionist() {
                     <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
                       <div className="flex items-center gap-3 mb-2">
                         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
-                          <Phone className="w-4 h-4 text-cyan-300" />
+                          <Phone className="w-4 h-4 text-white" />
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-cyan-300">Live Reception AI</div>
+                          <div className="text-sm font-bold text-white">Live Reception AI</div>
                           <div className="text-xs text-cyan-400">Answering calls 24/7</div>
                         </div>
                       </div>
@@ -266,12 +266,12 @@ export default function AIVirtualReceptionist() {
 
           <div className="container mx-auto max-w-7xl relative z-10">
             <div className="text-left mb-8">
-              <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
+              <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
                 textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
               }}>
                 Everything Your Front Desk Needs
               </h2>
-              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
+              <p className="text-white text-sm max-w-3xl leading-relaxed">
                 Comprehensive reception capabilities powered by advanced AI technology
               </p>
             </div>
@@ -289,10 +289,10 @@ export default function AIVirtualReceptionist() {
                       <feature.icon className="w-4 h-4 text-black" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                      <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                         {feature.title}
                       </h3>
-                      <p className="text-cyan-300 leading-relaxed text-xs">
+                      <p className="text-white leading-relaxed text-xs">
                         {feature.description}
                       </p>
                     </div>
@@ -312,12 +312,12 @@ export default function AIVirtualReceptionist() {
 
           <div className="container mx-auto max-w-5xl relative z-10">
             <div className="text-left mb-8">
-              <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
+              <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
                 textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
               }}>
                 Transform Your Reception Experience
               </h2>
-              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
+              <p className="text-white text-sm max-w-3xl leading-relaxed">
                 Measurable results that impact your bottom line
               </p>
             </div>
@@ -330,10 +330,10 @@ export default function AIVirtualReceptionist() {
                     clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                   }}
                 >
-                  <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                  <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                     {benefit.title}
                   </h3>
-                  <p className="text-cyan-300 leading-relaxed text-xs">
+                  <p className="text-white leading-relaxed text-xs">
                     {benefit.description}
                   </p>
                 </div>
@@ -351,12 +351,12 @@ export default function AIVirtualReceptionist() {
 
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="text-left mb-8">
-              <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
+              <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
                 textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
               }}>
                 Industry-Specific Solutions
               </h2>
-              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
+              <p className="text-white text-sm max-w-3xl leading-relaxed">
                 Tailored virtual receptionist capabilities for your industry
               </p>
             </div>
@@ -380,10 +380,10 @@ export default function AIVirtualReceptionist() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-cyan-900/20 to-transparent rounded-lg"></div>
                   </div>
                   <div className="mt-3">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       {useCase.title}
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs mb-3">
+                    <p className="text-white leading-relaxed text-xs mb-3">
                       {useCase.description}
                     </p>
                     <span className="inline-flex items-center px-2 py-1 bg-cyan-400/10 text-cyan-400 text-xs font-semibold border border-cyan-400/30 backdrop-blur-sm" style={{
@@ -412,10 +412,10 @@ export default function AIVirtualReceptionist() {
                 <Mic className="w-3 h-3 animate-pulse" />
                 <span className="text-xs font-bold">AI Voice Demonstration</span>
               </div>
-              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 uppercase tracking-wide">
+              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 uppercase tracking-wide">
                 Experience Natural AI Conversations
               </h2>
-              <p className="text-cyan-300 text-sm max-w-2xl leading-relaxed">
+              <p className="text-white text-sm max-w-2xl leading-relaxed">
                 Listen to how our AI receptionist handles real customer interactions with human-like responses
               </p>
             </div>
@@ -449,7 +449,7 @@ export default function AIVirtualReceptionist() {
               }}>
                 AI Virtual Receptionist FAQ
               </h2>
-              <p className="text-cyan-300 text-sm max-w-3xl leading-relaxed">
+              <p className="text-white text-sm max-w-3xl leading-relaxed">
                 Everything you need to know about <span className="text-cyan-400 font-semibold">AI virtual receptionists</span>
               </p>
             </div>
@@ -466,10 +466,10 @@ export default function AIVirtualReceptionist() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       How does an AI virtual receptionist work?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       Our AI receptionist uses natural language processing to answer calls, understand caller intent, and respond naturally. It integrates with your calendar, CRM, and phone system for real-time operations.
                     </p>
                   </div>
@@ -487,10 +487,10 @@ export default function AIVirtualReceptionist() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       Can it handle multiple calls simultaneously?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       Yes! Our AI can handle unlimited simultaneous calls without putting anyone on hold. Whether 1 call or 100, every caller gets instant, personalized attention.
                     </p>
                   </div>
@@ -508,10 +508,10 @@ export default function AIVirtualReceptionist() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       What if the AI can't answer a question?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       The AI can seamlessly transfer calls to appropriate team members, take detailed messages, or schedule callbacks—ensuring no caller is left without help.
                     </p>
                   </div>
@@ -529,10 +529,10 @@ export default function AIVirtualReceptionist() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       How long does setup take?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       Most businesses are live within 3-5 days. We handle phone setup, calendar integration, script customization, and testing with hands-on support.
                     </p>
                   </div>
@@ -550,10 +550,10 @@ export default function AIVirtualReceptionist() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       Is it HIPAA compliant for healthcare?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       Yes! We offer HIPAA-compliant solutions with encrypted call recordings, secure data storage, and proper business associate agreements for healthcare practices.
                     </p>
                   </div>
@@ -571,10 +571,10 @@ export default function AIVirtualReceptionist() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text tracking-wide">
                       What's the cost vs hiring a receptionist?
                     </h3>
-                    <p className="text-cyan-300 leading-relaxed text-xs">
+                    <p className="text-white leading-relaxed text-xs">
                       Our AI typically costs 70-80% less than hiring full-time staff, with 24/7 coverage, unlimited call handling, and no benefits or turnover costs.
                     </p>
                   </div>
@@ -600,13 +600,13 @@ export default function AIVirtualReceptionist() {
               <span className="text-xs font-bold">Never Miss Another Call</span>
             </div>
             
-            <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
+            <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
               textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
             }}>
               Ready to Hire Your AI Receptionist?
             </h2>
             
-            <p className="text-cyan-300 text-sm mb-6 max-w-2xl leading-relaxed">
+            <p className="text-white text-sm mb-6 max-w-2xl leading-relaxed">
               Join hundreds of businesses providing 24/7 phone coverage, perfect call handling, and exceptional customer experiences—all while reducing costs by 70%.
             </p>
             
@@ -621,7 +621,7 @@ export default function AIVirtualReceptionist() {
               </Link>
               
               <Link href="/contact">
-                <Button variant="outline" className="group bg-black hover:bg-cyan-400/10 text-cyan-400 hover:text-cyan-300 border border-cyan-400/30 hover:border-cyan-400 px-6 py-2 text-sm font-bold transition-all duration-300 backdrop-blur-md uppercase tracking-wide" style={{
+                <Button variant="outline" className="group bg-black hover:bg-cyan-400/10 text-cyan-400 hover:text-white border border-cyan-400/30 hover:border-cyan-400 px-6 py-2 text-sm font-bold transition-all duration-300 backdrop-blur-md uppercase tracking-wide" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
                   <Phone className="w-4 h-4 mr-2" />
@@ -630,7 +630,7 @@ export default function AIVirtualReceptionist() {
               </Link>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs text-cyan-300">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs text-white">
               <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 border border-cyan-400/20 backdrop-blur-sm" style={{
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>

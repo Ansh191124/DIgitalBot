@@ -49,9 +49,9 @@ export function CTA() {
             </h2>
 
             {/* Subheading */}
-            <p className="text-base text-cyan-300 leading-relaxed">
+            <p className="text-base text-white leading-relaxed">
               Join thousands of businesses automating customer interactions with AI.
-              <span className="block mt-2 text-cyan-400 font-semibold tracking-wide">Start free, scale fast, succeed faster.</span>
+              <span className="block mt-2 text-white font-semibold tracking-wide">Start free, scale fast, succeed faster.</span>
             </p>
 
             {/* Features Grid - Horizontal */}
@@ -61,7 +61,7 @@ export function CTA() {
                   <div className="p-1 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg border border-cyan-400/30">
                     <feature.icon className="w-3 h-3 text-black" />
                   </div>
-                  <span className="text-xs font-semibold text-cyan-300 tracking-wide">{feature.text}</span>
+                  <span className="text-xs font-semibold text-white tracking-wide">{feature.text}</span>
                 </div>
               ))}
             </div>
@@ -78,7 +78,7 @@ export function CTA() {
               </button>
 
               <button
-                className="px-6 py-4 bg-black/90 border border-cyan-400/50 hover:bg-gray-900/50 hover:border-cyan-400 text-cyan-300 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 shadow-sm backdrop-blur-sm hover:shadow-cyan-400/25 tracking-wide"
+                className="px-6 py-4 bg-black/90 border border-cyan-400/50 hover:bg-gray-900/50 hover:border-cyan-400 text-white rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 shadow-sm backdrop-blur-sm hover:shadow-cyan-400/25 tracking-wide"
                 onClick={() => router.push("/contact")}
               >
                 <Users className="w-4 h-4 text-cyan-400" />
@@ -113,7 +113,7 @@ export function CTA() {
                 </div>
 
                 {/* Trust Indicators */}
-                <div className="space-y-2 text-xs text-cyan-300">
+                <div className="space-y-2 text-xs text-white">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3 h-3 text-cyan-400" />
                     <span>SOC 2 Certified • GDPR Compliant</span>

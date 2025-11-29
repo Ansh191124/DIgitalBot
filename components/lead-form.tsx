@@ -135,7 +135,7 @@ export function LeadForm() {
                     AI Voice Assistants
                   </span>
                 </h2>
-                <p className="text-base lg:text-lg text-cyan-300 leading-relaxed">
+                <p className="text-base lg:text-lg text-white leading-relaxed">
                   Join thousands of businesses automating customer interactions. 
                   Get a personalized demo and discover how AI can revolutionize your operations.
                 </p>
@@ -153,7 +153,7 @@ export function LeadForm() {
                     <div className={`p-1.5 bg-gradient-to-r ${feature.bg} rounded-lg group-hover:scale-110 transition-transform border ${feature.border} backdrop-blur-sm shadow-md shadow-cyan-400/15`}>
                       <feature.icon className={`w-4 h-4 text-cyan-400`} />
                     </div>
-                    <span className="text-cyan-300 font-medium text-sm tracking-wide">{feature.text}</span>
+                    <span className="text-white font-medium text-sm tracking-wide">{feature.text}</span>
                   </div>
                 ))}
               </div>
@@ -191,7 +191,7 @@ export function LeadForm() {
                   {/* Form Header */}
                   <div className="text-center mb-6">
                     <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-2 tracking-wide">Request a Demo</h3>
-                    <p className="text-sm text-cyan-300">Fill out the form and we'll get back to you within 24 hours</p>
+                    <p className="text-sm text-white">Fill out the form and we'll get back to you within 24 hours</p>
                   </div>
 
                   {/* Success Message */}
@@ -216,7 +216,7 @@ export function LeadForm() {
                   <div className="space-y-4">
                     {/* Name Field */}
                     <div>
-                      <label htmlFor="name" className="block text-xs font-semibold text-cyan-300 mb-1.5 tracking-wide">
+                      <label htmlFor="name" className="block text-xs font-semibold text-white mb-1.5 tracking-wide">
                         Full Name *
                       </label>
                       <div className="relative">
@@ -230,7 +230,7 @@ export function LeadForm() {
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-cyan-200 text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-white text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
                           placeholder="John Doe"
                         />
                       </div>
@@ -238,7 +238,7 @@ export function LeadForm() {
 
                     {/* Email Field */}
                     <div>
-                      <label htmlFor="email" className="block text-xs font-semibold text-cyan-300 mb-1.5">
+                      <label htmlFor="email" className="block text-xs font-semibold text-white mb-1.5">
                         Work Email *
                       </label>
                       <div className="relative">
@@ -252,7 +252,7 @@ export function LeadForm() {
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-cyan-200 text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-white text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
                           placeholder="john@company.com"
                         />
                       </div>
@@ -260,7 +260,7 @@ export function LeadForm() {
 
                     {/* Phone Field */}
                     <div>
-                      <label htmlFor="phone" className="block text-xs font-semibold text-cyan-300 mb-1.5">
+                      <label htmlFor="phone" className="block text-xs font-semibold text-white mb-1.5">
                         Phone Number *
                       </label>
                       <div className="relative">
@@ -274,7 +274,7 @@ export function LeadForm() {
                           required
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-cyan-200 text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-white text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
                           placeholder="+1 (555) 000-0000"
                         />
                       </div>
@@ -282,7 +282,7 @@ export function LeadForm() {
 
                     {/* Company Field */}
                     <div>
-                      <label htmlFor="company" className="block text-xs font-semibold text-cyan-300 mb-1.5">
+                      <label htmlFor="company" className="block text-xs font-semibold text-white mb-1.5">
                         Company Name *
                       </label>
                       <div className="relative">
@@ -296,7 +296,7 @@ export function LeadForm() {
                           required
                           value={formData.company}
                           onChange={handleChange}
-                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-cyan-200 text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-white text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
                           placeholder="Your Company Inc."
                         />
                       </div>
@@ -304,7 +304,7 @@ export function LeadForm() {
 
                     {/* Message Field */}
                     <div>
-                      <label htmlFor="message" className="block text-xs font-semibold text-cyan-300 mb-1.5">
+                      <label htmlFor="message" className="block text-xs font-semibold text-white mb-1.5">
                         How can we help? *
                       </label>
                       <div className="relative">
@@ -318,7 +318,7 @@ export function LeadForm() {
                           value={formData.message}
                           onChange={handleChange}
                           rows={3}
-                          className="w-full pl-10 pt-2.5 pb-2.5 bg-black/50 border border-cyan-400/25 text-cyan-200 text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg resize-none backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-10 pt-2.5 pb-2.5 bg-black/50 border border-cyan-400/25 text-white text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg resize-none backdrop-blur-sm outline-none transition-all"
                           placeholder="Tell us about your business needs..."
                         />
                       </div>

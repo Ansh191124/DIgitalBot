@@ -153,7 +153,7 @@ export default function LeadsPage() {
             }}>With AI Intelligence</span>
           </h1>
 
-          <p className="text-cyan-300 text-sm sm:text-base max-w-3xl mx-auto mb-6 leading-relaxed">
+          <p className="text-white text-sm sm:text-base max-w-3xl mx-auto mb-6 leading-relaxed">
             Transform your sales process with <strong className="text-cyan-400">AI lead scoring and qualification</strong> that captures every opportunity. 
             Increase conversions by <strong className="text-cyan-400">3x</strong> and save <strong className="text-cyan-400">20+ hours weekly</strong>.
           </p>
@@ -183,7 +183,7 @@ export default function LeadsPage() {
           </div>
 
           {/* TRUST BADGES */}
-          <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-cyan-300 mb-8">
+          <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-white mb-8">
             <div className="flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-cyan-400" style={{ boxShadow: '0 0 10px rgba(0, 255, 255, 0.6)' }} /> 
               <span className="font-medium uppercase tracking-wider">No Credit Card Required</span>
@@ -213,7 +213,7 @@ export default function LeadsPage() {
                 AI That Never Stops
               </div>
               
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 text-cyan-300 uppercase tracking-wider leading-tight" style={{
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider leading-tight" style={{
                 textShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
               }}>
                 Intelligent Lead Management
@@ -221,7 +221,7 @@ export default function LeadsPage() {
                 <span className="text-white">Powered By Advanced AI</span>
               </h2>
               
-              <p className="text-sm sm:text-base text-cyan-300 leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-white leading-relaxed mb-6">
                 Discover leads with <strong className="text-cyan-400">the highest conversion potential</strong> using AI that analyzes behavior, engagement, and buying signals automatically.
               </p>
 
@@ -237,7 +237,7 @@ export default function LeadsPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-cyan-400 text-sm mb-1 uppercase tracking-wider">Smart Lead Scoring</h4>
-                    <p className="text-cyan-300 text-xs leading-relaxed">AI ranks leads by conversion probability automatically</p>
+                    <p className="text-white text-xs leading-relaxed">AI ranks leads by conversion probability automatically</p>
                   </div>
                 </div>
 
@@ -252,7 +252,7 @@ export default function LeadsPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-cyan-400 text-sm mb-1 uppercase tracking-wider">Call Intelligence</h4>
-                    <p className="text-cyan-300 text-xs leading-relaxed">Real-time transcription and sentiment analysis</p>
+                    <p className="text-white text-xs leading-relaxed">Real-time transcription and sentiment analysis</p>
                   </div>
                 </div>
 
@@ -267,7 +267,7 @@ export default function LeadsPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-cyan-400 text-sm mb-1 uppercase tracking-wider">Predictive Analytics</h4>
-                    <p className="text-cyan-300 text-xs leading-relaxed">Forecast conversions and identify at-risk leads</p>
+                    <p className="text-white text-xs leading-relaxed">Forecast conversions and identify at-risk leads</p>
                   </div>
                 </div>
               </div>
@@ -289,7 +289,7 @@ export default function LeadsPage() {
                   </div>
                   <div>
                     <div className="font-bold text-cyan-400 text-sm uppercase tracking-wider">10,000+ Businesses</div>
-                    <div className="text-xs text-cyan-300">Transforming lead management</div>
+                    <div className="text-xs text-white">Transforming lead management</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -298,7 +298,7 @@ export default function LeadsPage() {
                       <Star key={i} className="w-3 h-3 fill-cyan-400 text-cyan-400" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.6))' }} />
                     ))}
                   </div>
-                  <span className="text-xs text-cyan-300 font-medium uppercase tracking-wider">4.9/5 Rating</span>
+                  <span className="text-xs text-white font-medium uppercase tracking-wider">4.9/5 Rating</span>
                 </div>
               </div>
             </div>
@@ -333,7 +333,7 @@ export default function LeadsPage() {
                   </div>
                   <div>
                     <div className="text-xl font-bold text-cyan-400">47%</div>
-                    <div className="text-xs text-cyan-300 uppercase">Higher Close Rate</div>
+                    <div className="text-xs text-white uppercase">Higher Close Rate</div>
                   </div>
                 </div>
               </div>
@@ -349,7 +349,7 @@ export default function LeadsPage() {
                   </div>
                   <div>
                     <div className="text-xl font-bold text-cyan-400">20+</div>
-                    <div className="text-xs text-cyan-300 uppercase">Hours Saved</div>
+                    <div className="text-xs text-white uppercase">Hours Saved</div>
                   </div>
                 </div>
               </div>
@@ -368,7 +368,7 @@ export default function LeadsPage() {
                 <br />
                 <span className="text-white">Speak for Themselves</span>
               </h2>
-              <p className="text-sm sm:text-base text-cyan-300 max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-white max-w-2xl mx-auto">
                 Join thousands of businesses experiencing the power of <strong className="text-cyan-400">AI-driven lead intelligence</strong>
               </p>
             </div>
@@ -397,8 +397,8 @@ export default function LeadsPage() {
                     {benefit.icon}
                   </div>
                   <div className="text-xl sm:text-2xl font-bold text-cyan-400 mb-1">{benefit.title.split(' ')[0]}</div>
-                  <div className="text-cyan-300 font-medium text-xs uppercase tracking-wider">{benefit.title.split(' ').slice(1).join(' ')}</div>
-                  <div className="text-cyan-300/80 text-xs mt-1">{benefit.description}</div>
+                  <div className="text-white font-medium text-xs uppercase tracking-wider">{benefit.title.split(' ').slice(1).join(' ')}</div>
+                  <div className="text-white/80 text-xs mt-1">{benefit.description}</div>
                 </div>
               ))}
             </div>
@@ -414,7 +414,7 @@ export default function LeadsPage() {
                       <Star key={i} className="w-4 h-4 fill-cyan-400 text-cyan-400" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.6))' }} />
                     ))}
                   </div>
-                  <span className="text-cyan-300 font-semibold text-sm uppercase tracking-wider">Rated #1 AI Lead Platform</span>
+                  <span className="text-white font-semibold text-sm uppercase tracking-wider">Rated #1 AI Lead Platform</span>
                 </div>
               </div>
             </div>
@@ -432,14 +432,14 @@ export default function LeadsPage() {
                 Complete AI Solution
               </div>
               
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-cyan-300 uppercase tracking-wider leading-tight" style={{
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider leading-tight" style={{
                 textShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
               }}>
                 Everything You Need to
                 <br />
                 <span className="text-white">Qualify & Convert Leads</span>
               </h2>
-              <p className="text-sm sm:text-base text-cyan-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-white max-w-3xl mx-auto leading-relaxed">
                 Powerful AI-driven features designed to capture every opportunity and maximize your conversion rates
               </p>
             </div>
@@ -471,7 +471,7 @@ export default function LeadsPage() {
                   <h3 className="font-bold text-cyan-400 text-sm mb-2 uppercase tracking-wider">
                     {feature.title}
                   </h3>
-                  <p className="text-cyan-300 text-xs leading-relaxed mb-2">
+                  <p className="text-white text-xs leading-relaxed mb-2">
                     {feature.description}
                   </p>
                   <div className="flex items-center gap-2 text-cyan-400 font-semibold text-xs uppercase">
@@ -488,14 +488,14 @@ export default function LeadsPage() {
         <section className="bg-black py-16 relative overflow-hidden">
           <div className="px-4">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 mb-4 uppercase tracking-wider" style={{
+              <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4 uppercase tracking-wider" style={{
                 textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
               }}>
                 Why Leaders Choose
                 <br />
                 <span className="text-white">AI Lead Intelligence</span>
               </h2>
-              <p className="text-sm sm:text-base text-cyan-300 max-w-3xl mx-auto">
+              <p className="text-sm sm:text-base text-white max-w-3xl mx-auto">
                 Join thousands transforming their sales with <strong className="text-cyan-400">proven AI technology</strong>
               </p>
             </div>
@@ -509,7 +509,7 @@ export default function LeadsPage() {
                   <Star key={i} className="w-4 h-4 fill-cyan-400 text-cyan-400" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.6))' }} />
                 ))}
               </div>
-              <p className="text-sm sm:text-base text-cyan-300 mb-4 leading-relaxed italic">
+              <p className="text-sm sm:text-base text-white mb-4 leading-relaxed italic">
                 "Our conversion rate jumped <strong className="text-cyan-400">47% in the first month</strong>. The AI lead scoring is incredibly accurate and helped us focus on the right prospects."
               </p>
               <div className="flex items-center gap-3">
@@ -520,7 +520,7 @@ export default function LeadsPage() {
                 </div>
                 <div>
                   <p className="font-bold text-cyan-400 text-sm uppercase tracking-wider">Sarah Chen</p>
-                  <p className="text-cyan-300 text-xs">Head of Sales, TechFlow Inc</p>
+                  <p className="text-white text-xs">Head of Sales, TechFlow Inc</p>
                 </div>
               </div>
             </div>
@@ -530,14 +530,14 @@ export default function LeadsPage() {
         {/* FINAL CTA */}
         <section className="bg-black py-16 relative overflow-hidden">
           <div className="px-4 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-cyan-300 mb-4 uppercase tracking-wider" style={{
+            <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4 uppercase tracking-wider" style={{
               textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
             }}>
               Ready to Transform
               <br />
               <span className="text-white">Your Lead Process?</span>
             </h2>
-            <p className="text-sm sm:text-base text-cyan-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base text-white mb-8 max-w-3xl mx-auto">
               Join hundreds of businesses capturing more revenue with <strong className="text-cyan-400">AI lead intelligence</strong>
             </p>
             
@@ -552,12 +552,12 @@ export default function LeadsPage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             
-            <p className="text-cyan-300 text-xs mb-8 uppercase tracking-wider">
+            <p className="text-white text-xs mb-8 uppercase tracking-wider">
               ✓ Free 14-day trial • ✓ No credit card • ✓ 24/7 support
             </p>
 
             <div className="border-t border-cyan-400/30 pt-8">
-              <p className="text-cyan-300 text-xs leading-relaxed uppercase tracking-wider">
+              <p className="text-white text-xs leading-relaxed uppercase tracking-wider">
                 Powered by <strong className="text-cyan-400">DigitalBot.ai</strong> — delivering intelligent lead solutions
               </p>
             </div>

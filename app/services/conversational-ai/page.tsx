@@ -183,8 +183,8 @@ export default function ConversationalAI() {
               
               {/* Left Content */}
               <div className="space-y-4">
-                <h1 id="main-heading" className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-300 mb-3 leading-tight text-left">
-                  <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 drop-shadow-sm tracking-widest">Conversational AI Platform</span>
+                <h1 id="main-heading" className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight text-left">
+                  <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 drop-shadow-sm tracking-widest">Conversational AI Platform</span>
                   <span className="inline-block px-4 py-2 rounded-xl text-black bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 shadow-lg shadow-cyan-400/40 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-400">
                     <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-transparent to-transparent"></span>
                     <span className="relative z-10">Human-Like Conversations</span>
@@ -204,7 +204,7 @@ export default function ConversationalAI() {
                   </p>
                 </div>
                 
-                <p className="text-xs sm:text-sm text-cyan-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-white leading-relaxed">
                   Transform customer interactions with <span className="font-bold text-cyan-400">conversational AI</span> that understands context, emotion, and intent. 
                   Deliver natural, intelligent conversations across voice, chat, and messaging channels 24/7 with comprehensive <span className="font-semibold text-cyan-400">analytics dashboard</span>.
                 </p>
@@ -214,25 +214,25 @@ export default function ConversationalAI() {
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Context-Aware AI</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">Context-Aware AI</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Emotion Detection</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">Emotion Detection</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">Multi-Turn Dialog</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">Multi-Turn Dialog</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
                       boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
                     }}></span>
-                    <span className="font-medium text-cyan-300 uppercase tracking-wide text-xs">30+ Languages</span>
+                    <span className="font-medium text-white uppercase tracking-wide text-xs">30+ Languages</span>
                   </div>
                 </div>
                 
@@ -276,10 +276,10 @@ export default function ConversationalAI() {
                     <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
                       <div className="flex items-center gap-3 mb-2">
                         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
-                          <MessageCircle className="w-4 h-4 text-cyan-300" />
+                          <MessageCircle className="w-4 h-4 text-white" />
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-cyan-300">Live AI Conversation</div>
+                          <div className="text-sm font-bold text-white">Live AI Conversation</div>
                           <div className="text-xs text-cyan-400">Context-aware dialog</div>
                         </div>
                       </div>
@@ -322,10 +322,10 @@ export default function ConversationalAI() {
                     <feature.icon className="w-6 h-6 text-black" />
                   </div>
 
-                  <h3 className="text-base font-bold mb-3 text-cyan-400 group-hover:text-cyan-300 transition-all duration-300 uppercase tracking-wide">
+                  <h3 className="text-base font-bold mb-3 text-cyan-400 group-hover:text-white transition-all duration-300 uppercase tracking-wide">
                     {feature.title}
                   </h3>
-                  <p className="text-cyan-300 text-sm leading-relaxed">
+                  <p className="text-white text-sm leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -357,12 +357,12 @@ export default function ConversationalAI() {
                       <useCase.icon className="w-5 h-5 text-black" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-base font-bold mb-3 text-cyan-400 group-hover:text-cyan-300 transition-all duration-300 uppercase tracking-wide">
+                      <h3 className="text-base font-bold mb-3 text-cyan-400 group-hover:text-white transition-all duration-300 uppercase tracking-wide">
                         {useCase.title}
                       </h3>
                     </div>
                   </div>
-                  <p className="text-cyan-300 text-sm leading-relaxed mb-4">
+                  <p className="text-white text-sm leading-relaxed mb-4">
                     {useCase.description}
                   </p>
                   <span className="inline-flex items-center px-3 py-1 bg-cyan-400/10 text-cyan-400 text-xs font-semibold border border-cyan-400/30 uppercase tracking-wide" style={{
@@ -399,7 +399,7 @@ export default function ConversationalAI() {
               }}>
                 Experience Natural AI Conversations
               </h2>
-              <p className="text-sm text-cyan-300 max-w-2xl">
+              <p className="text-sm text-white max-w-2xl">
                 Listen to how our conversational AI handles real customer interactions with human-like intelligence
               </p>
             </div>
@@ -423,7 +423,7 @@ export default function ConversationalAI() {
                     }}
                   >
                     <p className="text-xs font-semibold text-cyan-400 mb-1 uppercase tracking-wide">{msg.speaker}</p>
-                    <p className="text-cyan-300 text-sm">{msg.text}</p>
+                    <p className="text-white text-sm">{msg.text}</p>
                   </div>
                 ))}
               </div>
@@ -485,7 +485,7 @@ export default function ConversationalAI() {
               }}>
                 Conversational AI FAQ
               </h2>
-              <p className="text-cyan-300 text-sm max-w-2xl leading-relaxed">
+              <p className="text-white text-sm max-w-2xl leading-relaxed">
                 Everything you need to know about implementing conversational AI
               </p>
             </div>
@@ -528,7 +528,7 @@ export default function ConversationalAI() {
                       <h3 className="text-sm font-bold mb-2 text-cyan-400 uppercase tracking-wide">
                         {faq.q}
                       </h3>
-                      <p className="text-cyan-300 text-xs leading-relaxed">
+                      <p className="text-white text-xs leading-relaxed">
                         {faq.a}
                       </p>
                     </div>
@@ -558,7 +558,7 @@ export default function ConversationalAI() {
                 </span>
               </h2>
 
-              <p className="text-sm text-cyan-300 mb-6 max-w-3xl mx-auto">
+              <p className="text-sm text-white mb-6 max-w-3xl mx-auto">
                 Join thousands of businesses using conversational AI to deliver exceptional customer experiences while reducing costs by up to 80%.
               </p>
 
@@ -586,19 +586,19 @@ export default function ConversationalAI() {
               </div>
 
               <div className="flex flex-wrap gap-4 justify-center items-center">
-                <div className="flex items-center gap-2 px-3 py-1 bg-cyan-400/10 border border-cyan-400/30 text-xs font-medium text-cyan-300 uppercase tracking-wide" style={{
+                <div className="flex items-center gap-2 px-3 py-1 bg-cyan-400/10 border border-cyan-400/30 text-xs font-medium text-white uppercase tracking-wide" style={{
                   clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
                 }}>
                   <CheckCircle className="w-3 h-3 text-cyan-400" />
                   <span>No Credit Card Required</span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1 bg-cyan-400/10 border border-cyan-400/30 text-xs font-medium text-cyan-300 uppercase tracking-wide" style={{
+                <div className="flex items-center gap-2 px-3 py-1 bg-cyan-400/10 border border-cyan-400/30 text-xs font-medium text-white uppercase tracking-wide" style={{
                   clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
                 }}>
                   <CheckCircle className="w-3 h-3 text-cyan-400" />
                   <span>14-Day Free Trial</span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1 bg-cyan-400/10 border border-cyan-400/30 text-xs font-medium text-cyan-300 uppercase tracking-wide" style={{
+                <div className="flex items-center gap-2 px-3 py-1 bg-cyan-400/10 border border-cyan-400/30 text-xs font-medium text-white uppercase tracking-wide" style={{
                   clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
                 }}>
                   <CheckCircle className="w-3 h-3 text-cyan-400" />

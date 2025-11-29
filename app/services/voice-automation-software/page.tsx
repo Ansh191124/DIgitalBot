@@ -118,7 +118,7 @@ export default function VoiceAutomation() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-cyan-400">
+    <div className="min-h-screen flex flex-col bg-black text-white">
       <Header />
       <main className="flex-1">
         {/* Hero Section - Cyberpunk */}
@@ -167,7 +167,7 @@ export default function VoiceAutomation() {
                 </span>
               </h1>
 
-              <p className="text-sm md:text-base mb-8 text-cyan-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm md:text-base mb-8 text-white max-w-3xl mx-auto leading-relaxed">
                 Transform your business with intelligent <strong className="text-cyan-400">voice automation software</strong> that handles calls, 
                 schedules appointments, qualifies leads, and provides instant support 24/7 without human intervention.
               </p>
@@ -230,7 +230,7 @@ export default function VoiceAutomation() {
               <h2 className="text-lg md:text-xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text">
                 Why Choose Our Voice Automation Software
               </h2>
-              <p className="text-sm text-cyan-300 max-w-2xl mx-auto">
+              <p className="text-sm text-white max-w-2xl mx-auto">
                 The most advanced voice automation software platform built for modern businesses
               </p>
             </div>
@@ -251,10 +251,10 @@ export default function VoiceAutomation() {
                     <feature.icon className="w-4 h-4 text-cyan-400" />
                   </div>
 
-                  <h3 className="text-sm font-bold mb-2 text-cyan-400 group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-sm font-bold mb-2 text-cyan-400 group-hover:text-white transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-cyan-300 leading-relaxed text-xs">
+                  <p className="text-white leading-relaxed text-xs">
                     {feature.description}
                   </p>
                 </div>
@@ -296,7 +296,7 @@ export default function VoiceAutomation() {
               <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4">
                 Experience Natural AI Conversations
               </h2>
-              <p className="text-sm text-cyan-300 max-w-2xl mx-auto">
+              <p className="text-sm text-white max-w-2xl mx-auto">
                 Listen to how our voice automation software handles real customer interactions with intelligence and empathy
               </p>
             </div>
@@ -311,7 +311,7 @@ export default function VoiceAutomation() {
                     key={idx}
                     className={`p-3 ${
                       msg.speaker === "Customer" 
-                        ? "bg-black/40 border border-cyan-400/30 text-cyan-300" 
+                        ? "bg-black/40 border border-cyan-400/30 text-white" 
                         : "bg-black/40 border border-cyan-500/50 text-cyan-200"
                     } ${
                       currentMessage >= idx + 1 ? "opacity-100 animate-fade-in" : "opacity-30"
@@ -319,7 +319,7 @@ export default function VoiceAutomation() {
                     style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
                   >
                     <p className="text-xs font-semibold text-cyan-400 mb-1">{msg.speaker}</p>
-                    <p className="text-cyan-300 text-xs">{msg.text}</p>
+                    <p className="text-white text-xs">{msg.text}</p>
                   </div>
                 ))}
               </div>
@@ -327,7 +327,7 @@ export default function VoiceAutomation() {
               <div className="flex items-center justify-center gap-3">
                 <button
                   onClick={playConversation}
-                  className="group flex items-center gap-2 px-4 py-2 bg-black/70 border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-cyan-400"
+                  className="group flex items-center gap-2 px-4 py-2 bg-black/70 border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-cyan-400"
                   style={{ clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)' }}
                 >
                   {isPlaying ? (
@@ -387,7 +387,7 @@ export default function VoiceAutomation() {
               <h2 className="text-lg md:text-xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text">
                 Voice Automation Software FAQ
               </h2>
-              <p className="text-sm text-cyan-300 max-w-2xl mx-auto">
+              <p className="text-sm text-white max-w-2xl mx-auto">
                 Everything you need to know about implementing voice automation software
               </p>
             </div>
@@ -444,10 +444,10 @@ export default function VoiceAutomation() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-sm font-bold mb-2 text-cyan-400 group-hover:text-cyan-300 transition-colors">
+                      <h3 className="text-sm font-bold mb-2 text-cyan-400 group-hover:text-white transition-colors">
                         {faq.q}
                       </h3>
-                      <p className="text-cyan-300 leading-relaxed text-xs">
+                      <p className="text-white leading-relaxed text-xs">
                         {faq.a}
                       </p>
                     </div>
@@ -490,7 +490,7 @@ export default function VoiceAutomation() {
                 </span>
               </h2>
 
-              <p className="text-sm text-cyan-300 mb-8 max-w-2xl mx-auto">
+              <p className="text-sm text-white mb-8 max-w-2xl mx-auto">
                 Join thousands of businesses using our voice automation software to deliver exceptional customer experiences while reducing costs by up to 80%.
               </p>
 
@@ -498,7 +498,7 @@ export default function VoiceAutomation() {
                 <Button 
                   asChild 
                   size="sm" 
-                  className="bg-black/70 border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300 px-6 py-2 text-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-cyan-400"
+                  className="bg-black/70 border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-white px-6 py-2 text-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-cyan-400"
                   style={{ clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)' }}
                 >
                   <Link href="/signup">
@@ -510,7 +510,7 @@ export default function VoiceAutomation() {
                   asChild 
                   size="sm" 
                   variant="outline" 
-                  className="border border-cyan-600 text-cyan-600 hover:bg-cyan-500/10 hover:text-cyan-300 px-6 py-2 text-sm backdrop-blur-sm"
+                  className="border border-cyan-600 text-cyan-600 hover:bg-cyan-500/10 hover:text-white px-6 py-2 text-sm backdrop-blur-sm"
                   style={{ clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)' }}
                 >
                   <Link href="/contact">
