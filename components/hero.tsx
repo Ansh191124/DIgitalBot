@@ -1,6 +1,6 @@
 "use client"
-import { ArrowRight, Award, Calendar, CheckCircle, Clock, Headphones, MessageSquare, Mic, Shield, Square, TrendingUp, Users, Zap } from "lucide-react";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState, useRef } from 'react'
+import { Sparkles, Mic, Square, MessageSquare, Zap, Shield, Clock, TrendingUp, Users, Award, CheckCircle, ArrowRight } from "lucide-react"
 
 interface LottieAnimation {
     destroy: () => void;
@@ -333,38 +333,6 @@ export default function Hero() {
                 0%, 100% { transform: translateY(0px); }
                 50% { transform: translateY(-10px); }
             }
-            @keyframes gridMove {
-                0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-                100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
-            }
-            @keyframes glitch {
-                0%, 90%, 100% { transform: translate(0); }
-                92% { transform: translate(-2px, 2px); }
-                94% { transform: translate(2px, -2px); }
-                96% { transform: translate(-2px, -2px); }
-            }
-            @keyframes shimmer {
-                0% { background-position: 0% center; }
-                100% { background-position: 200% center; }
-            }
-            @keyframes borderPulse {
-                0%, 100% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.3); }
-                50% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.6); }
-            }
-            .glitch-text {
-                animation: glitch 3s infinite;
-            }
-            .shimmer-text {
-                background: linear-gradient(135deg, #00ffff 0%, #0080ff 50%, #00ffff 100%);
-                background-size: 200% auto;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-                animation: shimmer 3s linear infinite;
-            }
-            .border-pulse {
-                animation: borderPulse 2s infinite;
-            }
             @keyframes wave-pulse-1 {
               0% { transform: scale(0.8); opacity: 0.7; }
               100% { transform: scale(1.5); opacity: 0; }
@@ -470,129 +438,40 @@ export default function Hero() {
             }
             `}} />
 
-            <section className="pb-2 px-4 relative overflow-hidden min-h-[85vh] bg-black">
-                
-                {/* Cyberpunk Grid Background */}
-                <div className="fixed inset-0 z-0" style={{
-                    background: 'linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px)',
-                    backgroundSize: '50px 50px',
-                    animation: 'gridMove 20s linear infinite'
-                }}></div>
+            <section className="pt-10 pb-4 px-4 sm:px-8 lg:px-26 relative overflow-hidden min-h-screen bg-light bg-orange-250">
 
                 {mounted && (
                   <>
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none responsive-opacity">
-                        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-cyan-500/15 to-transparent animate-pulse-slow responsive-animate drop-shadow-[0_0_8px_rgba(0,255,255,0.4)]"></div>
-                        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-cyan-600/12 to-transparent animate-pulse-slow responsive-animate drop-shadow-[0_0_8px_rgba(0,255,255,0.3)]" style={{ animationDelay: '1s' }}></div>
-                        
-                        {/* Floating Holographic Elements */}
-                        <div className="absolute top-1/4 left-1/6 w-32 h-32 border-2 border-cyan-400/20 rounded-full animate-spin-slow"></div>
-                        <div className="absolute bottom-1/4 right-1/6 w-24 h-24 border-2 border-cyan-400/15 rounded-full animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '25s' }}></div>
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none  responsive-opacity">
+                        <div className="absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-white-500/15 to-transparent animate-pulse-slow responsive-animate drop-shadow-[0_0_10px_rgba(249,115,22,0.4)]"></div>
+                        <div className="absolute top-0 right-1/3 w-px h-full bg-linear-to-b from-transparent via-white-600/12 to-transparent animate-pulse-slow responsive-animate drop-shadow-[0_0_10px_rgba(249,115,22,0.3)]" style={{ animationDelay: '1s' }}></div>
                     </div>
                   </>
                 )}
 
-                <div className="container mx-auto relative z-30 opacity-100">
+
+                <div className="container mx-auto relative z-30 max-w-6xl opacity-100">
                     
-{/* Split Layout - Left Content, Right Voice Assistant */}
-<div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 animate-fade-in-up-2 pt-1 lg:pt-2">
+{/* Centered Column Layout */}
+<div className="flex flex-col items-center justify-center gap-10 animate-fade-in-up-2 pt-1/4">
     
-    {/* Left Content Section */}
-    <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start justify-center text-center lg:text-left order-2 lg:order-1 lg:pr-8">
-        {/* Cyberpunk Main Heading */}
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-4 lg:mb-6 uppercase tracking-wider">
-            <span className="shimmer-text text-cyan-400 glitch-text" style={{
-                textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
-            }}>
-                AI Voice Assistant
-            </span>
-            <br className="hidden sm:block" />
-            <span className="text-white text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold tracking-widest">
-                Automate Customer Service
-            </span>
-        </h1>
-        
-        {/* Cyberpunk Description */}
-        <p className="text-sm sm:text-base lg:text-lg text-white mb-6 lg:mb-8 max-w-xl leading-relaxed">
-            Deploy intelligent AI voice agents that handle customer inquiries 24/7. 
-            <span className="font-semibold text-cyan-400"> Reduce costs by 85%, improve satisfaction by 40%.</span> 
-            Perfect for call centers, customer support, and sales automation.
-        </p>
-        
-        {/* Cyberpunk Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6">
-            <button
-                suppressHydrationWarning
-                onClick={toggleCall}
-                className={`px-8 py-3 text-black font-bold text-sm tracking-widest uppercase transition-all duration-300 group ${
-                    isCallActive
-                        ? 'bg-red-400 hover:shadow-[0_0_50px_rgba(239,68,68,0.9)] hover:-translate-y-1'
-                        : 'bg-cyan-400 hover:shadow-[0_0_50px_rgba(0,255,255,0.9)] hover:-translate-y-1'
-                } flex items-center justify-center border-pulse`}
-                style={{
-                    clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
-                }}
-                aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
-            >
-                {isCallActive ? 'Stop Conversation' : 'Try Voice AI Now'}
-                {isCallActive ? (
-                    <Square className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
-                ) : (
-                    <Mic className="ml-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:scale-110 transition-transform" />
-                )}
-            </button>
-            <button
-                onClick={() => setShowVideo(true)}
-                className="px-8 py-3 bg-transparent text-cyan-400 border-2 border-cyan-400 font-bold text-sm tracking-widest uppercase hover:bg-cyan-400/10 hover:shadow-[0_0_30px_rgba(0,255,255,0.3)] transition-all"
-                style={{
-                    clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
-                }}
-                aria-label="Watch demo video"
-            >
-                Watch Demo
-            </button>
-        </div>
-        
-        {/* Cyberpunk Trust Indicators */}
-        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs sm:text-sm text-cyan-400 uppercase tracking-widest">
-            <div className="flex items-center gap-1.5 border border-cyan-400/30 px-2 py-1 rounded" style={{
-                boxShadow: '0 0 10px rgba(0, 255, 255, 0.3)'
-            }}>
-                <Shield className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-400" />
-                <span className="font-bold">Enterprise Secure</span>
-            </div>
-            <div className="flex items-center gap-1.5 border border-cyan-400/30 px-2 py-1 rounded" style={{
-                boxShadow: '0 0 10px rgba(0, 255, 255, 0.3)'
-            }}>
-                <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-400" />
-                <span className="font-bold">99.9% Uptime</span>
-            </div>
-            <div className="flex items-center gap-1.5 border border-cyan-400/30 px-2 py-1 rounded" style={{
-                boxShadow: '0 0 10px rgba(0, 255, 255, 0.3)'
-            }}>
-                <Users className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-400" />
-                <span className="font-bold">50k+ Users</span>
-            </div>
-        </div>
-    </div>
-    
-    {/* Right Voice Assistant Section - Reduced Size */}
-    <div className="w-full lg:w-1/2 flex flex-col items-center justify-center order-1 lg:order-2">
-    <div className="relative w-full flex items-center justify-center mb-2 sm:mb-4" style={{height: '60vw', maxHeight: '500px', minHeight: '350px', overflow: 'hidden'}}>
+    {/* Voice Assistant Section */}
+    <div className="w-full flex flex-col items-center justify-center">
+    <div className="relative w-full flex items-center justify-center mb-2 sm:mb-6" style={{height: '60vw', maxHeight: '500px', minHeight: '300px', overflow: 'hidden'}}>
             <div className="absolute inset-0 flex items-center justify-center" style={{clipPath: 'inset(1)', maxWidth: '800px', maxHeight: '900px', margin: '0 auto'}}>
-            <div className="relative flex items-center justify-center w-[85vw] max-w-[420px] h-[65vw] max-h-[380px] sm:w-[500px] sm:h-[420px] lg:w-[550px] lg:h-[480px]">
+            <div className="relative flex items-center justify-center w-[98vw] max-w-[480px] h-[65vw] max-h-[400px] sm:w-[700px] sm:h-[480px] lg:w-[850px] lg:h-[620px]">
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className={` rounded-full transition-all duration-500 ${
                             isSpeaking
-                                ? 'bg-cyan-500/40 blur-3xl animate-pulse shadow-[0_0_200px_rgba(0,255,255,0.6)]'
-                                : 'bg-cyan-500/25 blur-3xl shadow-[0_0_80px_rgba(0,255,255,0.4)]'
+                                ? 'bg-orange-500/40 blur-3xl animate-pulse shadow-[0_0_200px_rgba(249,115,22,0.6)]'
+                                : 'bg-orange-500/25 blur-3xl shadow-[0_0_80px_rgba(249,115,22,0.4)]'
                             }`}></div>
                     </div>
 
                     <div className={`relative transition-all duration-500 ${isSpeaking ? 'scale-110' : 'scale-105'}`}>
                         <div
                             id="lottie-animation"
-                            className="w-[75vw] h-[75vw] max-w-[380px] max-h-[380px] sm:w-[500px] sm:h-[420px] lg:w-[550px] lg:h-[480px]"
+                            className="w-[80vw] h-[80vw] max-w-[420px] max-h-[420px] sm:w-[700px] sm:h-[480px] lg:w-[850px] lg:h-[620px]"
                             style={{
                                 filter: isSpeaking
                                     ? 'saturate(1.3) brightness(1.1)'
@@ -608,7 +487,7 @@ export default function Hero() {
                                     backdrop-blur-md border-2
                                     ${isCallActive 
                                         ? 'bg-gradient-to-br from-red-500/70 via-red-600/70 to-red-700/70 border-red-400/50 hover:border-red-300 text-white shadow-2xl shadow-red-500/60 animate-pulse-slow hover:shadow-red-400/80' 
-                                        : 'bg-gradient-to-br from-cyan-500/70 via-cyan-600/70 to-cyan-700/70 border-cyan-400/50 hover:border-cyan-300 text-white shadow-2xl shadow-cyan-500/60 hover:shadow-cyan-400/80 hover:scale-110'
+                                        : 'bg-gradient-to-br from-orange-500/70 via-orange-600/70 to-orange-700/70 border-orange-400/50 hover:border-orange-300 text-white shadow-2xl shadow-orange-500/60 hover:shadow-orange-400/80 hover:scale-110'
                                     }
                                     before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-tr before:from-white/20 before:to-transparent before:opacity-50
                                     `}
@@ -622,9 +501,9 @@ export default function Hero() {
                                     <div className="absolute inset-0 rounded-full border-2 border-dashed border-white/30 animate-spin-slow"></div>
                                 )}
                                 <div className="mb-1 relative z-10">
-                                    <Mic className="h-5 w-5 sm:h-7 sm:w-7 drop-shadow-lg" />
+                                    <Mic className="h-6 w-6 sm:h-8 sm:w-8 drop-shadow-lg" />
                                 </div>
-                                <div className="flex items-end justify-center gap-0.5 h-5 sm:h-12 relative z-10"> 
+                                <div className="flex items-end justify-center gap-0.5 h-4 sm:h-10 relative z-10"> 
                                     {[...Array(12)].map((_, i) => {
                                         const centerIndex = 5.5;
                                         const maxHeight = 12 - (Math.abs(i - centerIndex) * 0.8); 
@@ -635,10 +514,10 @@ export default function Hero() {
                                                 key={i}
                                                 className={`w-0.5 sm:w-1 transition-all duration-300 rounded-full ${
                                                     isSpeaking
-                                                        ? 'bg-gradient-to-t from-white via-cyan-100 to-white shadow-lg shadow-cyan-200/50'
+                                                        ? 'bg-gradient-to-t from-white via-orange-100 to-white shadow-lg shadow-orange-200/50'
                                                         : isCallActive
-                                                            ? 'bg-gradient-to-t from-white/70 via-cyan-100/70 to-white/70 shadow-md shadow-cyan-200/30'
-                                                            : 'bg-gradient-to-t from-white/40 via-cyan-100/40 to-white/40'
+                                                            ? 'bg-gradient-to-t from-white/70 via-orange-100/70 to-white/70 shadow-md shadow-orange-200/30'
+                                                            : 'bg-gradient-to-t from-white/40 via-orange-100/40 to-white/40'
                                                 }`}
                                                 style={{
                                                     height: isSpeaking
@@ -665,305 +544,144 @@ export default function Hero() {
         </div>
     
 
-                            {/* Transcript Display - Smaller */}
-                            <div suppressHydrationWarning className={`w-full max-w-lg p-4 rounded-xl border transition-all duration-300 mb-4 ${isCallActive ? 'bg-black/80 border-cyan-500 shadow-md shadow-cyan-500/30' : 'bg-black/60 border-gray-600'}`}>
-                                <div suppressHydrationWarning className="text-xs font-semibold uppercase text-cyan-400 mb-2">{callStatus || "Ready to assist"}</div>
+                            {/* Transcript Display */}
+                            <div suppressHydrationWarning className={`w-full max-w-2xl p-6 rounded-2xl border transition-all duration-300 mb-6 ${isCallActive ? 'bg-white border-orange-500 shadow-lg shadow-orange-500/40' : 'bg-gray-100 border-gray-300'}`}>
+                                <div suppressHydrationWarning className="text-xs font-semibold uppercase text-orange-600 mb-4">{callStatus || "Ready to assist"}</div>
                                 
-                                <p suppressHydrationWarning className="text-xs sm:text-sm text-white font-medium transition-colors duration-500">{transcript}</p>
+                                <p suppressHydrationWarning className="text-sm sm:text-base text-gray-900 font-medium transition-colors duration-500">{transcript}</p>
                             </div>
 
-                        </div>
-                    </div>
-                </div>
-            </section>
+                            {/* Action Buttons */}
+                            <div className="flex flex-col sm:flex-row gap-8 justify-center">
+                                <button
+                                    suppressHydrationWarning
+                                    onClick={toggleCall}
+                                    className={`px-6 py-3 text-white font-semibold rounded-full shadow-xl transition-all duration-300 group ${isCallActive
+                                        ? 'bg-gradient-to-r from-red-600 via-red-500 to-red-400 hover:from-red-700 hover:to-red-500 shadow-red-400/50 transform hover:scale-105'
+                                        : 'bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 hover:from-orange-700 hover:to-orange-800 shadow-orange-500/60 hover:shadow-orange-600/70 transform hover:scale-105'
+                                    } flex items-center`}
+                                    aria-label={isCallActive ? "Stop conversation with AI assistant" : "Start conversation with AI assistant in any Language"}
+                                >
+                                    {isCallActive ? 'Stop Conversation' : 'Start Conversation'}
+                                    {isCallActive ? (
+                                        <Square className="ml-2 h-4 w-4" />
+                                    ) : (
+                                        <Mic className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                                    )}
+                                </button>
+                                <button
+                                    onClick={() => setShowVideo(true)}
+                                    className="px-6 py-3 text-orange-600 bg-white border-2 border-orange-400/50 hover:bg-gray-50 hover:border-orange-400/70 shadow-lg shadow-orange-400/30 hover:shadow-orange-500/40 rounded-full transition-transform hover:scale-105"
+                                    aria-label="Watch demo video"
+                                >
+                                    Watch Demo
+                                </button>
+                            </div>
 
-            {/* AI Voice Use Cases Section */}
-            <section className="py-8 px-4 bg-black relative overflow-hidden">
-                <div className="container mx-auto relative z-10">
-                    <div className="text-center mb-6">
-                        <div className="inline-flex items-center space-x-2 bg-cyan-500/10 px-3 py-1.5 border border-cyan-400/30 text-xs sm:text-sm text-cyan-400 font-semibold mb-4 uppercase tracking-widest" style={{
-                            clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
-                            boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)'
-                        }}>
-                            <MessageSquare className="h-3 w-3 sm:h-4 sm:w-4" />
-                            <span>🎯 Our AI Voice Services</span>
-                        </div>
-                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-400 mb-4 uppercase tracking-wider shimmer-text" style={{
-                            textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
-                        }}>
-                            Choose Your AI Voice Solution
-                        </h2>
-                        <p className="text-sm sm:text-base text-white max-w-2xl mx-auto">
-                            Select from our comprehensive suite of AI voice services. Each solution is ready to deploy on our platform and can be customized for your business needs.
-                        </p>
-                    </div>
-
-                    {/* Use Cases Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-12">
-                        {/* Doctor Appointments */}
-                        <div className="group relative bg-gradient-to-br from-cyan-500/10 via-black/90 to-cyan-600/10 border border-cyan-400/30 overflow-hidden transition-all duration-500 hover:border-cyan-300/60 hover:shadow-[0_0_50px_rgba(0,255,255,0.4)] hover:-translate-y-2" style={{
-                            clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))'
-                        }}>
-                            <div className="relative h-32 sm:h-40 overflow-hidden">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop&crop=center&auto=format&q=90"
-                                    alt="AI Doctor Appointment Scheduling - Medical Healthcare Assistant"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                <div className="absolute top-3 left-3">
-                                    <div className="p-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-300/30 rounded-lg">
-                                        <Calendar className="h-5 w-5 text-cyan-300" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="p-4 sm:p-6">
-                                <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors">
-                                    Doctor Appointments
-                                </h3>
-                                <p className="text-sm text-white leading-relaxed mb-4">
-                                    24/7 AI scheduling for medical appointments. Handles patient inquiries, insurance verification, and appointment confirmations automatically.
-                                </p>
-                                <div className="flex items-center gap-2 text-xs text-cyan-400 font-semibold uppercase tracking-widest">
-                                    <CheckCircle className="h-3 w-3" />
-                                    <span>95% Booking Success</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Virtual Receptionist */}
-                        <div className="group relative bg-gradient-to-br from-cyan-500/10 via-black/90 to-cyan-600/10 border border-cyan-400/30 overflow-hidden transition-all duration-500 hover:border-cyan-300/60 hover:shadow-[0_0_50px_rgba(0,255,255,0.4)] hover:-translate-y-2" style={{
-                            clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))'
-                        }}>
-                            <div className="relative h-32 sm:h-40 overflow-hidden">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=400&fit=crop&crop=center&auto=format&q=90"
-                                    alt="AI Virtual Receptionist - Professional Business Assistant"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                <div className="absolute top-3 left-3">
-                                    <div className="p-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-300/30 rounded-lg">
-                                        <Users className="h-5 w-5 text-cyan-300" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="p-4 sm:p-6">
-                                <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors">
-                                    Virtual Receptionist
-                                </h3>
-                                <p className="text-sm text-white leading-relaxed mb-4">
-                                    Professional AI receptionist that greets callers, routes calls, takes messages, and provides company information with human-like interaction.
-                                </p>
-                                <div className="flex items-center gap-2 text-xs text-cyan-400 font-semibold uppercase tracking-widest">
-                                    <CheckCircle className="h-3 w-3" />
-                                    <span>100% Call Coverage</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Lead Generation */}
-                        <div className="group relative bg-gradient-to-br from-cyan-500/10 via-black/90 to-cyan-600/10 border border-cyan-400/30 overflow-hidden transition-all duration-500 hover:border-cyan-300/60 hover:shadow-[0_0_50px_rgba(0,255,255,0.4)] hover:-translate-y-2" style={{
-                            clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))'
-                        }}>
-                            <div className="relative h-32 sm:h-40 overflow-hidden">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop&crop=center&auto=format&q=90"
-                                    alt="AI Lead Generation Outbound Calls - Sales Automation"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                <div className="absolute top-3 left-3">
-                                    <div className="p-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-300/30 rounded-lg">
-                                        <TrendingUp className="h-5 w-5 text-cyan-300" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="p-4 sm:p-6">
-                                <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors">
-                                    Lead Generation
-                                </h3>
-                                <p className="text-sm text-white leading-relaxed mb-4">
-                                    Automated outbound calling for lead qualification, follow-ups, and appointment setting. Convert prospects into customers 24/7.
-                                </p>
-                                <div className="flex items-center gap-2 text-xs text-cyan-400 font-semibold uppercase tracking-widest">
-                                    <CheckCircle className="h-3 w-3" />
-                                    <span>3x More Leads</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Customer Care Voice Agent */}
-                        <div className="group relative bg-gradient-to-br from-cyan-500/10 via-black/90 to-cyan-600/10 border border-cyan-400/30 overflow-hidden transition-all duration-500 hover:border-cyan-300/60 hover:shadow-[0_0_50px_rgba(0,255,255,0.4)] hover:-translate-y-2" style={{
-                            clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))'
-                        }}>
-                            <div className="relative h-32 sm:h-40 overflow-hidden">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1553775282-20af80779df7?w=600&h=400&fit=crop&crop=center&auto=format&q=90"
-                                    alt="AI Customer Care Voice Agent - Support Assistance"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                <div className="absolute top-3 left-3">
-                                    <div className="p-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-300/30 rounded-lg">
-                                        <Headphones className="h-5 w-5 text-cyan-300" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="p-4 sm:p-6">
-                                <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors">
-                                    Customer Care Agent
-                                </h3>
-                                <p className="text-sm text-white leading-relaxed mb-4">
-                                    Intelligent customer support that handles inquiries, troubleshooting, and escalations with empathy and accuracy.
-                                </p>
-                                <div className="flex items-center gap-2 text-xs text-cyan-400 font-semibold uppercase tracking-widest">
-                                    <CheckCircle className="h-3 w-3" />
-                                    <span>90% Resolution Rate</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* AI Call Center */}
-                        <div className="group relative bg-gradient-to-br from-cyan-500/10 via-black/90 to-cyan-600/10 border border-cyan-400/30 overflow-hidden transition-all duration-500 hover:border-cyan-300/60 hover:shadow-[0_0_50px_rgba(0,255,255,0.4)] hover:-translate-y-2" style={{
-                            clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))'
-                        }}>
-                            <div className="relative h-32 sm:h-40 overflow-hidden">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop&crop=center&auto=format&q=90"
-                                    alt="AI Call Center Operations - Enterprise Communication Hub"
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                                <div className="absolute top-3 left-3">
-                                    <div className="p-2 bg-cyan-400/20 backdrop-blur-sm border border-cyan-300/30 rounded-lg">
-                                        <Shield className="h-5 w-5 text-cyan-300" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="p-4 sm:p-6">
-                                <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors">
-                                    AI Call Center
-                                </h3>
-                                <p className="text-sm text-white leading-relaxed mb-4">
-                                    Complete call center automation with intelligent routing, queue management, and real-time analytics for enterprise-scale operations.
-                                </p>
-                                <div className="flex items-center gap-2 text-xs text-cyan-400 font-semibold uppercase tracking-widest">
-                                    <CheckCircle className="h-3 w-3" />
-                                    <span>Unlimited Capacity</span>
-                                </div>
+                            {/* H1 Heading */}
+                            <div className="mt-12 text-center">
+                                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-orange-600 via-orange-600 to-orange-700 bg-clip-text text-transparent drop-shadow-lg">
+                                    AI Voice Agent | AI Voice Assistant
+                                </h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Compact Features Section with HD Images */}
-            <section className="py-8 px-4 bg-black relative overflow-hidden">
+            {/* Ready to Deploy Section */}
+            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 via-white to-gray-50 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
+                    <div className="absolute inset-0" style={{
+                        backgroundImage: `linear-gradient(to right, rgba(168, 85, 247, 0.3) 1px, transparent 1px),
+                                         linear-gradient(to bottom, rgba(249, 115, 22, 0.3) 1px, transparent 1px)`,
+                        backgroundSize: '40px 40px'
+                    }}></div>
+                </div>
 
-                <div className="container mx-auto relative z-10">
-                    <div className="text-center mb-6">
-                        <div className="inline-flex items-center space-x-2 bg-cyan-500/10 px-3 py-1.5 border border-cyan-400/30 text-xs sm:text-sm text-cyan-400 font-semibold mb-4 uppercase tracking-widest" style={{
-                            clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
-                            boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)'
-                        }}>
-                            <MessageSquare className="h-3 w-3 sm:h-4 sm:w-4" />
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-radial from-orange-500/15 to-transparent rounded-full blur-3xl shadow-[0_0_100px_rgba(249,115,22,0.3)]"></div>
+                    <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-radial from-orange-500/12 to-transparent rounded-full blur-3xl shadow-[0_0_80px_rgba(249,115,22,0.25)]"></div>
+                </div>
+
+                <div className="container mx-auto max-w-7xl relative z-10">
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center space-x-2 bg-orange-500/10 px-4 py-2 rounded-full text-sm text-orange-600 font-semibold mb-6 border border-orange-400/30 shadow-lg shadow-orange-400/30">
+                            <MessageSquare className="h-4 w-4" />
                             <span>Enterprise-Ready Solution</span>
                         </div>
-                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-400 mb-4 uppercase tracking-wider shimmer-text" style={{
-                            textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
-                        }}>
-                            Why Choose Our AI Voice Assistant?
+                        <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 bg-clip-text text-transparent drop-shadow-[0_4px_20px_rgba(249,115,22,0.4)] mb-6">
+                            Ready to Deploy AI Voice Assistant
                         </h2>
-                        <p className="text-sm sm:text-base text-white max-w-2xl mx-auto">
-                            Deploy intelligent voice automation that transforms customer interactions and drives measurable business results.
+                        <p className="text-lg sm:text-xl font-semibold bg-white backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-gray-200 text-gray-800 max-w-3xl mx-auto">
+                            Launch your intelligent AI assistant in minutes. No coding required. Full customization available.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-8">
-                        {deploymentFeatures.map((feature, index) => {
-                            const featureImages = [
-                                'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=300&auto=format&fit=crop', // Instant Setup
-                                'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=300&auto=format&fit=crop', // Security
-                                'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=300&auto=format&fit=crop', // 24/7
-                                'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=300&auto=format&fit=crop', // Scaling
-                                'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=300&auto=format&fit=crop', // Omnichannel
-                                'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=300&auto=format&fit=crop'  // Results
-                            ];
-                            
-                            return (
-                                <div
-                                    key={index}
-                                    className="bg-cyan-400/5 border border-cyan-400/20 overflow-hidden transition-all duration-400 hover:border-cyan-400/60 hover:shadow-[0_0_40px_rgba(0,255,255,0.3)] hover:-translate-y-3 group relative"
-                                    style={{
-                                        clipPath: 'polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px))'
-                                    }}
-                                >
-                                    {/* HD Feature Image */}
-                                    <div className="relative h-20 sm:h-24 mb-3 rounded-md overflow-hidden">
-                                        <img 
-                                            src={featureImages[index]} 
-                                            alt={`${feature.title} - AI Voice Assistant Feature`}
-                                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                                        <div className="absolute bottom-2 left-2">
-                                            <feature.icon className="h-4 w-4 sm:h-5 sm:w-5 text-white drop-shadow-lg" />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12">
+                        {deploymentFeatures.map((feature, index) => (
+                            <div
+                                key={index}
+                                className="bg-white backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border-2 border-gray-200 hover:border-orange-400 hover:shadow-2xl hover:shadow-orange-400/30 hover:scale-[1.02] transition-all duration-300 group relative overflow-hidden"
+                            >
+                                
+                                {/* Icon container - mobile optimized */}
+                                <div className="relative mb-3 sm:mb-4 flex items-center justify-center sm:justify-start">
+                                    <div className="relative">
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md shadow-orange-400/40 group-hover:shadow-orange-500/60 group-hover:scale-110 transition-all duration-300 relative overflow-hidden">
+                                            {/* Glossy overlay effect */}
+                                            <div className="absolute inset-0 bg-linear-to-tr from-white/30 via-white/10 to-transparent"></div>
+                                            <div className="absolute inset-0 bg-linear-to-bl from-transparent via-transparent to-black/10"></div>
+                                            
+                                            {/* Icon with responsive sizing */}
+                                            <feature.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white relative z-10 group-hover:scale-110 transition-transform duration-300 drop-shadow-md" />
                                         </div>
                                     </div>
-                                    
-                                    {/* Content - Compact */}
-                                    <div className="space-y-1.5 relative z-10">
-                                        <h3 className="text-sm sm:text-base font-bold text-cyan-400 group-hover:text-cyan-300 transition-colors uppercase tracking-wider">
-                                            {feature.title}
-                                        </h3>
-                                        <p className="text-xs text-white leading-relaxed line-clamp-3">
-                                            {feature.description}
-                                        </p>
-                                    </div>
                                 </div>
-                            );
-                        })}
+                                
+                                {/* Content - mobile optimized */}
+                                <div className="relative z-10 text-center sm:text-left">
+                                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1.5 sm:mb-2 group-hover:text-orange-600 transition-colors duration-300">{feature.title}</h3>
+                                    <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">{feature.description}</p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
 
-                    {/* Cyberpunk CTA */}
-                    <div className="relative overflow-hidden bg-gradient-to-r from-cyan-600/20 via-cyan-500/20 to-cyan-700/20 border-2 border-cyan-400/30" style={{
-                        clipPath: 'polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 40px 100%, 0 calc(100% - 40px))',
-                        boxShadow: '0 0 50px rgba(0, 255, 255, 0.3)'
-                    }}>
-                        <div className="relative z-10 p-6 sm:p-8 text-center">
-                            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-400 mb-3 uppercase tracking-wider shimmer-text">
-                                Ready to Transform Your Customer Service?
+                    <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 rounded-3xl p-12 text-center shadow-2xl shadow-orange-500/40 relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-orange-700/20 to-orange-600/20 backdrop-blur-sm"></div>
+                        <div className="relative z-10">
+                            <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+                                Start Your Free Trial Today
                             </h3>
-                            <p className="text-sm sm:text-base text-white mb-6 max-w-xl mx-auto">
-                                Join 50,000+ companies using AI voice automation. Start your free trial - no credit card required.
+                            <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
+                                Join thousands of businesses automating customer service with AI. No credit card required.
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4">
-                                <button className="bg-cyan-400 text-black hover:bg-cyan-300 shadow-lg font-bold px-6 py-3 text-sm sm:text-base transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,255,255,0.6)] flex items-center uppercase tracking-widest" style={{
-                                    clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
-                                }}>
-                                    Start Free Trial
-                                    <ArrowRight className="ml-2 h-4 w-4" />
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                <button
+                                    className="bg-white text-orange-600 hover:bg-gray-50 rounded-full shadow-xl shadow-orange-500/40 hover:shadow-orange-600/50 font-bold px-8 py-6 text-lg transition-all hover:scale-105 border-2 border-white/20 flex items-center"
+                                >
+                                    Get Started Free
+                                    <ArrowRight className="ml-2 h-5 w-5" />
                                 </button>
-                                <button className="bg-transparent text-cyan-400 border-2 border-cyan-400 hover:bg-cyan-400/10 font-bold px-6 py-3 text-sm sm:text-base transition-all uppercase tracking-widest" style={{
-                                    clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
-                                }}>
-                                    Book Demo
+                                <button
+                                    className="bg-transparent text-white border-2 border-white hover:bg-white/10 rounded-full font-semibold px-8 py-6 text-lg transition-all"
+                                >
+                                    Schedule Demo
                                 </button>
                             </div>
-                            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-white text-xs sm:text-sm uppercase tracking-widest">
-                                <div className="flex items-center gap-1">
-                                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4" />
-                                    <span>14-day trial</span>
+                            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-white">
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle className="h-5 w-5" />
+                                    <span className="text-sm font-medium">Free 14-day trial</span>
                                 </div>
-                                <div className="flex items-center gap-1">
-                                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4" />
-                                    <span>No credit card</span>
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle className="h-5 w-5" />
+                                    <span className="text-sm font-medium">No credit card</span>
                                 </div>
-                                <div className="flex items-center gap-1">
-                                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4" />
-                                    <span>Cancel anytime</span>
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle className="h-5 w-5" />
+                                    <span className="text-sm font-medium">Cancel anytime</span>
                                 </div>
                             </div>
                         </div>
