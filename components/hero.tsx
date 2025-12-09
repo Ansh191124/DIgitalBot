@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState, useRef } from 'react'
-import { Sparkles, Mic, Square, MessageSquare, Zap, Shield, Clock, TrendingUp, Users, Award, CheckCircle, ArrowRight } from "lucide-react"
+import { Sparkles, Mic, Square, MessageSquare, Zap, Shield, Clock, TrendingUp, Users, Award, CheckCircle, ArrowRight, X } from "lucide-react"
 
 interface LottieAnimation {
     destroy: () => void;
@@ -35,6 +35,7 @@ export default function Hero() {
 
     const [counts, setCounts] = useState([0, 0, 0])
     const [showVideo, setShowVideo] = useState(false)
+    const demoVideoId = "-68LXmyR6GI" // YouTube demo video ID
     const vapiRef = useRef<any>(null)
     const [isCallActive, setIsCallActive] = useState(false)
     const [isSpeaking, setIsSpeaking] = useState(false)
@@ -213,6 +214,16 @@ export default function Hero() {
             }
         }
     }, [isSpeaking]);
+
+    // Close video on Escape key
+    useEffect(() => {
+        if (!showVideo) return
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setShowVideo(false)
+        }
+        window.addEventListener('keydown', onKey)
+        return () => window.removeEventListener('keydown', onKey)
+    }, [showVideo])
 
     useEffect(() => {
         const intervals: number[] = []
@@ -576,6 +587,38 @@ export default function Hero() {
                                 >
                                     Watch Demo
                                 </button>
+                                {showVideo && (
+                                    <div
+                                        className="fixed inset-0 z-50 flex items-center justify-center"
+                                        role="dialog"
+                                        aria-modal="true"
+                                        onClick={() => setShowVideo(false)}
+                                    >
+                                        <div className="absolute inset-0 bg-black/70" />
+                                        <div
+                                            className="relative w-full max-w-4xl mx-4"
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            <div className="relative rounded-lg overflow-hidden" style={{ paddingTop: '56.25%' }}>
+                                                <iframe
+                                                    className="absolute inset-0 w-full h-full"
+                                                    src={'https://www.youtube.com/embed/-68LXmyR6GI?autoplay=1&rel=0'}
+                                                    title="Demo video"
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                />
+                                            </div>
+                                            <button
+                                                onClick={() => setShowVideo(false)}
+                                                className="absolute -top-3 -right-3 bg-white rounded-full p-2 shadow-lg"
+                                                aria-label="Close video"
+                                            >
+                                                <X className="w-4 h-4 text-gray-700" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
                             {/* H1 Heading */}
