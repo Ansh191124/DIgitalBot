@@ -169,7 +169,7 @@ const faqSchema = {
       "name": "What is AI customer support?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "AI customer support uses conversational AI, automation, and knowledge management to resolve customer inquiries across channels without manual intervention." 
+        "text": "AI customer support uses conversational AI, automation, and knowledge management to resolve customer inquiries across channels without manual intervention."
       }
     },
     {
@@ -177,7 +177,7 @@ const faqSchema = {
       "name": "How quickly can we launch AI support?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Most DigitalBot customers launch in 10 days by connecting existing knowledge bases, ticketing tools, and authentication systems through our no-code studio." 
+        "text": "Most DigitalBot customers launch in 10 days by connecting existing knowledge bases, ticketing tools, and authentication systems through our no-code studio."
       }
     },
     {
@@ -185,7 +185,7 @@ const faqSchema = {
       "name": "Will AI replace my support team?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "AI frees agents from repetitive tasks so they can focus on relationship building, complex troubleshooting, and proactive outreach. Human oversight remains central." 
+        "text": "AI frees agents from repetitive tasks so they can focus on relationship building, complex troubleshooting, and proactive outreach. Human oversight remains central."
       }
     },
     {
@@ -193,7 +193,7 @@ const faqSchema = {
       "name": "How does AI maintain brand voice?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "DigitalBot trains on your existing conversations, style guides, and approval policies, ensuring every response sounds exactly like your brand." 
+        "text": "DigitalBot trains on your existing conversations, style guides, and approval policies, ensuring every response sounds exactly like your brand."
       }
     },
     {
@@ -201,7 +201,7 @@ const faqSchema = {
       "name": "Is AI customer support secure?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "All interactions are encrypted, anonymized when necessary, and stored according to your retention policies with full audit trails for compliance." 
+        "text": "All interactions are encrypted, anonymized when necessary, and stored according to your retention policies with full audit trails for compliance."
       }
     },
     {
@@ -209,7 +209,7 @@ const faqSchema = {
       "name": "What ROI can we expect?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Organizations typically see 50% lower support costs, 40% faster response times, and 25% higher CSAT within the first quarter." 
+        "text": "Organizations typically see 50% lower support costs, 40% faster response times, and 25% higher CSAT within the first quarter."
       }
     }
   ]
@@ -244,104 +244,104 @@ export default function AICustomerSupport() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1">
         {/* Structured Data */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
-        
-        {/* Hero Section - Cyberpunk Theme */}
-        <section className="relative overflow-hidden bg-black py-8 px-3 sm:px-4 lg:px-6">
-          {/* Cyberpunk Grid Background */}
-          <div className="absolute inset-0 opacity-20">
+
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-white py-8 px-3 sm:px-4 lg:px-6">
+          {/* Background Elements */}
+          <div className="absolute inset-0 opacity-10">
             <div
               className="absolute inset-0"
               style={{
                 backgroundImage: `
-                  linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)
+                  linear-gradient(rgba(234, 88, 12, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(234, 88, 12, 0.1) 1px, transparent 1px)
                 `,
                 backgroundSize: '60px 60px',
               }}
             />
           </div>
 
-          {/* Floating Cyan Elements */}
-          <div className="absolute top-5 right-10 w-24 h-24 bg-gradient-to-bl from-cyan-400/15 to-cyan-600/8 rounded-full blur-xl animate-pulse" />
-          <div className="absolute bottom-10 left-5 w-28 h-28 bg-gradient-to-tr from-cyan-500/8 to-cyan-400/12 rounded-full blur-xl animate-pulse" />
-          <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-cyan-300/6 via-cyan-400/10 to-cyan-500/6 rounded-full blur-lg" />
+          {/* Floating Orange Elements */}
+          <div className="absolute top-5 right-10 w-24 h-24 bg-gradient-to-bl from-orange-200/20 to-orange-300/10 rounded-full blur-xl animate-pulse" />
+          <div className="absolute bottom-10 left-5 w-28 h-28 bg-gradient-to-tr from-orange-200/15 to-orange-300/20 rounded-full blur-xl animate-pulse" />
+          <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-orange-200/10 via-orange-300/15 to-orange-400/10 rounded-full blur-lg" />
 
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="grid lg:grid-cols-2 gap-6 items-start">
-              
+
               {/* Left Content */}
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-4 py-2 mb-4 border border-cyan-400 uppercase tracking-widest" style={{
+                <div className="inline-flex items-center gap-2 bg-orange-500 text-white px-4 py-2 mb-4 border border-orange-400 uppercase tracking-widest" style={{
                   clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
                 }}>
                   <HeartHandshake className="w-4 h-4" />
                   <span className="text-xs font-bold">AI Customer Support Platform</span>
                 </div>
 
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 leading-tight text-left">
-                  <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 drop-shadow-sm tracking-widest uppercase">AI Customer Support</span>
-                  <span className="inline-block px-4 py-2 rounded-xl text-black bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 shadow-lg shadow-cyan-400/40 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-400">
-                    <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-transparent to-transparent"></span>
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 bg-clip-text text-transparent mb-3 leading-tight text-left">
+                  <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 drop-shadow-sm tracking-widest uppercase">AI Customer Support</span>
+                  <span className="inline-block px-4 py-2 rounded-xl text-white bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 shadow-lg shadow-orange-500/30 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-orange-400">
+                    <span className="absolute inset-0 bg-gradient-to-tr from-orange-500/25 via-transparent to-transparent"></span>
                     <span className="relative z-10 uppercase tracking-wider">Never Sleeps, Always Helps</span>
                   </span>
                 </h1>
-                
-                <div className="p-3 bg-cyan-400/5 backdrop-blur-md border border-cyan-400/30 shadow-md shadow-cyan-400/20" style={{
+
+                <div className="p-3 bg-orange-50 backdrop-blur-md border border-orange-200 shadow-md shadow-orange-500/10" style={{
                   clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
                 }}>
-                  <p className="text-xs sm:text-sm font-bold text-cyan-400 mb-2">
+                  <p className="text-xs sm:text-sm font-bold text-orange-600 mb-2">
                     "Traditional support gets overwhelmed, takes breaks, works limited hours."
                   </p>
-                  <p className="text-sm sm:text-base font-extrabold text-black inline-block bg-cyan-400 px-3 py-1 shadow-sm shadow-cyan-500/30 border border-cyan-400 uppercase tracking-wide" style={{
+                  <p className="text-sm sm:text-base font-extrabold text-white inline-block bg-orange-500 px-3 py-1 shadow-sm shadow-orange-500/30 border border-orange-400 uppercase tracking-wide" style={{
                     clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                   }}>
                     <span className="relative z-10">WE NEVER DO.</span>
                   </p>
                 </div>
-                
-                <p className="text-xs sm:text-sm text-white leading-relaxed">
-                  Transform customer service with <span className="font-bold text-cyan-400">AI customer support</span> that resolves inquiries instantly 24/7. 
-                  Trusted by <span className="font-semibold text-cyan-400">500+ businesses</span> handling <span className="font-semibold text-cyan-400">2M+ conversations</span> monthly. 
-                  Our <span className="font-bold text-cyan-400">AI support platform</span> delivers empathetic, personalized service across all channels.
+
+                <p className="text-xs sm:text-sm text-gray-900 leading-relaxed">
+                  Transform customer service with <span className="font-bold text-orange-600">AI customer support</span> that resolves inquiries instantly 24/7.
+                  Trusted by <span className="font-semibold text-orange-600">500+ businesses</span> handling <span className="font-semibold text-orange-600">2M+ conversations</span> monthly.
+                  Our <span className="font-bold text-orange-600">AI support platform</span> delivers empathetic, personalized service across all channels.
                 </p>
-                
+
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="flex items-center gap-1">
-                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
-                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
+                    <span className="w-1 h-1 rounded-full bg-orange-600" style={{
+                      boxShadow: '0 0 6px rgba(234, 88, 12, 0.3)'
                     }}></span>
-                    <span className="font-medium text-white uppercase tracking-wide text-xs">24/7 Support</span>
+                    <span className="font-medium text-gray-900 uppercase tracking-wide text-xs">24/7 Support</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
-                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
+                    <span className="w-1 h-1 rounded-full bg-orange-600" style={{
+                      boxShadow: '0 0 6px rgba(234, 88, 12, 0.3)'
                     }}></span>
-                    <span className="font-medium text-white uppercase tracking-wide text-xs">Instant Resolution</span>
+                    <span className="font-medium text-gray-900 uppercase tracking-wide text-xs">Instant Resolution</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
-                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
+                    <span className="w-1 h-1 rounded-full bg-orange-600" style={{
+                      boxShadow: '0 0 6px rgba(234, 88, 12, 0.3)'
                     }}></span>
-                    <span className="font-medium text-white uppercase tracking-wide text-xs">All Channels</span>
+                    <span className="font-medium text-gray-900 uppercase tracking-wide text-xs">All Channels</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
-                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
+                    <span className="w-1 h-1 rounded-full bg-orange-600" style={{
+                      boxShadow: '0 0 6px rgba(234, 88, 12, 0.3)'
                     }}></span>
-                    <span className="font-medium text-white uppercase tracking-wide text-xs">60+ Languages</span>
+                    <span className="font-medium text-gray-900 uppercase tracking-wide text-xs">60+ Languages</span>
                   </div>
                 </div>
-                
-                {/* Cyberpunk CTA Buttons */}
+
+                {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-2">
-                  <Link 
-                    href="/signup" 
-                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                  <Link
+                    href="/signup"
+                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-white bg-orange-500 shadow-md hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105 border border-orange-400 uppercase tracking-wide"
                     style={{
                       clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                     }}
@@ -349,9 +349,9 @@ export default function AICustomerSupport() {
                     Start Free Trial
                     <ArrowRight className="w-3 h-3 ml-1" />
                   </Link>
-                  <Link 
-                    href="/contact" 
-                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-cyan-400 bg-transparent border border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-orange-600 bg-transparent border border-orange-500 hover:bg-orange-50 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
                     style={{
                       clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                     }}
@@ -361,10 +361,10 @@ export default function AICustomerSupport() {
                   </Link>
                 </div>
               </div>
-              
+
               {/* Right HD Image */}
               <div className="relative">
-                <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-cyan-400/20 border border-cyan-400/30">
+                <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-orange-500/15 border border-orange-200">
                   <Image
                     src="https://images.unsplash.com/photo-1553028826-f4804a6dba3b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
                     alt="AI Customer Support Technology - 24/7 Automated Service Dashboard"
@@ -373,56 +373,56 @@ export default function AICustomerSupport() {
                     priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-cyan-900/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-orange-50/20 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
-                    <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
+                    <div className="bg-white/90 backdrop-blur-md rounded-xl p-4 border border-orange-200">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
-                          <HeartHandshake className="w-4 h-4 text-cyan-300" />
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg border border-orange-400/30">
+                          <HeartHandshake className="w-4 h-4 text-white" />
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-white">Live Support AI</div>
-                          <div className="text-xs text-cyan-400">24/7 customer care</div>
+                          <div className="text-sm font-bold text-gray-900">Live Support AI</div>
+                          <div className="text-xs text-orange-600">24/7 customer care</div>
                         </div>
                       </div>
                       <div className="flex items-center justify-between text-xs">
-                        <span className="text-cyan-400 font-medium">✓ Instant Response</span>
-                        <span className="text-cyan-400 font-medium tracking-wide">Always Available</span>
+                        <span className="text-orange-600 font-medium">✓ Instant Response</span>
+                        <span className="text-orange-600 font-medium tracking-wide">Always Available</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </section>
 
-        {/* Benefits Section - Cyberpunk Theme */}
-        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+        {/* Benefits Section */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
           {/* Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-cyan-400/15 to-cyan-600/8 rounded-full blur-2xl animate-pulse"></div>
-            <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-cyan-500/10 to-cyan-400/15 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-orange-200/15 to-orange-300/8 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-orange-200/10 to-orange-300/15 rounded-full blur-2xl animate-pulse"></div>
           </div>
 
           <div className="container mx-auto max-w-7xl relative z-10">
             <div className="text-left mb-6">
-              <h2 className="text-lg sm:text-xl font-bold mb-3 text-cyan-400 uppercase tracking-wide" style={{
-                textShadow: '0 0 12px rgba(0, 255, 255, 0.3)'
+              <h2 className="text-lg sm:text-xl font-bold mb-3 text-orange-600 uppercase tracking-wide" style={{
+                textShadow: '0 0 12px rgba(234, 88, 12, 0.2)'
               }}>
                 AI Customer Support Benefits
               </h2>
-              <p className="text-white text-sm max-w-3xl leading-relaxed">
+              <p className="text-gray-900 text-sm max-w-3xl leading-relaxed">
                 Empower your support team with automation that feels human and scales with demand
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {benefits.map((benefit, index) => (
-                <div 
+                <div
                   key={index}
-                  className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/20 overflow-hidden"
+                  className="group relative bg-orange-50 backdrop-blur-md border border-orange-200 hover:border-orange-400 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-orange-500/15 overflow-hidden"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
                   }}
@@ -436,20 +436,20 @@ export default function AICustomerSupport() {
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-white/20 to-transparent"></div>
                     <div className="absolute top-4 left-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl">
-                        <benefit.icon className="w-6 h-6 text-cyan-300" />
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-xl">
+                        <benefit.icon className="w-6 h-6 text-white" />
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Content */}
                   <div className="p-4">
-                    <h3 className="text-sm font-bold text-cyan-400 mb-2 uppercase tracking-wide group-hover:text-cyan-300 transition-colors duration-300">
+                    <h3 className="text-sm font-bold text-orange-600 mb-2 uppercase tracking-wide group-hover:text-orange-700 transition-colors duration-300">
                       {benefit.title}
                     </h3>
-                    <p className="text-white text-xs leading-relaxed">
+                    <p className="text-gray-900 text-xs leading-relaxed">
                       {benefit.description}
                     </p>
                   </div>
@@ -459,28 +459,28 @@ export default function AICustomerSupport() {
           </div>
         </section>
 
-        {/* Use Cases Section - Cyberpunk Theme */}
-        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
-          <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full blur-lg animate-pulse" />
-          <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-cyan-500/12 to-cyan-600/12 rounded-full blur-lg animate-pulse delay-1000" />
+        {/* Use Cases Section */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+          <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-orange-200/15 to-orange-300/15 rounded-full blur-lg animate-pulse" />
+          <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-orange-200/12 to-orange-300/12 rounded-full blur-lg animate-pulse delay-1000" />
 
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="text-left mb-6">
-              <h2 className="text-lg sm:text-xl font-bold mb-3 text-cyan-400 uppercase tracking-wide" style={{
-                textShadow: '0 0 12px rgba(0, 255, 255, 0.3)'
+              <h2 className="text-lg sm:text-xl font-bold mb-3 text-orange-600 uppercase tracking-wide" style={{
+                textShadow: '0 0 12px rgba(234, 88, 12, 0.15)'
               }}>
                 AI Support Use Cases & Proven Results
               </h2>
-              <p className="text-white text-sm max-w-3xl leading-relaxed">
+              <p className="text-gray-900 text-sm max-w-3xl leading-relaxed">
                 Real-world outcomes from DigitalBot customers worldwide
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
               {useCases.map((useCase, index) => (
-                <div 
+                <div
                   key={index}
-                  className="group relative bg-black/95 backdrop-blur-md rounded-2xl border border-cyan-400/30 hover:border-cyan-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-400/25 overflow-hidden"
+                  className="group relative bg-white backdrop-blur-md rounded-2xl border border-orange-200 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:shadow-orange-500/15 overflow-hidden"
                 >
                   {/* Image Header */}
                   <div className="relative h-40 overflow-hidden">
@@ -491,27 +491,27 @@ export default function AICustomerSupport() {
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/20 to-transparent"></div>
                     <div className="absolute bottom-3 left-3 right-3">
-                      <div className="bg-black/95 backdrop-blur-md rounded-lg px-3 py-1 border border-cyan-400/50">
+                      <div className="bg-white/95 backdrop-blur-md rounded-lg px-3 py-1 border border-orange-200">
                         <div className="flex items-center gap-2 text-xs">
-                          <Check className="w-3 h-3 text-cyan-400 animate-pulse" />
-                          <span className="text-white font-semibold">{useCase.results}</span>
+                          <Check className="w-3 h-3 text-orange-600 animate-pulse" />
+                          <span className="text-gray-900 font-semibold">{useCase.results}</span>
                         </div>
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Content */}
                   <div className="p-5">
-                    <h3 className="text-base font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 tracking-wide">
+                    <h3 className="text-base font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-3 tracking-wide">
                       {useCase.title}
                     </h3>
-                    <p className="text-white leading-relaxed text-sm mb-4">
+                    <p className="text-gray-900 leading-relaxed text-sm mb-4">
                       {useCase.description}
                     </p>
-                    <span className="inline-flex items-center px-3 py-1 bg-cyan-400/20 text-white rounded-full text-xs font-semibold border border-cyan-400/30">
-                      <Check className="h-3 w-3 mr-2 text-cyan-400" />
+                    <span className="inline-flex items-center px-3 py-1 bg-orange-50 text-gray-900 rounded-full text-xs font-semibold border border-orange-200">
+                      <Check className="h-3 w-3 mr-2 text-orange-600" />
                       {useCase.results}
                     </span>
                   </div>
@@ -521,30 +521,30 @@ export default function AICustomerSupport() {
           </div>
         </section>
 
-        {/* Features Section - Cyberpunk Theme */}
-        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+        {/* Features Section */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-cyan-400/15 to-cyan-600/8 rounded-full blur-2xl animate-pulse"></div>
-            <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-cyan-500/10 to-cyan-400/15 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-orange-200/15 to-orange-300/8 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-orange-200/10 to-orange-300/15 rounded-full blur-2xl animate-pulse"></div>
           </div>
 
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="text-left mb-6">
-              <h2 className="text-lg sm:text-xl font-bold mb-3 text-cyan-400 uppercase tracking-wide" style={{
-                textShadow: '0 0 12px rgba(0, 255, 255, 0.3)'
+              <h2 className="text-lg sm:text-xl font-bold mb-3 text-orange-600 uppercase tracking-wide" style={{
+                textShadow: '0 0 12px rgba(234, 88, 12, 0.15)'
               }}>
                 Platform Capabilities Support Leaders Trust
               </h2>
-              <p className="text-white text-sm max-w-3xl leading-relaxed">
+              <p className="text-gray-900 text-sm max-w-3xl leading-relaxed">
                 Deep technical advantages that keep customers informed and delighted
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
               {capabilityBlocks.map((feature, index) => (
-                <div 
+                <div
                   key={index}
-                  className="group relative bg-black/95 backdrop-blur-md rounded-2xl border border-cyan-400/30 hover:border-cyan-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-400/25 overflow-hidden"
+                  className="group relative bg-white backdrop-blur-md rounded-2xl border border-orange-200 hover:border-orange-400 transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:shadow-orange-500/15 overflow-hidden"
                 >
                   {/* Image Header */}
                   <div className="relative h-40 overflow-hidden">
@@ -555,20 +555,20 @@ export default function AICustomerSupport() {
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/20 to-transparent"></div>
                     <div className="absolute top-4 left-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-xl">
-                        <feature.icon className="w-6 h-6 text-cyan-300" />
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-xl">
+                        <feature.icon className="w-6 h-6 text-white" />
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Content */}
                   <div className="p-5">
-                    <h3 className="text-base font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 tracking-wide">
+                    <h3 className="text-base font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-3 tracking-wide">
                       {feature.heading}
                     </h3>
-                    <p className="text-white leading-relaxed text-sm">
+                    <p className="text-gray-900 leading-relaxed text-sm">
                       {feature.body}
                     </p>
                   </div>
@@ -578,57 +578,57 @@ export default function AICustomerSupport() {
           </div>
         </section>
 
-        {/* Demo Section - Cyberpunk Theme */}
-        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
-          <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full blur-lg animate-pulse" />
-          <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-cyan-500/12 to-cyan-600/12 rounded-full blur-lg animate-pulse delay-1000" />
+        {/* Demo Section */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+          <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-orange-200/15 to-orange-300/15 rounded-full blur-lg animate-pulse" />
+          <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-orange-200/12 to-orange-300/12 rounded-full blur-lg animate-pulse delay-1000" />
 
           <div className="max-w-4xl mx-auto relative z-10">
             <div className="text-left mb-8">
-              <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-3 py-1 mb-4 border border-cyan-400 uppercase tracking-widest" style={{
+              <div className="inline-flex items-center gap-2 bg-orange-500 text-white px-3 py-1 mb-4 border border-orange-400 uppercase tracking-widest" style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
               }}>
                 <Mic className="w-3 h-3 animate-pulse" />
                 <span className="text-xs font-bold">Live AI Demo</span>
               </div>
-              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 uppercase tracking-wide">
+              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-3 uppercase tracking-wide">
                 Experience AI Customer Support in Action
               </h2>
-              <p className="text-white text-sm max-w-2xl leading-relaxed">
+              <p className="text-gray-900 text-sm max-w-2xl leading-relaxed">
                 Hear how AI resolves support tickets with calm, accurate, and friendly responses your customers will love
               </p>
             </div>
-            <div className="bg-black/90 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-cyan-400/30">
+            <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-orange-200">
               <VoiceConversationPlayer audioSrc="/sample-conversation.mp3" />
             </div>
           </div>
         </section>
 
-        {/* FAQ Section - Cyberpunk Theme */}
-        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
-          {/* Cyberpunk Background Elements */}
+        {/* FAQ Section */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+          {/* Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 left-20 w-24 h-24 bg-gradient-to-br from-cyan-400/20 to-cyan-500/20 rounded-full filter blur-xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-20 w-28 h-28 bg-gradient-to-br from-cyan-500/15 to-cyan-600/15 rounded-full filter blur-xl animate-pulse delay-1000"></div>
-            <div className="absolute top-32 right-32 w-20 h-20 bg-gradient-to-br from-cyan-300/25 to-cyan-400/25 rounded-full filter blur-lg animate-pulse delay-500"></div>
+            <div className="absolute top-10 left-20 w-24 h-24 bg-gradient-to-br from-orange-200/15 to-orange-300/15 rounded-full filter blur-xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-20 w-28 h-28 bg-gradient-to-br from-orange-200/10 to-orange-300/10 rounded-full filter blur-xl animate-pulse delay-1000"></div>
+            <div className="absolute top-32 right-32 w-20 h-20 bg-gradient-to-br from-orange-200/20 to-orange-300/20 rounded-full filter blur-lg animate-pulse delay-500"></div>
           </div>
 
           <div className="container mx-auto max-w-5xl relative z-10">
             <div className="text-left mb-8">
               <div className="inline-block mb-3">
-                <span className="px-3 py-1 bg-cyan-400 text-black font-semibold text-xs uppercase tracking-wide shadow-md animate-pulse" style={{
+                <span className="px-3 py-1 bg-orange-500 text-white font-semibold text-xs uppercase tracking-wide shadow-md animate-pulse" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
                   <MessageCircle className="w-3 h-3 inline mr-1" />
                   Common Questions
                 </span>
               </div>
-              <h2 className="text-lg sm:text-xl font-bold mb-3 text-cyan-400 uppercase tracking-wide" style={{
-                textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+              <h2 className="text-lg sm:text-xl font-bold mb-3 text-orange-600 uppercase tracking-wide" style={{
+                textShadow: '0 0 15px rgba(234, 88, 12, 0.2)'
               }}>
                 Frequently Asked Questions
               </h2>
-              <p className="text-white text-sm max-w-3xl leading-relaxed">
+              <p className="text-gray-900 text-sm max-w-3xl leading-relaxed">
                 Get clarity on how AI customer support fits into your strategy
               </p>
             </div>
@@ -637,22 +637,22 @@ export default function AICustomerSupport() {
               {faqSchema.mainEntity.map((faq, index) => (
                 <div
                   key={index}
-                  className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20"
+                  className="group relative bg-orange-50 backdrop-blur-md border border-orange-200 hover:border-orange-400 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-orange-500/15"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                   }}
                 >
                   <div className="flex gap-4 p-4">
                     <div className="flex-shrink-0">
-                      <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
+                      <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-orange-400/30">
                         {index + 1}
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                      <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 text-transparent bg-clip-text tracking-wide">
                         {faq.name}
                       </h3>
-                      <p className="text-white leading-relaxed text-xs">
+                      <p className="text-gray-900 leading-relaxed text-xs">
                         {faq.acceptedAnswer.text}
                       </p>
                     </div>
@@ -663,17 +663,17 @@ export default function AICustomerSupport() {
           </div>
         </section>
 
-        {/* CTA Section - Cyberpunk Theme */}
-        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
-          {/* Cyberpunk Background */}
+        {/* CTA Section */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+          {/* Background */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-cyan-400/15 to-cyan-600/8 rounded-full blur-2xl animate-pulse"></div>
-            <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-cyan-500/10 to-cyan-400/15 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-orange-200/15 to-orange-300/8 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-orange-200/10 to-orange-300/15 rounded-full blur-2xl animate-pulse"></div>
           </div>
 
           <div className="container mx-auto max-w-4xl relative z-10">
             <div className="text-center">
-              <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-4 py-2 mb-6 border border-cyan-400 uppercase tracking-widest" style={{
+              <div className="inline-flex items-center gap-2 bg-orange-500 text-white px-4 py-2 mb-6 border border-orange-400 uppercase tracking-widest" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
                 <HeartHandshake className="w-4 h-4" />
@@ -681,24 +681,24 @@ export default function AICustomerSupport() {
               </div>
 
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 leading-tight">
-                <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 drop-shadow-sm tracking-widest uppercase">
+                <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 drop-shadow-sm tracking-widest uppercase">
                   Elevate Your Customer
                 </span>
-                <span className="inline-block px-4 py-2 rounded-xl text-black bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 shadow-lg shadow-cyan-400/40 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-400">
-                  <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-transparent to-transparent"></span>
+                <span className="inline-block px-4 py-2 rounded-xl text-white bg-gradient-to-r from-orange-500 via-orange-400 to-orange-500 shadow-lg shadow-orange-500/30 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-orange-400">
+                  <span className="absolute inset-0 bg-gradient-to-tr from-orange-500/25 via-transparent to-transparent"></span>
                   <span className="relative z-10 uppercase tracking-wider">Support Experience</span>
                 </span>
               </h2>
 
-              <p className="text-xs sm:text-sm text-cyan-300 mb-6 max-w-3xl mx-auto leading-relaxed">
-                Join <span className="font-bold text-cyan-400">500+ businesses</span> delivering proactive, intelligent support experiences. 
-                Delight customers, empower agents, and prove <span className="font-bold text-cyan-400">ROI</span> with DigitalBot AI.
+              <p className="text-xs sm:text-sm text-orange-600 mb-6 max-w-3xl mx-auto leading-relaxed">
+                Join <span className="font-bold text-orange-600">500+ businesses</span> delivering proactive, intelligent support experiences.
+                Delight customers, empower agents, and prove <span className="font-bold text-orange-600">ROI</span> with DigitalBot AI.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-2 justify-center items-center mb-8">
-                <Link 
-                  href="/signup" 
-                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                <Link
+                  href="/signup"
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-white bg-orange-500 shadow-md hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105 border border-orange-400 uppercase tracking-wide"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                   }}
@@ -706,9 +706,9 @@ export default function AICustomerSupport() {
                   Start Free Trial
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
-                <Link 
-                  href="/contact" 
-                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-cyan-400 bg-transparent border border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-orange-600 bg-transparent border border-orange-500 hover:bg-orange-50 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                   }}
@@ -719,29 +719,29 @@ export default function AICustomerSupport() {
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                <div className="flex items-center gap-1 p-2 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/20" style={{
+                <div className="flex items-center gap-1 p-2 bg-orange-50 backdrop-blur-sm border border-orange-200" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
-                  <Check className="w-3 h-3 text-cyan-400" />
-                  <span className="text-xs font-medium text-white uppercase tracking-wide">Success Team</span>
+                  <Check className="w-3 h-3 text-orange-600" />
+                  <span className="text-xs font-medium text-gray-900 uppercase tracking-wide">Success Team</span>
                 </div>
-                <div className="flex items-center gap-1 p-2 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/20" style={{
+                <div className="flex items-center gap-1 p-2 bg-orange-50 backdrop-blur-sm border border-orange-200" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
-                  <Check className="w-3 h-3 text-cyan-400" />
-                  <span className="text-xs font-medium text-white uppercase tracking-wide">Clear Pricing</span>
+                  <Check className="w-3 h-3 text-orange-600" />
+                  <span className="text-xs font-medium text-gray-900 uppercase tracking-wide">Clear Pricing</span>
                 </div>
-                <div className="flex items-center gap-1 p-2 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/20" style={{
+                <div className="flex items-center gap-1 p-2 bg-orange-50 backdrop-blur-sm border border-orange-200" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
-                  <Check className="w-3 h-3 text-cyan-400" />
-                  <span className="text-xs font-medium text-white uppercase tracking-wide">Fast Deploy</span>
+                  <Check className="w-3 h-3 text-orange-600" />
+                  <span className="text-xs font-medium text-gray-900 uppercase tracking-wide">Fast Deploy</span>
                 </div>
-                <div className="flex items-center gap-1 p-2 bg-cyan-400/5 backdrop-blur-sm border border-cyan-400/20" style={{
+                <div className="flex items-center gap-1 p-2 bg-orange-50 backdrop-blur-sm border border-orange-200" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
-                  <Check className="w-3 h-3 text-cyan-400" />
-                  <span className="text-xs font-medium text-white uppercase tracking-wide">24/7 Support</span>
+                  <Check className="w-3 h-3 text-orange-600" />
+                  <span className="text-xs font-medium text-gray-900 uppercase tracking-wide">24/7 Support</span>
                 </div>
               </div>
             </div>

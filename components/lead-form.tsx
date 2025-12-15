@@ -74,19 +74,19 @@ export function LeadForm() {
   }
 
   return (
-    <section className="relative py-16 overflow-hidden bg-black">
+    <section className="relative py-16 overflow-hidden bg-white">
       {/* Background Decorations */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-cyan-400/15 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-orange-400/15 via-transparent to-transparent" />
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" style={{
-        backgroundImage: `linear-gradient(to right, rgba(0, 255, 255, 0.2) 1px, transparent 1px),
-                         linear-gradient(to bottom, rgba(0, 255, 255, 0.2) 1px, transparent 1px)`,
+        backgroundImage: `linear-gradient(to right, rgba(255, 140, 0, 0.2) 1px, transparent 1px),
+                         linear-gradient(to bottom, rgba(255, 140, 0, 0.2) 1px, transparent 1px)`,
         backgroundSize: '40px 40px'
       }} />
-      
-      {/* Animated Orbs - Purple/Orange Theme */}
-      <div className="absolute top-8 right-8 w-48 h-48 bg-gradient-to-br from-cyan-400/25 via-cyan-300/15 to-cyan-500/15 rounded-full blur-2xl animate-float-slow shadow-[0_0_80px_rgba(0,255,255,0.25)]" />
-      <div className="absolute bottom-8 left-8 w-56 h-56 bg-gradient-to-tl from-cyan-400/15 via-cyan-300/10 to-cyan-400/8 rounded-full blur-2xl animate-float-reverse shadow-[0_0_100px_rgba(0,255,255,0.2)]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-cyan-400/8 to-cyan-500/8 rounded-full blur-2xl" />
+
+      {/* Animated Orbs - Orange Theme */}
+      <div className="absolute top-8 right-8 w-48 h-48 bg-gradient-to-br from-orange-400/25 via-orange-300/15 to-orange-500/15 rounded-full blur-2xl animate-float-slow shadow-[0_0_80px_rgba(255,140,0,0.25)]" />
+      <div className="absolute bottom-8 left-8 w-56 h-56 bg-gradient-to-tl from-orange-400/15 via-orange-300/10 to-orange-400/8 rounded-full blur-2xl animate-float-reverse shadow-[0_0_100px_rgba(255,140,0,0.2)]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-orange-400/8 to-orange-500/8 rounded-full blur-2xl" />
 
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -113,30 +113,30 @@ export function LeadForm() {
 
       <div className="container mx-auto px-3 sm:px-4 lg:px-6 relative z-10">
         <div className="max-w-5xl mx-auto">
-          
+
           <div className="grid lg:grid-cols-2 gap-8 items-center">
-            
+
             {/* Left Side - Info */}
             <div className="space-y-6">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-cyan-400/15 to-cyan-500/15 border border-cyan-400/25 rounded-full backdrop-blur-sm">
-                <Sparkles className="w-3 h-3 text-cyan-400 animate-pulse" />
-                <span className="text-xs font-bold text-cyan-400 tracking-wide">Get Started Today</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-orange-400/15 to-orange-500/15 border border-orange-400/25 rounded-full backdrop-blur-sm">
+                <Sparkles className="w-3 h-3 text-orange-600 animate-pulse" />
+                <span className="text-xs font-bold text-orange-600 tracking-wide">Get Started Today</span>
               </div>
 
               {/* Heading */}
               <div>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-3">
-                  <span className="bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent tracking-wide">
+                  <span className="bg-gradient-to-r from-gray-900 to-orange-800 bg-clip-text text-transparent tracking-wide">
                     Transform Your Business with
                   </span>
                   <br />
-                  <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent tracking-widest">
+                  <span className="bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent tracking-widest">
                     AI Voice Assistants
                   </span>
                 </h2>
-                <p className="text-base lg:text-lg text-white leading-relaxed">
-                  Join thousands of businesses automating customer interactions. 
+                <p className="text-base lg:text-lg text-gray-900 leading-relaxed">
+                  Join thousands of businesses automating customer interactions.
                   Get a personalized demo and discover how AI can revolutionize your operations.
                 </p>
               </div>
@@ -144,37 +144,37 @@ export function LeadForm() {
               {/* Features */}
               <div className="space-y-3">
                 {[
-                  { icon: Zap, text: "Setup in 5 minutes", gradient: "from-cyan-300 via-cyan-400 to-cyan-500", border: "border-cyan-400/25", bg: "from-cyan-400/15 to-cyan-500/15" },
-                  { icon: CheckCircle2, text: "No credit card required", gradient: "from-cyan-300 via-cyan-400 to-cyan-500", border: "border-cyan-400/25", bg: "from-cyan-400/15 to-cyan-500/15" },
-                  { icon: Phone, text: "Free consultation call", gradient: "from-cyan-300 via-cyan-400 to-cyan-500", border: "border-cyan-400/25", bg: "from-cyan-400/15 to-cyan-500/15" },
-                  { icon: Building2, text: "Enterprise-ready solution", gradient: "from-cyan-300 via-cyan-400 to-cyan-500", border: "border-cyan-400/25", bg: "from-cyan-400/15 to-cyan-500/15" }
+                { icon: Zap, text: "Setup in 5 minutes", gradient: "from-orange-300 via-orange-400 to-orange-500", border: "border-orange-400/25", bg: "from-orange-400/15 to-orange-500/15" },
+                { icon: CheckCircle2, text: "No credit card required", gradient: "from-orange-300 via-orange-400 to-orange-500", border: "border-orange-400/25", bg: "from-orange-400/15 to-orange-500/15" },
+                { icon: Phone, text: "Free consultation call", gradient: "from-orange-300 via-orange-400 to-orange-500", border: "border-orange-400/25", bg: "from-orange-400/15 to-orange-500/15" },
+                { icon: Building2, text: "Enterprise-ready solution", gradient: "from-orange-300 via-orange-400 to-orange-500", border: "border-orange-400/25", bg: "from-orange-400/15 to-orange-500/15" }
                 ].map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-2.5 group">
-                    <div className={`p-1.5 bg-gradient-to-r ${feature.bg} rounded-lg group-hover:scale-110 transition-transform border ${feature.border} backdrop-blur-sm shadow-md shadow-cyan-400/15`}>
-                      <feature.icon className={`w-4 h-4 text-cyan-400`} />
-                    </div>
-                    <span className="text-white font-medium text-sm tracking-wide">{feature.text}</span>
+                  <div className={`p-1.5 bg-gradient-to-r ${feature.bg} rounded-lg group-hover:scale-110 transition-transform border ${feature.border} backdrop-blur-sm shadow-md shadow-orange-400/15`}>
+                    <feature.icon className={`w-4 h-4 text-orange-600`} />
+                  </div>
+                  <span className="text-gray-900 font-medium text-sm tracking-wide">{feature.text}</span>
                   </div>
                 ))}
               </div>
 
               {/* Trust Indicators */}
-              <div className="pt-4 border-t border-cyan-400/15">
-                <p className="text-xs text-cyan-400 mb-2">Trusted by leading companies worldwide</p>
+              <div className="pt-4 border-t border-orange-400/15">
+                <p className="text-xs text-orange-600 mb-2">Trusted by leading companies worldwide</p>
                 <div className="flex items-center gap-4">
                   <div className="text-center">
-                    <div className="text-lg font-bold bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent tracking-wide">10K+</div>
-                    <div className="text-[10px] text-cyan-400">Active Users</div>
+                    <div className="text-lg font-bold bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent tracking-wide">10K+</div>
+                    <div className="text-[10px] text-orange-600">Active Users</div>
                   </div>
-                  <div className="w-px h-8 bg-cyan-400/15" />
+                  <div className="w-px h-8 bg-orange-400/15" />
                   <div className="text-center">
-                    <div className="text-lg font-bold bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent tracking-wide">99.9%</div>
-                    <div className="text-[10px] text-cyan-400">Uptime</div>
+                    <div className="text-lg font-bold bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent tracking-wide">99.9%</div>
+                    <div className="text-[10px] text-orange-600">Uptime</div>
                   </div>
-                  <div className="w-px h-8 bg-cyan-400/15" />
+                  <div className="w-px h-8 bg-orange-400/15" />
                   <div className="text-center">
-                    <div className="text-lg font-bold bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 bg-clip-text text-transparent tracking-wide">24/7</div>
-                    <div className="text-[10px] text-cyan-400">Support</div>
+                    <div className="text-lg font-bold bg-gradient-to-r from-orange-300 via-orange-400 to-orange-500 bg-clip-text text-transparent tracking-wide">24/7</div>
+                    <div className="text-[10px] text-orange-600">Support</div>
                   </div>
                 </div>
               </div>
@@ -182,33 +182,33 @@ export function LeadForm() {
 
             {/* Right Side - Form */}
             <div className="relative">
-              <div className="bg-black/95 backdrop-blur-lg rounded-2xl p-6 md:p-7 shadow-xl shadow-cyan-400/25 border border-cyan-400/25 relative overflow-hidden">
+              <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-6 md:p-7 shadow-xl shadow-orange-400/25 border border-orange-400/25 relative overflow-hidden">
                 {/* Decorative gradient */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/15 via-cyan-300/10 to-transparent rounded-full blur-2xl" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tl from-cyan-400/15 via-cyan-300/10 to-transparent rounded-full blur-2xl" />
-                
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/15 via-orange-300/10 to-transparent rounded-full blur-2xl" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tl from-orange-400/15 via-orange-300/10 to-transparent rounded-full blur-2xl" />
+
                 <div className="relative z-10">
                   {/* Form Header */}
                   <div className="text-center mb-6">
-                    <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-2 tracking-wide">Request a Demo</h3>
-                    <p className="text-sm text-white">Fill out the form and we'll get back to you within 24 hours</p>
+                    <h3 className="text-xl font-bold bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent mb-2 tracking-wide">Request a Demo</h3>
+                    <p className="text-sm text-gray-900">Fill out the form and we'll get back to you within 24 hours</p>
                   </div>
 
                   {/* Success Message */}
                   {isSuccess && (
-                    <div className="mb-6 p-4 bg-cyan-400/10 border border-cyan-400/30 rounded-xl flex items-center gap-3 backdrop-blur-sm">
-                      <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                    <div className="mb-6 p-4 bg-orange-400/10 border border-orange-400/30 rounded-xl flex items-center gap-3 backdrop-blur-sm">
+                      <CheckCircle2 className="w-5 h-5 text-orange-400 flex-shrink-0" />
                       <div>
-                        <p className="text-cyan-400 font-semibold">Thank you for your interest!</p>
-                        <p className="text-cyan-500 text-sm">We'll contact you shortly at {formData.email}</p>
+                        <p className="text-orange-400 font-semibold">Thank you for your interest!</p>
+                        <p className="text-orange-500 text-sm">We'll contact you shortly at {formData.email}</p>
                       </div>
                     </div>
                   )}
 
                   {/* Error Message */}
                   {error && (
-                    <div className="mb-6 p-4 bg-cyan-400/10 border border-cyan-400/30 rounded-xl backdrop-blur-sm">
-                      <p className="text-cyan-400 text-sm">{error}</p>
+                    <div className="mb-6 p-4 bg-orange-400/10 border border-orange-400/30 rounded-xl backdrop-blur-sm">
+                      <p className="text-orange-400 text-sm">{error}</p>
                     </div>
                   )}
 
@@ -216,12 +216,12 @@ export function LeadForm() {
                   <div className="space-y-4">
                     {/* Name Field */}
                     <div>
-                      <label htmlFor="name" className="block text-xs font-semibold text-white mb-1.5 tracking-wide">
+                      <label htmlFor="name" className="block text-xs font-semibold text-gray-900 mb-1.5 tracking-wide">
                         Full Name *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <User className="h-4 w-4 text-cyan-400" />
+                          <User className="h-4 w-4 text-orange-400" />
                         </div>
                         <input
                           id="name"
@@ -230,7 +230,7 @@ export function LeadForm() {
                           required
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-white text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-10 h-10 bg-white/90 border border-orange-400/25 text-gray-900 text-sm placeholder:text-orange-400 focus:border-orange-400 focus:ring-1 focus:ring-orange-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
                           placeholder="John Doe"
                         />
                       </div>
@@ -238,12 +238,12 @@ export function LeadForm() {
 
                     {/* Email Field */}
                     <div>
-                      <label htmlFor="email" className="block text-xs font-semibold text-white mb-1.5">
+                      <label htmlFor="email" className="block text-xs font-semibold text-gray-900 mb-1.5">
                         Work Email *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <Mail className="h-4 w-4 text-cyan-400" />
+                          <Mail className="h-4 w-4 text-orange-400" />
                         </div>
                         <input
                           id="email"
@@ -252,7 +252,7 @@ export function LeadForm() {
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-white text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-10 h-10 bg-white/90 border border-orange-400/25 text-gray-900 text-sm placeholder:text-orange-400 focus:border-orange-400 focus:ring-1 focus:ring-orange-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
                           placeholder="john@company.com"
                         />
                       </div>
@@ -260,12 +260,12 @@ export function LeadForm() {
 
                     {/* Phone Field */}
                     <div>
-                      <label htmlFor="phone" className="block text-xs font-semibold text-white mb-1.5">
+                      <label htmlFor="phone" className="block text-xs font-semibold text-gray-900 mb-1.5">
                         Phone Number *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <Phone className="h-4 w-4 text-cyan-400" />
+                          <Phone className="h-4 w-4 text-orange-400" />
                         </div>
                         <input
                           id="phone"
@@ -274,7 +274,7 @@ export function LeadForm() {
                           required
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-white text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-10 h-10 bg-white/90 border border-orange-400/25 text-gray-900 text-sm placeholder:text-orange-400 focus:border-orange-400 focus:ring-1 focus:ring-orange-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
                           placeholder="+1 (555) 000-0000"
                         />
                       </div>
@@ -282,12 +282,12 @@ export function LeadForm() {
 
                     {/* Company Field */}
                     <div>
-                      <label htmlFor="company" className="block text-xs font-semibold text-white mb-1.5">
+                      <label htmlFor="company" className="block text-xs font-semibold text-gray-900 mb-1.5">
                         Company Name *
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <Building2 className="h-4 w-4 text-cyan-400" />
+                          <Building2 className="h-4 w-4 text-orange-400" />
                         </div>
                         <input
                           id="company"
@@ -296,7 +296,7 @@ export function LeadForm() {
                           required
                           value={formData.company}
                           onChange={handleChange}
-                          className="w-full pl-10 h-10 bg-black/50 border border-cyan-400/25 text-white text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-10 h-10 bg-white/90 border border-orange-400/25 text-gray-900 text-sm placeholder:text-orange-400 focus:border-orange-400 focus:ring-1 focus:ring-orange-400/40 rounded-lg backdrop-blur-sm outline-none transition-all"
                           placeholder="Your Company Inc."
                         />
                       </div>
@@ -304,12 +304,12 @@ export function LeadForm() {
 
                     {/* Message Field */}
                     <div>
-                      <label htmlFor="message" className="block text-xs font-semibold text-white mb-1.5">
+                      <label htmlFor="message" className="block text-xs font-semibold text-gray-900 mb-1.5">
                         How can we help? *
                       </label>
                       <div className="relative">
                         <div className="absolute top-3 left-3 pointer-events-none">
-                          <MessageSquare className="h-4 w-4 text-cyan-400" />
+                          <MessageSquare className="h-4 w-4 text-orange-400" />
                         </div>
                         <textarea
                           id="message"
@@ -318,7 +318,7 @@ export function LeadForm() {
                           value={formData.message}
                           onChange={handleChange}
                           rows={3}
-                          className="w-full pl-10 pt-2.5 pb-2.5 bg-black/50 border border-cyan-400/25 text-white text-sm placeholder:text-cyan-500 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 rounded-lg resize-none backdrop-blur-sm outline-none transition-all"
+                          className="w-full pl-10 pt-2.5 pb-2.5 bg-white/90 border border-orange-400/25 text-gray-900 text-sm placeholder:text-orange-400 focus:border-orange-400 focus:ring-1 focus:ring-orange-400/40 rounded-lg resize-none backdrop-blur-sm outline-none transition-all"
                           placeholder="Tell us about your business needs..."
                         />
                       </div>
@@ -328,7 +328,7 @@ export function LeadForm() {
                     <button
                       onClick={handleSubmit}
                       disabled={isSubmitting}
-                      className="w-full h-11 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 hover:from-cyan-300 hover:via-cyan-400 hover:to-cyan-600 text-white font-bold text-sm rounded-lg shadow-md shadow-cyan-400/25 hover:shadow-lg hover:shadow-cyan-400/40 transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="w-full h-11 bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 hover:from-orange-300 hover:via-orange-400 hover:to-orange-600 text-white font-bold text-sm rounded-lg shadow-md shadow-orange-400/25 hover:shadow-lg hover:shadow-orange-400/40 transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? (
                         <>
@@ -344,9 +344,9 @@ export function LeadForm() {
                     </button>
 
                     {/* Privacy Note */}
-                    <p className="text-[10px] text-cyan-400 text-center">
+                    <p className="text-[10px] text-orange-600 text-center">
                       By submitting this form, you agree to our{" "}
-                      <a href="/privacy" className="text-cyan-400 hover:text-cyan-500 underline">
+                      <a href="/privacy" className="text-orange-600 hover:text-orange-700 underline">
                         Privacy Policy
                       </a>
                       . We respect your privacy and never share your data.

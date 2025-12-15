@@ -174,75 +174,75 @@ const stats = [
 
 export default function Services() {
   return (
-    <main className="min-h-screen bg-black text-white relative overflow-hidden">
+    <main className="min-h-screen bg-white text-gray-900 relative overflow-hidden">
       <Header />
 
       {/* Hero Section - Cyberpunk Design */}
-      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black">
+      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
         {/* Cyberpunk Grid Background */}
         <div className="fixed inset-0 z-0" style={{
-          background: 'linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px)',
+          background: 'linear-gradient(rgba(234, 88, 12, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(234, 88, 12, 0.02) 1px, transparent 1px)',
           backgroundSize: '40px 40px'
         }}></div>
 
         {/* Cyberpunk Floating Elements */}
-        <div className="absolute top-20 left-10 w-48 h-48 bg-gradient-to-br from-cyan-400/15 via-cyan-500/15 to-cyan-600/15 rounded-full filter blur-2xl animate-float-slow"></div>
-        <div className="absolute bottom-20 right-10 w-56 h-56 bg-gradient-to-bl from-cyan-400/15 via-cyan-600/15 to-cyan-600/15 rounded-full filter blur-2xl animate-float-reverse"></div>
+        <div className="absolute top-20 left-10 w-48 h-48 bg-gradient-to-br from-orange-400/15 via-orange-500/15 to-orange-600/15 rounded-full filter blur-2xl animate-float-slow"></div>
+        <div className="absolute bottom-20 right-10 w-56 h-56 bg-gradient-to-bl from-orange-400/15 via-orange-600/15 to-orange-600/15 rounded-full filter blur-2xl animate-float-reverse"></div>
         
         <div className="relative z-10 container mx-auto text-left md:text-center">
           {/* Breadcrumb */}
           <nav className="flex justify-start md:justify-center mb-6" aria-label="Breadcrumb">
-            <ol className="inline-flex items-center space-x-2 text-xs bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-cyan-400/20 shadow-md shadow-cyan-500/15">
+            <ol className="inline-flex items-center space-x-2 text-xs bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-orange-400/20 shadow-md shadow-orange-500/15">
               <li>
-                <Link href="/" className="text-white hover:text-cyan-400 transition-colors font-medium">
+                <Link href="/" className="text-gray-900 hover:text-orange-600 transition-colors font-medium">
                   Home
                 </Link>
               </li>
-              <li className="text-white">→</li>
-              <li className="text-cyan-400 font-bold">Services</li>
+              <li className="text-gray-900">→</li>
+              <li className="text-orange-600 font-bold">Services</li>
             </ol>
           </nav>
 
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4 uppercase tracking-wide">
-            <span className="block mb-2 shimmer-text text-cyan-400" style={{
-              textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+            <span className="block mb-2 shimmer-text text-orange-600" style={{
+              textShadow: '0 0 15px rgba(234, 88, 12, 0.3)'
             }}>
               What AI Voice Assistant
             </span>
-            <span className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-300 hover:shadow-[0_0_30px_rgba(0,255,255,0.6)]" style={{
+            <span className="inline-block px-4 py-2 text-white bg-orange-500 shadow-lg text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-orange-400 hover:shadow-[0_0_30px_rgba(234,88,12,0.5)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
             }}>
               <span className="relative z-10 font-black tracking-wide">Services Do We Offer?</span>
             </span>
           </h1>
           
-          <div className="max-w-5xl mx-auto mb-6 p-4 bg-gradient-to-r from-cyan-500/8 via-black/90 to-cyan-600/8 border border-cyan-400/30 rounded-xl shadow-lg backdrop-blur-md" style={{
+          <div className="max-w-5xl mx-auto mb-6 p-4 bg-gradient-to-r from-orange-500/8 via-white/90 to-orange-600/8 border border-orange-400/30 rounded-xl shadow-lg backdrop-blur-md" style={{
             clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
           }}>
-            <p className="text-sm sm:text-base text-white leading-relaxed">
-              We provide <span className="font-bold text-cyan-400">comprehensive AI voice assistant services</span> including AI call centers, customer support automation, sales agents, and virtual receptionists. 
-              Trusted by <span className="font-extrabold shimmer-text text-cyan-400">500+ businesses</span> across <span className="font-extrabold shimmer-text text-cyan-400">25+ countries</span> to handle <span className="font-extrabold shimmer-text text-cyan-400">2M+ conversations</span> monthly.
+            <p className="text-sm sm:text-base text-gray-900 leading-relaxed">
+              We provide <span className="font-bold text-orange-600">comprehensive AI voice assistant services</span> including AI call centers, customer support automation, sales agents, and virtual receptionists. 
+              Trusted by <span className="font-extrabold shimmer-text text-orange-600">500+ businesses</span> across <span className="font-extrabold shimmer-text text-orange-600">25+ countries</span> to handle <span className="font-extrabold shimmer-text text-orange-600">2M+ conversations</span> monthly.
             </p>
           </div>
           
-          {/* Stats Grid - Cyberpunk Design */}
+          {/* Stats Grid - Modern Design */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-6xl mx-auto mb-8">
             {stats.map((stat, index) => {
               return (
                 <div
                   key={index}
-                  className="bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 shadow-md hover:shadow-[0_0_20px_rgba(0,255,255,0.3)] hover:scale-102 transition-all duration-300 relative overflow-hidden group"
+                  className="bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 shadow-md hover:shadow-[0_0_20px_rgba(234,88,12,0.2)] hover:scale-102 transition-all duration-300 relative overflow-hidden group"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                   }}
                 >
-                  <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-tr from-cyan-400/15 via-cyan-500/15 to-cyan-600/15 rounded-full opacity-15 filter blur-2xl group-hover:opacity-25 transition-opacity"></div>
-                  <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-bl from-cyan-400/15 via-cyan-600/15 to-cyan-600/15 rounded-full opacity-15 filter blur-2xl group-hover:opacity-25 transition-opacity"></div>
-                  <stat.icon className="h-5 w-5 mx-auto mb-2 text-cyan-400 relative z-10" />
-                  <div className="text-xl font-extrabold shimmer-text text-cyan-400 mb-1 relative z-10">
+                  <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-tr from-orange-400/15 via-orange-500/15 to-orange-600/15 rounded-full opacity-15 filter blur-2xl group-hover:opacity-25 transition-opacity"></div>
+                  <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-bl from-orange-400/15 via-orange-600/15 to-orange-600/15 rounded-full opacity-15 filter blur-2xl group-hover:opacity-25 transition-opacity"></div>
+                  <stat.icon className="h-5 w-5 mx-auto mb-2 text-orange-600 relative z-10" />
+                  <div className="text-xl font-extrabold shimmer-text text-orange-600 mb-1 relative z-10">
                     {stat.value}
                   </div>
-                  <div className="text-xs text-white font-semibold relative z-10 uppercase tracking-wide">{stat.label}</div>
+                  <div className="text-xs text-gray-900 font-semibold relative z-10 uppercase tracking-wide">{stat.label}</div>
                 </div>
               );
             })}
@@ -250,7 +250,7 @@ export default function Services() {
 
           <div className="flex flex-col sm:flex-row gap-3 justify-start md:justify-center">
             <Link href="/contact">
-              <button className="bg-cyan-400 text-black hover:bg-cyan-300 font-bold px-4 py-3 text-sm uppercase tracking-wide transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(0,255,255,0.6)] flex items-center" style={{
+              <button className="bg-orange-500 text-white hover:bg-orange-600 font-bold px-4 py-3 text-sm uppercase tracking-wide transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(234,88,12,0.5)] flex items-center" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
                 Start Free Trial
@@ -258,7 +258,7 @@ export default function Services() {
               </button>
             </Link>
             <Link href="/pricing">
-              <button className="bg-transparent text-cyan-400 border border-cyan-400 hover:bg-cyan-400/10 font-bold px-4 py-3 text-sm uppercase tracking-wide transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(0,255,255,0.2)]" style={{
+              <button className="bg-transparent text-orange-600 border border-orange-400 hover:bg-orange-400/10 font-bold px-4 py-3 text-sm uppercase tracking-wide transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(234,88,12,0.2)]" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
                 View Pricing
@@ -268,36 +268,36 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Grid - Cyberpunk Design */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 relative bg-black overflow-hidden">
-        {/* Cyberpunk Background Elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-cyan-300/15 via-cyan-500/15 to-cyan-500/15 rounded-full filter blur-2xl"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-cyan-300/15 via-cyan-400/15 to-cyan-500/15 rounded-full filter blur-2xl"></div>
+      {/* Services Grid - Modern Design */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 relative bg-white overflow-hidden">
+        {/* Modern Background Elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-300/15 via-orange-500/15 to-orange-500/15 rounded-full filter blur-2xl"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-orange-300/15 via-orange-400/15 to-orange-500/15 rounded-full filter blur-2xl"></div>
         
         <div className="container mx-auto relative z-10">
           <div className="text-left md:text-center mb-10">
             <div className="inline-block mb-4">
-              <span className="px-4 py-2 bg-cyan-500/8 border border-cyan-400/20 text-cyan-400 font-bold text-xs uppercase tracking-wide shadow-md" style={{
+              <span className="px-4 py-2 bg-orange-500/8 border border-orange-400/20 text-orange-600 font-bold text-xs uppercase tracking-wide shadow-md" style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
-                boxShadow: '0 0 10px rgba(0, 255, 255, 0.2)'
+                boxShadow: '0 0 10px rgba(234, 88, 12, 0.15)'
               }}>
                 ⭐ Premium AI Services
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold mb-4 uppercase tracking-wide">
-              <span className="block mb-2 shimmer-text text-cyan-400" style={{
-                textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+              <span className="block mb-2 shimmer-text text-orange-600" style={{
+                textShadow: '0 0 15px rgba(234, 88, 12, 0.3)'
               }}>
                 Our AI Voice Assistant
               </span>
-              <span className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg border border-cyan-300" style={{
+              <span className="inline-block px-4 py-2 text-white bg-orange-500 shadow-lg border border-orange-400" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
                 Service Suite
               </span>
             </h2>
-            <p className="text-sm text-white max-w-4xl mx-auto leading-relaxed">
-              Choose from our <span className="font-bold text-cyan-400">comprehensive suite</span> of AI-powered voice solutions designed to <span className="font-bold text-cyan-400">automate and enhance</span> every aspect of your business communication.
+            <p className="text-sm text-gray-900 max-w-4xl mx-auto leading-relaxed">
+              Choose from our <span className="font-bold text-orange-600">comprehensive suite</span> of AI-powered voice solutions designed to <span className="font-bold text-orange-600">automate and enhance</span> every aspect of your business communication.
             </p>
           </div>
 
@@ -314,7 +314,7 @@ export default function Services() {
               
               return (
                 <Link key={index} href={service.href}>
-                  <Card className="relative bg-black border border-cyan-400/20 hover:border-cyan-300/40 hover:scale-102 hover:shadow-[0_0_25px_rgba(0,255,255,0.3)] shadow-md hover:shadow-lg transition-all duration-300 h-full group cursor-pointer overflow-hidden" style={{
+                  <Card className="relative bg-white border border-orange-400/20 hover:border-orange-300/40 hover:scale-102 hover:shadow-[0_0_25px_rgba(234,88,12,0.3)] shadow-md hover:shadow-lg transition-all duration-300 h-full group cursor-pointer overflow-hidden" style={{
                     clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
                   }}>
                     {/* HD Service Image */}
@@ -327,33 +327,33 @@ export default function Services() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
                       <div className="absolute top-2 left-2">
-                        <div className="p-1 bg-cyan-400/15 backdrop-blur-sm border border-cyan-300/20 rounded">
-                          <service.icon className="h-4 w-4 text-cyan-300" />
+                        <div className="p-1 bg-orange-400/15 backdrop-blur-sm border border-orange-300/20 rounded">
+                          <service.icon className="h-4 w-4 text-orange-600" />
                         </div>
                       </div>
                     </div>
 
-                    {/* Cyberpunk Glow Effect */}
-                    <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-br from-cyan-300/20 via-cyan-400/20 to-cyan-300/20 rounded-full filter blur-2xl group-hover:blur-xl transition-all"></div>
+                    {/* Modern Glow Effect */}
+                    <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-br from-orange-300/20 via-orange-400/20 to-orange-300/20 rounded-full filter blur-2xl group-hover:blur-xl transition-all"></div>
                     
-                    {/* Numbered Badge - Cyberpunk */}
-                    <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black rounded-lg flex items-center justify-center font-extrabold text-sm shadow-lg transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 border border-cyan-300" style={{
-                      boxShadow: '0 0 10px rgba(0, 255, 255, 0.4)'
+                    {/* Numbered Badge - Modern */}
+                    <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white rounded-lg flex items-center justify-center font-extrabold text-sm shadow-lg transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 border border-orange-400" style={{
+                      boxShadow: '0 0 10px rgba(234, 88, 12, 0.4)'
                     }}>
                       {String(index + 1).padStart(2, '0')}
                     </div>
 
                     {service.popular && (
-                      <Badge className="absolute -top-2 right-4 bg-cyan-400 text-black shadow-lg animate-pulse border-2 border-cyan-300">
+                      <Badge className="absolute -top-2 right-4 bg-orange-500 text-white shadow-lg animate-pulse border-2 border-orange-400">
                         ⭐ Popular
                       </Badge>
                     )}
 
                     <CardHeader className="pt-4 pb-3">
-                      <CardTitle className="text-sm font-bold text-cyan-400 mb-2 text-center group-hover:text-cyan-300 transition-all uppercase tracking-wide">
+                      <CardTitle className="text-sm font-bold text-orange-600 mb-2 text-center group-hover:text-orange-600 transition-all uppercase tracking-wide">
                         {service.title}
                       </CardTitle>
-                      <CardDescription className="text-white text-center leading-relaxed text-xs">
+                      <CardDescription className="text-gray-900 text-center leading-relaxed text-xs">
                         {service.description}
                       </CardDescription>
                     </CardHeader>
@@ -362,16 +362,16 @@ export default function Services() {
                         {service.features.map((feature, idx) => (
                           <li
                             key={idx}
-                            className="flex items-center text-xs text-white group-hover:text-white transition-colors"
+                            className="flex items-center text-xs text-gray-900 group-hover:text-gray-900 transition-colors"
                           >
-                            <div className="w-3 h-3 rounded-full bg-cyan-400 flex items-center justify-center mr-2 flex-shrink-0">
-                              <Check className="h-2 w-2 text-black" />
+                            <div className="w-3 h-3 rounded-full bg-orange-500 flex items-center justify-center mr-2 flex-shrink-0">
+                              <Check className="h-2 w-2 text-white" />
                             </div>
                             <span className="font-medium">{feature}</span>
                           </li>
                         ))}
                       </ul>
-                      <div className="flex items-center justify-center text-cyan-400 group-hover:text-cyan-300 transition-colors font-bold pt-3 border-t border-cyan-400/15 uppercase tracking-wide text-xs">
+                      <div className="flex items-center justify-center text-orange-600 group-hover:text-orange-600 transition-colors font-bold pt-3 border-t border-orange-400/15 uppercase tracking-wide text-xs">
                         Learn More
                         <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </div>
@@ -384,13 +384,13 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Industries Section - Cyberpunk */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 relative bg-black overflow-hidden">
-        {/* Cyberpunk Grid Background */}
+      {/* Industries Section - Modern */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 relative bg-white overflow-hidden">
+        {/* Modern Grid Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-8">
           <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(0, 255, 255, 0.2) 1px, transparent 1px),
-                             linear-gradient(to bottom, rgba(0, 255, 255, 0.2) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, rgba(234, 88, 12, 0.2) 1px, transparent 1px),
+                             linear-gradient(to bottom, rgba(234, 88, 12, 0.2) 1px, transparent 1px)`,
             backgroundSize: '40px 40px'
           }}></div>
         </div>
@@ -400,29 +400,28 @@ export default function Services() {
             <div className="inline-block mb-4" style={{
               clipPath: 'polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%)'
             }}>
-              <span className="px-4 py-2 bg-cyan-400 text-black font-bold text-xs uppercase tracking-wide shadow-lg border border-cyan-300 block" style={{
-                boxShadow: '0 0 12px rgba(0, 255, 255, 0.4)'
+              <span className="px-4 py-2 bg-orange-500 text-white font-bold text-xs uppercase tracking-wide shadow-lg border border-orange-400 block" style={{
+                boxShadow: '0 0 12px rgba(234, 88, 12, 0.4)'
               }}>
                 🌍 Global Reach
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold mb-4">
-              <span className="block mb-2 shimmer-text text-cyan-400" style={{
+              <span className="block mb-2 shimmer-text text-orange-600" style={{
                 clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))',
-                background: 'linear-gradient(90deg, #00ffff, #00cccc, #00ffff)',
+                background: 'linear-gradient(90deg, #ea580c, #ea7f1f, #ea580c)',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
                 color: 'transparent',
-                
               }}>
                 Industries We Serve
               </span>
-              <span className="inline-block text-white text-lg font-semibold">
-                Across <span className="text-cyan-400">25+ Countries</span>
+              <span className="inline-block text-gray-900 text-lg font-semibold">
+                Across <span className="text-orange-600">25+ Countries</span>
               </span>
             </h2>
-            <p className="text-sm text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Our AI voice assistants are <span className="font-bold text-cyan-400">trusted across multiple industries</span> to deliver exceptional customer experiences and <span className="font-bold text-cyan-400">operational efficiency</span>.
+            <p className="text-sm text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              Our AI voice assistants are <span className="font-bold text-orange-600">trusted across multiple industries</span> to deliver exceptional customer experiences and <span className="font-bold text-orange-600">operational efficiency</span>.
             </p>
           </div>
 
@@ -440,7 +439,7 @@ export default function Services() {
               return (
                 <Card
                   key={index}
-                  className="bg-black border border-cyan-400/15 hover:border-cyan-300/30 hover:scale-102 hover:shadow-[0_0_20px_rgba(0,255,255,0.2)] shadow-md hover:shadow-lg transition-all duration-300 group overflow-hidden"
+                  className="bg-white border border-orange-400/15 hover:border-orange-300/30 hover:scale-102 hover:shadow-[0_0_20px_rgba(234,88,12,0.2)] shadow-md hover:shadow-lg transition-all duration-300 group overflow-hidden"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                   }}
@@ -458,19 +457,19 @@ export default function Services() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent"></div>
                       <div className="absolute bottom-1 left-1">
-                        <div className="p-1 bg-cyan-400/15 backdrop-blur-sm border border-cyan-300/20 rounded">
-                          <industry.icon className="h-4 w-4 text-cyan-300" />
+                        <div className="p-1 bg-orange-400/15 backdrop-blur-sm border border-orange-300/20 rounded">
+                          <industry.icon className="h-4 w-4 text-orange-300" />
                         </div>
                       </div>
                     </div>
                     
-                    {/* Cyberpunk Glow */}
-                    <div className="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-br from-cyan-300/15 via-cyan-400/15 to-cyan-300/15 rounded-full filter blur-xl group-hover:blur-lg transition-all"></div>
+                    {/* Modern Glow */}
+                    <div className="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-br from-orange-300/15 via-orange-400/15 to-orange-300/15 rounded-full filter blur-xl group-hover:blur-lg transition-all"></div>
                     
-                    <h3 className="text-sm font-bold text-cyan-400 mb-2 group-hover:text-cyan-300 transition-all relative z-10 uppercase tracking-wide">
+                    <h3 className="text-sm font-bold text-orange-600 mb-2 group-hover:text-orange-600 transition-all relative z-10 uppercase tracking-wide">
                       {industry.name}
                     </h3>
-                    <p className="text-xs text-white font-medium relative z-10">{industry.description}</p>
+                    <p className="text-xs text-gray-700 font-medium relative z-10">{industry.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -479,36 +478,36 @@ export default function Services() {
         </div>
       </section>
 
-      {/* How It Works Section - Cyberpunk */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 relative bg-black overflow-hidden">
-        {/* Cyberpunk Background */}
-        <div className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-br from-cyan-300/15 via-cyan-400/15 to-cyan-500/15 rounded-full filter blur-2xl"></div>
-        <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-gradient-to-bl from-cyan-300/15 via-cyan-500/15 to-cyan-500/15 rounded-full filter blur-2xl"></div>
+      {/* How It Works Section - Modern */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 relative bg-white overflow-hidden">
+        {/* Modern Background */}
+        <div className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-br from-orange-300/15 via-orange-400/15 to-orange-500/15 rounded-full filter blur-2xl"></div>
+        <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-gradient-to-bl from-orange-300/15 via-orange-500/15 to-orange-500/15 rounded-full filter blur-2xl"></div>
         
         <div className="container mx-auto relative z-10">
           <div className="text-left md:text-center mb-10">
             <div className="inline-block mb-4" style={{
               clipPath: 'polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%)'
             }}>
-              <span className="px-4 py-2 bg-cyan-400 text-black font-bold text-xs uppercase tracking-wide shadow-lg border border-cyan-300 block" style={{
-                boxShadow: '0 0 12px rgba(0, 255, 255, 0.4)'
+              <span className="px-4 py-2 bg-orange-500 text-white font-bold text-xs uppercase tracking-wide shadow-lg border border-orange-400 block" style={{
+                boxShadow: '0 0 12px rgba(234, 88, 12, 0.4)'
               }}>
                 🚀 Simple Setup
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold mb-4">
-              <span className="block mb-2 text-gray-300">
+              <span className="block mb-2 text-gray-900">
                 How Do Our AI Voice
               </span>
-              <span className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg border border-cyan-300" style={{
+              <span className="inline-block px-4 py-2 text-white bg-orange-500 shadow-lg border border-orange-400" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
-                boxShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+                boxShadow: '0 0 20px rgba(234, 88, 12, 0.4)'
               }}>
                 Services Work?
               </span>
             </h2>
-            <p className="text-sm text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Get started in <span className="font-bold text-cyan-400">three simple steps</span> and transform your business communication with <span className="font-bold text-cyan-400">AI voice technology</span>.
+            <p className="text-sm text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              Get started in <span className="font-bold text-orange-600">three simple steps</span> and transform your business communication with <span className="font-bold text-orange-600">AI voice technology</span>.
             </p>
           </div>
 
@@ -533,27 +532,27 @@ export default function Services() {
               return (
                 <div
                   key={idx}
-                  className="relative bg-black p-6 border border-cyan-400/20 hover:border-cyan-300/40 hover:scale-102 hover:shadow-[0_0_20px_rgba(0,255,255,0.2)] shadow-md hover:shadow-lg transition-all duration-300 group overflow-hidden"
+                  className="relative bg-white p-6 border border-orange-400/20 hover:border-orange-300/40 hover:scale-102 hover:shadow-[0_0_20px_rgba(234,88,12,0.2)] shadow-md hover:shadow-lg transition-all duration-300 group overflow-hidden"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
                   }}
                 >
-                  {/* Cyberpunk Glow */}
-                  <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-br from-cyan-300/20 via-cyan-400/20 to-cyan-300/20 rounded-full filter blur-2xl group-hover:blur-xl transition-all"></div>
+                  {/* Modern Glow */}
+                  <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-br from-orange-300/20 via-orange-400/20 to-orange-300/20 rounded-full filter blur-2xl group-hover:blur-xl transition-all"></div>
                   
-                  {/* Step Number Badge - Cyberpunk */}
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-10 bg-cyan-400 text-black font-extrabold text-lg shadow-lg transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 border-2 border-cyan-300 flex items-center justify-center" style={{
+                  {/* Step Number Badge - Modern */}
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-10 bg-orange-500 text-white font-extrabold text-lg shadow-lg transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 border-2 border-orange-400 flex items-center justify-center" style={{
                     clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                    boxShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+                    boxShadow: '0 0 15px rgba(234, 88, 12, 0.4)'
                   }}>
                     {item.step}
                   </div>
 
                   <div className="pt-8 relative z-10">
-                    <h3 className="text-lg font-extrabold text-cyan-400 mb-3 text-center group-hover:text-cyan-300 transition-all uppercase tracking-wide">
+                    <h3 className="text-lg font-extrabold text-orange-600 mb-3 text-center group-hover:text-orange-600 transition-all uppercase tracking-wide">
                       {item.title}
                     </h3>
-                    <p className="text-gray-300 text-center leading-relaxed font-medium text-sm">
+                    <p className="text-gray-700 text-center leading-relaxed font-medium text-sm">
                       {item.description}
                     </p>
                   </div>
@@ -564,13 +563,13 @@ export default function Services() {
         </div>
       </section>
 
-      {/* FAQ Section - Cyberpunk */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden" role="region" aria-labelledby="faq-section">
-        {/* Cyberpunk Background Elements */}
+      {/* FAQ Section - Modern */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden" role="region" aria-labelledby="faq-section">
+        {/* Modern Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-64 h-64 bg-gradient-to-br from-cyan-500/15 to-cyan-600/15 rounded-full filter blur-2xl animate-float-slow"></div>
-          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full filter blur-2xl animate-float-reverse"></div>
-          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-cyan-500/15 to-cyan-600/15 rounded-full filter blur-2xl animate-pulse"></div>
+          <div className="absolute top-0 left-1/4 w-64 h-64 bg-gradient-to-br from-orange-500/15 to-orange-600/15 rounded-full filter blur-2xl animate-float-slow"></div>
+          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-gradient-to-br from-orange-400/15 to-orange-500/15 rounded-full filter blur-2xl animate-float-reverse"></div>
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-orange-500/15 to-orange-600/15 rounded-full filter blur-2xl animate-pulse"></div>
         </div>
 
         <div className="container mx-auto max-w-6xl relative z-10">
@@ -578,17 +577,17 @@ export default function Services() {
             <div className="inline-block mb-4" style={{
               clipPath: 'polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%)'
             }}>
-              <span className="px-4 py-2 bg-cyan-400 text-black font-bold text-xs uppercase tracking-wide shadow-lg block" style={{
-                boxShadow: '0 0 12px rgba(0, 255, 255, 0.4)'
+              <span className="px-4 py-2 bg-orange-500 text-white font-bold text-xs uppercase tracking-wide shadow-lg block" style={{
+                boxShadow: '0 0 12px rgba(234, 88, 12, 0.4)'
               }}>
                 Got Questions? We've Got Answers
               </span>
             </div>
             <h2 id="faq-section" className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4">
-              <span className="block mb-2 text-gray-300">Frequently Asked</span>
-              <span className="shimmer-text text-cyan-400" style={{
+              <span className="block mb-2 text-gray-900">Frequently Asked</span>
+              <span className="shimmer-text text-orange-600" style={{
                 clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))',
-                background: 'linear-gradient(90deg, #00ffff, #00cccc, #00ffff)',
+                background: 'linear-gradient(90deg, #ea580c, #ea7f1f, #ea580c)',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
                 color: 'transparent',
@@ -597,224 +596,224 @@ export default function Services() {
                 Questions
               </span>
             </h2>
-            <p className="text-gray-300 text-sm max-w-4xl mx-auto leading-relaxed">
-              Everything you need to know about <span className="text-cyan-400 font-semibold">AI Voice Assistant Services</span>
+            <p className="text-gray-700 text-sm max-w-4xl mx-auto leading-relaxed">
+              Everything you need to know about <span className="text-orange-600 font-semibold">AI Voice Assistant Services</span>
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-4">
             {/* FAQ 1 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 10px rgba(0, 255, 255, 0.4)'
+                boxShadow: '0 0 10px rgba(234, 88, 12, 0.4)'
               }}>
                 01
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 What AI voice assistant services do you offer?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 We offer comprehensive AI voice solutions including AI call centers, customer support automation, sales agents, virtual receptionists, voice bots, and enterprise voice automation software. Each service is customizable to your business needs and integrates seamlessly with your existing systems.
               </p>
             </div>
 
             {/* FAQ 2 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 10px rgba(0, 255, 255, 0.4)'
+                boxShadow: '0 0 10px rgba(234, 88, 12, 0.4)'
               }}>
                 02
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 How quickly can I implement AI voice services?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 Most businesses launch their AI voice assistant within 5-10 days. We handle setup, CRM integration, conversation training, and testing. Our team provides hands-on support to ensure smooth deployment and immediate value delivery.
               </p>
             </div>
 
             {/* FAQ 3 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 10px rgba(0, 255, 255, 0.4)'
+                boxShadow: '0 0 10px rgba(234, 88, 12, 0.4)'
               }}>
                 03
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 Which industries benefit from AI voice assistants?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 AI voice assistants transform healthcare, real estate, hospitality, e-commerce, financial services, and technology sectors. Any business with customer communication needs benefits from 24/7 availability, instant responses, and scalable automation without hiring additional staff.
               </p>
             </div>
 
             {/* FAQ 4 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+                boxShadow: '0 0 15px rgba(234, 88, 12, 0.5)'
               }}>
                 04
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 Can AI voice services integrate with my existing systems?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 Yes! Our AI voice platform integrates with popular CRMs (Salesforce, HubSpot, Zoho), phone systems, help desk software, scheduling tools, and custom APIs. We ensure seamless data flow and real-time synchronization with your tech stack.
               </p>
             </div>
 
             {/* FAQ 5 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+                boxShadow: '0 0 15px rgba(234, 88, 12, 0.5)'
               }}>
                 05
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 What ROI can I expect from AI voice automation?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 Businesses typically see 40-60% cost reduction, 85% faster response times, and 45% higher conversion rates. AI voice services deliver ROI within 30-60 days by eliminating staffing costs, reducing missed calls, and providing 24/7 availability without overtime or benefits.
               </p>
             </div>
 
             {/* FAQ 6 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+                boxShadow: '0 0 15px rgba(234, 88, 12, 0.5)'
               }}>
                 06
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 Is AI voice technology secure and compliant?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 Absolutely. Our platform is SOC 2 and HIPAA compliant with end-to-end encryption, data privacy controls, GDPR compliance, and comprehensive audit trails. All conversations are encrypted and stored securely with role-based access controls.
               </p>
             </div>
 
             {/* FAQ 7 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+                boxShadow: '0 0 15px rgba(234, 88, 12, 0.5)'
               }}>
                 07
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 How does AI handle multiple languages?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 Our AI voice assistants support 60+ languages with natural accents and context-aware translations. The system automatically detects the caller's language and responds fluently, making it perfect for global businesses serving diverse customer bases.
               </p>
             </div>
 
             {/* FAQ 8 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+                boxShadow: '0 0 15px rgba(234, 88, 12, 0.5)'
               }}>
                 08
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 What support do you provide after launch?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 We provide 24/7 technical support, regular performance optimization, conversation training updates, analytics reviews, and dedicated account management. Our team monitors your AI continuously and makes improvements based on real conversation data.
               </p>
             </div>
 
             {/* FAQ 9 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+                boxShadow: '0 0 15px rgba(234, 88, 12, 0.5)'
               }}>
                 09
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 Can I customize the AI voice and personality?
               </h3>
-              <p className="text-gray-300 leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 Yes! You can customize voice tone, personality, speaking style, and conversation flow to match your brand. Choose from multiple voice options, adjust response speeds, and train the AI on your specific terminology and brand guidelines.
               </p>
             </div>
 
             {/* FAQ 10 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+                boxShadow: '0 0 15px rgba(234, 88, 12, 0.5)'
               }}>
                 10
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 Do I need technical expertise to use AI voice services?
               </h3>
-              <p className="text-white leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 Not at all! Our platform features a no-code visual builder for creating and managing conversations. We handle all technical setup, integration, and maintenance. You simply define your business rules and we make the AI work for you.
               </p>
             </div>
 
             {/* FAQ 11 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+                boxShadow: '0 0 15px rgba(234, 88, 12, 0.5)'
               }}>
                 11
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 How scalable are AI voice assistant services?
               </h3>
-              <p className="text-white leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 Infinitely scalable! Our cloud infrastructure handles unlimited concurrent calls without quality degradation. Whether you receive 10 calls or 10,000 calls daily, the AI maintains consistent performance with no additional setup or hiring required.
               </p>
             </div>
 
             {/* FAQ 12 */}
-            <div className="group relative bg-black backdrop-blur-md p-4 border border-cyan-400/20 hover:border-cyan-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]" style={{
+            <div className="group relative bg-white backdrop-blur-md p-4 border border-orange-400/20 hover:border-orange-300/40 transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(234,88,12,0.2)]" style={{
               clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
             }}>
-              <div className="absolute -top-2 -left-2 w-8 h-8 bg-cyan-400 text-black flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
+              <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-md rotate-12 group-hover:rotate-0 transition-transform" style={{
                 clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))',
-                boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+                boxShadow: '0 0 15px rgba(234, 88, 12, 0.5)'
               }}>
                 12
               </div>
-              <h3 className="text-sm font-bold text-cyan-400 mb-3 mt-2 uppercase tracking-wide">
+              <h3 className="text-sm font-bold text-orange-600 mb-3 mt-2 uppercase tracking-wide">
                 What analytics and reporting do you provide?
               </h3>
-              <p className="text-white leading-relaxed text-xs">
+              <p className="text-gray-700 leading-relaxed text-xs">
                 Our real-time dashboard shows call volume, conversation outcomes, customer sentiment, response times, conversion rates, and ROI metrics. Access detailed transcripts, identify trends, and export custom reports to track performance against your business KPIs.
               </p>
             </div>
@@ -822,69 +821,69 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA Section - Cyberpunk */}
-      <section className="py-12 px-4 relative overflow-hidden bg-black">
-        {/* Cyberpunk Background Elements */}
+      {/* CTA Section - Modern */}
+      <section className="py-12 px-4 relative overflow-hidden bg-white">
+        {/* Modern Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-8">
           <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle, rgba(0, 255, 255, 0.3) 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(circle, rgba(234, 88, 12, 0.3) 1px, transparent 1px)`,
             backgroundSize: '20px 20px'
           }}></div>
         </div>
-        <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-cyan-400/20 via-cyan-500/20 to-cyan-600/20 rounded-full filter blur-2xl animate-float-slow"></div>
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-cyan-400/20 via-cyan-500/20 to-cyan-600/20 rounded-full filter blur-2xl animate-float-reverse"></div>
+        <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-orange-400/20 via-orange-500/20 to-orange-600/20 rounded-full filter blur-2xl animate-float-slow"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-orange-400/20 via-orange-500/20 to-orange-600/20 rounded-full filter blur-2xl animate-float-reverse"></div>
         
         <div className="container mx-auto relative z-10">
-          <div className="bg-black p-6 md:p-8 border-2 border-cyan-400/30 hover:border-cyan-300/50 shadow-lg hover:shadow-[0_0_30px_rgba(0,255,255,0.3)] hover:scale-[1.01] transition-all text-left md:text-center relative overflow-hidden group" style={{
+          <div className="bg-white p-6 md:p-8 border-2 border-orange-400/30 hover:border-orange-300/50 shadow-lg hover:shadow-[0_0_30px_rgba(234,88,12,0.3)] hover:scale-[1.01] transition-all text-left md:text-center relative overflow-hidden group" style={{
             clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
           }}>
-            {/* Cyberpunk Inner Glow */}
-            <div className="absolute -top-20 -left-20 w-60 h-60 bg-gradient-to-br from-cyan-300/20 via-cyan-400/20 to-cyan-500/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
-            <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-gradient-to-tl from-cyan-300/20 via-cyan-500/20 to-cyan-300/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+            {/* Modern Inner Glow */}
+            <div className="absolute -top-20 -left-20 w-60 h-60 bg-gradient-to-br from-orange-300/20 via-orange-400/20 to-orange-500/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
+            <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-gradient-to-tl from-orange-300/20 via-orange-500/20 to-orange-300/20 rounded-full filter blur-3xl group-hover:blur-2xl transition-all"></div>
             
             <div className="relative z-10">
               <div className="inline-block mb-6" style={{
                 clipPath: 'polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)'
               }}>
-                <span className="px-6 py-3 bg-cyan-400 text-black font-bold text-sm uppercase tracking-wider shadow-2xl block border-2 border-cyan-300" style={{
-                  boxShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+                <span className="px-6 py-3 bg-orange-500 text-white font-bold text-sm uppercase tracking-wider shadow-2xl block border-2 border-orange-400" style={{
+                  boxShadow: '0 0 20px rgba(234, 88, 12, 0.5)'
                 }}>
                   Limited Time Offer
                 </span>
               </div>
               
               <h2 className="text-2xl sm:text-3xl font-extrabold mb-4">
-                <span className="block mb-2 text-gray-300">
+                <span className="block mb-2 text-gray-900">
                   Ready to Transform Your
                 </span>
-                <span className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg border border-cyan-300 animate-gradient relative" style={{
+                <span className="inline-block px-4 py-2 text-white bg-orange-500 shadow-lg border border-orange-400 animate-gradient relative" style={{
                   clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
-                  boxShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+                  boxShadow: '0 0 20px rgba(234, 88, 12, 0.4)'
                 }}>
                   <span className="relative z-10">Business Communication?</span>
                 </span>
               </h2>
               
-              <div className="max-w-3xl mx-auto mb-6 p-4 bg-gradient-to-r from-cyan-500/8 via-cyan-400/4 to-cyan-500/8 border border-cyan-400/20" style={{
+              <div className="max-w-3xl mx-auto mb-6 p-4 bg-gradient-to-r from-orange-500/8 via-orange-400/4 to-orange-500/8 border border-orange-400/20" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
-                <p className="text-sm text-white leading-relaxed font-medium">
-                  Join <span className="font-extrabold text-cyan-400">500+ businesses</span> already using DigitalBot.ai to handle <span className="font-extrabold text-cyan-400">millions of customer conversations</span> with AI voice technology. <span className="font-bold text-cyan-400">Start your free trial today</span>.
+                <p className="text-sm text-gray-900 leading-relaxed font-medium">
+                  Join <span className="font-extrabold text-orange-600">500+ businesses</span> already using DigitalBot.ai to handle <span className="font-extrabold text-orange-600">millions of customer conversations</span> with AI voice technology. <span className="font-bold text-orange-600">Start your free trial today</span>.
                 </p>
               </div>
               
               <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
                 <Link href="/contact">
-                  <Button className="bg-cyan-400 text-black hover:bg-cyan-300 hover:scale-102 transition-all px-6 py-3 text-sm font-bold shadow-lg border border-cyan-300 uppercase tracking-wide" style={{
+                  <Button className="bg-orange-500 text-white hover:bg-orange-600 hover:scale-102 transition-all px-6 py-3 text-sm font-bold shadow-lg border border-orange-400 uppercase tracking-wide" style={{
                     clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
-                    boxShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
+                    boxShadow: '0 0 15px rgba(234, 88, 12, 0.4)'
                   }}>
                     Start Free Trial Now
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
                 <Link href="/pricing">
-                  <Button variant="outline" className="border border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 px-6 py-3 text-sm font-bold shadow-md hover:scale-102 transition-all uppercase tracking-wide" style={{
+                  <Button variant="outline" className="border border-orange-400 text-orange-600 hover:bg-orange-400/10 px-6 py-3 text-sm font-bold shadow-md hover:scale-102 transition-all uppercase tracking-wide" style={{
                     clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                   }}>
                     View Pricing Plans
@@ -892,26 +891,26 @@ export default function Services() {
                 </Link>
               </div>
               
-              <div className="flex flex-wrap items-center justify-center gap-6 text-white text-sm mt-8">
+              <div className="flex flex-wrap items-center justify-center gap-6 text-gray-900 text-sm mt-8">
                 <span className="inline-flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" style={{
-                    boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
+                  <span className="w-3 h-3 rounded-full bg-orange-500 animate-pulse" style={{
+                    boxShadow: '0 0 10px rgba(234, 88, 12, 0.5)'
                   }}></span>
-                  <span className="font-semibold text-white uppercase tracking-wide">No Credit Card Required</span>
+                  <span className="font-semibold text-gray-900 uppercase tracking-wide">No Credit Card Required</span>
                 </span>
-                <span className="text-cyan-400">•</span>
+                <span className="text-orange-500">•</span>
                 <span className="inline-flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" style={{
-                    boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
+                  <span className="w-3 h-3 rounded-full bg-orange-500 animate-pulse" style={{
+                    boxShadow: '0 0 10px rgba(234, 88, 12, 0.5)'
                   }}></span>
-                  <span className="font-semibold text-white uppercase tracking-wide">Cancel Anytime</span>
+                  <span className="font-semibold text-gray-900 uppercase tracking-wide">Cancel Anytime</span>
                 </span>
-                <span className="text-cyan-400">•</span>
+                <span className="text-orange-500">•</span>
                 <span className="inline-flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" style={{
-                    boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
+                  <span className="w-3 h-3 rounded-full bg-orange-500 animate-pulse" style={{
+                    boxShadow: '0 0 10px rgba(234, 88, 12, 0.5)'
                   }}></span>
-                  <span className="font-semibold text-white uppercase tracking-wide">5-Min Setup</span>
+                  <span className="font-semibold text-gray-900 uppercase tracking-wide">5-Min Setup</span>
                 </span>
               </div>
             </div>

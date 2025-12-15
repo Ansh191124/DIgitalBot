@@ -66,25 +66,25 @@ export function LeadFormMini() {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <form onSubmit={handleSubmit} className="bg-gradient-to-br from-gray-900 via-black to-gray-800 border border-cyan-400/30 rounded-xl shadow-2xl p-6 space-y-4 relative overflow-hidden backdrop-blur-sm"
+      <form onSubmit={handleSubmit} className="bg-gradient-to-br from-white via-orange-50 to-orange-100 border border-orange-500/30 rounded-xl shadow-2xl p-6 space-y-4 relative overflow-hidden"
         style={{
           clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))',
-          boxShadow: '0 0 30px rgba(0, 255, 255, 0.3)'
+          boxShadow: '0 0 30px rgba(234, 88, 12, 0.3)'
         }}>
-        
-        {/* Cyberpunk Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-cyan-600/5 pointer-events-none"></div>
-        <div className="absolute top-0 right-0 w-20 h-20 bg-cyan-400/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-0 left-0 w-16 h-16 bg-cyan-500/10 rounded-full blur-lg"></div>
-        
+
+        {/* Light Theme Background Effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-orange-600/5 pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-20 h-20 bg-orange-400/10 rounded-full blur-xl"></div>
+        <div className="absolute bottom-0 left-0 w-16 h-16 bg-orange-500/10 rounded-full blur-lg"></div>
+
         <div className="relative z-10">
-          <h3 className="text-xl font-bold text-cyan-400 mb-4 text-center uppercase tracking-wide"
-            style={{ textShadow: '0 0 10px rgba(0, 255, 255, 0.5)' }}>
+          <h3 className="text-xl font-bold text-orange-600 mb-4 text-center uppercase tracking-wide"
+            style={{ textShadow: '0 0 10px rgba(234, 88, 12, 0.3)' }}>
             Contact Sales
           </h3>
-          
+
           {isSuccess && (
-            <div className="p-3 bg-emerald-500/20 border border-emerald-400/50 rounded-lg flex items-center gap-2 text-emerald-300 text-sm mb-4"
+            <div className="p-3 bg-emerald-500/20 border border-emerald-500/50 rounded-lg flex items-center gap-2 text-emerald-700 text-sm mb-4"
               style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
                 boxShadow: '0 0 15px rgba(16, 185, 129, 0.3)'
@@ -92,9 +92,9 @@ export function LeadFormMini() {
               <CheckCircle2 className="w-4 h-4" /> Thank you! We'll contact you soon.
             </div>
           )}
-          
+
           {error && (
-            <div className="p-3 bg-red-500/20 border border-red-400/50 rounded-lg text-red-300 text-sm mb-4"
+            <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-700 text-sm mb-4"
               style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
                 boxShadow: '0 0 15px rgba(239, 68, 68, 0.3)'
@@ -103,7 +103,7 @@ export function LeadFormMini() {
             </div>
           )}
           <div className="relative group">
-            <User className="absolute left-3 top-3 w-4 h-4 text-cyan-400 z-10" />
+            <User className="absolute left-3 top-3 w-4 h-4 text-orange-500 z-10" />
             <input
               type="text"
               name="name"
@@ -111,15 +111,15 @@ export function LeadFormMini() {
               value={formData.name}
               onChange={handleChange}
               placeholder="Full Name"
-              className="w-full pl-10 pr-3 py-2.5 bg-gray-800/50 border border-cyan-400/30 text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-gray-800/70 outline-none transition-all duration-300 backdrop-blur-sm"
+              className="w-full pl-10 pr-3 py-2.5 bg-white/70 border border-orange-400/30 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:bg-white outline-none transition-all duration-300"
               style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
               }}
             />
           </div>
-          
+
           <div className="relative group">
-            <Mail className="absolute left-3 top-3 w-4 h-4 text-cyan-400 z-10" />
+            <Mail className="absolute left-3 top-3 w-4 h-4 text-orange-500 z-10" />
             <input
               type="email"
               name="email"
@@ -127,15 +127,15 @@ export function LeadFormMini() {
               value={formData.email}
               onChange={handleChange}
               placeholder="Work Email"
-              className="w-full pl-10 pr-3 py-2.5 bg-gray-800/50 border border-cyan-400/30 text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-gray-800/70 outline-none transition-all duration-300 backdrop-blur-sm"
+              className="w-full pl-10 pr-3 py-2.5 bg-white/70 border border-orange-400/30 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:bg-white outline-none transition-all duration-300"
               style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
               }}
             />
           </div>
-          
+
           <div className="relative group">
-            <Phone className="absolute left-3 top-3 w-4 h-4 text-cyan-400 z-10" />
+            <Phone className="absolute left-3 top-3 w-4 h-4 text-orange-500 z-10" />
             <input
               type="tel"
               name="phone"
@@ -143,15 +143,15 @@ export function LeadFormMini() {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Phone Number"
-              className="w-full pl-10 pr-3 py-2.5 bg-gray-800/50 border border-cyan-400/30 text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-gray-800/70 outline-none transition-all duration-300 backdrop-blur-sm"
+              className="w-full pl-10 pr-3 py-2.5 bg-white/70 border border-orange-400/30 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:bg-white outline-none transition-all duration-300"
               style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
               }}
             />
           </div>
-          
+
           <div className="relative group">
-            <Building2 className="absolute left-3 top-3 w-4 h-4 text-cyan-400 z-10" />
+            <Building2 className="absolute left-3 top-3 w-4 h-4 text-orange-500 z-10" />
             <input
               type="text"
               name="company"
@@ -159,15 +159,15 @@ export function LeadFormMini() {
               value={formData.company}
               onChange={handleChange}
               placeholder="Company Name"
-              className="w-full pl-10 pr-3 py-2.5 bg-gray-800/50 border border-cyan-400/30 text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-gray-800/70 outline-none transition-all duration-300 backdrop-blur-sm"
+              className="w-full pl-10 pr-3 py-2.5 bg-white/70 border border-orange-400/30 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:bg-white outline-none transition-all duration-300"
               style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
               }}
             />
           </div>
-          
+
           <div className="relative group">
-            <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-cyan-400 z-10" />
+            <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-orange-500 z-10" />
             <textarea
               name="message"
               required
@@ -175,17 +175,17 @@ export function LeadFormMini() {
               onChange={handleChange}
               placeholder="How can we help?"
               rows={3}
-              className="w-full pl-10 pr-3 py-2.5 bg-gray-800/50 border border-cyan-400/30 text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-gray-800/70 outline-none transition-all duration-300 resize-none backdrop-blur-sm"
+              className="w-full pl-10 pr-3 py-2.5 bg-white/70 border border-orange-400/30 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:bg-white outline-none transition-all duration-300 resize-none"
               style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
               }}
             />
           </div>
-          
+
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 text-black font-bold flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30 uppercase tracking-wide"
+            className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30 uppercase tracking-wide"
             style={{
               clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
             }}
@@ -202,14 +202,14 @@ export function LeadFormMini() {
               </>
             )}
           </button>
-          
-          <div className="text-xs text-gray-400 text-center mt-3">
-            By submitting, you agree to our <a href="/privacy" className="text-cyan-400 underline hover:text-cyan-300 transition-colors">Privacy Policy</a>.
+
+          <div className="text-xs text-gray-600 text-center mt-3">
+            By submitting, you agree to our <a href="/privacy" className="text-orange-600 underline hover:text-orange-700 transition-colors">Privacy Policy</a>.
           </div>
-          
-          <div className="flex flex-col gap-1 text-xs text-center text-gray-400 mt-2 p-3 bg-gray-800/30 border border-cyan-400/20 rounded-lg">
-            <span>Email: <a href="mailto:hello@digitalbot.ai" className="text-cyan-400 underline hover:text-cyan-300 transition-colors">hello@digitalbot.ai</a></span>
-            <span>Phone: <a href="tel:+917892518414" className="text-cyan-400 underline hover:text-cyan-300 transition-colors">+91 78925 18414</a></span>
+
+          <div className="flex flex-col gap-1 text-xs text-center text-gray-700 mt-2 p-3 bg-orange-50/50 border border-orange-400/20 rounded-lg">
+            <span>Email: <a href="mailto:hello@digitalbot.ai" className="text-orange-600 underline hover:text-orange-700 transition-colors">hello@digitalbot.ai</a></span>
+            <span>Phone: <a href="tel:+917892518414" className="text-orange-600 underline hover:text-orange-700 transition-colors">+91 78925 18414</a></span>
           </div>
         </div>
       </form>

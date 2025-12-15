@@ -26,14 +26,14 @@ export function VoiceConversationPlayer({ audioSrc }: VoiceConversationPlayerPro
   }
 
   return (
-    <div className="bg-black/90 backdrop-blur-md p-4 shadow-2xl border border-cyan-400/30 relative overflow-hidden" style={{
+    <div className="bg-white/90 backdrop-blur-md p-4 shadow-2xl border border-orange-200 relative overflow-hidden" style={{
       clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
     }}>
-      <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400/5 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-cyan-900/10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-orange-200/5 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-orange-100/10 pointer-events-none" />
 
       <div className="relative z-10">
-        <div className="flex items-center justify-center mb-4 h-16 bg-gradient-to-br from-cyan-400/10 to-cyan-900/20 border border-cyan-400/20 relative overflow-hidden" style={{
+        <div className="flex items-center justify-center mb-4 h-16 bg-gradient-to-br from-orange-200/10 to-orange-100/20 border border-orange-200 relative overflow-hidden" style={{
           clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
         }}>
           <div className="flex items-end justify-center gap-1 h-12">
@@ -47,8 +47,8 @@ export function VoiceConversationPlayer({ audioSrc }: VoiceConversationPlayerPro
                   key={index}
                   className={
                     isPlaying
-                      ? "w-1 bg-gradient-to-t from-cyan-500 via-cyan-400 to-cyan-300 rounded-full transition-all duration-300"
-                      : "w-1 bg-gradient-to-t from-cyan-600/30 via-cyan-500/20 to-cyan-400/10 rounded-full"
+                      ? "w-1 bg-gradient-to-t from-orange-600 via-orange-500 to-orange-400 rounded-full transition-all duration-300"
+                      : "w-1 bg-gradient-to-t from-orange-600/30 via-orange-500/20 to-orange-400/10 rounded-full"
                   }
                   style={{
                     height: `${height}px`,
@@ -56,7 +56,7 @@ export function VoiceConversationPlayer({ audioSrc }: VoiceConversationPlayerPro
                       ? `sound-wave ${0.5 + (index % 3) * 0.2}s ease-in-out infinite`
                       : undefined,
                     animationDelay: isPlaying ? `${index * 0.05}s` : undefined,
-                    boxShadow: isPlaying ? '0 0 4px rgba(0, 255, 255, 0.4)' : undefined
+                    boxShadow: isPlaying ? '0 0 4px rgba(234, 88, 12, 0.3)' : undefined
                   }}
                 />
               )
@@ -67,14 +67,14 @@ export function VoiceConversationPlayer({ audioSrc }: VoiceConversationPlayerPro
         <div className="flex items-center justify-center">
           <button
             onClick={handlePlayPause}
-            className="group relative flex items-center gap-2 px-4 py-2 bg-cyan-400 hover:bg-cyan-300 text-black shadow-xl hover:shadow-cyan-400/30 hover:scale-105 transition-all duration-300 overflow-hidden border border-cyan-400 uppercase tracking-wide text-xs font-bold"
+            className="group relative flex items-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white shadow-xl hover:shadow-orange-500/30 hover:scale-105 transition-all duration-300 overflow-hidden border border-orange-400 uppercase tracking-wide text-xs font-bold"
             style={{
               clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
             }}
             aria-label={isPlaying ? "Pause voice AI demonstration" : "Play voice AI for business sample conversation"}
             type="button"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-300/30 to-transparent opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-400/30 to-transparent opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500" />
             <div className="relative z-10 flex items-center gap-2">
               {isPlaying ? <Pause className="w-3 h-3 animate-pulse" /> : <Play className="w-3 h-3" />}
               <span className="font-bold">

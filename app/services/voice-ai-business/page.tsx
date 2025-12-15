@@ -158,20 +158,20 @@ export default function VoiceAIBusiness() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <Header />
-      
+
       <main className="min-h-screen">
-      
-      {/* Hero Section - Cyberpunk Theme */}
-      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black min-h-screen flex items-center" role="banner" aria-labelledby="hero-heading">
+
+      {/* Hero Section - Orange Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-white min-h-screen flex items-center" role="banner" aria-labelledby="hero-heading">
         <div className="container mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-6 items-center">
-            
+
             {/* Left Content */}
             <div className="text-center lg:text-left">
               {/* Hero Badge */}
               <div className="inline-block mb-4">
-                <span 
-                  className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                <span
+                  className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-white bg-orange-600 shadow-md hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105 border border-orange-600 uppercase tracking-wide"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                   }}
@@ -183,11 +183,11 @@ export default function VoiceAIBusiness() {
 
               {/* H1 Heading - Cyberpunk Style */}
               <h1 id="hero-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-                <span className="block mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
+                <span className="block mb-2 bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                   Voice AI for Business
                 </span>
-                <span 
-                  className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg text-xl sm:text-2xl lg:text-3xl font-bold uppercase tracking-wide border border-cyan-400 hover:shadow-cyan-400/50 transition-all duration-300"
+                <span
+                  className="inline-block px-4 py-2 text-white bg-orange-600 shadow-lg text-xl sm:text-2xl lg:text-3xl font-bold uppercase tracking-wide border border-orange-600 hover:shadow-orange-400/50 transition-all duration-300"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
                   }}
@@ -197,22 +197,22 @@ export default function VoiceAIBusiness() {
               </h1>
 
               {/* SEO-Rich Description */}
-              <div 
-                className="mb-6 p-4 bg-gray-900/80 border border-cyan-400/30 shadow-lg backdrop-blur-sm"
+              <div
+                className="mb-6 p-4 bg-white/80 border border-orange-400/30 shadow-lg backdrop-blur-sm"
                 style={{
                   clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                 }}
               >
-                <p className="text-sm sm:text-base text-white leading-relaxed">
-                  Enterprise-grade <strong className="text-cyan-400">voice AI for business</strong> that automates customer service, accelerates sales, and boosts productivity by <strong className="text-cyan-400">400%</strong>. Deploy in <strong className="text-cyan-400">48 hours</strong> with zero infrastructure.
+                <p className="text-sm sm:text-base text-gray-900 leading-relaxed">
+                  Enterprise-grade <strong className="text-orange-600">voice AI for business</strong> that automates customer service, accelerates sales, and boosts productivity by <strong className="text-orange-600">400%</strong>. Deploy in <strong className="text-orange-600">48 hours</strong> with zero infrastructure.
                 </p>
               </div>
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-6">
-                <Link 
+                <Link
                   href="/signup"
-                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-white bg-orange-600 shadow-md hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105 border border-orange--600 uppercase tracking-wide"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                   }}
@@ -220,9 +220,9 @@ export default function VoiceAIBusiness() {
                   <Target className="mr-2 w-3 h-3" />
                   Start Free Trial
                 </Link>
-                <Link 
+                <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-cyan-400 bg-transparent border border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-orange-600 bg-transparent border border-orange-600 hover:bg-orange-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                   }}
@@ -231,23 +231,23 @@ export default function VoiceAIBusiness() {
                   Schedule Demo
                 </Link>
               </div>
-              
+
               {/* Trust Signals */}
               <div className="grid grid-cols-3 gap-2 text-xs">
                 {["10,000+ Businesses", "4.9/5 Rating", "No Credit Card"].map((signal, idx) => (
                   <div key={idx} className="flex items-center gap-1 justify-center lg:justify-start">
-                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
-                      boxShadow: '0 0 4px rgba(0, 255, 255, 0.4)'
+                    <span className="w-1 h-1 rounded-full bg-orange-600" style={{
+                      boxShadow: '0 0 4px rgba(234, 88, 12, 0.4)'
                     }}></span>
-                    <span className="font-medium text-white">{signal}</span>
+                    <span className="font-medium text-gray-900">{signal}</span>
                   </div>
                 ))}
               </div>
             </div>
-            
+
             {/* Right HD Image */}
             <div className="relative">
-              <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-cyan-400/20 border border-cyan-400/30">
+              <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-orange-400/20 border border-orange-400/30">
                 <Image
                   src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop"
                   alt="Voice AI for Business Technology - Enterprise Communication Dashboard"
@@ -255,41 +255,41 @@ export default function VoiceAIBusiness() {
                   className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-cyan-900/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-orange-900/20 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
-                  <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
+                  <div className="bg-white/90 backdrop-blur-md rounded-xl p-4 border border-orange-400/50">
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg border border-orange-400/30">
                         <Building2 className="w-4 h-4 text-white" />
                       </div>
                       <div>
                         <div className="text-sm font-bold text-white">Enterprise Voice AI</div>
-                        <div className="text-xs text-cyan-400">Business automation</div>
+                        <div className="text-xs text-orange-400">Business automation</div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-cyan-400 font-medium">✓ 400%+ Productivity</span>
-                      <span className="text-cyan-400 font-medium tracking-wide">48hr Deploy</span>
+                      <span className="text-orange-400 font-medium">✓ 400%+ Productivity</span>
+                      <span className="text-orange-400 font-medium tracking-wide">48hr Deploy</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
       </section>
 
-      {/* Introduction Section - Cyberpunk Theme */}
-      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="intro-heading">
+      {/* Introduction Section - Orange Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-white" role="region" aria-labelledby="intro-heading">
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-6 items-center">
-            
+
             {/* Left Content */}
             <div>
               <div className="mb-4">
-                <span 
-                  className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md border border-cyan-400 uppercase tracking-wide"
+                <span
+                  className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-black bg-orange-600 shadow-md border border-orange-600 uppercase tracking-wide"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
                   }}
@@ -298,65 +298,65 @@ export default function VoiceAIBusiness() {
                 </span>
               </div>
               <h2 id="intro-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-                <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                   What is Voice AI for Business?
                 </span>
               </h2>
-              <div className="space-y-3 text-xs sm:text-sm text-white leading-relaxed">
+              <div className="space-y-3 text-xs sm:text-sm text-gray-900 leading-relaxed">
                 <p>
-                  <strong className="text-cyan-400">Voice AI for business</strong> represents the cutting edge of enterprise automation technology, combining advanced natural language processing, machine learning, and conversational AI to revolutionize how companies interact with customers. Unlike traditional IVR systems or simple chatbots, modern voice AI for business understands context, intent, and nuance in human speech.
+                  <strong className="text-orange-600">Voice AI for business</strong> represents the cutting edge of enterprise automation technology, combining advanced natural language processing, machine learning, and conversational AI to revolutionize how companies interact with customers. Unlike traditional IVR systems or simple chatbots, modern voice AI for business understands context, intent, and nuance in human speech.
                 </p>
                 <p>
-                  Today's businesses face unprecedented challenges: rising customer expectations, 24/7 availability demands, global talent shortages, and pressure to reduce operational costs while improving service quality. <strong className="text-cyan-400">Voice AI for business</strong> solves these challenges by providing scalable, intelligent automation that handles thousands of simultaneous conversations.
+                  Today's businesses face unprecedented challenges: rising customer expectations, 24/7 availability demands, global talent shortages, and pressure to reduce operational costs while improving service quality. <strong className="text-orange-600">Voice AI for business</strong> solves these challenges by providing scalable, intelligent automation that handles thousands of simultaneous conversations.
                 </p>
                 <p>
                   The technology powering voice AI for business has reached a tipping point. Recent breakthroughs in large language models, speech synthesis, and real-time processing enable AI systems to conduct sophisticated multi-turn conversations, handle complex business logic, integrate with enterprise systems, and provide personalized experiences.
                 </p>
               </div>
             </div>
-            
+
             {/* Right HD Image */}
             <div className="relative">
-              <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-cyan-400/20 border border-cyan-400/30">
+              <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-orange-400/20 border border-orange-400/30">
                 <Image
                   src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
                   alt="Voice AI Technology Dashboard - Business Analytics and Customer Service Automation"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-cyan-900/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-orange-900/20 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
-                  <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
+                  <div className="bg-white/90 backdrop-blur-md rounded-xl p-4 border border-orange-400/50">
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg border border-orange-400/30">
                         <BrainCircuit className="w-4 h-4 text-white" />
                       </div>
                       <div>
                         <div className="text-sm font-bold text-white">AI Intelligence</div>
-                        <div className="text-xs text-cyan-400">Natural language processing</div>
+                        <div className="text-xs text-orange-400">Natural language processing</div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-cyan-400 font-medium">✓ 98% Accuracy</span>
-                      <span className="text-cyan-400 font-medium tracking-wide">Real-time</span>
+                      <span className="text-orange-400 font-medium">✓ 98% Accuracy</span>
+                      <span className="text-orange-400 font-medium tracking-wide">Real-time</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
       </section>
 
-      {/* Benefits Grid - Cyberpunk Theme */}
-      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="benefits-heading">
+      {/* Benefits Grid - Orange Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-white" role="region" aria-labelledby="benefits-heading">
         <div className="container mx-auto max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-6">
             <div className="inline-block mb-3">
-              <span 
-                className="px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md border border-cyan-400 uppercase tracking-wide"
+              <span
+                className="px-3 py-1.5 text-xs font-bold text-black bg-orange-600 shadow-md border border-orange-600 uppercase tracking-wide"
                 style={{
                   clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
                 }}
@@ -365,28 +365,28 @@ export default function VoiceAIBusiness() {
               </span>
             </div>
             <h2 id="benefits-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                 Why Leading Enterprises Choose Voice AI
               </span>
             </h2>
-            <p className="text-sm sm:text-base text-white max-w-2xl mx-auto leading-relaxed">
-              Discover how <strong className="text-cyan-400">voice AI for business</strong> transforms operations and delivers measurable ROI
+            <p className="text-sm sm:text-base text-gray-900 max-w-2xl mx-auto leading-relaxed">
+              Discover how <strong className="text-orange-600">voice AI for business</strong> transforms operations and delivers measurable ROI
             </p>
           </div>
-          
+
           {/* Benefits Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {benefits.map((benefit, i) => (
-              <div 
-                key={i} 
-                className="bg-gray-900/90 border border-cyan-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-cyan-400 hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 group"
+              <div
+                key={i}
+                className="bg-white border border-orange-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-orange-400 hover:shadow-orange-500/20 transition-all duration-300 hover:scale-105 group"
                 style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}
               >
                 <div className="flex items-start gap-3">
-                  <div 
-                    className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30 group-hover:scale-110 transition-transform"
+                  <div
+                    className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg border border-orange-400/30 group-hover:scale-110 transition-transform"
                     style={{
                       clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))'
                     }}
@@ -394,8 +394,8 @@ export default function VoiceAIBusiness() {
                     <benefit.icon className="w-4 h-4 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold text-white mb-2 leading-tight">{benefit.title}</h3>
-                    <p className="text-xs text-white leading-relaxed">
+                    <h3 className="text-sm font-bold text-gray-900 mb-2 leading-tight">{benefit.title}</h3>
+                    <p className="text-xs text-gray-900 leading-relaxed">
                       {benefit.description}
                     </p>
                   </div>
@@ -406,13 +406,13 @@ export default function VoiceAIBusiness() {
         </div>
       </section>
 
-      {/* Use Cases Section - Cyberpunk Theme */}
-      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="use-cases-heading">
+      {/* Use Cases Section - Orange Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-white" role="region" aria-labelledby="use-cases-heading">
         <div className="container mx-auto max-w-6xl">
           {/* Section Header */}
           <div className="text-center mb-6">
             <h2 id="use-cases-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                 Voice AI for Business: Real-World Applications & Results
               </span>
             </h2>
@@ -420,24 +420,24 @@ export default function VoiceAIBusiness() {
               See how businesses across industries leverage voice AI to achieve breakthrough performance improvements.
             </p>
           </div>
-          
+
           {/* Use Cases Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {useCases.map((useCase, i) => (
-              <div 
+              <div
                 key={i}
-                className="bg-gray-900/90 border border-cyan-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-cyan-400 hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 group"
+                className="bg-white border border-orange-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-orange-400 hover:shadow-orange-500/20 transition-all duration-300 hover:scale-105 group"
                 style={{
                   clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                 }}
               >
                 <div className="mb-3">
-                  <h3 className="text-sm font-bold text-white mb-2 leading-tight">{useCase.title}</h3>
-                  <p className="text-xs text-white leading-relaxed mb-3">
+                  <h3 className="text-sm font-bold text-gray-900 mb-2 leading-tight">{useCase.title}</h3>
+                  <p className="text-xs text-gray-900 leading-relaxed mb-3">
                     {useCase.description}
                   </p>
-                  <div 
-                    className="inline-flex items-center px-2 py-1 bg-cyan-400/20 border border-cyan-400/50 text-xs font-semibold text-white shadow-sm"
+                  <div
+                    className="inline-flex items-center px-2 py-1 bg-orange-400/20 border border-orange-400/50 text-xs font-semibold text-gray-900 shadow-sm"
                     style={{
                       clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))'
                     }}
@@ -451,13 +451,13 @@ export default function VoiceAIBusiness() {
         </div>
       </section>
 
-      {/* Features Section - Cyberpunk Theme */}
-      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="features-advanced-heading">
+      {/* Features Section - Orange Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-white" role="region" aria-labelledby="features-advanced-heading">
         <div className="container mx-auto max-w-6xl">
           {/* Section Header */}
           <div className="text-center mb-6">
             <h2 id="features-advanced-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                 Advanced Capabilities: How Voice AI for Business Works
               </span>
             </h2>
@@ -465,7 +465,7 @@ export default function VoiceAIBusiness() {
               Enterprise-grade technology stack powering the most sophisticated voice AI for business solutions.
             </p>
           </div>
-          
+
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
@@ -510,16 +510,16 @@ export default function VoiceAIBusiness() {
                 ]
               }
             ].map((feature, i) => (
-              <div 
+              <div
                 key={i}
-                className="bg-gray-900/90 border border-cyan-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-cyan-400 hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 group"
+                className="bg-white border border-orange-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-orange-400 hover:shadow-orange-500/20 transition-all duration-300 hover:scale-105 group"
                 style={{
                   clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                 }}
               >
                 <div className="flex items-start gap-3 mb-3">
-                  <div 
-                    className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30 group-hover:scale-110 transition-transform"
+                  <div
+                    className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg border border-orange-400/30 group-hover:scale-110 transition-transform"
                     style={{
                       clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))'
                     }}
@@ -527,15 +527,15 @@ export default function VoiceAIBusiness() {
                     <feature.icon className="w-4 h-4 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold text-white mb-2 leading-tight">{feature.title}</h3>
-                    <p className="text-xs text-white leading-relaxed mb-3">
+                    <h3 className="text-sm font-bold text-gray-900 mb-2 leading-tight">{feature.title}</h3>
+                    <p className="text-xs text-gray-900 leading-relaxed mb-3">
                       {feature.description}
                     </p>
                     <ul className="space-y-1">
                       {feature.features.map((item, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-xs">
-                          <span className="text-cyan-400 font-bold mt-0.5">✓</span>
-                          <span className="text-white">{item}</span>
+                          <span className="text-orange-600 font-bold mt-0.5">✓</span>
+                          <span className="text-gray-900">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -547,16 +547,16 @@ export default function VoiceAIBusiness() {
         </div>
       </section>
 
-      {/* Sample Conversation Section - Cyberpunk Theme */}
-      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="demo-heading">
+      {/* Sample Conversation Section - Orange Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-white" role="region" aria-labelledby="demo-heading">
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-6 items-center">
-            
+
             {/* Left Content */}
             <div>
               <div className="mb-4">
-                <span 
-                  className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md border border-cyan-400 uppercase tracking-wide"
+                <span
+                  className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-black bg-orange-600 shadow-md border border-orange-600 uppercase tracking-wide"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
                   }}
@@ -566,16 +566,16 @@ export default function VoiceAIBusiness() {
                 </span>
               </div>
               <h2 id="demo-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-                <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                   Experience Voice AI for Business in Action
                 </span>
               </h2>
-              <p className="text-sm sm:text-base text-white leading-relaxed mb-4">
+              <p className="text-sm sm:text-base text-gray-900 leading-relaxed mb-4">
                 Listen to how our voice AI for business handles real customer interactions with natural, intelligent responses that drive satisfaction and conversion.
               </p>
-              
-              <div 
-                className="bg-gray-900/80 border border-cyan-400/30 p-4 shadow-lg backdrop-blur-sm"
+
+              <div
+                className="bg-white border border-orange-400/30 p-4 shadow-lg backdrop-blur-sm"
                 style={{
                   clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                 }}
@@ -583,49 +583,49 @@ export default function VoiceAIBusiness() {
                 <VoiceConversationPlayer audioSrc="/sample-conversation.mp3" />
               </div>
             </div>
-            
+
             {/* Right HD Image */}
             <div className="relative">
-              <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-cyan-400/20 border border-cyan-400/30">
+              <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-orange-400/20 border border-orange-400/30">
                 <Image
                   src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2070&auto=format&fit=crop"
                   alt="Voice AI Customer Service Dashboard - Real-time Analytics and Performance Metrics"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-cyan-900/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-orange-900/20 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
-                  <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
+                  <div className="bg-white/90 backdrop-blur-md rounded-xl p-4 border border-orange-400/50">
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg border border-orange-400/30">
                         <HeadphonesIcon className="w-4 h-4 text-white" />
                       </div>
                       <div>
                         <div className="text-sm font-bold text-white">Live Demo</div>
-                        <div className="text-xs text-cyan-400">Voice AI conversation</div>
+                        <div className="text-xs text-orange-400">Voice AI conversation</div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-cyan-400 font-medium">✓ Natural Speech</span>
-                      <span className="text-cyan-400 font-medium tracking-wide">Real-time</span>
+                      <span className="text-orange-400 font-medium">✓ Natural Speech</span>
+                      <span className="text-orange-400 font-medium tracking-wide">Real-time</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
       </section>
 
-      {/* FAQ Section - Cyberpunk Theme */}
-      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="faq-heading">
+      {/* FAQ Section - Orange Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-white" role="region" aria-labelledby="faq-heading">
         <div className="container mx-auto max-w-6xl">
           {/* Section Header */}
           <div className="text-center mb-6">
             <div className="inline-block mb-3">
-              <span 
-                className="px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md border border-cyan-400 uppercase tracking-wide"
+              <span
+                className="px-3 py-1.5 text-xs font-bold text-black bg-orange-600 shadow-md border border-orange-600 uppercase tracking-wide"
                 style={{
                   clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
                 }}
@@ -634,18 +634,18 @@ export default function VoiceAIBusiness() {
               </span>
             </div>
             <h2 id="faq-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-              <span className="block mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
+              <span className="block mb-2 bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                 Frequently Asked
               </span>
-              <span className="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                 Questions
               </span>
             </h2>
-            <p className="text-sm sm:text-base text-white max-w-2xl mx-auto leading-relaxed">
-              Everything you need to know about <span className="text-cyan-400 font-semibold">Voice AI for Business</span>
+            <p className="text-sm sm:text-base text-gray-900 max-w-2xl mx-auto leading-relaxed">
+              Everything you need to know about <span className="text-orange-600 font-semibold">Voice AI for Business</span>
             </p>
           </div>
-          
+
           {/* FAQ Grid */}
           <div className="grid md:grid-cols-2 gap-4">
             {[
@@ -674,27 +674,27 @@ export default function VoiceAIBusiness() {
                 answer: "Absolutely. Voice AI for business offers 200+ native integrations with popular platforms like Salesforce, HubSpot, Zendesk, Microsoft Dynamics, and more. Additionally, robust RESTful APIs and webhook support enable custom integrations with proprietary systems, ensuring seamless data flow across your entire technology ecosystem."
               }
             ].map((faq, index) => (
-              <div 
-                key={index} 
-                className="bg-gray-900/90 border border-cyan-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-cyan-400 hover:shadow-cyan-500/20 transition-all duration-300 hover:scale-105 group"
+              <div
+                key={index}
+                className="bg-white border border-orange-400/30 p-4 shadow-lg backdrop-blur-sm hover:border-orange-400 hover:shadow-orange-500/20 transition-all duration-300 hover:scale-105 group"
                 style={{
                   clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                 }}
               >
                 <div className="flex items-start gap-3 mb-3">
-                  <div 
-                    className="w-6 h-6 bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30 font-bold text-xs text-white group-hover:scale-110 transition-transform"
+                  <div
+                    className="w-6 h-6 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg border border-orange-400/30 font-bold text-xs text-white group-hover:scale-110 transition-transform"
                     style={{
                       clipPath: 'polygon(0 0, calc(100% - 3px) 0, 100% 3px, 100% 100%, 3px 100%, 0 calc(100% - 3px))'
                     }}
                   >
                     {String(index + 1).padStart(2, '0')}
                   </div>
-                  <h3 className="text-sm font-bold text-white leading-tight flex-1">
+                  <h3 className="text-sm font-bold text-gray-900 leading-tight flex-1">
                     {faq.question}
                   </h3>
                 </div>
-                <p className="text-xs text-white leading-relaxed ml-9">
+                <p className="text-xs text-gray-900 leading-relaxed ml-9">
                   {faq.answer}
                 </p>
               </div>
@@ -703,14 +703,14 @@ export default function VoiceAIBusiness() {
         </div>
       </section>
 
-      {/* CTA Section - Cyberpunk Theme */}
-      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-black" role="region" aria-labelledby="cta-heading">
+      {/* CTA Section - Orange Theme */}
+      <section className="py-8 px-3 sm:px-4 lg:px-6 bg-white" role="region" aria-labelledby="cta-heading">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center">
             {/* CTA Badge */}
             <div className="inline-block mb-4">
-              <span 
-                className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+              <span
+                className="inline-flex items-center px-3 py-1.5 text-xs font-bold text-white bg-orange-600 shadow-md hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105 border border-orange-600 uppercase tracking-wide"
                 style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}
@@ -722,11 +722,11 @@ export default function VoiceAIBusiness() {
 
             {/* CTA Heading */}
             <h2 id="cta-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
-              <span className="block mb-2 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent">
+              <span className="block mb-2 bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 bg-clip-text text-transparent">
                 Ready to Transform Your Business
               </span>
-              <span 
-                className="inline-block px-4 py-2 text-black bg-cyan-400 shadow-lg text-lg sm:text-xl lg:text-2xl font-bold uppercase tracking-wide border border-cyan-400 hover:shadow-cyan-400/50 transition-all duration-300"
+              <span
+                className="inline-block px-4 py-2 text-white bg-orange-600 shadow-lg text-lg sm:text-xl lg:text-2xl font-bold uppercase tracking-wide border border-orange-600 hover:shadow-orange-400/50 transition-all duration-300"
                 style={{
                   clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
                 }}
@@ -736,30 +736,30 @@ export default function VoiceAIBusiness() {
             </h2>
 
             {/* CTA Description */}
-            <div 
-              className="max-w-3xl mx-auto mb-6 p-4 bg-gray-900/80 border border-cyan-400/30 shadow-lg backdrop-blur-sm"
+            <div
+              className="max-w-3xl mx-auto mb-6 p-4 bg-white border border-orange-400/30 shadow-lg backdrop-blur-sm"
               style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}
             >
-              <p className="text-sm sm:text-base text-white leading-relaxed">
-                Join <strong className="text-cyan-400">10,000+ businesses</strong> using voice AI to automate customer service, accelerate sales, and boost productivity by <strong className="text-cyan-400">400%</strong>. Start your free trial today with no credit card required.
+              <p className="text-sm sm:text-base text-gray-900 leading-relaxed">
+                Join <strong className="text-orange-600">10,000+ businesses</strong> using voice AI to automate customer service, accelerate sales, and boost productivity by <strong className="text-orange-600">400%</strong>. Start your free trial today with no credit card required.
               </p>
             </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
-                <Link 
+                <Link
                   href="/signup"
-                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-black bg-orange-600 shadow-md hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105 border border-orange-600 uppercase tracking-wide"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                   }}
                 >
                   Start Free Trial Now
                 </Link>
-                <Link 
+                <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-cyan-400 bg-transparent border border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
+                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-orange-600 bg-transparent border border-orange-400 hover:bg-orange-600/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
                   }}
@@ -767,15 +767,15 @@ export default function VoiceAIBusiness() {
                   Talk to Voice AI Specialist
                 </Link>
               </div>
-              
+
               {/* Trust Signals */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
                 {["No Credit Card Required", "Deploy in 48 Hours", "24/7 Expert Support", "Cancel Anytime"].map((signal, idx) => (
                   <div key={idx} className="flex items-center gap-1 justify-center">
-                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
-                      boxShadow: '0 0 4px rgba(0, 255, 255, 0.4)'
+                    <span className="w-1 h-1 rounded-full bg-orange-600" style={{
+                      boxShadow: '0 0 4px rgba(234, 88, 12, 0.4)'
                     }}></span>
-                    <span className="font-medium text-white">{signal}</span>
+                    <span className="font-medium text-gray-900">{signal}</span>
                   </div>
                 ))}
               </div>

@@ -12,49 +12,55 @@ const features = [
     icon: Bot,
     title: "Intelligent Voice Automation",
     description: "Advanced AI-powered voice automation software that understands natural language and provides human-like responses for seamless customer interactions.",
-    borderColor: "border-cyan-500/30",
-    iconBg: "from-cyan-500 to-cyan-400",
-    glow: "from-cyan-400 via-cyan-500 to-cyan-300"
+    borderColor: "border-orange-300/30",
+    iconBg: "from-orange-500 to-orange-400",
+    glow: "from-orange-400 via-orange-500 to-orange-300",
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=300&fit=crop"
   },
   {
     icon: Zap,
     title: "Instant Response Times",
     description: "Lightning-fast voice automation software delivers responses in under 750ms, ensuring smooth conversations without awkward pauses or delays.",
-    borderColor: "border-cyan-500/30",
-    iconBg: "from-cyan-400 to-cyan-500",
-    glow: "from-cyan-400 via-cyan-500 to-cyan-300"
+    borderColor: "border-orange-300/30",
+    iconBg: "from-orange-400 to-orange-500",
+    glow: "from-orange-400 via-orange-500 to-orange-300",
+    image: "https://images.unsplash.com/photo-1526374965328-7f5ae4e8a83f?w=400&h=300&fit=crop"
   },
   {
     icon: Clock,
     title: "24/7 Availability",
     description: "Voice automation software that never sleeps, handling unlimited customer calls simultaneously around the clock without human intervention.",
-    borderColor: "border-cyan-500/30",
-    iconBg: "from-cyan-400 to-cyan-500",
-    glow: "from-cyan-400 via-cyan-500 to-cyan-400"
+    borderColor: "border-orange-300/30",
+    iconBg: "from-orange-400 to-orange-500",
+    glow: "from-orange-400 via-orange-500 to-orange-400",
+    image: "https://images.unsplash.com/photo-1460925895917-adf4e565db18?w=400&h=300&fit=crop"
   },
   {
     icon: Shield,
     title: "Enterprise Security",
     description: "Bank-level encryption and compliance with SOC 2, GDPR standards ensuring your voice automation software protects sensitive customer data.",
-    borderColor: "border-cyan-500/30",
-    iconBg: "from-cyan-500 to-cyan-400",
-    glow: "from-cyan-500 via-cyan-400 to-cyan-300"
+    borderColor: "border-orange-300/30",
+    iconBg: "from-orange-500 to-orange-400",
+    glow: "from-orange-500 via-orange-400 to-orange-300",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=300&fit=crop"
   },
   {
     icon: Users,
     title: "Unlimited Scalability",
     description: "Voice automation software that scales effortlessly from 10 to 10,000 concurrent conversations, growing with your business needs.",
-    borderColor: "border-cyan-500/30",
-    iconBg: "from-cyan-500 to-cyan-400",
-    glow: "from-cyan-400 via-cyan-300 to-cyan-500"
+    borderColor: "border-orange-300/30",
+    iconBg: "from-orange-500 to-orange-400",
+    glow: "from-orange-400 via-orange-300 to-orange-500",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"
   },
   {
     icon: BarChart3,
     title: "Real-Time Analytics",
     description: "Comprehensive dashboards provide actionable insights on every conversation, helping optimize your voice automation software performance.",
-    borderColor: "border-cyan-500/30",
-    iconBg: "from-cyan-500 to-cyan-400",
-    glow: "from-cyan-500 via-cyan-400 to-cyan-300"
+    borderColor: "border-orange-300/30",
+    iconBg: "from-orange-500 to-orange-400",
+    glow: "from-orange-500 via-orange-400 to-orange-300",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop"
   },
 ]
 
@@ -118,35 +124,34 @@ export default function VoiceAutomation() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white">
+    <div className="min-h-screen flex flex-col bg-white text-gray-900">
       <Header />
       <main className="flex-1">
-        {/* Hero Section - Cyberpunk */}
-        <section className="relative overflow-hidden bg-black py-16 md:py-20">
-          <div 
-            className="absolute inset-0 bg-black bg-cover bg-center"
+        {/* Hero Section - Modern Light */}
+        <section className="relative overflow-hidden bg-white py-16 md:py-20">
+          <div
+            className="absolute inset-0 bg-white bg-cover bg-center"
             style={{
-              backgroundImage: `radial-gradient(circle at 30% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%), 
-                               radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-                               url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop')`
+              backgroundImage: `radial-gradient(circle at 30% 20%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+                               radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 50%)`
             }}
           >
-            <div className="absolute inset-0 bg-black/80"></div>
+            <div className="absolute inset-0 bg-white/40"></div>
           </div>
 
-          {/* Cyberpunk Grid Background */}
-          <div 
-            className="absolute inset-0 opacity-20 pointer-events-none"
+          {/* Light Grid Background */}
+          <div
+            className="absolute inset-0 opacity-10 pointer-events-none"
             style={{
-              backgroundImage: `radial-gradient(circle at 25% 25%, rgba(0, 255, 255, 0.1) 0%, transparent 50%), 
-                               radial-gradient(circle at 75% 75%, rgba(0, 255, 255, 0.1) 0%, transparent 50%)`
+              backgroundImage: `radial-gradient(circle at 25% 25%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+                               radial-gradient(circle at 75% 75%, rgba(249, 115, 22, 0.05) 0%, transparent 50%)`
             }}
           ></div>
 
-          <div className="container mx-auto px-3 sm:px-4 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div 
-                className="inline-flex items-center gap-2 bg-black/50 border border-cyan-500 text-cyan-400 px-4 py-2 mb-6 backdrop-blur-sm"
+          <div className="w-full px-3 sm:px-4 relative z-10">
+            <div className="text-center">
+              <div
+                className="inline-flex items-center gap-2 bg-orange-50 border border-orange-300 text-orange-600 px-4 py-2 mb-6"
                 style={{ clipPath: 'polygon(15px 0%, 100% 0%, calc(100% - 15px) 100%, 0% 100%)' }}
               >
                 <Mic className="w-3 h-3" />
@@ -154,32 +159,32 @@ export default function VoiceAutomation() {
               </div>
 
               <h1 className="text-lg md:text-xl lg:text-2xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600 text-transparent bg-clip-text">
                   Automate Every Voice
                 </span>
                 <br />
-                <span 
-                  className="relative inline-block mt-2 px-4 py-2 bg-black/70 border border-cyan-500 text-white text-sm backdrop-blur-sm"
+                <span
+                  className="relative inline-block mt-2 px-4 py-2 bg-orange-50 border border-orange-300 text-gray-900 text-sm"
                   style={{ clipPath: 'polygon(20px 0%, 100% 0%, calc(100% - 20px) 100%, 0% 100%)' }}
                 >
-                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-transparent to-cyan-500/20"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-orange-300/20 via-transparent to-orange-300/20"></span>
                   <span className="relative z-10">Interaction with AI</span>
                 </span>
               </h1>
 
-              <p className="text-sm md:text-base mb-8 text-white max-w-3xl mx-auto leading-relaxed">
-                Transform your business with intelligent <strong className="text-cyan-400">voice automation software</strong> that handles calls, 
+              <p className="text-sm md:text-base mb-8 text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                Transform your business with intelligent <strong className="text-orange-600">voice automation software</strong> that handles calls,
                 schedules appointments, qualifies leads, and provides instant support 24/7 without human intervention.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-8">
-                <Button asChild size="sm" className="bg-cyan-500 text-black hover:bg-cyan-400 px-6 transition-all duration-300 hover:scale-105">
+                <Button asChild size="sm" className="bg-orange-500 text-white hover:bg-orange-600 px-6 transition-all duration-300 hover:scale-105">
                   <Link href="/signup">
                     Start Free Trial
                     <ArrowRight className="ml-2 w-3 h-3" />
                   </Link>
                 </Button>
-                <Button asChild size="sm" variant="outline" className="border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-black px-6">
+                <Button asChild size="sm" variant="outline" className="border border-orange-400 text-orange-600 hover:bg-orange-50 hover:text-orange-700 px-6">
                   <Link href="/contact">
                     <Phone className="mr-2 w-3 h-3" />
                     Request Demo
@@ -187,25 +192,25 @@ export default function VoiceAutomation() {
                 </Button>
               </div>
 
-              <div 
-                className="inline-flex flex-col gap-3 bg-black/60 backdrop-blur-sm border border-cyan-500/30 p-4"
+              <div
+                className="inline-flex flex-col gap-3 bg-orange-50 border border-orange-200 p-4"
                 style={{ clipPath: 'polygon(20px 0%, 100% 0%, calc(100% - 20px) 100%, 0% 100%)' }}
               >
                 <div className="flex flex-wrap gap-4 justify-center items-center text-xs font-medium">
-                  <div className="flex items-center gap-2 text-cyan-400">
-                    <CheckCircle className="w-3 h-3 text-cyan-400" />
+                  <div className="flex items-center gap-2 text-orange-600">
+                    <CheckCircle className="w-3 h-3 text-orange-600" />
                     <span>99.9% Uptime SLA</span>
                   </div>
-                  <div className="flex items-center gap-2 text-cyan-400">
-                    <Shield className="w-3 h-3 text-cyan-400" />
+                  <div className="flex items-center gap-2 text-orange-600">
+                    <Shield className="w-3 h-3 text-orange-600" />
                     <span>SOC 2 Type II Certified</span>
                   </div>
-                  <div className="flex items-center gap-2 text-cyan-400">
-                    <Shield className="w-3 h-3 text-cyan-400" />
+                  <div className="flex items-center gap-2 text-orange-600">
+                    <Shield className="w-3 h-3 text-orange-600" />
                     <span>GDPR & HIPAA Compliant</span>
                   </div>
-                  <div className="flex items-center gap-2 text-cyan-400">
-                    <Zap className="w-3 h-3 text-cyan-400" />
+                  <div className="flex items-center gap-2 text-orange-600">
+                    <Zap className="w-3 h-3 text-orange-600" />
                     <span>&lt;750ms Response Time</span>
                   </div>
                 </div>
@@ -214,95 +219,196 @@ export default function VoiceAutomation() {
           </div>
         </section>
 
-        {/* Benefits Grid - Cyberpunk */}
-        <section className="py-12 bg-black">
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-10"
+        {/* Benefits Grid - Modern Light */}
+        <section className="py-12 bg-gray-50">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-5"
             style={{
               backgroundImage: `url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop')`
             }}
           >
-            <div className="absolute inset-0 bg-black/90"></div>
+            <div className="absolute inset-0 bg-gray-50/60"></div>
           </div>
-          
+
           <div className="container mx-auto px-3 sm:px-4 relative z-10">
             <div className="text-center mb-12">
-              <h2 className="text-lg md:text-xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text">
+              <h2 className="text-lg md:text-xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600 text-transparent bg-clip-text">
                 Why Choose Our Voice Automation Software
               </h2>
-              <p className="text-sm text-white max-w-2xl mx-auto">
+              <p className="text-sm text-gray-700 max-w-2xl mx-auto">
                 The most advanced voice automation software platform built for modern businesses
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 w-full\">
               {features.map((feature, index) => (
-                <div 
+                <div
                   key={index}
-                  className="group relative bg-black/60 border border-cyan-500/30 backdrop-blur-sm p-6 hover:border-cyan-500 hover:scale-105 transition-all duration-300 overflow-hidden"
+                  className="group relative bg-white border border-orange-200 overflow-hidden shadow-sm hover:shadow-md hover:border-orange-400 hover:scale-105 transition-all duration-300"
                   style={{ clipPath: 'polygon(15px 0%, 100% 0%, calc(100% - 15px) 100%, 0% 100%)' }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  
-                  <div 
-                    className="w-10 h-10 bg-black/70 border border-cyan-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform backdrop-blur-sm"
-                    style={{ clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)' }}
-                  >
-                    <feature.icon className="w-4 h-4 text-cyan-400" />
+                  {/* Image Section */}
+                  <div className="relative h-40 overflow-hidden bg-gray-100">
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/20"></div>
                   </div>
 
-                  <h3 className="text-sm font-bold mb-2 text-cyan-400 group-hover:text-white transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-white leading-relaxed text-xs">
-                    {feature.description}
-                  </p>
+                  {/* Content Section */}
+                  <div className="p-6 relative z-10">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-400/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+                    <div
+                      className="w-10 h-10 bg-orange-50 border border-orange-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"
+                      style={{ clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)' }}
+                    >
+                      <feature.icon className="w-4 h-4 text-orange-600" />
+                    </div>
+
+                    <h3 className="text-sm font-bold mb-2 text-orange-600 group-hover:text-orange-700 transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed text-xs">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Audio Conversation Demo - Cyberpunk */}
-        <section className="py-12 px-3 sm:px-4 relative overflow-hidden bg-black">
-          {/* Cyberpunk Background */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-5"
+        {/* Visual Features Section - Left Image */}
+        <section className="py-12 bg-white">
+          <div className="w-full px-3 sm:px-4">
+            <div className="grid md:grid-cols-2 gap-8 items-center w-full\">
+              {/* Image Left */}
+              <div className="hidden md:block relative h-96 overflow-hidden rounded-lg shadow-lg">
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=500&fit=crop"
+                  alt="Voice Automation Interface"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+
+              {/* Content Right */}
+              <div>
+                <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600 text-transparent bg-clip-text">
+                  Intelligent Conversation Flow
+                </h2>
+                <p className="text-gray-700 mb-4 leading-relaxed">
+                  Our advanced AI understands context, handles complex conversations, and makes intelligent decisions based on customer intent and company policies.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Natural language understanding across 30+ languages</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Context-aware responses that feel human-like</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Seamless handoff to human agents when needed</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Continuous learning from every interaction</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Visual Features Section - Right Image */}
+        <section className="py-12 bg-gray-50">
+          <div className="w-full px-3 sm:px-4">
+            <div className="grid md:grid-cols-2 gap-8 items-center w-full">
+              {/* Content Left */}
+              <div>
+                <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600 text-transparent bg-clip-text">
+                  Real-Time Performance Analytics
+                </h2>
+                <p className="text-gray-700 mb-4 leading-relaxed">
+                  Get comprehensive insights into every conversation with detailed analytics, performance metrics, and actionable recommendations to optimize your operations.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Live dashboards with call metrics and KPIs</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Detailed conversation transcripts and recordings</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">AI sentiment analysis and quality scoring</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Custom reports and export capabilities</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Image Right */}
+              <div className="hidden md:block relative h-96 overflow-hidden rounded-lg shadow-lg">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=500&fit=crop"
+                  alt="Real-Time Analytics Dashboard"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Audio Conversation Demo - Modern Light */}
+        <section className="py-12 px-3 sm:px-4 relative overflow-hidden bg-white">
+          {/* Light Background */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-3"
             style={{
               backgroundImage: `url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop')`
             }}
           >
-            <div className="absolute inset-0 bg-black/80"></div>
+            <div className="absolute inset-0 bg-white/30"></div>
           </div>
 
           {/* Animated Grid */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
             <div className="absolute inset-0" style={{
-              backgroundImage: `linear-gradient(to right, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-                               linear-gradient(to bottom, rgba(0, 255, 255, 0.1) 1px, transparent 1px)`,
+              backgroundImage: `linear-gradient(to right, rgba(249, 115, 22, 0.05) 1px, transparent 1px),
+                               linear-gradient(to bottom, rgba(249, 115, 22, 0.05) 1px, transparent 1px)`,
               backgroundSize: '40px 40px'
             }}></div>
           </div>
 
-          <div className="max-w-3xl mx-auto relative z-10">
-            <div className="text-center mb-8">
-              <div 
-                className="inline-flex items-center space-x-2 bg-black/70 text-cyan-400 px-4 py-2 text-xs backdrop-blur-sm border border-cyan-500 shadow-lg mb-4"
+          <div className="w-full px-3 sm:px-4 relative z-10">
+            <div className="text-center mb-8\">
+              <div
+                className="inline-flex items-center space-x-2 bg-orange-50 text-orange-600 px-4 py-2 text-xs border border-orange-300 shadow-lg mb-4"
                 style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
               >
                 <Mic className="h-3 w-3 animate-pulse" />
                 <span className="font-semibold">AI Voice Demonstration</span>
               </div>
-              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-4">
+              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600 bg-clip-text text-transparent mb-4">
                 Experience Natural AI Conversations
               </h2>
-              <p className="text-sm text-white max-w-2xl mx-auto">
+              <p className="text-sm text-gray-700 max-w-2xl mx-auto">
                 Listen to how our voice automation software handles real customer interactions with intelligence and empathy
               </p>
             </div>
 
-            <div 
-              className="bg-black/60 border border-cyan-500/30 p-6 shadow-2xl backdrop-blur-sm"
+            <div
+              className="bg-gray-50 border border-orange-200 p-6 shadow-lg"
               style={{ clipPath: 'polygon(20px 0%, 100% 0%, calc(100% - 20px) 100%, 0% 100%)' }}
             >
               <div className="space-y-3 mb-6">
@@ -310,16 +416,16 @@ export default function VoiceAutomation() {
                   <div
                     key={idx}
                     className={`p-3 ${
-                      msg.speaker === "Customer" 
-                        ? "bg-black/40 border border-cyan-400/30 text-white" 
-                        : "bg-black/40 border border-cyan-500/50 text-cyan-200"
+                      msg.speaker === "Customer"
+                        ? "bg-white border border-orange-300/30 text-gray-900"
+                        : "bg-orange-50 border border-orange-300/50 text-orange-900"
                     } ${
                       currentMessage >= idx + 1 ? "opacity-100 animate-fade-in" : "opacity-30"
-                    } backdrop-blur-sm`}
+                    } `}
                     style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
                   >
-                    <p className="text-xs font-semibold text-cyan-400 mb-1">{msg.speaker}</p>
-                    <p className="text-white text-xs">{msg.text}</p>
+                    <p className="text-xs font-semibold text-orange-600 mb-1">{msg.speaker}</p>
+                    <p className="text-gray-900 text-xs">{msg.text}</p>
                   </div>
                 ))}
               </div>
@@ -327,7 +433,7 @@ export default function VoiceAutomation() {
               <div className="flex items-center justify-center gap-3">
                 <button
                   onClick={playConversation}
-                  className="group flex items-center gap-2 px-4 py-2 bg-black/70 border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-cyan-400"
+                  className="group flex items-center gap-2 px-4 py-2 bg-orange-50 border border-orange-400 text-orange-600 hover:bg-orange-100 hover:text-orange-700 transition-all duration-300 hover:scale-105 hover:border-orange-500"
                   style={{ clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)' }}
                 >
                   {isPlaying ? (
@@ -341,7 +447,7 @@ export default function VoiceAutomation() {
                 </button>
               </div>
 
-              {/* Visual Waveform - Cyberpunk */}
+              {/* Visual Waveform - Modern Light */}
               {isPlaying && (
                 <div className="mt-4 flex items-center justify-center gap-1 h-12">
                   {Array.from({ length: 30 }).map((_, i) => {
@@ -349,7 +455,7 @@ export default function VoiceAutomation() {
                     return (
                       <div
                         key={i}
-                        className="w-1 bg-gradient-to-t from-cyan-500 via-cyan-400 to-cyan-300 animate-waveform"
+                        className="w-1 bg-gradient-to-t from-orange-500 via-orange-400 to-orange-300 animate-waveform"
                         style={{
                           height: `${heights[i]}px`,
                           animationDelay: `${i * 0.05}s`
@@ -363,36 +469,35 @@ export default function VoiceAutomation() {
           </div>
         </section>
 
-        {/* FAQ Section - Cyberpunk */}
-        <section className="relative py-12 overflow-hidden bg-black">
-          {/* Cyberpunk Background */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-10"
+        {/* FAQ Section - Modern Light */}
+        <section className="relative py-12 overflow-hidden bg-gray-50">
+          {/* Light Background */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-5"
             style={{
               backgroundImage: `url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop')`
             }}
           >
-            <div className="absolute inset-0 bg-black/90"></div>
+            <div className="absolute inset-0 bg-gray-50/60"></div>
           </div>
 
-          <div className="container mx-auto px-3 sm:px-4 relative z-10">
-            <div className="text-center mb-12">
-              <div 
-                className="inline-flex items-center gap-2 bg-black/70 border border-cyan-500 px-4 py-2 mb-4 backdrop-blur-sm"
+          <div className="w-full px-3 sm:px-4 relative z-10">
+            <div className="text-center mb-12\">
+              <div
+                className="inline-flex items-center gap-2 bg-orange-50 border border-orange-300 px-4 py-2 mb-4"
                 style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
               >
-                <Headphones className="w-3 h-3 text-cyan-400" />
-                <span className="text-xs font-semibold text-cyan-400">Common Questions</span>
+                <Headphones className="w-3 h-3 text-orange-600" />
+                <span className="text-xs font-semibold text-orange-600">Common Questions</span>
               </div>
-              <h2 className="text-lg md:text-xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text">
+              <h2 className="text-lg md:text-xl font-bold mb-4 bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600 text-transparent bg-clip-text">
                 Voice Automation Software FAQ
               </h2>
-              <p className="text-sm text-white max-w-2xl mx-auto">
+              <p className="text-sm text-gray-700 max-w-2xl mx-auto">
                 Everything you need to know about implementing voice automation software
               </p>
             </div>
-
-            <div className="max-w-4xl mx-auto grid gap-4">
+            <div className="w-full grid gap-4">
               {[
                 {
                   q: "What is voice automation software?",
@@ -429,25 +534,25 @@ export default function VoiceAutomation() {
               ].map((faq, index) => (
                 <div
                   key={index}
-                  className="group relative bg-black/60 border border-cyan-500/30 backdrop-blur-sm p-6 hover:border-cyan-500 hover:scale-105 transition-all duration-300 overflow-hidden"
+                  className="group relative bg-white border border-orange-200 p-6 hover:border-orange-400 hover:scale-105 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md"
                   style={{ clipPath: 'polygon(15px 0%, 100% 0%, calc(100% - 15px) 100%, 0% 100%)' }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-400/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
                   <div className="flex gap-4 relative z-10">
                     <div className="flex-shrink-0">
-                      <div 
-                        className="w-8 h-8 bg-black/70 border border-cyan-500 flex items-center justify-center text-cyan-400 font-bold text-sm backdrop-blur-sm group-hover:scale-110 transition-transform"
+                      <div
+                        className="w-8 h-8 bg-orange-50 border border-orange-300 flex items-center justify-center text-orange-600 font-bold text-sm group-hover:scale-110 transition-transform"
                         style={{ clipPath: 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)' }}
                       >
                         {index + 1}
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-sm font-bold mb-2 text-cyan-400 group-hover:text-white transition-colors">
+                      <h3 className="text-sm font-bold mb-2 text-orange-600 group-hover:text-orange-700 transition-colors">
                         {faq.q}
                       </h3>
-                      <p className="text-white leading-relaxed text-xs">
+                      <p className="text-gray-700 leading-relaxed text-xs">
                         {faq.a}
                       </p>
                     </div>
@@ -458,22 +563,22 @@ export default function VoiceAutomation() {
           </div>
         </section>
 
-        {/* CTA Section - Cyberpunk */}
-        <section className="relative py-12 overflow-hidden bg-black">
-          {/* Cyberpunk Background */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-10"
+        {/* CTA Section - Modern Light */}
+        <section className="relative py-12 overflow-hidden bg-white">
+          {/* Light Background */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-3"
             style={{
               backgroundImage: `url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop')`
             }}
           >
-            <div className="absolute inset-0 bg-black/90"></div>
+            <div className="absolute inset-0 bg-white/30"></div>
           </div>
 
-          <div className="container mx-auto px-3 sm:px-4 relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <div 
-                className="inline-flex items-center gap-2 bg-black/70 text-cyan-400 px-4 py-2 mb-6 border border-cyan-500 backdrop-blur-sm"
+          <div className="w-full px-3 sm:px-4 relative z-10">
+            <div className="w-full text-center">
+              <div
+                className="inline-flex items-center gap-2 bg-orange-50 text-orange-600 px-4 py-2 mb-6 border border-orange-300"
                 style={{ clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)' }}
               >
                 <Bot className="w-3 h-3" />
@@ -481,24 +586,24 @@ export default function VoiceAutomation() {
               </div>
 
               <h2 className="text-lg md:text-xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600 text-transparent bg-clip-text">
                   Ready to Automate Your
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600 text-transparent bg-clip-text">
                   Voice Communications?
                 </span>
               </h2>
 
-              <p className="text-sm text-white mb-8 max-w-2xl mx-auto">
+              <p className="text-sm text-gray-700 mb-8 max-w-2xl mx-auto">
                 Join thousands of businesses using our voice automation software to deliver exceptional customer experiences while reducing costs by up to 80%.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-8">
-                <Button 
-                  asChild 
-                  size="sm" 
-                  className="bg-black/70 border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:text-white px-6 py-2 text-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-cyan-400"
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-orange-500 text-white hover:bg-orange-600 px-6 py-2 text-sm transition-all duration-300 hover:scale-105"
                   style={{ clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)' }}
                 >
                   <Link href="/signup">
@@ -506,11 +611,11 @@ export default function VoiceAutomation() {
                     <ArrowRight className="ml-2 w-3 h-3" />
                   </Link>
                 </Button>
-                <Button 
-                  asChild 
-                  size="sm" 
-                  variant="outline" 
-                  className="border border-cyan-600 text-cyan-600 hover:bg-cyan-500/10 hover:text-white px-6 py-2 text-sm backdrop-blur-sm"
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="border border-orange-400 text-orange-600 hover:bg-orange-50 hover:text-orange-700 px-6 py-2 text-sm"
                   style={{ clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)' }}
                 >
                   <Link href="/contact">
@@ -521,32 +626,32 @@ export default function VoiceAutomation() {
               </div>
 
               <div className="flex flex-wrap gap-4 justify-center items-center">
-                <div 
-                  className="flex items-center gap-2 px-3 py-2 bg-black/60 backdrop-blur-sm border border-cyan-500/30 text-cyan-400"
+                <div
+                  className="flex items-center gap-2 px-3 py-2 bg-orange-50 border border-orange-200 text-orange-600"
                   style={{ clipPath: 'polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%)' }}
                 >
-                  <CheckCircle className="w-3 h-3 text-cyan-400" />
+                  <CheckCircle className="w-3 h-3 text-orange-600" />
                   <span className="text-xs font-medium">No Credit Card Required</span>
                 </div>
-                <div 
-                  className="flex items-center gap-2 px-3 py-2 bg-black/60 backdrop-blur-sm border border-cyan-500/30 text-cyan-400"
+                <div
+                  className="flex items-center gap-2 px-3 py-2 bg-orange-50 border border-orange-200 text-orange-600"
                   style={{ clipPath: 'polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%)' }}
                 >
-                  <CheckCircle className="w-3 h-3 text-cyan-400" />
+                  <CheckCircle className="w-3 h-3 text-orange-600" />
                   <span className="text-xs font-medium">14-Day Free Trial</span>
                 </div>
-                <div 
-                  className="flex items-center gap-2 px-3 py-2 bg-black/60 backdrop-blur-sm border border-cyan-500/30 text-cyan-400"
+                <div
+                  className="flex items-center gap-2 px-3 py-2 bg-orange-50 border border-orange-200 text-orange-600"
                   style={{ clipPath: 'polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%)' }}
                 >
-                  <CheckCircle className="w-3 h-3 text-cyan-400" />
+                  <CheckCircle className="w-3 h-3 text-orange-600" />
                   <span className="text-xs font-medium">Cancel Anytime</span>
                 </div>
-                <div 
-                  className="flex items-center gap-2 px-3 py-2 bg-black/60 backdrop-blur-sm border border-cyan-500/30 text-cyan-400"
+                <div
+                  className="flex items-center gap-2 px-3 py-2 bg-orange-50 border border-orange-200 text-orange-600"
                   style={{ clipPath: 'polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%)' }}
                 >
-                  <CheckCircle className="w-3 h-3 text-cyan-400" />
+                  <CheckCircle className="w-3 h-3 text-orange-600" />
                   <span className="text-xs font-medium">24/7 Support</span>
                 </div>
               </div>

@@ -54,100 +54,92 @@ export default function AISalesAgent() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1">
-        {/* Hero Section - Cyberpunk Theme */}
-        <section className="relative overflow-hidden bg-black py-8 px-3 sm:px-4 lg:px-6">
-          {/* Cyberpunk Grid Background */}
-          <div className="absolute inset-0 opacity-20">
+        {/* Hero Section - Light Theme */}
+        <section className="relative overflow-hidden bg-white py-8 px-3 sm:px-4 lg:px-6">
+          {/* Grid Background */}
+          <div className="absolute inset-0 opacity-10">
             <div
               className="absolute inset-0"
               style={{
                 backgroundImage: `
-                  linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)
+                  linear-gradient(rgba(234, 88, 12, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(234, 88, 12, 0.1) 1px, transparent 1px)
                 `,
                 backgroundSize: '60px 60px',
               }}
             />
           </div>
 
-          {/* Floating Cyan Elements */}
-          <div className="absolute top-5 right-10 w-24 h-24 bg-gradient-to-bl from-cyan-400/15 to-cyan-600/8 rounded-full blur-xl animate-pulse" />
-          <div className="absolute bottom-10 left-5 w-28 h-28 bg-gradient-to-tr from-cyan-500/8 to-cyan-400/12 rounded-full blur-xl animate-pulse" />
-          <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-cyan-300/6 via-cyan-400/10 to-cyan-500/6 rounded-full blur-lg" />
+          {/* Floating Orange Elements */}
+          <div className="absolute top-5 right-10 w-24 h-24 bg-gradient-to-bl from-orange-400/15 to-orange-600/8 rounded-full blur-xl animate-pulse" />
+          <div className="absolute bottom-10 left-5 w-28 h-28 bg-gradient-to-tr from-orange-500/8 to-orange-400/12 rounded-full blur-xl animate-pulse" />
+          <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-orange-300/6 via-orange-400/10 to-orange-500/6 rounded-full blur-lg" />
 
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="grid lg:grid-cols-2 gap-6 items-start">
-              
+
               {/* Left Content */}
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-4 py-2 mb-4 border border-cyan-400 uppercase tracking-widest" style={{
+                <div className="inline-flex items-center gap-2 bg-orange-500 text-white px-4 py-2 mb-4 border border-orange-500 uppercase tracking-widest" style={{
                   clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
                 }}>
                   <Target className="w-4 h-4" />
                   <span className="text-xs font-bold">AI Sales Agent Platform</span>
                 </div>
 
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 leading-tight text-left">
-                  <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 drop-shadow-sm tracking-widest uppercase">AI Sales Agent</span>
-                  <span className="inline-block px-4 py-2 rounded-xl text-black bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 shadow-lg shadow-cyan-400/40 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-cyan-400">
-                    <span className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-transparent to-transparent"></span>
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent mb-3 leading-tight text-left">
+                  <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 drop-shadow-sm tracking-widest uppercase">AI Sales Agent</span>
+                  <span className="inline-block px-4 py-2 rounded-xl text-white bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 shadow-lg shadow-orange-400/40 text-lg sm:text-xl lg:text-2xl relative overflow-hidden border border-orange-500">
+                    <span className="absolute inset-0 bg-gradient-to-tr from-orange-400/25 via-transparent to-transparent"></span>
                     <span className="relative z-10 uppercase tracking-wider">Never Stops Selling</span>
                   </span>
                 </h1>
-                
-                <div className="p-3 bg-cyan-400/5 backdrop-blur-md border border-cyan-400/30 shadow-md shadow-cyan-400/20" style={{
+
+                <div className="p-3 bg-orange-400/5 backdrop-blur-md border border-orange-400/30 shadow-md shadow-orange-400/20" style={{
                   clipPath: 'polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))'
                 }}>
-                  <p className="text-xs sm:text-sm font-bold text-cyan-400 mb-2">
+                  <p className="text-xs sm:text-sm font-bold text-orange-600 mb-2">
                     "Sales reps sleep, take breaks, get tired, need training."
                   </p>
-                  <p className="text-sm sm:text-base font-extrabold text-black inline-block bg-cyan-400 px-3 py-1 shadow-sm shadow-cyan-500/30 border border-cyan-400 uppercase tracking-wide" style={{
+                  <p className="text-sm sm:text-base font-extrabold text-white inline-block bg-orange-500 px-3 py-1 shadow-sm shadow-orange-600/30 border border-orange-500 uppercase tracking-wide" style={{
                     clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                   }}>
                     <span className="relative z-10">WE NEVER DO.</span>
                   </p>
                 </div>
-                
-                <p className="text-xs sm:text-sm text-white leading-relaxed">
-                  Transform sales with <span className="font-bold text-cyan-400">AI sales agents</span> that qualify leads, handle objections, and close deals 24/7. 
-                  Trusted by <span className="font-semibold text-cyan-400">500+ businesses</span> with <span className="font-semibold text-cyan-400">45% higher conversion</span> rates. 
-                  Our <span className="font-bold text-cyan-400">AI sales platform</span> automates conversations and scales revenue without scaling headcount.
+
+                <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                  Transform sales with <span className="font-bold text-orange-600">AI sales agents</span> that qualify leads, handle objections, and close deals 24/7.
+                  Trusted by <span className="font-semibold text-orange-600">500+ businesses</span> with <span className="font-semibold text-orange-600">45% higher conversion</span> rates.
+                  Our <span className="font-bold text-orange-600">AI sales platform</span> automates conversations and scales revenue without scaling headcount.
                 </p>
-                
+
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="flex items-center gap-1">
-                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
-                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
-                    }}></span>
-                    <span className="font-medium text-white uppercase tracking-wide text-xs">Lead Qualification</span>
+                    <span className="w-1 h-1 rounded-full bg-orange-500"></span>
+                    <span className="font-medium text-gray-900 uppercase tracking-wide text-xs">Lead Qualification</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
-                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
-                    }}></span>
-                    <span className="font-medium text-white uppercase tracking-wide text-xs">Deal Closing</span>
+                    <span className="w-1 h-1 rounded-full bg-orange-500"></span>
+                    <span className="font-medium text-gray-900 uppercase tracking-wide text-xs">Deal Closing</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
-                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
-                    }}></span>
-                    <span className="font-medium text-white uppercase tracking-wide text-xs">24/7 Outreach</span>
+                    <span className="w-1 h-1 rounded-full bg-orange-500"></span>
+                    <span className="font-medium text-gray-900 uppercase tracking-wide text-xs">24/7 Outreach</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className="w-1 h-1 rounded-full bg-cyan-400" style={{
-                      boxShadow: '0 0 6px rgba(0, 255, 255, 0.4)'
-                    }}></span>
-                    <span className="font-medium text-white uppercase tracking-wide text-xs">CRM Integration</span>
+                    <span className="w-1 h-1 rounded-full bg-orange-500"></span>
+                    <span className="font-medium text-gray-900 uppercase tracking-wide text-xs">CRM Integration</span>
                   </div>
                 </div>
-                
-                {/* Cyberpunk CTA Buttons */}
+
+                {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-2">
-                  <Link 
-                    href="/signup" 
-                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-black bg-cyan-400 shadow-md hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400 uppercase tracking-wide"
+                  <Link
+                    href="/signup"
+                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-white bg-orange-500 shadow-md hover:shadow-orange-600/30 transition-all duration-300 hover:scale-105 border border-orange-500 uppercase tracking-wide"
                     style={{
                       clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                     }}
@@ -155,9 +147,9 @@ export default function AISalesAgent() {
                     Start Free Trial
                     <ArrowRight className="w-3 h-3 ml-1" />
                   </Link>
-                  <Link 
-                    href="/contact" 
-                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-cyan-400 bg-transparent border border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-orange-600 bg-transparent border border-orange-400 hover:bg-orange-400/10 transition-all duration-300 hover:scale-105 shadow-sm uppercase tracking-wide"
                     style={{
                       clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                     }}
@@ -167,10 +159,10 @@ export default function AISalesAgent() {
                   </Link>
                 </div>
               </div>
-              
+
               {/* Right HD Image */}
               <div className="relative">
-                <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-cyan-400/20 border border-cyan-400/30">
+                <div className="relative h-48 sm:h-56 lg:h-64 rounded-xl overflow-hidden shadow-lg shadow-orange-400/20 border border-orange-400/30">
                   <Image
                     src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&contrast=120&brightness=110"
                     alt="AI Sales Agent Technology - Automated Sales Conversations Dashboard"
@@ -179,102 +171,100 @@ export default function AISalesAgent() {
                     priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-cyan-900/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-orange-900/20 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
-                    <div className="bg-black/90 backdrop-blur-md rounded-xl p-4 border border-cyan-400/50">
+                    <div className="bg-white backdrop-blur-md rounded-xl p-4 border border-orange-400/50">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg border border-cyan-400/30">
-                          <Target className="w-4 h-4 text-cyan-300" />
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg border border-orange-400/30">
+                          <Target className="w-4 h-4 text-white" />
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-white">Live Sales AI</div>
-                          <div className="text-xs text-cyan-400">Closing deals 24/7</div>
+                          <div className="text-sm font-bold text-gray-900">Live Sales AI</div>
+                          <div className="text-xs text-orange-600">Closing deals 24/7</div>
                         </div>
                       </div>
                       <div className="flex items-center justify-between text-xs">
-                        <span className="text-cyan-400 font-medium">✓ 45% Higher Conversion</span>
-                        <span className="text-cyan-400 font-medium tracking-wide">Always Selling</span>
+                        <span className="text-orange-600 font-medium">✓ 45% Higher Conversion</span>
+                        <span className="text-orange-600 font-medium tracking-wide">Always Selling</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </section>
 
-        {/* Demo Section - Cyberpunk Theme */}
-        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
-          <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full blur-lg animate-pulse" />
-          <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-cyan-500/12 to-cyan-600/12 rounded-full blur-lg animate-pulse delay-1000" />
+        {/* Demo Section - Light Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-gray-50 relative overflow-hidden">
+          <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-orange-400/15 to-orange-500/15 rounded-full blur-lg animate-pulse" />
+          <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-orange-500/12 to-orange-600/12 rounded-full blur-lg animate-pulse delay-1000" />
 
           <div className="max-w-4xl mx-auto relative z-10">
             <div className="text-left mb-8">
-              <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-3 py-1 mb-4 border border-cyan-400 uppercase tracking-widest" style={{
+              <div className="inline-flex items-center gap-2 bg-orange-500 text-white px-3 py-1 mb-4 border border-orange-500 uppercase tracking-widest" style={{
                 clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
               }}>
                 <Mic className="w-3 h-3 animate-pulse" />
                 <span className="text-xs font-bold">Live AI Sales Demo</span>
               </div>
-              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-3 uppercase tracking-wide">
+              <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent mb-3 uppercase tracking-wide">
                 Hear AI Sales Agent in Action
               </h2>
-              <p className="text-white text-sm max-w-2xl leading-relaxed">
+              <p className="text-gray-700 text-sm max-w-2xl leading-relaxed">
                 Listen to how our AI handles real sales conversations and closes deals naturally
               </p>
             </div>
-            <div className="bg-black/90 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-cyan-400/30">
+            <div className="bg-white backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-orange-400/30">
               <VoiceConversationPlayer audioSrc="/sample-sales-conversation.mp3" />
             </div>
           </div>
         </section>
 
-        {/* FAQ Section - Cyberpunk Theme */}
-        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
-          {/* Cyberpunk Background Elements */}
+        {/* FAQ Section - Light Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
+          {/* Background Elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 left-20 w-24 h-24 bg-gradient-to-br from-cyan-400/20 to-cyan-500/20 rounded-full filter blur-xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-20 w-28 h-28 bg-gradient-to-br from-cyan-500/15 to-cyan-600/15 rounded-full filter blur-xl animate-pulse delay-1000"></div>
-            <div className="absolute top-32 right-32 w-20 h-20 bg-gradient-to-br from-cyan-300/25 to-cyan-400/25 rounded-full filter blur-lg animate-pulse delay-500"></div>
+            <div className="absolute top-10 left-20 w-24 h-24 bg-gradient-to-br from-orange-400/20 to-orange-500/20 rounded-full filter blur-xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-20 w-28 h-28 bg-gradient-to-br from-orange-500/15 to-orange-600/15 rounded-full filter blur-xl animate-pulse delay-1000"></div>
+            <div className="absolute top-32 right-32 w-20 h-20 bg-gradient-to-br from-orange-300/25 to-orange-400/25 rounded-full filter blur-lg animate-pulse delay-500"></div>
           </div>
 
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="text-left mb-8">
               <div className="inline-block mb-3">
-                <span className="px-3 py-1 bg-cyan-400 text-black font-semibold text-xs uppercase tracking-wide shadow-md animate-pulse" style={{
+                <span className="px-3 py-1 bg-orange-500 text-white font-semibold text-xs uppercase tracking-wide shadow-md animate-pulse" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
                   <Target className="w-3 h-3 inline mr-1" />
                   Common Questions
                 </span>
               </div>
-              <h2 className="text-lg sm:text-xl font-bold mb-3 text-cyan-400 uppercase tracking-wide" style={{
-                textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
-              }}>
+              <h2 className="text-lg sm:text-xl font-bold mb-3 text-orange-600 uppercase tracking-wide">
                 AI Sales Agent FAQ
               </h2>
-              <p className="text-white text-sm max-w-3xl leading-relaxed">
-                Everything you need to know about <span className="text-cyan-400 font-semibold">AI Sales Agents</span>
+              <p className="text-gray-700 text-sm max-w-3xl leading-relaxed">
+                Everything you need to know about <span className="text-orange-600 font-semibold">AI Sales Agents</span>
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-3">
               {/* FAQ 1 */}
-              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+              <div className="group relative bg-orange-50 backdrop-blur-md border border-orange-400/20 hover:border-orange-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-orange-400/20" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
                 <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
+                    <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-orange-400/30">
                       1
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-transparent bg-clip-text tracking-wide">
                       What is an AI sales agent and how does it work?
                     </h3>
-                    <p className="text-white leading-relaxed text-xs">
+                    <p className="text-gray-700 leading-relaxed text-xs">
                       An AI sales agent is an intelligent voice assistant that handles sales conversations, qualifies leads, answers questions, handles objections, and closes deals automatically using natural language processing and machine learning.
                     </p>
                   </div>
@@ -282,20 +272,20 @@ export default function AISalesAgent() {
               </div>
 
               {/* FAQ 2 */}
-              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+              <div className="group relative bg-orange-50 backdrop-blur-md border border-orange-400/20 hover:border-orange-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-orange-400/20" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
                 <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
+                    <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-orange-400/30">
                       2
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-transparent bg-clip-text tracking-wide">
                       Can AI sales agents replace human sales reps?
                     </h3>
-                    <p className="text-white leading-relaxed text-xs">
+                    <p className="text-gray-700 leading-relaxed text-xs">
                       AI sales agents complement your sales team by handling initial outreach, lead qualification, and follow-ups. This frees your human reps to focus on high-value conversations and relationship building.
                     </p>
                   </div>
@@ -303,20 +293,20 @@ export default function AISalesAgent() {
               </div>
 
               {/* FAQ 3 */}
-              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+              <div className="group relative bg-orange-50 backdrop-blur-md border border-orange-400/20 hover:border-orange-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-orange-400/20" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
                 <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
+                    <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-orange-400/30">
                       3
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-transparent bg-clip-text tracking-wide">
                       How do AI sales agents qualify leads?
                     </h3>
-                    <p className="text-white leading-relaxed text-xs">
+                    <p className="text-gray-700 leading-relaxed text-xs">
                       AI sales agents ask intelligent qualifying questions, score leads based on your criteria, and automatically route hot leads to your sales team while nurturing cold leads with follow-up campaigns.
                     </p>
                   </div>
@@ -324,20 +314,20 @@ export default function AISalesAgent() {
               </div>
 
               {/* FAQ 4 */}
-              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+              <div className="group relative bg-orange-50 backdrop-blur-md border border-orange-400/20 hover:border-orange-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-orange-400/20" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
                 <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
+                    <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-orange-400/30">
                       4
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-transparent bg-clip-text tracking-wide">
                       What is the ROI of using AI sales agents?
                     </h3>
-                    <p className="text-white leading-relaxed text-xs">
+                    <p className="text-gray-700 leading-relaxed text-xs">
                       Businesses typically see 45% higher conversion rates, 70% reduction in lead response time, and 3x more qualified leads. ROI is delivered within the first 30-60 days.
                     </p>
                   </div>
@@ -345,20 +335,20 @@ export default function AISalesAgent() {
               </div>
 
               {/* FAQ 5 */}
-              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+              <div className="group relative bg-orange-50 backdrop-blur-md border border-orange-400/20 hover:border-orange-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-orange-400/20" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
                 <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
+                    <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-orange-400/30">
                       5
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-transparent bg-clip-text tracking-wide">
                       Can AI sales agents handle objections?
                     </h3>
-                    <p className="text-white leading-relaxed text-xs">
+                    <p className="text-gray-700 leading-relaxed text-xs">
                       Yes! Our AI is trained on thousands of sales conversations and can handle common objections about price, timing, competition, and features using proven sales techniques.
                     </p>
                   </div>
@@ -366,20 +356,20 @@ export default function AISalesAgent() {
               </div>
 
               {/* FAQ 6 */}
-              <div className="group relative bg-cyan-400/5 backdrop-blur-md border border-cyan-400/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-cyan-400/20" style={{
+              <div className="group relative bg-orange-50 backdrop-blur-md border border-orange-400/20 hover:border-orange-400/60 transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:shadow-orange-400/20" style={{
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))'
               }}>
                 <div className="flex gap-4 p-4">
                   <div className="flex-shrink-0">
-                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-black font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-cyan-400/30">
+                    <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg rotate-12 group-hover:rotate-0 transition-transform duration-300 border border-orange-400/30">
                       6
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-cyan-300 via-cyan-400 to-cyan-500 text-transparent bg-clip-text tracking-wide">
+                    <h3 className="text-sm font-bold mb-2 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-transparent bg-clip-text tracking-wide">
                       How quickly can I deploy AI sales agents?
                     </h3>
-                    <p className="text-white leading-relaxed text-xs">
+                    <p className="text-gray-700 leading-relaxed text-xs">
                       Most businesses are up and running within 5-7 days. We help configure sales scripts, integrate with CRM, and train the AI on your products/services.
                     </p>
                   </div>
@@ -389,44 +379,42 @@ export default function AISalesAgent() {
           </div>
         </section>
 
-        {/* Call to Action - Cyberpunk Theme */}
-        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+        {/* Call to Action - Light Theme */}
+        <section className="py-8 px-4 sm:px-6 lg:px-8 bg-gray-50 relative overflow-hidden">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-cyan-400/15 to-cyan-500/15 rounded-full blur-lg animate-pulse" />
-            <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-cyan-500/12 to-cyan-600/12 rounded-full blur-lg animate-pulse delay-1000" />
-            <div className="absolute top-16 right-32 w-16 h-16 bg-gradient-to-br from-cyan-300/20 to-cyan-400/20 rounded-full blur-lg animate-pulse delay-500" />
+            <div className="absolute top-10 left-20 w-20 h-20 bg-gradient-to-br from-orange-400/15 to-orange-500/15 rounded-full blur-lg animate-pulse" />
+            <div className="absolute bottom-10 right-20 w-24 h-24 bg-gradient-to-br from-orange-500/12 to-orange-600/12 rounded-full blur-lg animate-pulse delay-1000" />
+            <div className="absolute top-16 right-32 w-16 h-16 bg-gradient-to-br from-orange-300/20 to-orange-400/20 rounded-full blur-lg animate-pulse delay-500" />
           </div>
 
           <div className="container mx-auto max-w-4xl text-left relative z-10">
-            <div className="inline-flex items-center gap-2 bg-cyan-400 text-black px-3 py-1 mb-4 border border-cyan-400 uppercase tracking-widest" style={{
+            <div className="inline-flex items-center gap-2 bg-orange-500 text-white px-3 py-1 mb-4 border border-orange-500 uppercase tracking-widest" style={{
               clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
             }}>
               <Target className="w-3 h-3" />
               <span className="text-xs font-bold">10X Your Sales Today</span>
             </div>
-            
-            <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wide" style={{
-              textShadow: '0 0 15px rgba(0, 255, 255, 0.4)'
-            }}>
+
+            <h2 className="text-lg sm:text-xl font-bold mb-3 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent uppercase tracking-wide">
               Ready to 10X Your Sales with AI?
             </h2>
-            
-            <p className="text-white text-sm mb-6 max-w-2xl leading-relaxed">
+
+            <p className="text-gray-700 text-sm mb-6 max-w-2xl leading-relaxed">
               Join 500+ businesses using AI sales agents to qualify more leads, close more deals, and scale revenue without scaling headcount.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-3 mb-6">
               <Link href="/signup">
-                <Button className="group relative bg-cyan-400 hover:bg-cyan-300 text-black px-6 py-2 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/30 border border-cyan-400 uppercase tracking-wide" style={{
+                <Button className="group relative bg-orange-500 hover:bg-orange-400 text-white px-6 py-2 text-sm font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-400/30 border border-orange-500 uppercase tracking-wide" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
                   Start Free Trial
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              
+
               <Link href="/contact">
-                <Button variant="outline" className="group bg-black hover:bg-cyan-400/10 text-cyan-400 hover:text-cyan-300 border border-cyan-400/30 hover:border-cyan-400 px-6 py-2 text-sm font-bold transition-all duration-300 backdrop-blur-md uppercase tracking-wide" style={{
+                <Button variant="outline" className="group bg-white hover:bg-orange-50 text-orange-600 hover:text-orange-700 border border-orange-400/30 hover:border-orange-400 px-6 py-2 text-sm font-bold transition-all duration-300 backdrop-blur-md uppercase tracking-wide" style={{
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                 }}>
                   <Phone className="w-4 h-4 mr-2" />
@@ -434,24 +422,24 @@ export default function AISalesAgent() {
                 </Button>
               </Link>
             </div>
-            
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs text-white">
-              <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 border border-cyan-400/20 backdrop-blur-sm" style={{
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-xs text-gray-700">
+              <div className="flex items-center gap-1 px-2 py-1 bg-orange-100 border border-orange-400/20 backdrop-blur-sm" style={{
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>
-                <CheckCircle className="w-3 h-3 text-cyan-400" />
+                <CheckCircle className="w-3 h-3 text-orange-600" />
                 <span>No Credit Card Required</span>
               </div>
-              <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 border border-cyan-400/20 backdrop-blur-sm" style={{
+              <div className="flex items-center gap-1 px-2 py-1 bg-orange-100 border border-orange-400/20 backdrop-blur-sm" style={{
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>
-                <CheckCircle className="w-3 h-3 text-cyan-400" />
+                <CheckCircle className="w-3 h-3 text-orange-600" />
                 <span>Setup in 7 Days</span>
               </div>
-              <div className="flex items-center gap-1 px-2 py-1 bg-cyan-400/5 border border-cyan-400/20 backdrop-blur-sm" style={{
+              <div className="flex items-center gap-1 px-2 py-1 bg-orange-100 border border-orange-400/20 backdrop-blur-sm" style={{
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
               }}>
-                <CheckCircle className="w-3 h-3 text-cyan-400" />
+                <CheckCircle className="w-3 h-3 text-orange-600" />
                 <span>24/7 Support</span>
               </div>
             </div>
