@@ -121,9 +121,9 @@ export default function Contact() {
       }} />
 
       {/* Floating Orbs */}
-      <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-orange-400/10 via-orange-300/5 to-transparent rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-32 left-16 w-96 h-96 bg-gradient-to-tl from-orange-500/10 via-orange-400/5 to-transparent rounded-full blur-3xl animate-pulse" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-orange-400/3 to-orange-500/3 rounded-full blur-3xl" />
+      <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-orange-400/10 via-orange-300/5 to-transparent rounded-full animate-pulse" />
+      <div className="absolute bottom-32 left-16 w-96 h-96 bg-gradient-to-tl from-orange-500/10 via-orange-400/5 to-transparent rounded-full animate-pulse" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-orange-400/3 to-orange-500/3 rounded-full" />
 
       <Header />
 
@@ -134,6 +134,8 @@ export default function Contact() {
             {/* Left Content */}
             <div className="text-left">
               <div className="inline-block mb-6">
+                                {/* Decorative Brand Element for Large Screens */}
+                                <div className="hidden lg:block absolute -left-32 top-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-br from-orange-400/20 via-orange-200/10 to-transparent rounded-full z-0" />
                 <span className="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 text-gray-900 font-bold text-sm uppercase tracking-wider shadow-lg hover:shadow-orange-400/50 border border-orange-300/50"
                       style={{
                         clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
@@ -155,7 +157,7 @@ export default function Contact() {
                 </span>
               </h1>
 
-              <div className="max-w-4xl mx-auto lg:mx-0 mb-4 lg:mb-6 p-3 bg-white/80 backdrop-blur-md border border-orange-400/25 rounded-xl shadow-md shadow-orange-400/10">
+              <div className="max-w-4xl mx-auto lg:mx-0 mb-4 lg:mb-6 p-3 bg-white border border-orange-400/25 rounded-xl shadow-md shadow-orange-400/10">
                 <p className="text-xs sm:text-sm lg:text-base text-gray-800 leading-relaxed font-medium">
                   Ready to <span className="font-bold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">elevate your customer experience</span> with AI voice agents? Our experts are <span className="font-bold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">just a message away</span>. Let's discuss how we can help your business grow with 24/7 AI automation.
                 </p>
@@ -170,7 +172,7 @@ export default function Contact() {
                 ].map((stat, idx) => {
                   const Icon = stat.icon
                   return (
-                    <div key={idx} className="bg-white/80 backdrop-blur-md rounded-lg p-2 border border-orange-400/25 hover:border-orange-300/50 transition-all hover:scale-102 hover:shadow-md hover:shadow-orange-400/15 group text-left sm:text-center">
+                    <div key={idx} className="bg-white rounded-lg p-2 border border-orange-400/25 hover:border-orange-300/50 transition-all hover:scale-102 hover:shadow-md hover:shadow-orange-400/15 group text-left sm:text-center">
                       <div className="flex items-center justify-center mb-1">
                         <div className={`p-1 rounded-md bg-gradient-to-r ${stat.color} group-hover:scale-105 transition-transform`}>
                           <Icon className="w-2 h-2 sm:w-3 sm:h-3 text-gray-900" />
@@ -199,7 +201,7 @@ export default function Contact() {
                 />
 
                 <div className="absolute top-4 right-4">
-                  <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-2xl border border-orange-400/30 shadow-md">
+                  <div className="bg-white px-4 py-2 rounded-2xl border border-orange-400/30 shadow-md">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
                       <span className="text-gray-900 text-xs font-semibold uppercase tracking-wider">24/7 Live Support</span>
@@ -207,7 +209,7 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-white/90 backdrop-blur-lg p-4 rounded-2xl border border-orange-400/25 shadow-lg">
+                  <div className="bg-white p-4 rounded-2xl border border-orange-400/25 shadow-lg">
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-gray-900 text-sm font-bold uppercase tracking-wide mb-1">Expert AI Support Team</p>
@@ -229,13 +231,15 @@ export default function Contact() {
 
       {/* Contact Form & Info - Cyberpunk Enhanced Design */}
       <section className="py-6 px-2 sm:px-4 lg:px-8 relative overflow-hidden">
-        <div className="container mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-start relative z-10">
+        <div className="container mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-4 lg:gap-6 items-start relative z-10">
 
           {/* Contact Form - Professional Enhanced */}
-          <Card className="border-2 border-orange-400/30 hover:border-orange-300/60 bg-gradient-to-br from-white/95 via-white/90 to-white/95 backdrop-blur-2xl shadow-xl hover:shadow-orange-400/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden group rounded-3xl">
+          <Card className="border-2 border-orange-400/30 hover:border-orange-300/60 bg-gradient-to-br from-white/95 via-white/90 to-white/95 shadow-xl hover:shadow-orange-400/20 transition-all duration-500 hover:scale-[1.02] overflow-hidden group rounded-3xl">
             {/* Professional Glow */}
-            <div className="absolute -top-32 -right-32 w-80 h-80 bg-gradient-to-br from-orange-400/10 via-orange-300/5 to-transparent rounded-full filter blur-3xl group-hover:blur-2xl transition-all duration-700"></div>
-            <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-gradient-to-tr from-orange-500/5 via-orange-400/3 to-transparent rounded-full filter blur-2xl"></div>
+            <div className="absolute -top-32 -right-32 w-80 h-80 bg-gradient-to-br from-orange-400/10 via-orange-300/5 to-transparent rounded-full filter transition-all duration-700"></div>
+            <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-gradient-to-tr from-orange-500/5 via-orange-400/3 to-transparent rounded-full filter"></div>
+            {/* Extra Decorative Element for Large Screens */}
+            <div className="hidden lg:block absolute -left-24 top-1/3 w-32 h-32 bg-gradient-to-br from-orange-300/20 via-orange-100/10 to-transparent rounded-full z-0" />
 
             <CardHeader className="p-3 sm:p-4 relative z-10">
               <div className="inline-block mb-3">
@@ -255,12 +259,12 @@ export default function Contact() {
             </CardHeader>
             <CardContent className="space-y-3 p-3 sm:p-4 relative z-10">
               {success && (
-                <div className="bg-orange-50 border border-orange-400 text-orange-900 p-2 rounded-lg text-[10px] sm:text-xs font-semibold shadow-sm backdrop-blur-md">
+                <div className="bg-orange-50 border border-orange-400 text-orange-900 p-2 rounded-lg text-[10px] sm:text-xs font-semibold shadow-sm ">
                   ✓ {success}
                 </div>
               )}
               {error && (
-                <div className="bg-red-50 border border-red-400 text-red-900 p-2 rounded-lg text-[10px] sm:text-xs font-semibold shadow-sm backdrop-blur-md">
+                <div className="bg-red-50 border border-red-400 text-red-900 p-2 rounded-lg text-[10px] sm:text-xs font-semibold shadow-sm ">
                   ✗ {error}
                 </div>
               )}
@@ -375,7 +379,7 @@ export default function Contact() {
 
             {/* Additional Information Section */}
             <div className="px-3 sm:px-4 pb-3 sm:pb-4">
-              <div className="bg-gradient-to-r from-orange-400/10 via-orange-300/5 to-orange-500/10 p-3 rounded-xl border border-orange-400/20 backdrop-blur-sm">
+              <div className="bg-gradient-to-r from-orange-400/10 via-orange-300/5 to-orange-500/10 p-3 rounded-xl border border-orange-400/20 ">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
@@ -401,7 +405,7 @@ export default function Contact() {
 
               {/* Quick Contact Options */}
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-white/80 backdrop-blur-md p-4 rounded-2xl border border-orange-400/25 hover:border-orange-300/50 transition-all duration-300 hover:scale-105 group">
+                <div className="bg-white p-4 rounded-2xl border border-orange-400/25 hover:border-orange-300/50 transition-all duration-300 hover:scale-105 group">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-gradient-to-r from-orange-400 to-orange-500 rounded-xl">
                       <Phone className="w-4 h-4 text-gray-900" />
@@ -413,7 +417,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="bg-white/80 backdrop-blur-md p-4 rounded-2xl border border-orange-400/25 hover:border-orange-300/50 transition-all duration-300 hover:scale-105 group">
+                <div className="bg-white p-4 rounded-2xl border border-orange-400/25 hover:border-orange-300/50 transition-all duration-300 hover:scale-105 group">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-gradient-to-r from-orange-400 to-orange-500 rounded-xl">
                       <Mail className="w-4 h-4 text-gray-900" />
@@ -441,7 +445,7 @@ export default function Contact() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/20 to-transparent" />
               <div className="absolute top-4 left-4">
-                <div className="bg-white/80 backdrop-blur-md px-3 py-2 rounded-xl border border-orange-400/40 shadow-md">
+                <div className="bg-white px-3 py-2 rounded-xl border border-orange-400/40 shadow-md">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                     <span className="text-orange-600 text-xs font-bold uppercase tracking-wider">Online Now</span>
@@ -449,14 +453,14 @@ export default function Contact() {
                 </div>
               </div>
               <div className="absolute bottom-3 left-3 right-3">
-                <div className="bg-white/90 backdrop-blur-lg p-3 rounded-xl border border-orange-400/30 shadow-md">
+                <div className="bg-white p-3 rounded-xl border border-orange-400/30 shadow-md">
                   <p className="text-orange-600 text-sm font-bold uppercase tracking-wide mb-1">24/7 Enterprise AI Support</p>
                   <p className="text-orange-500 text-xs font-medium">Instant response • Expert guidance • Global coverage</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/90 backdrop-blur-lg rounded-xl p-3 border border-orange-400/25 shadow-lg shadow-orange-400/10">
+            <div className="bg-white rounded-xl p-3 border border-orange-400/25 shadow-lg shadow-orange-400/10">
               <div className="inline-block mb-2">
                 <span className="px-2 py-1 rounded-lg bg-gradient-to-r from-orange-400 via-orange-400 to-orange-500 text-gray-900 font-bold text-[10px] uppercase tracking-wide shadow-md border border-orange-300/50"
                       style={{
@@ -483,9 +487,9 @@ export default function Contact() {
                 const color = colors[index % colors.length];
 
                 return (
-                  <Card key={index} className={`border border-orange-400/30 hover:border-orange-300/60 bg-white/80 backdrop-blur-xl ${color.shadow} hover:shadow-lg transition-all duration-300 hover:scale-[1.01] overflow-hidden group rounded-xl`}>
+                  <Card key={index} className={`border border-orange-400/30 hover:border-orange-300/60 bg-white ${color.shadow} hover:shadow-lg transition-all duration-300 hover:scale-[1.01] overflow-hidden group rounded-xl`}>
                     <CardContent className="p-3 sm:p-4 relative">
-                      <div className="absolute -top-8 -right-8 w-20 h-20 bg-gradient-to-br from-orange-400/10 via-orange-300/5 to-transparent rounded-full filter blur-xl group-hover:blur-lg transition-all duration-500"></div>
+                      <div className="absolute -top-8 -right-8 w-20 h-20 bg-gradient-to-br from-orange-400/10 via-orange-300/5 to-transparent rounded-full filter transition-all duration-500"></div>
                       <div className="flex items-start space-x-3 relative z-10">
                         <div className={`w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br ${color.icon} rounded-lg flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 group-hover:rotate-2 transition-all duration-300 border border-orange-400/20`}
                              style={{
@@ -516,8 +520,8 @@ export default function Contact() {
 
             {/* Professional AI Voice Technology & AI Chat - Side by Side */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Professional AI Voice Technology Showcase */}
-              <div className="relative rounded-2xl overflow-hidden border border-cyan-400/30 shadow-xl shadow-cyan-500/15 group hover:shadow-cyan-400/25 transition-all duration-300">
+              {/* Professional AI Voice Technology Showcase - Orange Theme */}
+              <div className="relative rounded-2xl overflow-hidden border border-orange-400/30 shadow-xl shadow-orange-500/15 group hover:shadow-orange-400/25 transition-all duration-300">
                 <Image
                   src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=250&fit=crop&crop=center&auto=format&q=90"
                   alt="Advanced AI Voice Technology and Automation Platform Dashboard"
@@ -525,26 +529,26 @@ export default function Contact() {
                   height={250}
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-400/80 via-orange-200/30 to-transparent" />
                 <div className="absolute top-4 right-4">
                   <div className="flex flex-col gap-2">
-                    <div className="bg-green-500/20 backdrop-blur-md px-3 py-2 rounded-xl border border-green-400/40">
-                      <p className="text-green-400 text-xs font-bold uppercase tracking-wider">99.9% Uptime</p>
+                    <div className="bg-orange-500/20 px-3 py-2 rounded-xl border border-orange-400/40">
+                      <p className="text-orange-500 text-xs font-bold uppercase tracking-wider">99.9% Uptime</p>
                     </div>
-                    <div className="bg-blue-500/20 backdrop-blur-md px-3 py-2 rounded-xl border border-blue-400/40">
-                      <p className="text-blue-400 text-xs font-bold uppercase tracking-wider">HIPAA Certified</p>
+                    <div className="bg-orange-300/20 px-3 py-2 rounded-xl border border-orange-300/40">
+                      <p className="text-orange-400 text-xs font-bold uppercase tracking-wider">HIPAA Certified</p>
                     </div>
                   </div>
                 </div>
                 <div className="absolute bottom-3 left-3 right-3">
-                  <div className="bg-black/90 backdrop-blur-lg p-3 rounded-xl border border-cyan-400/30">
+                  <div className="bg-white p-3 rounded-xl border border-orange-400/30">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 bg-gradient-to-r from-cyan-400/20 to-cyan-500/20 rounded-lg border border-cyan-400/30">
-                        <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
+                      <div className="p-2 bg-gradient-to-r from-orange-400/20 to-orange-500/20 rounded-lg border border-orange-400/30">
+                        <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
                       </div>
                       <div>
-                        <p className="text-cyan-300 text-sm font-bold uppercase tracking-wide mb-1">Enterprise-Grade Security</p>
-                        <p className="text-cyan-400 text-xs font-medium">Bank-level encryption • SOC 2 Type II • ISO 27001</p>
+                        <p className="text-orange-500 text-sm font-bold uppercase tracking-wide mb-1">Enterprise-Grade Security</p>
+                        <p className="text-orange-400 text-xs font-medium">Bank-level encryption • SOC 2 Type II • ISO 27001</p>
                       </div>
                     </div>
                   </div>
@@ -552,27 +556,27 @@ export default function Contact() {
               </div>
 
               {/* AI Chat Card */}
-              <Card className="border border-cyan-400/30 hover:border-cyan-300/60 bg-black backdrop-blur-xl shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 hover:scale-[1.01] overflow-hidden group rounded-xl">
+              <Card className="border border-orange-400/30 hover:border-orange-300/60 bg-white shadow-lg hover:shadow-orange-400/20 transition-all duration-300 hover:scale-[1.01] overflow-hidden group rounded-xl">
                 <CardContent className="p-3 relative">
-                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-cyan-400/10 via-cyan-300/5 to-transparent rounded-full filter blur-xl group-hover:blur-lg transition-all duration-500"></div>
+                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-orange-400/10 via-orange-300/5 to-transparent rounded-full filter transition-all duration-500"></div>
                   <div className="relative z-10">
                     <div className="inline-block mb-2">
-                      <span className="px-2 py-1 rounded-lg bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 text-black font-bold text-[10px] uppercase tracking-wide shadow-md border border-cyan-300/50"
+                      <span className="px-2 py-1 rounded-lg bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500 text-gray-900 font-bold text-[10px] uppercase tracking-wide shadow-md border border-orange-300/50"
                             style={{
                               clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))'
                             }}>
                         💬 Instant AI Voice Help
                       </span>
                     </div>
-                    <h3 className="font-bold text-sm sm:text-base bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent mb-2 uppercase tracking-wide">
+                    <h3 className="font-bold text-sm sm:text-base bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent mb-2 uppercase tracking-wide">
                       Prefer to chat with AI?
                     </h3>
-                    <p className="text-xs sm:text-sm text-white mb-3 font-medium leading-relaxed">
-                      Try our <span className="font-bold bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">AI voice chatbot</span> for instant answers to common questions about our voice agent platform, pricing, and implementation services.
+                    <p className="text-xs sm:text-sm text-gray-800 mb-3 font-medium leading-relaxed">
+                      Try our <span className="font-bold bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">AI voice chatbot</span> for instant answers to common questions about our voice agent platform, pricing, and implementation services.
                     </p>
                     <Button
                       variant="outline"
-                      className="border border-cyan-400/50 text-cyan-300 hover:bg-cyan-400/10 hover:border-cyan-300 hover:scale-102 transition-all duration-300 w-full font-bold text-xs h-8 rounded-lg shadow-md bg-black/50 backdrop-blur-sm uppercase tracking-wide"
+                      className="border border-orange-400/50 text-orange-500 hover:bg-orange-400/10 hover:border-orange-300 hover:scale-102 transition-all duration-300 w-full font-bold text-xs h-8 rounded-lg shadow-md bg-white/50 uppercase tracking-wide"
                       style={{
                         clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))'
                       }}
@@ -727,7 +731,7 @@ export default function Contact() {
                 address: "300 Quail Ridge Dr NE, ADA, MI 49301",
                 timezone: "EST (UTC-5)",
                 hours: "Mon-Fri: 9:00 AM - 6:00 PM",
-                phone: "+1 (616) 555-0123",
+                phone: "+91-78925-18414",
                 flag: "🇺🇸"
               },
               {

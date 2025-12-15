@@ -35,6 +35,7 @@ export default function Hero() {
 
     const [counts, setCounts] = useState([0, 0, 0])
     const [showVideo, setShowVideo] = useState(false)
+    const handleCloseVideo = () => setShowVideo(false);
     const vapiRef = useRef<any>(null)
     const [isCallActive, setIsCallActive] = useState(false)
     const [isSpeaking, setIsSpeaking] = useState(false)
@@ -275,6 +276,30 @@ export default function Hero() {
 
     return (
         <>
+            {/* Video Modal Overlay */}
+            {showVideo && (
+                <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+                    <div className="relative w-full max-w-2xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+                        <button
+                            onClick={handleCloseVideo}
+                            className="absolute top-2 right-2 z-10 p-2 bg-orange-100 hover:bg-orange-200 rounded-full text-orange-600 font-bold text-lg shadow"
+                            aria-label="Close video"
+                        >
+                            ×
+                        </button>
+                        <div className="aspect-w-16 aspect-h-9 w-full">
+                            <iframe
+                                src="https://www.youtube.com/embed/-68LXmyR6GI?autoplay=1"
+                                title="Demo Video"
+                                allow="autoplay; encrypted-media"
+                                allowFullScreen
+                                className="w-full h-96"
+                                style={{ background: 'transparent' }}
+                            />
+                        </div>
+                    </div>
+                </div>
+            )}
             <style dangerouslySetInnerHTML={{
                 __html: `
             @keyframes fade-in-left {
