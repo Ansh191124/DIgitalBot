@@ -2,15 +2,15 @@
 import Sidebar from "@/components/Sidebar";
 import { availabilityAPI, doctorsAPI } from "@/lib/api";
 import {
-  AlertCircle,
-  Calendar,
-  CalendarX,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-  RefreshCw,
-  User,
-  XCircle,
+    AlertCircle,
+    Calendar,
+    CalendarX,
+    ChevronLeft,
+    ChevronRight,
+    Clock,
+    RefreshCw,
+    User,
+    XCircle,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
@@ -55,7 +55,12 @@ interface AvailabilityData {
 
 // ==================== HELPERS ====================
 const formatDate = (date: Date): string => {
-  return date.toISOString().split("T")[0];
+  // Use local date components to avoid timezone issues
+  // toISOString() converts to UTC which can shift the date
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 };
 
 const getDayName = (date: Date): string => {

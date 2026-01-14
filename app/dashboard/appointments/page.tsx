@@ -1,23 +1,23 @@
 "use client";
 import Sidebar from "@/components/Sidebar";
 import {
-  AlertCircle,
-  ArrowLeft,
-  Building2,
-  Calendar,
-  CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-  FileText,
-  Mail,
-  Phone,
-  RefreshCw,
-  Search,
-  Stethoscope,
-  User,
-  X,
-  Zap,
+    AlertCircle,
+    ArrowLeft,
+    Building2,
+    Calendar,
+    CheckCircle2,
+    ChevronLeft,
+    ChevronRight,
+    Clock,
+    FileText,
+    Mail,
+    Phone,
+    RefreshCw,
+    Search,
+    Stethoscope,
+    User,
+    X,
+    Zap,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -559,7 +559,8 @@ export default function AppointmentsPage() {
 
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day);
-      const dateStr = date.toISOString().split("T")[0];
+      // Use local date components to avoid timezone issues
+      const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
       const dateAppts = getAppointmentsForDate(date);
       const isToday = date.toDateString() === new Date().toDateString();
       const isSelected = selectedDate === dateStr;
