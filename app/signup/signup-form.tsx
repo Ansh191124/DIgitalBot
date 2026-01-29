@@ -4,33 +4,44 @@ import { PageBackground } from '@/components/page-background'
 import axios from 'axios'
 import { motion } from 'framer-motion'
 import { Lock, Mail, Sparkles, User } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 interface SignupFormProps {
   initialService?: string
 }
 
-type ServiceKey = 'lead-analysis' | 'appointment' | ''
+type ServiceKey = 'lead-analysis' | 'appointment' | 'customer-support' | ''
 
 export function SignupForm({ initialService }: SignupFormProps) {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [form, setForm] = useState({ name: '', email: '', password: '' })
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [selectedService, setSelectedService] = useState<ServiceKey>('')
 
-  // Initialize service based on query
+  // Initialize service based on query - read from URL directly
   useEffect(() => {
-    if (!initialService) return
-    if (initialService === 'lead' || initialService === 'lead-analysis') setSelectedService('lead-analysis')
-    else if (initialService === 'appointment') setSelectedService('appointment')
-  }, [initialService])
+    const serviceFromUrl = searchParams.get('service') || initialService
+    if (!serviceFromUrl) return
+    if (serviceFromUrl === 'lead' || serviceFromUrl === 'lead-analysis') setSelectedService('lead-analysis')
+    else if (serviceFromUrl === 'appointment') setSelectedService('appointment')
+    else if (serviceFromUrl === 'customer-support') setSelectedService('customer-support')
+  }, [searchParams, initialService])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }))
+  }
+
+  const getServiceFromUrl = (): ServiceKey => {
+    const serviceFromUrl = searchParams.get('service') || initialService
+    if (serviceFromUrl === 'lead' || serviceFromUrl === 'lead-analysis') return 'lead-analysis'
+    if (serviceFromUrl === 'appointment') return 'appointment'
+    if (serviceFromUrl === 'customer-support') return 'customer-support'
+    return selectedService
   }
 
   const validateForm = () => {
@@ -40,7 +51,9 @@ export function SignupForm({ initialService }: SignupFormProps) {
     else if (!/\S+@\S+\.\S+/.test(form.email)) newErrors.email = 'Email is invalid'
     if (!form.password) newErrors.password = 'Password is required'
     else if (form.password.length < 6) newErrors.password = 'Password must be at least 6 characters'
-    if (!selectedService) newErrors.service = 'Invalid service selected'
+    
+    const service = getServiceFromUrl()
+    if (!service) newErrors.service = 'Invalid service selected'
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -51,11 +64,14 @@ export function SignupForm({ initialService }: SignupFormProps) {
     if (!validateForm()) return
 
     setLoading(true)
+    
+    // Get service directly from URL to ensure we have it
+    const service = getServiceFromUrl()
 
     try {
       await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'https://digital-api-tef8.onrender.com/api'}/auth/register`, {
         ...form,
-        selectedService,
+        selectedService: service,
       })
 
       alert('Registration successful! Please login to continue.')
@@ -71,11 +87,13 @@ export function SignupForm({ initialService }: SignupFormProps) {
   const getServiceInfo = () => {
     switch (selectedService) {
       case 'lead-analysis':
-        return { title: 'Lead Analysis Service', gradient: 'from-orange-400 to-orange-700' }
+        return { title: 'Lead Analysis Service', gradient: 'from-blue-400 to-blue-700' }
       case 'appointment':
-        return { title: 'Appointment Service', gradient: 'from-orange-500 to-orange-600' }
+        return { title: 'Appointment Service', gradient: 'from-blue-500 to-blue-600' }
+      case 'customer-support':
+        return { title: 'Customer Support AI', gradient: 'from-cyan-500 to-blue-600' }
       default:
-        return { title: 'DigitalBot Service', gradient: 'from-orange-500 to-orange-700' }
+        return { title: 'DigitalBot Service', gradient: 'from-blue-500 to-blue-700' }
     }
   }
 
@@ -86,18 +104,18 @@ export function SignupForm({ initialService }: SignupFormProps) {
       <PageBackground />
 
       {/* Animated glow */}
-      <div className="absolute w-[700px] h-[700px] bg-orange-500/20 blur-[180px] rounded-full -top-40 -left-20 animate-pulse" />
+      <div className="absolute w-[700px] h-[700px] bg-blue-500/20 blur-[180px] rounded-full -top-40 -left-20 animate-pulse" />
 
       <motion.form
         onSubmit={handleSubmit}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="relative z-10 bg-white/90 backdrop-blur-2xl p-10 rounded-3xl shadow-2xl shadow-orange-500/40 w-full max-w-md border border-orange-400/70 hover:shadow-orange-500/60 hover:scale-[1.02] transition-transform duration-300"
+        className="relative z-10 bg-white/90 backdrop-blur-2xl p-10 rounded-3xl shadow-2xl shadow-blue-500/40 w-full max-w-md border border-blue-400/70 hover:shadow-blue-500/60 hover:scale-[1.02] transition-transform duration-300"
       >
         {/* Header */}
         <div className="flex items-center gap-2 mb-6">
-          <Sparkles className="w-5 h-5 text-orange-600" />
+          <Sparkles className="w-5 h-5 text-blue-600" />
           <h2 className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${gradient}`}>
             Sign Up for {title}
           </h2>
@@ -159,7 +177,7 @@ export function SignupForm({ initialService }: SignupFormProps) {
           type="submit"
           whileTap={{ scale: 0.97 }}
           disabled={loading}
-          className="bg-gradient-to-r from-orange-500 to-orange-700 text-white w-full py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition disabled:opacity-60"
+          className="bg-gradient-to-r from-blue-500 to-blue-700 text-white w-full py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition disabled:opacity-60"
         >
           {loading ? 'Registering...' : 'Create Account'}
         </motion.button>

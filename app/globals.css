@@ -3,85 +3,85 @@
 @tailwind utilities;
 
 :root {
-  /* Black and Glossy Orange theme */
-  --background: oklch(1 0 0); /* White */
-  --foreground: oklch(0 0 0); /* Black */
-  --card: oklch(0.98 0 0); /* Almost white */
-  --card-foreground: oklch(0 0 0); /* Black */
-  --popover: oklch(1 0 0); /* White */
-  --popover-foreground: oklch(0 0 0); /* Black */
-  --primary: oklch(0 0 0); /* Black */
-  --primary-foreground: oklch(1 0 0); /* White */
-  --secondary: oklch(0.65 0.2 40); /* Glossy Orange */
-  --secondary-foreground: oklch(1 0 0); /* White */
-  --muted: oklch(0.95 0 0); /* Light gray */
-  --muted-foreground: oklch(0.3 0 0); /* Dark gray */
-  --accent: oklch(0.65 0.25 40); /* Vibrant glossy orange */
-  --accent-foreground: oklch(0 0 0); /* Black */
-  --destructive: oklch(0.55 0.22 25); /* Orange-red */
-  --destructive-foreground: oklch(1 0 0); /* White */
-  --border: oklch(0.85 0 0); /* Light gray */
-  --input: oklch(1 0 0); /* White */
-  --ring: oklch(0.65 0.25 40 / 0.5); /* Glossy orange with transparency */
-  --chart-1: oklch(0.65 0.25 40); /* Glossy orange */
-  --chart-2: oklch(0 0 0); /* Black */
-  --chart-3: oklch(0.4 0.15 40); /* Dark orange */
-  --chart-4: oklch(0.9 0 0); /* Light gray */
-  --chart-5: oklch(1 0 0); /* White */
+  /* Sky Blue and White theme */
+  --background: #ffffff; /* White */
+  --foreground: #1e293b; /* Dark blue-gray */
+  --card: #f0f9ff; /* Very light sky blue */
+  --card-foreground: #1e293b; /* Dark blue-gray */
+  --popover: #ffffff; /* White */
+  --popover-foreground: #1e293b; /* Dark blue-gray */
+  --primary: #0ea5e9; /* Sky blue */
+  --primary-foreground: #ffffff; /* White */
+  --secondary: #bae6fd; /* Light sky blue */
+  --secondary-foreground: #1e293b; /* Dark blue-gray */
+  --muted: #f0f9ff; /* Very light blue */
+  --muted-foreground: #64748b; /* Medium gray-blue */
+  --accent: #0284c7; /* Vibrant sky blue */
+  --accent-foreground: #ffffff; /* White */
+  --destructive: #ef4444; /* Red */
+  --destructive-foreground: #ffffff; /* White */
+  --border: #e0f2fe; /* Light blue border */
+  --input: #ffffff; /* White */
+  --ring: rgba(14, 165, 233, 0.5); /* Sky blue with transparency */
+  --chart-1: #0ea5e9; /* Sky blue */
+  --chart-2: #6366f1; /* Blue-purple */
+  --chart-3: #06b6d4; /* Cyan-blue */
+  --chart-4: #bae6fd; /* Light blue */
+  --chart-5: #ffffff; /* White */
   --radius: 0.5rem;
-  --sidebar: oklch(0.05 0 0); /* Almost black */
-  --sidebar-foreground: oklch(1 0 0); /* White */
-  --sidebar-primary: oklch(0.65 0.25 40); /* Glossy orange */
-  --sidebar-primary-foreground: oklch(0 0 0); /* Black */
-  --sidebar-accent: oklch(0.65 0.25 40); /* Glossy orange */
-  --sidebar-accent-foreground: oklch(0 0 0); /* Black */
-  --sidebar-border: oklch(0.2 0 0); /* Dark gray */
-  --sidebar-ring: oklch(0.65 0.25 40 / 0.5); /* Glossy orange with transparency */
+  --sidebar: #f0f9ff; /* Light sky blue sidebar */
+  --sidebar-foreground: #1e293b; /* Dark blue-gray */
+  --sidebar-primary: #0ea5e9; /* Sky blue */
+  --sidebar-primary-foreground: #ffffff; /* White */
+  --sidebar-accent: #0284c7; /* Vibrant sky blue */
+  --sidebar-accent-foreground: #ffffff; /* White */
+  --sidebar-border: #e0f2fe; /* Light blue border */
+  --sidebar-ring: rgba(14, 165, 233, 0.5); /* Sky blue with transparency */
 }
 
 .dark {
-  /* Dark mode with black and glossy orange theme */
-  --background: oklch(0.05 0 0); /* Almost black */
-  --foreground: oklch(1 0 0); /* White */
-  --card: oklch(0.1 0 0); /* Dark gray */
-  --card-foreground: oklch(1 0 0); /* White */
-  --popover: oklch(0.05 0 0); /* Almost black */
-  --popover-foreground: oklch(1 0 0); /* White */
-  --primary: oklch(0.65 0.25 40); /* Glossy orange */
-  --primary-foreground: oklch(0 0 0); /* Black */
-  --secondary: oklch(0.2 0 0); /* Dark gray */
-  --secondary-foreground: oklch(1 0 0); /* White */
-  --muted: oklch(0.15 0 0); /* Dark gray */
-  --muted-foreground: oklch(0.7 0 0); /* Light gray */
-  --accent: oklch(0.65 0.25 40); /* Glossy orange */
-  --accent-foreground: oklch(0 0 0); /* Black */
-  --destructive: oklch(0.55 0.22 25); /* Orange-red */
-  --destructive-foreground: oklch(1 0 0); /* White */
-  --border: oklch(0.2 0 0); /* Dark gray */
-  --input: oklch(0.1 0 0); /* Dark gray */
-  --ring: oklch(0.65 0.25 40 / 0.5); /* Glossy orange with transparency */
-  --chart-1: oklch(0.65 0.25 40); /* Glossy orange */
-  --chart-2: oklch(1 0 0); /* White */
-  --chart-3: oklch(0.4 0.15 40); /* Dark orange */
-  --chart-4: oklch(0.2 0 0); /* Dark gray */
-  --chart-5: oklch(0.05 0 0); /* Almost black */
-  --sidebar: oklch(0.05 0 0); /* Almost black */
-  --sidebar-foreground: oklch(1 0 0); /* White */
-  --sidebar-primary: oklch(0.65 0.25 40); /* Glossy orange */
-  --sidebar-primary-foreground: oklch(0 0 0); /* Black */
-  --sidebar-accent: oklch(0.15 0 0); /* Dark gray */
-  --sidebar-accent-foreground: oklch(1 0 0); /* White */
-  --sidebar-border: oklch(0.2 0 0); /* Dark gray */
-  --sidebar-ring: oklch(0.65 0.25 40 / 0.5); /* Glossy orange with transparency */
+  /* Dark mode with sky blue theme */
+  --background: #0f172a; /* Dark blue */
+  --foreground: #ffffff; /* White */
+  --card: #1e293b; /* Dark blue-gray */
+  --card-foreground: #ffffff; /* White */
+  --popover: #0f172a; /* Dark blue */
+  --popover-foreground: #ffffff; /* White */
+  --primary: #38bdf8; /* Bright sky blue */
+  --primary-foreground: #0f172a; /* Dark blue */
+  --secondary: #334155; /* Dark blue-gray */
+  --secondary-foreground: #ffffff; /* White */
+  --muted: #1e293b; /* Dark blue-gray */
+  --muted-foreground: #94a3b8; /* Light blue-gray */
+  --accent: #0ea5e9; /* Sky blue */
+  --accent-foreground: #0f172a; /* Dark blue */
+  --destructive: #ef4444; /* Red */
+  --destructive-foreground: #ffffff; /* White */
+  --border: #334155; /* Dark blue border */
+  --input: #1e293b; /* Dark blue-gray */
+  --ring: rgba(56, 189, 248, 0.5); /* Sky blue with transparency */
+  --chart-1: #38bdf8; /* Bright sky blue */
+  --chart-2: #ffffff; /* White */
+  --chart-3: #0284c7; /* Medium blue */
+  --chart-4: #334155; /* Dark blue-gray */
+  --chart-5: #0f172a; /* Dark blue */
+  --sidebar: #0c1222; /* Very dark blue */
+  --sidebar-foreground: #ffffff; /* White */
+  --sidebar-primary: #38bdf8; /* Sky blue */
+  --sidebar-primary-foreground: #0f172a; /* Dark blue */
+  --sidebar-accent: #334155; /* Dark blue-gray */
+  --sidebar-accent-foreground: #ffffff; /* White */
+  --sidebar-border: #334155; /* Dark blue border */
+  --sidebar-ring: rgba(56, 189, 248, 0.5); /* Sky blue with transparency */
 }
 
 @layer base {
   * {
-    border-color: hsl(var(--border));
+    border-color: var(--border);
   }
   body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
@@ -108,12 +108,49 @@
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
 }
 
 .animate-pulse-glow {
   animation: pulse-glow 2s infinite;
 }
+
+/* Hero section animations */
+@keyframes gradient-x-hero {
+  0%, 100% {
+    background-position: 0% 50%;
+    background-size: 200% 200%;
+  }
+  50% {
+    background-position: 100% 50%;
+    background-size: 200% 200%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x-hero 3s ease infinite;
+}
+
+@keyframes float-card {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float-card {
+  animation: float-card 3s ease-in-out infinite;
+}
+
+/* Radial gradient background */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-from), var(--tw-gradient-to));
+}
+
 @keyframes wave {
   0%, 100% { height: 6px; }
   50% { height: 20px; }
@@ -259,7 +296,7 @@
   margin: 0;
 }
 
-.prose .bg-white.border-2.border-orange-300 {
+.prose .bg-white.border-2.border-sky-300 {
   background: white;
   border: 2px solid rgb(253, 186, 116);
   border-radius: 1rem;
@@ -268,7 +305,7 @@
   margin: 2.5rem 0;
 }
 
-.prose .bg-white.border-2.border-orange-300 p:first-child {
+.prose .bg-white.border-2.border-sky-300 p:first-child {
   font-size: 1.5rem;
   font-weight: 700;
   background: linear-gradient(to right, rgb(249, 115, 22), rgb(236, 72, 153), rgb(147, 51, 234));
@@ -313,7 +350,7 @@
   margin-bottom: 1rem;
 }
 
-.prose .bg-gradient-to-br.from-orange-50 {
+.prose .bg-gradient-to-br.from-sky-50 {
   background: linear-gradient(to bottom right, rgb(255, 247, 237), rgb(254, 243, 199), rgb(254, 249, 195));
   border: 2px solid rgb(253, 186, 116);
   border-radius: 1rem;
@@ -322,7 +359,7 @@
   margin: 2.5rem 0;
 }
 
-.prose .bg-gradient-to-br.from-orange-50 p:first-child {
+.prose .bg-gradient-to-br.from-sky-50 p:first-child {
   font-size: 1.25rem;
   font-weight: 700;
   color: rgb(124, 45, 18);
@@ -535,3 +572,88 @@
   height: 5.5rem;
 }
 
+/* Q&A Section Animations */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.qa-header {
+  animation: fadeSlideUp 0.8s ease-out;
+}
+
+.qa-card {
+  animation: fadeSlideIn 0.6s ease-out both;
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
+}
+
+{/* Add animation keyframes in your global CSS or within a style tag */}
+
+  @keyframes animate-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes animate-blob {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: animate-fade-in 0.8s ease-out forwards;
+  }
+  
+  .animate-blob {
+    animation: animate-blob 7s infinite;
+  }
